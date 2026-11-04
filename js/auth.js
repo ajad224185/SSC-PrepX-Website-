@@ -1,5 +1,5 @@
 // ==========================================
-// SSC PrepX 2.0 - Authentication
+// SSC PrepX 2.0 - NEW AUTHENTICATION SYSTEM
 // ==========================================
 
 import {
@@ -9,10 +9,14 @@ import {
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
   signOut,
   onAuthStateChanged,
+  updateProfile,
   RecaptchaVerifier,
-  signInWithPhoneNumber
+  signInWithPhoneNumber,
+  GoogleAuthProvider,
+  signInWithPopup
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 
 
@@ -21,10 +25,12 @@ import {
 // ==========================================
 
 export async function loginWithEmail(email, password) {
+
   try {
+
     const result = await signInWithEmailAndPassword(
       auth,
-      email,
+      email.trim(),
       password
     );
 
@@ -47,17 +53,33 @@ export async function loginWithEmail(email, password) {
 
 
 // ==========================================
-// REGISTER WITH EMAIL
+// EMAIL REGISTER
 // ==========================================
 
-export async function registerWithEmail(email, password) {
+export async function registerWithEmail(
+  name,
+  email,
+  password
+) {
+
   try {
 
     const result = await createUserWithEmailAndPassword(
       auth,
-      email,
+      email.trim(),
       password
     );
+
+    // Save user's name in Firebase Authentication profile
+    if (name && name.trim()) {
+
+      await updateProfile(
+        result.user,
+        {
+          displayName: name.trim()
+        }
+      );
+    }
 
     return {
       success: true,
@@ -78,42 +100,138 @@ export async function registerWithEmail(email, password) {
 
 
 // ==========================================
-// MOBILE OTP
+// FORGOT PASSWORD
 // ==========================================
 
-export function setupRecaptcha(buttonId) {
+export async function resetPassword(email) {
 
-  if (window.recaptchaVerifier) {
-    return window.recaptchaVerifier;
+  try {
+
+    await sendPasswordResetEmail(
+      auth,
+      email.trim()
+    );
+
+    return {
+      success: true,
+      message: "Password reset email भेज दिया गया है।"
+    };
+
+  } catch (error) {
+
+    console.error("Password Reset Error:", error);
+
+    return {
+      success: false,
+      error: error.code,
+      message: getAuthErrorMessage(error.code)
+    };
   }
-
-  window.recaptchaVerifier = new RecaptchaVerifier(
-    auth,
-    buttonId,
-    {
-      size: "invisible",
-      callback: () => {
-        console.log("reCAPTCHA verified");
-      },
-      "expired-callback": () => {
-        console.log("reCAPTCHA expired");
-      }
-    }
-  );
-
-  return window.recaptchaVerifier;
 }
 
 
 // ==========================================
-// SEND OTP
+// GOOGLE LOGIN
 // ==========================================
 
-export async function sendMobileOTP(phoneNumber, buttonId) {
+export async function loginWithGoogle() {
 
   try {
 
-    const appVerifier = setupRecaptcha(buttonId);
+    const provider = new GoogleAuthProvider();
+
+    const result = await signInWithPopup(
+      auth,
+      provider
+    );
+
+    return {
+      success: true,
+      user: result.user
+    };
+
+  } catch (error) {
+
+    console.error("Google Login Error:", error);
+
+    return {
+      success: false,
+      error: error.code,
+      message: getAuthErrorMessage(error.code)
+    };
+  }
+}
+
+
+// ==========================================
+// reCAPTCHA
+// ==========================================
+
+export function setupRecaptcha(containerId) {
+
+  try {
+
+    if (window.recaptchaVerifier) {
+
+      try {
+        window.recaptchaVerifier.clear();
+      } catch (e) {}
+
+      window.recaptchaVerifier = null;
+    }
+
+    window.recaptchaVerifier =
+      new RecaptchaVerifier(
+        auth,
+        containerId,
+        {
+          size: "invisible",
+
+          callback: () => {
+            console.log("reCAPTCHA verified");
+          },
+
+          "expired-callback": () => {
+            console.log("reCAPTCHA expired");
+          }
+        }
+      );
+
+    return window.recaptchaVerifier;
+
+  } catch (error) {
+
+    console.error(
+      "reCAPTCHA Setup Error:",
+      error
+    );
+
+    return null;
+  }
+}
+
+
+// ==========================================
+// SEND MOBILE OTP
+// ==========================================
+
+export async function sendMobileOTP(
+  phoneNumber,
+  containerId
+) {
+
+  try {
+
+    const appVerifier =
+      setupRecaptcha(containerId);
+
+    if (!appVerifier) {
+
+      return {
+        success: false,
+        message: "reCAPTCHA setup नहीं हो पाया।"
+      };
+    }
 
     const confirmationResult =
       await signInWithPhoneNumber(
@@ -122,21 +240,27 @@ export async function sendMobileOTP(phoneNumber, buttonId) {
         appVerifier
       );
 
-    window.confirmationResult = confirmationResult;
+    window.confirmationResult =
+      confirmationResult;
 
     return {
       success: true,
-      message: "OTP sent successfully"
+      message: "OTP successfully भेज दिया गया है।"
     };
 
   } catch (error) {
 
-    console.error("OTP Error:", error);
+    console.error(
+      "Mobile OTP Error:",
+      error
+    );
 
     if (window.recaptchaVerifier) {
+
       try {
         window.recaptchaVerifier.clear();
       } catch (e) {}
+
       window.recaptchaVerifier = null;
     }
 
@@ -150,7 +274,7 @@ export async function sendMobileOTP(phoneNumber, buttonId) {
 
 
 // ==========================================
-// VERIFY OTP
+// VERIFY MOBILE OTP
 // ==========================================
 
 export async function verifyMobileOTP(otp) {
@@ -158,14 +282,17 @@ export async function verifyMobileOTP(otp) {
   try {
 
     if (!window.confirmationResult) {
+
       return {
         success: false,
-        message: "Please request OTP first."
+        message: "पहले OTP भेजें।"
       };
     }
 
     const result =
-      await window.confirmationResult.confirm(otp);
+      await window.confirmationResult.confirm(
+        otp.trim()
+      );
 
     return {
       success: true,
@@ -174,7 +301,10 @@ export async function verifyMobileOTP(otp) {
 
   } catch (error) {
 
-    console.error("OTP Verification Error:", error);
+    console.error(
+      "OTP Verification Error:",
+      error
+    );
 
     return {
       success: false,
@@ -201,18 +331,22 @@ export async function logoutUser() {
 
   } catch (error) {
 
-    console.error("Logout Error:", error);
+    console.error(
+      "Logout Error:",
+      error
+    );
 
     return {
       success: false,
-      error: error.code
+      error: error.code,
+      message: getAuthErrorMessage(error.code)
     };
   }
 }
 
 
 // ==========================================
-// CURRENT USER LISTENER
+// AUTH STATE
 // ==========================================
 
 export function watchAuthState(callback) {
@@ -227,7 +361,7 @@ export function watchAuthState(callback) {
 
 
 // ==========================================
-// GET CURRENT USER
+// CURRENT USER
 // ==========================================
 
 export function getCurrentUser() {
@@ -275,9 +409,21 @@ function getAuthErrorMessage(code) {
       return "OTP expire हो गया है। नया OTP लें।";
 
     case "auth/quota-exceeded":
-      return "OTP quota समाप्त हो गया है। बाद में try करें।";
+      return "OTP quota समाप्त हो गया है।";
+
+    case "auth/popup-closed-by-user":
+      return "Google Login popup बंद कर दिया गया।";
+
+    case "auth/popup-blocked":
+      return "Google Login popup browser ने block कर दिया।";
+
+    case "auth/operation-not-allowed":
+      return "यह Login method Firebase में अभी enabled नहीं है।";
+
+    case "auth/network-request-failed":
+      return "Internet connection check करें।";
 
     default:
       return "Login में समस्या हुई। कृपया दोबारा try करें।";
   }
-    }
+}
