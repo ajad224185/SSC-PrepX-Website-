@@ -554,7 +554,15 @@
           SSC PrepX 2.0 Firestore profile step. Old collections are
           intentionally NOT used.
         */
-        const result = await registerWithEmail(name, email, password);
+        const result = await registerWithEmail(
+  name,
+  email,
+  password,
+  {
+    username: username,
+    phone: mobile
+  }
+);
 
         if (!result.success) {
           banner(result.message);
