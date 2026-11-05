@@ -3,7 +3,8 @@
 // ==========================================
 
 import {
-  auth
+  auth,
+  db
 } from "./firebase.js";
 
 import {
@@ -16,8 +17,15 @@ import {
   RecaptchaVerifier,
   signInWithPhoneNumber,
   GoogleAuthProvider,
-  signInWithPopup
-} from "https://www.gstatic.com/firebasejs/13.2.0/firebase-auth.js";
+  signInWithPopup,
+  deleteUser
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+
+import {
+  doc,
+  setDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
 
 // ==========================================
@@ -53,42 +61,132 @@ export async function loginWithEmail(email, password) {
 
 
 // ==========================================
-// EMAIL REGISTER
+// EMAIL REGISTER + SAVE STUDENT PROFILE
 // ==========================================
 
 export async function registerWithEmail(
   name,
   email,
-  password
+  password,
+  profile = {}
 ) {
+
+  let createdUser = null;
 
   try {
 
-    const result = await createUserWithEmailAndPassword(
-      auth,
-      email.trim(),
-      password
-    );
+    // --------------------------------------
+    // CREATE FIREBASE AUTH ACCOUNT
+    // --------------------------------------
 
-    // Save user's name in Firebase Authentication profile
+    const result =
+      await createUserWithEmailAndPassword(
+        auth,
+        email.trim(),
+        password
+      );
+
+    createdUser = result.user;
+
+
+    // --------------------------------------
+    // SAVE NAME IN FIREBASE AUTH PROFILE
+    // --------------------------------------
+
     if (name && name.trim()) {
 
       await updateProfile(
-        result.user,
+        createdUser,
         {
           displayName: name.trim()
         }
       );
     }
 
+
+    // --------------------------------------
+    // SAVE STUDENT DATA IN FIRESTORE
+    // --------------------------------------
+
+    await setDoc(
+      doc(db, "users", createdUser.uid),
+      {
+
+        uid: createdUser.uid,
+
+        name: name ? name.trim() : "",
+
+        username:
+          profile.username
+            ? profile.username.trim().toLowerCase()
+            : "",
+
+        email:
+          email
+            ? email.trim().toLowerCase()
+            : "",
+
+        phone:
+          profile.phone
+            ? profile.phone.trim()
+            : "",
+
+        createdAt: serverTimestamp(),
+
+        updatedAt: serverTimestamp(),
+
+        role: "student",
+
+        isActive: true
+
+      },
+      {
+        merge: true
+      }
+    );
+
+
+    // --------------------------------------
+    // SUCCESS
+    // --------------------------------------
+
     return {
       success: true,
-      user: result.user
+      user: createdUser
     };
+
 
   } catch (error) {
 
-    console.error("Registration Error:", error);
+    console.error(
+      "Registration / Firestore Error:",
+      error
+    );
+
+
+    // --------------------------------------
+    // ROLLBACK AUTH USER IF FIRESTORE FAILS
+    // --------------------------------------
+
+    if (createdUser) {
+
+      try {
+
+        await deleteUser(createdUser);
+
+        console.log(
+          "Auth account rollback successful."
+        );
+
+      } catch (deleteError) {
+
+        console.error(
+          "Rollback Error:",
+          deleteError
+        );
+      }
+    }
+
 
     return {
       success: false,
@@ -119,7 +217,10 @@ export async function resetPassword(email) {
 
   } catch (error) {
 
-    console.error("Password Reset Error:", error);
+    console.error(
+      "Password Reset Error:",
+      error
+    );
 
     return {
       success: false,
@@ -138,12 +239,14 @@ export async function loginWithGoogle() {
 
   try {
 
-    const provider = new GoogleAuthProvider();
+    const provider =
+      new GoogleAuthProvider();
 
-    const result = await signInWithPopup(
-      auth,
-      provider
-    );
+    const result =
+      await signInWithPopup(
+        auth,
+        provider
+      );
 
     return {
       success: true,
@@ -152,7 +255,10 @@ export async function loginWithGoogle() {
 
   } catch (error) {
 
-    console.error("Google Login Error:", error);
+    console.error(
+      "Google Login Error:",
+      error
+    );
 
     return {
       success: false,
@@ -180,6 +286,7 @@ export function setupRecaptcha(containerId) {
       window.recaptchaVerifier = null;
     }
 
+
     window.recaptchaVerifier =
       new RecaptchaVerifier(
         auth,
@@ -188,16 +295,22 @@ export function setupRecaptcha(containerId) {
           size: "invisible",
 
           callback: () => {
-            console.log("reCAPTCHA verified");
+            console.log(
+              "reCAPTCHA verified"
+            );
           },
 
           "expired-callback": () => {
-            console.log("reCAPTCHA expired");
+            console.log(
+              "reCAPTCHA expired"
+            );
           }
         }
       );
 
+
     return window.recaptchaVerifier;
+
 
   } catch (error) {
 
@@ -225,13 +338,16 @@ export async function sendMobileOTP(
     const appVerifier =
       setupRecaptcha(containerId);
 
+
     if (!appVerifier) {
 
       return {
         success: false,
-        message: "reCAPTCHA setup नहीं हो पाया।"
+        message:
+          "reCAPTCHA setup नहीं हो पाया।"
       };
     }
+
 
     const confirmationResult =
       await signInWithPhoneNumber(
@@ -240,13 +356,17 @@ export async function sendMobileOTP(
         appVerifier
       );
 
+
     window.confirmationResult =
       confirmationResult;
 
+
     return {
       success: true,
-      message: "OTP successfully भेज दिया गया है।"
+      message:
+        "OTP successfully भेज दिया गया है।"
     };
+
 
   } catch (error) {
 
@@ -254,6 +374,7 @@ export async function sendMobileOTP(
       "Mobile OTP Error:",
       error
     );
+
 
     if (window.recaptchaVerifier) {
 
@@ -264,10 +385,12 @@ export async function sendMobileOTP(
       window.recaptchaVerifier = null;
     }
 
+
     return {
       success: false,
       error: error.code,
-      message: getAuthErrorMessage(error.code)
+      message:
+        getAuthErrorMessage(error.code)
     };
   }
 }
@@ -285,19 +408,23 @@ export async function verifyMobileOTP(otp) {
 
       return {
         success: false,
-        message: "पहले OTP भेजें।"
+        message:
+          "पहले OTP भेजें।"
       };
     }
+
 
     const result =
       await window.confirmationResult.confirm(
         otp.trim()
       );
 
+
     return {
       success: true,
       user: result.user
     };
+
 
   } catch (error) {
 
@@ -306,10 +433,12 @@ export async function verifyMobileOTP(otp) {
       error
     );
 
+
     return {
       success: false,
       error: error.code,
-      message: getAuthErrorMessage(error.code)
+      message:
+        getAuthErrorMessage(error.code)
     };
   }
 }
@@ -339,7 +468,8 @@ export async function logoutUser() {
     return {
       success: false,
       error: error.code,
-      message: getAuthErrorMessage(error.code)
+      message:
+        getAuthErrorMessage(error.code)
     };
   }
 }
@@ -423,7 +553,13 @@ function getAuthErrorMessage(code) {
     case "auth/network-request-failed":
       return "Internet connection check करें।";
 
+    case "permission-denied":
+      return "Firestore permission नहीं मिली।";
+
+    case "unavailable":
+      return "Firebase service अभी उपलब्ध नहीं है।";
+
     default:
       return "Login में समस्या हुई। कृपया दोबारा try करें।";
   }
-}
+      }
