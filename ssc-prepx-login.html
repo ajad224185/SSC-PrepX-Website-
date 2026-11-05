@@ -1013,16 +1013,16 @@
     // ------------------------------------------------------------
 
     watchAuthState((user) => {
-      if (user) {
-        console.log(
-          "SSC PrepX 2.0 authenticated user:",
-          user.email || user.phoneNumber || user.uid
-        );
-      } else {
-        console.log("SSC PrepX 2.0: no authenticated user");
-      }
-    });
+  if (user) {
+    console.log("User authenticated:", user.uid);
 
+    // Already logged-in user goes to dashboard
+    window.location.replace("index.html");
+
+  } else {
+    console.log("No authenticated user");
+  }
+});
     // ------------------------------------------------------------
     // Initial UI
     // ------------------------------------------------------------
