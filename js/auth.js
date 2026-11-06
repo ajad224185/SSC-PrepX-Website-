@@ -2,10 +2,7 @@
 // SSC PrepX 2.0 - NEW AUTHENTICATION SYSTEM
 // ==========================================
 
-import {
-  auth,
-  db
-} from "./firebase.js";
+import { auth, db } from "./firebase.js";
 
 import {
   signInWithEmailAndPassword,
@@ -33,22 +30,16 @@ import {
 // ==========================================
 
 export async function loginWithEmail(email, password) {
-
   try {
-
     const result = await signInWithEmailAndPassword(
       auth,
       email.trim(),
       password
     );
 
-    return {
-      success: true,
-      user: result.user
-    };
+    return { success: true, user: result.user };
 
   } catch (error) {
-
     console.error("Email Login Error:", error);
 
     return {
@@ -70,123 +61,58 @@ export async function registerWithEmail(
   password,
   profile = {}
 ) {
-
   let createdUser = null;
 
   try {
-
-    // --------------------------------------
-    // CREATE FIREBASE AUTH ACCOUNT
-    // --------------------------------------
-
-    const result =
-      await createUserWithEmailAndPassword(
-        auth,
-        email.trim(),
-        password
-      );
+    // Create Firebase Auth account
+    const result = await createUserWithEmailAndPassword(
+      auth,
+      email.trim(),
+      password
+    );
 
     createdUser = result.user;
 
-
-    // --------------------------------------
-    // SAVE NAME IN FIREBASE AUTH PROFILE
-    // --------------------------------------
-
+    // Save name in Auth profile
     if (name && name.trim()) {
-
-      await updateProfile(
-        createdUser,
-        {
-          displayName: name.trim()
-        }
-      );
+      await updateProfile(createdUser, {
+        displayName: name.trim()
+      });
     }
 
-
-    // --------------------------------------
-    // SAVE STUDENT DATA IN FIRESTORE
-    // --------------------------------------
-
+    // Save student data in Firestore
     await setDoc(
       doc(db, "users", createdUser.uid),
       {
-
         uid: createdUser.uid,
-
         name: name ? name.trim() : "",
-
-        username:
-          profile.username
-            ? profile.username.trim().toLowerCase()
-            : "",
-
-        email:
-          email
-            ? email.trim().toLowerCase()
-            : "",
-
-        phone:
-          profile.phone
-            ? profile.phone.trim()
-            : "",
-
+        username: profile.username
+          ? profile.username.trim().toLowerCase()
+          : "",
+        email: email ? email.trim().toLowerCase() : "",
+        phone: profile.phone ? profile.phone.trim() : "",
         createdAt: serverTimestamp(),
-
         updatedAt: serverTimestamp(),
-
         role: "student",
-
         isActive: true
-
       },
-      {
-        merge: true
-      }
+      { merge: true }
     );
 
-
-    // --------------------------------------
-    // SUCCESS
-    // --------------------------------------
-
-    return {
-      success: true,
-      user: createdUser
-    };
-
+    return { success: true, user: createdUser };
 
   } catch (error) {
+    console.error("Registration / Firestore Error:", error);
 
-    console.error(
-      "Registration / Firestore Error:",
-      error
-    );
-
-
-    // --------------------------------------
-    // ROLLBACK AUTH USER IF FIRESTORE FAILS
-    // --------------------------------------
-
+    // Rollback Auth user if Firestore fails
     if (createdUser) {
-
       try {
-
         await deleteUser(createdUser);
-
-        console.log(
-          "Auth account rollback successful."
-        );
-
+        console.log("Auth account rollback successful.");
       } catch (deleteError) {
-
-        console.error(
-          "Rollback Error:",
-          deleteError
-        );
+        console.error("Rollback Error:", deleteError);
       }
     }
-
 
     return {
       success: false,
@@ -202,13 +128,8 @@ export async function registerWithEmail(
 // ==========================================
 
 export async function resetPassword(email) {
-
   try {
-
-    await sendPasswordResetEmail(
-      auth,
-      email.trim()
-    );
+    await sendPasswordResetEmail(auth, email.trim());
 
     return {
       success: true,
@@ -216,11 +137,7 @@ export async function resetPassword(email) {
     };
 
   } catch (error) {
-
-    console.error(
-      "Password Reset Error:",
-      error
-    );
+    console.error("Password Reset Error:", error);
 
     return {
       success: false,
@@ -236,29 +153,14 @@ export async function resetPassword(email) {
 // ==========================================
 
 export async function loginWithGoogle() {
-
   try {
+    const provider = new GoogleAuthProvider();
+    const result = await signInWithPopup(auth, provider);
 
-    const provider =
-      new GoogleAuthProvider();
-
-    const result =
-      await signInWithPopup(
-        auth,
-        provider
-      );
-
-    return {
-      success: true,
-      user: result.user
-    };
+    return { success: true, user: result.user };
 
   } catch (error) {
-
-    console.error(
-      "Google Login Error:",
-      error
-    );
+    console.error("Google Login Error:", error);
 
     return {
       success: false,
@@ -274,11 +176,8 @@ export async function loginWithGoogle() {
 // ==========================================
 
 export function setupRecaptcha(containerId) {
-
   try {
-
     if (window.recaptchaVerifier) {
-
       try {
         window.recaptchaVerifier.clear();
       } catch (e) {}
@@ -286,39 +185,27 @@ export function setupRecaptcha(containerId) {
       window.recaptchaVerifier = null;
     }
 
+    window.recaptchaVerifier = new RecaptchaVerifier(
+      auth,
+      containerId,
+      {
+        size: "invisible",
 
-    window.recaptchaVerifier =
-      new RecaptchaVerifier(
-        auth,
-        containerId,
-        {
-          size: "invisible",
+        callback: () => {
+          console.log("reCAPTCHA verified");
+        },
 
-          callback: () => {
-            console.log(
-              "reCAPTCHA verified"
-            );
-          },
-
-          "expired-callback": () => {
-            console.log(
-              "reCAPTCHA expired"
-            );
-          }
+        "expired-callback": () => {
+          console.log("reCAPTCHA expired");
         }
-      );
-
+      }
+    );
 
     return window.recaptchaVerifier;
 
-
   } catch (error) {
-
-    console.error(
-      "reCAPTCHA Setup Error:",
-      error
-    );
-
+    console.error("reCAPTCHA Setup Error:", error);
+    window.lastRecaptchaError = error;
     return null;
   }
 }
@@ -326,58 +213,42 @@ export function setupRecaptcha(containerId) {
 
 // ==========================================
 // SEND MOBILE OTP
+// (error code is shown on screen for debugging)
 // ==========================================
 
-export async function sendMobileOTP(
-  phoneNumber,
-  containerId
-) {
-
+export async function sendMobileOTP(phoneNumber, containerId) {
   try {
-
-    const appVerifier =
-      setupRecaptcha(containerId);
-
+    const appVerifier = setupRecaptcha(containerId);
 
     if (!appVerifier) {
-
+      const e = window.lastRecaptchaError;
       return {
         success: false,
+        error: e?.code || "recaptcha-setup-failed",
         message:
-          "reCAPTCHA setup नहीं हो पाया।"
+          "reCAPTCHA setup नहीं हो पाया। [" +
+          (e?.code || e?.message || "unknown") +
+          "]"
       };
     }
 
+    const confirmationResult = await signInWithPhoneNumber(
+      auth,
+      phoneNumber,
+      appVerifier
+    );
 
-    const confirmationResult =
-      await signInWithPhoneNumber(
-        auth,
-        phoneNumber,
-        appVerifier
-      );
-
-
-    window.confirmationResult =
-      confirmationResult;
-
+    window.confirmationResult = confirmationResult;
 
     return {
       success: true,
-      message:
-        "OTP successfully भेज दिया गया है।"
+      message: "OTP successfully भेज दिया गया है।"
     };
 
-
   } catch (error) {
-
-    console.error(
-      "Mobile OTP Error:",
-      error
-    );
-
+    console.error("Mobile OTP Error:", error);
 
     if (window.recaptchaVerifier) {
-
       try {
         window.recaptchaVerifier.clear();
       } catch (e) {}
@@ -385,12 +256,14 @@ export async function sendMobileOTP(
       window.recaptchaVerifier = null;
     }
 
-
     return {
       success: false,
       error: error.code,
+      // Code is appended so you can see the real reason on the banner.
+      // Remove the bracket part once everything works.
       message:
-        getAuthErrorMessage(error.code)
+        getAuthErrorMessage(error.code) +
+        " [" + (error.code || error.message) + "]"
     };
   }
 }
@@ -401,44 +274,27 @@ export async function sendMobileOTP(
 // ==========================================
 
 export async function verifyMobileOTP(otp) {
-
   try {
-
     if (!window.confirmationResult) {
-
       return {
         success: false,
-        message:
-          "पहले OTP भेजें।"
+        message: "पहले OTP भेजें।"
       };
     }
 
-
-    const result =
-      await window.confirmationResult.confirm(
-        otp.trim()
-      );
-
-
-    return {
-      success: true,
-      user: result.user
-    };
-
-
-  } catch (error) {
-
-    console.error(
-      "OTP Verification Error:",
-      error
+    const result = await window.confirmationResult.confirm(
+      otp.trim()
     );
 
+    return { success: true, user: result.user };
+
+  } catch (error) {
+    console.error("OTP Verification Error:", error);
 
     return {
       success: false,
       error: error.code,
-      message:
-        getAuthErrorMessage(error.code)
+      message: getAuthErrorMessage(error.code)
     };
   }
 }
@@ -449,27 +305,17 @@ export async function verifyMobileOTP(otp) {
 // ==========================================
 
 export async function logoutUser() {
-
   try {
-
     await signOut(auth);
-
-    return {
-      success: true
-    };
+    return { success: true };
 
   } catch (error) {
-
-    console.error(
-      "Logout Error:",
-      error
-    );
+    console.error("Logout Error:", error);
 
     return {
       success: false,
       error: error.code,
-      message:
-        getAuthErrorMessage(error.code)
+      message: getAuthErrorMessage(error.code)
     };
   }
 }
@@ -480,13 +326,9 @@ export async function logoutUser() {
 // ==========================================
 
 export function watchAuthState(callback) {
-
-  return onAuthStateChanged(
-    auth,
-    (user) => {
-      callback(user);
-    }
-  );
+  return onAuthStateChanged(auth, (user) => {
+    callback(user);
+  });
 }
 
 
@@ -495,7 +337,6 @@ export function watchAuthState(callback) {
 // ==========================================
 
 export function getCurrentUser() {
-
   return auth.currentUser;
 }
 
@@ -505,7 +346,6 @@ export function getCurrentUser() {
 // ==========================================
 
 function getAuthErrorMessage(code) {
-
   switch (code) {
 
     case "auth/invalid-email":
@@ -532,6 +372,9 @@ function getAuthErrorMessage(code) {
     case "auth/invalid-phone-number":
       return "Mobile number सही format में डालें।";
 
+    case "auth/missing-phone-number":
+      return "Mobile number डालें।";
+
     case "auth/invalid-verification-code":
       return "OTP गलत है।";
 
@@ -540,6 +383,21 @@ function getAuthErrorMessage(code) {
 
     case "auth/quota-exceeded":
       return "OTP quota समाप्त हो गया है।";
+
+    case "auth/captcha-check-failed":
+      return "reCAPTCHA check fail हो गया। Page refresh करके try करें।";
+
+    case "auth/invalid-app-credential":
+      return "App verification fail हुआ (reCAPTCHA / domain issue)।";
+
+    case "auth/unauthorized-domain":
+      return "यह domain Firebase में authorized नहीं है।";
+
+    case "auth/billing-not-enabled":
+      return "Phone login के लिए Firebase billing enable करनी होगी।";
+
+    case "auth/internal-error":
+      return "Firebase में internal error आया।";
 
     case "auth/popup-closed-by-user":
       return "Google Login popup बंद कर दिया गया।";
@@ -562,4 +420,4 @@ function getAuthErrorMessage(code) {
     default:
       return "Login में समस्या हुई। कृपया दोबारा try करें।";
   }
-      }
+  }
