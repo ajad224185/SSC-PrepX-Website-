@@ -1,0 +1,1550 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <style id="authHide">html{visibility:hidden}</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0e0b1f" />
+  <title>SSC PrepX — Admin Panel</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    :root {
+      --bg: #0e0b1f;
+      --surface: #19152e;
+      --surface2: #231e3d;
+      --surface3: #2e2850;
+      --coral: #ff7a59;
+      --amber: #ffb347;
+      --teal: #2dd4bf;
+      --text: #f6f3ff;
+      --muted: #9b94b8;
+      --border: rgba(255,255,255,.06);
+      --sidebar-w: 250px;
+      --grad: linear-gradient(90deg, var(--coral), var(--amber));
+      --grad-v: linear-gradient(135deg, var(--coral), var(--amber));
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+    button, input, select, textarea { font: inherit; color: inherit; }
+    button { cursor: pointer; border: 0; background: none; }
+    a { color: inherit; text-decoration: none; }
+    .hidden { display: none !important; }
+
+    .sidebar {
+      position: fixed; top: 0; left: 0; bottom: 0;
+      width: var(--sidebar-w);
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      display: flex; flex-direction: column;
+      z-index: 100;
+      transition: transform .25s ease;
+    }
+    .sidebar-brand {
+      padding: 20px 18px;
+      display: flex; align-items: center; gap: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .sidebar-brand .logo {
+      width: 42px; height: 42px; border-radius: 14px;
+      background: var(--grad-v);
+      display: grid; place-items: center;
+      font-weight: 900; font-size: 16px; color: #2a0f06;
+    }
+    .sidebar-brand h1 { font-size: 17px; font-weight: 800; }
+    .sidebar-brand h1 span {
+      background: var(--grad);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .sidebar-brand small { display: block; font-size: 10px; letter-spacing: 1.5px; color: var(--muted); margin-top: 1px; }
+
+    .sidebar-nav { flex: 1; padding: 14px 10px; overflow-y: auto; }
+    .nav-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+      color: var(--muted); padding: 8px 12px 6px; text-transform: uppercase;
+    }
+    .nav-item {
+      display: flex; align-items: center; gap: 11px;
+      padding: 11px 14px; border-radius: 14px;
+      color: var(--muted); font-size: 14px; font-weight: 600;
+      margin-bottom: 3px; transition: .15s; width: 100%; text-align: left;
+    }
+    .nav-item:hover { background: var(--surface2); color: var(--text); }
+    .nav-item.active { background: var(--grad); color: #2a0f06; }
+    .nav-item i { width: 18px; text-align: center; font-size: 14px; }
+    .nav-item .badge {
+      margin-left: auto; background: var(--coral); color: #fff;
+      font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 999px;
+    }
+    .nav-item.active .badge { background: #2a0f06; color: var(--amber); }
+
+    .sidebar-foot {
+      padding: 14px; border-top: 1px solid var(--border);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .sidebar-foot .av {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--grad-v); color: #2a0f06;
+      display: grid; place-items: center; font-weight: 800; font-size: 14px;
+    }
+    .sidebar-foot strong { display: block; font-size: 13px; }
+    .sidebar-foot small { color: var(--muted); font-size: 11px; }
+
+    .main { margin-left: var(--sidebar-w); min-height: 100vh; }
+    .topbar {
+      position: sticky; top: 0; z-index: 50;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 22px;
+      background: rgba(14,11,31,.92);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar-left { display: flex; align-items: center; gap: 12px; }
+    .menu-btn {
+      display: none; width: 40px; height: 40px; border-radius: 50%;
+      background: var(--surface); font-size: 16px; color: var(--text);
+    }
+    .page-title { font-size: 18px; font-weight: 800; }
+    .topbar-right { display: flex; align-items: center; gap: 8px; }
+    .icon-btn {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--surface); color: var(--muted);
+      display: grid; place-items: center; transition: .15s;
+    }
+    .icon-btn:hover { background: var(--surface2); color: var(--amber); }
+
+    .content { padding: 20px 22px 40px; max-width: 1100px; }
+    .section { display: none; }
+    .section.active { display: block; animation: fadeIn .2s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+    /* 2x2 SQUARE STAT CARDS */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .stat-card {
+      aspect-ratio: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 20px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      position: relative; overflow: hidden;
+    }
+    .stat-card::after {
+      content: ""; position: absolute; right: -24px; bottom: -24px;
+      width: 90px; height: 90px; border-radius: 50%;
+      background: rgba(255,255,255,.04);
+    }
+    .stat-icon {
+      width: 44px; height: 44px; border-radius: 14px;
+      display: grid; place-items: center; font-size: 18px;
+      position: relative; z-index: 1;
+    }
+    .stat-icon.coral { background: rgba(255,122,89,.18); color: var(--coral); }
+    .stat-icon.amber { background: rgba(255,179,71,.18); color: var(--amber); }
+    .stat-icon.teal { background: rgba(45,212,191,.18); color: var(--teal); }
+    .stat-icon.purple { background: rgba(168,85,247,.18); color: #c084fc; }
+    .stat-info { position: relative; z-index: 1; }
+    .stat-info h3 {
+      font-size: 28px; font-weight: 900; line-height: 1.1;
+      background: var(--grad);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .stat-info p { font-size: 13px; color: var(--muted); margin-top: 4px; font-weight: 600; }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .card-header {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 10px;
+    }
+    .card-header h2 { font-size: 16px; font-weight: 800; }
+    .card-body { padding: 16px 18px; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 10px 16px; border-radius: 20px;
+      font-size: 13px; font-weight: 700; transition: .15s;
+    }
+    .btn-primary { background: var(--grad); color: #2a0f06; }
+    .btn-primary:hover { filter: brightness(1.08); }
+    .btn-outline {
+      background: var(--surface2); color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover { background: var(--surface3); }
+    .btn-sm { padding: 7px 12px; font-size: 12px; border-radius: 16px; }
+    .btn-icon {
+      width: 34px; height: 34px; padding: 0;
+      display: grid; place-items: center; border-radius: 12px;
+      background: var(--surface2); color: var(--muted);
+    }
+    .btn-icon:hover { color: var(--amber); background: var(--surface3); }
+    .btn-icon.danger:hover { color: #ff8f8f; }
+
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 12px 14px; text-align: left; font-size: 13px; }
+    th {
+      color: var(--muted); font-weight: 700; font-size: 11px;
+      letter-spacing: .5px; text-transform: uppercase;
+      border-bottom: 1px solid var(--border); white-space: nowrap;
+    }
+    td { border-bottom: 1px solid var(--border); vertical-align: middle; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,.02); }
+
+    .tag {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 4px 10px; border-radius: 12px;
+      font-size: 11px; font-weight: 700;
+    }
+    .tag-free { background: rgba(45,212,191,.15); color: var(--teal); }
+    .tag-paid { background: rgba(255,179,71,.15); color: var(--amber); }
+    .tag-live { background: rgba(255,122,89,.15); color: var(--coral); }
+    .tag-live-rec { background: rgba(168,85,247,.15); color: #c084fc; }
+    .tag-recorded { background: rgba(59,130,246,.15); color: #60a5fa; }
+    .tag-active { background: rgba(45,212,191,.15); color: var(--teal); }
+    .tag-inactive { background: var(--surface2); color: var(--muted); }
+    .tag-success { background: rgba(45,212,191,.15); color: var(--teal); }
+    .tag-pending { background: rgba(255,179,71,.15); color: var(--amber); }
+    .tag-failed { background: rgba(255,107,107,.15); color: #ff8f8f; }
+    .tag-3m { background: rgba(59,130,246,.15); color: #60a5fa; }
+    .tag-6m { background: rgba(236,72,153,.15); color: #f472b6; }
+    .tag-life { background: rgba(255,179,71,.15); color: var(--amber); }
+
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { margin-bottom: 4px; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label {
+      display: block; font-size: 12px; font-weight: 600;
+      color: var(--muted); margin-bottom: 6px;
+    }
+    .form-group label .req { color: var(--coral); }
+    .form-control {
+      width: 100%; padding: 11px 14px;
+      background: var(--surface2); border: 1px solid transparent;
+      border-radius: 14px; font-size: 14px; outline: none;
+      transition: .15s; color: var(--text);
+    }
+    .form-control:focus { border-color: var(--amber); background: var(--surface3); }
+    .form-control::placeholder { color: #5f5880; }
+    select.form-control { appearance: none; -webkit-appearance: none; }
+    select.form-control option { background: #1b1733; color: var(--text); }
+    textarea.form-control { resize: vertical; min-height: 80px; }
+
+    .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .price-card {
+      background: var(--surface2); border: 2px solid transparent;
+      border-radius: 18px; padding: 14px; text-align: center; transition: .15s;
+    }
+    .price-card:focus-within { border-color: var(--amber); }
+    .price-card h4 { font-size: 12px; color: var(--muted); margin-bottom: 8px; font-weight: 700; }
+    .price-card .row { display: flex; align-items: center; justify-content: center; gap: 4px; margin-bottom: 8px; }
+    .price-card .row span { font-weight: 800; color: var(--amber); }
+    .price-card input[type="number"] {
+      width: 90px; text-align: center; font-size: 18px; font-weight: 800;
+      background: transparent; border: none; border-bottom: 2px solid var(--surface3);
+      padding: 4px; color: var(--text); outline: none;
+    }
+    .price-card input[type="number"]:focus { border-bottom-color: var(--amber); }
+    .price-card .link-input {
+      width: 100%; font-size: 11px; padding: 6px 8px;
+      background: var(--bg); border-radius: 8px; border: none;
+      color: var(--muted); outline: none; margin-top: 4px;
+    }
+    .price-card .link-input:focus { color: var(--text); }
+
+    /* Free / Paid toggle */
+    .tag-toggle { display: flex; gap: 8px; }
+    .tag-toggle label {
+      flex: 1; cursor: pointer; margin: 0;
+    }
+    .tag-toggle input { display: none; }
+    .tag-toggle span {
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      padding: 12px; border-radius: 16px;
+      background: var(--surface2); border: 2px solid transparent;
+      font-size: 14px; font-weight: 700; transition: .15s;
+    }
+    .tag-toggle input:checked + .free-opt {
+      border-color: var(--teal); background: rgba(45,212,191,.12); color: var(--teal);
+    }
+    .tag-toggle input:checked + .paid-opt {
+      border-color: var(--amber); background: rgba(255,179,71,.12); color: var(--amber);
+    }
+
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .filters input, .filters select {
+      padding: 8px 12px; background: var(--surface2); border: none;
+      border-radius: 14px; font-size: 13px; color: var(--text); outline: none;
+    }
+    .filters input:focus, .filters select:focus { box-shadow: 0 0 0 2px var(--amber); }
+    .filters select option { background: #1b1733; }
+
+    .user-cell { display: flex; align-items: center; gap: 10px; }
+    .user-av {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--grad-v); color: #2a0f06;
+      display: grid; place-items: center; font-size: 12px; font-weight: 800; flex-shrink: 0;
+    }
+    .user-cell .name { font-weight: 600; font-size: 13px; }
+    .user-cell .sub { font-size: 11px; color: var(--muted); }
+    .actions { display: flex; gap: 5px; }
+
+    .notif-item {
+      display: flex; gap: 12px; padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .notif-item:last-child { border-bottom: none; }
+    .notif-icon {
+      width: 40px; height: 40px; border-radius: 14px;
+      display: grid; place-items: center; flex-shrink: 0; font-size: 16px;
+    }
+    .notif-icon.info { background: rgba(59,130,246,.15); color: #60a5fa; }
+    .notif-icon.success { background: rgba(45,212,191,.15); color: var(--teal); }
+    .notif-icon.warning { background: rgba(255,179,71,.15); color: var(--amber); }
+    .notif-content { flex: 1; min-width: 0; }
+    .notif-content h4 { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+    .notif-content p { font-size: 13px; color: var(--muted); }
+    .notif-content .meta { font-size: 11px; color: #6b6488; margin-top: 4px; }
+
+    .empty { text-align: center; padding: 40px 16px; color: var(--muted); }
+    .empty i { font-size: 32px; opacity: .4; margin-bottom: 10px; display: block; }
+
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(5,3,15,.75); backdrop-filter: blur(6px);
+      display: none; align-items: center; justify-content: center;
+      padding: 16px; overflow-y: auto;
+    }
+    .modal-overlay.show { display: flex; }
+    .modal {
+      width: 100%; max-width: 640px; max-height: 90vh; overflow-y: auto;
+      background: linear-gradient(160deg, #211b3b 0%, #19152e 60%, #151127 100%);
+      border: 1px solid rgba(255,179,71,.25);
+      border-radius: 28px;
+      box-shadow: 0 24px 80px rgba(0,0,0,.5);
+      animation: modalIn .22s ease;
+    }
+    @keyframes modalIn { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: none; } }
+    .modal-header {
+      padding: 18px 20px; border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; background: #1b1733; z-index: 1;
+      border-radius: 28px 28px 0 0;
+    }
+    .modal-header h3 { font-size: 17px; font-weight: 800; }
+    .modal-close {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--surface2); color: var(--muted);
+      display: grid; place-items: center; font-size: 16px;
+    }
+    .modal-close:hover { color: #ff8f8f; }
+    .modal-body { padding: 20px; }
+    .modal-footer {
+      padding: 14px 20px; border-top: 1px solid var(--border);
+      display: flex; justify-content: flex-end; gap: 8px;
+      position: sticky; bottom: 0; background: #1b1733;
+      border-radius: 0 0 28px 28px;
+    }
+
+    .tags-wrap { display: flex; flex-wrap: wrap; gap: 10px; }
+
+    .toast-box {
+      position: fixed; top: 70px; left: 50%; transform: translateX(-50%);
+      z-index: 999; display: flex; flex-direction: column; gap: 8px; pointer-events: none;
+    }
+    .toast {
+      padding: 11px 18px; border-radius: 20px;
+      background: #f6f3ff; color: #1a1030;
+      font-size: 13px; font-weight: 700;
+      box-shadow: 0 6px 20px rgba(0,0,0,.4);
+      animation: toastIn .25s ease; white-space: nowrap;
+    }
+    .toast.ok { background: var(--teal); color: #04221d; }
+    .toast.err { background: #ff8f8f; color: #2a0f06; }
+    @keyframes toastIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
+
+    .scrim {
+      display: none; position: fixed; inset: 0;
+      background: rgba(5,3,15,.6); z-index: 99;
+    }
+    .scrim.show { display: block; }
+
+    @media (max-width: 900px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .price-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .sidebar { transform: translateX(-100%); }
+      .sidebar.open { transform: translateX(0); }
+      .main { margin-left: 0; }
+      .menu-btn { display: grid; }
+      .content { padding: 14px; }
+      .topbar { padding: 10px 14px; }
+      .stats-grid { gap: 10px; }
+      .stat-card { padding: 16px; border-radius: 20px; }
+      .stat-info h3 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="scrim" id="scrim" onclick="toggleSidebar()"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="logo">SX</div>
+      <div>
+        <h1>SSC <span>PrepX</span></h1>
+        <small>ADMIN PANEL</small>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-label">Main</div>
+      <button class="nav-item active" data-sec="dashboard" onclick="showSec('dashboard')">
+        <i class="fas fa-th-large"></i> Dashboard
+      </button>
+      <button class="nav-item" data-sec="notifications" onclick="showSec('notifications')">
+        <i class="fas fa-bell"></i> Notifications
+        <span class="badge" id="notifBadge">0</span>
+      </button>
+
+      <div class="nav-label">Users</div>
+      <button class="nav-item" data-sec="students" onclick="showSec('students')">
+        <i class="fas fa-users"></i> Students
+      </button>
+      <button class="nav-item" data-sec="purchases" onclick="showSec('purchases')">
+        <i class="fas fa-shopping-bag"></i> Purchases
+      </button>
+
+      <div class="nav-label">Content</div>
+      <button class="nav-item" data-sec="courses" onclick="showSec('courses')">
+        <i class="fas fa-home"></i> Home Batches
+      </button>
+      <button class="nav-item" data-sec="batches" onclick="showSec('batches')">
+        <i class="fas fa-university"></i> Institutes
+      </button>
+      <button class="nav-item" data-sec="tags" onclick="showSec('tags')">
+        <i class="fas fa-tags"></i> Tags
+      </button>
+
+      <div class="nav-label">System</div>
+      <button class="nav-item" data-sec="export" onclick="showSec('export')">
+        <i class="fas fa-file-export"></i> Export / Import
+      </button>
+      <button class="nav-item" data-sec="settings" onclick="showSec('settings')">
+        <i class="fas fa-cog"></i> Settings
+      </button>
+    </nav>
+
+    <div class="sidebar-foot">
+      <div class="av">A</div>
+      <div>
+        <strong>Admin</strong>
+        <small>SSC PrepX</small>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+        <h1 class="page-title" id="pageTitle">Dashboard</h1>
+      </div>
+      <div class="topbar-right">
+        <button class="icon-btn" onclick="showSec('notifications')" title="Notifications"><i class="fas fa-bell"></i></button>
+        <button class="icon-btn" onclick="location.reload()" title="Refresh"><i class="fas fa-sync-alt"></i></button>
+      </div>
+    </header>
+
+    <div class="content">
+
+      <section class="section active" id="sec-dashboard">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon coral"><i class="fas fa-users"></i></div>
+            <div class="stat-info">
+              <h3 id="stStudents">0</h3>
+              <p>Students</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon amber"><i class="fas fa-rupee-sign"></i></div>
+            <div class="stat-info">
+              <h3 id="stRevenue">₹0</h3>
+              <p>Revenue</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon teal"><i class="fas fa-book"></i></div>
+            <div class="stat-info">
+              <h3 id="stCourses">0</h3>
+              <p>Courses</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon purple"><i class="fas fa-shopping-bag"></i></div>
+            <div class="stat-info">
+              <h3 id="stPurchases">0</h3>
+              <p>Purchases</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2>Recent Purchases</h2>
+            <button class="btn btn-outline btn-sm" onclick="showSec('purchases')">View All</button>
+          </div>
+          <div class="card-body table-wrap">
+            <table>
+              <thead>
+                <tr><th>Student</th><th>Course</th><th>Validity</th><th>Amount</th><th>Status</th><th>Date</th></tr>
+              </thead>
+              <tbody id="recentBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="sec-notifications">
+        <div class="card">
+          <div class="card-header">
+            <h2>Notifications</h2>
+            <button class="btn btn-primary" onclick="openNotifModal()"><i class="fas fa-plus"></i> Send</button>
+          </div>
+          <div class="card-body" id="notifList"></div>
+        </div>
+      </section>
+
+      <section class="section" id="sec-students">
+        <div class="card">
+          <div class="card-header">
+            <h2>Student List</h2>
+            <div class="filters">
+              <input type="text" id="stuSearch" placeholder="Search name / phone..." oninput="renderStudents()" />
+              <select id="stuFilter" onchange="renderStudents()">
+                <option value="all">All</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
+            </div>
+          </div>
+          <div class="card-body table-wrap">
+            <table>
+              <thead>
+                <tr><th>Student</th><th>Phone</th><th>Joined</th><th>Courses</th><th>Status</th><th>Actions</th></tr>
+              </thead>
+              <tbody id="stuBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="sec-purchases">
+        <div class="card">
+          <div class="card-header">
+            <h2>Purchase List</h2>
+            <div class="filters">
+              <input type="text" id="purSearch" placeholder="Search..." oninput="renderPurchases()" />
+              <select id="purStatus" onchange="renderPurchases()">
+                <option value="all">All Status</option>
+                <option value="success">Success</option>
+                <option value="pending">Pending</option>
+                <option value="failed">Failed</option>
+              </select>
+              <select id="purValidity" onchange="renderPurchases()">
+                <option value="all">All Validity</option>
+                <option value="3m">3 Months</option>
+                <option value="6m">6 Months</option>
+                <option value="life">Lifetime</option>
+              </select>
+            </div>
+          </div>
+          <div class="card-body table-wrap">
+            <table>
+              <thead>
+                <tr><th>Order</th><th>Student</th><th>Course</th><th>Validity</th><th>Amount</th><th>Pay</th><th>Status</th><th>Date</th></tr>
+              </thead>
+              <tbody id="purBody"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card" style="margin-top:18px;border-left:4px solid #ef4444">
+          <div class="card-header"><h3>⚠ Expiring Soon <span id="expCount"></span> <small style="font-weight:400;opacity:.7">(2 din ya kam bache)</small></h3></div>
+          <div class="card-body table-wrap"><table>
+            <thead><tr><th>Student</th><th>Course</th><th>Plan</th><th>Purchased</th><th>Expires</th><th>Time left</th><th></th></tr></thead>
+            <tbody id="expBody"></tbody>
+          </table></div>
+        </div>
+        <div class="card" style="margin-top:18px">
+          <div class="card-header"><h3>Student ko course access do (Validity)</h3></div>
+          <div class="card-body">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-bottom:12px">
+              <select class="form-control" id="gStu"></select>
+              <select class="form-control" id="gCourse"></select>
+              <select class="form-control" id="gPlan">
+                <option value="m3">3 Months</option><option value="m6">6 Months</option><option value="life">Lifetime</option>
+              </select>
+              <button class="btn btn-primary" onclick="grantAccess()">Access do</button>
+            </div>
+            <div class="table-wrap"><table>
+              <thead><tr><th>Student</th><th>Course</th><th>Plan</th><th>Purchased</th><th>Expires</th><th>Time left</th><th></th></tr></thead>
+              <tbody id="enrBody"></tbody>
+            </table></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="sec-courses">
+        <div class="card">
+          <div class="card-header">
+            <h2>Home Batches</h2>
+            <p style="font-size:12px;color:var(--muted);margin:0 0 8px;width:100%">Yeh batches sirf student app ke <b>Home → Subject</b> mein dikhte hain. Courses tab mein nahi.</p>
+            <button class="btn btn-primary" onclick="openCourseModal()"><i class="fas fa-plus"></i> Add Home Batch</button>
+          </div>
+          <div class="card-body table-wrap">
+            <table>
+              <thead>
+                <tr><th>Course</th><th>Teacher</th><th>Subject</th><th>Type</th><th>Tag</th><th>Prices</th><th>Status</th><th>Actions</th></tr>
+              </thead>
+              <tbody id="courseBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="sec-batches">
+        <div class="card">
+          <div class="card-header">
+            <h2>Institutes (Courses tab)</h2>
+            <p style="font-size:12px;color:var(--muted);margin:0 0 8px;width:100%">Yeh student app ke <b>Courses</b> tab mein Institutes list mein dikhte hain.</p>
+            <button class="btn btn-primary" onclick="openBatchModal()"><i class="fas fa-plus"></i> Add Institute</button>
+          </div>
+          <div class="card-body table-wrap">
+            <table>
+              <thead>
+                <tr><th>Institute</th><th>Short</th><th>Mode</th><th>Website</th><th>Actions</th></tr>
+              </thead>
+              <tbody id="batchBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="sec-tags">
+        <div class="card">
+          <div class="card-header">
+            <h2>Tags</h2>
+            <button class="btn btn-primary" onclick="openTagModal()"><i class="fas fa-plus"></i> Add Tag</button>
+          </div>
+          <div class="card-body">
+            <div class="tags-wrap" id="tagsList"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="sec-export">
+        <div class="card">
+          <div class="card-header"><h2>Export / Import Course Catalog</h2></div>
+          <div class="card-body">
+            <p style="color:var(--muted);font-size:13px;margin-bottom:16px;line-height:1.6">
+              Student site localStorage se courses padhta hai (key: <code>sscprepx_course_catalog_v1</code>).
+              Same origin pe auto-sync. File:// mode mein Export JSON karke student page pe Import karein.
+            </p>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;">
+              <button class="btn btn-primary" onclick="exportCatalog()"><i class="fas fa-download"></i> Export JSON</button>
+              <button class="btn btn-outline" onclick="document.getElementById('importFile').click()"><i class="fas fa-upload"></i> Import JSON</button>
+              <input type="file" id="importFile" accept=".json,application/json" class="hidden" onchange="importCatalog(event)" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="sec-settings">
+        <div class="card">
+          <div class="card-header"><h2>Settings</h2></div>
+          <div class="card-body">
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Site Name</label>
+                <input class="form-control" id="setName" value="SSC PrepX" />
+              </div>
+              <div class="form-group">
+                <label>Support Email</label>
+                <input class="form-control" id="setEmail" value="support@sscprepx.com" />
+              </div>
+              <div class="form-group">
+                <label>Support Phone</label>
+                <input class="form-control" id="setPhone" value="+91 98765 43210" />
+              </div>
+              <div class="form-group">
+                <label>Telegram Channel</label>
+                <input class="form-control" id="setTg" value="https://t.me/sscprepx" />
+              </div>
+              <div class="form-group full">
+                <label>Website URL</label>
+                <input class="form-control" id="setWeb" value="https://sscprepx.com" />
+              </div>
+            </div>
+            <button class="btn btn-primary" style="margin-top:12px" onclick="toast('Settings saved ✓','ok')"><i class="fas fa-save"></i> Save</button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Notification Modal -->
+  <div class="modal-overlay" id="notifModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="notifModalTitle">Send Notification</h3>
+        <button class="modal-close" onclick="closeModal('notifModal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="notifId" />
+        <div class="form-group" style="margin-bottom:14px">
+          <label>Title <span class="req">*</span></label>
+          <input class="form-control" id="notifTitle" placeholder="Notification title" />
+        </div>
+        <div class="form-group" style="margin-bottom:14px">
+          <label>Message <span class="req">*</span></label>
+          <textarea class="form-control" id="notifMsg" placeholder="Write message..."></textarea>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Type</label>
+            <select class="form-control" id="notifType">
+              <option value="info">Info</option>
+              <option value="success">Offer / Success</option>
+              <option value="warning">Warning</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Target</label>
+            <select class="form-control" id="notifTarget">
+              <option value="all">All Students</option>
+              <option value="paid">Paid Only</option>
+              <option value="free">Free Only</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal('notifModal')">Cancel</button>
+        <button class="btn btn-primary" onclick="saveNotif()"><i class="fas fa-paper-plane"></i> Send</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Course Modal -->
+  <div class="modal-overlay" id="courseModal">
+    <div class="modal" style="max-width:700px">
+      <div class="modal-header">
+        <h3 id="courseModalTitle">Add Home Batch</h3>
+        <button class="modal-close" onclick="closeModal('courseModal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="courseId" />
+        <div class="form-grid">
+          <div class="form-group full">
+            <label>Course Title <span class="req">*</span></label>
+            <input class="form-control" id="cTitle" placeholder="e.g. SSC CGL Complete 2026" />
+          </div>
+          <div class="form-group">
+            <label>Teacher Name <span class="req">*</span></label>
+            <input class="form-control" id="cTeacher" placeholder="Teacher name" />
+          </div>
+          <div class="form-group">
+            <label>Subject <span class="req">*</span></label>
+            <select class="form-control" id="cSubject">
+              <option value="">Select</option>
+              <option>English</option>
+              <option>Maths</option>
+              <option>Reasoning</option>
+              <option>GS</option>
+              <option>Hindi</option>
+              <option>Current Affairs</option>
+              <option>Complete Package</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Mode / Type</label>
+            <select class="form-control" id="cMode">
+              <option value="Live">Live</option>
+              <option value="Live + Recorded">Live + Recorded</option>
+              <option value="Recorded">Recorded</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Tag (Free / Paid)</label>
+            <div class="tag-toggle">
+              <label>
+                <input type="radio" name="cTag" value="free" id="cTagFree" />
+                <span class="free-opt">🆓 Free</span>
+              </label>
+              <label>
+                <input type="radio" name="cTag" value="paid" id="cTagPaid" checked />
+                <span class="paid-opt">⭐ Paid</span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group full">
+            <label>Pricing — 3 Months / 6 Months / Lifetime</label>
+            <div class="price-grid">
+              <div class="price-card">
+                <h4>🗓️ 3 Months</h4>
+                <div class="row"><span>₹</span><input type="number" id="p3" placeholder="999" min="0" /></div>
+                <input class="link-input" id="l3" placeholder="Razorpay / Payment link (https://...)" />
+              </div>
+              <div class="price-card">
+                <h4>📅 6 Months</h4>
+                <div class="row"><span>₹</span><input type="number" id="p6" placeholder="1799" min="0" /></div>
+                <input class="link-input" id="l6" placeholder="Razorpay / Payment link (https://...)" />
+              </div>
+              <div class="price-card">
+                <h4>🏆 Lifetime</h4>
+                <div class="row"><span>₹</span><input type="number" id="pLife" placeholder="2999" min="0" /></div>
+                <input class="link-input" id="lLife" placeholder="Razorpay / Payment link (https://...)" />
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Telegram Link</label>
+            <input class="form-control" id="cTg" placeholder="https://t.me/..." />
+          </div>
+          <div class="form-group full">
+            <label style="display:flex;gap:8px;align-items:center;margin-bottom:8px;cursor:pointer"><input type="checkbox" id="cDemoOn" style="width:auto"> Demo allow karein (2 min free preview)</label>
+          </div>
+          <div class="form-group full">
+            <label>HTML Content / HTML File code (optional — course content ya demo)</label>
+            <textarea class="form-control" id="cHtml" placeholder="Yahan HTML paste karein (course page ya demo content)" rows="5"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Website / View URL (full course content link)</label>
+            <input class="form-control" id="cView" placeholder="https://... (optional)" />
+          </div>
+          <div class="form-group">
+            <label>Status</label>
+            <select class="form-control" id="cStatus">
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal('courseModal')">Cancel</button>
+        <button class="btn btn-primary" onclick="saveCourse()"><i class="fas fa-save"></i> Save Home Batch</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Batch Modal -->
+  <div class="modal-overlay" id="batchModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="batchModalTitle">Add Institute</h3>
+        <button class="modal-close" onclick="closeModal('batchModal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="batchId" />
+        <div class="form-group" style="margin-bottom:14px">
+          <label>Institute Name <span class="req">*</span></label>
+          <input class="form-control" id="bName" placeholder="e.g. Physics Wallah" />
+        </div>
+        <div class="form-group" style="margin-bottom:14px">
+          <label>Short code (logo letters)</label>
+          <input class="form-control" id="bShort" placeholder="e.g. PW" maxlength="4" />
+        </div>
+        <div class="form-group" style="margin-bottom:14px">
+          <label>Mode</label>
+          <select class="form-control" id="bType">
+            <option value="Live">Live</option>
+            <option value="Live + Recorded">Live + Recorded</option>
+            <option value="Recorded">Recorded</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin-bottom:14px">
+          <label>Website / View URL</label>
+          <input class="form-control" id="bWeb" placeholder="https://... (institute page)" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal('batchModal')">Cancel</button>
+        <button class="btn btn-primary" onclick="saveBatch()"><i class="fas fa-save"></i> Save Institute</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tag Modal -->
+  <div class="modal-overlay" id="tagModal">
+    <div class="modal" style="max-width:400px">
+      <div class="modal-header">
+        <h3>Add Tag</h3>
+        <button class="modal-close" onclick="closeModal('tagModal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group" style="margin-bottom:14px">
+          <label>Tag Name <span class="req">*</span></label>
+          <input class="form-control" id="tagName" placeholder="e.g. Free, Paid, New, Featured" />
+        </div>
+        <div class="form-group">
+          <label>Style</label>
+          <select class="form-control" id="tagStyle">
+            <option value="free">🆓 Free (Teal)</option>
+            <option value="paid">⭐ Paid (Amber)</option>
+            <option value="live">Live (Coral)</option>
+            <option value="recorded">Info (Blue)</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal('tagModal')">Cancel</button>
+        <button class="btn btn-primary" onclick="saveTag()"><i class="fas fa-save"></i> Add</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-box" id="toastBox"></div>
+
+  <script>
+    const CATALOG_KEY = "sscprepx_course_catalog_v1";
+    const ADMIN_KEY = "sscprepx_admin_data_v1";
+
+    function loadAdmin() {
+      try {
+        
+      } catch (e) {}
+      return {
+        notifications: [], students: [], purchases: [], batches: [],
+        tags: [
+          { id: 1, name: "Free", style: "free" },
+          { id: 2, name: "Paid", style: "paid" },
+          { id: 3, name: "New", style: "live" },
+        ],
+      };
+    }
+
+    function loadCatalog() { return []; }
+
+    let data = loadAdmin();
+    let catalog = loadCatalog();
+
+    function saveAdmin() { if (window.FB) FB.saveConfig({ notifications: data.notifications, batches: data.batches, tags: data.tags }); }
+    window.hydrate = function (cfg, courses, students, purchases, enr) {
+      enrollments = enr || [];
+      data.notifications = cfg.notifications || []; data.batches = cfg.batches || [];
+      if (cfg.tags) data.tags = cfg.tags;
+      data.students = students; data.purchases = purchases; catalog = courses; renderAll();
+    };
+    function saveCatalog() { if (window.FB) FB.saveCourses(catalog); }
+
+    function showSec(name) {
+      document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+      document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
+      const el = document.getElementById("sec-" + name);
+      if (el) el.classList.add("active");
+      const nav = document.querySelector('.nav-item[data-sec="' + name + '"]');
+      if (nav) nav.classList.add("active");
+      const titles = {
+        dashboard: "Dashboard", notifications: "Notifications", students: "Students",
+        purchases: "Purchases", courses: "Home Batches", batches: "Institutes",
+        tags: "Tags", export: "Export / Import", settings: "Settings"
+      };
+      document.getElementById("pageTitle").textContent = titles[name] || name;
+      document.getElementById("sidebar").classList.remove("open");
+      document.getElementById("scrim").classList.remove("show");
+    }
+
+    function toggleSidebar() {
+      document.getElementById("sidebar").classList.toggle("open");
+      document.getElementById("scrim").classList.toggle("show");
+    }
+
+    function openModal(id) { document.getElementById(id).classList.add("show"); }
+    function closeModal(id) { document.getElementById(id).classList.remove("show"); }
+
+    function toast(msg, type) {
+      const box = document.getElementById("toastBox");
+      const t = document.createElement("div");
+      t.className = "toast " + (type || "");
+      t.textContent = msg;
+      box.appendChild(t);
+      setTimeout(() => t.remove(), 2800);
+    }
+
+    function esc(s) {
+      return String(s == null ? "" : s).replace(/[&<>"']/g, c =>
+        ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    }
+    function initials(n) {
+      return (n || "?").split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase();
+    }
+    function validityTag(v) {
+      if (v === "3m") return '<span class="tag tag-3m">3 Months</span>';
+      if (v === "6m") return '<span class="tag tag-6m">6 Months</span>';
+      return '<span class="tag tag-life">Lifetime</span>';
+    }
+    function statusTag(s) {
+      const map = { success: "tag-success", pending: "tag-pending", failed: "tag-failed", active: "tag-active", inactive: "tag-inactive" };
+      const labels = { success: "Success", pending: "Pending", failed: "Failed", active: "Active", inactive: "Inactive" };
+      return '<span class="tag ' + (map[s] || "tag-inactive") + '">' + (labels[s] || s) + '</span>';
+    }
+    function modeTag(m) {
+      if (m === "Live") return '<span class="tag tag-live">Live</span>';
+      if (m === "Live + Recorded" || m === "live+rec") return '<span class="tag tag-live-rec">Live + Rec</span>';
+      return '<span class="tag tag-recorded">Recorded</span>';
+    }
+    function freePaidTag(tag) {
+      if (tag === "free") return '<span class="tag tag-free">🆓 Free</span>';
+      return '<span class="tag tag-paid">⭐ Paid</span>';
+    }
+
+    function renderDashboard() {
+      document.getElementById("stStudents").textContent = data.students.length;
+      document.getElementById("stCourses").textContent = catalog.filter(c => c.status !== "inactive").length || catalog.length;
+      document.getElementById("stPurchases").textContent = data.purchases.length;
+      const rev = data.purchases.filter(p => p.status === "success").reduce((s, p) => s + (p.amount || 0), 0);
+      document.getElementById("stRevenue").textContent = rev >= 100000
+        ? "₹" + (rev / 100000).toFixed(1) + "L"
+        : "₹" + rev.toLocaleString("en-IN");
+
+      const tbody = document.getElementById("recentBody");
+      const rows = data.purchases.slice(0, 5);
+      tbody.innerHTML = rows.length ? rows.map(p =>
+        "<tr><td>" + esc(p.student) + "</td><td>" + esc(p.course) + "</td><td>" + validityTag(p.validity) +
+        "</td><td><strong>₹" + p.amount + "</strong></td><td>" + statusTag(p.status) + "</td><td>" + esc(p.date) + "</td></tr>"
+      ).join("") : '<tr><td colspan="6"><div class="empty">No purchases yet</div></td></tr>';
+    }
+
+    function renderNotifications() {
+      const list = document.getElementById("notifList");
+      document.getElementById("notifBadge").textContent = data.notifications.length;
+      if (!data.notifications.length) {
+        list.innerHTML = '<div class="empty"><i class="fas fa-bell-slash"></i>No notifications</div>';
+        return;
+      }
+      list.innerHTML = data.notifications.map(n =>
+        '<div class="notif-item"><div class="notif-icon ' + n.type + '"><i class="fas fa-' +
+        (n.type === "success" ? "gift" : n.type === "warning" ? "exclamation-triangle" : "info-circle") +
+        '"></i></div><div class="notif-content"><h4>' + esc(n.title) + '</h4><p>' + esc(n.message) +
+        '</p><div class="meta">' + esc(n.date) + " · " + esc(n.target) +
+        '</div></div><div class="actions"><button class="btn-icon" onclick="editNotif(' + n.id +
+        ')" title="Edit"><i class="fas fa-pen"></i></button><button class="btn-icon danger" onclick="delNotif(' +
+        n.id + ')" title="Delete"><i class="fas fa-trash"></i></button></div></div>'
+      ).join("");
+    }
+
+    function renderStudents() {
+      const q = (document.getElementById("stuSearch")?.value || "").toLowerCase();
+      const f = document.getElementById("stuFilter")?.value || "all";
+      let list = data.students;
+      if (q) list = list.filter(s => s.name.toLowerCase().includes(q) || (s.phone || "").includes(q));
+      if (f !== "all") list = list.filter(s => s.status === f);
+      const tbody = document.getElementById("stuBody");
+      tbody.innerHTML = list.length ? list.map(s =>
+        '<tr><td><div class="user-cell"><div class="user-av">' + initials(s.name) +
+        '</div><div><div class="name">' + esc(s.name) + '</div><div class="sub">' + esc(s.email) +
+        '</div></div></div></td><td>' + esc(s.phone) + '</td><td>' + esc(s.joined) +
+        '</td><td>' + s.courses + '</td><td>' + statusTag(s.status) +
+        '</td><td><div class="actions"><button class="btn-icon" onclick="toggleStu(\'' + s.id +
+        '\')" title="Toggle status"><i class="fas fa-user-check"></i></button></div></td></tr>'
+      ).join("") : '<tr><td colspan="6"><div class="empty">No students found</div></td></tr>';
+    }
+
+    function renderPurchases() {
+      const q = (document.getElementById("purSearch")?.value || "").toLowerCase();
+      const sf = document.getElementById("purStatus")?.value || "all";
+      const vf = document.getElementById("purValidity")?.value || "all";
+      let list = data.purchases;
+      if (q) list = list.filter(p => (p.student + p.course + p.id).toLowerCase().includes(q));
+      if (sf !== "all") list = list.filter(p => p.status === sf);
+      if (vf !== "all") list = list.filter(p => p.validity === vf);
+      const tbody = document.getElementById("purBody");
+      tbody.innerHTML = list.length ? list.map(p =>
+        "<tr><td><strong>" + esc(p.id) + "</strong></td><td>" + esc(p.student) + "</td><td>" + esc(p.course) +
+        "</td><td>" + validityTag(p.validity) + "</td><td><strong>₹" + p.amount + "</strong></td><td>" +
+        esc(p.payment) + "</td><td>" + statusTag(p.status) + "</td><td>" + esc(p.date) + "</td></tr>"
+      ).join("") : '<tr><td colspan="8"><div class="empty">No purchases found</div></td></tr>';
+    }
+
+    function renderCourses() {
+      const tbody = document.getElementById("courseBody");
+      if (!catalog.length) {
+        tbody.innerHTML = '<tr><td colspan="8"><div class="empty">No courses yet. Add one!</div></td></tr>';
+        updateBatchCourseSelect();
+        return;
+      }
+      tbody.innerHTML = catalog.map(c => {
+        const plans = c.plans || {};
+        const prices = [
+          plans.m3 ? "3M: ₹" + (plans.m3.price || 0) : null,
+          plans.m6 ? "6M: ₹" + (plans.m6.price || 0) : null,
+          plans.life ? "Life: ₹" + (plans.life.price || 0) : null,
+        ].filter(Boolean).join("<br>") || "—";
+        const isFree = c.tag === "free" || (!plans.m3 && !plans.m6 && !plans.life);
+        return "<tr><td><strong>" + esc(c.title) + "</strong></td><td>" + esc(c.teacher) +
+          "</td><td>" + esc(c.subject) + "</td><td>" + modeTag(c.mode || "Live") +
+          "</td><td>" + freePaidTag(isFree ? "free" : "paid") +
+          '</td><td style="font-size:11px;white-space:nowrap">' + prices +
+          "</td><td>" + statusTag(c.status || "active") +
+          '</td><td><div class="actions"><button class="btn-icon" onclick="editCourse(\'' +
+          esc(c.id) + '\')" title="Edit"><i class="fas fa-pen"></i></button><button class="btn-icon danger" onclick="delCourse(\'' +
+          esc(c.id) + '\')" title="Delete"><i class="fas fa-trash"></i></button></div></td></tr>';
+      }).join("");
+      updateBatchCourseSelect();
+    }
+
+    function updateBatchCourseSelect() {
+      const sel = document.getElementById("bCourse");
+      if (!sel) return;
+      const cur = sel.value;
+      sel.innerHTML = '<option value="">Select Course</option>' +
+        catalog.map(c => '<option value="' + esc(c.id) + '">' + esc(c.title) + '</option>').join("");
+      sel.value = cur;
+    }
+
+    function renderBatches() {
+      const tbody = document.getElementById("batchBody");
+      if (!tbody) return;
+      if (!data.batches.length) {
+        tbody.innerHTML = '<tr><td colspan="5"><div class="empty">No institutes yet</div></td></tr>';
+        return;
+      }
+      tbody.innerHTML = data.batches.map(b => {
+        const web = b.website || b.url || "";
+        return "<tr><td><strong>" + esc(b.name) + "</strong></td><td>" + esc(b.short || "—") +
+          "</td><td>" + esc(b.mode || b.type || "—") + "</td><td>" +
+          (web ? '<a href="' + esc(web) + '" target="_blank" style="color:var(--teal);font-size:12px">Open ↗</a>' : "—") +
+          '</td><td><div class="actions"><button class="btn-icon" onclick="editBatch(' +
+          b.id + ')" title="Edit"><i class="fas fa-pen"></i></button><button class="btn-icon danger" onclick="delBatch(' +
+          b.id + ')" title="Delete"><i class="fas fa-trash"></i></button></div></td></tr>';
+      }).join("");
+    }
+
+    function renderTags() {
+      document.getElementById("tagsList").innerHTML = data.tags.map(t =>
+        '<div style="display:flex;align-items:center;gap:8px;background:var(--surface2);padding:10px 14px;border-radius:16px;border:1px solid var(--border)">' +
+        '<span class="tag tag-' + t.style + '">' +
+        (t.style === "free" ? "🆓 " : t.style === "paid" ? "⭐ " : "") + esc(t.name) +
+        '</span><button class="btn-icon danger" onclick="delTag(' + t.id +
+        ')" style="width:28px;height:28px;font-size:12px"><i class="fas fa-times"></i></button></div>'
+      ).join("");
+    }
+
+    // ---------- Access / Validity ----------
+    let enrollments = [];
+    const PLAN_DAYS = { m3: 90, m6: 180, life: null };
+    const PLAN_NAME = { m3: "3 Months", m6: "6 Months", life: "Lifetime" };
+    function fmtDT(t) { if (!t) return "—"; return new Date(t).toLocaleString("en-IN", { day: "2-digit", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" }); }
+    function timeLeft(e) {
+      if (e.expiresAt == null) return "Lifetime";
+      const ms = e.expiresAt - Date.now();
+      if (ms <= 0) return '<span style="color:#ef4444;font-weight:700">Expired</span>';
+      const d = Math.floor(ms / 86400000), h = Math.floor((ms % 86400000) / 3600000);
+      const txt = d >= 1 ? d + " day" + (d > 1 ? "s" : "") + " left" : (h >= 1 ? h + " hr left" : "< 1 hr left");
+      return d < 2 ? '<span style="color:#ef4444;font-weight:700">' + txt + "</span>" : txt;
+    }
+    function renderEnrollments() {
+      const gs = document.getElementById("gStu"), gc = document.getElementById("gCourse");
+      if (!gs || !gc) return;
+      const sv = gs.value, cv = gc.value;
+      gs.innerHTML = '<option value="">Student chunein</option>' + data.students.map(s => '<option value="' + esc(s.id) + '">' + esc(s.name) + " · " + esc(s.email) + "</option>").join("");
+      gc.innerHTML = '<option value="">Course chunein</option>' + catalog.map(c => '<option value="' + esc(String(c.id)) + '">' + esc(c.title) + "</option>").join("");
+      gs.value = sv; gc.value = cv;
+      const now = Date.now(), SOON = 2 * 86400000;
+      const nm = (e) => { const st = data.students.find(s => s.id === e.uid); return esc(st ? st.name : e.uid); };
+      const rev = (e) => '<button class="btn-icon" title="Revoke" onclick="revokeAccess(\'' + esc(e.id) + '\')"><i class="fas fa-user-slash"></i></button>';
+      const tr = (e) => "<tr><td>" + nm(e) + "</td><td>" + esc(e.courseTitle || e.courseId) + "</td><td>" + esc(PLAN_NAME[e.plan] || e.plan) + "</td><td>" + esc(fmtDT(e.startAt)) + "</td><td>" + esc(e.expiresAt == null ? "Lifetime" : fmtDT(e.expiresAt)) + "</td><td>" + timeLeft(e) + "</td><td>" + rev(e) + "</td></tr>";
+      const soon = enrollments.filter(e => e.expiresAt != null && e.expiresAt - now <= SOON).sort((x, y) => x.expiresAt - y.expiresAt);
+      document.getElementById("expBody").innerHTML = soon.length ? soon.map(tr).join("") : '<tr><td colspan="7"><div class="empty">Abhi koi expiring nahi hai</div></td></tr>';
+      document.getElementById("expCount").textContent = soon.length ? "(" + soon.length + ")" : "";
+      const all = enrollments.slice().sort((x, y) => (y.startAt || 0) - (x.startAt || 0));
+      document.getElementById("enrBody").innerHTML = all.length ? all.map(tr).join("") : '<tr><td colspan="7"><div class="empty">Abhi kisi ko access nahi diya</div></td></tr>';
+    }
+    async function grantAccess() {
+      const uid = document.getElementById("gStu").value, cid = document.getElementById("gCourse").value, plan = document.getElementById("gPlan").value;
+      if (!uid || !cid) { toast("Student aur Course dono chunein", "err"); return; }
+      const c = catalog.find(x => String(x.id) === cid);
+      const start = Date.now(), days = PLAN_DAYS[plan];
+      const e = { id: uid + "_" + cid, uid, courseId: cid, courseTitle: c ? c.title : "", plan, startAt: start, expiresAt: days == null ? null : start + days * 86400000 };
+      const ok = await FB.grant(e);
+      if (!ok) return;
+      enrollments = enrollments.filter(x => x.id !== e.id); enrollments.unshift(e);
+      renderEnrollments(); toast("Access de diya ✓", "ok");
+    }
+    async function revokeAccess(id) {
+      if (!confirm("Is student ka access hata dein?")) return;
+      if (await FB.revoke(id)) { enrollments = enrollments.filter(x => x.id !== id); renderEnrollments(); toast("Access hata diya ✓", "ok"); }
+    }
+
+    function renderAll() {
+      renderDashboard();
+      renderNotifications();
+      renderStudents();
+      renderPurchases();
+      renderCourses();
+      renderBatches();
+      renderTags();
+      renderEnrollments();
+    }
+
+    function openNotifModal() {
+      document.getElementById("notifId").value = "";
+      document.getElementById("notifModalTitle").textContent = "Send Notification";
+      document.getElementById("notifTitle").value = "";
+      document.getElementById("notifMsg").value = "";
+      document.getElementById("notifType").value = "info";
+      document.getElementById("notifTarget").value = "all";
+      openModal("notifModal");
+    }
+    function editNotif(id) {
+      const n = data.notifications.find(x => x.id === id);
+      if (!n) return;
+      document.getElementById("notifId").value = id;
+      document.getElementById("notifModalTitle").textContent = "Edit Notification";
+      document.getElementById("notifTitle").value = n.title;
+      document.getElementById("notifMsg").value = n.message;
+      document.getElementById("notifType").value = n.type;
+      document.getElementById("notifTarget").value = n.target;
+      openModal("notifModal");
+    }
+    function saveNotif() {
+      const title = document.getElementById("notifTitle").value.trim();
+      const message = document.getElementById("notifMsg").value.trim();
+      if (!title || !message) { toast("Title aur Message zaroori hain", "err"); return; }
+      const editId = document.getElementById("notifId").value;
+      const dateStr = new Date().toISOString().slice(0, 16).replace("T", " ");
+      if (editId) {
+        const n = data.notifications.find(x => x.id === +editId);
+        if (n) {
+          n.title = title; n.message = message;
+          n.type = document.getElementById("notifType").value;
+          n.target = document.getElementById("notifTarget").value;
+          n.date = dateStr;
+        }
+        toast("Notification updated ✓", "ok");
+      } else {
+        data.notifications.unshift({
+          id: Date.now(), title, message,
+          type: document.getElementById("notifType").value,
+          target: document.getElementById("notifTarget").value,
+          date: dateStr,
+        });
+        toast("Notification sent ✓", "ok");
+      }
+      saveAdmin();
+      renderNotifications();
+      closeModal("notifModal");
+    }
+    function delNotif(id) {
+      if (!confirm("Delete this notification?")) return;
+      data.notifications = data.notifications.filter(n => n.id !== id);
+      saveAdmin();
+      renderNotifications();
+      toast("Deleted ✓", "ok");
+    }
+
+    function openCourseModal() {
+      document.getElementById("courseId").value = "";
+      document.getElementById("courseModalTitle").textContent = "Add Home Batch";
+      document.getElementById("cTitle").value = "";
+      document.getElementById("cTeacher").value = "";
+      document.getElementById("cSubject").value = "";
+      document.getElementById("cMode").value = "Live + Recorded";
+      document.getElementById("cTagPaid").checked = true;
+            document.getElementById("p3").value = "";
+      document.getElementById("p6").value = "";
+      document.getElementById("pLife").value = "";
+      document.getElementById("l3").value = "";
+      document.getElementById("l6").value = "";
+      document.getElementById("lLife").value = "";
+      document.getElementById("cTg").value = "";
+      document.getElementById("cView").value = "";
+      document.getElementById("cDemoOn").checked = false;
+      document.getElementById("cHtml").value = "";
+      document.getElementById("cStatus").value = "active";
+      openModal("courseModal");
+    }
+
+    function editCourse(id) {
+      const c = catalog.find(x => String(x.id) === String(id));
+      if (!c) return;
+      document.getElementById("courseId").value = c.id;
+      document.getElementById("courseModalTitle").textContent = "Edit Home Batch";
+      document.getElementById("cTitle").value = c.title || "";
+      document.getElementById("cTeacher").value = c.teacher || "";
+      document.getElementById("cSubject").value = c.subject || "";
+      document.getElementById("cMode").value = c.mode || "Live + Recorded";
+      const isFree = c.tag === "free";
+      document.getElementById("cTagFree").checked = isFree;
+      document.getElementById("cTagPaid").checked = !isFree;
+      const plans = c.plans || {};
+      document.getElementById("p3").value = plans.m3?.price ?? "";
+      document.getElementById("p6").value = plans.m6?.price ?? "";
+      document.getElementById("pLife").value = plans.life?.price ?? "";
+      document.getElementById("l3").value = plans.m3?.link || "";
+      document.getElementById("l6").value = plans.m6?.link || "";
+      document.getElementById("lLife").value = plans.life?.link || "";
+      document.getElementById("cTg").value = c.telegramUrl || "";
+      document.getElementById("cView").value = c.viewUrl || "";
+      document.getElementById("cDemoOn").checked = !!c.demoEnabled;
+      document.getElementById("cHtml").value = c.htmlContent || "";
+      document.getElementById("cStatus").value = c.status || "active";
+      openModal("courseModal");
+    }
+
+    function saveCourse() {
+      const title = document.getElementById("cTitle").value.trim();
+      const teacher = document.getElementById("cTeacher").value.trim();
+      const subject = document.getElementById("cSubject").value;
+      if (!title || !teacher || !subject) {
+        toast("Title, Teacher aur Subject zaroori hain", "err");
+        return;
+      }
+      const tag = document.getElementById("cTagFree").checked ? "free" : "paid";
+      const plans = {};
+      const p3 = document.getElementById("p3").value;
+      const p6 = document.getElementById("p6").value;
+      const pLife = document.getElementById("pLife").value;
+      if (p3 !== "" || document.getElementById("l3").value) {
+        plans.m3 = { price: +p3 || 0, link: document.getElementById("l3").value.trim() };
+      }
+      if (p6 !== "" || document.getElementById("l6").value) {
+        plans.m6 = { price: +p6 || 0, link: document.getElementById("l6").value.trim() };
+      }
+      if (pLife !== "" || document.getElementById("lLife").value) {
+        plans.life = { price: +pLife || 0, link: document.getElementById("lLife").value.trim() };
+      }
+
+      const payload = {
+        title, teacher, subject,
+        mode: document.getElementById("cMode").value,
+        tag,
+        description: "",
+        plans,
+        telegramUrl: document.getElementById("cTg").value.trim(),
+        viewUrl: document.getElementById("cView").value.trim(),
+        demoUrl: "",
+        demoEnabled: document.getElementById("cDemoOn").checked,
+        htmlContent: document.getElementById("cHtml").value.trim(),
+        status: document.getElementById("cStatus").value,
+      };
+
+      const editId = document.getElementById("courseId").value;
+      if (editId) {
+        const idx = catalog.findIndex(x => String(x.id) === String(editId));
+        if (idx >= 0) catalog[idx] = Object.assign({}, catalog[idx], payload);
+        toast("Home batch updated ✓", "ok");
+      } else {
+        catalog.push(Object.assign({ id: "c_" + Date.now() }, payload));
+        toast("Home batch added ✓", "ok");
+      }
+      saveCatalog();
+      renderCourses();
+      renderDashboard();
+      closeModal("courseModal");
+    }
+
+    function delCourse(id) {
+      if (!confirm("Delete this course?")) return;
+      catalog = catalog.filter(c => String(c.id) !== String(id));
+      saveCatalog();
+      renderCourses();
+      renderDashboard();
+      toast("Home batch deleted ✓", "ok");
+    }
+
+    function openBatchModal() {
+      document.getElementById("batchId").value = "";
+      document.getElementById("batchModalTitle").textContent = "Add Institute";
+      document.getElementById("bName").value = "";
+      document.getElementById("bShort").value = "";
+      document.getElementById("bType").value = "Live + Recorded";
+      document.getElementById("bWeb").value = "";
+      openModal("batchModal");
+    }
+    function editBatch(id) {
+      const b = data.batches.find(x => x.id === id);
+      if (!b) return;
+      document.getElementById("batchId").value = id;
+      document.getElementById("batchModalTitle").textContent = "Edit Institute";
+      document.getElementById("bName").value = b.name || "";
+      document.getElementById("bShort").value = b.short || "";
+      document.getElementById("bType").value = b.type || b.mode || "Live + Recorded";
+      document.getElementById("bWeb").value = b.website || b.url || "";
+      openModal("batchModal");
+    }
+    function saveBatch() {
+      const name = document.getElementById("bName").value.trim();
+      if (!name) { toast("Institute name zaroori hai", "err"); return; }
+      let short = document.getElementById("bShort").value.trim().toUpperCase();
+      if (!short) short = name.split(/\s+/).map(w => w[0]).join("").slice(0, 2).toUpperCase();
+      const payload = {
+        name,
+        short,
+        type: document.getElementById("bType").value,
+        mode: document.getElementById("bType").value,
+        website: document.getElementById("bWeb").value.trim(),
+        url: document.getElementById("bWeb").value.trim(),
+        students: 0,
+      };
+      const editId = document.getElementById("batchId").value;
+      if (editId) {
+        const b = data.batches.find(x => x.id === +editId || String(x.id) === String(editId));
+        if (b) Object.assign(b, payload);
+        toast("Institute updated ✓", "ok");
+      } else {
+        data.batches.push(Object.assign({ id: Date.now() }, payload));
+        toast("Institute added ✓", "ok");
+      }
+      saveAdmin();
+      renderBatches();
+      closeModal("batchModal");
+    }
+    function delBatch(id) {
+      if (!confirm("Delete this batch?")) return;
+      data.batches = data.batches.filter(b => b.id !== id);
+      saveAdmin();
+      renderBatches();
+      toast("Deleted ✓", "ok");
+    }
+
+    function openTagModal() {
+      document.getElementById("tagName").value = "";
+      document.getElementById("tagStyle").value = "free";
+      openModal("tagModal");
+    }
+    function saveTag() {
+      const name = document.getElementById("tagName").value.trim();
+      if (!name) { toast("Tag name zaroori hai", "err"); return; }
+      data.tags.push({
+        id: Date.now(),
+        name,
+        style: document.getElementById("tagStyle").value,
+      });
+      saveAdmin();
+      renderTags();
+      closeModal("tagModal");
+      toast("Tag added ✓", "ok");
+    }
+    function delTag(id) {
+      if (!confirm("Delete tag?")) return;
+      data.tags = data.tags.filter(t => t.id !== id);
+      saveAdmin();
+      renderTags();
+      toast("Deleted ✓", "ok");
+    }
+
+    function toggleStu(id) {
+      const s = data.students.find(x => x.id === id);
+      if (!s) return;
+      s.status = s.status === "active" ? "inactive" : "active";
+      if (window.FB) FB.setActive(id, s.status === "active");
+      renderStudents();
+      toast("Status: " + s.status, "ok");
+    }
+
+    function exportCatalog() {
+      const blob = new Blob([JSON.stringify(catalog, null, 2)], { type: "application/json" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "ssc-prepx-courses.json";
+      a.click();
+      URL.revokeObjectURL(a.href);
+      toast("JSON exported ✓", "ok");
+    }
+    function importCatalog(e) {
+      const f = e.target.files[0];
+      if (!f) return;
+      const reader = new FileReader();
+      reader.onload = function () {
+        try {
+          const rows = JSON.parse(reader.result);
+          if (!Array.isArray(rows)) throw new Error("JSON array expected");
+          catalog = rows;
+          saveCatalog();
+          renderCourses();
+          renderDashboard();
+          toast("Imported " + rows.length + " courses ✓", "ok");
+        } catch (err) {
+          toast("Import failed: " + err.message, "err");
+        }
+      };
+      reader.readAsText(f);
+      e.target.value = "";
+    }
+
+    renderAll();
+  </script>
+  <script type="module">
+    import { auth, db } from "./js/firebase.js";
+    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+    import { doc, getDoc, getDocs, setDoc, deleteDoc, updateDoc, collection } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+    const LOGIN = "ssc-prepx-login.html";
+    const out = () => location.replace(LOGIN);
+    const clean = (o) => JSON.parse(JSON.stringify(o));
+    const day = (t) => (t && t.toDate ? t.toDate().toISOString().slice(0, 10) : (t || ""));
+    const dt = (t) => { if (!t) return ""; const d = t.toDate ? t.toDate() : new Date(t); return isNaN(d) ? "" : d.toLocaleString("en-IN", { day: "2-digit", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" }); };
+    let known = new Set();
+    window.FB = {
+      async saveConfig(c) { try { await setDoc(doc(db, "config", "admin"), clean(c)); } catch (e) { toast("Save error: " + (e.code || e.message), "err"); } },
+      async saveCourses(rows) {
+        try {
+          for (const r of rows) {
+            const c = clean(r), priv = { viewUrl: c.viewUrl || "", htmlContent: c.htmlContent || "", telegramUrl: c.telegramUrl || "" };
+            delete c.viewUrl; delete c.htmlContent; delete c.telegramUrl;
+            const p = c.plans || {};
+            c.isFree = !["m3", "m6", "life"].some(k => p[k] && Number(p[k].price) > 0);
+            await setDoc(doc(db, "courses", String(r.id)), c);
+            await setDoc(doc(db, "courses", String(r.id), "private", "content"), priv);
+          }
+          const now = new Set(rows.map(r => String(r.id)));
+          for (const id of known) if (!now.has(id)) { await deleteDoc(doc(db, "courses", id, "private", "content")); await deleteDoc(doc(db, "courses", id)); }
+          known = now;
+        } catch (e) { toast("Save error: " + (e.code || e.message), "err"); }
+      },
+      async grant(e) { try { const d = clean(e); delete d.id; await setDoc(doc(db, "enrollments", e.id), d); return true; } catch (x) { toast("Error: " + (x.code || x.message), "err"); return false; } },
+      async revoke(id) { try { await deleteDoc(doc(db, "enrollments", id)); return true; } catch (x) { toast("Error: " + (x.code || x.message), "err"); return false; } },
+      async setActive(uid, v) { try { await updateDoc(doc(db, "users", uid), { isActive: v }); } catch (e) { toast("Error: " + (e.code || e.message), "err"); } }
+    };
+    onAuthStateChanged(auth, async (u) => {
+      if (!u) return out();
+      try {
+        const me = await getDoc(doc(db, "users", u.uid));
+        if (!me.exists() || me.data().role !== "admin") return out();
+        const [cfg, cs, us, ps, es] = await Promise.all([getDoc(doc(db, "config", "admin")), getDocs(collection(db, "courses")), getDocs(collection(db, "users")), getDocs(collection(db, "payments")), getDocs(collection(db, "enrollments"))]);
+        const courses = await Promise.all(cs.docs.map(async d => { let pv = {}; try { const s = await getDoc(doc(db, "courses", d.id, "private", "content")); if (s.exists()) pv = s.data(); } catch (e) {} return Object.assign({}, d.data(), pv, { id: d.id }); }));
+        const enr = es.docs.map(d => Object.assign({}, d.data(), { id: d.id }));
+        known = new Set(courses.map(c => String(c.id)));
+        const students = us.docs.filter(d => d.data().role !== "admin").map(d => { const x = d.data(); return { id: d.id, name: x.name || "—", email: x.email || "", phone: x.phone || "", joined: day(x.createdAt), courses: 0, status: x.isActive === false ? "inactive" : "active" }; });
+        const purchases = ps.docs.map(d => { const x = d.data(); return { id: d.id, student: x.studentName || x.name || x.uid || "—", course: x.courseTitle || x.batchName || x.course || "", validity: ({ m3: "3m", m6: "6m", life: "life" })[x.plan] || x.validity || "life", amount: Number(x.amount) || 0, payment: (x.method || x.payment || "") + (x.razorpayPaymentId ? " · " + x.razorpayPaymentId : ""), status: x.status || "pending", date: dt(x.paidAt || x.createdAt || x.date) }; });
+        window.hydrate(cfg.exists() ? cfg.data() : {}, courses, students, purchases, enr);
+        document.getElementById("authHide").remove();
+      } catch (e) { console.error(e); out(); }
+    });
+  </script>
+</body>
+</html>
