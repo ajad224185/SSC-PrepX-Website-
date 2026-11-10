@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html class="geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1, maximum-scale=5" name="viewport"/><link data-precedence="next" href="3d-1vk5hzu5rq.css" rel="stylesheet"/><link data-precedence="next" href="3_jw7p2a2w0my.css" rel="stylesheet"/><link as="script" fetchpriority="low" href="010cpjk3fh4m4.js" rel="preload"/><script async="" src="0kal00qwqakl5.js"></script><script async="" src="3_xxq4mxixm9i.js"></script><script async="" src="2vnjjcii1-4ih.js"></script><script async="" src="turbopack-2zg6l5f4mx-3t.js"></script><script async="" src="3-pfde1wlq_ur.js"></script><script async="" src="3tx3wd3zv9p9e.js"></script><script async="" src="1sgf2zs3wqf29.js"></script><script async="" src="2u0kw159jfjz0.js"></script><script async="" src="2n2ymrguzy_f-.js"></script><script async="" src="40y7ecg9rbuyv.js"></script><script async="" src="25npr7_818qn-.js"></script><script async="" src="1mcpl9bv5dzr_.js"></script><script async="" src="0p2po-v5amjm-.js"></script><script async="" src="3klyvqr-k5_az.js"></script><script async="" src="3avfxvf4ana_-.js"></script><meta content="" name="next-size-adjust"/><title>Mock Test Hub - India's #1 Govt Exam Prep Site</title><meta content="Get mock tests, live result/admit card/answer key updates, and access passes for SSC, Railways, UGC NET, Teaching, and State Exams." name="description"/><meta content="Mock Test Hub - India's #1 Govt Exam Prep Site" property="og:title"/><meta content="Get mock tests, live result/admit card/answer key updates, and access passes for SSC, Railways, UGC NET, Teaching, and State Exams." property="og:description"/><meta content="https://mocktesthub.vercel.app" property="og:url"/><meta content="Mock Test Hub" property="og:site_name"/><meta content="en_IN" property="og:locale"/><meta content="https://mocktesthub.vercel.app/opengraph-image?64d7bdc911735156" property="og:image"/><meta content="image/png" property="og:image:type"/><meta content="1200" property="og:image:width"/><meta content="630" property="og:image:height"/><meta content="Mock Test Hub: mock tests, typing tests and exam notices" property="og:image:alt"/><meta content="website" property="og:type"/><meta content="summary_large_image" name="twitter:card"/><meta content="Mock Test Hub - India's #1 Govt Exam Prep Site" name="twitter:title"/><meta content="Get mock tests, live result/admit card/answer key updates, and access passes for SSC, Railways, UGC NET, Teaching, and State Exams." name="twitter:description"/><meta content="https://mocktesthub.vercel.app/twitter-image?a9c08d370abf569b" name="twitter:image"/><meta content="Mock Test Hub: mock tests, typing tests and exam notices" name="twitter:image:alt"/><meta content="image/png" name="twitter:image:type"/><meta content="1200" name="twitter:image:width"/><meta content="630" name="twitter:image:height"/><link href="favicon.ico" rel="icon" sizes="256x256" type="image/x-icon"/><script nomodule="" src="0cz1d0mv5g_q7.js"></script>
+
+<style>
+  /* Hide Contact Us section & related */
+  section:has(h2) {
+    /* handled by JS */
+  }
+</style>
+<script>
+(function() {
+  // ========== 1. FAKE PREMIUM USER (No Login Required) ==========
+  const fakeUser = {
+    id: "bypass-user-001",
+    candidateCode: "HUB-BYPASS-001",
+    name: "Guest User",
+    email: "guest@mocktesthub.local",
+    mobile: "9999999999",
+    role: "STUDENT",
+    subscriptionTier: "Testbook Pass Pro",
+    subscriptionPurchasedAt: "2025-01-01",
+    subscriptionExpiresAt: "2030-12-31",
+    coins: 99999,
+    testSessions: []
+  };
+
+  try {
+    localStorage.setItem("mth_user_v1", JSON.stringify(fakeUser));
+    localStorage.setItem("tb_user", JSON.stringify(fakeUser));
+    // Common key variants
+    localStorage.setItem("user", JSON.stringify(fakeUser));
+    document.cookie = "tb_user_id=" + fakeUser.id + ";path=/;max-age=31536000";
+    document.cookie = "tb_user_profile=" + encodeURIComponent(JSON.stringify({
+      id: fakeUser.id,
+      candidateCode: fakeUser.candidateCode,
+      name: fakeUser.name,
+      email: fakeUser.email,
+      mobile: fakeUser.mobile,
+      role: fakeUser.role,
+      subscriptionTier: fakeUser.subscriptionTier,
+      coins: fakeUser.coins
+    })) + ";path=/;max-age=31536000";
+  } catch(e) {}
+
+  // ========== 2. REMOVE CONTACT SECTION ==========
+  function removeContactStuff() {
+    // Remove Contact Us & Official Channels section
+    document.querySelectorAll("h2").forEach(h2 => {
+      const text = (h2.textContent || "").trim();
+      if (text.includes("Contact Us") || text.includes("Official Channels") || 
+          text.includes("संपर्क करें") || text.includes("आधिकारिक चैनल")) {
+        const section = h2.closest("section");
+        if (section) section.remove();
+      }
+    });
+
+    // Remove Support Desk / Active Support Desk cards
+    document.querySelectorAll("h3, span, p, div").forEach(el => {
+      const text = (el.textContent || "").trim();
+      if (text === "Active Support Desk" || text === "सक्रिय सपोर्ट डेस्क" ||
+          text.includes("Have a question, feedback, or grievance") ||
+          text.includes("क्या आपके पास कोई प्रश्न या समस्या है")) {
+        const card = el.closest("div.bg-white, div.rounded-lg, section, div.border");
+        if (card && card.innerText.length < 800) card.remove();
+      }
+    });
+
+    // Hide any remaining Telegram / WhatsApp / Instagram / YouTube open buttons in contact context
+    document.querySelectorAll("a, button").forEach(el => {
+      const text = (el.textContent || "").toLowerCase();
+      const href = (el.getAttribute("href") || "").toLowerCase();
+      if (text.includes("open telegram") || text.includes("open youtube") || 
+          text.includes("open instagram") || text.includes("send email") ||
+          href.includes("t.me/") || href.includes("instagram.com/mocktesthub") ||
+          href.includes("youtube.com/@mocktesthub") || href.includes("mailto:mocktesthubsupport")) {
+        const card = el.closest("div.bg-white, div.rounded-lg, div.border");
+        if (card) card.style.display = "none";
+        else el.style.display = "none";
+      }
+    });
+
+    // Hide footer Contact Us link (optional but cleaner)
+    document.querySelectorAll("a").forEach(a => {
+      if ((a.textContent || "").trim() === "Contact Us" || (a.textContent || "").trim() === "संपर्क करें") {
+        a.style.display = "none";
+      }
+    });
+  }
+
+  // Run multiple times because React re-renders
+  document.addEventListener("DOMContentLoaded", function() {
+    removeContactStuff();
+    setTimeout(removeContactStuff, 500);
+    setTimeout(removeContactStuff, 1500);
+    setTimeout(removeContactStuff, 3000);
+  });
+
+  // Also observe DOM changes
+  const observer = new MutationObserver(() => removeContactStuff());
+  if (document.body) {
+    observer.observe(document.body, { childList: true, subtree: true });
+  } else {
+    document.addEventListener("DOMContentLoaded", () => {
+      observer.observe(document.body, { childList: true, subtree: true });
+    });
+  }
+})();
+</script>
+
+</head><body class="h-full min-h-full overflow-x-hidden flex flex-col bg-[#f5f7fa] dark:bg-slate-950 text-slate-800 dark:text-slate-100 transition-colors duration-200"><div hidden=""><!--$--><!--/$--></div><div class="flex-1 flex flex-col bg-[#f5f7fa] dark:bg-slate-950 font-sans min-h-screen text-slate-800 dark:text-slate-100 items-center justify-center"><div class="h-6 w-6 border border-[#1e4e79] border-t-transparent rounded-full animate-spin"></div></div><!--$--><!--/$--><script async="" id="_R_" src="010cpjk3fh4m4.js"></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n3:I[83380,[\"/_next/static/chunks/3-pfde1wlq_ur.js\",\"/_next/static/chunks/3tx3wd3zv9p9e.js\"],\"ClientPageRoot\"]\n4:I[48478,[\"/_next/static/chunks/1sgf2zs3wqf29.js\",\"/_next/static/chunks/2u0kw159jfjz0.js\",\"/_next/static/chunks/2n2ymrguzy_f-.js\",\"/_next/static/chunks/40y7ecg9rbuyv.js\",\"/_next/static/chunks/25npr7_818qn-.js\",\"/_next/static/chunks/1mcpl9bv5dzr_.js\"],\"default\"]\n5:I[51858,[\"/_next/static/chunks/3-pfde1wlq_ur.js\",\"/_next/static/chunks/3tx3wd3zv9p9e.js\"],\"OutletBoundary\"]\n6:\"$Sreact.suspense\"\n8:I[51858,[\"/_next/static/chunks/3-pfde1wlq_ur.js\",\"/_next/static/chunks/3tx3wd3zv9p9e.js\"],\"ViewportBoundary\"]\na:I[51858,[\"/_next/static/chunks/3-pfde1wlq_ur.js\",\"/_next/static/chunks/3tx3wd3zv9p9e.js\"],\"MetadataBoundary\"]\nc:I[95471,[\"/_next/static/chunks/1sgf2zs3wqf29.js\",\"/_next/static/chunks/2u0kw159jfjz0.js\",\"/_next/static/chunks/0p2po-v5amjm-.js\"],\"default\"]\nd:I[93884,[\"/_next/static/chunks/1sgf2zs3wqf29.js\",\"/_next/static/chunks/2u0kw159jfjz0.js\"],\"AuthProvider\"]\ne:I[69547,[\"/_next/static/chunks/1sgf2zs3wqf29.js\",\"/_next/static/chunks/2u0kw159jfjz0.js\"],\"default\"]\nf:I[90913,[\"/_next/static/chunks/1sgf2zs3wqf29.js\",\"/_next/static/chunks/2u0kw159jfjz0.js\"],\"default\"]\n10:I[6700,[\"/_next/static/chunks/1sgf2zs3wqf29.js\",\"/_next/static/chunks/2u0kw159jfjz0.js\"],\"default\"]\n11:I[88287,[\"/_next/static/chunks/3-pfde1wlq_ur.js\",\"/_next/static/chunks/3tx3wd3zv9p9e.js\"],\"default\"]\n12:I[2140,[\"/_next/static/chunks/1sgf2zs3wqf29.js\",\"/_next/static/chunks/2u0kw159jfjz0.js\",\"/_next/static/chunks/3klyvqr-k5_az.js\"],\"default\"]\n13:I[74895,[\"/_next/static/chunks/3-pfde1wlq_ur.js\",\"/_next/static/chunks/3tx3wd3zv9p9e.js\"],\"default\"]\n14:I[26500,[\"/_next/static/chunks/1sgf2zs3wqf29.js\",\"/_next/static/chunks/2u0kw159jfjz0.js\",\"/_next/static/chunks/3avfxvf4ana_-.js\"],\"default\"]\n15:I[49310,[\"/_next/static/chunks/3-pfde1wlq_ur.js\",\"/_next/static/chunks/3tx3wd3zv9p9e.js\"],\"IconMark\"]\n:HL[\"/_next/static/chunks/3d-1vk5hzu5rq.css\",\"style\"]\n:HL[\"/_next/static/chunks/3_jw7p2a2w0my.css\",\"style\"]\n:HL[\"/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n:HL[\"/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"c\":[\"\",\"\"],\"q\":\"\",\"i\":false,\"f\":[[[\"\",{\"children\":[\"__PAGE__\",{}]},\"$undefined\",\"$undefined\",16],[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/3d-1vk5hzu5rq.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"link\",\"1\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/3_jw7p2a2w0my.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/1sgf2zs3wqf29.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/2u0kw159jfjz0.js\",\"async\":true,\"nonce\":\"$undefined\"}]],\"$L2\"]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[[\"$\",\"$L3\",null,{\"Component\":\"$4\",\"serverProvidedParams\":{\"searchParams\":{},\"params\":{},\"promises\":null}}],[[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/2n2ymrguzy_f-.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/40y7ecg9rbuyv.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-2\",{\"src\":\"/_next/static/chunks/25npr7_818qn-.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-3\",{\"src\":\"/_next/static/chunks/1mcpl9bv5dzr_.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L5\",null,{\"children\":[\"$\",\"$6\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@7\"}]}]]}],{},null,false,null]},null,false,null],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$L8\",null,{\"children\":\"$L9\"}],[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$La\",null,{\"children\":[\"$\",\"$6\",null,{\"name\":\"Next.Metadata\",\"children\":\"$Lb\"}]}]}],[\"$\",\"meta\",null,{\"name\":\"next-size-adjust\",\"content\":\"\"}]]}],false]],\"m\":\"$undefined\",\"G\":[\"$c\",[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/3d-1vk5hzu5rq.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"link\",\"1\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/3_jw7p2a2w0my.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]]],\"S\":false,\"h\":null,\"s\":\"$undefined\",\"l\":\"$undefined\",\"p\":\"$undefined\",\"d\":\"$undefined\",\"b\":\"lYePsFaxSTD1ab_NmJ0km\"}\n"])</script><script>self.__next_f.push([1,"2:[\"$\",\"html\",null,{\"lang\":\"en\",\"suppressHydrationWarning\":true,\"className\":\"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased\",\"children\":[\"$\",\"body\",null,{\"suppressHydrationWarning\":true,\"className\":\"h-full min-h-full overflow-x-hidden flex flex-col bg-[#f5f7fa] dark:bg-slate-950 text-slate-800 dark:text-slate-100 transition-colors duration-200\",\"children\":[\"$\",\"$Ld\",null,{\"initialUserProfile\":null,\"children\":[[\"$\",\"$Le\",null,{}],[\"$\",\"$Lf\",null,{}],[\"$\",\"$L10\",null,{}],[\"$\",\"$L11\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$12\",\"errorStyles\":[],\"errorScripts\":[[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/3klyvqr-k5_az.js\",\"async\":true}]],\"template\":[\"$\",\"$L13\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"$L14\",null,{}],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}]}]}]\n9:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1, maximum-scale=5\"}]]\n7:null\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"title\",\"0\",{\"children\":\"Mock Test Hub - India's #1 Govt Exam Prep Site\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"Get mock tests, live result/admit card/answer key updates, and access passes for SSC, Railways, UGC NET, Teaching, and State Exams.\"}],[\"$\",\"meta\",\"2\",{\"property\":\"og:title\",\"content\":\"Mock Test Hub - India's #1 Govt Exam Prep Site\"}],[\"$\",\"meta\",\"3\",{\"property\":\"og:description\",\"content\":\"Get mock tests, live result/admit card/answer key updates, and access passes for SSC, Railways, UGC NET, Teaching, and State Exams.\"}],[\"$\",\"meta\",\"4\",{\"property\":\"og:url\",\"content\":\"https://mocktesthub.vercel.app\"}],[\"$\",\"meta\",\"5\",{\"property\":\"og:site_name\",\"content\":\"Mock Test Hub\"}],[\"$\",\"meta\",\"6\",{\"property\":\"og:locale\",\"content\":\"en_IN\"}],[\"$\",\"meta\",\"7\",{\"property\":\"og:image\",\"content\":\"https://mocktesthub.vercel.app/opengraph-image?64d7bdc911735156\"}],[\"$\",\"meta\",\"8\",{\"property\":\"og:image:type\",\"content\":\"image/png\"}],[\"$\",\"meta\",\"9\",{\"property\":\"og:image:width\",\"content\":\"1200\"}],[\"$\",\"meta\",\"10\",{\"property\":\"og:image:height\",\"content\":\"630\"}],[\"$\",\"meta\",\"11\",{\"property\":\"og:image:alt\",\"content\":\"Mock Test Hub: mock tests, typing tests and exam notices\"}],[\"$\",\"meta\",\"12\",{\"property\":\"og:type\",\"content\":\"website\"}],[\"$\",\"meta\",\"13\",{\"name\":\"twitter:card\",\"content\":\"summary_large_image\"}],[\"$\",\"meta\",\"14\",{\"name\":\"twitter:title\",\"content\":\"Mock Test Hub - India's #1 Govt Exam Prep Site\"}],[\"$\",\"meta\",\"15\",{\"name\":\"twitter:description\",\"content\":\"Get mock tests, live result/admit card/answer key updates, and access passes for SSC, Railways, UGC NET, Teaching, and State Exams.\"}],[\"$\",\"meta\",\"16\",{\"name\":\"twitter:image\",\"content\":\"https://mocktesthub.vercel.app/twitter-image?a9c08d370abf569b\"}],[\"$\",\"meta\",\"17\",{\"name\":\"twitter:image:alt\",\"content\":\"Mock Test Hub: mock tests, typing tests and exam notices\"}],[\"$\",\"meta\",\"18\",{\"name\":\"twitter:image:type\",\"content\":\"image/png\"}],[\"$\",\"meta\",\"19\",{\"name\":\"twitter:image:width\",\"content\":\"1200\"}],[\"$\",\"meta\",\"20\",{\"name\":\"twitter:image:height\",\"content\":\"630\"}],[\"$\",\"link\",\"21\",{\"rel\":\"icon\",\"href\":\"/favicon.ico?favicon.2vob68tjqpejf.ico\",\"sizes\":\"256x256\",\"type\":\"image/x-icon\"}],[\"$\",\"$L15\",\"22\",{}]]\n"])</script></body></html>
