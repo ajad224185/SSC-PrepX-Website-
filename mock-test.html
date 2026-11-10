@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<title>Mock Test Hub • SSC PrepX</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; width: 100%; height: 100%;
+    overflow: hidden; background: #f5f7fa;
+    color: #172033; font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  button { font: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+
+  .topbar {
+    position: fixed; inset: 0 0 auto 0; z-index: 30;
+    height: 66px; display: grid;
+    grid-template-columns: 92px minmax(0,1fr) 48px;
+    align-items: center; gap: 8px; padding: 6px 12px;
+    background: #fff; border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 2px 8px rgba(15,23,42,.06);
+  }
+  .back {
+    height: 48px; border: 1px solid #e5e7eb; border-radius: 15px;
+    background: #fff; color: #182033; font-size: 15px; font-weight: 750;
+  }
+  .heading {
+    min-width: 0; text-align: center; font-size: 19px;
+    font-weight: 850; white-space: nowrap; overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .menu {
+    width: 46px; height: 46px; border: 0; border-radius: 50%;
+    background: #100d2b; color: #fff; display: grid; place-items: center;
+  }
+  .menu svg { width: 25px; height: 25px; }
+
+  .viewport {
+    position: fixed; inset: 66px 0 0 0; overflow: hidden;
+    background: #f5f7fa;
+  }
+  /* The iframe is deliberately kept at desktop width. It is scaled to fit
+     the phone, and the remote desktop sidebar is replaced by our menu. */
+  #hubFrame {
+    position: absolute; top: 0; left: 0;
+    width: 1024px; height: 1800px; border: 0;
+    background: #f5f7fa; transform-origin: top left;
+  }
+
+  .scrim {
+    position: fixed; inset: 66px 0 0; z-index: 40;
+    background: rgba(12,18,32,.42); opacity: 0;
+    visibility: hidden; transition: opacity .2s, visibility .2s;
+  }
+  .scrim.show { opacity: 1; visibility: visible; }
+  .drawer {
+    position: fixed; z-index: 41; top: 66px; bottom: 0; left: 0;
+    width: min(350px, 90vw); overflow-y: auto; overscroll-behavior: contain;
+    padding: 14px 14px calc(22px + env(safe-area-inset-bottom));
+    background: #e9eef4; border-right: 1px solid #cfd8e3;
+    box-shadow: 12px 0 32px rgba(15,23,42,.18);
+    transform: translateX(-105%); transition: transform .22s ease;
+  }
+  .drawer.show { transform: translateX(0); }
+  .drawer-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 3px 2px 14px;
+  }
+  .drawer-head strong { font-size: 17px; color: #1e4e79; }
+  .close {
+    width: 36px; height: 36px; border: 1px solid #d4dce5;
+    border-radius: 11px; background: #fff; color: #334155; font-size: 20px;
+  }
+  .section-label {
+    margin: 8px 4px 9px; color: #526174;
+    font-size: 13px; font-weight: 800;
+  }
+  .menu-list {
+    overflow: hidden; background: #fff; border: 1px solid #dce3ea;
+    border-radius: 13px; box-shadow: 0 1px 3px rgba(15,23,42,.06);
+  }
+  .menu-item {
+    display: flex; align-items: center; gap: 11px;
+    min-height: 58px; width: 100%; padding: 8px 11px;
+    border: 0; border-bottom: 1px solid #e5eaf0;
+    background: #fff; color: #263244; text-align: left;
+    text-decoration: none;
+  }
+  .menu-item:last-child { border-bottom: 0; }
+  .menu-icon {
+    flex: 0 0 36px; width: 36px; height: 36px;
+    display: grid; place-items: center; border-radius: 9px;
+    background: #eef3f8; border: 1px solid #e0e7ef; font-size: 18px;
+  }
+  .menu-copy { min-width: 0; flex: 1; }
+  .menu-copy b {
+    display: block; font-size: 13.5px; line-height: 1.25;
+    font-weight: 650; white-space: normal;
+  }
+  .menu-copy small {
+    display: block; margin-top: 2px; color: #7a8796;
+    font-size: 11.5px; line-height: 1.25;
+  }
+  .chev { color: #9aa6b2; font-size: 21px; }
+  .menu-item:active { background: #edf3f8; }
+  .drawer-note {
+    margin: 14px 3px 0; color: #718096; font-size: 11px;
+    line-height: 1.45; text-align: center;
+  }
+  @media (min-width: 700px) {
+    .topbar { height: 72px; grid-template-columns: 120px minmax(0,1fr) 52px; padding-inline: 18px; }
+    .viewport { inset-top: 72px; top: 72px; }
+    .scrim, .drawer { top: 72px; }
+    .heading { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <button class="back" type="button" onclick="goBack()">← Back</button>
+    <div class="heading">Mock Test Hub</div>
+    <button class="menu" type="button" aria-label="Open menu" aria-expanded="false" onclick="toggleDrawer()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+        <path d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </header>
+
+  <main class="viewport" id="viewport">
+    <iframe id="hubFrame" name="hubFrame" title="Mock Test Hub desktop view"
+      src="https://mocktesthub.vercel.app/"
+      allow="clipboard-write; fullscreen; autoplay"
+      allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </main>
+
+  <div class="scrim" id="scrim" onclick="toggleDrawer(false)"></div>
+  <aside class="drawer" id="drawer" aria-label="Mock Test Hub navigation">
+    <div class="drawer-head">
+      <strong>Mock Test Hub Menu</strong>
+      <button class="close" type="button" aria-label="Close menu" onclick="toggleDrawer(false)">×</button>
+    </div>
+
+    <div class="section-label">Core Shortcuts</div>
+    <nav class="menu-list">
+      <a class="menu-item" href="https://mocktesthub.vercel.app/mock-tests" target="hubFrame" onclick="toggleDrawer(false)">
+        <span class="menu-icon">🏅</span><span class="menu-copy"><b>Test Series</b><small>1,500+ CBT Mock Tests</small></span><span class="chev">›</span>
+      </a>
+      <a class="menu-item" href="https://mocktesthub.vercel.app/typing-test" target="hubFrame" onclick="toggleDrawer(false)">
+        <span class="menu-icon">⌨️</span><span class="menu-copy"><b>Typing Test</b><small>Govt Exam DEST Simulator</small></span><span class="chev">›</span>
+      </a>
+      <a class="menu-item" href="https://mocktesthub.vercel.app/planner" target="hubFrame" onclick="toggleDrawer(false)">
+        <span class="menu-icon">🗓️</span><span class="menu-copy"><b>Study Planner</b><small>To-do, Daily Targets & Exam Countdown</small></span><span class="chev">›</span>
+      </a>
+      <a class="menu-item" href="https://mocktesthub.vercel.app/updates" target="hubFrame" onclick="toggleDrawer(false)">
+        <span class="menu-icon">🔔</span><span class="menu-copy"><b>Notices & Announcements</b><small>Admit Cards, Results & Jobs</small></span><span class="chev">›</span>
+      </a>
+      <a class="menu-item" href="https://mocktesthub.vercel.app/locker" target="hubFrame" onclick="toggleDrawer(false)">
+        <span class="menu-icon">🔒</span><span class="menu-copy"><b>Document Locker</b><small>Secure Certificate Vault</small></span><span class="chev">›</span>
+      </a>
+      <a class="menu-item" href="https://mocktesthub.vercel.app/profile/tracked-jobs" target="hubFrame" onclick="toggleDrawer(false)">
+        <span class="menu-icon">🔖</span><span class="menu-copy"><b>Applied & Saved Exams</b><small>Tracked & Saved Exams</small></span><span class="chev">›</span>
+      </a>
+      <a class="menu-item" href="https://mocktesthub.vercel.app/profile" target="hubFrame" onclick="toggleDrawer(false)">
+        <span class="menu-icon">👤</span><span class="menu-copy"><b>Profile & Dashboard</b><small>Profile and test analytics</small></span><span class="chev">›</span>
+      </a>
+      <a class="menu-item" href="https://mocktesthub.vercel.app/" target="hubFrame" onclick="toggleDrawer(false)">
+        <span class="menu-icon">💬</span><span class="menu-copy"><b>Chat with Team</b><small>Support and assistance</small></span><span class="chev">›</span>
+      </a>
+      <a class="menu-item" href="https://t.me/MockTest_Hub" target="_blank" rel="noopener">
+        <span class="menu-icon">➤</span><span class="menu-copy"><b>Message on Telegram</b><small>24×7 Direct Support</small></span><span class="chev">↗</span>
+      </a>
+      <a class="menu-item" href="https://mocktesthub.vercel.app/referrals" target="hubFrame" onclick="toggleDrawer(false)">
+        <span class="menu-icon">♧</span><span class="menu-copy"><b>Refer & Earn</b><small>Coins & Bonus Perks</small></span><span class="chev">›</span>
+      </a>
+    </nav>
+
+    <div class="section-label" style="margin-top:18px">Alerts & Support</div>
+    <nav class="menu-list">
+      <a class="menu-item" href="https://mocktesthub.vercel.app/updates?category=admit_card" target="hubFrame" onclick="toggleDrawer(false)">
+        <span class="menu-icon">▤</span><span class="menu-copy"><b>Admit Cards & City Info</b><small>Hall tickets & Exam dates</small></span><span class="chev">›</span>
+      </a>
+      <a class="menu-item" href="https://mocktesthub.vercel.app/updates?category=result" target="hubFrame" onclick="toggleDrawer(false)">
+        <span class="menu-icon">🏆</span><span class="menu-copy"><b>Results & Merit Lists</b><small>Merit lists & Cut-offs</small></span><span class="chev">›</span>
+      </a>
+    </nav>
+    <p class="drawer-note">SSC PrepX · Your Success Partner</p>
+  </aside>
+
+<script>
+  const frame = document.getElementById("hubFrame");
+  const viewport = document.getElementById("viewport");
+  const drawer = document.getElementById("drawer");
+  const scrim = document.getElementById("scrim");
+  const menuButton = document.querySelector(".menu");
+
+  // Keep the embedded site at a 1024px desktop viewport. Its left desktop
+  // navigation (256px at this width) is presented by the three-line menu.
+  function fitDesktopView() {
+    const desktopWidth = 1024;
+    const hiddenSidebarWidth = 256;
+    const availableWidth = Math.max(280, viewport.clientWidth);
+    const availableHeight = Math.max(320, viewport.clientHeight);
+    const scale = availableWidth / (desktopWidth - hiddenSidebarWidth);
+    frame.style.width = desktopWidth + "px";
+    frame.style.height = (availableHeight / scale) + "px";
+    frame.style.transform = "scale(" + scale + ") translateX(-" + hiddenSidebarWidth + "px)";
+  }
+  function toggleDrawer(force) {
+    const open = typeof force === "boolean" ? force : !drawer.classList.contains("show");
+    drawer.classList.toggle("show", open);
+    scrim.classList.toggle("show", open);
+    menuButton.setAttribute("aria-expanded", String(open));
+    document.body.style.overflow = open ? "hidden" : "hidden";
+  }
+  function goBack() {
+    if (history.length > 1) history.back();
+    else location.href = "index.html";
+  }
+  window.addEventListener("resize", fitDesktopView);
+  window.addEventListener("orientationchange", fitDesktopView);
+  fitDesktopView();
+</script>
+</body>
+</html>
