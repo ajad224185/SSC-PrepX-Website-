@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b1220">
+<title>Mock Test Hub • SSC PrepX</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; width: 100%; height: 100%;
+    overflow: hidden; background: #0b1220;
+  }
+
+  /* Full-screen site, native mobile layout */
+  #hubFrame {
+    position: fixed; inset: 0;
+    width: 100%; height: 100%; border: 0;
+    background: #0b1220;
+  }
+
+  /* Back button placed exactly over the site's trophy logo.
+     Adjust these 3 values if it is slightly off on your phone. */
+  :root {
+    --bk-left: 16px;
+    --bk-top: 12px;
+    --bk-size: 31px;
+  }
+  .back {
+    position: fixed; z-index: 10;
+    left: var(--bk-left); top: var(--bk-top);
+    width: var(--bk-size); height: var(--bk-size);
+    padding: 0; display: grid; place-items: center;
+    border-radius: 8px; border: 1px solid #2c4262;
+    background: #16233b; color: #4f9bff;
+    -webkit-tap-highlight-color: transparent; cursor: pointer;
+  }
+  .back svg { width: 18px; height: 18px; }
+  .back:active { background: #1d2f4f; }
+</style>
+</head>
+<body>
+  <iframe id="hubFrame" name="hubFrame" title="Mock Test Hub"
+    src="https://mocktesthub.vercel.app/"
+    allow="clipboard-write; fullscreen; autoplay"
+    allowfullscreen
+    referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+  <button class="back" type="button" aria-label="Back" onclick="goBack()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 12H5M11 6l-6 6 6 6"/>
+    </svg>
+  </button>
+
+<script>
+  function goBack() {
+    if (history.length > 1) history.back();
+    else location.href = "index.html";
+  }
+</script>
+</body>
+</html>
