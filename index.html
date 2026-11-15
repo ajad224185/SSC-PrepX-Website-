@@ -1,0 +1,2440 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#0e0b1f">
+  <meta name="description" content="SSC PrepX - Your Success Partner">
+  <title>SSC PrepX 2.0</title>
+
+  <style>
+    /* Zoom in/out disabled (pinch + double-tap); scrolling still works */
+    html, body { touch-action: pan-x pan-y; }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    :root {
+      --bg: #0e0b1f;
+      --surface: #19152e;
+      --surface2: #231e3d;
+      --coral: #ff7a59;
+      --amber: #ffb347;
+      --teal: #2dd4bf;
+      --text: #f6f3ff;
+      --muted: #9b94b8;
+    }
+    body { overflow-x: hidden; background: var(--bg); color: var(--text); font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; min-height: 100vh; }
+    button, input { font: inherit; color: inherit; }
+    button { cursor: pointer; }
+    .hidden { display: none !important; }
+
+    /* ---------- Header ---------- */
+    header { position: sticky; top: 0; z-index: 5; display: flex; align-items: center; gap: 8px; padding: 12px 14px; background: rgba(14,11,31,.9); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+    .menu-btn, .bell { width: 42px; height: 42px; flex-shrink: 0; display: grid; place-items: center; border: 0; border-radius: 50%; background: var(--surface); font-size: 18px; position: relative; }
+    .bell-badge { position: absolute; top: -2px; right: -2px; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 999px; background: var(--coral); color: #fff; font-size: 10px; font-weight: 800; display: none; align-items: center; justify-content: center; line-height: 1; box-shadow: 0 2px 6px rgba(0,0,0,.4); }
+    .bell-badge.show { display: flex; }
+
+    body.light {
+      --bg: #f4f2fb; --surface: #ffffff; --surface2: #ece8f8;
+      --text: #1a1430; --muted: #6b6488;
+    }
+    body.light header { background: rgba(244,242,251,.92); }
+    body.light .dash { background: var(--bg); color: var(--text); }
+    body.light .d-banner { filter: none; }
+    body.light .bottom-nav { background: rgba(255,255,255,.95); }
+    body.light .search { background: var(--surface); color: var(--text); }
+    body.light .brow, body.light .inst, body.light .panel { background: var(--surface); box-shadow: 0 2px 12px rgba(30,20,60,.06); }
+    body.light .toast { background: #1a1430; color: #fff; }
+    .theme-toggle {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin: 12px 0 4px; padding: 10px 14px; border-radius: 16px;
+      background: var(--surface2); border: 0; color: var(--text);
+      font-size: 13px; font-weight: 700; width: 100%; justify-content: space-between;
+    }
+    .theme-toggle i { font-style: normal; }
+
+    /* Live notification popup */
+    .live-pop {
+      position: fixed; top: 18px; left: 50%; transform: translateX(-50%);
+      z-index: 2000; width: calc(100% - 28px); max-width: 420px;
+      padding: 14px 16px 14px 18px;
+      border-radius: 22px;
+      background: rgba(25, 21, 46, 0.72);
+      backdrop-filter: blur(18px) saturate(1.4);
+      -webkit-backdrop-filter: blur(18px) saturate(1.4);
+      border: 1px solid rgba(255, 179, 71, 0.35);
+      box-shadow: 0 12px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.08);
+      color: var(--text);
+      display: none; align-items: flex-start; gap: 12px;
+      animation: liveIn .28s ease;
+    }
+    .live-pop.show { display: flex; }
+    @keyframes liveIn { from { opacity: 0; transform: translate(-50%, -12px); } to { opacity: 1; transform: translate(-50%, 0); } }
+    .live-pop .lp-ic { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+    .live-pop .lp-body { flex: 1; min-width: 0; }
+    .live-pop .lp-body b { display: block; font-size: 14px; font-weight: 800; margin-bottom: 3px; }
+    .live-pop .lp-body p { font-size: 13px; color: var(--muted); line-height: 1.45; margin: 0; }
+    .live-pop .lp-x {
+      width: 32px; height: 32px; border: 0; border-radius: 50%;
+      background: rgba(255,255,255,.08); color: var(--muted);
+      font-size: 18px; flex-shrink: 0; display: grid; place-items: center;
+    }
+    .live-pop .lp-x:hover { color: #ff8f8f; background: rgba(255,100,100,.15); }
+
+    .brand { flex: 1; text-align: center; }
+    .brand h1 { font-size: 20px; font-weight: 800; letter-spacing: .3px; }
+    .brand span { background: linear-gradient(90deg, var(--coral), var(--amber)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .brand p { margin-top: 2px; font-size: 10px; letter-spacing: 1.5px; color: var(--muted); }
+
+    main { max-width: 850px; margin: auto; padding: 2px 0 88px; }
+
+    /* ---------- Greeting + search ---------- */
+    .greet { padding: 4px 16px 0; }
+    .greet small { color: var(--muted); font-size: 12px; }
+    .greet h2 { font-size: 22px; font-weight: 800; margin: 2px 0 10px; letter-spacing: -.3px; }
+    .search { display: block; width: calc(100% - 32px); margin: 0 16px 12px; padding: 12px 18px; background: var(--surface); border: 0; border-radius: 28px; outline: none; font-size: 14px; }
+    .search::placeholder { color: var(--muted); }
+    .search:focus { background: var(--surface2); }
+
+    .chips { display: flex; gap: 8px; overflow-x: auto; padding: 0 16px 4px; margin-bottom: 18px; scrollbar-width: none; }
+    .chips::-webkit-scrollbar { display: none; }
+    .chip { white-space: nowrap; padding: 9px 16px; background: transparent; color: var(--muted); border: 0; border-radius: 20px; font-size: 14px; font-weight: 600; }
+    .chip.active { background: var(--text); color: var(--bg); }
+
+    .pill { display: inline-block; padding: 6px 12px; background: var(--surface2); color: var(--amber); border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: .5px; }
+    .primary { border: 0; border-radius: 30px; padding: 13px 22px; color: #2a0f06; background: linear-gradient(90deg, var(--coral), var(--amber)); font-weight: 700; }
+
+    /* ---------- Stats ---------- */
+    .stats { display: flex; justify-content: space-around; margin: 0 16px 12px; text-align: center; }
+    .stat strong { display: block; font-size: 22px; font-weight: 800; background: linear-gradient(90deg, var(--coral), var(--amber)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .stat small { display: block; margin-top: 2px; color: var(--muted); font-size: 12px; }
+
+    .section-title { padding: 0 16px; margin-bottom: 10px; }
+    .section-title h3 { font-size: 19px; font-weight: 800; }
+    .section-title p { margin-top: 3px; color: var(--muted); font-size: 13px; }
+
+    /* ---------- Gradients (shared) ---------- */
+    .s0 { background: linear-gradient(135deg, #a855f7, #ec4899); color: #fff; }
+    .s1 { background: linear-gradient(135deg, #ff7a59, #ffb347); color: #2a0f06; }
+    .s2 { background: linear-gradient(135deg, #2dd4bf, #3b82f6); color: #fff; }
+    .s3 { background: linear-gradient(135deg, #84cc16, #14b8a6); color: #06260f; }
+    .s4 { background: linear-gradient(135deg, #f59e0b, #ef4444); color: #fff; }
+    .s5 { background: linear-gradient(135deg, #06b6d4, #8b5cf6); color: #fff; }
+    .i0 { background: linear-gradient(135deg, #3b82f6, #6366f1); color: #fff; }
+    .i1 { background: linear-gradient(135deg, #ff7a59, #ffb347); color: #2a0f06; }
+    .i2 { background: linear-gradient(135deg, #a855f7, #ec4899); color: #fff; }
+    .i3 { background: linear-gradient(135deg, #2dd4bf, #84cc16); color: #06260f; }
+    .i4 { background: linear-gradient(135deg, #f59e0b, #ef4444); color: #fff; }
+    .i5 { background: linear-gradient(135deg, #06b6d4, #8b5cf6); color: #fff; }
+    .i6 { background: linear-gradient(135deg, #ec4899, #f43f5e); color: #fff; }
+    .i7 { background: linear-gradient(135deg, #14b8a6, #0ea5e9); color: #06260f; }
+    .sx { background: linear-gradient(135deg, #3b3566, #231e3d); color: #fff; }
+
+    /* ---------- Subject rectangles (one per line) ---------- */
+    .subjects { display: flex; flex-direction: column; gap: 10px; padding: 0 16px; margin-bottom: 8px; }
+    .subject { position: relative; overflow: hidden; display: flex; align-items: center; gap: 14px; width: 100%; min-height: 72px; padding: 14px 16px; border: 0; border-radius: 18px; text-align: left; }
+    .subject::after { content: ""; position: absolute; right: -28px; bottom: -28px; width: 100px; height: 100px; border-radius: 50%; background: rgba(255,255,255,.18); }
+    .subject > span:nth-child(2) { flex: 1; position: relative; z-index: 1; }
+    .s-icon { font-size: 28px; line-height: 1; position: relative; z-index: 1; }
+    .s-name { display: block; font-size: 17px; font-weight: 800; }
+    .s-count { display: block; font-size: 12px; font-weight: 600; opacity: .9; margin-top: 2px; }
+    .s-go { font-size: 30px; line-height: 1; position: relative; z-index: 1; opacity: .85; }
+    .subject:active, .inst:active { transform: scale(.98); }
+    a.inst { text-decoration: none; color: inherit; }
+
+    /* ---------- Institute cards ---------- */
+    .inst-list { display: flex; flex-direction: column; gap: 14px; padding: 0 16px; }
+    .inst { display: flex; align-items: center; gap: 16px; width: 100%; padding: 16px; border: 0; border-radius: 26px; background: var(--surface); text-align: left; }
+    .inst-logo { width: 64px; height: 64px; flex-shrink: 0; display: grid; place-items: center; border-radius: 20px; font-size: 22px; font-weight: 900; letter-spacing: .5px; }
+    .inst-info { flex: 1; min-width: 0; }
+    .inst-name { display: block; font-size: 17px; font-weight: 800; }
+    .inst-sub { display: block; margin-top: 3px; color: var(--muted); font-size: 13px; }
+    .inst .s-go { color: var(--amber); }
+
+    /* ---------- Batch page: hero + rows ---------- */
+    .batch-hero { position: relative; overflow: hidden; margin: 6px 16px 12px; padding: 12px 16px 16px; border-radius: 22px; }
+    .batch-hero::after { content: ""; position: absolute; right: -40px; top: -40px; width: 170px; height: 170px; border-radius: 50%; background: rgba(255,255,255,.16); }
+    .batch-hero > * { position: relative; z-index: 1; }
+    .hero-back { width: 40px; height: 40px; display: grid; place-items: center; border: 0; border-radius: 50%; background: rgba(255,255,255,.28); color: inherit; font-size: 26px; line-height: 1; padding-bottom: 3px; }
+    .hero-main { display: flex; align-items: center; gap: 16px; margin-top: 18px; }
+    .hero-icon { width: 52px; height: 52px; flex-shrink: 0; display: grid; place-items: center; border-radius: 16px; background: rgba(255,255,255,.28); font-size: 28px; font-weight: 900; }
+    .hero-main h2 { font-size: 22px; font-weight: 800; letter-spacing: -.5px; line-height: 1.1; }
+    .hero-main p { margin-top: 5px; font-size: 13px; font-weight: 600; opacity: .9; line-height: 1.4; }
+    .list-label { padding: 0 16px; margin-bottom: 12px; font-size: 14px; font-weight: 700; color: var(--muted); }
+
+    .batch-list { display: flex; flex-direction: column; gap: 10px; padding: 0 16px 20px; }
+    .brow { padding: 12px 14px; border-radius: 18px; background: var(--surface); display: flex; align-items: center; gap: 10px; }
+    .brow-top { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0; padding-right: 0; }
+    .blogo { width: 44px; height: 44px; flex-shrink: 0; display: grid; place-items: center; border-radius: 14px; font-size: 15px; font-weight: 900; }
+    .blogo.tile { background: var(--surface2); font-size: 22px; }
+    .binfo { flex: 1; min-width: 0; }
+    .binfo h3 { font-size: 14px; font-weight: 700; line-height: 1.25; }
+    .binfo p { margin-top: 2px; color: var(--muted); font-size: 12px; }
+    .mode { display: inline-block; margin-top: 5px; padding: 2px 8px; border-radius: 10px; background: var(--surface2); color: var(--amber); font-size: 10px; font-weight: 700; }
+    .brow-bottom { display: none; }
+    .price { display: none; }
+    .brow-side { display: flex; flex-direction: column; align-items: center; gap: 8px; flex-shrink: 0; }
+    .brow-side .bm { position: static; width: 28px; height: 28px; font-size: 18px; }
+    .act { padding: 8px 14px; border: 0; border-radius: 18px; font-size: 12px; font-weight: 800; flex-shrink: 0; white-space: nowrap; }
+    .act.buy { background: linear-gradient(90deg, var(--coral), var(--amber)); color: #2a0f06; }
+    .act.join { background: var(--teal); color: #04221d; }
+    .act.done { background: transparent; color: var(--teal); box-shadow: inset 0 0 0 2px var(--teal); }
+    .empty { padding: 20px 4px; color: var(--muted); }
+
+    /* ---------- Pages / surfaces ---------- */
+    .page { display: none; }
+    .page.active { display: block; }
+    .page-head { padding: 8px 16px 6px; }
+    .page-head h2 { font-size: 26px; font-weight: 800; letter-spacing: -.3px; }
+    .muted { color: var(--muted); font-size: 13px; line-height: 1.6; }
+    .page-head .muted { margin: 4px 0 16px; }
+    .panel { margin: 0 16px 14px; padding: 22px; background: var(--surface); border: 0; border-radius: 26px; }
+    .panel h3 { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
+    .panel p { color: var(--muted); line-height: 1.7; font-size: 14px; }
+
+    #quizOptions { display: flex; flex-direction: column; gap: 10px; }
+    .opt { display: flex; align-items: center; gap: 14px; width: 100%; padding: 12px 14px; background: var(--surface2); border: 0; border-radius: 18px; text-align: left; font-size: 16px; font-weight: 600; }
+    .opt b { width: 32px; height: 32px; flex-shrink: 0; display: grid; place-items: center; border-radius: 50%; background: var(--bg); color: var(--amber); font-size: 13px; }
+    .opt:active { background: #2e2850; }
+    #quizResult { margin-top: 16px; font-weight: 600; line-height: 1.5; }
+
+    /* ---------- Bottom nav ---------- */
+    .bottom-nav { position: fixed; z-index: 6; left: 50%; transform: translateX(-50%); bottom: calc(14px + env(safe-area-inset-bottom)); width: calc(100% - 28px); max-width: 520px; display: flex; justify-content: space-between; align-items: center; padding: 8px; background: rgba(35,30,61,.94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-radius: 34px; }
+    .bottom-nav button { flex: 0 0 auto; display: flex; align-items: center; gap: 6px; padding: 11px 14px; border: 0; background: transparent; color: var(--muted); border-radius: 26px; }
+    .bottom-nav button span { font-size: 20px; filter: grayscale(1) opacity(.7); }
+    .bottom-nav button small { display: none; font-size: 13px; font-weight: 700; }
+    .bottom-nav button.active { background: linear-gradient(90deg, var(--coral), var(--amber)); color: #2a0f06; }
+    .bottom-nav button.active span { filter: none; }
+    .bottom-nav button.active small { display: inline; }
+
+    /* ---------- Drawer ---------- */
+    .drawer { position: fixed; inset: 0 auto 0 0; width: 280px; max-width: 85vw; z-index: 20; padding: 22px 16px; background: var(--surface); border-radius: 0 28px 28px 0; transform: translateX(-105%); transition: transform .22s; }
+    .drawer.open { transform: translateX(0); }
+    .drawer h2 { margin: 14px 8px 22px; font-size: 20px; }
+    .drawer button { width: 100%; text-align: left; padding: 14px; margin-bottom: 4px; border: 0; border-radius: 16px; background: transparent; color: var(--text); font-size: 15px; }
+    .drawer button:hover, .drawer button:active { background: var(--surface2); }
+    .scrim { position: fixed; inset: 0; background: rgba(5,3,15,.65); z-index: 19; }
+
+    #message { margin-top: 12px; color: var(--teal); font-size: 13px; line-height: 1.5; }
+    footer { text-align: center; color: #6b6488; font-size: 11px; padding: 12px 16px; display: none; }
+
+
+    /* ---------- Header avatar + toast + bookmark ---------- */
+    .hdr-av { width: 42px; height: 42px; flex-shrink: 0; display: grid; place-items: center; overflow: hidden; border: 0; border-radius: 50%; background: linear-gradient(135deg, var(--coral), var(--amber)); color: #2a0f06; font-size: 17px; font-weight: 800; padding: 0; }
+    .hdr-av img { width: 100%; height: 100%; object-fit: cover; }
+    .toast { position: fixed; top: 76px; left: 50%; transform: translateX(-50%); max-width: 88%; z-index: 99; padding: 10px 18px; border-radius: 22px; background: #f6f3ff; color: #1a1030; font-size: 14px; font-weight: 600; box-shadow: 0 6px 20px rgba(0,0,0,.5); text-align: center; }
+    .brow { position: relative; }
+    .bm { border: 0; background: none; color: var(--amber); padding: 0; line-height: 1; }
+
+    /* ---------- Student Dashboard (aurora restyle) ---------- */
+    .dash { position: fixed; inset: 0; z-index: 30; display: none; overflow-y: auto; background: var(--bg); color: var(--text); overscroll-behavior: contain; }
+    .dash.open { display: block; }
+    .dash button, .dash input, .dash textarea, .dash select { font-family: inherit; }
+    .d-banner { position: relative; width: 100%; aspect-ratio: 1993 / 789; max-height: 270px; overflow: hidden; background: #ff8a1f url("profile-banner.jpg") center / cover no-repeat; }
+    .d-back { position: absolute; z-index: 2; top: 14px; left: 14px; width: 42px; height: 42px; border: 0; border-radius: 50%; background: rgba(14,11,31,.35); color: #fff; font-size: 28px; line-height: 1; padding-bottom: 3px; }
+    .d-title { position: absolute; z-index: 2; top: 24px; left: 0; right: 0; text-align: center; font-weight: 800; font-size: 17px; color: #2a0f06; }
+    .d-wrap { max-width: 640px; margin: 0 auto; padding: 0 18px 40px; }
+
+    .d-head { display: flex; align-items: flex-end; gap: 16px; margin-top: -30px; }
+    .d-avwrap { position: relative; width: 98px; height: 98px; flex-shrink: 0; }
+    .d-av { width: 100%; height: 100%; border-radius: 50%; overflow: hidden; background: var(--surface2); border: 4px solid var(--bg); box-shadow: 0 0 0 3px var(--coral); }
+    .d-av img, .d-av svg { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .d-plus { position: absolute; right: -2px; bottom: 2px; width: 30px; height: 30px; border: 3px solid var(--bg); border-radius: 50%; background: linear-gradient(135deg, var(--coral), var(--amber)); color: #2a0f06; font-size: 15px; font-weight: 900; display: grid; place-items: center; padding: 0; }
+    .d-stats { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); padding-bottom: 4px; text-align: center; }
+    .d-stat strong { display: block; font-size: 22px; font-weight: 800; background: linear-gradient(90deg, var(--coral), var(--amber)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .d-stat small { display: block; margin-top: 1px; font-size: 12px; color: var(--muted); }
+
+    .d-name { margin-top: 14px; font-size: 22px; font-weight: 800; letter-spacing: -.3px; }
+    .d-user { margin-top: 1px; font-size: 14px; color: var(--muted); }
+    .d-user:empty { display: none; }
+    .d-pill { display: inline-block; margin-top: 10px; padding: 6px 14px; border-radius: 20px; background: var(--surface2); color: var(--amber); font-size: 13px; font-weight: 700; }
+    .d-bio { margin-top: 10px; font-size: 14.5px; line-height: 1.55; color: #d9d3ee; white-space: pre-wrap; word-break: break-word; }
+    .d-bio:empty { display: none; }
+    .d-btns { display: flex; gap: 10px; margin: 18px 0 8px; }
+    .d-b { flex: 1; padding: 12px 8px; border: 0; border-radius: 14px; background: var(--surface2); color: var(--text); font-size: 15px; font-weight: 700; }
+    .d-b.out { background: rgba(255,107,107,.14); color: #ff8f8f; }
+    .d-b.main { background: linear-gradient(90deg, var(--coral), var(--amber)); color: #2a0f06; }
+    .d-b:active, .d-row:active, .d-logout:active { transform: scale(.98); }
+
+    .d-sec { margin: 26px 4px 12px; font-size: 12px; font-weight: 800; letter-spacing: 2.5px; color: var(--muted); }
+    .d-list { display: flex; flex-direction: column; gap: 10px; }
+    .d-row { display: flex; align-items: center; gap: 14px; width: 100%; padding: 14px 16px; border: 0; border-radius: 22px; background: var(--surface); color: var(--text); text-align: left; }
+    .d-ic { width: 46px; height: 46px; flex-shrink: 0; display: grid; place-items: center; border-radius: 15px; font-size: 22px; }
+    .d-row > div { flex: 1; min-width: 0; }
+    .d-row b { display: block; font-size: 16px; }
+    .d-row small { color: var(--muted); font-size: 12.5px; }
+    .d-row i { font-style: normal; color: var(--amber); font-size: 26px; line-height: 1; }
+    .d-quote { margin-top: 22px; padding: 20px 20px 20px 22px; border-radius: 22px; background: var(--surface); border-left: 4px solid var(--amber); font-style: italic; line-height: 1.55; color: #e9e4fa; font-size: 15.5px; }
+    .d-social { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+    .d-soc { display: flex; flex-direction: column; align-items: center; gap: 8px; border: 0; background: none; color: var(--muted); font-size: 12px; font-weight: 600; }
+    .d-soc span { width: 60px; height: 60px; display: grid; place-items: center; border-radius: 50%; }
+    .d-soc svg { width: 28px; height: 28px; }
+    .d-soc:active span { transform: scale(.94); }
+    .d-logout { display: block; width: 100%; margin-top: 26px; padding: 14px; border: 0; border-radius: 22px; background: rgba(255,107,107,.12); color: #ff8f8f; font-size: 15px; font-weight: 700; }
+    .d-foot { margin-top: 26px; text-align: center; color: #6b6488; font-size: 12.5px; line-height: 1.7; }
+    .d-foot b { color: var(--amber); font-weight: 700; }
+
+    /* bottom sheet (history / bookmarks / purchases) */
+    .d-sheet { position: fixed; inset: 0; z-index: 5; display: none; }
+    .d-sheet.open { display: block; }
+    .d-sheet-bg { position: absolute; inset: 0; background: rgba(5,3,15,.7); }
+    .d-sheet-panel { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); width: 100%; max-width: 640px; max-height: 82vh; overflow-y: auto; padding: 10px 18px calc(24px + env(safe-area-inset-bottom)); border-radius: 28px 28px 0 0; background: #1b1733; }
+    .d-grab { display: block; width: 42px; height: 4px; margin: 4px auto 14px; border-radius: 2px; background: var(--surface3); }
+    .d-sheet-panel h3 { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; font-size: 19px; }
+    .d-sheet-panel h3 button { width: 36px; height: 36px; border: 0; border-radius: 50%; background: var(--surface2); color: var(--text); font-size: 15px; }
+    .d-li { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; padding: 14px 16px; border-radius: 18px; background: var(--surface2); }
+    .d-li > span { font-size: 22px; }
+    .d-li > div { flex: 1; min-width: 0; }
+    .d-li b { display: block; font-size: 15px; }
+    .d-li small { color: var(--muted); font-size: 12px; }
+    .d-li em { font-style: normal; font-weight: 800; font-size: 14px; }
+    .d-li em.g { color: var(--teal); } .d-li em.r { color: #ff8f8f; }
+    .d-li button { border: 0; background: none; font-size: 22px; color: var(--amber); }
+    .d-empty { padding: 34px 10px; text-align: center; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .d-empty b { display: block; margin-bottom: 4px; color: var(--text); font-size: 16px; }
+
+    /* Professional Edit Profile */
+    .d-edit { position: fixed; inset: 0; z-index: 7; display: none; overflow-y: auto; background: var(--bg); }
+    .d-edit.open { display: block; }
+    .e-bar {
+      position: sticky; top: 0; z-index: 2;
+      display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+      padding: 14px 18px;
+      background: rgba(14,11,31,.96); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .e-bar b { font-size: 17px; font-weight: 800; letter-spacing: -.2px; }
+    .e-cancel { justify-self: start; color: var(--muted); font-size: 15px; font-weight: 600; }
+    .e-done {
+      justify-self: end; color: #2a0f06; font-size: 14px; font-weight: 800;
+      background: linear-gradient(90deg, var(--coral), var(--amber));
+      padding: 8px 16px; border-radius: 20px;
+    }
+    .e-cancel, .e-done { border: 0; padding: 8px 4px; }
+    .e-body { max-width: 520px; margin: 0 auto; padding: 24px 18px 80px; }
+    .e-av { display: flex; flex-direction: column; align-items: center; gap: 6px; margin-bottom: 28px; }
+    .e-av .d-av {
+      width: 104px; height: 104px; border-radius: 50%;
+      box-shadow: 0 0 0 4px rgba(255,179,71,.25), 0 8px 24px rgba(0,0,0,.35);
+    }
+    .e-av-actions { display: flex; gap: 16px; margin-top: 4px; }
+    .e-link { border: 0; background: none; color: var(--amber); font-size: 14px; font-weight: 700; padding: 6px 2px; }
+    .e-link.r { color: #ff8f8f; font-size: 13px; }
+    .e-card {
+      background: var(--surface); border-radius: 20px; padding: 6px 18px 4px;
+      margin-bottom: 8px; border: 1px solid rgba(255,255,255,.04);
+    }
+    .ef { margin-bottom: 4px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.05); }
+    .e-card .ef:last-child { border-bottom: 0; }
+    .ef label { display: block; font-size: 11.5px; color: var(--muted); margin-bottom: 4px; font-weight: 600; letter-spacing: .3px; text-transform: uppercase; }
+    .ef input, .ef textarea, .ef select {
+      display: block; width: 100%; padding: 6px 0 4px;
+      border: 0; border-radius: 0; background: none;
+      color: var(--text); font-size: 16px; outline: none;
+    }
+    .ef textarea { resize: none; line-height: 1.5; min-height: 72px; }
+    .ef input:focus, .ef textarea:focus, .ef select:focus { color: #fff; }
+    .ef select { appearance: none; -webkit-appearance: none; }
+    .ef select option { background: #1b1733; }
+    .ef input::placeholder, .ef textarea::placeholder { color: #5f5880; }
+    .eu { display: flex; align-items: center; }
+    .eu span { padding: 6px 6px 4px 0; color: var(--amber); font-weight: 700; font-size: 15px; }
+    .eu input { border: 0 !important; }
+    .ee { min-height: 0; margin-top: 3px; font-size: 12px; color: #ff8f8f; }
+    .ec { margin-top: 2px; text-align: right; font-size: 11.5px; color: var(--muted); }
+    .e-sec {
+      margin: 22px 4px 10px; font-size: 12px; font-weight: 800;
+      color: var(--muted); letter-spacing: .6px; text-transform: uppercase;
+    }
+    body.light .e-bar { background: rgba(244,242,251,.96); border-bottom-color: rgba(0,0,0,.06); }
+    body.light .e-card { background: #fff; border-color: rgba(0,0,0,.05); box-shadow: 0 2px 12px rgba(30,20,60,.05); }
+    body.light .ef { border-bottom-color: rgba(0,0,0,.05); }
+
+
+    /* drawer profile card */
+    .drawer .dw-prof { display: flex; align-items: center; gap: 12px; margin: 6px 0 16px; padding: 14px; border-radius: 22px; background: linear-gradient(135deg, rgba(255,122,89,.20), rgba(255,179,71,.12)); }
+    .dw-av { width: 52px; height: 52px; flex-shrink: 0; display: grid; place-items: center; overflow: hidden; border-radius: 50%; background: linear-gradient(135deg, var(--coral), var(--amber)); color: #2a0f06; font-size: 22px; font-weight: 800; box-shadow: 0 0 0 3px rgba(14,11,31,.6); }
+    .dw-av img { width: 100%; height: 100%; object-fit: cover; }
+    .dw-info { flex: 1; min-width: 0; }
+    .dw-info b { display: block; font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .dw-info small { display: block; margin-top: 2px; color: var(--muted); font-size: 12.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .dw-prof i { font-style: normal; color: var(--amber); font-size: 24px; }
+    /* dashboard additions */
+    .d-av { cursor: pointer; }
+    .d-av:active { transform: scale(.97); }
+    .d-dob { margin-top: 10px; font-size: 14px; color: #d9d3ee; }
+    .d-dob:empty { display: none; }
+    .d-dob b { color: var(--amber); }
+    .d-quote { cursor: pointer; }
+    .d-quote .qt { transition: opacity .25s; min-height: 48px; }
+    .d-quote.fade .qt { opacity: 0; }
+    .qdots { display: flex; gap: 5px; justify-content: center; margin-top: 14px; }
+    .qdots i { width: 6px; height: 6px; border-radius: 50%; background: var(--surface3); transition: all .25s; }
+    .qdots i.on { width: 18px; border-radius: 3px; background: var(--amber); }
+    .d-act { display: flex; align-items: center; gap: 14px; width: 100%; margin-bottom: 8px; padding: 14px 12px; border: 0; border-radius: 16px; background: var(--surface2); color: var(--text); font-size: 16px; font-weight: 600; text-align: left; }
+    .d-act span { width: 28px; text-align: center; font-size: 22px; }
+    .d-act.danger { color: #ff8f8f; }
+    .d-act:active { background: var(--surface3); }
+    .dobin { display: block; width: 100%; margin: 4px 0 10px; padding: 15px 16px; border: 0; border-radius: 16px; background: var(--surface2); color: var(--text); font-size: 17px; outline: none; color-scheme: dark; }
+    .dobin:focus { box-shadow: inset 0 0 0 2px var(--amber); }
+    .d-pri { width: 100%; margin-top: 6px; padding: 14px; border: 0; border-radius: 26px; background: linear-gradient(90deg, var(--coral), var(--amber)); color: #2a0f06; font-size: 16px; font-weight: 800; }
+    .d-gho { width: 100%; margin-top: 8px; padding: 13px; border: 0; border-radius: 26px; background: var(--surface2); color: var(--text); font-size: 15px; font-weight: 700; }
+    .d-note { margin: 0 4px 10px; color: var(--muted); font-size: 13px; line-height: 1.5; }
+    .d-sheet { z-index: 9; }
+    .ef input[type="date"] { color-scheme: dark; }
+
+    @media (min-width: 700px) {
+      .batch-list { display: grid; grid-template-columns: 1fr 1fr; }
+    }
+  
+    /* Admin-managed course catalogue — matches SSC PrepX purple/orange theme */
+    .managed-course-list{display:grid;gap:16px;margin:14px 0 24px}
+    .managed-course{position:relative;background:#19152f;border:1px solid rgba(255,255,255,.045);border-radius:28px;padding:20px;box-shadow:0 8px 24px rgba(0,0,0,.12)}
+    .managed-course h3{font-size:19px;line-height:1.3;margin:0 34px 6px 0;color:#f7f4ff}
+    .managed-course .teacher{color:#aaa2c6;font-size:14px;margin:0 0 10px}
+    .managed-course .desc{color:#b9b2cf;font-size:13px;line-height:1.5;margin:0 0 14px}
+    .managed-course .mc-meta{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 14px}
+    .managed-course .mc-tag{font-size:11px;padding:6px 10px;border-radius:20px;background:#292342;color:#f6c16a}
+    .managed-course .mc-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+    .managed-course .mc-actions a,.managed-course .mc-actions button{border:0;text-decoration:none;border-radius:22px;padding:11px 16px;font-weight:750;font-size:13px}
+    .managed-course .mc-view{background:#2a2445;color:#f5f0ff}
+    .managed-course .mc-telegram{background:#253b50;color:#c7e9ff}
+    .managed-course .mc-buy{background:linear-gradient(90deg,#ff795f,#ffb33f);color:#25172a}
+    .managed-course select{background:#100d20;color:#fff;border:1px solid #3a3158;border-radius:14px;padding:10px;width:100%;margin-top:8px}
+    .managed-course .mc-price{font-size:22px;font-weight:850;color:#fff;margin-top:10px}
+    .managed-course .mc-price small{display:block;font-size:11px;font-weight:500;color:#a8a0c2}
+    .course-empty{padding:18px;border-radius:20px;background:#17132a;color:#aaa2c6}
+
+
+    /* Purchase, demo and first-visit notice overlays */
+    .sx-overlay{position:fixed;inset:0;z-index:1000;background:rgba(5,3,15,.78);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);display:none;align-items:center;justify-content:center;padding:18px;overflow-y:auto}
+    .sx-overlay.show{display:flex}
+    .sx-sheet{width:100%;max-width:560px;max-height:min(88vh,760px);overflow:auto;margin:auto;background:linear-gradient(160deg,#211b3b 0%,#19152e 58%,#151127 100%);border:1px solid rgba(255,179,71,.42);border-radius:30px;box-shadow:0 24px 80px rgba(0,0,0,.68),0 0 0 1px rgba(255,122,89,.10);color:var(--text)}
+    .sx-sheet-head{padding:22px 20px;background:linear-gradient(110deg,var(--coral),var(--amber));display:flex;align-items:center;justify-content:space-between;gap:12px;color:#2a0f06}
+    .sx-sheet-head small{display:block;letter-spacing:3px;font-size:10px;opacity:.75;margin-bottom:6px;font-weight:800}
+    .sx-sheet-head h3{font-size:21px;line-height:1.25;color:#2a0f06}
+    .sx-close{border:0;border-radius:50%;width:42px;height:42px;background:rgba(42,15,6,.22);color:#2a0f06;font-size:25px;flex-shrink:0}
+    .sx-sheet-body{padding:20px}
+    .sx-kicker{color:var(--amber);font-weight:900;letter-spacing:2px;font-size:12px;margin:4px 0 14px}
+    .sx-plans{display:grid;gap:12px}
+    .sx-plan{width:100%;display:flex;align-items:center;gap:14px;text-align:left;padding:16px;border-radius:20px;border:2px solid rgba(255,255,255,.08);background:var(--surface2);color:var(--text)}
+    .sx-plan.selected{border-color:var(--coral);background:rgba(255,122,89,.12);box-shadow:0 0 0 1px rgba(255,122,89,.35)}
+    .sx-plan-icon{width:52px;height:52px;border-radius:16px;background:var(--surface);display:grid;place-items:center;font-size:26px}
+    .sx-plan-info{flex:1}.sx-plan-info b{font-size:17px}.sx-plan-info small{display:block;color:var(--muted);margin-top:5px}
+    .sx-plan-price{font-size:24px;font-weight:950;color:var(--coral)}.sx-plan:nth-child(3) .sx-plan-price{color:var(--amber)}
+    .sx-radio{width:19px;height:19px;border:3px solid #5a5278;border-radius:50%;margin-left:4px}.sx-plan.selected .sx-radio{border-color:var(--coral);background:var(--coral);box-shadow:inset 0 0 0 3px var(--surface2)}
+    .sx-selected{margin:18px 0;padding:16px;border:1px solid rgba(255,179,71,.35);border-radius:18px;background:rgba(255,122,89,.10);display:flex;justify-content:space-between;align-items:center}
+    .sx-pay{width:100%;padding:17px;border:0;border-radius:18px;background:linear-gradient(100deg,var(--coral),var(--amber));color:#2a0f06;font-size:17px;font-weight:900;margin-top:12px}
+    .sx-secondary{width:100%;padding:14px;border:0;border-radius:16px;background:var(--surface2);color:var(--muted);font-weight:800;margin-top:10px}
+    .sx-demo-frame{width:100%;height:min(65vh,600px);border:0;background:#fff}
+    .sx-timer{padding:12px 18px;background:rgba(255,122,89,.15);color:var(--amber);font-weight:800;display:flex;justify-content:space-between}
+    .sx-notice-copy{text-align:center;font-size:16px;line-height:1.7;margin:4px 0 22px;color:#d9d2ee}.sx-notice-title{background:linear-gradient(90deg,var(--coral),var(--amber));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .sx-channel{width:100%;padding:16px;border:0;border-radius:18px;color:#25172a;font-size:16px;font-weight:900;margin:7px 0;box-shadow:0 7px 20px rgba(0,0,0,.16)}
+    .sx-channel.telegram{background:linear-gradient(100deg,var(--coral),var(--amber));color:#25172a}.sx-channel.whatsapp{background:linear-gradient(100deg,#2dd4bf,#84cc16);color:#08251f}.sx-channel.done{background:#292342;color:#d8d1ee;border:1px solid rgba(255,255,255,.07);box-shadow:none}
+    .sx-footnote{text-align:center;color:var(--muted);font-size:11px;margin-top:12px}
+    @media(max-width:420px){.sx-overlay{padding:14px}.sx-sheet{max-width:100%;border-radius:26px}.sx-sheet-body{padding:18px}.sx-channel{font-size:14px;padding:15px}}
+
+  
+    /* Home compact — less scroll */
+    #Home { min-height: auto; }
+    #Home footer { display: none; }
+    #Batches .batch-list { padding-bottom: 24px; }
+
+    /* ===== Buy bottom sheet ===== */
+    .bs-ov{position:fixed;inset:0;z-index:1100;display:none;align-items:center;justify-content:center;padding:20px;
+      background:radial-gradient(circle at 20% 25%,rgba(255,122,89,.38),transparent 45%),radial-gradient(circle at 82% 78%,rgba(139,92,246,.42),transparent 48%),rgba(8,5,22,.62);
+      backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+    .bs-ov.show{display:flex}
+    .bs{position:relative;width:100%;max-width:400px;max-height:86vh;overflow:auto;padding:26px 22px 20px;border-radius:28px;
+      background:linear-gradient(145deg,rgba(255,255,255,.18),rgba(255,255,255,.06));
+      border:1px solid rgba(255,255,255,.28);
+      backdrop-filter:blur(26px) saturate(150%);-webkit-backdrop-filter:blur(26px) saturate(150%);
+      box-shadow:0 24px 60px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.35);
+      animation:bsPop .26s cubic-bezier(.2,.9,.3,1.2)}
+    @keyframes bsPop{from{transform:scale(.88);opacity:0}to{transform:none;opacity:1}}
+    .bs-grab{display:none}
+    .bs-top{flex-direction:column;text-align:center}
+    .bs-top{display:flex;gap:10px;align-items:center;margin-bottom:12px}
+    .bs-ic{width:72px;height:72px;flex-shrink:0;border-radius:22px;box-shadow:0 10px 26px rgba(255,122,89,.4);display:grid;place-items:center;font-size:30px;background:linear-gradient(135deg,var(--coral),var(--amber))}
+    .bs-top h3{font-size:18px;line-height:1.3}
+    .bs-top p{color:var(--muted);font-size:13.5px;margin-top:3px}
+    .bs-price{display:inline-block;margin-top:8px;padding:4px 13px;border-radius:999px;background:rgba(255,179,71,.2);border:1px solid rgba(255,179,71,.35);color:var(--amber);font-weight:700;font-size:13px}
+    .bs-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;padding:14px;margin-top:10px;border-radius:16px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.1);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-weight:600;font-size:15px}
+    .bs-btn.main{border:0;background:linear-gradient(135deg,var(--coral),var(--amber));color:#1a1030;font-weight:800;box-shadow:0 10px 26px rgba(255,122,89,.35)}
+    .bs-btn:disabled{opacity:.5}
+    .bs-cancel{display:block;margin:14px auto 0;background:none;border:0;color:var(--muted);font-size:14px}
+    .bs-n{padding:13px 0;border-top:1px solid rgba(255,255,255,.08)}
+    .bs-n:first-of-type{border-top:0}
+    .bs-n b{display:block;font-size:15px}.bs-n p{color:#cfc9e6;font-size:13.5px;margin-top:3px;line-height:1.5}.bs-n small{color:var(--muted);font-size:12px}
+
+
+    /* ---------- Native, responsive Mock Test Hub ---------- */
+    #Quizzes { width: 100%; min-width: 0; }
+    #mtHub { width: 100%; min-width: 0; }
+    .mt-list { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; width: 100%; min-width: 0; padding: 0 clamp(10px, 3vw, 16px) 18px; }
+    .mt-card { width: 100%; min-width: 0; overflow-wrap: anywhere; }
+    .mt-meta { min-width: 0; }
+    .mt-meta span { overflow-wrap: anywhere; }
+    @media (min-width: 680px) { .mt-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (min-width: 1050px) { .mt-list { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+    /* ---------- Mock Test Hub (old local, unused) ---------- */
+    .mt-list { display: flex; flex-direction: column; gap: 12px; padding: 0 16px 14px; }
+    .mt-card { position: relative; background: var(--surface); border-radius: 24px; padding: 18px; }
+    body.light .mt-card { box-shadow: 0 2px 12px rgba(30,20,60,.06); }
+    .mt-card h3 { font-size: 17px; font-weight: 800; line-height: 1.35; margin: 10px 0 8px; padding-right: 34px; }
+    .mt-meta { display: flex; flex-wrap: wrap; gap: 6px 14px; color: var(--muted); font-size: 12.5px; font-weight: 600; }
+    .mt-best { margin-top: 10px; font-size: 12.5px; font-weight: 700; color: var(--teal); }
+    .mt-row { display: flex; align-items: center; gap: 10px; margin-top: 14px; }
+    .mt-row .primary { flex: 1; }
+    .mt-del { position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; border: 0; border-radius: 50%; background: var(--surface2); font-size: 15px; }
+    .mt-banner { margin: 0 16px 14px; padding: 14px 16px; border-radius: 20px; background: linear-gradient(90deg, var(--coral), var(--amber)); color: #2a0f06; font-weight: 800; font-size: 14px; line-height: 1.4; cursor: pointer; }
+    .mt-banner small { display: block; font-weight: 600; opacity: .8; margin-top: 2px; }
+    .mt-imp summary { cursor: pointer; font-weight: 800; font-size: 15px; list-style: none; }
+    .mt-imp summary::-webkit-details-marker { display: none; }
+    .mt-imp textarea, .mt-imp input { width: 100%; margin-top: 10px; padding: 12px 14px; border: 0; border-radius: 14px; background: var(--surface2); color: var(--text); font-size: 14px; }
+    .mt-imp textarea { min-height: 130px; resize: vertical; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12px; }
+    .mt-imp .mt-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .mt-imp .mt-btns { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+    .mt-ghost { border: 0; border-radius: 30px; padding: 13px 18px; background: var(--surface2); color: var(--text); font-weight: 700; }
+    #mtImpMsg { margin-top: 10px; font-weight: 600; font-size: 13px; line-height: 1.5; }
+
+    /* ---------- Exam overlay ---------- */
+    .mt-exam { position: fixed; inset: 0; width: 100vw; max-width: 100%; z-index: 1200; display: none; flex-direction: column; background: var(--bg); color: var(--text); }
+    .mt-exam.open { display: flex; }
+    .mt-top { display: flex; align-items: center; gap: 8px; padding: 10px 12px; padding-top: calc(10px + env(safe-area-inset-top)); background: var(--surface); }
+    .mt-top .t { flex: 1; min-width: 0; font-weight: 800; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .mt-ibtn { border: 0; background: var(--surface2); color: var(--text); border-radius: 12px; min-width: 38px; height: 38px; padding: 0 10px; font-weight: 800; font-size: 13px; }
+    .mt-clock { font-variant-numeric: tabular-nums; font-weight: 800; font-size: 14px; color: var(--teal); background: var(--surface2); border-radius: 12px; padding: 0 12px; height: 38px; display: grid; place-items: center; }
+    .mt-clock.low { color: #fff; background: #e5484d; }
+    .mt-secs { display: flex; gap: 8px; overflow-x: auto; padding: 10px 12px; scrollbar-width: none; }
+    .mt-secs::-webkit-scrollbar { display: none; }
+    .mt-sec { white-space: nowrap; border: 0; border-radius: 18px; padding: 8px 14px; font-size: 13px; font-weight: 700; background: var(--surface2); color: var(--muted); }
+    .mt-sec.on { background: var(--text); color: var(--bg); }
+    .mt-body { flex: 1; overflow-y: auto; padding: 6px 14px 22px; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+    .mt-wrap { max-width: 760px; margin: 0 auto; }
+    .mt-qh { display: flex; align-items: center; gap: 8px; margin: 8px 0 12px; flex-wrap: wrap; }
+    .mt-qh .sp { flex: 1; }
+    .mt-qn { font-weight: 800; font-size: 15px; }
+    .mt-mk { font-size: 12px; font-weight: 800; padding: 4px 10px; border-radius: 12px; background: var(--surface2); }
+    .mt-mk .g { color: var(--teal); } .mt-mk .r { color: var(--coral); }
+    .mt-bm { border: 0; background: transparent; font-size: 22px; line-height: 1; color: var(--amber); padding: 2px 6px; }
+    .mt-qtext { font-size: 18px; line-height: 1.55; font-weight: 600; margin-bottom: 16px; white-space: pre-line; }
+    .mt-opts { display: flex; flex-direction: column; gap: 10px; }
+    .mt-o { align-items: center; }
+    .mt-o.sel { box-shadow: inset 0 0 0 2px var(--teal); }
+    .mt-o.sel b { background: var(--teal); color: #06231f; }
+    .mt-foot { display: flex; gap: 8px; padding: 10px 12px; padding-bottom: calc(10px + env(safe-area-inset-bottom)); background: var(--surface); }
+    .mt-foot button { flex: 1; white-space: nowrap; border: 0; border-radius: 16px; padding: 13px 4px; font-weight: 800; font-size: 12.5px; background: var(--surface2); color: var(--text); }
+    .mt-foot button:disabled { opacity: .4; }
+    .mt-foot .nx { flex: 1.7; background: linear-gradient(90deg, var(--coral), var(--amber)); color: #2a0f06; }
+    .mt-foot .mk.on { background: #8b5cf6; color: #fff; }
+    .mt-sheet { position: absolute; inset: 0; display: none; align-items: flex-end; background: rgba(5,3,15,.62); }
+    .mt-sheet.open { display: flex; }
+    .mt-sheet-p { width: 100%; max-width: 760px; margin: 0 auto; max-height: 86%; overflow-y: auto; background: var(--surface); border-radius: 26px 26px 0 0; padding: 18px 16px; padding-bottom: calc(18px + env(safe-area-inset-bottom)); }
+    .mt-sheet-h { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+    .mt-sheet-h b { font-size: 17px; }
+    .mt-leg { display: flex; flex-wrap: wrap; gap: 8px 14px; font-size: 12px; color: var(--muted); font-weight: 600; margin-bottom: 14px; }
+    .mt-leg i { display: inline-block; width: 12px; height: 12px; border-radius: 4px; margin-right: 5px; vertical-align: -1px; background: var(--surface2); }
+    .mt-grid-t { font-size: 12px; font-weight: 800; color: var(--amber); letter-spacing: .4px; margin: 14px 0 8px; text-transform: uppercase; }
+    .mt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(44px, 1fr)); gap: 8px; }
+    .mt-n { height: 44px; border: 0; border-radius: 12px; font-weight: 800; font-size: 14px; background: var(--surface2); color: var(--muted); }
+    .mt-n.a { background: var(--teal); color: #06231f; }
+    .mt-n.v { background: var(--coral); color: #2a0f06; }
+    .mt-n.m { background: #8b5cf6; color: #fff; }
+    .mt-n.am { background: #8b5cf6; color: #fff; box-shadow: inset 0 0 0 3px var(--teal); }
+    .mt-n.cur { outline: 2px solid var(--text); outline-offset: 2px; }
+    .mt-leg .a { background: var(--teal); } .mt-leg .v { background: var(--coral); } .mt-leg .m { background: #8b5cf6; }
+    .mt-sum { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 14px; }
+    .mt-box { background: var(--surface2); border-radius: 16px; padding: 12px 6px; text-align: center; }
+    .mt-box strong { display: block; font-size: 18px; font-weight: 800; }
+    .mt-box small { color: var(--muted); font-size: 11px; font-weight: 600; }
+    .mt-box.g strong { color: var(--teal); } .mt-box.r strong { color: var(--coral); }
+    .mt-sub { width: 100%; margin-top: 16px; }
+    .mt-hero { background: var(--surface); border-radius: 26px; padding: 22px; margin-top: 8px; }
+    .mt-hero h2 { font-size: 22px; font-weight: 800; line-height: 1.3; margin: 12px 0 14px; }
+    .mt-h3 { font-size: 15px; font-weight: 800; margin: 20px 0 8px; }
+    .mt-ul { padding-left: 18px; color: var(--muted); font-size: 14px; line-height: 1.8; }
+    .mt-lang { display: flex; gap: 8px; }
+    .mt-lang button { border: 0; border-radius: 18px; padding: 9px 18px; font-weight: 700; font-size: 14px; background: var(--surface2); color: var(--muted); }
+    .mt-lang button.on { background: var(--text); color: var(--bg); }
+    .mt-secrow { display: flex; justify-content: space-between; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--surface2); font-size: 14px; }
+    .mt-secrow:last-child { border-bottom: 0; }
+    .mt-secrow span { color: var(--muted); font-weight: 600; text-align: right; }
+    .mt-score { text-align: center; padding: 26px 16px 20px; background: var(--surface); border-radius: 26px; margin-top: 8px; }
+    .mt-score .big { font-size: 46px; font-weight: 800; line-height: 1.1; background: linear-gradient(90deg, var(--coral), var(--amber)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .mt-score .big small { font-size: 20px; opacity: .8; }
+    .mt-score p { color: var(--muted); font-size: 14px; margin: 6px 0 0; }
+    .mt-auto { margin-top: 10px; padding: 10px 14px; border-radius: 14px; background: #e5484d; color: #fff; font-weight: 700; font-size: 13px; text-align: center; }
+    .mt-fl { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin: 14px 0 12px; }
+    .mt-fl::-webkit-scrollbar { display: none; }
+    .mt-fl button { white-space: nowrap; border: 0; border-radius: 18px; padding: 8px 14px; font-size: 13px; font-weight: 700; background: var(--surface2); color: var(--muted); }
+    .mt-fl button.on { background: var(--text); color: var(--bg); }
+    .mt-rv { background: var(--surface); border-radius: 22px; padding: 16px; margin-bottom: 12px; }
+    .mt-rv-h { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+    .mt-rv-h em { margin-left: auto; font-style: normal; font-weight: 800; font-size: 13px; }
+    .mt-rv-h em.g { color: var(--teal); } .mt-rv-h em.r { color: var(--coral); } .mt-rv-h em.m { color: var(--muted); }
+    .mt-rv .mt-qtext { font-size: 16px; margin-bottom: 12px; }
+    .mt-ro { display: flex; gap: 10px; align-items: center; padding: 10px 12px; border-radius: 14px; background: var(--surface2); margin-bottom: 8px; font-size: 14.5px; font-weight: 600; }
+    .mt-ro b { width: 26px; height: 26px; flex-shrink: 0; display: grid; place-items: center; border-radius: 50%; background: var(--bg); color: var(--amber); font-size: 12px; }
+    .mt-ro i { margin-left: auto; font-style: normal; font-size: 11px; font-weight: 800; white-space: nowrap; }
+    .mt-ro.good { box-shadow: inset 0 0 0 2px var(--teal); } .mt-ro.good i { color: var(--teal); }
+    .mt-ro.bad { box-shadow: inset 0 0 0 2px var(--coral); } .mt-ro.bad i { color: var(--coral); }
+    .mt-ex { margin-top: 12px; padding: 12px 14px; border-radius: 14px; background: var(--surface2); font-size: 13.5px; line-height: 1.65; white-space: pre-line; color: var(--text); }
+    .mt-ex b { display: block; margin-bottom: 4px; color: var(--amber); font-size: 12px; letter-spacing: .4px; }
+    .mt-empty { text-align: center; color: var(--muted); padding: 30px 10px; font-weight: 600; }
+  </style>
+</head>
+
+<body>
+  <div id="scrim" class="scrim hidden" onclick="closeMenu()"></div>
+
+  <aside id="drawer" class="drawer">
+    <button onclick="closeMenu()">✕ Close menu</button>
+    <button class="dw-prof" onclick="menuGo('#dashboard')" aria-label="Student Dashboard">
+      <span class="dw-av" id="dwAv">👤</span>
+      <span class="dw-info"><b id="dwName">Student Panel</b><small id="dwSub">Profile dekhein</small></span>
+      <i>›</i>
+    </button>
+  </aside>
+
+  <header>
+    <button class="menu-btn" onclick="go('#dashboard')" aria-label="Open profile">☰</button>
+    <div class="brand">
+      <h1>SSC <span>PrepX</span></h1>
+      <p>YOUR SUCCESS PARTNER</p>
+    </div>
+    <button class="bell" onclick="openNotifs()" aria-label="Notifications">🔔<span class="bell-badge" id="bellBadge">0</span></button>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section id="Home" class="page active">
+      <div class="greet">
+        <small>Namaste 👋</small>
+        <h2>Start your preparation</h2>
+      </div>
+      <input id="homeSearch" class="search" type="search" enterkeyhint="search" placeholder="Batch search karein, phir Enter dabayein">
+      <div class="stats" style="margin-top:6px">
+        <div class="stat"><strong id="courseCount">0</strong><small>Courses</small></div>
+        <div class="stat"><strong id="enrolledCount">0</strong><small>My Courses</small></div>
+        <div class="stat"><strong>Daily</strong><small>Practice</small></div>
+      </div>
+
+      <div class="section-title">
+        <h3>Subjects</h3>
+        <p>Apna subject chunein aur batches dekhein.</p>
+      </div>
+      <div id="subjectGrid" class="subjects"></div>
+    </section>
+
+    <!-- COURSES TAB: sirf Institutes (Home batches yahan nahi dikhte) -->
+    <section id="Courses" class="page">
+      <div class="page-head">
+        <h2>Institutes</h2>
+        <p class="muted" id="instMuted" style="display:none"></p>
+      </div>
+      <div id="instList" class="inst-list"></div>
+    </section>
+
+    <!-- BATCH LIST: subject, institute aur search ke liye -->
+    <section id="Batches" class="page">
+      <div id="batchHero" class="batch-hero"></div>
+      <div id="batchChips" class="chips type-chips"></div>
+      <p id="listLabel" class="list-label"></p>
+      <div id="batchList" class="batch-list"></div>
+    </section>
+
+    <section id="Chat" class="page">
+      <div class="page-head"><h2>Student Chat</h2>
+        <p class="muted">Group discussion — chat alag page pe khulegi.</p>
+      </div>
+      <div class="panel" style="text-align:center;padding:28px 18px">
+        <div style="font-size:42px;margin-bottom:10px">💬</div>
+        <p style="margin-bottom:16px;color:var(--muted);font-size:14px;line-height:1.5">SSC PrepX Students group chat</p>
+        <button type="button" class="primary" onclick="openChatPage()">Chat kholen →</button>
+      </div>
+    </section>
+
+    <section id="Quizzes" class="page">
+      <div class="page-head"><h2>Mock Tests</h2><p class="muted">Practice tests · Result & explanation</p></div>
+      <div id="mtHub" aria-live="polite"></div>
+    </section>
+
+    <section id="Tools" class="page">
+      <div class="page-head" style="padding-bottom:4px">
+        <h2>Study Tools</h2>
+        <p class="muted">AI-powered tools for serious SSC aspirants</p>
+      </div>
+      <div style="padding:0 12px 20px;height:calc(100vh - 170px);min-height:420px">
+        <iframe src="tools.html" title="SSC PrepX Tools" style="width:100%;height:100%;border:0;border-radius:18px;background:var(--surface);display:block" allow="clipboard-write"></iframe>
+      </div>
+    </section>
+
+
+    <footer>© <span id="year"></span> SSC PrepX 2.0 • Learn smarter, achieve more.</footer>
+  </main>
+
+
+  <!-- Buy plan selector -->
+  <div id="bsOverlay" class="bs-ov" onclick="if(event.target===this)closeBuySheet()">
+    <div class="bs" id="bsBody"></div>
+  </div>
+
+  <div id="buyOverlay" class="sx-overlay" onclick="if(event.target===this)closeBuyPlans()">
+    <div class="sx-sheet" role="dialog" aria-modal="true" aria-labelledby="buyTitle">
+      <div class="sx-sheet-head"><div><small>💳 ENROLLMENT REQUIRED</small><h3 id="buyTitle">Course name</h3></div><button class="sx-close" onclick="closeBuyPlans()">×</button></div>
+      <div class="sx-sheet-body"><div class="sx-kicker">1　VALIDITY PLAN CHUNEIN</div><div id="buyPlanOptions" class="sx-plans"></div>
+        <div class="sx-selected"><div><small style="color:#8da0bd">Selected Plan</small><b id="buySelectedName" style="display:block;margin-top:4px">3 Months</b></div><strong id="buySelectedPrice" style="font-size:28px;color:#58aaff">₹0</strong></div>
+        <div class="sx-kicker">2　PAYMENT KAREIN</div><button id="buyPayButton" class="sx-pay" onclick="continueCoursePayment()">💳 Pay securely</button><div class="sx-footnote">🔒 Payment Razorpay / configured payment link par complete karein</div>
+        <button class="sx-secondary" onclick="closeBuyPlans()">Cancel</button>
+      </div>
+    </div>
+  </div>
+  <!-- Two-minute demo viewer -->
+  <div id="demoOverlay" class="sx-overlay" onclick="if(event.target===this)closeCourseDemo()">
+    <div class="sx-sheet" role="dialog" aria-modal="true"><div class="sx-sheet-head"><div><small>▶ LIMITED PREVIEW</small><h3 id="demoTitle">Course Demo</h3></div><button class="sx-close" onclick="closeCourseDemo()">×</button></div>
+      <div class="sx-timer"><span>Demo time remaining</span><strong id="demoCountdown">02:00</strong></div><iframe id="demoFrame" class="sx-demo-frame" title="Course demo" allow="autoplay; fullscreen"></iframe>
+      <div class="sx-sheet-body"><p class="sx-footnote">Demo 2 minutes ke baad automatically band ho jayega.</p><button class="sx-secondary" onclick="closeCourseDemo()">Close Demo</button></div>
+    </div>
+  </div>
+  <!-- First-visit important notice -->
+  <div id="noticeOverlay" class="sx-overlay">
+    <div class="sx-sheet" role="dialog" aria-modal="true"><div class="sx-sheet-body" style="padding:26px">
+      <h2 class="sx-notice-title" style="text-align:center;font-size:23px;font-weight:950;margin:8px 0 18px">📢 IMPORTANT NOTICE</h2>
+      <p class="sx-notice-copy">Official updates aur announcements ke liye hamare channels join karein.<br><b style="color:var(--coral)">Payment sirf website ke secure checkout se karein.</b></p>
+      <button class="sx-channel telegram" onclick="openNoticeChannel('telegram')">🔔 JOIN OFFICIAL CHANNEL</button>
+      <button class="sx-channel whatsapp" onclick="openNoticeChannel('whatsapp')">✨ JOIN WHATSAPP CHANNEL</button>
+      <button class="sx-channel done" onclick="dismissNotice()">I HAVE ALREADY JOINED</button>
+      <p class="sx-footnote">SSC PrepX · Your Success Partner</p>
+    </div></div>
+  </div>
+
+  <nav class="bottom-nav">
+  <button class="active" data-page="Home" onclick="go('#home')">
+    <span>🏠</span><small>Home</small>
+  </button>
+
+  <button data-page="Courses" onclick="go('#courses')">
+    <span>📚</span><small>Courses</small>
+  </button>
+
+  <button data-page="Quizzes" onclick="go('#quizzes')">
+    <span>📝</span><small>Mock Test</small>
+  </button>
+
+  <button data-page="Tools" onclick="go('#tools')">
+    <span>🛠️</span><small>Tools</small>
+  </button>
+  </nav>
+
+
+  <!-- ===== STUDENT DASHBOARD ===== -->
+  <div id="Dash" class="dash" aria-hidden="true">
+    <div class="d-banner">
+      <button class="d-back" onclick="goBack()" aria-label="Back">‹</button>
+    </div>
+    <div class="d-wrap">
+      <div class="d-head">
+        <div class="d-avwrap">
+          <div class="d-av" id="dAv" onclick="go('#dashboard/photo')" role="button" aria-label="Profile photo badlein"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#241f40"/><circle cx="50" cy="38" r="17" fill="#4b4472"/><path d="M14 100c0-24 16-38 36-38s36 14 36 38z" fill="#4b4472"/></svg></div>
+          <button class="d-plus" onclick="go('#dashboard/photo')" aria-label="Photo badlein">＋</button>
+        </div>
+        <div class="d-stats">
+          <div class="d-stat"><strong id="dCourses">0</strong><small>Courses</small></div>
+          <div class="d-stat"><strong id="dTests">0</strong><small>Tests</small></div>
+          <div class="d-stat"><strong id="dTime">0m</strong><small>Time spent</small></div>
+        </div>
+      </div>
+
+      <h1 class="d-name" id="dName">Your Name</h1>
+      <div class="d-user" id="dUser"></div>
+      <span class="d-pill" id="dPill">🎯 SSC Aspirant</span>
+      <div class="d-dob" id="dDob"></div>
+      <p class="d-bio" id="dBio"></p>
+
+      <button type="button" class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+        <span id="themeLabel">🌙 Dark theme</span>
+        <i id="themeIcon">ON</i>
+      </button>
+      <div class="d-sec">LEARNING HUB</div>
+      <div class="d-list">
+        <button class="d-row" onclick="go('#dashboard/history')"><span class="d-ic s0">📝</span><div><b>Test History</b><small id="dsubTests">Abhi koi test nahi</small></div><i>›</i></button>
+        <button class="d-row" onclick="go('#dashboard/bookmarks')"><span class="d-ic s1">🔖</span><div><b>Bookmarks</b><small id="dsubBm">Koi bookmark nahi</small></div><i>›</i></button>
+        <button class="d-row" onclick="go('#dashboard/purchases')"><span class="d-ic s2">💳</span><div><b>My Purchases</b><small id="dsubPur">Koi batch nahi</small></div><i>›</i></button>
+      </div>
+
+      <div class="d-btns" style="margin-top:16px">
+        <button class="d-b main" onclick="go('#dashboard/edit')">Edit profile</button>
+      </div>
+
+      <div class="d-quote" id="dQuote" onclick="nextQuote()"><div class="qt" id="dQt"></div><div class="qdots" id="dQdots"></div></div>
+
+      <div class="d-sec">FOLLOW US</div>
+      <div class="d-social">
+        <button class="d-soc" onclick="openSocial('whatsapp')"><span style="background:linear-gradient(135deg,#2ed36a,#10893c)"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3z" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"/><path d="M9 8.3c0 3.6 3.1 6.7 6.7 6.7l1.2-1.6-2.1-1-1 .8c-1-.4-2-1.4-2.4-2.4l.8-1-1-2.1z" fill="#fff"/></svg></span>WhatsApp</button>
+        <button class="d-soc" onclick="openSocial('telegram')"><span style="background:linear-gradient(135deg,#2aabee,#1a6fa8)"><svg viewBox="0 0 24 24"><path d="M3.5 11.4 20.5 4.5l-3 15-5.4-4-2.6 3-.5-4.7 8.4-7.4-9.8 6.2z" fill="#fff"/></svg></span>Telegram</button>
+        <button class="d-soc" onclick="openSocial('instagram')"><span style="background:linear-gradient(135deg,#f9a03f,#e1306c 55%,#833ab4)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="#fff" stroke="none"/></svg></span>Instagram</button>
+        <button class="d-soc" onclick="openSocial('youtube')"><span style="background:linear-gradient(135deg,#ff2d2d,#c40000)"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4.5" fill="#fff"/><path d="M10 9.2v5.6l5-2.8z" fill="#e00000"/></svg></span>YouTube</button>
+      </div>
+
+      <div class="d-foot">©2026-27 SSC LIBRARY HUB<br><b>Developer : Ajad Prajapati</b></div>
+    </div>
+
+    <div id="dSheet" class="d-sheet">
+      <div class="d-sheet-bg" onclick="goBack()"></div>
+      <div class="d-sheet-panel"><i class="d-grab"></i><h3><span id="dsTitle"></span><button onclick="goBack()" aria-label="Close">✕</button></h3><div id="dsBody"></div></div>
+    </div>
+
+    <!-- Professional Edit Profile -->
+    <div id="dEdit" class="d-edit">
+      <div class="e-bar">
+        <button class="e-cancel" onclick="goBack()">Cancel</button>
+        <b>Edit Profile</b>
+        <button class="e-done" onclick="doneEdit()">Save</button>
+      </div>
+      <div class="e-body">
+        <div class="e-av">
+          <div class="d-av" id="eAv" onclick="document.getElementById('fPhoto').click()" role="button" aria-label="Change photo"></div>
+          <div class="e-av-actions">
+            <button class="e-link" onclick="document.getElementById('fPhoto').click()">Change Photo</button>
+            <button class="e-link r" id="ePhotoDel" onclick="removePhoto()">Remove</button>
+          </div>
+        </div>
+
+        <div class="e-card">
+          <div class="ef">
+            <label for="eName">Full Name</label>
+            <input id="eName" maxlength="30" placeholder="Enter your full name" autocomplete="name">
+            <div class="ee" id="eeName"></div>
+          </div>
+          <div class="ef">
+            <label for="eUser">Username</label>
+            <div class="eu"><span>@</span><input id="eUser" maxlength="20" autocapitalize="none" spellcheck="false" placeholder="username" autocomplete="username"></div>
+            <div class="ee" id="eeUser"></div>
+          </div>
+          <div class="ef">
+            <label for="eBio">Bio</label>
+            <textarea id="eBio" maxlength="160" rows="3" placeholder="Write a short bio about yourself…"></textarea>
+            <div class="ec" id="eCount">0/160</div>
+          </div>
+          <div class="ef">
+            <label for="eExam">Target Exam</label>
+            <select id="eExam"></select>
+          </div>
+        </div>
+
+        <div class="e-sec">Private Information</div>
+        <div class="e-card">
+          <div class="ef">
+            <label for="eMob">Mobile Number</label>
+            <div class="eu"><span>+91</span><input id="eMob" type="tel" inputmode="numeric" maxlength="10" placeholder="10-digit mobile number" autocomplete="tel"></div>
+            <div class="ee" id="eeMob"></div>
+          </div>
+          <div class="ef">
+            <label for="eEmail">Email Address</label>
+            <input id="eEmail" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com">
+            <div class="ee" id="eeEmail"></div>
+          </div>
+          <div class="ef">
+            <label for="eDob">Date of Birth</label>
+            <input id="eDob" type="date" min="1940-01-01">
+            <div class="ee" id="eeDob"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <input type="file" id="fCam" accept="image/*" capture="user" style="display:none" onchange="onPhoto(this)">
+  <input type="file" id="fPhoto" accept="image/*" style="display:none" onchange="onPhoto(this)">
+  <div id="livePop" class="live-pop" role="status"><span class="lp-ic">🔔</span><div class="lp-body"><b id="lpTitle"></b><p id="lpMsg"></p></div><button class="lp-x" onclick="closeLivePop()" aria-label="Close">×</button></div>
+  <div id="toast" class="toast" style="display:none"></div>
+  <div id="mtExam" class="mt-exam" role="dialog" aria-modal="true" aria-label="Mock test"></div>
+
+  <script>
+    // ---------- Demo data only. Baad mein Firebase se load hoga. ----------
+    const subjects = [
+      { name: "English",           icon: "📖" },
+      { name: "Maths",             icon: "📐" },
+      { name: "Reasoning",         icon: "🧠" },
+      { name: "GS",                icon: "🌍" },
+      { name: "Hindi",             icon: "📝" },
+      { name: "Current Affairs",   icon: "📰" }
+    ];
+
+    // Institute names yahaan sirf placeholder hain; real batches add karte waqt apna data lagayein.
+    // ====== YAHAN APNE HTML KE LINKS DAALEIN ======
+    // Har institute card dabane par `url` wala page khulega (same tab mein, back button chalega).
+    // Example: url: "pw.html"  ya  url: "https://yoursite.com/pw.html"
+    const institutes = []; // demo institutes hata diye — sirf admin se add
+
+    // Demo batches hata diye — ab sirf Admin Panel se add kiye courses dikhenge
+    const batches = [];
+
+    // Admin catalogue ab Firestore ("courses") se aata hai
+    function readAdminCatalog() { return window.__catalogRows || []; }
+    function applyCatalog(rows) {
+      window.__catalogRows = rows;
+      for (let k = batches.length - 1; k >= 0; k--) if (batches[k].adminManaged) batches.splice(k, 1);
+      for (let k = institutes.length - 1; k >= 0; k--) if (String(institutes[k].id).startsWith("admin_")) institutes.splice(k, 1);
+      rows.forEach((c, i) => {
+        if (!c || !c.title) return;
+        const teacher = c.teacher || c.institute || "SSC PrepX";
+        let inst = institutes.find(x => x.name.toLowerCase() === teacher.toLowerCase());
+        if (!inst) {
+          inst = { id: "admin_" + (c.id || i), name: teacher, short: teacher.split(/\s+/).map(w => w[0]).join("").slice(0,2).toUpperCase(), mode: c.mode || "Live + Recorded", url: "" };
+          institutes.push(inst);
+        }
+        const subject = c.subject || "English";
+        const sub = subjects.find(x => x.name === subject);
+        const plans = c.plans || {};
+        const firstPaid = ["m3","m6","life"].map(k => plans[k]).find(x => x && Number(x.price) > 0);
+        batches.push({
+          id: String(c.id), title: c.title, subject, inst: inst.id,
+          price: firstPaid ? Number(firstPaid.price) : 0,
+          icon: (sub && sub.icon) || "📚", teacher, description: c.description || "",
+          plans, viewUrl: c.viewUrl || "", demoUrl: c.demoUrl || "", telegramUrl: c.telegramUrl || "",
+          htmlContent: c.htmlContent || "", demoEnabled: !!c.demoEnabled, adminManaged: true
+        });
+      });
+      if (typeof renderAll === "function") renderAll();
+    }
+
+    // ---------- State ----------
+    let selectedType = "All";   // All | Free | Paid (Home aur subject page par)
+    let view = null;            // abhi khula batch page
+    const ENR_KEY = "sscprepx_enrolled";
+    const enrolled = new Set((() => { try { return JSON.parse(localStorage.getItem(ENR_KEY)) || []; } catch (e) { return []; } })());
+    const saveEnrolled = () => { try { localStorage.setItem(ENR_KEY, JSON.stringify([...enrolled])); } catch (e) {} };
+
+    const instById = id => institutes.find(i => i.id === id);
+    const instIndex = id => institutes.findIndex(i => i.id === id);
+    const matchesType = b => selectedType === "All" || (selectedType === "Free" ? b.price === 0 : b.price > 0);
+    const plural = n => n + " batch" + (n === 1 ? "" : "es");
+
+    // ---------- Rendering ----------
+    function renderTypeChips() {
+      const html = ["All", "Free", "Paid"].map(t =>
+        `<button class="chip ${t === selectedType ? "active" : ""}" onclick="filterType('${t}')">${t === "Free" ? "🎁 " : t === "Paid" ? "⭐ " : ""}${t}</button>`
+      ).join("");
+      document.querySelectorAll(".type-chips").forEach(el => el.innerHTML = html);
+    }
+
+    function renderSubjects() {
+      document.getElementById("subjectGrid").innerHTML = subjects.map((sub, i) => {
+        const n = batches.filter(b => b.subject === sub.name).length;
+        return `<button class="subject s${i % 6}" onclick="go('#subject/${encodeURIComponent(sub.name)}')">
+          <span class="s-icon">${sub.icon}</span>
+          <span><span class="s-name">${sub.name}</span><span class="s-count">${plural(n)}</span></span>
+          <span class="s-go">›</span>
+        </button>`;
+      }).join("");
+    }
+
+    function renderInstitutes() {
+      const box = document.getElementById("instList");
+      if (!box) return;
+      // Courses tab: sirf real institutes (admin_ teacher entries hide)
+      const list = institutes.filter(inst => !String(inst.id).startsWith("admin_"));
+      box.innerHTML = list.length ? list.map((inst, i) => `
+        <a class="inst" href="${inst.url || "#courses"}" onclick="openInstitute(event, '${inst.id}')">
+          <span class="inst-logo i${i % 8}">${inst.short}</span>
+          <span class="inst-info"><span class="inst-name">${inst.name}</span><span class="inst-sub">${inst.mode}</span></span>
+          <span class="s-go">↗</span>
+        </a>`).join("") : '<p class="empty" style="padding:16px">Abhi koi institute nahi. Admin se institute add karein.</p>';
+    }
+
+    function openInstitute(e, id) {
+      const inst = instById(id);
+      if (!inst.url) {
+        e.preventDefault();
+        alert(inst.name + " ka link abhi add nahi hua. Script ke `institutes` list mein url daalein.");
+      }
+      // url ho to link apne aap same tab mein khulta hai
+    }
+
+    function rowHTML(b) {
+      const inst = instById(b.inst);
+      const joined = enrolled.has(b.id);
+      const onSubject = view && view.kind !== "institute";
+      const logo = onSubject
+        ? `<span class="blogo i${(instIndex(b.inst) % 8 + 8) % 8}">${inst.short}</span>`
+        : `<span class="blogo tile">${b.icon}</span>`;
+      const line = b.teacher || (onSubject ? inst.name : b.subject);
+      const free = b.price === 0;
+      const bm = P.bookmarks.map(String).indexOf(String(b.id)) >= 0;
+      if (b.adminManaged) {
+        const p = b.plans || {};
+        const available = [
+          ["m3","3 Months"],["m6","6 Months"],["life","Lifetime"]
+        ].filter(([k]) => p[k] && (Number(p[k].price) > 0 || p[k].link));
+        const st = accessState(b.id);
+        let btn;
+        if (st === "active") {
+          btn = `<button class="act join" onclick="openCourse('${String(b.id).replace(/'/g,"")}')">Open ▶</button>`;
+        } else if (available.length) {
+          btn = `<button class="act buy" onclick="openBuySheet('${String(b.id).replace(/'/g,"")}')">Buy now</button>`;
+        } else {
+          btn = `<button class="act join" onclick="joinBatch('${String(b.id).replace(/'/g,"")}')">Join free</button>`;
+        }
+        return `<article class="brow">
+          <div class="brow-top">${logo}
+            <div class="binfo"><h3>${escH(b.title)}</h3><p>${escH(line)}</p><span class="mode">${escH(inst.mode || b.mode || "Course")}</span></div>
+          </div>
+          <div class="brow-side">
+            <button class="bm" onclick="toggleBm('${String(b.id).replace(/'/g,"")}')" aria-label="Bookmark">${bm ? "★" : "☆"}</button>
+            ${btn}
+          </div>
+        </article>`;
+      }
+      const btn = joined ? `<button class="act done" onclick="joinBatch(${b.id})">Joined ✓</button>`
+                : free   ? `<button class="act join" onclick="joinBatch(${b.id})">Join free</button>`
+                :          `<button class="act buy" onclick="openBuySheet(${b.id})">Buy now</button>`;
+      return `<article class="brow">
+        <div class="brow-top">${logo}
+          <div class="binfo"><h3>${escH(b.title)}</h3><p>${escH(line)}</p><span class="mode">${inst.mode}</span></div>
+        </div>
+        <div class="brow-side">
+          <button class="bm" onclick="toggleBm(${b.id})" aria-label="Bookmark">${bm ? "★" : "☆"}</button>
+          ${btn}
+        </div>
+      </article>`;
+    }
+
+    function renderManagedCourses() {
+      const box = document.getElementById("managedCourseList");
+      if (!box) return; // Courses tab se managed list hata diya — Home subject batches hi dikhenge
+      const rows = readAdminCatalog();
+      box.innerHTML = rows.length ? rows.map(c => {
+        const plans = c.plans || {};
+        const valid = [["m3","3 Months"],["m6","6 Months"],["life","Lifetime"]].filter(([k]) => plans[k]);
+        const first = valid[0] && plans[valid[0][0]];
+        const opts = valid.map(([k,n]) => `<option value="${k}">${n} · ₹${Number(plans[k].price || 0)}</option>`).join("");
+        return `<article class="managed-course">
+          <h3>${escH(c.title)}</h3><p class="teacher">${escH(c.teacher || "SSC PrepX")} · ${escH(c.subject || "Course")}</p>
+          ${c.description ? `<p class="desc">${escH(c.description)}</p>` : ""}
+          <div class="mc-meta"><span class="mc-tag">${valid.length ? "Paid Course" : "Free Course"}</span>${c.mode ? `<span class="mc-tag">${escH(c.mode)}</span>` : ""}</div>
+          <div class="mc-actions">
+            ${c.demoUrl || c.viewUrl || c.htmlContent ? `<button class="mc-view" onclick="watchCourseDemo('${String(c.id).replace(/'/g,"")}')">▶ Watch Demo</button>` : ""}
+            ${c.telegramUrl ? `<a class="mc-telegram" href="${escH(c.telegramUrl)}" target="_blank" rel="noopener">Telegram</a>` : ""}
+            ${accessBtn(c.id, valid.length)}
+          </div>
+        </article>`;
+      }).join("") : '<p class="course-empty">Abhi Admin ne koi naya course add nahi kiya hai.</p>';
+    }
+
+    let activeBuyCourse = null, activeBuyPlan = "m3", demoInterval = null, demoEndsAt = 0;
+    const planMeta = {m3:{name:"3 Months",days:"90 din access",icon:"🗓️"},m6:{name:"6 Months",days:"180 din access",icon:"📅"},life:{name:"Lifetime",days:"Hamesha ke liye ∞",icon:"🏆"}};
+    function buyManagedCourse(id) {
+      const c = readAdminCatalog().find(x => String(x.id) === String(id));
+      if (!c) return alert("Course nahi mila.");
+      const plans = c.plans || {};
+      const keys = ["m3","m6","life"].filter(k => plans[k] && (plans[k].price !== "" || plans[k].link));
+      if (!keys.length) return alert("Is course ke payment plans Admin Panel mein add nahi hain.");
+      activeBuyCourse = c; activeBuyPlan = keys[0];
+      document.getElementById("buyTitle").textContent = c.title;
+      document.getElementById("buyPlanOptions").innerHTML = keys.map(k => {
+        const p=plans[k], m=planMeta[k];
+        return `<button class="sx-plan ${k===activeBuyPlan?'selected':''}" onclick="selectBuyPlan('${k}')"><span class="sx-plan-icon">${m.icon}</span><span class="sx-plan-info"><b>${m.name}</b><small>${m.days}</small></span><strong class="sx-plan-price">₹${Number(p.price||0)}</strong><span class="sx-radio"></span></button>`;
+      }).join("");
+      updateBuySelection(); document.getElementById("buyOverlay").classList.add("show"); document.body.style.overflow="hidden";
+    }
+    function selectBuyPlan(k){activeBuyPlan=k;document.querySelectorAll(".sx-plan").forEach((el,i)=>el.classList.toggle("selected",el.querySelector(".sx-plan-info b")?.textContent===planMeta[k].name));updateBuySelection()}
+    function updateBuySelection(){
+      if(!activeBuyCourse)return;
+      const p=(activeBuyCourse.plans||{})[activeBuyPlan]||{};
+      const price=Number(p.price||0);
+      const hasLink=!!(p.link&&String(p.link).trim());
+      document.getElementById("buySelectedName").textContent=planMeta[activeBuyPlan].name;
+      document.getElementById("buySelectedPrice").textContent="₹"+price;
+      const canPay=price>0||hasLink;
+      document.getElementById("buyPayButton").textContent=canPay?"💳 Pay via Razorpay":"Price / link add karein (Admin)";
+      document.getElementById("buyPayButton").disabled=!canPay;
+    }
+    let rzpBusy = false;
+    function loadRzp() {
+      return new Promise((ok, no) => {
+        if (window.Razorpay) return ok();
+        const sc = document.createElement("script"); sc.src = "https://checkout.razorpay.com/v1/checkout.js";
+        sc.onload = ok; sc.onerror = () => no(new Error("Payment gateway load nahi hua. Internet check karein."));
+        document.head.appendChild(sc);
+      });
+    }
+    async function continueCoursePayment() {
+      if (!activeBuyCourse || rzpBusy) return;
+      const course = activeBuyCourse, plan = activeBuyPlan;
+      const planObj = (course.plans || {})[plan] || {};
+      const payLink = safeCheckoutUrl(planObj.link || "");
+      rzpBusy = true;
+      try {
+        const token = await window.__getToken();
+        if (!token) throw new Error("Secure payment ke liye account verification zaroori hai. Public pages aur mock practice bina login ke chalti hain.");
+        // 1) Try Razorpay Order API (Vercel /api/create-order)
+        try {
+          await loadRzp();
+          const r = await fetch("/api/create-order", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", Authorization: "Bearer " + token },
+            body: JSON.stringify({ courseId: String(course.id), plan })
+          });
+          const o = await r.json();
+          if (!r.ok) throw new Error(o.error || "Order nahi ban paya");
+          closeBuyPlans();
+          new Razorpay({
+            key: o.keyId, amount: o.amount, currency: "INR", order_id: o.orderId,
+            name: "SSC PrepX", description: (course.title || "") + " · " + (planMeta[plan] && planMeta[plan].name || plan),
+            prefill: { email: o.email || "" }, theme: { color: "#ff7a59" },
+            handler: async (resp) => {
+              try {
+                const t = await window.__getToken();
+                const v = await fetch("/api/verify-payment", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json", Authorization: "Bearer " + t },
+                  body: JSON.stringify(resp)
+                });
+                const j = await v.json();
+                if (!v.ok) throw new Error(j.error || "verify failed");
+                await window.__reloadEnr();
+                alert("Payment successful! Ab aap batch khol sakte hain.");
+              } catch (e) {
+                alert("Payment ho gaya, par confirm hone mein time lag raha hai. Kuch der baad page refresh karein.");
+              }
+            }
+          }).open();
+          return;
+        } catch (apiErr) {
+          // 2) Fallback: Admin ne payment link diya ho to open karo
+          if (payLink) {
+            closeBuyPlans();
+            window.open(payLink, "_blank", "noopener");
+            alert("Payment page khul gaya. Payment ke baad admin access confirm karega / page refresh karein.");
+            return;
+          }
+          throw apiErr;
+        }
+      } catch (e) {
+        alert((e && e.message) || "Payment shuru nahi ho paya. Razorpay API keys / Vercel env check karein.");
+      } finally {
+        rzpBusy = false;
+      }
+    }
+    function safeCheckoutUrl(v){try{const u=new URL(v);return u.protocol==="https:"?u.href:""}catch(e){return ""}}
+    function closeBuyPlans(){document.getElementById("buyOverlay").classList.remove("show");document.body.style.overflow="";activeBuyCourse=null;}
+    function watchCourseDemo(id){
+      const c=readAdminCatalog().find(x=>String(x.id)===String(id));if(!c)return alert("Course nahi mila.");
+      if(!c.demoEnabled)return alert("Is batch ka demo abhi available nahi hai.");
+      const frame=document.getElementById("demoFrame");
+      const html = (c.htmlContent || "").trim();
+      const demoUrl = (c.demoUrl || "").trim();
+      const viewUrl = (c.viewUrl || "").trim();
+      if(html){ frame.removeAttribute("src"); frame.srcdoc = html; }
+      else {
+        const u = safeCheckoutUrl(demoUrl || viewUrl);
+        if(!u) return alert("Demo content nahi mila. HTML ya View URL add karein.");
+        frame.srcdoc = ""; frame.src = u;
+      }
+      document.getElementById("demoTitle").textContent=c.title+" · Demo";
+      document.getElementById("demoOverlay").classList.add("show");document.body.style.overflow="hidden";
+      demoEndsAt=Date.now()+2*60*1000;updateDemoClock();clearInterval(demoInterval);demoInterval=setInterval(updateDemoClock,1000);
+    }
+    function updateDemoClock(){if(window.__fullMode){document.getElementById("demoCountdown").textContent="";return;}const left=Math.max(0,Math.ceil((demoEndsAt-Date.now())/1000));document.getElementById("demoCountdown").textContent=String(Math.floor(left/60)).padStart(2,"0")+":"+String(left%60).padStart(2,"0");if(left<=0){closeCourseDemo();alert("2 minute demo time complete ho gaya.");}}
+    function closeCourseDemo(){window.__fullMode=false;clearInterval(demoInterval);demoInterval=null;const f=document.getElementById("demoFrame");f.src="about:blank";f.srcdoc="";document.getElementById("demoOverlay").classList.remove("show");document.body.style.overflow="";}
+    // Keep old function name for any existing page buttons, but route it to the timed demo.
+    function openManagedCourse(id){watchCourseDemo(id);}
+    // Configure these two links with the actual official channel URLs before publishing.
+    const OFFICIAL_TELEGRAM_URL = "";
+    const OFFICIAL_WHATSAPP_URL = "";
+    function openNoticeChannel(which){const u=which==="telegram"?OFFICIAL_TELEGRAM_URL:OFFICIAL_WHATSAPP_URL;if(!u){alert("Is button ka official channel URL HTML ke OFFICIAL_..._URL setting mein add karein.");return;}const safe=safeCheckoutUrl(u);if(safe)window.open(safe,"_blank","noopener");else alert("Channel link valid HTTPS URL nahi hai.");}
+    function dismissNotice(){document.getElementById("noticeOverlay").classList.remove("show");document.body.style.overflow="";try{sessionStorage.setItem("sscprepx_notice_seen","1");}catch(e){}}
+    function showFirstVisitNotice(){let seen=false;try{seen=sessionStorage.getItem("sscprepx_notice_seen")==="1";}catch(e){}if(!seen){document.getElementById("noticeOverlay").classList.add("show");document.body.style.overflow="hidden";}}
+
+    function renderBatches() {
+      if (!view) return;
+      const list = batches.filter(view.filter).filter(b => !view.chips || matchesType(b));
+      document.getElementById("batchHero").className = "batch-hero " + view.grad;
+      document.getElementById("batchHero").innerHTML = `
+        <button class="hero-back" onclick="goBack()" aria-label="Back">‹</button>
+        <div class="hero-main">
+          <div class="hero-icon">${view.icon}</div>
+          <div><h2>${view.title}</h2><p>${plural(list.length)} · ${view.hint}</p></div>
+        </div>`;
+      document.getElementById("batchChips").classList.toggle("hidden", !view.chips);
+      document.getElementById("listLabel").textContent = view.label;
+      document.getElementById("batchList").innerHTML =
+        list.length ? list.map(rowHTML).join("") : '<p class="empty">Is filter mein koi batch nahi mila. Upar "All" chunein.</p>';
+    }
+
+    function renderAll() {
+      renderTypeChips();
+      renderSubjects();
+      renderInstitutes();
+      renderManagedCourses();
+      renderBatches();
+      document.getElementById("courseCount").textContent = batches.length + "+";
+      document.getElementById("enrolledCount").textContent = enrolled.size;
+      renderHeaderAv();
+    }
+
+    // ---------- Student Dashboard ----------
+    const PROFILE_KEY = "sscprepx_profile", SESSION_KEY = "sscprepx_session";
+    const SOCIAL = { whatsapp: "", telegram: "", instagram: "", youtube: "" };   // yahan apne links daalein
+    const EXAMS = ["SSC CGL", "SSC CHSL", "SSC MTS", "SSC GD", "SSC CPO", "SSC Stenographer", "Railway", "Banking"];
+    let QUOTES = [
+      "Consistency beats talent when talent doesn't work hard.",
+      "Roz thoda padho, ek din bahut aage nikal jaoge.",
+      "Mock test mein galti karo, exam mein sudhaar karo.",
+      "Jo aaj mehnat karta hai, kal uska naam hota hai.",
+      "Chhote steps roz — bada result ek din.",
+      "Selection unka hota hai jo thakne par bhi padhna nahi chhodte.",
+      "Aaj ka revision, kal ka confidence.",
+      "Sapna wahi sachha, jiske liye roz kaam kiya jaye.",
+      "Har galat answer ek naya sabak hai, haar nahi.",
+      "Time kam hai, par focus ho to kaafi hai."
+    ];
+    const AVATAR_SVG = '<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#241f40"/><circle cx="50" cy="38" r="17" fill="#4b4472"/><path d="M14 100c0-24 16-38 36-38s36 14 36 38z" fill="#4b4472"/></svg>';
+    const $ = id => document.getElementById(id);
+    const escH = t => String(t == null ? "" : t).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    const userOk = v => /^[a-z][a-z0-9_]{2,19}$/.test(v);
+    const emailOk = v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+
+    function loadProfile() {
+      const d = { name: "", username: "", bio: "", exam: "", mobile: "", email: "", dob: "", photo: "", tests: 0, scoreSum: 0, history: [], bookmarks: [], timeSpent: 0 };
+      try { return Object.assign(d, JSON.parse(localStorage.getItem(PROFILE_KEY)) || {}); } catch (e) { return d; }
+    }
+    let P = loadProfile();
+    if (!Array.isArray(P.history)) P.history = [];
+    if (!Array.isArray(P.bookmarks)) P.bookmarks = [];
+    function saveP() { try { localStorage.setItem(PROFILE_KEY, JSON.stringify(P)); } catch (e) { toast("Storage full hai, photo chhoti rakhein"); } }
+    function getSession() { try { return JSON.parse(localStorage.getItem(SESSION_KEY)); } catch (e) { return null; } }
+    function toast(msg) {
+      const el = $("toast"); el.textContent = msg; el.style.display = "block";
+      clearTimeout(toast.t); toast.t = setTimeout(() => el.style.display = "none", 2200);
+    }
+    const dispName = () => { const s = getSession(); return P.name || (s && s.name) || ""; };
+    const dispUser = () => { const s = getSession(); return P.username || (s && s.username) || ""; };
+
+    function renderHeaderAv() {
+      const av = $("dwAv"); if (!av) return;
+      const nm = dispName(), un = dispUser();
+      av.innerHTML = P.photo ? '<img src="' + P.photo + '" alt="">' : (nm ? escH(nm.trim()[0].toUpperCase()) : "👤");
+      $("dwName").textContent = nm || "Student Panel";
+      $("dwSub").textContent = un ? "@" + un : (P.exam || "Profile dekhein");
+    }
+
+    /* ----- Date of birth ----- */
+    const pad2 = n => String(n).padStart(2, "0");
+    const todayStr = () => { const t = new Date(); return t.getFullYear() + "-" + pad2(t.getMonth() + 1) + "-" + pad2(t.getDate()); };
+    const dobDate = v => new Date(v + "T00:00:00");
+    const dobOk = v => { if (!v) return true; const d = dobDate(v); return !isNaN(d) && v <= todayStr() && d.getFullYear() >= 1940; };
+    const fmtDob = v => dobDate(v).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" });
+    function ageOf(v) {
+      const d = dobDate(v), n = new Date(); let a = n.getFullYear() - d.getFullYear();
+      if (n.getMonth() < d.getMonth() || (n.getMonth() === d.getMonth() && n.getDate() < d.getDate())) a--;
+      return a;
+    }
+    const isBirthday = v => { const d = dobDate(v), n = new Date(); return d.getDate() === n.getDate() && d.getMonth() === n.getMonth(); };
+    function renderDob() {
+      const el = $("dDob");
+      if (P.dob && dobOk(P.dob)) {
+        el.innerHTML = "🎂 <b>" + fmtDob(P.dob) + "</b> · " + ageOf(P.dob) + " saal" + (isBirthday(P.dob) ? " · 🎉 Happy Birthday!" : "");
+      } else { el.innerHTML = ""; }
+    }
+    function saveDob() {
+      const v = $("dobIn").value;
+      if (!v) { toast("Date chunein"); return; }
+      if (!dobOk(v)) { toast("Sahi date chunein (aaj se pehle ki)"); return; }
+      P.dob = v; saveP(); renderDash(); toast("Date of birth save ho gayi ✓"); goBack();
+    }
+    function clearDob() { P.dob = ""; saveP(); renderDash(); toast("Date of birth hata di"); goBack(); }
+
+    /* ----- Quotes: har 40 second mein auto change ----- */
+    let qIdx = 0, qTimer = null;
+    function showQuote(i, fade) {
+      qIdx = (i + QUOTES.length) % QUOTES.length;
+      const card = $("dQuote"), paint = () => {
+        $("dQt").textContent = "✨ " + QUOTES[qIdx];
+        $("dQdots").innerHTML = QUOTES.map((q, k) => "<i" + (k === qIdx ? ' class="on"' : "") + "></i>").join("");
+        card.classList.remove("fade");
+      };
+      if (fade) { card.classList.add("fade"); setTimeout(paint, 250); } else paint();
+    }
+    function startQuotes() { stopQuotes(); qTimer = setInterval(() => showQuote(qIdx + 1, true), 40000); }
+    function stopQuotes() { if (qTimer) { clearInterval(qTimer); qTimer = null; } }
+    function nextQuote() { showQuote(qIdx + 1, true); startQuotes(); }
+
+    function countPurchases() {
+      const enr = window.__enr || {};
+      let n = 0;
+      Object.keys(enr).forEach(k => {
+        const e = enr[k];
+        if (!e) return;
+        if (e.expiresAt == null || e.expiresAt > Date.now()) n++;
+      });
+      // free joins + paid
+      return Math.max(n, enrolled.size);
+    }
+    function fmtTimeSpent() {
+      const sec = Math.floor((P.timeSpent || 0) / 1000);
+      if (sec < 60) return sec + "s";
+      const m = Math.floor(sec / 60);
+      if (m < 60) return m + "m";
+      const h = Math.floor(m / 60), rm = m % 60;
+      return h + "h " + rm + "m";
+    }
+    function renderDash() {
+      const s = getSession(), un = dispUser();
+      const purN = countPurchases();
+      $("dName").textContent = dispName() || "Your Name";
+      $("dUser").textContent = un ? "@" + un : (s && (s.email || s.phone)) || "";
+      $("dPill").textContent = "🎯 " + (P.exam || "SSC Aspirant");
+      $("dBio").textContent = P.bio || "";
+      $("dCourses").textContent = purN;
+      const homeEnr = document.getElementById("enrolledCount");
+      if (homeEnr) homeEnr.textContent = purN;
+      $("dTests").textContent = P.tests;
+      const dt = $("dTime"); if (dt) dt.textContent = fmtTimeSpent();
+      $("dsubTests").textContent = P.history.length ? P.history.length + " test" + (P.history.length === 1 ? "" : "s") + " diye" : "Abhi koi test nahi";
+      $("dsubBm").textContent = P.bookmarks.length ? P.bookmarks.length + " saved" : "Koi bookmark nahi";
+      $("dsubPur").textContent = purN ? purN + " batch" + (purN === 1 ? "" : "es") : "Koi batch nahi";
+      $("dAv").innerHTML = P.photo ? '<img src="' + P.photo + '" alt="Profile">' : AVATAR_SVG;
+      renderDob(); showQuote(qIdx, false);
+      renderHeaderAv();
+      updateBellBadge();
+    }
+
+    let curSheet = "";
+    function openDash(arg) {
+      if (!$("Dash").classList.contains("open")) { qIdx = Math.floor(Date.now() / 40000) % QUOTES.length; startQuotes(); if (P.dob && dobOk(P.dob) && isBirthday(P.dob)) setTimeout(() => toast("🎉 Happy Birthday, " + (dispName() || "Student") + "!"), 400); }
+      renderDash();
+      $("Dash").classList.add("open"); $("Dash").setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      if (arg === "edit") { $("dSheet").classList.remove("open"); showEdit(true); }
+      else { showEdit(false); showSheet(arg); }
+    }
+    function closeDash() {
+      $("Dash").classList.remove("open"); $("Dash").setAttribute("aria-hidden", "true");
+      document.body.style.overflow = ""; $("dSheet").classList.remove("open"); $("dEdit").classList.remove("open"); stopQuotes(); curSheet = "";
+    }
+
+    /* ----- Edit profile (Instagram style) ----- */
+    function setErr(id, msg) { $("ee" + id).textContent = msg || ""; return !msg; }
+    function showEdit(on) {
+      const el = $("dEdit");
+      if (!on) { el.classList.remove("open"); return; }
+      if (!el.classList.contains("open")) fillEdit();
+      el.classList.add("open"); el.scrollTop = 0;
+    }
+    function fillEdit() {
+      const s = getSession() || {};
+      $("eName").value = P.name || s.name || "";
+      $("eUser").value = P.username || s.username || "";
+      $("eBio").value = P.bio || "";
+      $("eExam").innerHTML = '<option value="">Target exam chunein</option>' + EXAMS.map(x => "<option" + (x === P.exam ? " selected" : "") + ">" + x + "</option>").join("");
+      $("eMob").value = P.mobile || (s.phone ? String(s.phone).replace(/\D/g, "").slice(-10) : "");
+      $("eEmail").value = P.email || s.email || "";
+      $("eDob").max = todayStr(); $("eDob").value = P.dob || "";
+      ["Name", "User", "Mob", "Email", "Dob"].forEach(k => setErr(k, ""));
+      $("eCount").textContent = $("eBio").value.length + "/160";
+      refreshEditAv();
+    }
+    function refreshEditAv() {
+      $("eAv").innerHTML = P.photo ? '<img src="' + P.photo + '" alt="Profile">' : AVATAR_SVG;
+      $("ePhotoDel").classList.toggle("hidden", !P.photo);
+    }
+    function doneEdit() {
+      const name = $("eName").value.trim(), un = $("eUser").value.trim(), bio = $("eBio").value.trim(),
+            exam = $("eExam").value, mob = $("eMob").value.trim(), email = $("eEmail").value.trim(), dob = $("eDob").value;
+      let ok = true;
+      ok = setErr("Name", name && name.length < 2 ? "Naam kam se kam 2 letters ka ho" : "") && ok;
+      ok = setErr("User", un && !userOk(un) ? "3-20 characters: a-z, 0-9, _ (pehla letter hona chahiye)" : "") && ok;
+      ok = setErr("Mob", mob && !/^\d{10}$/.test(mob) ? "Sirf 10 digit ka mobile number daalein" : "") && ok;
+      ok = setErr("Email", email && !emailOk(email) ? "Sahi email daalein" : "") && ok;
+      ok = setErr("Dob", !dobOk(dob) ? "Sahi date chunein (aaj se pehle ki)" : "") && ok;
+      if (!ok) { toast("Pehle galtiyan theek karein"); return; }
+      Object.assign(P, { name, username: un, bio, exam, mobile: mob, email, dob });
+      saveP();
+      const s = getSession();                                    // login session mein bhi naam/username sync
+      if (s) { if (name) s.name = name; if (un) s.username = un; if (email) s.email = email; try { localStorage.setItem(SESSION_KEY, JSON.stringify(s)); } catch (e) {} }
+      renderDash(); toast("Profile save ho gaya ✓"); goBack();
+    }
+    function removePhoto() { P.photo = ""; saveP(); refreshEditAv(); renderDash(); toast("Photo hata di"); if (curSheet === "photo" && $("dSheet").classList.contains("open")) goBack(); }
+    function onPhoto(inp) {
+      const f = inp.files && inp.files[0]; inp.value = "";
+      if (!f) return;
+      const fr = new FileReader();
+      fr.onload = () => {
+        const img = new Image();
+        img.onload = () => {
+          const n = 320, c = document.createElement("canvas"); c.width = c.height = n;
+          const m = Math.min(img.width, img.height), sx = (img.width - m) / 2, sy = (img.height - m) / 2;
+          c.getContext("2d").drawImage(img, sx, sy, m, m, 0, 0, n, n);
+          P.photo = c.toDataURL("image/jpeg", 0.82); saveP(); renderDash(); refreshEditAv(); toast("Photo badal gayi ✓");
+          if (curSheet === "photo" && $("dSheet").classList.contains("open")) goBack();
+        };
+        img.onerror = () => toast("Image padh nahi paye");
+        img.src = fr.result;
+      };
+      fr.readAsDataURL(f);
+    }
+    $("eUser").addEventListener("input", e => { e.target.value = e.target.value.toLowerCase().replace(/[^a-z0-9_]/g, "").slice(0, 20); });
+    $("eBio").addEventListener("input", e => { $("eCount").textContent = e.target.value.length + "/160"; });
+    $("eMob").addEventListener("input", e => { e.target.value = e.target.value.replace(/\D/g, "").slice(0, 10); });
+    $("eMob").addEventListener("paste", e => {
+      e.preventDefault();
+      let d = ((e.clipboardData || window.clipboardData).getData("text") || "").replace(/\D/g, "");
+      if (d.length > 10) d = d.slice(-10);
+      e.target.value = d;
+    });
+
+    function openSocial(k) {
+      if (!SOCIAL[k]) { toast("Is link ko script mein SOCIAL list mein daalein"); return; }
+      window.open(SOCIAL[k], "_blank", "noopener");
+    }
+
+    function toggleBm(id) {
+      id = String(id);
+      const i = P.bookmarks.map(String).indexOf(id);
+      if (i >= 0) P.bookmarks.splice(i, 1); else P.bookmarks.push(id);
+      saveP(); renderAll(); renderDash();
+      if ($("dSheet").classList.contains("open")) showSheet("bookmarks");
+      else toast(i >= 0 ? "Bookmark hata diya" : "Bookmark ho gaya 🔖");
+    }
+    function openBookmarkBatch(id) {
+      playTap();
+      showSheet(""); // close sheet
+      const b = findBatch(id);
+      if (!b) return toast("Batch nahi mila");
+      const st = accessState(id);
+      if (st === "active") openCourse(id);
+      else openBuySheet(id);
+    }
+
+    function showSheet(name) {
+      const sh = $("dSheet");
+      if (!name) { sh.classList.remove("open"); curSheet = ""; return; }
+      const empty = (t, s) => '<div class="d-empty"><b>' + t + "</b>" + s + "</div>";
+      let title = "", body = "";
+      if (name === "history") {
+        title = "📝 Test History";
+        body = P.history.length ? P.history.map(h => '<div class="d-li"><span>' + (h.ok ? "✅" : "❌") + "</span><div><b>" + escH(h.q) + "</b><small>" +
+          new Date(h.t).toLocaleString("en-IN", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }) + '</small></div><em class="' + (h.ok ? "g" : "r") + '">' + ((h.pct != null ? h.pct : (h.ok ? 100 : 0)) + "%") + "</em></div>").join("")
+          : empty("Abhi koi test nahi diya", "Quizzes tab mein jaakar mock test dein.");
+      } else if (name === "bookmarks") {
+        title = "🔖 Bookmarks";
+        const l = batches.filter(b => P.bookmarks.map(String).indexOf(String(b.id)) >= 0);
+        body = l.length ? l.map(b => {
+          const sid = String(b.id).replace(/'/g, "");
+          return '<div class="d-li" style="cursor:pointer" onclick="openBookmarkBatch(\'' + sid + '\')"><span>' + b.icon + "</span><div><b>" + escH(b.title) + "</b><small>" + escH(b.teacher || instById(b.inst).name) + " · " + (b.price ? "₹" + b.price : "FREE") + '</small></div><button onclick="event.stopPropagation();toggleBm(\'' + sid + '\')" aria-label="Hatayein">★</button></div>';
+        }).join("")
+          : empty("Koi bookmark nahi", "Batch ke card par ☆ dabake yahan save karein.");
+      } else if (name === "purchases") {
+        title = "💳 My Purchases";
+        const enr = window.__enr || {};
+        const ids = new Set([...Object.keys(enr), ...[...enrolled].map(String)]);
+        const l = batches.filter(b => ids.has(String(b.id)));
+        body = l.length ? l.map(b => {
+          const e = enr[String(b.id)];
+          const st = e ? ((e.expiresAt == null || e.expiresAt > Date.now()) ? "Active" : "Expired") : "Joined";
+          return '<div class="d-li"><span>' + b.icon + "</span><div><b>" + escH(b.title) + "</b><small>" + escH(b.teacher || instById(b.inst).name) + " · " + st + '</small></div><em class="g">' + (b.price ? "₹" + b.price : "FREE") + "</em></div>";
+        }).join("")
+          : empty("Abhi koi batch nahi", "Join ya purchase karne ke baad yahan dikhega.");
+      } else if (name === "photo") {
+        title = "📷 Profile photo";
+        body = '<button class="d-act" onclick="document.getElementById(\'fPhoto\').click()"><span>🖼️</span>Gallery se photo chunein</button>' +
+          '<button class="d-act" onclick="document.getElementById(\'fCam\').click()"><span>📸</span>Camera se photo lein</button>' +
+          (P.photo ? '<button class="d-act danger" onclick="removePhoto()"><span>🗑️</span>Photo hatayein</button>' : "") +
+          '<p class="d-note">Photo apne aap gol aur square crop ho jaati hai.</p>';
+      } else if (name === "dob") {
+        title = "🎂 Date of birth";
+        body = '<p class="d-note">Apni janm tithi chunein. Birthday par aapko wish milegi 🎉</p><input id="dobIn" class="dobin" type="date" min="1940-01-01" max="' + todayStr() + '" value="' + escH(P.dob || "") + '">' +
+          '<button class="d-pri" onclick="saveDob()">Save karein</button>' + (P.dob ? '<button class="d-gho" onclick="clearDob()">Hata dein</button>' : "");
+      } else { sh.classList.remove("open"); curSheet = ""; return; }
+      curSheet = name;
+      $("dsTitle").textContent = title; $("dsBody").innerHTML = body; sh.classList.add("open");
+    }
+
+    // ---------- Navigation (hash based, taaki phone ka back button chale) ----------
+    function openChatPage() {
+      try { if (typeof playTap === "function") playTap(); } catch (e) {}
+      location.href = (location.origin || "") + "/ssc-prepx-chat.html";
+    }
+    function go(hash) {
+      if (location.hash === hash) route(); else location.hash = hash;
+    }
+
+    function route() {
+      const raw = location.hash.replace(/^#\/?/, "");
+      const parts = raw.split("/");
+      const key = parts[0];
+      const arg = decodeURIComponent(parts.slice(1).join("/"));
+
+      if (key === "menu") { toggleMenu(true); return; }
+      toggleMenu(false);
+      if (key === "dashboard") { openDash(arg); return; }
+      closeDash();
+
+      const sIdx = subjects.findIndex(s => s.name === arg);
+      if (key === "subject" && sIdx >= 0) {
+        if (!view || view.kind !== "subject" || view.title !== subjects[sIdx].name) selectedType = "All";
+        view = { kind: "subject", title: subjects[sIdx].name, icon: subjects[sIdx].icon, grad: "s" + sIdx, chips: true,
+                 hint: "apna institute chunein", label: "Institute ke hisaab se batches", tab: "Home",
+                 filter: b => b.subject === subjects[sIdx].name };
+        renderAll(); show("Batches", "Home"); return;
+      }
+      if (key === "search" && arg.trim()) {
+        const term = arg.trim().toLowerCase();
+        view = { kind: "search", title: '"' + arg.trim() + '"', icon: "🔎", grad: "sx", chips: true,
+                 hint: "search result", label: "Matching batches", tab: "Home",
+                 filter: b => (b.title + " " + b.subject + " " + instById(b.inst).name).toLowerCase().includes(term) };
+        renderAll(); show("Batches", "Home"); return;
+      }
+
+      if (key === "chat") { openChatPage(); return; }
+      const pages = { courses: "Courses", chat: "Chat", quizzes: "Quizzes", tools: "Tools" };
+      if (key === "quizzes") { resetQuiz(); renderMockHub(); }
+      show(pages[key] || "Home");
+    }
+
+    function show(page, tab) {
+      document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+      document.getElementById(page).classList.add("active");
+      const activeTab = tab || page;
+      document.querySelectorAll(".bottom-nav button").forEach(b => b.classList.toggle("active", b.dataset.page === activeTab));
+      window.scrollTo(0, 0);
+    }
+
+    function goBack() {
+      if (history.length > 1) history.back();
+      else go(view && view.tab === "Courses" ? "#courses" : "#home");
+    }
+
+    function openMenu() { location.hash = "#menu"; }
+    function closeMenu() { if (location.hash === "#menu") history.back(); else toggleMenu(false); }
+    function menuGo(hash) { location.replace(hash); }   // #menu entry ko replace karta hai
+    function toggleMenu(open) {
+      document.getElementById("drawer").classList.toggle("open", open);
+      document.getElementById("scrim").classList.toggle("hidden", !open);
+    }
+
+    window.addEventListener("hashchange", route);
+
+    // ---------- Actions ----------
+    function filterType(type) { selectedType = type; renderAll(); }
+
+    // ---------- Validity / Access ----------
+    function accessState(id) {
+      const e = (window.__enr || {})[String(id)];
+      if (!e) return "none";
+      return (e.expiresAt == null || e.expiresAt > Date.now()) ? "active" : "expired";
+    }
+    function accessText(id) {
+      const e = (window.__enr || {})[String(id)];
+      return !e || e.expiresAt == null ? "Lifetime access" : "Valid till " + new Date(e.expiresAt).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
+    }
+    function accessBtn(id, hasPlans) {
+      const sid = String(id).replace(/'/g, ""), st = accessState(id);
+      if (st === "active" || !hasPlans) return `<button class="mc-buy" onclick="openCourse('${sid}')">Open ▶</button>`;
+      return `<button class="mc-buy" onclick="openBuySheet('${sid}')">${st === "expired" ? "Expired · Renew" : "Buy Now"}</button>`;
+    }
+    async function openCourse(id) {
+      const b = findBatch(id); if (!b) return;
+      const free = !Object.values(b.plans || {}).some(p => p && Number(p.price) > 0);
+      if (!free && accessState(id) !== "active") { alert("Is batch ki validity khatam ho gayi hai ya access nahi hai."); return openBuySheet(id); }
+      const c = await window.__loadPrivate(String(id));
+      if (c === null) return alert("Access nahi mila. Validity check karein.");
+      const url = safeCheckoutUrl(c.viewUrl || "");
+      if (!url && !c.htmlContent && !c.telegramUrl) return alert("Is batch ka content abhi add nahi hua.");
+      if (!url && !c.htmlContent) { const t = safeCheckoutUrl(c.telegramUrl); return t ? window.open(t, "_blank", "noopener") : alert("Link valid nahi hai."); }
+      const frame = document.getElementById("demoFrame");
+      if (c.htmlContent && !url) { frame.removeAttribute("src"); frame.srcdoc = c.htmlContent; } else { frame.srcdoc = ""; frame.src = url; }
+      document.getElementById("demoTitle").textContent = b.title;
+      window.__fullMode = true; document.getElementById("demoCountdown").textContent = "";
+      document.getElementById("demoOverlay").classList.add("show"); document.body.style.overflow = "hidden";
+    }
+
+    // ---------- Buy bottom sheet / Notifications ----------
+    const DEMO_USED_KEY = "sscprepx_demo_used";
+    const demoUsed = () => { try { return JSON.parse(localStorage.getItem(DEMO_USED_KEY)) || []; } catch (e) { return []; } };
+    const findBatch = id => batches.find(x => String(x.id) === String(id));
+    function showBS(inner) { document.getElementById("bsBody").innerHTML = '<div class="bs-grab"></div>' + inner; document.getElementById("bsOverlay").classList.add("show"); document.body.style.overflow = "hidden"; }
+    function closeBuySheet() { document.getElementById("bsOverlay").classList.remove("show"); document.body.style.overflow = ""; }
+    function openBuySheet(id) {
+      const b = findBatch(id); if (!b) return;
+      const sid = String(b.id).replace(/'/g, "");
+      const st = accessState(b.id);
+      const hasDemo = b.adminManaged && b.demoEnabled && (b.htmlContent || b.viewUrl || b.demoUrl) && st !== "active";
+      const used = demoUsed().indexOf(sid) >= 0;
+      const bm = P.bookmarks.map(String).indexOf(String(b.id)) >= 0;
+      showBS(`<div class="bs-top"><div class="bs-ic">${b.icon}</div><div><h3>${escH(b.title)}</h3><p>by ${escH(b.teacher || instById(b.inst).name)}</p><span class="bs-price">₹${b.price}</span></div></div>
+        ${hasDemo ? `<button class="bs-btn" ${used ? "disabled" : ""} onclick="buySheetDemo('${sid}')">${used ? "Demo already dekh liya" : "▶ Watch Demo (once)"}</button>` : ""}
+        ${st === "active" ? `<p style="color:var(--teal);font-size:13px;margin-top:10px">✓ ${accessText(sid)}</p><button class="bs-btn main" onclick="closeBuySheet();openCourse('${sid}')">Open course ▶</button>` : `${st === "expired" ? '<p style="color:var(--coral);font-size:13px;margin-top:10px">Aapki validity khatam ho gayi hai. Renew karein.</p>' : ""}<button class="bs-btn main" onclick="buySheetEnroll('${sid}')">${st === "expired" ? "Renew" : "Enroll Now"} — ₹${b.price}</button>`}
+        <button class="bs-btn" onclick="buySheetBookmark('${sid}')">${bm ? "★ Bookmarked" : "☆ Bookmark this course"}</button>
+        <button class="bs-cancel" onclick="closeBuySheet()">Cancel</button>`);
+    }
+    function buySheetDemo(id) {
+      const u = demoUsed(); if (u.indexOf(id) < 0) { u.push(id); try { localStorage.setItem(DEMO_USED_KEY, JSON.stringify(u)); } catch (e) {} }
+      closeBuySheet(); watchCourseDemo(id);
+    }
+    function buySheetEnroll(id) {
+      const b = findBatch(id); if (!b) return;
+      closeBuySheet();
+      if (b.adminManaged) buyManagedCourse(id);
+      else alert("Is batch ke liye Buy now / plan select karke payment karein.");
+    }
+    function buySheetBookmark(id) { const b = findBatch(id); if (!b) return; toggleBm(b.id); openBuySheet(id); }
+    const SEEN_NOTIF_KEY = "sscprepx_seen_notifs";
+    function getSeenNotifs() { try { return JSON.parse(localStorage.getItem(SEEN_NOTIF_KEY)) || []; } catch (e) { return []; } }
+    function setSeenNotifs(ids) { try { localStorage.setItem(SEEN_NOTIF_KEY, JSON.stringify(ids)); } catch (e) {} }
+    function parseNotifTs(n) {
+      if (n.ts) return Number(n.ts);
+      if (n.date) {
+        const t = Date.parse(String(n.date).replace(" ", "T"));
+        return isNaN(t) ? 0 : t;
+      }
+      return 0;
+    }
+    function freshNotifs() {
+      const cutoff = Date.now() - 24 * 60 * 60 * 1000;
+      return (window.__notifs || []).filter(n => {
+        const t = parseNotifTs(n);
+        return !t || t >= cutoff;
+      });
+    }
+    function unreadNotifs() {
+      const seen = new Set(getSeenNotifs().map(String));
+      return freshNotifs().filter(n => !seen.has(String(n.id)));
+    }
+    function updateBellBadge() {
+      const n = unreadNotifs().length;
+      const el = document.getElementById("bellBadge");
+      if (!el) return;
+      if (n > 0) { el.textContent = n > 99 ? "99+" : String(n); el.classList.add("show"); }
+      else { el.classList.remove("show"); el.textContent = "0"; }
+    }
+    function openNotifs() {
+      playTap();
+      const n = freshNotifs();
+      // mark all visible as seen → badge 0
+      const seen = new Set(getSeenNotifs().map(String));
+      n.forEach(x => seen.add(String(x.id)));
+      setSeenNotifs([...seen]);
+      updateBellBadge();
+      showBS('<h3 style="margin-bottom:6px">🔔 Notifications</h3>' + (n.length ? n.map(x => `<div class="bs-n"><b>${escH(x.title)}</b><p>${escH(x.message)}</p><small>${escH(x.date || "")}</small></div>`).join("") : '<p style="color:var(--muted);padding:14px 0">Abhi koi notification nahi hai.</p>') + '<button class="bs-cancel" onclick="closeBuySheet()">Close</button>');
+    }
+    let __livePopTimer = null;
+    let __shownLiveIds = new Set();
+    function closeLivePop() {
+      const el = document.getElementById("livePop");
+      if (el) el.classList.remove("show");
+      if (__livePopTimer) { clearTimeout(__livePopTimer); __livePopTimer = null; }
+    }
+    function showLivePop(n) {
+      if (!n || __shownLiveIds.has(String(n.id))) return;
+      __shownLiveIds.add(String(n.id));
+      const el = document.getElementById("livePop");
+      if (!el) return;
+      document.getElementById("lpTitle").textContent = n.title || "Notification";
+      document.getElementById("lpMsg").textContent = n.message || "";
+      el.classList.add("show");
+      playNotifSound();
+      if (__livePopTimer) clearTimeout(__livePopTimer);
+      __livePopTimer = setTimeout(closeLivePop, 5000);
+    }
+    function checkNewNotifs(list) {
+      window.__notifs = list || [];
+      const unread = unreadNotifs();
+      updateBellBadge();
+      // newest unread → live pop
+      if (unread.length) {
+        const newest = unread.slice().sort((a, b) => parseNotifTs(b) - parseNotifTs(a))[0];
+        if (newest && parseNotifTs(newest) > Date.now() - 60000) showLivePop(newest);
+      }
+    }
+
+    function joinBatch(id) {
+      const b = batches.find(x => String(x.id) === String(id));
+      if (!b) return;
+      if (b.price > 0) {
+        alert("Is batch ke liye Buy now / plan select karke payment karein.");
+        return;
+      }
+      enrolled.add(id); saveEnrolled();
+      renderAll();
+      alert("Aap " + b.title + " mein demo mode mein join ho gaye!");
+    }
+
+    let quizCounted = false;
+    function resetQuiz() { quizCounted = false; const r = document.getElementById("quizResult"); if (r) r.textContent = ""; }
+    function answerQuiz(answer) {
+      const ok = answer === "25%";
+      const result = document.getElementById("quizResult");
+      result.textContent = ok
+        ? "✅ Correct! Profit ₹200 ÷ ₹800 × 100 = 25%."
+        : "❌ Dobara try karein. Profit percentage = Profit ÷ Cost Price × 100.";
+      result.style.color = ok ? "#2dd4bf" : "#ff8a7a";
+      if (!quizCounted) {                       // har quiz ka pehla jawab test mein ginta hai
+        quizCounted = true;
+        P.tests++; P.scoreSum += ok ? 100 : 0;
+        P.history.unshift({ q: "Quick Quiz • Profit %", ok, t: Date.now() });
+        P.history = P.history.slice(0, 50); saveP();
+      }
+    }
+
+
+
+    // ======================= MOCK TEST HUB (Quizzes page) =======================
+    // Test format (Mock Test Hub ka): { title, category, durationMinutes, positiveMarks, negativeMarks,
+    //   sections:[{name, positiveMarks?, negativeMarks?}], questions:[{ section, textEn, textHi, optionsEn, optionsHi,
+    //   correctIndex (0 = A), explanationEn, explanationHi, positiveMarks?, negativeMarks? }] }
+    const MT_K = { custom: "mth_custom_tests", att: "mth_attempts", ong: "mth_ongoing", bm: "mth_qbookmarks", lang: "mth_lang" };
+    const MT_LET = "ABCDEFGH";
+    const mtGet = (k, d) => { try { const v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch (e) { return d; } };
+    const mtSet = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
+    const mtDrop = k => { try { localStorage.removeItem(k); } catch (e) {} };
+    const mtNum = (v, d) => (v === undefined || v === null || v === "" || isNaN(Number(v))) ? d : Number(v);
+    const mtR2 = n => Math.round(n * 100) / 100;
+    const mtFmt = s => {
+      s = Math.max(0, Math.round(s)); const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = s % 60;
+      const p = n => String(n).padStart(2, "0");
+      return (h ? h + ":" + p(m) : p(m)) + ":" + p(x);
+    };
+
+    const MT_BUILTIN = [
+ {
+  "id": "mth-sample-1",
+  "title": "Mock Test Hub • Sample Mock 1",
+  "category": "SSC • Full Mock",
+  "durationMinutes": 10,
+  "positiveMarks": 2,
+  "negativeMarks": 0.5,
+  "sections": [
+   {
+    "name": "Quantitative Aptitude"
+   },
+   {
+    "name": "Reasoning"
+   },
+   {
+    "name": "English"
+   },
+   {
+    "name": "General Awareness"
+   }
+  ],
+  "questions": [
+   {
+    "id": "q_q1",
+    "section": "Quantitative Aptitude",
+    "textEn": "If x + 1/x = 5, then the value of x² + 1/x² is:",
+    "textHi": "यदि x + 1/x = 5 है, तो x² + 1/x² का मान क्या होगा?",
+    "optionsEn": [
+     "21",
+     "23",
+     "25",
+     "27"
+    ],
+    "optionsHi": [
+     "21",
+     "23",
+     "25",
+     "27"
+    ],
+    "correctIndex": 1,
+    "explanationEn": "Given, x + 1/x = 5.\n\nSquaring both sides:\n(x + 1/x)² = 5²\nx² + 2(x)(1/x) + 1/x² = 25\nx² + 2 + 1/x² = 25\nx² + 1/x² = 25 - 2 = 23.\n\nHence, the correct answer is 23.",
+    "explanationHi": "दिया गया है, x + 1/x = 5.\n\nदोनों ओर वर्ग करने पर:\n(x + 1/x)² = 5²\nx² + 2(x)(1/x) + 1/x² = 25\nx² + 2 + 1/x² = 25\nx² + 1/x² = 25 - 2 = 23.\n\nइसलिए, सही उत्तर 23 है।"
+   },
+   {
+    "id": "q_q2",
+    "section": "Quantitative Aptitude",
+    "textEn": "The present ages of A and B are in the ratio 4 : 5. After 5 years the ratio will be 5 : 6. What is the present age of A?",
+    "textHi": "A और B की वर्तमान आयु का अनुपात 4 : 5 है। 5 वर्ष बाद यह अनुपात 5 : 6 हो जाएगा। A की वर्तमान आयु कितनी है?",
+    "optionsEn": [
+     "16 years",
+     "20 years",
+     "24 years",
+     "25 years"
+    ],
+    "optionsHi": [
+     "16 वर्ष",
+     "20 वर्ष",
+     "24 वर्ष",
+     "25 वर्ष"
+    ],
+    "correctIndex": 1,
+    "explanationEn": "Let present ages of A and B be 4k and 5k respectively.\n\nAfter 5 years:\n(4k + 5) / (5k + 5) = 5/6\n6(4k + 5) = 5(5k + 5)\n24k + 30 = 25k + 25\nk = 5.\n\nA's present age = 4k = 4(5) = 20 years.\n\nHence, the correct answer is 20 years.",
+    "explanationHi": "माना कि A और B की वर्तमान आयु क्रमशः 4k और 5k है।\n\n5 वर्ष बाद:\n(4k + 5) / (5k + 5) = 5/6\n6(4k + 5) = 5(5k + 5)\n24k + 30 = 25k + 25\nk = 5.\n\nA की वर्तमान आयु = 4k = 4(5) = 20 वर्ष।\n\nइसलिए, सही उत्तर 20 वर्ष है।"
+   },
+   {
+    "id": "q_m1",
+    "section": "Quantitative Aptitude",
+    "textEn": "Find the value of (0.43² − 0.17²) / (0.43 − 0.17).",
+    "textHi": "(0.43² − 0.17²) / (0.43 − 0.17) का मान ज्ञात कीजिए।",
+    "optionsEn": [
+     "0.26",
+     "0.60",
+     "0.06",
+     "6.0"
+    ],
+    "optionsHi": [
+     "0.26",
+     "0.60",
+     "0.06",
+     "6.0"
+    ],
+    "correctIndex": 1,
+    "explanationEn": "Using the algebraic identity a² - b² = (a - b)(a + b):\n\nLet a = 0.43 and b = 0.17.\nExpression: (a² - b²) / (a - b) = (a - b)(a + b) / (a - b) = a + b\n\nValue = 0.43 + 0.17 = 0.60.\n\nHence, the correct answer is 0.60.",
+    "explanationHi": "बीजगणितीय सूत्र a² - b² = (a - b)(a + b) का उपयोग करने पर:\n\nमाना a = 0.43 और b = 0.17.\nसमीकरण: (a² - b²) / (a - b) = (a - b)(a + b) / (a - b) = a + b\n\nमान = 0.43 + 0.17 = 0.60.\n\nइसलिए, सही उत्तर 0.60 है।"
+   },
+   {
+    "id": "q_r1",
+    "section": "Reasoning",
+    "textEn": "Find the next term in the series: 3, 7, 15, 31, 63, ?",
+    "textHi": "श्रृंखला का अगला पद ज्ञात कीजिए: 3, 7, 15, 31, 63, ?",
+    "optionsEn": [
+     "95",
+     "117",
+     "125",
+     "127"
+    ],
+    "optionsHi": [
+     "95",
+     "117",
+     "125",
+     "127"
+    ],
+    "correctIndex": 3,
+    "explanationEn": "The pattern in the series is as follows:\n- 3 × 2 + 1 = 7\n- 7 × 2 + 1 = 15\n- 15 × 2 + 1 = 31\n- 31 × 2 + 1 = 63\n- 63 × 2 + 1 = 127\n\nHence, the next term is 127.",
+    "explanationHi": "श्रृंखला में पैटर्न इस प्रकार है:\n- 3 × 2 + 1 = 7\n- 7 × 2 + 1 = 15\n- 15 × 2 + 1 = 31\n- 31 × 2 + 1 = 63\n- 63 × 2 + 1 = 127\n\nइसलिए, अगला पद 127 है।"
+   },
+   {
+    "id": "q_e1",
+    "section": "English",
+    "textEn": "Select the most appropriate ANTONYM of the word: OBSTINATE",
+    "textHi": "दिए गए शब्द का सबसे उपयुक्त विलोम चुनिए: OBSTINATE",
+    "optionsEn": [
+     "Stubborn",
+     "Rigid",
+     "Flexible",
+     "Dogmatic"
+    ],
+    "optionsHi": [
+     "Stubborn (अड़ियल)",
+     "Rigid (कठोर)",
+     "Flexible (लचीला)",
+     "Dogmatic (कट्टर)"
+    ],
+    "correctIndex": 2,
+    "explanationEn": "OBSTINATE means stubborn and refusing to change one's opinion. The antonym is Flexible, which means ready and able to change so as to adapt to different circumstances.\n- Stubborn: synonym\n- Rigid: synonym\n- Dogmatic: synonym",
+    "explanationHi": "OBSTINATE का अर्थ हठी या अड़ियल होता है। इसका विलोम शब्द Flexible (लचीला) है, जिसका अर्थ परिस्थितियों के अनुसार ढलने वाला होता है।\n- Stubborn (अड़ियल): पर्यायवाची\n- Rigid (कठोर): पर्यायवाची\n- Dogmatic (कट्टर): पर्यायवाची"
+   },
+   {
+    "id": "q_g1",
+    "section": "General Awareness",
+    "textEn": "Which is the largest freshwater lake in India?",
+    "textHi": "भारत में मीठे पानी की सबसे बड़ी झील कौन-सी है?",
+    "optionsEn": [
+     "Chilika Lake",
+     "Dal Lake",
+     "Wular Lake",
+     "Loktak Lake"
+    ],
+    "optionsHi": [
+     "चिल्का झील",
+     "डल झील",
+     "वुलर झील",
+     "लोकटक झील"
+    ],
+    "correctIndex": 2,
+    "explanationEn": "Wular Lake is the largest freshwater lake in India. It is located in Jammu and Kashmir. It was formed as a result of tectonic activity and is fed by the Jhelum River.",
+    "explanationHi": "वुलर झील भारत में मीठे पानी की सबसे बड़ी झील है। यह जम्मू और कश्मीर में स्थित है। यह टेक्टोनिक गतिविधि के परिणामस्वरूप बनी थी और इसे झेलम नदी द्वारा पानी मिलता है।"
+   },
+   {
+    "id": "q_gen1",
+    "section": "General Awareness",
+    "textEn": "What is the SI unit of electric current?",
+    "textHi": "विद्युत धारा की SI इकाई क्या है?",
+    "optionsEn": [
+     "Volt",
+     "Ampere",
+     "Ohm",
+     "Watt"
+    ],
+    "optionsHi": [
+     "वोल्ट",
+     "एम्पीयर",
+     "ओम",
+     "वाट"
+    ],
+    "correctIndex": 1,
+    "explanationEn": "The SI unit of electric current is the Ampere (symbol: A). It is named after André-Marie Ampère, one of the main discoverers of electromagnetism.",
+    "explanationHi": "विद्युत धारा की SI इकाई एम्पीयर (प्रतीक: A) है। इसका नाम विद्युत चुंबकत्व के मुख्य खोजकर्ताओं में से एक आंद्रे-मेरी एम्पीयर के नाम पर रखा गया है।"
+   },
+   {
+    "id": "q_gen2",
+    "section": "General Awareness",
+    "textEn": "Which planet is known as the Red Planet?",
+    "textHi": "किस ग्रह को लाल ग्रह के नाम से जाना जाता है?",
+    "optionsEn": [
+     "Venus",
+     "Jupiter",
+     "Mars",
+     "Mercury"
+    ],
+    "optionsHi": [
+     "शुक्र",
+     "बृहस्पति",
+     "मंगल",
+     "बुध"
+    ],
+    "correctIndex": 2,
+    "explanationEn": "Mars is known as the Red Planet due to the abundance of iron oxide (rust) on its surface, which gives it a reddish, rusty appearance.",
+    "explanationHi": "मंगल को उसकी सतह पर आयरन ऑक्साइड (जंग) की प्रचुरता के कारण लाल ग्रह के रूप में जाना जाता है, जो इसे लाल रंग का रूप देता है।"
+   }
+  ]
+ }
+];
+
+    function mtNorm(raw, id) {
+      if (Array.isArray(raw)) raw = { questions: raw };
+      if (!raw || typeof raw !== "object" || !Array.isArray(raw.questions) || !raw.questions.length)
+        return { error: "\"questions\" ki list chahiye (kam se kam 1 sawal)." };
+      const dp = mtNum(raw.positiveMarks, 2), dn = mtNum(raw.negativeMarks, 0.5);
+      const defs = {};
+      (Array.isArray(raw.sections) ? raw.sections : []).forEach(s => { if (s && s.name) defs[String(s.name).trim().toLowerCase()] = s; });
+      const names = [];
+      raw.questions.forEach(q => { const n = String((q && (q.section || q.subject)) || "General Studies").trim(); if (names.indexOf(n) < 0) names.push(n); });
+      const sections = names.map(n => {
+        const d = defs[n.toLowerCase()] || {};
+        return { name: n, pos: mtNum(d.positiveMarks !== undefined ? d.positiveMarks : d.positiveMark, dp), neg: mtNum(d.negativeMarks !== undefined ? d.negativeMarks : d.negativeMark, dn) };
+      });
+      const qs = [];
+      for (let i = 0; i < raw.questions.length; i++) {
+        const r = raw.questions[i] || {};
+        const et = String(r.textEn || r.questionText || r.text || "").trim();
+        const eo = (r.optionsEn || r.options || []).map(String);
+        if (!et) return { error: "Sawal " + (i + 1) + " mein question text (textEn) nahi hai." };
+        if (eo.length < 2) return { error: "Sawal " + (i + 1) + " mein kam se kam 2 options (optionsEn) chahiye." };
+        const ci = Number(r.correctIndex !== undefined ? r.correctIndex : (r.correctOptionIndex !== undefined ? r.correctOptionIndex : 0));
+        if (!Number.isInteger(ci) || ci < 0 || ci >= eo.length) return { error: "Sawal " + (i + 1) + " ka correctIndex galat hai (0 = option A)." };
+        const ho = (r.optionsHi || []).map(String);
+        const sec = names.indexOf(String(r.section || r.subject || "General Studies").trim());
+        const sc = sections[sec];
+        const exEn = String(r.explanationEn || r.explanation || "");
+        qs.push({
+          sec,
+          en: { t: et, o: eo },
+          hi: { t: String(r.textHi || et), o: ho.length === eo.length ? ho : eo },
+          ci,
+          pos: mtNum(r.positiveMarks !== undefined ? r.positiveMarks : r.positiveMark, sc.pos),
+          neg: mtNum(r.negativeMarks !== undefined ? r.negativeMarks : r.negativeMark, sc.neg),
+          ex: { en: exEn, hi: String(r.explanationHi || exEn) }
+        });
+      }
+      qs.sort((a, b) => a.sec - b.sec);       // section-wise order (stable)
+      return {
+        id: String(raw.id || id), title: String(raw.title || "Mock Test"), cat: String(raw.category || "Mock Test"),
+        dur: Math.max(1, mtNum(raw.durationMinutes, 30)), sections, qs,
+        max: mtR2(qs.reduce((a, q) => a + q.pos, 0))
+      };
+    }
+
+    function mtTests() {
+      const out = [];
+      MT_BUILTIN.forEach(r => { const t = mtNorm(r, r.id); if (!t.error) { t.custom = false; out.push(t); } });
+      mtGet(MT_K.custom, []).forEach(r => { const t = mtNorm(r, r.id); if (!t.error) { t.custom = true; out.push(t); } });
+      return out;
+    }
+    const mtNegText = t => {
+      const set = {}; t.qs.forEach(q => { set[q.neg] = 1; });
+      const k = Object.keys(set);
+      return k.length === 1 ? (Number(k[0]) ? "−" + k[0] + " galat" : "No negative") : "Negative: section-wise";
+    };
+
+    // ---------- Hub (list of tests) ----------
+    function renderMockHub() {
+      const host = $("mtHub"); if (!host) return;
+      const att = mtGet(MT_K.att, {}), ong = mtGet(MT_K.ong, null), tests = mtTests();
+      let h = "";
+      const ot = ong && tests.find(t => t.id === ong.testId);
+      if (ot) h += '<div class="mt-banner" onclick="mtOpen(\'' + ot.id + '\')">⏳ Test beech mein hai — Resume karein ▶<small>' + escH(ot.title) + "</small></div>";
+      h += '<div class="mt-list">' + (tests.length ? tests.map(t => {
+        const a = att[t.id];
+        return '<div class="mt-card"><span class="pill">' + escH(t.cat) + "</span>" +
+          (t.custom ? '<button class="mt-del" onclick="mtDel(\'' + t.id + '\')" aria-label="Delete">🗑</button>' : "") +
+          "<h3>" + escH(t.title) + '</h3><div class="mt-meta"><span>📝 ' + t.qs.length + " sawal</span><span>⏱ " + t.dur + " min</span><span>🎯 " + t.max + " marks</span><span>➖ " + escH(mtNegText(t)) + "</span></div>" +
+          (a ? '<div class="mt-best">🏆 Best: ' + a.best + "/" + t.max + " (" + a.bestPct + "%) • " + a.count + " attempt" + (a.count === 1 ? "" : "s") + "</div>" : "") +
+          '<div class="mt-row"><button class="primary" onclick="mtOpen(\'' + t.id + '\')">' + (ot && ot.id === t.id ? "▶ Resume Test" : a ? "🔁 Dobara Try karein" : "▶ Start Test") + "</button></div></div>";
+      }).join("") : '<div class="mt-empty">Abhi koi mock test available nahi hai. Admin se test data add karwayein.</div>') + "</div>";
+      host.innerHTML = h;
+    }
+
+    function mtImport() {
+      const msg = $("mtImpMsg"), say = (t, ok) => { msg.textContent = t; msg.style.color = ok ? "#2dd4bf" : "#ff8a7a"; };
+      let raw;
+      try { raw = JSON.parse($("mtJson").value); } catch (e) { say("❌ JSON sahi nahi hai: " + e.message, false); return; }
+      if (Array.isArray(raw)) raw = { questions: raw };
+      if (!raw || typeof raw !== "object") { say("❌ JSON object ya questions ki list honi chahiye.", false); return; }
+      const title = $("mtImpTitle").value.trim(), dur = $("mtImpDur").value.trim();
+      if (title) raw.title = title;
+      if (dur) raw.durationMinutes = Number(dur);
+      raw.id = "custom_" + Date.now();
+      const t = mtNorm(raw, raw.id);
+      if (t.error) { say("❌ " + t.error, false); return; }
+      const list = mtGet(MT_K.custom, []); list.push(raw); mtSet(MT_K.custom, list);
+      $("mtJson").value = ""; $("mtImpTitle").value = ""; $("mtImpDur").value = "";
+      say("✅ \"" + t.title + "\" import ho gaya (" + t.qs.length + " sawal).", true);
+      renderMockHub();
+    }
+    function mtImportSample() {
+      $("mtJson").value = JSON.stringify({
+        title: "My Mock Test 1", category: "SSC • Full Mock", durationMinutes: 20, positiveMarks: 2, negativeMarks: 0.5,
+        questions: [{
+          section: "General Awareness", textEn: "What is the capital of India?", textHi: "भारत की राजधानी क्या है?",
+          optionsEn: ["Mumbai", "New Delhi", "Kolkata", "Chennai"], optionsHi: ["मुंबई", "नई दिल्ली", "कोलकाता", "चेन्नई"],
+          correctIndex: 1, explanationEn: "New Delhi is the capital of India.", explanationHi: "नई दिल्ली भारत की राजधानी है।"
+        }]
+      }, null, 2);
+    }
+    function mtDel(id) {
+      if (!confirm("Yeh imported test hata dein?")) return;
+      mtSet(MT_K.custom, mtGet(MT_K.custom, []).filter(r => r.id !== id));
+      const att = mtGet(MT_K.att, {}); delete att[id]; mtSet(MT_K.att, att);
+      const ong = mtGet(MT_K.ong, null); if (ong && ong.testId === id) mtDrop(MT_K.ong);
+      renderMockHub();
+    }
+
+    // ---------- Exam state ----------
+    let MT = null, mtTimer = null;
+    function mtOverlay(open) {
+      const el = $("mtExam"); if (!el) return;
+      el.classList.toggle("open", !!open);
+      document.body.style.overflow = open ? "hidden" : "";
+    }
+    function mtOpen(id) {
+      const T = mtTests().find(t => t.id === id); if (!T) return;
+      const ong = mtGet(MT_K.ong, null);
+      if (ong && ong.testId !== id && mtTests().some(t => t.id === ong.testId) &&
+          !confirm("Doosra test abhi chal raha hai. Naya shuru karne par uska progress hat jayega. Aage badhein?")) return;
+      const ok = ong && ong.testId === id && Array.isArray(ong.ans) && ong.ans.length === T.qs.length;
+      MT = { test: T, phase: "intro", lang: mtGet(MT_K.lang, "en"), resume: ok ? ong : null, pal: false };
+      mtOverlay(true); mtRender();
+    }
+    function mtBegin() {
+      const T = MT.test, n = T.qs.length, r = MT.resume;
+      if (r) {
+        MT.ans = r.ans; MT.mk = r.mk; MT.vis = r.vis; MT.cur = Math.min(r.cur || 0, n - 1);
+        MT.endAt = r.endAt; MT.startedAt = r.startedAt; if (r.lang) MT.lang = r.lang;
+      } else {
+        MT.ans = Array(n).fill(null); MT.mk = Array(n).fill(false); MT.vis = Array(n).fill(false); MT.cur = 0;
+        MT.startedAt = Date.now(); MT.endAt = MT.startedAt + T.dur * 60000;
+      }
+      MT.vis[MT.cur] = true; MT.phase = "run"; MT.tick = 0;
+      mtPersist(); clearInterval(mtTimer); mtTimer = setInterval(mtTick, 1000);
+      mtRender(); mtTick();
+    }
+    function mtPersist() {
+      if (!MT || MT.phase !== "run") return;
+      mtSet(MT_K.ong, { testId: MT.test.id, ans: MT.ans, mk: MT.mk, vis: MT.vis, cur: MT.cur, endAt: MT.endAt, startedAt: MT.startedAt, lang: MT.lang });
+    }
+    function mtTick() {
+      if (!MT || MT.phase !== "run") return;
+      const left = Math.max(0, Math.ceil((MT.endAt - Date.now()) / 1000));
+      const c = $("mtClock"); if (c) { c.textContent = "⏱ " + mtFmt(left); c.classList.toggle("low", left <= 60); }
+      if (left <= 0) { MT.auto = true; mtSubmit(true); return; }
+      if (++MT.tick % 10 === 0) mtPersist();
+    }
+    function mtGo(i) { MT.cur = i; MT.vis[i] = true; MT.pal = false; mtPersist(); mtRender(); }
+    function mtNext() { if (MT.cur < MT.test.qs.length - 1) mtGo(MT.cur + 1); else { MT.pal = true; mtRender(); } }
+    function mtPrev() { if (MT.cur > 0) mtGo(MT.cur - 1); }
+    function mtSec(s) { const i = MT.test.qs.findIndex(q => q.sec === s); if (i >= 0) mtGo(i); }
+    function mtPick(i) { MT.ans[MT.cur] = i; mtPersist(); mtRender(true); }
+    function mtClear() { MT.ans[MT.cur] = null; mtPersist(); mtRender(true); }
+    function mtMarkToggle() { MT.mk[MT.cur] = !MT.mk[MT.cur]; mtPersist(); mtRender(true); }
+    function mtPal(on) { MT.pal = !!on; mtRender(true); }
+    function mtLang(l) { MT.lang = l; mtSet(MT_K.lang, l); mtPersist(); mtRender(true); }
+    function mtBm(qi) {
+      const bm = mtGet(MT_K.bm, {}), id = MT.test.id, a = bm[id] || [], k = a.indexOf(qi);
+      if (k >= 0) a.splice(k, 1); else a.push(qi);
+      bm[id] = a; mtSet(MT_K.bm, bm); mtRender(true);
+    }
+    function mtExit() {
+      if (MT && MT.phase === "run") {
+        if (!confirm("Test beech mein chhod rahe hain?\nProgress save rahega — baad mein Resume kar sakte hain (timer chalta rahega).")) return;
+        mtPersist();
+      }
+      clearInterval(mtTimer); MT = null; mtOverlay(false); renderMockHub();
+    }
+
+    function mtScore() {
+      const T = MT.test;
+      const secs = T.sections.map(s => ({ name: s.name, n: 0, c: 0, w: 0, s: 0, score: 0, max: 0 }));
+      let c = 0, w = 0, s = 0, score = 0, max = 0;
+      T.qs.forEach((q, i) => {
+        const sc = secs[q.sec]; sc.n++; sc.max += q.pos; max += q.pos;
+        const a = MT.ans[i];
+        if (a == null) { s++; sc.s++; }
+        else if (a === q.ci) { c++; sc.c++; score += q.pos; sc.score += q.pos; }
+        else { w++; sc.w++; score -= q.neg; sc.score -= q.neg; }
+      });
+      secs.forEach(x => { x.score = mtR2(x.score); x.max = mtR2(x.max); });
+      const att = c + w;
+      return { c, w, s, score: mtR2(score), max: mtR2(max), pct: max ? Math.max(0, score / max * 100) : 0, acc: att ? c / att * 100 : 0, secs };
+    }
+    function mtSubmit(auto) {
+      if (!MT || MT.phase !== "run") return;
+      if (!auto) {
+        const un = MT.ans.filter(a => a == null).length;
+        if (!confirm("Test submit karein?\n" + (un ? un + " sawal unattempted hain." : "Saare sawal attempt ho gaye hain."))) return;
+      }
+      clearInterval(mtTimer);
+      const T = MT.test, res = mtScore(), pct = Math.round(res.pct);
+      MT.res = res; MT.phase = "result"; MT.filter = "all"; MT.pal = false;
+      MT.spent = Math.max(0, Math.round((Math.min(Date.now(), MT.endAt) - MT.startedAt) / 1000));
+      mtDrop(MT_K.ong);
+      const att = mtGet(MT_K.att, {}), prev = att[T.id] || { best: -Infinity, bestPct: 0, count: 0 };
+      att[T.id] = { best: Math.max(prev.best, res.score), bestPct: Math.max(prev.bestPct, pct), count: prev.count + 1 };
+      mtSet(MT_K.att, att);
+      P.tests++; P.scoreSum += pct;
+      P.history.unshift({ q: "Mock • " + T.title, ok: pct >= 50, pct, score: res.score, max: res.max, t: Date.now() });
+      P.history = P.history.slice(0, 50); saveP();
+      mtRender();
+    }
+    function mtFilter(f) { MT.filter = f; mtRender(true); }
+
+    // ---------- Rendering ----------
+    function mtRender(keep) {
+      const el = $("mtExam"); if (!el || !MT) return;
+      const old = el.querySelector(".mt-body"), st = keep && old ? old.scrollTop : 0;
+      el.innerHTML = MT.phase === "intro" ? mtIntroHTML() : MT.phase === "run" ? mtRunHTML() : mtResultHTML();
+      const b = el.querySelector(".mt-body"); if (b) b.scrollTop = st;
+    }
+    const mtLangBtns = fn => '<div class="mt-lang"><button class="' + (MT.lang === "en" ? "on" : "") + '" onclick="' + fn + '(\'en\')">English</button><button class="' + (MT.lang === "hi" ? "on" : "") + '" onclick="' + fn + '(\'hi\')">हिन्दी</button></div>';
+
+    function mtIntroHTML() {
+      const T = MT.test, r = MT.resume;
+      return '<div class="mt-top"><button class="mt-ibtn" onclick="mtExit()">✕</button><div class="t">' + escH(T.title) + "</div></div>" +
+        '<div class="mt-body"><div class="mt-wrap"><div class="mt-hero"><span class="pill">' + escH(T.cat) + "</span><h2>" + escH(T.title) + "</h2>" +
+        '<div class="mt-sum"><div class="mt-box"><strong>' + T.qs.length + "</strong><small>Sawal</small></div>" +
+        '<div class="mt-box"><strong>' + T.dur + "</strong><small>Minutes</small></div>" +
+        '<div class="mt-box"><strong>' + T.max + "</strong><small>Marks</small></div>" +
+        '<div class="mt-box"><strong>' + T.sections.length + "</strong><small>Sections</small></div></div>" +
+        '<div class="mt-h3">Instructions</div><ul class="mt-ul"><li>Timer start hote hi chalega; time khatam hone par test auto-submit ho jayega.</li>' +
+        "<li>Har sawal ke sahi jawab par marks milenge; galat jawab par negative marking lagegi (" + escH(mtNegText(T)) + ").</li>" +
+        "<li>Unattempted sawal par koi marks nahi katenge.</li>" +
+        "<li>🚩 Review se sawal mark karein, ☰ se question palette kholein.</li>" +
+        "<li>Test beech mein chhodein to progress save rehta hai.</li></ul>" +
+        '<div class="mt-h3">Language</div>' + mtLangBtns("mtIntroLang") +
+        '<div class="mt-h3">Sections</div>' + T.sections.map((s, i) => '<div class="mt-secrow"><b>' + escH(s.name) + "</b><span>" + T.qs.filter(q => q.sec === i).length + " Q • +" + s.pos + " / −" + s.neg + "</span></div>").join("") +
+        "</div></div></div>" +
+        '<div class="mt-foot"><button class="nx" onclick="mtBegin()">' + (r ? "▶ Resume Test" : "▶ Start Test") + "</button></div>";
+    }
+    function mtIntroLang(l) { MT.lang = l; mtSet(MT_K.lang, l); mtRender(true); }
+
+    function mtCls(i) { const a = MT.ans[i] != null, m = MT.mk[i]; return m ? (a ? "am" : "m") : a ? "a" : MT.vis[i] ? "v" : ""; }
+
+    function mtRunHTML() {
+      const T = MT.test, n = T.qs.length, i = MT.cur, q = T.qs[i], c = q[MT.lang], sec = T.sections[q.sec];
+      const bmList = (mtGet(MT_K.bm, {})[T.id] || []), bm = bmList.indexOf(i) >= 0;
+      const left = Math.max(0, Math.ceil((MT.endAt - Date.now()) / 1000));
+      let h = '<div class="mt-top"><button class="mt-ibtn" onclick="mtExit()">✕</button><div class="t">' + escH(T.title) + "</div>" +
+        '<span class="mt-clock' + (left <= 60 ? " low" : "") + '" id="mtClock">⏱ ' + mtFmt(left) + "</span>" +
+        '<button class="mt-ibtn" onclick="mtLang(\'' + (MT.lang === "en" ? "hi" : "en") + '\')">' + (MT.lang === "en" ? "हिं" : "EN") + "</button>" +
+        '<button class="mt-ibtn" onclick="mtPal(true)" aria-label="Palette">☰</button></div>';
+      h += '<div class="mt-secs">' + T.sections.map((s, k) => {
+        const tot = T.qs.filter(x => x.sec === k).length;
+        return '<button class="mt-sec' + (k === q.sec ? " on" : "") + '" onclick="mtSec(' + k + ')">' + escH(s.name) + " (" + tot + ")</button>";
+      }).join("") + "</div>";
+      h += '<div class="mt-body"><div class="mt-wrap"><div class="mt-qh"><span class="mt-qn">Q ' + (i + 1) + "/" + n + '</span><span class="mt-mk"><span class="g">+' + q.pos + '</span> / <span class="r">−' + q.neg + '</span></span><span class="sp"></span>' +
+        '<button class="mt-bm" onclick="mtBm(' + i + ')" aria-label="Bookmark">' + (bm ? "★" : "☆") + "</button></div>" +
+        '<div class="mt-qtext">' + escH(c.t) + '</div><div class="mt-opts">' +
+        c.o.map((o, k) => '<button class="opt mt-o' + (MT.ans[i] === k ? " sel" : "") + '" onclick="mtPick(' + k + ')"><b>' + MT_LET[k] + "</b>" + escH(o) + "</button>").join("") +
+        "</div></div></div>";
+      h += '<div class="mt-foot"><button onclick="mtPrev()"' + (i === 0 ? " disabled" : "") + '>◀</button>' +
+        '<button class="mk' + (MT.mk[i] ? " on" : "") + '" onclick="mtMarkToggle()">🚩 ' + (MT.mk[i] ? "Marked" : "Review") + "</button>" +
+        '<button onclick="mtClear()"' + (MT.ans[i] == null ? " disabled" : "") + ">Clear</button>" +
+        '<button class="nx" onclick="mtNext()">' + (i === n - 1 ? "Finish ▶" : "Save & Next ▶") + "</button></div>";
+      h += '<div class="mt-sheet' + (MT.pal ? " open" : "") + '" onclick="if(event.target===this)mtPal(false)"><div class="mt-sheet-p">' + mtPalHTML() + "</div></div>";
+      return h;
+    }
+
+    function mtPalHTML() {
+      const T = MT.test, n = T.qs.length;
+      const ans = MT.ans.filter(a => a != null).length, mk = MT.mk.filter(Boolean).length, nv = MT.vis.filter(v => !v).length;
+      let h = '<div class="mt-sheet-h"><b>Question Palette</b><button class="mt-ibtn" onclick="mtPal(false)">✕</button></div>' +
+        '<div class="mt-sum"><div class="mt-box g"><strong>' + ans + "</strong><small>Answered</small></div>" +
+        '<div class="mt-box r"><strong>' + (n - ans) + "</strong><small>Not answered</small></div>" +
+        '<div class="mt-box"><strong>' + mk + "</strong><small>Review</small></div>" +
+        '<div class="mt-box"><strong>' + nv + "</strong><small>Not visited</small></div></div>" +
+        '<div class="mt-leg"><span><i class="a"></i>Answered</span><span><i class="v"></i>Not answered</span><span><i class="m"></i>Review</span><span><i></i>Not visited</span></div>';
+      T.sections.forEach((s, k) => {
+        h += '<div class="mt-grid-t">' + escH(s.name) + '</div><div class="mt-grid">';
+        T.qs.forEach((q, i) => { if (q.sec === k) h += '<button class="mt-n ' + mtCls(i) + (i === MT.cur ? " cur" : "") + '" onclick="mtGo(' + i + ')">' + (i + 1) + "</button>"; });
+        h += "</div>";
+      });
+      return h + '<button class="primary mt-sub" onclick="mtSubmit(false)">✅ Submit Test</button>';
+    }
+
+    function mtResultHTML() {
+      const T = MT.test, r = MT.res, bm = mtGet(MT_K.bm, {})[T.id] || [];
+      const pct = Math.round(r.pct), msg = pct >= 80 ? "Zabardast! 🔥" : pct >= 60 ? "Bahut accha! 👏" : pct >= 40 ? "Theek hai, aur practice karein 💪" : "Chinta mat karein, review karke sudharein 📈";
+      let h = '<div class="mt-top"><button class="mt-ibtn" onclick="mtExit()">✕</button><div class="t">Result • ' + escH(T.title) + "</div>" + mtLangToggle() + "</div>";
+      h += '<div class="mt-body"><div class="mt-wrap"><div class="mt-score">' + (MT.auto ? '<div class="mt-auto">⏰ Time khatam — test auto-submit ho gaya</div><br>' : "") +
+        '<div class="big">' + r.score + "<small> / " + r.max + "</small></div><p>" + pct + "% • " + msg + "</p></div>" +
+        '<div class="mt-sum" style="margin-top:14px"><div class="mt-box g"><strong>' + r.c + "</strong><small>Sahi</small></div>" +
+        '<div class="mt-box r"><strong>' + r.w + "</strong><small>Galat</small></div>" +
+        '<div class="mt-box"><strong>' + r.s + "</strong><small>Skip</small></div>" +
+        '<div class="mt-box"><strong>' + Math.round(r.acc) + "%</strong><small>Accuracy</small></div></div>" +
+        '<div class="mt-hero" style="margin-top:0"><div class="mt-secrow"><b>⏱ Time liya</b><span>' + mtFmt(MT.spent) + " / " + T.dur + " min</span></div>" +
+        r.secs.map(s => '<div class="mt-secrow"><b>' + escH(s.name) + "</b><span>" + s.score + "/" + s.max + " • ✓" + s.c + " ✗" + s.w + " –" + s.s + "</span></div>").join("") + "</div>";
+      const fl = [["all", "Sab (" + T.qs.length + ")"], ["c", "✓ Sahi (" + r.c + ")"], ["w", "✗ Galat (" + r.w + ")"], ["s", "Skipped (" + r.s + ")"], ["b", "★ Bookmarked (" + bm.length + ")"]];
+      h += '<div class="mt-fl">' + fl.map(f => '<button class="' + (MT.filter === f[0] ? "on" : "") + '" onclick="mtFilter(\'' + f[0] + '\')">' + f[1] + "</button>").join("") + "</div>";
+      let shown = 0;
+      T.qs.forEach((q, i) => {
+        const a = MT.ans[i], st = a == null ? "s" : a === q.ci ? "c" : "w";
+        if (MT.filter === "b" ? bm.indexOf(i) < 0 : MT.filter !== "all" && MT.filter !== st) return;
+        shown++;
+        const c = q[MT.lang], ex = q.ex[MT.lang];
+        h += '<div class="mt-rv"><div class="mt-rv-h"><b>Q ' + (i + 1) + '</b><span class="pill">' + escH(T.sections[q.sec].name) + "</span>" +
+          (bm.indexOf(i) >= 0 ? "<span>★</span>" : "") +
+          '<em class="' + (st === "c" ? "g" : st === "w" ? "r" : "m") + '">' + (st === "c" ? "+" + q.pos : st === "w" ? "−" + q.neg : "Skipped") + "</em></div>" +
+          '<div class="mt-qtext">' + escH(c.t) + "</div>" +
+          c.o.map((o, k) => '<div class="mt-ro' + (k === q.ci ? " good" : k === a ? " bad" : "") + '"><b>' + MT_LET[k] + "</b><span>" + escH(o) + "</span>" +
+            (k === q.ci ? "<i>✓ SAHI JAWAB</i>" : k === a ? "<i>AAPKA JAWAB</i>" : "") + "</div>").join("") +
+          (ex ? '<div class="mt-ex"><b>EXPLANATION</b>' + escH(ex) + "</div>" : "") + "</div>";
+      });
+      if (!shown) h += '<div class="mt-empty">Is filter mein koi sawal nahi.</div>';
+      h += "</div></div>" +
+        '<div class="mt-foot"><button onclick="mtExit()">Band karein</button><button class="nx" onclick="mtRetry()">🔁 Dobara Try karein</button></div>';
+      return h;
+    }
+    function mtLangToggle() { return '<button class="mt-ibtn" onclick="mtLang(\'' + (MT.lang === "en" ? "hi" : "en") + '\')">' + (MT.lang === "en" ? "हिं" : "EN") + "</button>"; }
+    function mtRetry() { const id = MT.test.id; clearInterval(mtTimer); MT = null; mtOpen(id); }
+
+
+    document.getElementById("homeSearch").addEventListener("keydown", e => {
+      const q = e.target.value.trim();
+      if (e.key === "Enter" && q) go("#search/" + encodeURIComponent(q));
+    });
+
+
+    // ---------- UI sounds (chat page skip) ----------
+    let __audioCtx = null;
+
+    // ---------- Theme (dark / light) ----------
+    const THEME_KEY = "sscprepx_theme";
+    function applyTheme(mode) {
+      const light = mode === "light";
+      document.body.classList.toggle("light", light);
+      const lab = document.getElementById("themeLabel");
+      const ic = document.getElementById("themeIcon");
+      if (lab) lab.textContent = light ? "☀️ Light theme" : "🌙 Dark theme";
+      if (ic) ic.textContent = light ? "ON" : "OFF";
+      try { localStorage.setItem(THEME_KEY, light ? "light" : "dark"); } catch (e) {}
+    }
+    function toggleTheme() {
+      playTap();
+      const next = document.body.classList.contains("light") ? "dark" : "light";
+      applyTheme(next);
+    }
+    try { applyTheme(localStorage.getItem(THEME_KEY) || "dark"); } catch (e) { applyTheme("dark"); }
+
+    // ---------- Configurable tap sound (from admin) ----------
+    window.__soundId = 0;
+    function playToneSeq(seq) {
+      try {
+        if (!__audioCtx) __audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const ctx = __audioCtx;
+        if (ctx.state === "suspended") ctx.resume();
+        let delay = 0;
+        seq.forEach(([freq, dur, type, vol]) => {
+          setTimeout(() => {
+            const o = ctx.createOscillator();
+            const g = ctx.createGain();
+            o.type = type || "triangle";
+            o.frequency.value = freq;
+            g.gain.value = vol || 0.04;
+            o.connect(g); g.connect(ctx.destination);
+            o.start();
+            g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + dur);
+            o.stop(ctx.currentTime + dur + 0.02);
+          }, delay);
+          delay += Math.max(30, Math.floor(dur * 700));
+        });
+      } catch (e) {}
+    }
+    const SOUND_SEQ = {
+      0: [[640,0.05,"triangle",0.04],[820,0.06,"sine",0.03]],
+      1: [[420,0.04,"square",0.03]],
+      2: [[180,0.08,"triangle",0.05]],
+      3: [[1200,0.12,"sine",0.035]],
+      4: [[300,0.1,"sine",0.04],[380,0.12,"sine",0.025]],
+      5: [[880,0.06,"square",0.03],[1100,0.08,"sine",0.025]],
+      6: [[760,0.05,"sine",0.04]],
+      7: [[200,0.03,"sawtooth",0.04],[400,0.04,"triangle",0.03]],
+      8: [[1500,0.08,"sine",0.03]],
+      9: [[120,0.1,"triangle",0.05]],
+      10: [[900,0.15,"sine",0.04],[1200,0.12,"sine",0.03]],
+      11: [[520,0.12,"triangle",0.045]],
+      12: [[1000,0.08,"square",0.03]],
+      13: [[500,0.1,"sine",0.04],[250,0.15,"sine",0.03]],
+      14: [[350,0.04,"square",0.025]],
+      15: [[600,0.05,"triangle",0.035],[300,0.05,"triangle",0.03]],
+      16: [[400,0.12,"sawtooth",0.02]],
+      17: [[1000,0.08,"sine",0.03],[1400,0.1,"sine",0.025],[1800,0.1,"sine",0.02]],
+      18: [[160,0.07,"triangle",0.045]],
+      19: [[8000,0.03,"square",0.02]],
+      20: [[220,0.05,"square",0.04]],
+      21: [[660,0.07,"sine",0.04],[990,0.09,"sine",0.035]],
+      22: [[440,0.1,"sawtooth",0.025],[880,0.12,"sine",0.02]],
+      23: [[480,0.14,"triangle",0.04]],
+      24: [[1500,0.02,"square",0.03],[100,0.04,"triangle",0.03]],
+      25: [[280,0.03,"square",0.03]],
+      26: [[500,0.07,"sine",0.035],[700,0.07,"sine",0.03],[900,0.1,"sine",0.03]],
+      27: [[900,0.07,"sine",0.035],[700,0.07,"sine",0.03],[500,0.1,"sine",0.03]],
+      28: null,
+      29: [[700,0.06,"sine",0.04],[700,0.06,"sine",0.04]]
+    };
+
+    function playTap() {
+      try {
+        if (location.hash.indexOf("chat") >= 0) return;
+        const id = Number(window.__soundId || 0);
+        if (id === 28) return;
+        const seq = SOUND_SEQ[id] || SOUND_SEQ[0];
+        if (seq) playToneSeq(seq);
+      } catch (e) {}
+    }
+    function playNotifSound() {
+      try {
+        playToneSeq([[520,0.12,"sine",0.06],[720,0.14,"sine",0.05],[900,0.18,"triangle",0.04]]);
+      } catch (e) {}
+    }
+    document.addEventListener("click", (e) => {
+      const t = e.target.closest("button, a.inst, .subject, .chip, .brow, .nav-item, .d-row, .d-b, .bottom-nav button");
+      if (t) playTap();
+    }, true);
+
+    // ---------- Time spent on website ----------
+    (function trackTime() {
+      let last = Date.now();
+      const tick = () => {
+        const now = Date.now();
+        const d = now - last;
+        last = now;
+        if (d > 0 && d < 120000) {
+          P.timeSpent = (P.timeSpent || 0) + d;
+          saveP();
+          const el = document.getElementById("dTime");
+          if (el) el.textContent = fmtTimeSpent();
+        }
+      };
+      setInterval(tick, 15000);
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) tick();
+        else last = Date.now();
+      });
+      window.addEventListener("beforeunload", tick);
+    })();
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+    renderAll();
+    route();
+    setTimeout(showFirstVisitNotice, 450);
+  </script>
+  <script type="module">
+    // Public website mode: public catalogue/config is requested even without a login.
+    // Firebase Auth remains optional only for existing secure checkout/enrollment flows.
+    import { auth, db } from "./js/firebase.js";
+    import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+    import { doc, getDoc, getDocs, collection, query, where, onSnapshot } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+
+    window.__signOut = () => signOut(auth);
+    window.__getToken = async () => (auth.currentUser ? auth.currentUser.getIdToken() : null);
+    window.__enr = {};
+    window.__reloadEnr = async () => {
+      const u = auth.currentUser;
+      if (!u) { window.__enr = {}; window.applyCatalog(window.__catalogRows || []); return; }
+      const es = await getDocs(query(collection(db, "enrollments"), where("uid", "==", u.uid)));
+      window.__enr = {}; es.docs.forEach(d => { const x = d.data(); window.__enr[String(x.courseId)] = x; });
+      window.applyCatalog(window.__catalogRows || []);
+    };
+    window.__loadPrivate = async (id) => { try { const snap = await getDoc(doc(db, "courses", id, "private", "content")); return snap.exists() ? snap.data() : {}; } catch (e) { return null; } };
+
+    let publicDataLoaded = false;
+    async function loadPublicSiteData(user) {
+      try {
+        const [cs, cfg] = await Promise.all([
+          getDocs(collection(db, "courses")),
+          getDoc(doc(db, "config", "admin"))
+        ]);
+        const cfgData = cfg.exists() ? cfg.data() : {};
+        if (user) {
+          const es = await getDocs(query(collection(db, "enrollments"), where("uid", "==", user.uid)));
+          window.__enr = {}; es.docs.forEach(d => { const x = d.data(); window.__enr[String(x.courseId)] = x; });
+          try {
+            const uref = await getDoc(doc(db, "users", user.uid));
+            const ud = uref.exists() ? uref.data() : {};
+            const name = ud.name || user.displayName || (user.email || "").split("@")[0] || "";
+            const email = ud.email || user.email || "";
+            const phone = ud.phone || ud.mobile || user.phoneNumber || "";
+            const username = ud.username || "";
+            if (name && !P.name) P.name = name;
+            if (email && !P.email) P.email = email;
+            if (phone && !P.mobile) P.mobile = String(phone).replace(/\D/g, "").slice(-10);
+            if (username && !P.username) P.username = username;
+            saveP();
+            localStorage.setItem(SESSION_KEY, JSON.stringify({ name: P.name || name, email: P.email || email, username: P.username || username, phone: P.mobile || phone, uid: user.uid }));
+            if (typeof renderHeaderAv === "function") renderHeaderAv();
+            if (typeof renderDash === "function") renderDash();
+          } catch (pe) { console.warn("profile prefill", pe); }
+        } else {
+          window.__enr = {};
+        }
+
+        if (Array.isArray(cfgData.batches) && cfgData.batches.length) {
+          for (let k = institutes.length - 1; k >= 0; k--) if (institutes[k].fromAdmin) institutes.splice(k, 1);
+          cfgData.batches.forEach((b, i) => {
+            if (!b || !b.name) return;
+            const short = (b.short || b.name.split(/\s+/).map(w => w[0]).join("").slice(0, 2)).toUpperCase();
+            institutes.push({ id: "inst_" + (b.id || i), name: b.name, short, mode: b.mode || b.type || "Live + Recorded", url: b.url || b.website || "", fromAdmin: true });
+          });
+        }
+        if (Array.isArray(cfgData.notifications)) checkNewNotifs(cfgData.notifications);
+        if (cfgData.soundId != null) window.__soundId = Number(cfgData.soundId) || 0;
+        if (Array.isArray(cfgData.quotes) && cfgData.quotes.length) {
+          QUOTES = cfgData.quotes.map(q => (typeof q === "string" ? q : (q && q.text) || "")).filter(Boolean);
+          if (!QUOTES.length) QUOTES = ["Roz thoda padho, ek din bahut aage nikal jaoge."];
+        }
+        window.applyCatalog(cs.docs.map(d => Object.assign({}, d.data(), { id: d.id })));
+        if (typeof renderDash === "function") try { renderDash(); } catch (e) {}
+        publicDataLoaded = true;
+      } catch (e) {
+        console.warn("Public catalogue unavailable (check Firestore read rules):", e);
+        if (!publicDataLoaded) { window.__enr = {}; window.applyCatalog([]); }
+      }
+    }
+
+    onAuthStateChanged(auth, async (user) => {
+      await loadPublicSiteData(user || null);
+      if (!user) return;
+      try {
+        onSnapshot(doc(db, "config", "admin"), (snap) => {
+          if (!snap.exists()) return;
+          const d = snap.data() || {};
+          checkNewNotifs(d.notifications || []);
+          if (d.soundId != null) window.__soundId = Number(d.soundId) || 0;
+          if (Array.isArray(d.quotes) && d.quotes.length) QUOTES = d.quotes.map(q => (typeof q === "string" ? q : (q && q.text) || "")).filter(Boolean);
+        });
+      } catch (e) { console.warn("notification listener", e); }
+    });
+  </script>
+<script>
+  // Disable pinch zoom (double-tap zoom is blocked via CSS touch-action)
+  ["gesturestart","gesturechange","gestureend"].forEach(function(t){
+    document.addEventListener(t,function(e){e.preventDefault();},{passive:false});
+  });
+  document.addEventListener("touchmove",function(e){
+    if(e.touches&&e.touches.length>1)e.preventDefault();
+  },{passive:false});
+</script>
+</body>
+</html>
