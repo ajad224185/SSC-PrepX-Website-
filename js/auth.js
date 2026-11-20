@@ -1,5 +1,5 @@
 // ==========================================
-// SSC PrepX 2.0 - NEW AUTHENTICATION SYSTEM
+// SSC PrepX 2.0 - AUTHENTICATION SYSTEM
 // ==========================================
 
 import { auth, db } from "./firebase.js";
@@ -15,7 +15,9 @@ import {
   signInWithPhoneNumber,
   GoogleAuthProvider,
   signInWithPopup,
-  deleteUser
+  deleteUser,
+  setPersistence,
+  browserLocalPersistence
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 
 import {
@@ -24,6 +26,15 @@ import {
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
+// ==========================================
+// AUTH INITIALIZATION
+// ==========================================
+
+// Wait for persistent authentication setup
+export const authReady = setPersistence(
+  auth,
+  browserLocalPersistence
+);
 
 // ==========================================
 // EMAIL LOGIN
@@ -31,13 +42,18 @@ import {
 
 export async function loginWithEmail(email, password) {
   try {
+    await authReady;
+
     const result = await signInWithEmailAndPassword(
       auth,
       email.trim(),
       password
     );
 
-    return { success: true, user: result.user };
+    return {
+      success: true,
+      user: result.user
+    };
 
   } catch (error) {
     console.error("Email Login Error:", error);
@@ -50,9 +66,8 @@ export async function loginWithEmail(email, password) {
   }
 }
 
-
 // ==========================================
-// EMAIL REGISTER + SAVE STUDENT PROFILE
+// EMAIL REGISTER
 // ==========================================
 
 export async function registerWithEmail(
@@ -64,7 +79,8 @@ export async function registerWithEmail(
   let createdUser = null;
 
   try {
-    // Create Firebase Auth account
+    await authReady;
+
     const result = await createUserWithEmailAndPassword(
       auth,
       email.trim(),
@@ -73,14 +89,12 @@ export async function registerWithEmail(
 
     createdUser = result.user;
 
-    // Save name in Auth profile
     if (name && name.trim()) {
       await updateProfile(createdUser, {
         displayName: name.trim()
       });
     }
 
-    // Save student data in Firestore
     await setDoc(
       doc(db, "users", createdUser.uid),
       {
@@ -99,16 +113,17 @@ export async function registerWithEmail(
       { merge: true }
     );
 
-    return { success: true, user: createdUser };
+    return {
+      success: true,
+      user: createdUser
+    };
 
   } catch (error) {
-    console.error("Registration / Firestore Error:", error);
+    console.error("Registration Error:", error);
 
-    // Rollback Auth user if Firestore fails
     if (createdUser) {
       try {
         await deleteUser(createdUser);
-        console.log("Auth account rollback successful.");
       } catch (deleteError) {
         console.error("Rollback Error:", deleteError);
       }
@@ -122,13 +137,14 @@ export async function registerWithEmail(
   }
 }
 
-
 // ==========================================
 // FORGOT PASSWORD
 // ==========================================
 
 export async function resetPassword(email) {
   try {
+    await authReady;
+
     await sendPasswordResetEmail(auth, email.trim());
 
     return {
@@ -147,17 +163,22 @@ export async function resetPassword(email) {
   }
 }
 
-
 // ==========================================
 // GOOGLE LOGIN
 // ==========================================
 
 export async function loginWithGoogle() {
   try {
+    await authReady;
+
     const provider = new GoogleAuthProvider();
+
     const result = await signInWithPopup(auth, provider);
 
-    return { success: true, user: result.user };
+    return {
+      success: true,
+      user: result.user
+    };
 
   } catch (error) {
     console.error("Google Login Error:", error);
@@ -170,9 +191,8 @@ export async function loginWithGoogle() {
   }
 }
 
-
 // ==========================================
-// reCAPTCHA
+// RECAPTCHA
 // ==========================================
 
 export function setupRecaptcha(containerId) {
@@ -210,24 +230,28 @@ export function setupRecaptcha(containerId) {
   }
 }
 
-
 // ==========================================
 // SEND MOBILE OTP
-// (error code is shown on screen for debugging)
 // ==========================================
 
-export async function sendMobileOTP(phoneNumber, containerId) {
+export async function sendMobileOTP(
+  phoneNumber,
+  containerId
+) {
   try {
+    await authReady;
+
     const appVerifier = setupRecaptcha(containerId);
 
     if (!appVerifier) {
-      const e = window.lastRecaptchaError;
+      const error = window.lastRecaptchaError;
+
       return {
         success: false,
-        error: e?.code || "recaptcha-setup-failed",
+        error: error?.code || "recaptcha-setup-failed",
         message:
           "reCAPTCHA setup नहीं हो पाया। [" +
-          (e?.code || e?.message || "unknown") +
+          (error?.code || error?.message || "unknown") +
           "]"
       };
     }
@@ -259,8 +283,6 @@ export async function sendMobileOTP(phoneNumber, containerId) {
     return {
       success: false,
       error: error.code,
-      // Code is appended so you can see the real reason on the banner.
-      // Remove the bracket part once everything works.
       message:
         getAuthErrorMessage(error.code) +
         " [" + (error.code || error.message) + "]"
@@ -268,13 +290,14 @@ export async function sendMobileOTP(phoneNumber, containerId) {
   }
 }
 
-
 // ==========================================
 // VERIFY MOBILE OTP
 // ==========================================
 
 export async function verifyMobileOTP(otp) {
   try {
+    await authReady;
+
     if (!window.confirmationResult) {
       return {
         success: false,
@@ -286,7 +309,10 @@ export async function verifyMobileOTP(otp) {
       otp.trim()
     );
 
-    return { success: true, user: result.user };
+    return {
+      success: true,
+      user: result.user
+    };
 
   } catch (error) {
     console.error("OTP Verification Error:", error);
@@ -299,15 +325,19 @@ export async function verifyMobileOTP(otp) {
   }
 }
 
-
 // ==========================================
 // LOGOUT
 // ==========================================
 
 export async function logoutUser() {
   try {
+    await authReady;
+
     await signOut(auth);
-    return { success: true };
+
+    return {
+      success: true
+    };
 
   } catch (error) {
     console.error("Logout Error:", error);
@@ -320,17 +350,15 @@ export async function logoutUser() {
   }
 }
 
-
 // ==========================================
 // AUTH STATE
 // ==========================================
 
 export function watchAuthState(callback) {
-  return onAuthStateChanged(auth, (user) => {
+  return onAuthStateChanged(auth, async (user) => {
     callback(user);
   });
 }
-
 
 // ==========================================
 // CURRENT USER
@@ -339,7 +367,6 @@ export function watchAuthState(callback) {
 export function getCurrentUser() {
   return auth.currentUser;
 }
-
 
 // ==========================================
 // FIREBASE ERROR MESSAGES
@@ -388,7 +415,7 @@ function getAuthErrorMessage(code) {
       return "reCAPTCHA check fail हो गया। Page refresh करके try करें।";
 
     case "auth/invalid-app-credential":
-      return "App verification fail हुआ (reCAPTCHA / domain issue)।";
+      return "App verification fail हुआ।";
 
     case "auth/unauthorized-domain":
       return "यह domain Firebase में authorized नहीं है।";
@@ -420,4 +447,5 @@ function getAuthErrorMessage(code) {
     default:
       return "Login में समस्या हुई। कृपया दोबारा try करें।";
   }
-  }
+                            }
+  
