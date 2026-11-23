@@ -1,4 +1,3 @@
-
 // ==========================================
 // SSC PrepX 2.0 - AUTHENTICATION SYSTEM
 // WITH ANDROID FCM TOKEN SUPPORT
@@ -473,6 +472,27 @@ export function watchAuthState(callback) {
 }
 
 // ==========================================
+// ANDROID FCM TOKEN READY EVENT
+// ==========================================
+
+// Android WebView token page load ke baad bhi de sakta hai.
+// Event milne par current logged-in user ke liye token dobara save hoga.
+window.addEventListener("ssc-fcm-token-ready", async () => {
+  try {
+    await authReady;
+
+    const user = auth.currentUser;
+
+    if (user) {
+      await ensureUserDocument(user);
+      await saveAndroidFCMToken(user);
+    }
+  } catch (error) {
+    console.error("FCM Token Ready Event Error:", error);
+  }
+});
+
+// ==========================================
 // CURRENT USER
 // ==========================================
 
@@ -559,4 +579,4 @@ function getAuthErrorMessage(code) {
     default:
       return "Login में समस्या हुई। कृपया दोबारा try करें।";
   }
-  }
+      }
