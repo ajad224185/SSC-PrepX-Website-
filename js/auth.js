@@ -1,5 +1,7 @@
+
 // ==========================================
 // SSC PrepX 2.0 - AUTHENTICATION SYSTEM
+// WITH ANDROID FCM TOKEN SUPPORT
 // ==========================================
 
 import { auth, db } from "./firebase.js";
@@ -23,6 +25,8 @@ import {
 import {
   doc,
   setDoc,
+  getDoc,
+  deleteDoc,
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
@@ -30,11 +34,79 @@ import {
 // AUTH INITIALIZATION
 // ==========================================
 
-// Wait for persistent authentication setup
 export const authReady = setPersistence(
   auth,
   browserLocalPersistence
 );
+
+// ==========================================
+// CREATE USER DOCUMENT IF MISSING
+// ==========================================
+
+async function ensureUserDocument(user) {
+  if (!user) return;
+
+  const userRef = doc(db, "users", user.uid);
+  const userSnap = await getDoc(userRef);
+
+  // Existing user/admin document ko overwrite nahi karna
+  if (!userSnap.exists()) {
+    await setDoc(userRef, {
+      uid: user.uid,
+      name: user.displayName || "",
+      username: "",
+      email: user.email || "",
+      phone: user.phoneNumber || "",
+      createdAt: serverTimestamp(),
+      updatedAt: serverTimestamp(),
+      role: "student",
+      isActive: true
+    });
+  }
+}
+
+// ==========================================
+// ANDROID FCM TOKEN SAVE
+// ==========================================
+
+async function saveAndroidFCMToken(user) {
+  try {
+    if (!user) return;
+
+    // Android app ka JavaScript bridge
+    if (
+      !window.AndroidFcm ||
+      typeof window.AndroidFcm.getToken !== "function"
+    ) {
+      return;
+    }
+
+    const token = window.AndroidFcm.getToken();
+
+    if (!token || typeof token !== "string") {
+      return;
+    }
+
+    const tokenRef = doc(
+      db,
+      "users",
+      user.uid,
+      "deviceTokens",
+      "android"
+    );
+
+    await setDoc(tokenRef, {
+      token: token,
+      platform: "android",
+      updatedAt: serverTimestamp()
+    });
+
+    console.log("Android FCM token saved successfully.");
+
+  } catch (error) {
+    console.error("FCM Token Save Error:", error);
+  }
+}
 
 // ==========================================
 // EMAIL LOGIN
@@ -175,6 +247,7 @@ export async function loginWithGoogle() {
 
     const result = await signInWithPopup(auth, provider);
 
+    // Firestore user document auth listener me banega
     return {
       success: true,
       user: result.user
@@ -333,6 +406,28 @@ export async function logoutUser() {
   try {
     await authReady;
 
+    const user = auth.currentUser;
+
+    if (user) {
+      try {
+        const tokenRef = doc(
+          db,
+          "users",
+          user.uid,
+          "deviceTokens",
+          "android"
+        );
+
+        await deleteDoc(tokenRef);
+
+      } catch (tokenError) {
+        console.error(
+          "FCM Token Delete Error:",
+          tokenError
+        );
+      }
+    }
+
     await signOut(auth);
 
     return {
@@ -356,6 +451,23 @@ export async function logoutUser() {
 
 export function watchAuthState(callback) {
   return onAuthStateChanged(auth, async (user) => {
+
+    if (user) {
+      try {
+        await authReady;
+
+        await ensureUserDocument(user);
+
+        await saveAndroidFCMToken(user);
+
+      } catch (error) {
+        console.error(
+          "Auth Setup / FCM Error:",
+          error
+        );
+      }
+    }
+
     callback(user);
   });
 }
@@ -447,5 +559,4 @@ function getAuthErrorMessage(code) {
     default:
       return "Login में समस्या हुई। कृपया दोबारा try करें।";
   }
-                            }
-  
+  }
