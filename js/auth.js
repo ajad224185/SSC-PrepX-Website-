@@ -1,6 +1,6 @@
 // ==========================================
 // SSC PrepX 2.0 - AUTHENTICATION SYSTEM
-// WITH ANDROID FCM TOKEN SUPPORT
+// FIRESTORE SIGNUP RACE FIX + ANDROID FCM
 // ==========================================
 
 import { auth, db } from "./firebase.js";
@@ -16,7 +16,6 @@ import {
   signInWithPhoneNumber,
   GoogleAuthProvider,
   signInWithPopup,
-  deleteUser,
   setPersistence,
   browserLocalPersistence
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
@@ -38,30 +37,53 @@ export const authReady = setPersistence(
   browserLocalPersistence
 );
 
+// Registration ke waqt auth listener ko duplicate
+// user document create karne se rokta hai.
+let registrationInProgress = false;
+
+// Google / Phone login ke concurrent requests ko serialize karta hai.
+const userDocumentPromises = new Map();
+
 // ==========================================
 // CREATE USER DOCUMENT IF MISSING
 // ==========================================
 
-async function ensureUserDocument(user) {
-  if (!user) return;
+function ensureUserDocument(user, profile = {}) {
+  if (!user) return Promise.resolve();
 
-  const userRef = doc(db, "users", user.uid);
-  const userSnap = await getDoc(userRef);
+  const uid = user.uid;
 
-  // Existing user/admin document ko overwrite nahi karna
-  if (!userSnap.exists()) {
+  if (userDocumentPromises.has(uid)) {
+    return userDocumentPromises.get(uid);
+  }
+
+  const task = (async () => {
+    const userRef = doc(db, "users", uid);
+    const userSnap = await getDoc(userRef);
+
+    // Existing student/admin document ko overwrite nahi karna.
+    if (userSnap.exists()) return;
+
     await setDoc(userRef, {
-      uid: user.uid,
-      name: user.displayName || "",
-      username: "",
+      uid: uid,
+      name: profile.name || user.displayName || "",
+      username: profile.username || "",
       email: user.email || "",
-      phone: user.phoneNumber || "",
+      phone: profile.phone || user.phoneNumber || "",
       createdAt: serverTimestamp(),
       updatedAt: serverTimestamp(),
       role: "student",
       isActive: true
     });
-  }
+  })();
+
+  userDocumentPromises.set(uid, task);
+
+  return task.finally(() => {
+    if (userDocumentPromises.get(uid) === task) {
+      userDocumentPromises.delete(uid);
+    }
+  });
 }
 
 // ==========================================
@@ -72,7 +94,6 @@ async function saveAndroidFCMToken(user) {
   try {
     if (!user) return;
 
-    // Android app ka JavaScript bridge
     if (
       !window.AndroidFcm ||
       typeof window.AndroidFcm.getToken !== "function"
@@ -82,9 +103,7 @@ async function saveAndroidFCMToken(user) {
 
     const token = window.AndroidFcm.getToken();
 
-    if (!token || typeof token !== "string") {
-      return;
-    }
+    if (!token || typeof token !== "string") return;
 
     const tokenRef = doc(
       db,
@@ -152,6 +171,8 @@ export async function registerWithEmail(
   try {
     await authReady;
 
+    registrationInProgress = true;
+
     const result = await createUserWithEmailAndPassword(
       auth,
       email.trim(),
@@ -166,23 +187,20 @@ export async function registerWithEmail(
       });
     }
 
-    await setDoc(
-      doc(db, "users", createdUser.uid),
-      {
-        uid: createdUser.uid,
-        name: name ? name.trim() : "",
-        username: profile.username
-          ? profile.username.trim().toLowerCase()
-          : "",
-        email: email ? email.trim().toLowerCase() : "",
-        phone: profile.phone ? profile.phone.trim() : "",
-        createdAt: serverTimestamp(),
-        updatedAt: serverTimestamp(),
-        role: "student",
-        isActive: true
-      },
-      { merge: true }
-    );
+    // Sirf registration function user document create karega.
+    // Auth listener registration ke dauran creation skip karega.
+    await ensureUserDocument(createdUser, {
+      name: name ? name.trim() : "",
+      username: profile.username
+        ? profile.username.trim().toLowerCase()
+        : "",
+      phone: profile.phone ? profile.phone.trim() : ""
+    });
+
+    registrationInProgress = false;
+
+    // Document banne ke baad FCM token save karo.
+    await saveAndroidFCMToken(createdUser);
 
     return {
       success: true,
@@ -190,21 +208,24 @@ export async function registerWithEmail(
     };
 
   } catch (error) {
+    registrationInProgress = false;
+
     console.error("Registration Error:", error);
 
-    if (createdUser) {
-      try {
-        await deleteUser(createdUser);
-      } catch (deleteError) {
-        console.error("Rollback Error:", deleteError);
-      }
-    }
+    // Auth account ko automatically delete nahi karna.
+    // Isse original Firestore error bhi preserve rahega.
 
     return {
       success: false,
       error: error.code,
-      message: getAuthErrorMessage(error.code)
+      accountCreated: !!createdUser,
+      message: createdUser
+        ? "Account ban gaya hai, lekin profile save nahi hui. Dobara login karke try karein. Error: " + getAuthErrorMessage(error.code)
+        : getAuthErrorMessage(error.code)
     };
+
+  } finally {
+    registrationInProgress = false;
   }
 }
 
@@ -246,7 +267,7 @@ export async function loginWithGoogle() {
 
     const result = await signInWithPopup(auth, provider);
 
-    // Firestore user document auth listener me banega
+    // Missing user document auth listener create karega.
     return {
       success: true,
       user: result.user
@@ -450,14 +471,15 @@ export async function logoutUser() {
 
 export function watchAuthState(callback) {
   return onAuthStateChanged(auth, async (user) => {
-
     if (user) {
       try {
         await authReady;
 
-        await ensureUserDocument(user);
-
-        await saveAndroidFCMToken(user);
+        // Email registration ke dauran duplicate create nahi hoga.
+        if (!registrationInProgress) {
+          await ensureUserDocument(user);
+          await saveAndroidFCMToken(user);
+        }
 
       } catch (error) {
         console.error(
@@ -475,11 +497,11 @@ export function watchAuthState(callback) {
 // ANDROID FCM TOKEN READY EVENT
 // ==========================================
 
-// Android WebView token page load ke baad bhi de sakta hai.
-// Event milne par current logged-in user ke liye token dobara save hoga.
 window.addEventListener("ssc-fcm-token-ready", async () => {
   try {
     await authReady;
+
+    if (registrationInProgress) return;
 
     const user = auth.currentUser;
 
@@ -487,6 +509,7 @@ window.addEventListener("ssc-fcm-token-ready", async () => {
       await ensureUserDocument(user);
       await saveAndroidFCMToken(user);
     }
+
   } catch (error) {
     console.error("FCM Token Ready Event Error:", error);
   }
@@ -571,6 +594,7 @@ function getAuthErrorMessage(code) {
       return "Internet connection check करें।";
 
     case "permission-denied":
+    case "firestore/permission-denied":
       return "Firestore permission नहीं मिली।";
 
     case "unavailable":
