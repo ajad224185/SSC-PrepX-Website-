@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>7.) SSC CGL Tier-II (Paper-I) Mock 2(HINDI - Hindi</title>
+<style>
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0069d9;
+  --success-color: #28a745;
+  --success-hover: #218838;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --secondary-color: #6c757d;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --border-color: #dee2e6;
+  --shadow: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
+  --overlay: rgba(0,0,0,0.5);
+  --nav-height: 80px;
+}
+
+[data-theme="dark"] {
+  --primary-color: #4dabf7;
+  --primary-hover: #339af0;
+  --success-color: #51cf66;
+  --success-hover: #40c057;
+  --danger-color: #ff6b6b;
+  --warning-color: #ffd43b;
+  --secondary-color: #868e96;
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #404040;
+  --text-primary: #f8f9fa;
+  --text-secondary: #adb5bd;
+  --border-color: #495057;
+  --shadow: 0 4px 6px rgba(0,0,0,0.3);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.4);
+  --overlay: rgba(0,0,0,0.7);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+  overflow-x: hidden;
+  position: relative;
+  padding-bottom: var(--nav-height);
+}
+
+body.palette-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-primary);
+  padding: 20px 30px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+
+.header h1 {
+  font-size: 28px;
+  color: var(--primary-color);
+  font-weight: 700;
+  user-select: none;
+}
+
+.header-controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.theme-toggle, .fullscreen-btn {
+  background: var(--bg-tertiary);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.3s;
+  min-width: 44px;
+  min-height: 44px;
+  user-select: none;
+}
+
+.theme-toggle:active, .fullscreen-btn:active {
+  transform: scale(0.95);
+}
+
+.theme-toggle:hover, .fullscreen-btn:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+.bot-link-btn {
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+}
+.bot-link-btn:active {
+  transform: scale(0.95);
+}
+.bot-link-btn:hover {
+  background: var(--primary-hover);
+}
+
+.timer {
+  background: var(--warning-color);
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 18px;
+  min-width: 100px;
+  text-align: center;
+  user-select: none;
+}
+
+.timer.warning {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.palette-fab {
+  position: fixed;
+  bottom: calc(var(--nav-height) + 20px);
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  box-shadow: 0 6px 20px rgba(0,123,255,0.4);
+  transition: all 0.3s ease;
+  z-index: 998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.palette-fab:active {
+  transform: scale(0.9);
+}
+
+.palette-fab:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0,123,255,0.6);
+}
+
+.palette-fab.active {
+  background: var(--danger-color);
+}
+
+.palette-fab .badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: var(--success-color);
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--bg-secondary);
+  pointer-events: none;
+}
+.solution-section {
+  margin-top: 20px;
+  padding: 15px;
+  background: #e7f3ff;
+  border-left: 4px solid var(--primary-color);
+  border-radius: 8px;
+}
+
+.solution-label {
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.solution-content {
+  line-height: 1.6;
+  color: #333;
+}
+
+.solution-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.palette-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 999;
+  touch-action: none;
+}
+
+.palette-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.question-palette {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 450px;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--bg-primary);
+  box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+  transition: right 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.question-palette.active {
+  right: 0;
+}
+
+.palette-header {
+  padding: 20px;
+  background: var(--primary-color);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.palette-header h3 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.palette-close {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: background 0.2s;
+  line-height: 1;
+  touch-action: manipulation;
+}
+
+.palette-close:active {
+  transform: scale(0.9);
+}
+
+.palette-close:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.palette-stats {
+  padding: 15px 20px;
+  background: var(--bg-tertiary);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  font-size: 13px;
+  text-align: center;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border-color);
+  user-select: none;
+}
+
+.palette-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.palette-stat .number {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.palette-stat.answered .number { color: var(--success-color); }
+.palette-stat.unanswered .number { color: var(--secondary-color); }
+.palette-stat.bookmarked .number { color: var(--warning-color); }
+
+.palette-search {
+  padding: 15px 20px;
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+}
+
+.palette-search input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 14px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.palette-search input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.palette-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 10px;
+}
+
+.palette-btn {
+  aspect-ratio: 1;
+  border: 2px solid var(--border-color);
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+  min-width: 40px;
+  min-height: 40px;
+  color: var(--text-primary);
+  position: relative;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.palette-btn:active {
+  transform: scale(0.9);
+}
+
+.palette-btn:hover {
+  transform: scale(1.1);
+  z-index: 10;
+  box-shadow: var(--shadow);
+}
+
+.palette-btn.current {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  animation: currentPulse 2s infinite;
+}
+
+@keyframes currentPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,123,255,0.7); }
+  50% { box-shadow: 0 0 0 8px rgba(0,123,255,0); }
+}
+
+.palette-btn.answered {
+  background: var(--success-color);
+  color: white;
+  border-color: var(--success-color);
+}
+
+.palette-btn.bookmarked::after {
+  content: '🔖';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.palette-btn.bookmarked.answered {
+  background: var(--success-color);
+}
+
+.palette-legend {
+  padding: 20px;
+  border-top: 1px solid var(--border-color);
+  font-size: 13px;
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.legend-color {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.quiz-container {
+  background: var(--bg-primary);
+  border-radius: 15px;
+  box-shadow: var(--shadow-lg);
+  padding: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  scroll-margin-top: 20px;
+}
+
+.quiz-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.marking-info {
+  display: inline-block;
+  background: var(--bg-tertiary);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.progress-section {
+  margin-bottom: 25px;
+}
+
+.progress-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.progress-bar-container {
+  background: var(--bg-tertiary);
+  border-radius: 12px;
+  overflow: hidden;
+  height: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+  transition: width 0.4s ease;
+  border-radius: 12px;
+}
+
+.question-section {
+  min-height: 300px;
+  scroll-margin-top: 80px;
+  margin-bottom: 20px;
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.question-number {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary-color);
+  user-select: none;
+}
+
+.bookmark-btn {
+  background: transparent;
+  border: 2px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 44px;
+  min-height: 44px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.bookmark-btn:active {
+  transform: scale(0.95);
+}
+
+.bookmark-btn.active {
+  background: var(--warning-color);
+  border-color: var(--warning-color);
+  color: #000;
+}
+
+.question {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 25px;
+  color: var(--text-primary);
+  user-select: text;
+}
+
+.question-image {
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: 10px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  padding: 10px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--border-color);
+  padding: 16px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--bg-secondary);
+  min-height: 60px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.option-label:active {
+  transform: scale(0.98);
+}
+
+.option-label:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--primary-color);
+}
+
+.option-label.selected {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.option-label input[type="radio"] {
+  margin-right: 15px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.option-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.option-image {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  padding: 10px;
+}
+
+.option-label.selected .option-image {
+  background: rgba(255,255,255,0.1);
+}
+
+/* FIXED NAVIGATION - KEY UPDATE */
+.navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-primary);
+  border-top: 2px solid var(--border-color);
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  z-index: 997;
+  padding: 15px 20px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 10px;
+  max-width: 100%;
+}
+
+.nav-btn {
+  padding: 14px 20px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+.nav-btn:active {
+  transform: scale(0.97);
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.nav-btn.prev {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.nav-btn.prev:hover:not(:disabled) {
+  background: #5a6268;
+}
+
+.nav-btn.next {
+  background: var(--primary-color);
+  color: white;
+}
+
+.nav-btn.next:hover:not(:disabled) {
+  background: var(--primary-hover);
+}
+
+.nav-btn.clear {
+  background: var(--danger-color);
+  color: white;
+}
+
+.nav-btn.clear:hover {
+  background: #c82333;
+}
+
+.nav-btn.submit {
+  background: var(--success-color);
+  color: white;
+  grid-column: 1 / -1;
+}
+
+.nav-btn.submit:hover {
+  background: var(--success-hover);
+}
+
+.result-section {
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.score-card {
+  background: linear-gradient(135deg, var(--primary-color), var(--success-color));
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  margin-bottom: 30px;
+  user-select: none;
+}
+
+.score-card h2 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.score-card p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: var(--bg-secondary);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  border: 2px solid var(--border-color);
+  user-select: none;
+}
+
+.stat-card h3 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.stat-card.correct h3 { color: var(--success-color); }
+.stat-card.wrong h3 { color: var(--danger-color); }
+.stat-card.unattempted h3 { color: var(--secondary-color); }
+
+.question-review {
+  border: 2px solid var(--border-color);
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 20px;
+  background: var(--bg-secondary);
+}
+
+.question-review h4 {
+  margin-bottom: 15px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.review-option {
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 2px solid var(--border-color);
+  background: var(--bg-primary);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.review-option .option-image {
+  max-width: 150px;
+  max-height: 100px;
+}
+
+.review-option.correct {
+  background: #d4edda;
+  border-color: var(--success-color);
+  color: #155724;
+}
+
+.review-option.wrong {
+  background: #f8d7da;
+  border-color: var(--danger-color);
+  color: #721c24;
+}
+
+.review-option.user-selected {
+  border-width: 3px;
+  font-weight: 600;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.action-btn {
+  padding: 14px 30px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  min-width: 150px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.action-btn:active {
+  transform: scale(0.95);
+}
+
+.action-btn.restart {
+  background: var(--danger-color);
+  color: white;
+}
+
+.action-btn.restart:hover {
+  background: #c82333;
+}
+
+.action-btn.download {
+  background: var(--primary-color);
+  color: white;
+}
+
+.action-btn.download:hover {
+  background: var(--primary-hover);
+}
+
+.action-btn.print {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.action-btn.print:hover {
+  background: #5a6268;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.palette-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.palette-content::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+}
+
+.palette-content::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+.palette-content::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 140px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .header h1 {
+    font-size: 22px;
+  }
+
+  .quiz-container {
+    padding: 20px 15px;
+  }
+
+  .question-palette {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .palette-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+  }
+
+  .palette-btn {
+    font-size: 13px;
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  .palette-fab {
+    bottom: calc(var(--nav-height) + 10px);
+    right: 15px;
+    width: 56px;
+    height: 56px;
+    font-size: 22px;
+  }
+
+  .navigation {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 12px 15px;
+  }
+
+  .nav-btn {
+    min-height: 44px;
+    font-size: 15px;
+  }
+
+  .nav-btn.clear {
+    order: 3;
+  }
+
+  .nav-btn.submit {
+    grid-column: auto;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .legend-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .question {
+    font-size: 16px;
+  }
+
+  .option-label {
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  .option-image {
+    max-height: 150px;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .palette-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+
+  .palette-btn {
+    font-size: 12px;
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .timer {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  .option-image {
+    max-height: 120px;
+  }
+}
+
+@media print {
+  .header-controls, .navigation, .palette-fab, .palette-overlay, .question-palette, .action-buttons, .bookmark-btn {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    padding-bottom: 0;
+  }
+
+  .container {
+    padding-bottom: 20px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>7.) SSC CGL Tier-II (Paper-I) Mock 2(HINDI - Hindi</h1>
+    <div class="header-controls">
+      <a href="https://t.me/ssc_prepX" target="_blank" class="bot-link-btn" title="Open Bot in Telegram">🤖 Bot</a>
+      
+      <div class="timer" id="timer">00:00</div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle Theme">🌙</button>
+      <button class="fullscreen-btn" id="fullscreenBtn" aria-label="Toggle fullscreen" title="Fullscreen">⛶</button>
+    </div>
+  </div>
+
+  <div class="quiz-container" id="quizContainer">
+    <div class="quiz-header">
+      <div class="marking-info" id="markingInfo">Marking: +1, -0</div>
+    </div>
+
+    <div class="progress-section">
+      <div class="progress-stats">
+        <span>Progress: <strong id="progressText">1/2</strong></span>
+        <span>Attempted: <strong id="attemptedText">0</strong></span>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+
+    <div class="question-section" id="questionSection">
+      <div class="question-header">
+        <div class="question-number" id="questionNumber">Question 1 of 2</div>
+        <button class="bookmark-btn" id="bookmarkBtn" aria-label="Bookmark question">
+          <span>🔖</span> <span>Bookmark</span>
+        </button>
+      </div>
+      
+      <div class="question" id="questionText"></div>
+      
+      <div class="options" id="optionsContainer"></div>
+    </div>
+
+    <div class="result-section hidden" id="resultSection"></div>
+  </div>
+</div>
+
+<div class="navigation" id="navigation">
+  <button class="nav-btn prev" id="prevBtn" aria-label="Previous question">
+    <span>←</span> Previous
+  </button>
+  <button class="nav-btn clear" id="clearBtn" aria-label="Clear answer">
+    Clear
+  </button>
+  <button class="nav-btn next" id="nextBtn" aria-label="Next question">
+    Next <span>→</span>
+  </button>
+  <button class="nav-btn submit hidden" id="submitBtn" aria-label="Submit quiz">
+    Submit Quiz
+  </button>
+</div>
+
+<button class="palette-fab" id="paletteFab" aria-label="Toggle question palette" title="Question Palette (P)">
+  📋
+  <span class="badge" id="answeredBadge">0</span>
+</button>
+
+<div class="palette-overlay" id="paletteOverlay"></div>
+
+<div class="question-palette" id="questionPalette">
+  <div class="palette-header">
+    <h3>Question Palette</h3>
+    <button class="palette-close" id="paletteClose" aria-label="Close palette">×</button>
+  </div>
+
+  <div class="palette-stats">
+    <div class="palette-stat answered">
+      <div class="number" id="paletteAnswered">0</div>
+      <div>Answered</div>
+    </div>
+    <div class="palette-stat unanswered">
+      <div class="number" id="paletteUnanswered">2</div>
+      <div>Not Answered</div>
+    </div>
+    <div class="palette-stat bookmarked">
+      <div class="number" id="paletteBookmarked">0</div>
+      <div>Bookmarked</div>
+    </div>
+  </div>
+
+  <div class="palette-search">
+    <input type="number" id="paletteSearch" placeholder="Jump to question number..." aria-label="Search questions" inputmode="numeric" pattern="[0-9]*">
+  </div>
+
+  <div class="palette-content">
+    <div class="palette-grid" id="paletteGrid"></div>
+  </div>
+
+  <div class="palette-legend">
+    <div class="legend-grid">
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--success-color);"></div>
+        <span>Answered</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--bg-secondary); border: 2px solid var(--border-color);"></div>
+        <span>Not Answered</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--primary-color);"></div>
+        <span>Current Question</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--warning-color);"></div>
+        <span>🔖 Bookmarked</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// JSON INJECTION HAPPENS HERE
+const questions = [{"sr_no": 1, "question": "PQRS एक चक्रीय चतुर्भुज है जिसमें PR और SQ एक दूसरे को O बिंदु पर काटते हैं। यदि ∠QOR = 132° और ∠ORS = 40° , तो ∠QPO का माप क्या होगा? \n  <br>", "option1": "85°\n  <br>", "option2": "95°\n  <br>", "option3": "92°\n  <br>", "option4": "83°\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025342image44.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 2, "question": "एक निश्चित धनराशि पर पहले दो वर्षों के लिए साधारण ब्याज की दर 7% वार्षिक है, अगले 4 वर्षों के लिए 10% वार्षिक और 6 वर्षों से अधिक की अवधि के लिए यह 15% वार्षिक है। यदि किसी व्यक्ति को 9 वर्षों के बाद साधारण ब्याज के रूप में 84,744 रुपये मिलते हैं, तो उसने कितना पैसा निवेश किया था? \n  <br>", "option1": "85,600 रुपये\n  <br>", "option2": "80,000 रुपये\n  <br>", "option3": "78,600 रुपये\n  <br>", "option4": "85,890 रुपये\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025342image45.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 3, "question": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025561image1.png\"> \n  <br>", "option1": "448\n  <br>", "option2": "474\n  <br>", "option3": "403\n  <br>", "option4": "443\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025342image46.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 4, "question": "275 मीटर लंबी एक ट्रेन उसी दिशा में 9 किमी/घंटा की गति से चल रहे एक व्यक्ति को 18 सेकंड में पार करती है। 450 मीटर लंबी सुरंग को समान गति से पार करने में कितना समय लगेगा?\n  <br>", "option1": "50.50 सेकंड\n  <br>", "option2": "65 सेकंड\n  <br>", "option3": "56.64 सेकंड\n  <br>", "option4": "40.7 सेकंड\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025342image47.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 5, "question": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025652image2.png\"> \n  <br>", "option1": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025702image3.png\"> \n  <br>", "option2": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042024931image4.png\"> \n  <br>", "option3": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042024931image5.png\"> \n  <br>", "option4": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042024931image6.png\"> \n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025344image48.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 6, "question": "यदि पच्चीस व्यक्ति प्रतिदिन 15 घंटे काम करके 5 इकाई कार्य 8 दिनों में पूरा कर सकते हैं, तो 12 व्यक्तियों द्वारा प्रतिदिन 20 घंटे कार्य करके 10 इकाई कार्य पूरा करने में कितने दिन लगेंगे?\n  <br>", "option1": "24 दिन\n  <br>", "option2": "20 दिन\n  <br>", "option3": "22 दिन\n  <br>", "option4": "25 दिन\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025344image49.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 7, "question": "निम्नलिखित ग्राफ भारत में गेहूं और सभी खाद्यान्नों के उत्पादन को दर्शाता है।\n  <br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042024931image7.png\"> \n  <br>गेहूँ का औसत उत्पादन पिछले वर्षों में दर्ज किये गये खाद्यान्न के अधिकतम उत्पादन का कितना प्रतिशत है?", "option1": "86.3 %", "option2": "82.7%", "option3": "71.7%", "option4": "77.02%\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025347image50.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 8, "question": "निम्न में से कौन सा सही है?", "option1": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042024931image8.png\">", "option2": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042024931image9.png\">", "option3": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042024931image10.png\">", "option4": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042024932image11.png\"> \n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025349image51.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 9, "question": "बीजिंग में एक तीरंदाजी प्रतियोगिता में 16 व्यक्तियों की एक टीम शामिल हुई। सर्वश्रेष्ठ तीरंदाज ने 170 अंक प्राप्त किये। यदि उसने 184 अंक बनाए होते, तो टीम का औसत स्कोर 168 होता। टीम ने कितने अंक बनाए?", "option1": "1724", "option2": "2674", "option3": "6754", "option4": "2589\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "माना टीम का औसत x है, तब स्कोर = 16x लेकिन, प्रश्नानुसार, 16x – 170 + 184 = 16 ×168 16x = 2688 - 14 16x = 2674\n  <br>", "question_heading": ""}, {"sr_no": 10, "question": "एक गिटार पर 14000 रुपये का मूल्य अंकित किया गया है। यदि कोई व्यक्ति इसके साथ 1000 रुपये का गिटार कवर खरीदता है, तो उसे कुल लेनदेन पर 24% की छूट दी जाती है। मनीष केवल गिटार खरीदना चाहता था।मनीष ने इसका लाभ उठाया और गिटार कवर को 900 रुपये में अमित को बेच दिया। गिटार पर उसे कितनी प्रभावी छूट मिली?", "option1": "33%", "option2": "25%", "option3": "20%", "option4": "30% \n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "गिटार और गिटार कवर का कुल अंकित मूल्य = 14000 रु + 1000 रु = 15000 रु हम जानते हैं, विक्रय मूल्य = अंकित मूल्य × (1 – (छूट प्रतिशत/100)) ⇒ 24% की छूट के बाद विक्रय मूल्य= 15000 रु × (1 – 24/100) = 11400 रु मनीष ने इस सौदे का लाभ उठाया और अमित को गिटार कवर 900 रुपये में बेच दिया। ⇒ मनीष के लिए गिटार का प्रभावी विक्रय मूल्य = 11400 रु –900 रु = 10500 रु ⇒ मनीष ने 14000 रुपये का गिटार 10500 रुपये में खरीदा। प्रतिशत छूट ज्ञात करने के लिए, 10500 = 14000 × (1 – छूट प्रतिशत /100) ⇒ छूट प्रतिशत = 100 × (1 – 0.75) = 25 ∴ प्रभावी छूट 25% होगी। \n  <br>", "question_heading": ""}, {"sr_no": 11, "question": "यदि प्रत्येक वृत्त की त्रिज्या 7 सेमी है और A, B, C दिए गए वृत्तों के केंद्र हैं, तो छायांकित क्षेत्र का क्षेत्रफल ज्ञात करें।\n  <br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042024932image12.png\"> \n  <br>", "option1": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042024932image13.png\">", "option2": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042024932image14.png\">", "option3": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042024932image15.png\">", "option4": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042024932image16.png\"> \n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br>  \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025351image52.png\">", "question_heading": ""}, {"sr_no": 12, "question": "गणतंत्र दिवस परेड पार्किंग में, कुछ दोपहिया वाहन हैं और बाकी 4 पहिया वाहन हैं। यदि पहियों की गिनती की जाए, तो कुल 2080 पहिए हैं। लेकिन पार्किंग के प्रभारी के अनुसार केवल 700 वाहन हैं। यदि किसी वाहन में स्टेपनी नहीं है तो दोपहिया वाहनों की संख्या कितनी है?", "option1": "300", "option2": "400", "option3": "360", "option4": "340 \n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025353image53.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 13, "question": "यदि a + b = 8 और 1/a + 1/b = 32/30 है, तो (a³+ b³) का मान क्या है ? \n  <br>", "option1": "536", "option2": "538", "option3": "332", "option4": "509.12 \n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br>  \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025356image54.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 14, "question": "पाइप X और Y इनलेट पाइप हैं जबकि पाइप Z एक आउटलेट पाइप है। X और Y एक टैंक को क्रमशः 144 और 180 मिनट में भर सकते हैं। जब तीनों पाइप एक साथ खोले जाते हैं, तो टंकी 4 घंटे में भर जाती है। यदि X और Y को 24 मिनट के लिए एक साथ खोला जाता है, फिर बंद कर दिया जाता है और Z को खोल दिया जाता है, तो टैंक को खाली होने में कितना समय लगेगा?", "option1": "15 मिनट \n  <br>", "option2": "36 मिनट", "option3": "12 मिनट \n  <br>", "option4": "16 मिनट\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025362image55.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 15, "question": "80 रुपये प्रति किलोग्राम मूल्य वाली चीनी को 96 रुपये प्रति किलोग्राम मूल्य वाली चीनी के साथ किस अनुपात में मिलाया जाना चाहिए , ताकि मिश्रण को 108 रुपये प्रति किलोग्राम पर बेचकर 20% का लाभ कमाया जा सके?", "option1": "2:3", "option2": "4:7", "option3": "3:5", "option4": "5:8 \n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025365image56.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 16, "question": "यश एक 'MI' डिजिटल बैंड के अंकित मूल्य को लागत मूल्य से 50% अधिक अंकित करता है और फिर 20% की छूट देता है और इसे अपूर्व को बेचता है। अपूर्व ने इसे खरीदे गए मूल्य से 20 रुपये अधिक में बेचा, यह विक्रय मूल्य डिजिटल बैंड के मूल क्रय मूल्य से 30% अधिक है। अपूर्व का लाभ% है:", "option1": "8%", "option2": "6.5%", "option3": "6.54%", "option4": "8.33% \n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "माना यश के लिए ‘MI' डिजिटल बैंड की लागत मूल्य = C रु यश ने डिजिटल बैंड के मूल्य में 50% की वृद्धि की ∴ अंकित मूल्य = C + C का 50% = 1.5C यश 20% की छूट देता है और इसे अपूर्व को बेचता है। छूट प्रदान करने के बाद यश को प्रापट राशि = अंकित मूल्य– अंकित मूल्य का 20% = 1.5C – 1.5 C का 20% = 1.2C ∴ अपूर्व ने इसे 1.2C रुपये में खरीदा अपूर्व ने इसे खरीदे गए मूल्य से 20 रुपये अधिक में बेचा।\n  <br>अपूर्व के लिए डिजिटल बैंड का विक्रय मूल्य = (1.2C + 20)\n  <br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025371image57.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 17, "question": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042024932image17.png\"> \n  <br>", "option1": "<i> <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042024932image18.png\"> </i> \n  <br>", "option2": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042024932image19.png\"> \n  <br>", "option3": "<i> <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042024932image20.png\"> </i> \n  <br>", "option4": "<i> <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042024932image21.png\"> </i> \n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br>  \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025380image58.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 18, "question": "निम्नलिखित तालिका का अध्ययन करें और प्रश्न का उत्तर दें।\n  <br>यहाँ दी गई तालिका शहर के स्कूल में पढ़ने वाले प्राथमिक विद्यालय के छात्रों की संख्या का जिलेवार डेटा दिखाती है।\n  <br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042024933image22.png\"> \n  <br>शहर में छात्रों और छात्राओं की संख्या का अनुपात क्या है ?\n  <br>", "option1": "6334 : 7890\n  <br>", "option2": "6396 : 7000\n  <br>", "option3": "6000 : 8000\n  <br>", "option4": "8908 : 7890 \n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br>  \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025387image59.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 19, "question": "एक नदी में दो सिग्नल बिंदु P और Q हैं और नदी PQ में बहती है। P और Q के बीच की दूरी को बिंदु X और Y द्वारा तीन बराबर भागों में विभाजित किया गया है। एक नाव को P से Y और Q से Y तक चलने में लगा समय 6:7 के अनुपात में है। धारा के अनुकूल नाव की गति और नदी की धारा की गति का अनुपात बराबर है: \n  <br>", "option1": "7:2\n  <br>", "option2": "7: 3\n  <br>", "option3": "5 : 2\n  <br>", "option4": "3 : 8\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025396image60.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 20, "question": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042024933image23.png\"> \n  <br>", "option1": "cosec²θ + 1\n  <br>", "option2": "sec²θ + 1\n  <br>", "option3": "cosec²θ + 3\n  <br>", "option4": "tan²θ + 1\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025399image61.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 21, "question": "निम्नलिखित तालिका का अध्ययन करें और प्रश्न का उत्तर दें:\n  <br>2020 के पहले महीनों के दौरान डीलर P, Q, R, S और T द्वारा बेचे गए ऑटो रिक्शा की संख्या।\n  <br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042024933image24.png\"> \n  <br>जुलाई 2020 में, यदि Q द्वारा पिछले महीने की तुलना में ऑटो रिक्शा की बिक्री जून 2020 के समान प्रतिशत बढ़ गई, तो जुलाई 2020 में Q द्वारा बेचे गए ऑटो रिक्शा की संख्या कितनी है?\n  <br>", "option1": "1820\n  <br>", "option2": "7689\n  <br>", "option3": "1014\n  <br>", "option4": "1890\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025408image62.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 22, "question": "यदि एक निश्चित धनराशि पर चक्रवृद्धि ब्याज 5 मासिक है, तो 25,600 रुपये की राशि पर \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042024933image25.png\">वर्ष के लिए 6% वार्षिक दर से चक्रवृद्धि ब्याज (रुपये में) क्या है ?\n  <br>", "option1": "1098 रुपये\n  <br>", "option2": "1865 रुपये\n  <br>", "option3": "1676 रुपये\n  <br>", "option4": "1968.4 रुपये\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025491image63.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 23, "question": "यदि 5 अंकों की संख्या 464xy, क्रमशः 3, 7 और 11 से विभाज्य है, तो (3x² – 5y) का मान क्या है ?\n  <br>", "option1": "67\n  <br>", "option2": "28\n  <br>", "option3": "22\n  <br>", "option4": "45\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025618image64.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 24, "question": "एक स्कूल की दीवार का आयतन 2560 घन मीटर है, जिसकी ऊंचाई इसकी चौड़ाई की 8 गुना और लंबाई इसकी ऊंचाई की 5 गुना है। 45 रुपये प्रति वर्ग मीटर की दर से दीवार की एक तरफ की लंबाई लेते हुए, एक तरफ की दीवार को पेंट करने की लागत क्या है ? \n  <br>", "option1": "21,125 रुपये \n  <br>", "option2": "32,225 रुपये\n  <br>", "option3": "57,600 रुपये\n  <br>", "option4": "52,335 रुपये\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025620image65.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 25, "question": "निम्नलिखित समीकरण को सरल कीजिये:\n  <br>16 ÷ 4 का 5 × 25 + 7 ÷ 49 का 2 × 6 – 1 ÷ 4 × 2\n  <br>", "option1": "<i> <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042024933image26.png\"> </i>", "option2": "<i> <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042024933image27.png\"> </i>", "option3": "<i> <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042024933image28.png\"> </i>", "option4": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042024933image29.png\"> \n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025636image66.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 26, "question": "एक कार्यालय के 35 सुरक्षा गार्डों का औसत मासिक वेतन 18500 रुपये है। यदि 2 पर्यवेक्षकों का औसत वेतन 35000 रुपये है और 6 गार्डनर का औसत वेतन 24000 रुपये है, तो सभी कर्मचारियों का औसत वेतन (निकटतम पूर्णांक) क्या है? \n  <br>", "option1": "14000 रुपये", "option2": "25540 रुपये", "option3": "20035 रुपये", "option4": "21980 रुपये\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025636image67.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 27, "question": "निम्नलिखित का मानक विचलन ज्ञात कीजिए।\n  <br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042024933image30.png\"> \n  <br>", "option1": "4√33\n  <br>", "option2": "2√33\n  <br>", "option3": "3√33\n  <br>", "option4": "3√22\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025637image68.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 28, "question": "छह अवलोकनों का माध्य और मानक विचलन क्रमशः 8 और 4 है। यदि प्रत्येक अवलोकन को 3 से गुणा किया जाता है, तो परिणामी अवलोकनों का नया माध्य और नया मानक विचलन ज्ञात करें।\n  <br>", "option1": "22, 24\n  <br>", "option2": "24, 12\n  <br>", "option3": "144 , 24\n  <br>", "option4": "13, 26\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <i> <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025639image69.png\"> </i> \n  <br>", "question_heading": ""}, {"sr_no": 29, "question": "ऑस्ट्रेलिया के खिलाफ कुछ 3 टेस्ट मैचों में विराट कोहली द्वारा बनाए गए रन इस प्रकार हैं: 101, 126, 32, 38, 52 और 40 । दिए गए स्कोर का माध्य ज्ञात करें।\n  <br>", "option1": "48\n  <br>", "option2": "46.5\n  <br>", "option3": "46\n  <br>", "option4": "47\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025647image70.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 30, "question": "यदि एक सिक्के को तीन बार उछाला जाता है, तो एक साथ दो टेल्स आने की प्रायिकता ज्ञात कीजिए।\n  <br>", "option1": "3/8\n  <br>", "option2": "5/8\n  <br>", "option3": "1/8\n  <br>", "option4": "7/8\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025649image71.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 31, "question": "निम्नलिखित में से कौन सा विकल्प * चिह्नों को क्रमिक रूप से बदलने और यहाँ दिए गए समीकरण को सटीक करने के लिए गणितीय चिह्नों के सही संयोजन प्रस्तुत करता है? \n  <br> 65 * 5 * 45 * 2 * 30 * 73\n  <br>", "option1": "÷, ×, +, -, =\n  <br>", "option2": "+, ÷, ×, =, -\n  <br>", "option3": "÷, +, ×, =, - \n  <br>", "option4": "÷, +, ×, -, =\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025649image72.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 32, "question": "इनमें से उस विकल्प आकृति का चयन करें जो दी गई आकृति में सन्निहित है। \n  <br> \n  <br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042024934image31.png\"> \n  <br>", "option1": "a", "option2": "b", "option3": "c", "option4": "d\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "स्पष्टतः, प्रश्नाकृति केवल आकृति (d) में सन्निहित है।\n  <br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025651image73.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 33, "question": "दिए गए कथनों और निष्कर्ष को ध्यानपूर्वक पढ़ें। यह मानते हुए कि कथन में दी गई जानकारी सत्य है, भले ही यह सर्वज्ञात ज्ञात तथ्यों से भिन्न प्रतीत होती हो, निर्णय लें कि इनमें से कौन सा निष्कर्ष तार्किक रूप से कथनों का अनुसरण करता है। \n  <br> \n  <b>कथन :</b> \n  <br>सभी शिक्षक छात्र हैं।\n  <br>कोई छात्र प्रधानाचार्य नहीं है। \n  <br>सभी इंजीनियर शिक्षक हैं।\n  <br> \n  <b>निष्कर्ष :</b> \n  <br>I. कोई इंजीनियर प्रधानाचार्य नहीं है। \n  <br>II. कुछ छात्र इंजीनियर हैं।\n  <br>III. कोई भी शिक्षक प्रधानाचार्य नहीं है। \n  <br>", "option1": "सभी निष्कर्ष अनुसरण करते हैं।\n  <br>", "option2": "केवल निष्कर्ष I और II अनुसरण करते हैं।\n  <br>", "option3": "केवल निष्कर्ष III और II अनुसरण करते हैं।\n  <br>", "option4": "केवल निष्कर्ष II अनुसरण करता है।\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025653image74.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 34, "question": "इनमें से उस वेन आरेख का चयन करें जो निम्नलिखित वर्गों के बीच संबंध को सर्वोत्तम रूप से दर्शाता है।\n  <br>संगीतकार, पुरुष, पुत्र\n  <br>", "option1": "<br>  \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042024934image32.png\"> \n  <br>", "option2": "<br>  \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042024934image33.png\"> \n  <br>", "option3": "<br>  \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025278image34.png\"> \n  <br>", "option4": "<br>  \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025278image35.png\"> \n  <br> \n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025660image75.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 35, "question": "यहाँ एक ही पासे की तीन अलग-अलग स्थितियाँ दिखाई गई हैं। निम्नलिखित में से उस अक्षर/संख्या का चयन करें जो 'U' अक्षर वाले फलक के विपरीत फलक पर होगा: \n  <br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025324image36.png\"> \n  <br>", "option1": "I \n  <br>", "option2": "A\n  <br>", "option3": "E\n  <br>", "option4": "9\n  <br> \n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br>पासा I ⟹ I → E → A\n  <br>पासा III ⟹ I → U → 9\n  <br>", "question_heading": ""}, {"sr_no": 36, "question": "इनमें से उस विकल्प का चयन करें जो यहाँ दिए गए शब्दों की व्यवस्था को ठीक उसी क्रम में दर्शाता है जिस क्रम में वे अंग्रेजी शब्दकोश में दिखाई देते हैं।\n  <br>1. Painkiller \n  <br>2. Parking \n  <br>3. Passion \n  <br>4. Positivity\n  <br>5. Pancreas \n  <br>", "option1": "2, 5, 1, 4, 3\n  <br>", "option2": "1, 5, 2, 4, 3\n  <br>", "option3": "1, 5, 4, 3, 2\n  <br>", "option4": "1, 5, 2, 3, 4 \n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "1, 5, 2, 3, 4\n  <br>", "question_heading": ""}, {"sr_no": 37, "question": "अब से 10 वर्ष बाद राम, श्याम और कृष्ण की औसत आयु 33 वर्ष होगी। अब से सात वर्ष बाद, राम की आयु उतनी ही होगी जितनी श्याम की 4 वर्ष पहले थी। यदि कृष्ण का जन्म 2 वर्ष पहले हुआ था, तो राम की वर्तमान आयु क्या है ?\n  <br>", "option1": "30 वर्ष \n  <br>", "option2": "31 वर्ष\n  <br>", "option3": "29 वर्ष\n  <br>", "option4": "28 वर्ष\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025662image76.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 38, "question": "दर्पण को 'PQ' पर रखने पर इनमें से कौन सा विकल्प यहाँ दिए गए संयोजन की सही दर्पण छवि दर्शाता है\n  <br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025329image37.png\"> \n  <br> \n  <br>", "option1": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025329image38.png\"> \n  <br>", "option2": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025334image39.png\"> \n  <br>", "option3": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025337image40.png\"> \n  <br>", "option4": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025339image41.png\"> \n  <br>    \n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "", "question_heading": ""}, {"sr_no": 39, "question": "निम्नलिखित संख्या श्रृंखला में प्रश्न चिह्न (?) के स्थान पर कौन सा विकल्प आएगा? \n  <br>28, 39, 55, 77, 106 , ? \n  <br>", "option1": "143\n  <br>", "option2": "157\n  <br>", "option3": "131\n  <br>", "option4": "149\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025663image77.png\"> \n  <br>8+29= 37\n  <br>106+37=143\n  <br>", "question_heading": ""}, {"sr_no": 40, "question": "इनमें से उस विकल्प का चयन करें जो तीसरी संख्या से ठीक उसी प्रकार संबंधित है, जैसे दूसरी संख्या पहली संख्या से संबंधित है।\n  <br>13: 65 ∷ 19 : ? \n  <br>", "option1": "121\n  <br>", "option2": "210\n  <br>", "option3": "152\n  <br>", "option4": "201\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br>जिस प्रकार 65, 13 का गुणज है, उसी प्रकार 152, 19 का गुणज है।\n  <br>", "question_heading": ""}, {"sr_no": 41, "question": "पुनित, ललित, तंशु, बबीता, नेहा और दीपक एक व्यवसायी परिवार के छह सदस्य हैं। नेहा बबीता का पुत्र है, जो नेहा की माँ नहीं है। ललित, बबीता का भाई है। दीपक और बबीता एक विवाहित जोड़े हैं। तंशु दीपक की पुत्री है, जो पुनित की बहन है। नेहा, तंशु से किस प्रकार संबंधित है? \n  <br>", "option1": "भाई\n  <br>", "option2": "माता \n  <br>", "option3": "पिता\n  <br>", "option4": "बहन\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025664image78.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 42, "question": "निम्नलिखित में से चार शब्द एक निश्चित तरीके से समान हैं और एक विषम है। इनमें से विषम विकल्प का चयन करें।\n  <br>", "option1": "दिसपुर\n  <br>", "option2": "तिरुवनंतपुरम\n  <br>", "option3": "केरल\n  <br>", "option4": "अमरावती\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "C को छोड़कर , अन्य सभी राज्यों की राजधानी हैं।\n  <br>", "question_heading": ""}, {"sr_no": 43, "question": "इनमें से उस विकल्प का चयन करें जो तीसरे शब्द से ठीक उसी प्रकार संबंधित है, जैसे दूसरा शब्द पहले शब्द से संबंधित है।\n  <br>अनिद्रा: नींद ∷ अवसाद : ? \n  <br>", "option1": "मनोदशा \n  <br>", "option2": "रात\n  <br>", "option3": "सोचना \n  <br>", "option4": "सपना\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br>अनिद्रा, नींद का संकेत देती है और अवसाद, मनोदशा का संकेत देता है।\n  <br>", "question_heading": ""}, {"sr_no": 44, "question": "यहाँ दी गई आकृति में कितने त्रिभुज हैं?\n  <br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025340image42.png\"> \n  <br>", "option1": "13\n  <br>", "option2": "16\n  <br>", "option3": "12\n  <br>", "option4": "11\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "", "question_heading": ""}, {"sr_no": 45, "question": "यहाँ चार संख्या-युग्म दिए गए हैं, जिनमें से तीन किसी तरह से समान हैं और एक विषम है। इनमें से विषम संख्या युग्म का चयन करें। \n  <br>", "option1": "7: 392 \n  <br>", "option2": "8: 576 \n  <br>", "option3": "3: 36 \n  <br>", "option4": "4 : 84\n  <br> \n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br>(a) (7)³ + (7)² = 343 + 49 = 392 \n  <br>(b) 8³ + 8² = 512 + 64 = 576 \n  <br>(c) 3³ + 3² = 27 + 9 = 36 \n  <br>(d) (4)³ + (4)² = 80 \n  <br>", "question_heading": ""}, {"sr_no": 46, "question": "इनमें से कौन सा विकल्प निम्नलिखित अक्षर श्रृंखला को एक सार्थक क्रम में पूरा करेगा? \n  <br>S _ A R _ A _ H _ R M _ S _ _ R M _ \n  <br>", "option1": "H M S A A A A H \n  <br>", "option2": "H M S A A H A A \n  <br>", "option3": "M S H A A H A A \n  <br>", "option4": "H A A A A S H M \n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025664image79.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 47, "question": "एक निश्चित कोड भाषा में 'SAJIT' को 1652343614 के रूप में और FIX को '42366' के रूप में कोडित किया जाता है। उसी भाषा में PLASTIC’ को कैसे कोडित किया जाएगा?\n  <br>", "option1": "223052141664836 \n  <br>", "option2": "22305216143648 \n  <br>", "option3": "364816520322 \n  <br>", "option4": "22305216143684 \n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025687image80.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 48, "question": "चार शब्द दिए गए हैं, जिनमें से तीन किसी तरह से समान हैं और एक विषम है। इनमें से विषम विकल्प का चयन करें। \n  <br>", "option1": "बुद्धिमान\n  <br>", "option2": "योग्यता\n  <br>", "option3": "स्मृति \n  <br>", "option4": "प्रेम \n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br>प्रेम को छोड़कर सभी एक ही श्रेणी के हैं।\n  <br>", "question_heading": ""}, {"sr_no": 49, "question": "एक निश्चित कोड भाषा में 'INERTIA' को OMYIZRU लिखा जाता है। उस भाषा में PANCHAL’ को कैसे लिखा जाएगा?\n  <br>", "option1": "VZHXNZF \n  <br>", "option2": "UZHXNZR \n  <br>", "option3": "VZHXZZF\n  <br>", "option4": "VZHXZFZ \n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025689image81.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 50, "question": "वर्ष 1864 का कैलेंडर किस वर्ष के समान है?\n  <br>", "option1": "1893\n  <br>", "option2": "1800\n  <br>", "option3": "1892\n  <br>", "option4": "1995\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "एक अधिवर्ष 28 वर्षों के बाद स्वयं को दोहराता है।\n  <br>1864+28=1892\n  <br>", "question_heading": ""}, {"sr_no": 51, "question": "नरेन्द्र की घड़ी की दुकान में दो घड़ियाँ मरम्मत के लिए लाया। एक घड़ी में हर छह मिनट में कोयल निकलती है, जबकि दूसरी घड़ी में हर आठ मिनट में कोयल निकलती है। दोपहर 12 बजे दोनों कोयल निकलती हैं। इसके बाद दोनों कोयल कितने बजे निकलेंगे? \n  <br>", "option1": "12:06 अपराह्न \n  <br>", "option2": "12:08 अपराह्न\n  <br>", "option3": "12:24 अपराह्न \n  <br>", "option4": "12:32 अपराह्न\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "6 और 8 का लघुत्तम समापवर्त्य \n  <br>=6 × 4=24\n  <br>दोनों कोयल फिर से 12 : 24 अपराह्न को निकलेंगे। \n  <br>", "question_heading": ""}, {"sr_no": 52, "question": "पाँच बच्चों (U, V, W, X और Y) में से प्रत्येक के पास अलग-अलग संख्या में किताबें हैं। X के पास केवल तीन बच्चों से अधिक किताबें हैं। U के पास W से अधिक और Y से कम किताबें हैं। V के पास सबसे अधिक किताबें नहीं है। Y के पास X से कम किताबें नहीं हैं। V के पास U से अधिक किताबें हैं। कितने व्यक्तियों के पास U से कम किताबें हैं?\n  <br>", "option1": "एक\n  <br>", "option2": "दो\n  <br>", "option3": "तीन\n  <br>", "option4": "चार\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br>Y > X > V > U > W\n  <br>", "question_heading": ""}, {"sr_no": 53, "question": "पांच व्यक्ति (A, B, C, S और T) के एक समूह को उनकी ऊंचाई के अनुसार बढ़ते क्रम में व्यवस्थित किया गया है। A और B के बीच केवल दो व्यक्ति हैं। B की ऊंचाई T से अधिक है। S की ऊंचाई C से अधिक और A से कम है। B और S के बीच कितने छात्र हैं?\n  <br>", "option1": "एक\n  <br>", "option2": "दो\n  <br>", "option3": "तीन\n  <br>", "option4": "चार\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br>A > S > C > B > T\n  <br>", "question_heading": ""}, {"sr_no": 54, "question": "आठ व्यक्ति एक वर्गाकार मेज के चारों ओर बैठे हैं, जिनमें से कुछ का मुख केंद्र की ओर है और कुछ का मुख केंद्र के बाहर की ओर है। समान दिशा की ओर उन्मुख कोई भी दो व्यक्ति आसन्न नहीं हैं। A और Q के बीच तीन व्यक्ति बैठे हैं। P, Q के दाएँ दूसरे स्थान पर और R के ठीक दाएँ बैठा है। Q का मुख केंद्र से बाहर की ओर है। R, Q के आसन्न नहीं है। S और B एक दूसरे के विपरीत हैं। C, T के ठीक दाएँ और Q के सन्निकट है। P की बाएँ तरफ से A और P के बीच कितने व्यक्ति बैठे हैं?\n  <br>", "option1": "एक\n  <br>", "option2": "दो\n  <br>", "option3": "तीन\n  <br>", "option4": "पांच\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br>  \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025692image82.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 55, "question": "A, B, C, D और E एक पंक्ति में बैठे हैं। A और B पंक्ति के अंत में हैं। C, A के बायें से तीसरे स्थान पर है। E, D के ठीक दायें है। पंक्ति के मध्य में कौन बैठा है?\n  <br>", "option1": "C\n  <br>", "option2": "D\n  <br>", "option3": "E\n  <br>", "option4": "B \n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br>व्यवस्था = BCDEA\n  <br>", "question_heading": ""}, {"sr_no": 56, "question": "\"Z > F ≥ A = B = G< S < E,\" कथन के आधार पर, निम्नलिखित में से कौन सा निष्कर्ष सत्य है?\n  <br>I. A=G\n  <br>II. G < E \n  <br>", "option1": "निष्कर्ष I और निष्कर्ष II दोनों सत्य हैं।\n  <br>", "option2": "केवल निष्कर्ष I सत्य है।\n  <br>", "option3": "केवल निष्कर्ष II सत्य है।\n  <br>", "option4": "न तो निष्कर्ष I और न ही निष्कर्ष II सत्य है।\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "दोनों निष्कर्ष दिए गए कथन का अनुसरण कर रहे हैं, इसलिए दोनों सही हैं।\n  <br>", "question_heading": ""}, {"sr_no": 57, "question": "इस पर्श्न में, दो कथन I और II दिए गए हैं। ये कथन स्वतंत्र कारण या स्वतंत्र कारणों के प्रभाव या सामान्य कारण हो सकते हैं। एक कथन दूसरे कथन का प्रभाव हो सकता है। दोनों कथनों को पढ़ें और सही उत्तर चुनें।\n  <br> \n  <b>कथन I:</b> पिछले एक दशक में शहर X में औसत तापमान लगातार बढ़ रहा है।\n  <br> \n  <b>कथन II:</b> इसी अवधि में शहर X में औद्योगिक गतिविधियों में उल्लेखनीय वृद्धि हुई है।\n  <br>", "option1": "I कारण है और II इसका संभावित प्रभाव है। \n  <br>", "option2": "I और II दोनों स्वतंत्र कारण हैं। \n  <br>", "option3": "II कारण है और I इसका संभावित प्रभाव है। \n  <br>", "option4": "I और II दोनों स्वतंत्र कारणों के प्रभाव हैं। \n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "दी गई जानकारी के आधार पर, यह निष्कर्ष निकालना उचित है कि कथन I और II दोनों स्वतंत्र कारणों के प्रभाव हैं। शहर X में बढ़ते औसत तापमान को जलवायु परिवर्तन, शहरीकरण और ग्लोबल वार्मिंग जैसे विभिन्न कारकों के लिए जिम्मेदार ठहराया जा सकता है। दूसरी ओर, औद्योगिक गतिविधियों में उल्लेखनीय वृद्धि आर्थिक विकास, सरकारी नीतियों या बाज़ार की माँगों से प्रभावित हो सकती है।\n  <br>इसलिए, सही उत्तर है (b) I और II दोनों स्वतंत्र कारण हैं।\n  <br>", "question_heading": ""}, {"sr_no": 58, "question": "निर्देश: एक कथन के बाद दो निष्कर्ष I और II दिए गए हैं। आपको कथन को सत्य मानना है, भले ही वह सर्वज्ञात तथ्यों से भिन्न प्रतीत होता हो। आपको यह निर्णय लेना है कि दिए गए निष्कर्षों में से कौन सा, दिए गए कथन का अनुसरण करता है।\n  <br> \n  <b>कथन:</b> ऑनलाइन स्ट्रीमिंग प्लेटफ़ॉर्म की उपलब्धता के कारण, बहुत से लोग सिनेमा जाने के बजाय घर पर फिल्में और टीवी शो देखना पसंद करते हैं।\n  <br> \n  <b>अनुमान:</b> \n  <br>I. ऑनलाइन स्ट्रीमिंग प्लेटफॉर्म के आने के बाद से सिनेमा जाने वाले लोगों में कमी आई है।\n  <br>II. ऑनलाइन स्ट्रीमिंग प्लेटफॉर्म पर उपलब्ध फिल्मों और टीवी शो की गुणवत्ता सिनेमा रिलीज की तुलना में बेहतर है।\n  <br>", "option1": "यदि केवल I अनुसरण करता है। \n  <br>", "option2": "यदि केवल II अनुसरण करता है। \n  <br>", "option3": "यदि I और II दोनों अनुसरण करते हैं। \n  <br>", "option4": "यदि न तो I और न ही II अनुसरण करता है। \n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "दिए गए कथन में, यह उल्लेख किया गया है कि ऑनलाइन स्ट्रीमिंग प्लेटफ़ॉर्म की उपलब्धता के कारण कई लोग सिनेमा जाने के बजाय घर पर फिल्में और टीवी शो देखना पसंद करते हैं। आइए प्रत्येक अनुमान का मूल्यांकन करें:\n  <br>I. ऑनलाइन स्ट्रीमिंग प्लेटफॉर्म के उदय के बाद से सिनेमा की उपस्थिति में गिरावट आई है। यह अनुमान तार्किक रूप से दिए गए कथन का अनुसरण करता है। यदि लोग सिनेमा जाने के बजाय ऑनलाइन स्ट्रीमिंग प्लेटफॉर्म के माध्यम से घर पर फिल्में और टीवी शो देखना पसंद कर रहे हैं, तो इससे पता चलता है कि सिनेमा में उपस्थिति कम होने की संभावना है। ऑनलाइन स्ट्रीमिंग प्लेटफ़ॉर्म की उपलब्धता और सुविधा मनोरंजन के लिए एक वैकल्पिक विकल्प प्रदान करती है, जो सिनेमा उपस्थिति को प्रभावित कर सकती है।\n  <br>II. ऑनलाइन स्ट्रीमिंग प्लेटफॉर्म पर उपलब्ध फिल्मों और टीवी शो की गुणवत्ता सिनेमा रिलीज की तुलना में बेहतर है। यह अनुमान तर्कसंगत रूप से दिए गए कथन का पालन नहीं करता है। बयान ऑनलाइन स्ट्रीमिंग प्लेटफॉर्म और सिनेमा रिलीज के बीच फिल्मों और टीवी शो की तुलनात्मक गुणवत्ता के बारे में कोई जानकारी नहीं देता है। घर पर देखने की प्राथमिकता सामग्री की अनुमानित गुणवत्ता के बजाय सुविधा, लागत या व्यक्तिगत प्राथमिकताओं जैसे कारकों से प्रभावित हो सकती है।\n  <br>उपरोक्त विश्लेषण के आधार पर, दिए गए कथन से केवल निष्कर्ष I तार्किक रूप से अनुसरण करता है। इसलिए, सही उत्तर है (a) यदि केवल I अनुसरण करता है।\n  <br>", "question_heading": ""}, {"sr_no": 59, "question": "इस पर्श्न में, कथन के बाद दो निष्कर्ष हैं। दोनों में से कौन सा/से निष्कर्ष सत्य है/हैं?\n  <br> \n  <b>कथन:</b> P ≥ Q = R > S > T < U = V > W \n  <br> \n  <b>निष्कर्ष:</b> \n  <br>I. P > T \n  <br>II. R > U \n  <br>", "option1": "न तो निष्कर्ष I और न ही II सत्य है।\n  <br>", "option2": "केवल निष्कर्ष II सत्य है।\n  <br>", "option3": "निष्कर्ष I और II दोनों सत्य हैं।\n  <br>", "option4": "केवल निष्कर्ष I सत्य है।\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "दिए गए कथन से केवल I निष्कर्ष निर्धारित किया जा सकता है। अतः, (d) सही उत्तर है।\n  <br>", "question_heading": ""}, {"sr_no": 60, "question": "निम्नलिखित में से उस विकल्प का चयन करें जो यहाँ दिए गए शब्द से नहीं बनाया जा सकता है। \n  <br>ELECTROMAGNETIC\n  <br>", "option1": "ELECTRIC\n  <br>", "option2": "MAGNET\n  <br>", "option3": "MAGNETIC\n  <br>", "option4": "TELEDRUM \n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "दिए गए शब्द \" ELECTROMAGNETIC \" के अक्षरों का उपयोग करके TELEDRUM नहीं बनाया जा सकता है।\n  <br>", "question_heading": ""}, {"sr_no": 61, "question": "Select the most appropriate ANTONYM of the highlighted word.\n  <br>Two of his schooners were upset in a \n  <b>squall</b>, with the loss of all hands, and he allowed two to be cut off by Yeo. \n  <br>", "option1": "Storm\n  <br>", "option2": "Tranquility\n  <br>", "option3": "Gust\n  <br>", "option4": "Tempest\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is option b. \n  <br>As a noun, a \"\n  <b>squall</b>\" refers to a sudden, brief, and violent gust of wind, often accompanied by rain or snow. It can also describe a sudden storm with strong winds.\n  <br>As a verb, \"\n  <b>to squall</b>\" means to cry or scream loudly and harshly, usually referring to the cry of a baby or a high-pitched noise resembling crying or screaming.\n  <br>In general, \"squall\" is associated with sudden, intense bursts of wind or noise, whether it's related to weather or vocal expressions.\n  <br>Synonyms: Storm, gust, tempest, blast.\n  <br>Antonyms: Calm, stillness, \n  <b>tranquility</b>, serenity.\n  <br>Meanings of all four options are as follows:\n  <br> \n  <b>Storm</b>: A violent disturbance of the atmosphere, characterized by strong winds, rain, thunder, and often lightning.\n  <br> \n  <b>Tranquility</b>: The state of calmness, peacefulness, and quietness.\n  <br> \n  <b>Gust</b>: A sudden, strong burst of wind.\n  <br> \n  <b>Tempest</b>: A violent and tumultuous storm with strong winds and often accompanied by rain, thunder, and lightning.\n  <br>", "question_heading": ""}, {"sr_no": 62, "question": "Select the option that can be used as a one-word substitute for the given group of words.\n  <br>The scientific study of elections\n  <br>", "option1": "Philology\n  <br>", "option2": "Ophiology\n  <br>", "option3": "Phenology\n  <br>", "option4": "Psephology\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is option d. \n  <br>Meanings of all options are as follows:\n  <br> \n  <b>Philology</b>: The study of language, including the historical development, structure, and relationships of languages, as well as the analysis of texts and their interpretation.\n  <br> \n  <b>Ophiology</b>: The branch of zoology that deals with snakes.\n  <br> \n  <b>Phenology</b>: The study of cyclic and seasonal natural phenomena, especially in relation to climate and plant and animal life.\n  <br> \n  <b>Psephology</b>: The study and analysis of elections and voting patterns.\n  <br>", "question_heading": ""}, {"sr_no": 63, "question": "Sentences of a paragraph are given below in jumbled order. Arrange the sentences in the correct order to form a meaningful and coherent paragraph.\n  <br>A. The Ordinance promulgated by the President on May 19 amending the Government of \n  <br>B. the jurisdiction of the Delhi government. The services had been earlier restored to \n  <br>C. National Capital Territory of Delhi Act 1991 took away the services from \n  <br>D. the Delhi government by the Supreme Court in a landmark judgment delivered on May 11, 2023.\n  <br>", "option1": "ABCD\n  <br>", "option2": "CDBA\n  <br>", "option3": "ACBD\n  <br>", "option4": "ADBC\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct order is ACBD.\n  <br> Sentence A introduces the topic by stating that an Ordinance was promulgated by the President, which amended the Government of National Capital Territory of Delhi Act 1991 and resulted in the services being taken away from the Delhi government.\n  <br> Sentence C provides background information by mentioning that the services had previously been restored to the jurisdiction of the Delhi government.\n  <br> Sentence B explains that the services had been restored to the Delhi government through a landmark judgment delivered by the Supreme Court on May 11, 2023.\n  <br> Finally, sentence D concludes the paragraph by referring back to the Supreme Court judgment and its impact on the Delhi government.\n  <br> Overall, the correct order of sentences ACBD creates a coherent paragraph that explains the sequence of events related to the amendment of the act and the change in jurisdiction of the Delhi government.\n  <br>", "question_heading": ""}, {"sr_no": 64, "question": "Select the most appropriate option to fill in the blanks.\n  <br>The _______________ debate on quantum physics left the audience _______________, as the renowned physicist delved into intricate concepts and abstruse theories.\"\n  <br>", "option1": "esoteric, confounded\n  <br>", "option2": "banal, astounded\n  <br>", "option3": "pedantic, engrossed\n  <br>", "option4": "colloquial, perplexed\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The word \"\n  <b>esoteric</b>\" (meaning known or understood by only a few) fits the context of a debate on quantum physics that involves intricate and abstract concepts. \n  <br>The word \"\n  <b>confounded</b>\" (meaning confused or bewildered) appropriately describes the state of the audience after being exposed to such a complex discussion. \n  <br>Therefore, option (a) \"esoteric, confounded\" is the correct answer.\n  <br> Option (b) \"banal, astounded\" is incorrect because \"\n  <b>banal</b>\" means \n  <b>lacking originality or freshness</b>, which doesn't fit the context of an in-depth debate on quantum physics. Additionally, \"\n  <b>astounded</b>\" implies \n  <b>being greatly surprised or amazed</b>, which doesn't convey confusion or bewilderment.\n  <br> Option (c) \"pedantic, engrossed\" is incorrect because \"\n  <b>pedantic</b>\" refers to \n  <b>being excessively concerned with minor details or rules</b>, which is not the intended meaning in this context. \"\n  <b>Engrossed</b>\" suggests \n  <b>being fully absorbed or focused</b>, but it does not capture the sense of confusion or perplexity.\n  <br> Option (d) \"colloquial, perplexed\" is incorrect because \"\n  <b>colloquial</b>\" refers to \n  <b>informal or conversational language</b>, which is not suitable for a debate on quantum physics. \"\n  <b>Perplexed</b>\" conveys \n  <b>confusion</b>, but \"colloquial\" does not fit the sentence's overall tone and topic.\n  <br> Therefore, the correct answer is (a) esoteric, confounded.\n  <br>", "question_heading": ""}, {"sr_no": 65, "question": "Select the most appropriate meaning of the highlighted idiom.\n  <br>The team won the championship by the \n  <b>skin of their teeth</b>.\n  <br>", "option1": "Dominated the competition\n  <br>", "option2": "Won convincingly\n  <br>", "option3": "Narrowly won or achieved something\n  <br>", "option4": "Displayed exceptional sportsmanship\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is (c) ‘Narrowly won or achieved something’.\n  <br> In the given sentence, \"\n  <b>by the skin of their teeth</b>\" indicates that the team won the championship by a very narrow margin or with great difficulty. It suggests that their victory was extremely close and they barely managed to secure it.\n  <br> Options (a) \"Dominated the competition\" and (b) \"Won convincingly\" are incorrect because they imply a more decisive or dominant victory, which contradicts the context of winning by a narrow margin.\n  <br> Option (d) \"Display exceptional sportsmanship\" is unrelated to the meaning of the idiom and does not reflect the context of the sentence.\n  <br>", "question_heading": ""}, {"sr_no": 66, "question": "Select the correct homonym from the given options to fill in the blank.\n  <br>The doctor advised the patient to follow a healthy ________ to improve their overall well-being.\n  <br>", "option1": "Diet\n  <br>", "option2": "Dye\n  <br>", "option3": "Dyes\n  <br>", "option4": "Dight\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is (a) ‘diet’.\n  <br> In the given sentence, \"diet\" refers to a specific selection of food and drinks consumed by an individual. \n  <br> It is commonly used in the context of maintaining a healthy eating plan or making dietary choices for health purposes.\n  <br> Options (b) \"dye,\" (c) \"dyes,\" and (d) \"dight\" are incorrect because they are either unrelated words or have different meanings that do not fit the context of the sentence.\n  <br> \n  <b>Dye</b>: A substance or colorant used to impart color to materials like fabric or hair.\n  <br> \n  <b>Dight</b>: To dress or adorn someone or something, or to prepare or equip for a specific purpose.\n  <br> Therefore, the correct answer is (a) diet.\n  <br>", "question_heading": ""}, {"sr_no": 67, "question": "<b>For the four-sentence (S1 to S4) paragraph below, sentences S1 and S4 are given. From the options P, Q, R and S select the appropriate sentences for S2 and S3, respectively.</b> \n  <br>(S1) The observance of International Biodiversity Day (May 22) was yet another reminder of the pivotal role our natural world plays in resolving the climate change crisis, which, along with the decline of biodiversity, poses an existential threat to our future. \n  <br>(S2)\n  <br>(S3)\n  <br>(S4) Mitigation of climate change is but one of the several benefits we derive from biodiversity.\n  <br> (P) Biodiversity, the rich variety of life forms and their interconnections with each other and the environment, is everywhere: inside our bodies as ubiquitous microbiomes, in our backyards, villages, towns, and cities, and in remote wild places as well-organized ecological communities and ecosystems.\n  <br>(Q) Maintaining and enhancing biodiversity on land and in oceans is perhaps the least expensive mechanism to sequester carbon dioxide from the atmosphere so as to cool our land and oceans.\n  <br>(R) Biodiversity or biological diversity is the variety and variability of life on Earth. Biodiversity is a measure of variation at the genetic, species, and ecosystem level.\n  <br>(S) More than 99.9% of all species that ever lived on Earth, amounting to over five billion species, are estimated to be extinct.\n  <br>", "option1": "Q, S\n  <br>", "option2": "P, R\n  <br>", "option3": "P, Q \n  <br>", "option4": "S, P\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "In the given paragraph, sentence S2 should provide information that expands on the concept of biodiversity, while sentence S3 should discuss the relationship between biodiversity and climate change.\n  <br> Sentence P, \"Biodiversity, the rich variety of life forms and their interconnections with each other and the environment, is everywhere: inside our bodies as ubiquitous microbiomes, in our backyards, villages, towns, and cities, and in remote wild places as well-organized ecological communities and ecosystems,\" fits as S2. This sentence provides a comprehensive description of biodiversity, emphasizing its presence and interconnections across various environments and ecosystems.\n  <br> Sentence Q, \"Maintaining and enhancing biodiversity on land and in oceans is perhaps the least expensive mechanism to sequester carbon dioxide from the atmosphere so as to cool our land and oceans,\" fits as S3. It discusses how biodiversity plays a role in mitigating climate change by sequestering carbon dioxide, leading to cooling effects on land and oceans.\n  <br> Therefore, the correct answer is option (c) P, Q, as it provides the appropriate sentences to complete the paragraph logically and coherently.\n  <br>", "question_heading": ""}, {"sr_no": 68, "question": "The following sentence has been divided into parts. One of them may contain an error. Select the part that contains the error from the given options. If you don’t find any error, mark ‘No error’ as your answer.\n  <br>She managed to brush off the setbacks and carried on with determination.\n  <br>", "option1": "She managed to brush off the\n  <br>", "option2": "setbacks and carried\n  <br>", "option3": "on with determination.\n  <br>", "option4": "No error\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "There is no error in this sentence. Therefore, the answer is (d) ‘No error’.\n  <br> The sentence uses the phrasal verb \"brush off\" correctly, which means to dismiss or ignore something, usually in a casual or nonchalant manner. \n  <br> Additionally, the use of \"carried on\" as a phrasal verb is appropriate and means to continue or persevere. \n  <br> The sentence conveys the intended meaning of overcoming setbacks and moving forward with determination.\n  <br>", "question_heading": ""}, {"sr_no": 69, "question": "Select the most appropriate option to fill in the blank.\n  <br>He had twelve disciples, who after his _______ into heaven went forth into the provinces of the world and taught His greatness; whence they who at this day believe their preaching are called Christians.\"\n  <br>", "option1": "Assent\n  <br>", "option2": "Ascent\n  <br>", "option3": "Dissent \n  <br>", "option4": "Accent \n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The most appropriate option to fill in the blank is (b) ‘ascent’.\n  <br>The sentence is referring to the disciples of someone who ascended into heaven, indicating the disciples' journey or movement after this event.\n  <br>\"\n  <b>Ascent</b>\" refers to the act of rising or moving upward, which fits the context of the sentence. \n  <br>The phrase \"after His ascent into heaven\" suggests that the disciples continued their work after their leader's upward movement into heaven.\n  <br>Meanings of other options are as follows:\n  <br> \n  <b>Assent</b>: Agreement or approval.\n  <br> \n  <b>Dissent</b>: Disagreement or difference of opinion.\n  <br> \n  <b>Accent</b>: Emphasis or distinctive manner of pronunciation.\n  <br>", "question_heading": ""}, {"sr_no": 70, "question": "The following sentence has been split into four segments. Identify the segment that contains a grammatical error.\n  <br>The researchers set out to delve onto the complex workings of the human brain, aiming to unravel its intricacies and unlock new discoveries.\n  <br>", "option1": "The researchers set out\n  <br>", "option2": "to delve onto\n  <br>", "option3": "the complex workings\n  <br>", "option4": "of the human brain\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The segment that contains a grammatical error is (b) \"to delve onto.\"\n  <br>The correct phrasal verb is \"to delve into,\" meaning to explore or investigate deeply. The word \"onto\" is incorrect in this context. Therefore, the corrected segment should be \"to delve into.\"\n  <br>Hence, the corrected sentence would be: \"The researchers set out to delve into the complex workings of the human brain, aiming to unravel its intricacies and unlock new discoveries.\"\n  <br>", "question_heading": ""}, {"sr_no": 71, "question": "Select the INCORRECTLY spelt word.\n  <br>", "option1": "Aggresive\n  <br>", "option2": "Conscientious\n  <br>", "option3": "Supersede\n  <br>", "option4": "Accommodation\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is option a. \n  <br> Aggresive: This option is spelled incorrectly. The correct spelling is \"\n  <b>Aggressive</b>,\" which means displaying a forceful or assertive behavior.\n  <br> \n  <b>Conscientious</b>: This option is spelled correctly. It refers to a person who is diligent, thorough, and takes great care in performing tasks or duties.\n  <br> \n  <b>Supersede</b>: This option is spelled correctly. It means to replace or take the place of something or someone, especially by being superior or more advanced.\n  <br> \n  <b>Accommodation</b>: This option is spelled correctly. It refers to providing lodging or a place to stay. It can also mean adjusting or adapting to meet someone's needs or requirements.\n  <br>", "question_heading": ""}, {"sr_no": 72, "question": "Select the option that expresses the given sentence in reported speech.\n  <br>“I will help you with your homework”, said Sarah.\n  <br>", "option1": "Sarah said that she would help you with your homework.\n  <br>", "option2": "Sarah said that she will help you with your homework.\n  <br>", "option3": "Sarah said that she will help me with my homework.\n  <br>", "option4": "Sarah said that she would help me with my homework.\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct option that changes the given direct speech sentence to indirect speech is (d) Sarah said that she would help me with my homework.\n  <br>In indirect speech, the reporting verb is changed to the past tense (\"said\" becomes \"said\"), and the pronouns are usually shifted to reflect the perspective of the speaker. \n  <br>In this case, \"I\" is changed to \"she\" to match the reported speaker (Sarah), and the future tense \"will\" is changed to the past tense \"would\" to maintain the sequence of tenses.\n  <br>Therefore, the correct answer is (d) Sarah said that she would help me with my homework.\n  <br>", "question_heading": ""}, {"sr_no": 73, "question": "Select the option that expresses the given sentence in active voice.\n  <br>The cake was baked by Martha.\n  <br>", "option1": "The cake is baked by Martha.\n  <br>", "option2": "Martha baked the cake.\n  <br>", "option3": "Martha has been baking the cake.\n  <br>", "option4": "The cake will be baked by Martha.\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct option that expresses the given sentence \"The cake was baked by Martha\" in active voice is (b) Martha baked the cake.\n  <br>To convert a sentence from passive voice to active voice, we typically make the subject of the passive sentence the doer or performer of the action in the active sentence. \n  <br>In this case, \"Martha\" is the doer or performer of the action of baking the cake. Therefore, when we switch to active voice, we state \"Martha baked the cake.\"\n  <br>Rule to change a Simple Present Tense sentence from active to passive voice and vice versa is:\n  <br> \n  <b>Subject + V2 + object. -> <- Object + auxiliary verb (was, were) + past participle + by + subject.</b> \n  <br>", "question_heading": ""}, {"sr_no": 74, "question": "Select the option that expresses the given sentence in passive voice.\n  <br>John will paint the walls tomorrow.\n  <br>", "option1": "The walls will be painted by John yesterday.\n  <br>", "option2": "The walls will be painting by John tomorrow.\n  <br>", "option3": "The walls will be painted by John tomorrow.\n  <br>", "option4": "The walls will be painted by John today.\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct option that expresses the given sentence \"John will paint the walls tomorrow\" in passive voice is (c) ‘The walls will be painted by John tomorrow’.\n  <br>To convert a sentence from active voice to passive voice, we typically make the object of the active sentence the subject of the passive sentence. \n  <br>In this case, \"the walls\" are the object of the action \"paint.\" Therefore, when we switch to passive voice, we state \"The walls will be painted.\" Additionally, we mention \"by John\" to indicate the doer or performer of the action.\n  <br>Rule to change a Simple Future Tense sentence from active to passive voice and vice versa is:\n  <br> \n  <b>Subject + will, shall + verb + object -> <- Object + auxiliary verb (will, shall) + be + past participle + by + subject.</b> \n  <br>", "question_heading": ""}, {"sr_no": 75, "question": "Select the most appropriate option that can substitute the underlined segment in the given sentence. If there is no need to substitute it, select ‘No substitution required’.\n  <br>The concert was \n  <b>enjoyable than any</b> other musical event I have attended.\n  <br>", "option1": "most enjoyable than\n  <br>", "option2": "No substitution required\n  <br>", "option3": "more enjoyable than any\n  <br>", "option4": "enjoyable as any\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The most appropriate option that can substitute the underlined segment in the given sentence \"The concert was enjoyable than any other musical event I have attended\" is (c) more enjoyable than any.\n  <br> The original sentence is comparing the enjoyment level of the concert to other musical events. To express this comparison correctly, we need to use the word \"more\" before \"enjoyable\" to indicate a higher degree of enjoyment compared to other events.\n  <br> We use ‘than’ in comparative degree of comparison.\n  <br> \n  <b>Comparative Degree</b>: An adjective is said to be in the comparative degree when it is used to compare two nouns/pronouns.\n  <br> Therefore, the corrected sentence would be \"The concert was more enjoyable than any other musical event I have attended.\"\n  <br> Hence, the correct answer is (c) more enjoyable than any.\n  <br>", "question_heading": ""}, {"sr_no": 76, "question": "Sentences of a paragraph are given below in jumbled order. Arrange the sentences in the correct order to form a meaningful and coherent paragraph.\n  <br>A. It is 200 times stronger than steel but six times lighter. It is almost perfectly transparent as it absorbs only 2% of light.\n  <br>B. It conducts electricity better than copper.\n  <br>C. It is impermeable to gases, even those as light as hydrogen and helium.\n  <br>D. Graphene is the world’s thinnest, strongest, and most conductive material of both electricity and heat.\n  <br>", "option1": "D, B, A, C\n  <br>", "option2": "A, B, C, D\n  <br>", "option3": "B, C, A, D\n  <br>", "option4": "A, D, B, C\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "In order to form a coherent and meaningful paragraph, the sentences need to flow logically and provide a clear description of graphene.\n  <br> Sentence D states that \"Graphene is the world's thinnest, strongest, and most conductive material of both electricity and heat.\" This sentence introduces the topic of graphene and highlights its exceptional properties.\n  <br> Sentence B follows by stating that \"It conducts electricity better than copper.\" This sentence provides a specific comparison between graphene and copper, emphasizing graphene's superior conductivity.\n  <br> Sentence A adds further details about graphene, stating that \"It is 200 times stronger than steel but six times lighter\" and \"It is almost perfectly transparent as it absorbs only 2% of light.\" These details highlight the strength, lightness, and transparency of graphene.\n  <br> Finally, sentence C concludes the paragraph by mentioning another remarkable property of graphene, stating that \"It is impermeable to gases, even those as light as hydrogen and helium.\" This emphasizes the impermeability of graphene to gases, including the lightest ones.\n  <br> Therefore, the correct order to form a coherent and meaningful paragraph is D, B, A, C.\n  <br>", "question_heading": ""}, {"sr_no": 77, "question": "Select the most appropriate ANTONYM of the highlighted word.\n  <br>Classicism in the shape of solid, respectable Hummel on the one hand, and Carl Czerny, a trifle \n  <b>flippant</b>, perhaps, and inclined to appeal to the gallery, on the other, these gave the musical parentage of young Liszt.\n  <br>", "option1": "Reverent\n  <br>", "option2": "Lenient \n  <br>", "option3": "Desolate\n  <br>", "option4": "Noxious\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The word \"\n  <b>flippant</b>\" is an adjective that refers to a disrespectful or light-hearted attitude, often in a way that is seen as lacking seriousness or proper respect for a serious topic or situation.\n  <br>Synonyms: Disrespectful, irreverent, frivolous, impertinent.\n  <br>Antonyms: Respectful, serious, thoughtful, \n  <b>reverent</b>.\n  <br>Meanings of all options are as follows:\n  <br> \n  <b>Reverent</b>: Showing deep respect or admiration, often in a religious or spiritual context.\n  <br> \n  <b>Lenient</b>: Not strict or harsh in enforcing rules or standards, showing tolerance or forgiveness.\n  <br> \n  <b>Desolate</b>: Empty, barren, or lacking in life, feeling, or activity; deserted or bleak.\n  <br> \n  <b>Noxious</b>: Harmful, poisonous, or unpleasant, often referring to gases, fumes, or substances that can cause harm or illness.\n  <br>", "question_heading": ""}, {"sr_no": 78, "question": "Fill in the blanks with the most appropriate option.\n  <br>The curator, unwilling to _____________ the rare artefacts to potential harm during the transportation, resolved to personally oversee their _____________ to ensure their integrity is uncompromised.\n  <br>", "option1": "expose, conveyance\n  <br>", "option2": "unveil, journey\n  <br>", "option3": "disclose, movement\n  <br>", "option4": "reveal, transition\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct choice is (a) \"expose, conveyance\".\n  <br>So, the sentence reads: \"The curator, unwilling to expose the rare artefacts to potential harm during the transportation, resolved to personally oversee their conveyance to ensure their integrity is uncompromised.\"\n  <br>The word \"\n  <b>expose</b>\" in this context means to subject something to some influence or action, often a harmful one. \"\n  <b>Conveyance</b>\" refers to the action or process of transporting or carrying someone or something from one place to another.\n  <br>Here are the meanings of the other options:\n  <br> \n  <b>Unveil</b>: means to show or announce publicly for the first time, and \"journey\" means an act of traveling from one place to another.\n  <br> \n  <b>Disclose</b>: means to make secret or new information known, and \"movement\" means an act of changing physical location or position or of having this changed.\n  <br> \n  <b>Reveal</b>: means make (previously unknown or secret information) known to others, and \"transition\" refers to the process or a period of changing from one state or condition to another.\n  <br>", "question_heading": ""}, {"sr_no": 79, "question": "Sentences of a paragraph are given below in jumbled order. Arrange the sentences in the correct order to form a meaningful and coherent paragraph.\n  <br> P: In a statement issued on July 6, the Institutional Finance Wing of the State’s Finance Department said a decision on rescheduling of existing loans and sanctioning of fresh loans was taken at a special meeting of the State-Level Bankers’ Committee recently.\n  <br>Q: “Banks have been instructed to extend the moratorium period up to 12 months from the date of implementation of the rehabilitation, restructuring measures and for retail loans under P-segment (personal/pension/vehicle/housing loans, etc).\n  <br>R: The Manipur government has asked the banks to provide relief measures to all categories of borrowers by extending the moratorium by up to a year in view of the ethnic violence that has swept the State.\n  <br>S: The relief measures would be taken up under the Reserve Bank of India’s Relief Measures by Banks in Areas Affected by Natural Calamities Directions, 2018, the statement said.\n  <br>", "option1": "SPRQ\n  <br>", "option2": "RPSQ\n  <br>", "option3": "SPQR\n  <br>", "option4": "PRSQ\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct order of sentences is (b) RPSQ.\n  <br> \n  <b>R: </b>This sentence introduces the main topic of the paragraph: the Manipur government's directive to banks to provide relief measures in response to ethnic violence. It serves as a suitable opening sentence.\n  <br> \n  <b>P:</b> This sentence builds upon the first by offering more specifics about the relief measures, making it a natural second sentence.\n  <br> \n  <b>S:</b> This sentence gives additional details about the source of these relief measures, continuing the narrative smoothly from sentence P.\n  <br> \n  <b>Q:</b> The final sentence presents specific instructions given to banks, providing a strong conclusion by offering concrete details that reflect the actions outlined in the previous sentences.\n  <br>", "question_heading": ""}, {"sr_no": 80, "question": "Select the option that expresses the given sentence in direct speech.\n  <br>He bade his friends goodbye.\n  <br>", "option1": "“I will see you later” he told his friends.\n  <br>", "option2": "“I am bidding you Goodbye”\n  <br>", "option3": "He said “Goodbye my friends.”\n  <br>", "option4": "“Goodbye my friends” he was saying to them.\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "Option (c) is the correct direct form of the given sentence.\n  <br> \n  <b>Direct speech</b>- Direct speech, also known as quoted speech or direct quotation, is a way of reporting someone's exact words. \n  <br> \n  <b>Indirect speech</b>- Indirect speech, also known as reported speech or indirect quotation, is a way of reporting someone's words or thoughts indirectly, without using their exact words.\n  <br>In this case, \"bade his friends goodbye\" can be most accurately translated to direct speech as \"He said, 'Goodbye, my friends.'\"\n  <br>Here are some rules to remember when converting indirect (or reported) speech to direct speech:\n  <br> Use quotation marks (\" \") to enclose the exact words of the speaker.\n  <br> The tenses, pronouns, and words expressing nearness of time or place in reported speech may need to be changed to match the original speech. For example, if the reported speech uses past tense, the direct speech may need to use present tense, if the original speech happened in the present.\n  <br> The reporting verb (e.g., \"he said\") usually comes before the actual spoken words in direct speech. However, it can also come in the middle or at the end.\n  <br> When the reporting verb comes before the actual words, it's typically followed by a comma.\n  <br> If the direct speech contains a question, it should end with a question mark within the quotation marks. Similarly, if it's an exclamation, it should end with an exclamation mark within the quotation marks.\n  <br>Given these rules, option (c) \"He said 'Goodbye my friends.'\" is the most accurate direct speech translation of the sentence \"He bade his friends goodbye.\"\n  <br>", "question_heading": ""}, {"sr_no": 81, "question": "Select the option that can be used as a one-word substitute for the given group of words.\n  <br>A process of making something (like pain or problems) less severe or unpleasant without removing the cause.\n  <br>", "option1": "Enhancement\n  <br>", "option2": "Escalation\n  <br>", "option3": "Amplification\n  <br>", "option4": "Alleviation\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct one-word substitute for the phrase \"A process of making something (like pain or problems) less severe or unpleasant without removing the cause\" is (d) \"Alleviation\".\n  <br> \n  <b>Alleviation</b> means the action or process of making suffering, deficiency, or a problem less severe.\n  <br>Now let's define the other options:\n  <br> \n  <b>Enhancement</b> refers to an increase or improvement in quality, value, or extent.\n  <br> \n  <b>Escalation</b> implies an increase or intensification, typically in the context of conflict, danger, or a problem.\n  <br> \n  <b>Amplification</b> means the action or process of enlarging upon or adding detail to a story or statement, which could also refer to increasing the volume or strength of something.\n  <br>", "question_heading": ""}, {"sr_no": 82, "question": "Identify the INCORRECTLY spelled word in the given sentence.\n  <br>A comprehensive understanding of the interconnectedness of various ecosystems can elucidate the profound impact human activities exert on the environment, neccessitating the implementation of sustainable practices.\n  <br>", "option1": "Interconnectedness\n  <br>", "option2": "Elucidate\n  <br>", "option3": "Neccessitating\n  <br>", "option4": "Implementation\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "Option c is incorrectly spelt.\n  <br>Correct spelling is “Necessitating”.\n  <br>Meanings of all options-\n  <br> \n  <b>Interconnectedness</b>: The state of being connected or linked together.\n  <br> \n  <b>Elucidate</b>: To clarify or explain something in a clear and detailed manner.\n  <br> \n  <b>Necessitating</b>: Requiring or making something necessary.\n  <br> \n  <b>Implementation</b>: The act of putting a plan or decision into effect or action.\n  <br>", "question_heading": ""}, {"sr_no": 83, "question": "Replace the highlighted word with its synonym to make the sentence more meaningful.\n  <br>Carmen said he had learned the gift of \n  <b>gab</b> from his Dad, but Jonathan had always been perceptive about people. \n  <br>", "option1": "Chatter\n  <br>", "option2": "Silence\n  <br>", "option3": "Taciturnity\n  <br>", "option4": "Reticence\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "As a noun, \"\n  <b>Gab</b>\" refers to idle or trivial talk, often characterized by excessive or meaningless chatter. It can also refer to informal conversation or gossip.\n  <br>As a verb, \"Gab\" means to talk excessively or chatter, often about unimportant or trivial matters. It implies a tendency to speak at length or to engage in conversation without much substance.\n  <br>Overall, \"Gab\" is commonly used to describe informal, chatty, or idle talk that may lack depth or significance.\n  <br>Synonyms: Talk, \n  <b>chatter</b>, babble, prattle, jabber.\n  <br>Antonyms: Silence, quiet, hush, stillness, reserve.\n  <br>Meanings of all options are as follows:\n  <br> \n  <b>Chatter</b>: To talk rapidly or incessantly, often in a casual or trivial manner.\n  <br> \n  <b>Silence</b>: The absence of sound or noise; the state of being quiet or not speaking.\n  <br> \n  <b>Taciturnity</b>: The state of being reserved or reluctant to speak; the quality of being silent or uncommunicative.\n  <br> \n  <b>Reticence</b>: The quality of being reserved or hesitant in speaking or expressing thoughts or feelings; the act of holding back or refraining from speaking openly.\n  <br>", "question_heading": ""}, {"sr_no": 84, "question": "Select the appropriate idiom that can replace the highlighted phrase in the following sentence.\n  <br>People \n  <b>expressed their rage</b> about the Governor’s decision to raise property taxes.\n  <br>", "option1": "From hand to mouth\n  <br>", "option2": "Gave up the ghost\n  <br>", "option3": "Gnashed their teeth\n  <br>", "option4": "At sixes and sevens\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is option c.\n  <br> \n  <b>Gnash one’s teeth-</b>to express one’s rage, to show anger.\n  <br>The idiom \"gnashed their teeth\" means to show anger, frustration, or displeasure. It implies a strong emotional reaction, which fits the context of people expressing their rage about the Governor's decision to raise property taxes.\n  <br>", "question_heading": ""}, {"sr_no": 85, "question": "Given below are four jumbled sentences. Select the option that gives their correct logical sequence.\n  <br>A. The merger will lead to simplification of the corporate structure of IDFC FHCL, IDFC Ltd. and IDFC First Bank by consolidating them into \n  <br>B. The Board of Directors of IDFC First Bank Ltd. on Monday approved the merger of IDFC Ltd. with IDFC First Bank with \n  <br>C. a single entity and will help streamline regulatory compliances, the bank said on the rationale for the merger.\n  <br>D. a share exchange ratio of 155 shares of face value of ₹10 each of IDFC First Bank for every 100 shares of face value of ₹10 each of IDFC Ltd.\n  <br>", "option1": "DACB\n  <br>", "option2": "BDAC\n  <br>", "option3": "ACBD\n  <br>", "option4": "BACD\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "Sentence B introduces the merger and provides specific details about the share exchange ratio approved by the Board of Directors.\n  <br> Next, sentence D follows logically after sentence B, as it further explains the share exchange ratio mentioned in sentence B. This sentence clarifies the exact ratio between the shares of IDFC First Bank and IDFC Ltd.\n  <br> Sentence A comes after sentences B and D because it explains the impact of the merger. It highlights the benefits of the merger, such as simplifying the corporate structure and streamlining regulatory compliances.\n  <br> Finally, sentence C concludes the logical sequence. This sentence follows the explanation of the merger's benefits in sentence A and provides context for the statement made by the bank regarding the rationale behind the merger.\n  <br> Therefore, the correct logical sequence is BDAC.\n  <br>", "question_heading": ""}, {"sr_no": 86, "question": "Select the most appropriate option to fill in the blank.\n  <br>The bright sun __________ the landscape with its radiant light.\n  <br>", "option1": "Incandesce\n  <br>", "option2": "Incandesces\n  <br>", "option3": "Incandescenting\n  <br>", "option4": "Incandescented\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is option b.\n  <br> To determine the correct answer, we need to consider the verb form that is appropriate for the sentence. The verb \"incandesce\" means to emit light or glow brightly.\n  <br> In the given sentence, we are referring to the sun, which emits radiant light and makes the landscape bright. The sentence is a general truth and therefore we need to use simple present form of verb. \n  <br> Since we need to use the present tense singular verb form, we look for the option that matches this form.\n  <br> Option (b) \"incandesces\" is the present tense singular form of the verb \"incandesce\" and correctly fits the sentence. It indicates that the sun currently emits light and brightens the landscape.\n  <br> The other options, (a) incandesce, (c) incandescenting, and (d) incandescented, do not match the present tense form of the verb \"incandesce\" and are therefore incorrect.\n  <br>", "question_heading": ""}, {"sr_no": 87, "question": "Sentences of a paragraph are given below in jumbled order. Arrange the sentences in the correct order to form a meaningful and coherent paragraph.\n  <br>A. The Court had found that if a government does not have control over its officers, it would paralyze governance which cannot be the intention of the Constitution makers while incorporating Article 239AA, which gives a special constitutional status to Delhi. \n  <br>B. The Ordinance promulgated by the President on May 19, 2023 amending the Government of National Capital Territory of Delhi Act 1991(GNCTD Act) took away the services from the jurisdiction of the Delhi government. \n  <br>C. The Ordinance nullifies that judgment of the Supreme Court. \n  <br>D. The services had been earlier restored to the Delhi government by the Supreme Court in a landmark judgment delivered on May 11, 2023. \n  <br>", "option1": "BDCA\n  <br>", "option2": "ACDB\n  <br>", "option3": "BCAD\n  <br>", "option4": "DABC \n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is option a.\n  <br> Based on the context, sentence B sets the stage by introducing the Ordinance that took away services from the Delhi government. \n  <br> Then, sentence D provides information about the Supreme Court's earlier judgment that restored the services to the Delhi government. \n  <br> Sentence C connects the dots by stating that the Ordinance nullifies the Supreme Court's judgment. \n  <br> Finally, sentence A brings in the perspective of the Court's finding about the importance of government control over officers and its relation to the special constitutional status given to Delhi.\n  <br> Hence, the correct order to form a meaningful and coherent paragraph is BDCA.\n  <br>", "question_heading": ""}, {"sr_no": 88, "question": "Select the option that expresses the given sentence in active voice.\n  <br>The decision was made by the committee.\n  <br>", "option1": "The committee made the decision.\n  <br>", "option2": "The decision was made by the committee.\n  <br>", "option3": "The decision made by the committee.\n  <br>", "option4": "The committee was making the decision.\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is option a.\n  <br>In active voice, the subject performs the action, while in passive voice, the subject receives the action.\n  <br> Active voice sentences are often more direct and concise, while passive voice sentences focus more on the recipient of the action.\n  <br> To convert a sentence from passive voice to active voice, the subject becomes the doer of the action, and the object of the passive sentence becomes the subject of the active sentence. \n  <br> In this case, \"the committee\" is the doer of the action, so it becomes the subject in the active voice sentence, and \"made the decision\" remains the action part of the sentence.\n  <br>Rules for conversion are as follows:\n  <br> \n  <b>Subject + V2 + object. -> <- Object + auxiliary verb (was, were) + past participle + by + subject.</b> \n  <br>", "question_heading": ""}, {"sr_no": 89, "question": "Select the option that expresses the given sentence in indirect speech.\n  <br>She said, \"I will complete the project on time.\"\n  <br>", "option1": "She pleaded to complete the project on time.\n  <br>", "option2": "She asked to complete the project on time.\n  <br>", "option3": "She stated that she would complete the project on time.\n  <br>", "option4": "She insisted on the completion of the project on time.\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is option c.\n  <br>Indirect speech is used to report what someone said without using their exact words, typically with a reporting verb (e.g., said, stated, asked) and a reporting clause. \n  <br> The tense and pronouns may change in indirect speech.\n  <br> In indirect speech, we report what someone said without using their exact words. The reporting verb (said) is followed by a reporting clause that usually starts with \"that.\" \n  <br> The tense of the reported speech may also change according to the context. \n  <br> In this case, \"stated\" is an appropriate reporting verb, and the reported clause indicates that she will complete the project on time.\n  <br> When converting the direct speech to indirect speech, the pronouns may also change depending on the context.\n  <br>", "question_heading": ""}, {"sr_no": 90, "question": "Select the option to fill in the blank no. 1.\n  <br>", "option1": "National\n  <br>", "option2": "Regional\n  <br>", "option3": "Global\n  <br>", "option4": "Confidential\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is option b.\n  <br>Meanings of all options are as follows:\n  <br> \n  <b>National</b> - Pertaining to a nation or country.\n  <br> \n  <b>Regional</b> - Relating to a particular area or part of the world.\n  <br> \n  <b>Global</b> - Worldwide or universal in influence or application.\n  <br> \n  <b>Confidential</b> - Meant to be kept a secret.\n  <br>The context of the sentence suggests the countries belong to a specific geographical region. So, the correct answer is option b \n  <b>‘regional’</b>.\n  <br>", "question_heading": ""}, {"sr_no": 91, "question": "Select the option to fill in the blank no. 2.\n  <br>", "option1": "Surpassing\n  <br>", "option2": "Rivaling\n  <br>", "option3": "Along with\n  <br>", "option4": "Opposing\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is option c.\n  <br>Meanings of all options are as follows:\n  <br> \n  <b>Surpassing</b> - Exceed; be greater than.\n  <br> \n  <b>Rivaling</b> - Compete with someone or something.\n  <br> \n  <b>Along with</b> - Together with or in addition to.\n  <br> \n  <b>Opposing</b> - To act against or provide resistance to.\n  <br>The context indicates that India became a full SCO member in 2017 at the same time as Pakistan. So, the correct answer is option c \n  <b>‘along with’</b>.\n  <br>", "question_heading": ""}, {"sr_no": 92, "question": "Select the option to fill in the blank no. 3.\n  <br>", "option1": "Or\n  <br>", "option2": "But\n  <br>", "option3": "Despite\n  <br>", "option4": "And\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is option d.\n  <br>Meanings of all options are as follows:\n  <br> \n  <b>Or</b> - Used to link alternatives.\n  <br> \n  <b>But</b> - Except; apart from; other than.\n  <br> \n  <b>Despite</b> - Without being affected by; in spite of.\n  <br> \n  <b>And</b> - A conjunction used to connect words of the same part of speech, clauses, or sentences that are to be taken jointly\n  <br>The context implies that the regional security and connectivity are both significant to India's growth. So, the correct answer is option d \n  <b>‘and’</b>.\n  <br>", "question_heading": ""}, {"sr_no": 93, "question": "Select the option to fill in the blank no. 4.\n  <br>", "option1": "Avoiding\n  <br>", "option2": "Conducting\n  <br>", "option3": "Observing\n  <br>", "option4": "Criticizing\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is option b.\n  <br>Meanings of all options are as follows:\n  <br> \n  <b>Avoiding</b> - Keep away from or stop oneself from doing (something).\n  <br> \n  <b>Conducting</b> - Direct the performance of (an orchestra or choir).\n  <br> \n  <b>Observing</b> - Notice or perceive (something) and register it as being significant.\n  <br> \n  <b>Criticizing</b> - Indicate the faults of (someone or something) in a disapproving way.\n  <br>The context indicates that being inside the tent is important, even if that means participating in joint exercises under the SCO Regional Anti-Terrorist Structure. So, the correct answer is option b \n  <b>‘conducting’</b>.\n  <br>", "question_heading": ""}, {"sr_no": 94, "question": "Despite not joining the official creditors' platform, how does China intend to support Sri Lanka in its economic recovery according to Foreign Minister Ali Sabry?\n  <br>", "option1": "By providing direct aid\n  <br>", "option2": "Through bilateral support\n  <br>", "option3": "By forgiving all debts\n  <br>", "option4": "By investing in Sri Lankan businesses\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is option b.\n  <br>Refer to the line, \"They have said they will not come on board the common platform... but will support us bilaterally.\"\n  <br>", "question_heading": ""}, {"sr_no": 95, "question": "In the context of this article, what does \"creditor equitability\" mean and how does China's decision to remain an observer impact this?\n  <br>", "option1": "It means that all creditors should be repaid at the same time. China's decision complicates this because they are a significant creditor, yet they're not part of the official committee.\n  <br>", "option2": "It refers to all creditors having equal voting rights. China's observer status doesn't affect this.\n  <br>", "option3": "It refers to the equal distribution of assets in case of default. China's observer status means it may not get its fair share.\n  <br>", "option4": "It means that all creditors are treated equally in negotiations. China's observer status means it may negotiate separate terms, undermining this principle.\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is option d.\n  <br>The concept of \"creditor equitability\" is implied in the statement, \"Reiterating Mr. Wickremesinghe’s promise, Minister Sabry said on Monday: “All bilateral debt treatment will be comparable... everybody must agree to the same kind of treatment,” and the potential issue with China's observer status is described in, \"China has attended the committee’s meetings as an observer, but its decision to stay out of the official creditors’ committee complicates the exercise for Sri Lanka.\"\n  <br>", "question_heading": ""}, {"sr_no": 96, "question": "What is the Paris Club's stance on debt treatment arrangements with Sri Lanka?\n  <br>", "option1": "They want to make side arrangements with each creditor.\n  <br>", "option2": "They advocate for the same treatment for all external creditors.\n  <br>", "option3": "They believe China should have preferential treatment due to its size.\n  <br>", "option4": "They have not made their stance clear.\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is option b.\n  <br>The line, \"highlighted President Ranil Wickremesinghe’s assurance of transparency and comparability of treatment for all external creditors, and that “no side arrangements inconsistent with comparability of treatment” will be made with any creditor,\" indicates the Paris Club's stance.\n  <br>", "question_heading": ""}, {"sr_no": 97, "question": "According to the passage, how has the Sri Lankan Parliament recently responded to the country's debt crisis?\n  <br>", "option1": "They have agreed to default on the debt.\n  <br>", "option2": "They have approved a plan to restructure domestic debt by recasting pension funds.\n  <br>", "option3": "They have decided to ask the IMF for more aid.\n  <br>", "option4": "They have passed legislation to increase taxes to repay the debt.\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is option b.\n  <br>This answer is directly stated in the line, \"Meanwhile, the Sri Lankan Parliament on Saturday approved the government’s plan to restructure its domestic debt, by recasting pension funds.\"\n  <br>", "question_heading": ""}, {"sr_no": 98, "question": "What was the initial concern regarding NATO's relevance after the Cold War?\n  <br>", "option1": "NATO's expansion into new member countries\n  <br>", "option2": "The dissolution of the Soviet Union\n  <br>", "option3": "NATO's loss of military capabilities\n  <br>", "option4": "The invasion of Ukraine by Russia\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is option b.\n  <br>Refer to, \"After the dissolution of the Soviet Union and the end of the Cold War, many thought that NATO would lose its relevance.\"\n  <br>", "question_heading": ""}, {"sr_no": 99, "question": "Which of the following countries is NOT mentioned as part of the \"NATO Plus\" security arrangement?\n  <br>", "option1": "Australia\n  <br>", "option2": "New Zealand\n  <br>", "option3": "Japan\n  <br>", "option4": "Canada\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is option d.\n  <br>Refer to, \"“NATO plus” refers to a security arrangement of NATO and the five treaty allies of the U.S. — Australia, New Zealand, Japan, Israel, and South Korea as members...\"\n  <br>", "question_heading": ""}, {"sr_no": 100, "question": "What is the main focus of NATO Plus in terms of containing?\n  <br>", "option1": "The Soviet Union\n  <br>", "option2": "Russia\n  <br>", "option3": "China\n  <br>", "option4": "North Korea\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is option c.\n  <br>Refer to, \"While NATO’s earlier target was the Soviet Union and now Russia, the focus of NATO Plus is clearly on containing China.\"\n  <br>", "question_heading": ""}, {"sr_no": 101, "question": "Why is India considered a missing link in the NATO Plus framework?\n  <br>", "option1": "India has territorial disputes with China.\n  <br>", "option2": "India is not interested in joining any military alliance.\n  <br>", "option3": "India lacks advanced military technologies.\n  <br>", "option4": "India is already a member of NATO.\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is option a.\n  <br>Refer to, \"In light of increasing regional security challenges, India joining the NATO Plus framework could provide it with a security umbrella, with protection and deterrence against potential threats.\" This implies that India has territorial disputes with China, making it a missing link in the framework.\n  <br>", "question_heading": ""}, {"sr_no": 102, "question": "According to the Chinese tale, what is the special characteristic of the Fox with Nine Tails?\n  <br>", "option1": "It possesses magical powers.\n  <br>", "option2": "It can shape-shift into different forms.\n  <br>", "option3": "Iप ुोौ ninध पोiिस पुोप ौदंृियप्रध थiौकयं.", "option4": "It brings good luck and prosperity.\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is option b.\n  <br>Refer to, \"Legend has it that the fox possesses extraordinary powers, making it a symbol of both wisdom and mischief\" implies that one of the extraordinary powers of the Fox with Nine Tails is its shape-shifting abilities.\n  <br>", "question_heading": ""}, {"sr_no": 103, "question": "Why did the Fox with Nine Tails initially approach the village?\n  <br>", "option1": "To seek revenge on the villagers.\n  <br>", "option2": "To gain the trust and admiration of the villagers..\n  <br>", "option3": "To find a companion and form a bond.\n  <br>", "option4": "To bring misfortune and chaos to the village.\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is option b.\n  <br>Refer to, \"The Fox with Nine Tails initially approaches a peaceful village, disguised as a beautiful maiden. It uses its shape-shifting abilities to gain the trust and admiration of the villagers.\"\n  <br>", "question_heading": ""}, {"sr_no": 104, "question": "What happens when a Fox with Nine Tails gains its ninth tail?\n  <br>", "option1": "It is offered a difficult choice between immortality and becoming a guardian angel. \n  <br>", "option2": "It loses its magical abilities and becomes an ordinary fox.\n  <br>", "option3": "It must leave the human world and return to the spirit realm.\n  <br>", "option4": "It becomes the guardian spirit of the village.\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is option a.\n  <br>Refer to, \" As the fox gains its ninth tail, it reaches the pinnacle of its powers but also faces a crucial decision. It must choose between ascending to immortality and leaving the human world behind or embracing its true purpose as a guardian spirit of the village.\"\n  <br>", "question_heading": ""}, {"sr_no": 105, "question": "Hयथ कयधौ पुध Cुinधौध पोिध यी पुध Fयस थiपु Ninध Tोiिस ौदंृियप्रध ुहंोn कधौiनधौ?", "option1": "The fox's multiple tails represent various human ambitions.\n  <br>", "option2": "The fox's transformation abilities reflect human adaptability.\n  <br>", "option3": "The fox's actions mirror the consequences of unchecked desires.\n  <br>", "option4": "The tale emphasizes the importance of fulfilling one's desires.\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is option c.\n  <br>Refer to, \"However, the tale also teaches a valuable lesson about the consequences of unchecked desires\" suggests that the actions of the fox in the tale reflect the negative outcomes that can arise from unchecked human desires.\n  <br>", "question_heading": ""}, {"sr_no": 106, "question": "किस शहर ने योग दिवस पर सबसे बड़ी सभा का गिनीज वर्ल्ड रिकॉर्ड बनाया है?\n  <br>", "option1": "मुंबई\n  <br>", "option2": "सूरत\n  <br>", "option3": "दिल्ली\n  <br>", "option4": "कोलकाता\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "योग दिवस के अवसर पर गुजरात के सूरत शहर में आयोजित कार्यक्रम में एक ही स्थान पर योग सत्र के लिए सबसे बड़ी भीड़ इकट्ठी होने और 1.53 लाख लोगों के कार्यक्रम में शामिल होने का नया गिनीज वर्ल्ड रिकॉर्ड बनाया गया।\n  <br>पिछला विश्व रिकॉर्ड 2018 में राजस्थान के कोटा शहर में बनाया गया था जब 1,00,984 लोगों ने एक ही स्थान पर योग दिवस सत्र में भाग लिया था।\n  <br>दुनिया भर में अंतर्राष्ट्रीय योग दिवस 2015 से प्रतिवर्ष 21 जून को मनाया जाता है।\n  <br>", "question_heading": ""}, {"sr_no": 107, "question": "हाल ही में किस देश ने नकदी संकट से जूझ रहे पाकिस्तान के साथ 1,200 मेगावाट का परमाणु ऊर्जा संयंत्र स्थापित करने के लिए 4.8 बिलियन डॉलर के समझौते पर हस्ताक्षर किए?\n  <br>", "option1": "चीन\n  <br>", "option2": "संयुक्त राज्य अमेरिका\n  <br>", "option3": "रूस\n  <br>", "option4": "जापान\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "चीन ने 20 जून को दो सहयोगियों के बीच बढ़ते रणनीतिक सहयोग के संकेत के रूप में नकदी संकट से जूझ रहे पाकिस्तान के साथ 1,200 मेगावाट का परमाणु ऊर्जा संयंत्र स्थापित करने के लिए 4.8 बिलियन डॉलर के भारी समझौते पर हस्ताक्षर किए।\n  <br>प्रधानमंत्री शहबाज शरीफ ने जिस समझौते पर हस्ताक्षर किए उसके तहत बीजिंग पंजाब के मियांवाली जिले के चश्मा में 1,200 मेगावाट का चश्मा -वी परमाणु संयंत्र का निर्माण करेगा।\n  <br>पाकिस्तान के चश्मा बिजली संयंत्रों को सस्ती परमाणु ऊर्जा के उत्पादन में महत्वपूर्ण माना जाता है।\n  <br>", "question_heading": ""}, {"sr_no": 108, "question": "विश्व आर्थिक मंच द्वारा जारी ग्लोबल जेंडर गैप रिपोर्ट 2023 में 146 देशों में भारत की रैंकिंग क्या रही?\n  <br>", "option1": "89\n  <br>", "option2": "105\n  <br>", "option3": "127\n  <br>", "option4": "140\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "विश्व आर्थिक मंच द्वारा जारी ग्लोबल जेंडर गैप रिपोर्ट 2023 में भारत 146 देशों में से 127वें स्थान पर है।\n  <br>लिंग समानता के मामले में भारत 146 देशों में से 127वें स्थान पर है - पिछले साल से आठ स्थानों का सुधार हुआ है।\n  <br>सूचकांक में भारत के पड़ोसी देशों पाकिस्तान को 142वां, बांग्लादेश को 59वां, चीन को 107वां, नेपाल को 116वां, श्रीलंका को 115वां और भूटान को 103वां स्थान दिया गया है।\n  <br>रिपोर्ट के अनुसार, आइसलैंड लगातार 14वें साल दुनिया में सबसे अधिक लिंग-समान देश है और 90% से अधिक लिंग अंतर को कम करने वाला एकमात्र देश है।\n  <br> \n  <b>वैश्विक लिंग अंतर सूचकांक:</b> \n  <br>ग्लोबल जेंडर गैप इंडेक्स सालाना चार प्रमुख आयामों (आर्थिक भागीदारी और अवसर, शैक्षिक प्राप्ति, स्वास्थ्य और अस्तित्व, और राजनीतिक सशक्तिकरण) में लैंगिक समानता की वर्तमान स्थिति और विकास को मापता है। यह 2006 में अपनी स्थापना के बाद से समय के साथ इन अंतरालों को पाटने की दिशा में कई देशों के प्रयासों की प्रगति पर नज़र रखने वाला सबसे लंबे समय तक चलने वाला सूचकांक है।\n  <br>", "question_heading": ""}, {"sr_no": 109, "question": "किस संगठन ने भारत में वर्चुअल \"स्टार्टअप स्कूल\" के दूसरे संस्करण के शुभारंभ की घोषणा की?\n  <br>", "option1": "भारतीय प्रौद्योगिकी संस्थान\n  <br>", "option2": "स्टार्टअप्सइंडिया\n  <br>", "option3": "गूगल इंडिया\n  <br>", "option4": "वाणिज्य और उद्योग मंत्रालय\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "पहले संस्करण की सफलता के बाद, गूगल इंडिया ने 11 जुलाई से स्टार्टअप इंडिया द्वारा समर्थित वर्चुअल \"स्टार्टअप स्कूल\" 2023 के दूसरे संस्करण के लॉन्च की घोषणा की।\n  <br>यह कार्यक्रम भारत में शुरुआती चरण के स्टार्टअप को उद्यमिता, उत्पाद विकास, विपणन और धन उगाहने के बुनियादी सिद्धांतों के बारे में सीखने में मदद करने के लिए डिज़ाइन किया गया है। कार्यक्रम आठ सप्ताह में वितरित किया जाएगा, और इसमें गूगल और 30 से अधिक उद्योग विशेषज्ञ शामिल होंगे।\n  <br>स्टार्टअप स्कूल का पहला संस्करण 2022 में भारत में लॉन्च किया गया था, और इसमें 14,000 से अधिक स्टार्टअप ने भाग लिया था। कार्यक्रम को स्टार्टअप समुदाय द्वारा खूब सराहा गया और उम्मीद है कि दूसरा संस्करण और भी अधिक सफल होगा।\n  <br>", "question_heading": ""}, {"sr_no": 110, "question": "_______ ने 200 अंतर्राष्ट्रीय मैच खेलने वाले पहले पुरुष खिलाड़ी बनकर गिनीज वर्ल्ड रिकॉर्ड बनाया।\n  <br>", "option1": "किलियन एमबीप्पे\n  <br>", "option2": "नेमार\n  <br>", "option3": "लियोनेल मेसी\n  <br>", "option4": "क्रिस्टियानो रोनाल्डो\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "क्रिस्टियानो रोनाल्डो (d) ने 200 अंतर्राष्ट्रीय मैच खेलने वाले पहले पुरुष खिलाड़ी बनकर गिनीज वर्ल्ड रिकॉर्ड बनाया। उन्होंने यह उपलब्धि 1 सितंबर, 2022 को हासिल की, जब उन्होंने 2022 फीफा विश्व कप क्वालीफाइंग मैच में आयरलैंड गणराज्य के खिलाफ खेला।\n  <br>रोनाल्डो पुर्तगाल द्वारा 201 बार कैप किए गए हैं, उन्होंने 117 गोल किए हैं। वह पुर्तगाल के लिए सर्वकालिक अग्रणी स्कोरर और पुरुषों के अंतरराष्ट्रीय फुटबॉल में सर्वकालिक अग्रणी स्कोरर हैं।\n  <br>रोनाल्डो पांच बार बैलन डी'ओर विजेता हैं और उन्होंने कई अन्य व्यक्तिगत और टीम पुरस्कार जीते हैं। उन्हें सर्वकालिक महान फुटबॉलरों में से एक माना जाता है।\n  <br>", "question_heading": ""}, {"sr_no": 111, "question": "इकोनॉमिक इंटेलिजेंस यूनिट की ग्लोबल लिवेबिलिटी इंडेक्स रिपोर्ट के अनुसार, किस शहर को \"सबसे अधिक रहने योग्य शहर\" के रूप में मान्यता दी गई है?\n  <br>", "option1": "वियना\n  <br>", "option2": "ज्यूरिख\n  <br>", "option3": "मेलबर्न\n  <br>", "option4": "टोक्यो\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "इकोनॉमिस्ट इंटेलिजेंस यूनिट की ग्लोबल लिवेबिलिटी इंडेक्स रिपोर्ट के अनुसार , वियना को लगातार चौथे वर्ष \"सबसे रहने योग्य शहर\" के रूप में मान्यता दी गई है।\n  <br>सूचकांक स्थिरता, स्वास्थ्य देखभाल, बुनियादी ढांचे, शिक्षा और संस्कृति और पर्यावरण सहित विभिन्न कारकों पर दुनिया भर के 173 शहरों का आकलन करता है।\n  <br>वियना ने सूचकांक में 100 में से 99.1 अंक प्राप्त किए, इसके बाद कोपेनहेगन (98.0) और ज्यूरिख (96.1) का स्थान रहा। शीर्ष 10 में अन्य शहरों में कैलगरी (95.6), वैंकूवर (95.5), फ्रैंकफर्ट (95.3), टोरंटो (95.1), एम्स्टर्डम (94.9), और ओसाका (94.8) शामिल हैं।\n  <br>", "question_heading": ""}, {"sr_no": 112, "question": "शहरी जनसंख्या के प्रतिशत (2011) के संबंध में निम्नलिखित में से कौन सा राज्यों का सही आरोही क्रम है?\n  <br>", "option1": "तमिलनाडु - मिजोरम - गोवा - महाराष्ट्र\n  <br>", "option2": "गोवा - मिजोरम - महाराष्ट्र - केरल\n  <br>", "option3": "महाराष्ट्र - केरल - मिजोरम - गोवा\n  <br>", "option4": "मिजोरम - गोवा - महाराष्ट्र - केरल\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "2011 में शहरी जनसंख्या के प्रतिशत के संबंध में राज्यों का सही आरोही क्रम महाराष्ट्र - केरल - मिजोरम - गोवा है।\n  <br>2011 की जनगणना के अनुसार, गोवा सबसे अधिक शहरीकृत राज्य है जहाँ 62.17% आबादी शहरी क्षेत्रों में रहती है। इसके बाद मिजोरम (52.11%), केरल (47.7%) और महाराष्ट्र (54.78%) का स्थान है।\n  <br>", "question_heading": ""}, {"sr_no": 113, "question": "पृथ्वी की सतह पर वह काल्पनिक रेखा जो 180° मध्याह्न रेखा का निकट से अनुसरण करती है, वह है\n  <br>", "option1": "प्रधान मध्याह्न रेखा\n  <br>", "option2": "भूमध्य रेखा\n  <br>", "option3": "अंतर्राष्ट्रीय तिथि रेखा\n  <br>", "option4": "कर्क रेखा\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "अंतर्राष्ट्रीय तिथि रेखा (IDL) \n  <b> पृथ्वी   की   सतह   </b>पर सीमांकन की एक काल्पनिक रेखा है जो\n  <b> उत्तरी   ध्रुव   से   दक्षिणी   ध्रुव </b>  तक चलती है और एक कैलेंडर दिन से दूसरे \n  <b> कैलेंडर   दिन </b>  के परिवर्तन का सीमांकन करती है। यह लगभग \n  <b> 180 °  का   अनुसरण   करते   हुए ,   प्रशांत   महासागर   </b>के मध्य से होकर गुजरता है \n  <b> देशांतर   रेखा </b>  कुछ क्षेत्रों और द्वीप समूहों के चारों ओर से गुजरने के लिए विचलित हो रही है।\n  <br>प्राइम मेरिडियन एक काल्पनिक रेखा है जो इंग्लैंड के ग्रीनविच से होकर गुजरती है। इसका उपयोग पृथ्वी के मानचित्रों पर शून्य-डिग्री देशांतर रेखा के रूप में किया जाता है। भूमध्य रेखा एक काल्पनिक रेखा है जो पृथ्वी को उत्तरी और दक्षिणी गोलार्ध में विभाजित करती है।\n  <br>इसका उपयोग अक्षांश मापने के लिए संदर्भ रेखा के रूप में भी किया जाता है। कर्क रेखा एक काल्पनिक रेखा है जो भूमध्य रेखा से 23.5 डिग्री उत्तर में स्थित है। यह सबसे उत्तरी बिंदु है जिस पर सूर्य सीधे सिर के ऊपर हो सकता है।\n  <br>अतः, सही उत्तर है (c), अंतर्राष्ट्रीय तिथि रेखा।\n  <br>", "question_heading": ""}, {"sr_no": 114, "question": "भारत के निम्नलिखित में से किस राष्ट्रीय उद्यान को यूनेस्को द्वारा विश्व धरोहर घोषित किया गया है?\n  <br>1. केवलादेव राष्ट्रीय उद्यान\n  <br>2. सुंदरवन राष्ट्रीय उद्यान\n  <br>3. काजीरंगा राष्ट्रीय उद्यान\n  <br>4. रणथंभौर राष्ट्रीय उद्यान\n  <br>नीचे दिए गए कोड का उपयोग करके सही उत्तर चुनें।\n  <br>", "option1": "केवल 1 और 2\n  <br>", "option2": "केवल 1, 2 और 3\n  <br>", "option3": "केवल 3 और 4\n  <br>", "option4": "1, 2, 3 और 4\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "सही उत्तर केवल (b), 1, 2 और 3 है।\n  <br> भारत के निम्नलिखित राष्ट्रीय उद्यानों को यूनेस्को द्वारा विश्व धरोहर घोषित किया गया है:\n  <br> केवलादेव राष्ट्रीय उद्यान\n  <br>सुंदरवन राष्ट्रीय उद्यान\n  <br>काजीरंगा राष्ट्रीय उद्यान\n  <br> रणथंभौर राष्ट्रीय उद्यान विश्व धरोहर स्थल नहीं है।\n  <br> अतः, सही उत्तर केवल (b), 1, 2 और 3 है।\n  <br>  भरतपुर में केवलादेव राष्ट्रीय उद्यान सिंधु-गंगा मानसून वन जैव-भौगोलिक प्रांत के भीतर स्थित है। इसे 1982 में राष्ट्रीय उद्यान घोषित किया गया था। इसे 1981 में रामसर वेटलैंड साइट के रूप में दर्ज किया गया था। इसे 1985 में यूनेस्को की विश्व विरासत सूची में शामिल किया गया था।\n  <br>  सुंदरवन राष्ट्रीय उद्यान, दुनिया का सबसे बड़ा मुहाना मैंग्रोव वन, एक राष्ट्रीय उद्यान, बाघ अभयारण्य, विश्व धरोहर स्थल और पश्चिम बंगाल में बंगाल की खाड़ी की सीमा से लगे सुंदरवन गंगा नदी डेल्टा में स्थित बायोस्फीयर रिजर्व है। 4 मई 1984 को इसे राष्ट्रीय उद्यान घोषित किया गया। इसे 1987 में यूनेस्को की विश्व धरोहर सूची में शामिल किया गया था।\n  <br> असम के पूर्वोत्तर राज्य में ब्रह्मपुत्र नदी के दक्षिणी तट के बाढ़ के मैदानों में स्थित काजीरंगा को इसके अद्वितीय प्राकृतिक वातावरण के लिए 1985 में यूनेस्को द्वारा विश्व धरोहर स्थल घोषित किया गया था। \n  <br>", "question_heading": ""}, {"sr_no": 115, "question": "दामिन - ए -कोह का निर्माण ब्रिटिश सरकार द्वारा निम्नलिखित में से किस समुदाय को बसाने के लिए किया गया था?\n  <br>", "option1": "संथाल\n  <br>", "option2": "मुंडा\n  <br>", "option3": "उराँव\n  <br>", "option4": "साओरस\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "सही उत्तर है (a), संथाल।\n  <br> दामिन - ए -कोह भारत के वर्तमान झारखंड में राजमहल पहाड़ियों में भूमि का एक बड़ा क्षेत्र था , जिसे 1832 में ब्रिटिश सरकार द्वारा सीमांकित किया गया था और संथाल समुदाय द्वारा बसाया गया था। संथाल एक आदिवासी समुदाय है जो इस क्षेत्र का मूल निवासी है।\n  <br> राजमहल की तलहटी में बसने के लिए राजी किया गया , जहां पहाड़िया जनजातियों का वर्चस्व था।\n  <br>इसे संथालों की भूमि घोषित किया गया। उन्हें इसके भीतर रहना था, हल से खेती करनी थी और स्थायी किसान बनना था। संथालों को भूमि अनुदान में यह निर्धारित किया गया था कि पहले दस वर्षों के भीतर क्षेत्र का कम से कम दसवां हिस्सा साफ किया जाना था और खेती की जानी थी, इस भूमि अनुदान के पीछे ब्रिटिश सरकार का मुख्य उद्देश्य था।\n  <br> दामिन - ए - कोह अब झारखंड के संथाल परगना जिले का हिस्सा है। संथाल इस क्षेत्र में बहुसंख्यक समुदाय बना हुआ है।\n  <br>", "question_heading": ""}, {"sr_no": 116, "question": "1857 के विद्रोह के दिनों में निम्नलिखित में से किसे 'डंका शाह' के नाम से जाना जाता था?\n  <br>", "option1": "शाह मल\n  <br>", "option2": "मौलवी अहमदुल्ला शाह\n  <br>", "option3": "नाना साहब\n  <br>", "option4": "तांत्या टोपे \n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "सही उत्तर है (b), मौलवी अहमदुल्ला शाह। \n  <br> मौलवी अहमदुल्ला शाह एक धार्मिक नेता थे जिन्होंने 1857 के विद्रोह में महत्वपूर्ण भूमिका निभाई थी। वह अपने उग्र भाषणों और लोगों को अंग्रेजों के खिलाफ लड़ने के लिए प्रेरित करने की क्षमता के लिए जाने जाते थे। उन्हें एक बड़े ड्रम के उपयोग के लिए भी जाना जाता था, जिसका उपयोग उन्होंने लोगों को विद्रोह के लिए एकजुट करने के लिए किया था।\n  <br> उनके ढोल बजाने के कारण अंग्रेज उन्हें \"डंका शाह\" कहते थे। \"डंका\" एक हिंदी शब्द है जिसका अर्थ है \"ढोल।\"\n  <br> मौलवी अहमदुल्ला शाह 1858 में युद्ध में मारे गए थे। उन्हें 1857 के विद्रोह में सबसे महत्वपूर्ण व्यक्तियों में से एक माना जाता है।\n  <br>  \n  <b>कुछ जरूरी तथ्य:</b> \n  <br> अहमदुल्ला शाह, फैजाबाद के मौलवी के नाम से प्रसिद्ध, प्रसिद्ध स्वतंत्रता सेनानी और 1857 के भारतीय विद्रोह के नेता थे। मौलवी अहमदुल्ला शाह को अवध क्षेत्र में विद्रोह के प्रकाश स्तंभ के रूप में जाना जाता था।\n  <br>  \n  <b>मैलेसन के अनुसार </b>, \"इसमें कोई संदेह नहीं है कि 1857 के विद्रोह की साजिश के पीछे मौलवी का दिमाग और प्रयास महत्वपूर्ण थे। अभियानों के दौरान रोटी का वितरण, चपाती आंदोलन, वास्तव में उनके दिमाग की उपज थी।\"\n  <br> बाबरी मस्जिद विध्वंस मामले में भारत के सर्वोच्च न्यायालय के फैसले के अनुसार अयोध्या में बनने वाली मस्जिद का नाम अहमदुल्ला शाह के नाम पर रखा जाएगा।\n  <br>", "question_heading": ""}, {"sr_no": 117, "question": "निम्नलिखित में से कौन अकबर के दरबार में चित्रकार नहीं था?\n  <br>", "option1": "दसवंत\n  <br>", "option2": "अब्दुस समद\n  <br>", "option3": "कल्याण दास\n  <br>", "option4": "बसावन\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "सही उत्तर (c), कल्याण दास है।\n  <br>कल्याण दास अकबर के दरबार में नहीं बल्कि मुहम्मद शाह के दरबार में चित्रकार थे।\n  <br>बसावन मुगल राजा अकबर के दरबार के प्रमुख चित्रकारों में से एक थे। उन्होंने मुख्य रूप से 1580 से 1600 की अवधि के दौरान काम किया। उनके साथ, अब्दुस समद और दसवंत भी अकबर के दरबार के चित्रकार थे।\n  <br>", "question_heading": ""}, {"sr_no": 118, "question": "अलाउद्दीन खिलजी की बाज़ार नीति के बारे में निम्नलिखित कथनों पर विचार करें:\n  <br>1. दुकानदारों और कीमतों को सख्ती से नियंत्रित करने के लिए बाजारों को ' शाहना ' नामक एक उच्च अधिकारी के नियंत्रण में रखा।\n  <br>2. सस्ते खाद्यान्न की नियमित आपूर्ति सुनिश्चित करने के लिए, उन्होंने दोआब क्षेत्र से भू-राजस्व सीधे राज्य को भुगतान करने का आदेश दिया।\n  <br>ऊपर दिए गए कथनों में से कौन सा/से सही है/हैं?\n  <br>", "option1": "केवल 1\n  <br>", "option2": "केवल 2\n  <br>", "option3": "1 और 2 दोनों\n  <br>", "option4": "न तो 1 और न ही 2\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "सही उत्तर है (c), 1 और 2 दोनों।\n  <br> अलाउद्दीन खिलजी दिल्ली सल्तनत का 14वीं सदी का शासक था। वह अपनी सैन्य विजयों और प्रशासनिक सुधारों के लिए जाने जाते हैं। उनके सबसे महत्वपूर्ण सुधारों में से एक उनकी बाज़ार नीति थी।\n  <br> अलाउद्दीन की बाज़ार नीति के तहत बाज़ारों को शाहना नामक एक उच्च अधिकारी के नियंत्रण में रखा गया था। शाहना दुकानदारों और कीमतों पर सख्ती से नियंत्रण रखने के लिए जिम्मेदार था। वह नियमों का उल्लंघन करने वाले दुकानदारों को दंडित कर सकता था, और वह उन्हें फाँसी भी दे सकता था।\n  <br> अलाउद्दीन ने दोआब क्षेत्र से भू-राजस्व सीधे राज्य को देने का आदेश दिया। ऐसा सस्ते खाद्यान्न की नियमित आपूर्ति सुनिश्चित करने के लिए किया गया था। दोआब क्षेत्र एक उपजाऊ क्षेत्र था और खाद्यान्न का प्रमुख उत्पादक था। राज्य को सीधे भू-राजस्व का भुगतान करके, अलाउद्दीन खाद्यान्न की कीमत को नियंत्रित करने और यह सुनिश्चित करने में सक्षम था कि यह लोगों के लिए सस्ती हो।\n  <br> अतः, कथन 1 और 2 दोनों सही हैं।\n  <br>", "question_heading": ""}, {"sr_no": 119, "question": "बारहवीं पंचवर्षीय योजना समावेशी विकास पर केंद्रित थी। निम्नलिखित में से किसे समावेशन के लिए चुनौती माना गया?\n  <br>1. गरीबी\n  <br>2. समूह असमानता\n  <br>3. क्षेत्रीय असंतुलन\n  <br>4. बेरोजगारी\n  <br>नीचे दिए गए कोड का उपयोग करके सही उत्तर चुनें।\n  <br>", "option1": "केवल 1, 3 और 4\n  <br>", "option2": "1, 2, 3 और 4\n  <br>", "option3": "केवल 1, 2 और 4\n  <br>", "option4": "केवल 2 और 3\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "बारहवीं पंचवर्षीय योजना का उद्देश्य \"तेज़, टिकाऊ और अधिक समावेशी विकास\" हासिल करना था। इसमें समावेशी विकास पर ध्यान केंद्रित किया गया।\n  <br>समावेशी विकास एक अवधारणा है जो आर्थिक विकास के दौरान समाज के हर वर्ग को होने वाले लाभ के साथ आर्थिक प्रतिभागियों के लिए समान अवसर प्रदान करती है।\n  <br>हालाँकि, गरीबी, समूह असमानता, क्षेत्रीय असंतुलन और बेरोजगारी समावेशन के लिए कुछ चुनौतियाँ हैं।\n  <br>", "question_heading": ""}, {"sr_no": 120, "question": "भारत में मुद्रास्फीति की दर को मापने के लिए भारतीय रिजर्व बैंक अब निम्नलिखित में से किस सूचकांक का उपयोग करता है?\n  <br>", "option1": "NASDAQ सूचकांक\n  <br>", "option2": "BSE सूचकांक\n  <br>", "option3": "उपभोक्ता मूल्य सूचकांक\n  <br>", "option4": "थोक मूल्य सूचकांक\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "अप्रैल 2014 तक भारत में मुद्रास्फीति मापने के लिए थोक मूल्य सूचकांक (WPI) मुख्य सूचकांक था, जब आरबीआई ने मुद्रास्फीति के प्रमुख उपाय के रूप में नए उपभोक्ता मूल्य सूचकांक (CPI) (संयुक्त) को अपनाया।\n  <br>भारतीय रिज़र्व बैंक (RBI) भारत में मुद्रास्फीति की दर को मापने के लिए उपभोक्ता मूल्य सूचकांक (CPI) का उपयोग करता है। सीपीआई घरों द्वारा उपभोग की जाने वाली वस्तुओं और सेवाओं की एक टोकरी की कीमतों में औसत परिवर्तन का एक माप है। CPI की गणना राष्ट्रीय सांख्यिकी कार्यालय (NSO) द्वारा मासिक आधार पर की जाती है।\n  <br>NASDAQ सूचकांक और BSE सूचकांक शेयर बाजार सूचकांक हैं, जो क्रमशः संयुक्त राज्य अमेरिका और भारत में शेयर बाजारों के प्रदर्शन को मापते हैं। इनका उपयोग मुद्रास्फीति की दर को मापने के लिए नहीं किया जाता है।\n  <br>", "question_heading": ""}, {"sr_no": 121, "question": "भारत के संविधान की निम्नलिखित में से किस अनुसूची में प्रत्येक राज्य से चुने जाने वाले राज्य सभा के सदस्यों की संख्या निर्धारित की गई है?\n  <br>", "option1": "पांचवीं अनुसूची\n  <br>", "option2": "तीसरी अनुसूची\n  <br>", "option3": "छठी अनुसूची\n  <br>", "option4": "चौथी अनुसूची\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "चौथी अनुसूची में राज्य सभा में सीटों के आवंटन के प्रावधान हैं।\n  <br>तीसरी अनुसूची में शपथ या प्रतिज्ञान के प्रपत्र शामिल हैं।\n  <br>पांचवीं अनुसूची में अनुसूचित क्षेत्रों और अनुसूचित जनजातियों के प्रशासन और नियंत्रण के प्रावधान शामिल हैं।\n  <br>छठी अनुसूची में असम, मेघालय, त्रिपुरा और मिजोरम राज्यों में जनजातीय क्षेत्रों के प्रशासन के प्रावधान शामिल हैं।\n  <br>", "question_heading": ""}, {"sr_no": 122, "question": "भारत के संविधान में प्रदत्त मौलिक अधिकारों को केवल किसके द्वारा निलंबित किया जा सकता है?\n  <br>", "option1": "राष्ट्रीय आपातकाल की उद्घोषणा\n  <br>", "option2": "संसद द्वारा पारित एक अधिनियम\n  <br>", "option3": "भारत के संविधान में एक संशोधन\n  <br>", "option4": "सर्वोच्च न्यायालय के न्यायिक निर्णय\n  <b> </b> \n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "अनुच्छेद 352 के अनुसार यदि राष्ट्रपति इस बात से संतुष्ट हैं कि गंभीर आपातकाल मौजूद है जिससे भारत या उसके क्षेत्र के किसी भी हिस्से की सुरक्षा को खतरा है, चाहे वह युद्ध या बाहरी आक्रमण या सशस्त्र विद्रोह से हो, तो वह उद्घोषणा द्वारा एक घोषणा कर सकते हैं। संपूर्ण भारत या उसके क्षेत्र के ऐसे हिस्से के संबंध में वह प्रभाव जैसा कि उद्घोषणा में निर्दिष्ट किया जा सकता है।\n  <br> राष्ट्रीय आपातकाल की घोषणा का व्यक्तियों के मौलिक अधिकारों पर निम्नानुसार दूरगामी प्रभाव पड़ता है:\n  <br>अनुच्छेद 19 के तहत मौलिक अधिकार स्वतः ही निलंबित हो जाते हैं और यह निलंबन आपातकाल के अंत तक जारी रहता है। लेकिन 44वें संशोधन के अनुसार अनुच्छेद 19 को केवल युद्ध या बाहरी आक्रमण के आधार पर उद्घोषणा के मामले में निलंबित किया जा सकता है, सशस्त्र विद्रोह के आधार पर नहीं।\n  <br>अनुच्छेद 20 और 21 को छोड़कर अन्य मौलिक अधिकार भी निलंबित हो सकते हैं।\n  <br>", "question_heading": ""}, {"sr_no": 123, "question": "निम्नलिखित में से कौन सा कथन सही नहीं है?\n  <br>", "option1": "तत्वों को उनके पास मौजूद प्रोटॉनों की संख्या से परिभाषित किया जाता है।\n  <br>", "option2": "समभारिक ऐसे परमाणु होते हैं जिनकी परमाणु संख्या समान होती है लेकिन द्रव्यमान संख्या भिन्न होती है।\n  <br>", "option3": "किसी परमाणु की द्रव्यमान संख्या उसके केंद्रक में नाभिकों की संख्या के बराबर होती है।\n  <br>", "option4": "संयोजकता एक परमाणु की संयोजन क्षमता है। \n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "सही उत्तर है: (b) समभारिक ऐसे परमाणु होते हैं जिनकी परमाणु संख्या समान होती है लेकिन द्रव्यमान संख्या भिन्न होती है। यह कथन सही नहीं है।\n  <br>समभारिक ऐसे परमाणु या आयन होते हैं जिनकी द्रव्यमान संख्या समान होती है लेकिन परमाणु क्रमांक भिन्न होते हैं। दूसरे शब्दों में, उनके पास न्यूक्लियॉन (प्रोटॉन + न्यूट्रॉन) की कुल संख्या समान है लेकिन प्रोटॉन की संख्या अलग-अलग है।\n  <br>उदाहरण के लिए; कैल्शियम, परमाणु संख्या 20, और आर्गन, परमाणु संख्या 18 है। इन परमाणुओं में प्रोटॉन की संख्या अलग-अलग है, लेकिन इन दोनों तत्वों की द्रव्यमान संख्या 40 है।\n  <br>", "question_heading": ""}, {"sr_no": 124, "question": "सूची-I को सूची-II से सुमेलित करें और सूचियों के नीचे दिए गए कोड का उपयोग करके सही उत्तर चुनें:\n  <br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025340image43.png\"> \n  <br>", "option1": "a\n  <br>", "option2": "b\n  <br>", "option3": "c\n  <br>", "option4": "d\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "सही उत्तर (a), 4, 1, 2, 3 है।\n  <br>सूची-I और सूची-II के बीच मिलान इस प्रकार है:\n  <br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1698042025704image83.png\"> \n  <br> कैल्शियम हाइपोक्लोराइट CaOCl₂ ब्लीचिंग पाउडर का मुख्य घटक है। सोडियम बाइकार्बोनेट को आमतौर पर बेकिंग सोडा के रूप में जाना जाता है और इसका रासायनिक सूत्र NaHCO₃ है। बुझे हुए चूने ( CaO ) में पानी मिलाकर बुझा हुआ चूना प्राप्त किया जाता है, इसका उपयोग दीवारों को सफेद करने के लिए किया जाता है और बुझे हुए चूने का रासायनिक सूत्र Ca(OH)₂ है। वाशिंग सोडा सोडियम कार्बोनेट का सामान्य नाम है और इसका रासायनिक सूत्र Na₂CO₃ 10H₂O है।\n  <br>", "question_heading": ""}, {"sr_no": 125, "question": "फ्लोराइड की कमी से निम्नलिखित में से कौन सी स्वास्थ्य समस्या उत्पन्न होती है?\n  <br>", "option1": "दाँत क्षय\n  <br>", "option2": "दांत का धब्बेदार होना\n  <br>", "option3": "हड्डियों का मुड़ना \n  <br>", "option4": "जोड़ों का सख्त होना\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "फ्लोराइड हमारे शरीर के लिए उपयोगी और हानिकारक दोनों है, यह फ्लोराइड की खपत की मात्रा पर निर्भर करता है। शरीर में फ्लोराइड की कमी से दांत खराब हो जाते हैं जबकि फ्लोराइड की अधिकता से दांत खराब हो जाते हैं। पानी की आपूर्ति में फ्लोराइड मिलाने से दांतों में सड़न की घटना कम हो जाती है। फ्लोराइड विखनिजीकरण और पुनर्खनिजीकरण द्वारा दांतों को सड़न से बचाता है। बहुत अधिक फ्लोराइड से डेंटल फ्लोरोसिस या स्केलेटल फ्लोरोसिस हो सकता है, जो हड्डियों और जोड़ों को नुकसान पहुंचा सकता है। \n  <br>", "question_heading": ""}, {"sr_no": 126, "question": "निम्नलिखित में से किस उर्वरक का अत्यधिक उपयोग भूजल में विषाक्त पदार्थ की उपस्थिति के लिए जिम्मेदार हो सकता है?\n  <br>", "option1": "नाइट्रोजन\n  <br>", "option2": "केवल फॉस्फेट\n  <br>", "option3": "केवल पोटेशियम\n  <br>", "option4": "फॉस्फेट और पोटेशियम\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "नाइट्रोजन उर्वरक का अत्यधिक उपयोग भूजल में विषाक्त पदार्थ की उपस्थिति के लिए जिम्मेदार हो सकता है। भूजल मुख्य रूप से नाइट्रेट द्वारा प्रदूषित हो रहा है। यह उच्च ऑक्सीजन स्थितियों में भी स्थिर है (यह खराब नहीं होता है)। भूजल में 10 मिलीग्राम/लीटर (10 ppm) से ऊपर नाइट्रेट का स्तर \" \n  <b> ब्लू   बेबी   सिंड्रोम\"</b> (एक्वायर्ड \n  <b> मेथेमोग्लोबिनेमिया  )</b> का कारण बन सकता है। \n  <br>यह समस्या विशेष रूप से जैविक उर्वरकों (खाद) के व्यापक और गहन अनुप्रयोग से जुड़ी है।\n  <br>सभी देशों में भूजल पेयजल का एक महत्वपूर्ण स्रोत है। कई क्षेत्रों में भूजल इस हद तक प्रदूषित हो गया है कि वर्तमान मानकों के अनुसार यह पीने के पानी के रूप में उपयोग करने लायक नहीं रह गया है।\n  <br>", "question_heading": ""}, {"sr_no": 127, "question": "क्षेत्रफल की दृष्टि से ______ भारत का सबसे बड़ा केंद्र शासित प्रदेश है।\n  <br>", "option1": "चंडीगढ़\n  <br>", "option2": "लद्दाख\n  <br>", "option3": "जम्मू और कश्मीर\n  <br>", "option4": "पुडुचेरी\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "Ans (b), लद्दाख है।\n  <br>क्षेत्रफल की दृष्टि से लद्दाख भारत का सबसे बड़ा केंद्र शासित प्रदेश है। इसका कुल क्षेत्रफल 59,146 वर्ग किलोमीटर है।\n  <br>जम्मू और कश्मीर पुनर्गठन अधिनियम के पारित होने के बाद, 31 अक्टूबर 2019 को लद्दाख को भारत के केंद्र शासित प्रदेश के रूप में स्थापित किया गया था। इससे पहले, यह जम्मू और कश्मीर राज्य का हिस्सा था। लद्दाख भारत का सबसे बड़ा और दूसरा सबसे कम आबादी वाला केंद्र शासित प्रदेश है।\n  <br>", "question_heading": ""}, {"sr_no": 128, "question": "पारसेक ______ की एक इकाई है।\n  <br>", "option1": "त्वरण\n  <br>", "option2": "गति\n  <br>", "option3": "लंबाई\n  <br>", "option4": "समय\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "'पारसेक' लंबाई मापने की एक इकाई है। एक पारसेक को उस दूरी के रूप में परिभाषित किया जाता है जिस पर एक खगोलीय इकाई एक आर्कसेकंड का कोण अंतरित करती है।\n  <br>1 पारसेक 3.26 प्रकाश वर्ष के बराबर होता है।\n  <br> त्वरण वेग में परिवर्तन की दर का माप है। त्वरण की इकाई मीटर प्रति सेकंड वर्ग है।\n  <br> गति इस बात का माप है कि कोई वस्तु कितनी तेजी से चल रही है। गति की इकाई मीटर प्रति सेकंड है।\n  <br> समय इस बात का माप है कि किसी चीज़ को घटित होने में कितना समय लगता है। समय की इकाई सेकंड है। \n  <br>", "question_heading": ""}, {"sr_no": 129, "question": "'16-यार्ड हिट' शब्द का संबंध निम्नलिखित में से किस खेल से है?\n  <br>", "option1": "क्रिकेट\n  <br>", "option2": "लॉन टेनिस\n  <br>", "option3": "फील्ड हॉकी\n  <br>", "option4": "गोल्फ\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "Ans है (c), फील्ड हॉकी।\n  <br>16-यार्ड हिट फील्ड हॉकी में एक प्रकार की फ्री हिट है। इसे लक्ष्य रेखा से 16 गज की दूरी से लिया जाता है। गोल करने के लिए गेंद को सीधे गोल में मारना होगा।\n  <br>16-यार्ड हिट एक शक्तिशाली शॉट है जिसका उपयोग गोल करने या स्कोरिंग अवसर बनाने के लिए किया जा सकता है। फील्ड हॉकी में यह एक बहुत ही महत्वपूर्ण कौशल है।\n  <br>", "question_heading": ""}, {"sr_no": 130, "question": "'मेन इन व्हाइट - ए बुक ऑफ क्रिकेट' पुस्तक के लेखक कौन हैं?\n  <br>", "option1": "मुकुल केसवन\n  <br>", "option2": "बोरिया मजूमदार\n  <br>", "option3": "हर्षा भोगले\n  <br>", "option4": "संजय मांजरेकर\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "'मेन इन व्हाइट - ए बुक ऑफ क्रिकेट' पुस्तक के लेखक मुकुल केसवन हैं।\n  <br>मुकुल केसवन एक भारतीय इतिहासकार, उपन्यासकार और राजनीतिक और सामाजिक निबंधकार हैं। वह कई किताबों के लेखक हैं, जिनमें लुकिंग थ्रू ग्लास (1994), द हिस्ट्री ऑफ इंडिया: 1947-2012 (2013), और मेन इन व्हाइट: ए बुक ऑफ क्रिकेट (2007) शामिल हैं।\n  <br>मेन इन व्हाइट भारत में क्रिकेट के इतिहास के बारे में एक किताब है। यह एक अच्छी तरह से शोधित और ज्ञानवर्धक पुस्तक है जो भारत में खेल का व्यापक अवलोकन प्रदान करती है। पुस्तक को तीन भागों में विभाजित किया गया है: पहला भाग भारत में क्रिकेट के प्रारंभिक इतिहास से संबंधित है, दूसरा भाग 1920 से 1980 के दशक की अवधि से संबंधित है, और तीसरा भाग 1990 से आज तक की अवधि से संबंधित है।\n  <br>", "question_heading": ""}, {"sr_no": 131, "question": "एक उपकरण जो केबल के उपयोग के बिना एक नेटवर्क से जुड़ता है, उसे ……………….. कहा जाता है?\n  <br>", "option1": "डिस्ट्रीब्यूटेड\n  <br>", "option2": "वायरलेस\n  <br>", "option3": "केंद्रीकृत (सेंट्रलाइज्ड)\n  <br>", "option4": "ओपेन सोर्स\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<b>वायरलेस</b> नेटवर्क ऐसे कंप्यूटर नेटवर्क हैं जो किसी भी प्रकार के केबल से जुड़े नहीं होते हैं। वायरलेस नेटवर्क का उपयोग उद्यमों को इमारतों में या विभिन्न उपकरण स्थानों के बीच कनेक्शन के रूप में केबल लगाने की महंगी प्रक्रिया से बचने में सक्षम बनाता है।\n  <br>", "question_heading": ""}, {"sr_no": 132, "question": "कंप्यूटर नेटवर्क में किस प्रकार के संसाधन के साझा संसाधन होने की संभावना सबसे अधिक है?\n  <br>", "option1": "कीबोर्ड\n  <br>", "option2": "स्पीकर\n  <br>", "option3": "फ्लॉपी डिस्क ड्राइव\n  <br>", "option4": "प्रिंटर \n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "", "question_heading": ""}, {"sr_no": 133, "question": "…………. एक विंडोज यूटिलिटी प्रोग्राम है जो अनावश्यक अंशों (फ्रैगमेंट) का पता लगाता है और समाप्त करता है और संचालन (ऑपरेशन) को ऑप्टिमाइज़ करने के लिए फाइलों और खाली पड़े डिस्क में पुनर्व्यवस्थित करता है?\n  <br>", "option1": "बैकअप\n  <br>", "option2": "डिस्क क्लीनअप\n  <br>", "option3": "डिस्क डीफ़्रेग्मेंटर\n  <br>", "option4": "रिस्टोर \n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<b>डिस्क डीफ़्रेग्मेंटर</b> माइक्रोसॉफ्ट विंडोज़ में एक उपयोगिता है जिसे डिस्क पर संग्रहीत फ़ाइलों को सन्निहित भंडारण स्थानों पर कब्जा करने के लिए पुनर्व्यवस्थित करके एक्सेस गति बढ़ाने के लिए डिज़ाइन किया गया है, एक तकनीक जिसे डीफ़्रेग्मेंटेशन कहा जाता है।\n  <br>", "question_heading": ""}, {"sr_no": 134, "question": "कंप्यूटर हैकर है?\n  <br>", "option1": "एक व्यक्ति जो कंप्यूटर सुरक्षा बनाए रखता है\n  <br>", "option2": "एक व्यक्ति जो व्यक्तिगत लाभ के लिए दुर्भावनापूर्ण इरादे से कंप्यूटर सुरक्षा का उल्लंघन करता है\n  <br>", "option3": "सुरक्षित कंप्यूटर संचालन के लिए जिम्मेदार व्यक्ति\n  <br>", "option4": "एक व्यक्ति जो कंप्यूटर की मरम्मत करता है\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "हैकिंग एक कंप्यूटर सिस्टम या कंप्यूटर के अंदर एक निजी नेटवर्क का शोषण करने का एक प्रयास है। यह किसी अवैध उद्देश्य के लिए कंप्यूटर नेटवर्क सुरक्षा प्रणाली तक अनधिकृत पहुंच या नियंत्रण है। कंप्यूटर हैकर एक कुशल व्यक्ति है जो व्यक्तिगत लाभ के लिए दुर्भावनापूर्ण इरादे से कंप्यूटर सुरक्षा का उल्लंघन करता है।\n  <br>", "question_heading": ""}, {"sr_no": 135, "question": "यदि आपका कंप्यूटर खुद को रीबूट करता रहता है, तो संभावना है कि ?\n  <br>", "option1": "इसमें एक वायरस है\n  <br>", "option2": "इसमें पर्याप्त मेमोरी नहीं है\n  <br>", "option3": "कोई प्रिंटर नहीं है\n  <br>", "option4": "पावर सर्ज हुआ है \n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "यदि कोई कंप्यूटर अपने आप रिबूट हो रहा है, तो संभावना है कि उसमें वायरस है।\n  <br>", "question_heading": ""}, {"sr_no": 136, "question": "निम्नलिखित में से किसका उपयोग पूरे डॉक्यूमेंट का चयन करने के लिए किया जा सकता है?\n  <br>", "option1": "CTRL + A\n  <br>", "option2": "ALT + F5\n  <br>", "option3": "SHIFT + A\n  <br>", "option4": "CTRL + K\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "संपूर्ण डाक्यमेन्ट को सिलेक्ट करने के लिए \n  <b>Ctrl+A </b>का उपयोग किया जाता है।\n  <br>", "question_heading": ""}, {"sr_no": 137, "question": ".......... उन सभी वेबसाइटों और पेजों को दिखाता है जो समय के साथ देखी जाती हैं?\n  <br>", "option1": "होम पेज\n  <br>", "option2": "टूलबार\n  <br>", "option3": "टास्क बार\n  <br>", "option4": "हिस्ट्री\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<b>हिस्ट्री</b> उन सभी वेबसाइटों और पृष्ठों को दिखाता है जिन पर एक निश्चित समयावधि में दौरा किया गया है।\n  <br>", "question_heading": ""}, {"sr_no": 138, "question": "URL जैसे - www.abcd.com में \".com\" क्या दर्शाता है?\n  <br>", "option1": "कॉमर्सिअल \n  <br>", "option2": "कॉर्पोरेट \n  <br>", "option3": "कोऑपरेटिव\n  <br>", "option4": "कांसील \n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<b>\".com\"</b> वाणिज्यिक दर्शाता है।\n  <br>", "question_heading": ""}, {"sr_no": 139, "question": "टास्कबार कहाँ स्थित होता है?\n  <br>", "option1": "स्टार्ट मेनू पर\n  <br>", "option2": "स्क्रीन के नीचे\n  <br>", "option3": "क्विक लॉन्च टूलबार पर\n  <br>", "option4": "स्क्रीन के शीर्ष पर \n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "टास्कबार \n  <b>स्क्रीन के नीचे</b> स्थित होता है। यह दिखाता है कि वर्तमान में कौन से प्रोग्राम चल रहे हैं।\n  <br>", "question_heading": ""}, {"sr_no": 140, "question": "डेस्कटॉप पर एक …………… एक आइकॉन है जो यूजर को किसी प्रोग्राम या फाइल तक तुरंत पहुंच प्रदान करता है?\n  <br>", "option1": "कर्नेल\n  <br>", "option2": "बफर\n  <br>", "option3": "शॉर्टकट\n  <br>", "option4": "स्पूलर\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<b>शॉर्टकट</b> आइकन उपयोगकर्ता को फ़ाइल के प्रोग्राम तक तत्काल पहुंच प्रदान करता है।\n  <br>", "question_heading": ""}, {"sr_no": 141, "question": "कौन सा बार आमतौर पर टाइटल बार के नीचे स्थित होता है और वर्गीकृत विकल्प प्रदान करता है?\n  <br>", "option1": "मेनू बार\n  <br>", "option2": "टूलबार\n  <br>", "option3": "स्टेटस बार\n  <br>", "option4": "स्क्रॉल बार\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<b>मेनू बार</b> क्षैतिज बैंड है जिसमें कमांड और विकल्प होते हैं जिन्हें चुना जा सकता है।\n  <br>", "question_heading": ""}, {"sr_no": 142, "question": "कौन सा ग्राफिक्स डिवाइस आमतौर पर वीडियो कॉन्फ्रेंसिंग और रियल टाइम में इमेज या वीडियो को कैप्चर करने के लिए उपयोग किया जाता है?\n  <br>", "option1": "मॉनिटर\n  <br>", "option2": "प्रिंटर\n  <br>", "option3": "वेबकैम\n  <br>", "option4": "ग्राफिक्स टैबलेट\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<b>वेबकैम</b> कंप्यूटर से जुड़ा एक छोटा कैमरा उपकरण है जिसका उपयोग आमतौर पर वीडियो कॉन्फ्रेंसिंग, लाइव स्ट्रीमिंग और वास्तविक समय में छवियों या वीडियो को कैप्चर करने के लिए किया जाता है।\n  <br>", "question_heading": ""}, {"sr_no": 143, "question": "कंप्यूटर मदरबोर्ड में वह हाउस सेटिंग कॉन्फ़िगरेशन क्या होता है जो ऑनबोर्ड बैटरी द्वारा संचालित होता है?\n  <br>", "option1": "CMOS\n  <br>", "option2": "RAM\n  <br>", "option3": "DRAM\n  <br>", "option4": "CPU\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<b>CMOS</b> मदरबोर्ड का एक भौतिक हिस्सा है: यह एक मेमोरी चिप है जिसमें सेटिंग कॉन्फ़िगरेशन होता है और यह ऑनबोर्ड बैटरी द्वारा संचालित होता है। यदि बैटरी की ऊर्जा खत्म हो जाती है तो CMOS रीसेट हो जाता है और सभी कस्टम सेटिंग्स खो जाती है, इसके अलावा, जब CMOS की पावर खत्म हो जाती है तो सिस्टम क्लॉक भी रीसेट हो जाती है।\n  <br>", "question_heading": ""}, {"sr_no": 144, "question": "सिस्टम सॉफ्टवेयर प्रोग्राम का सेट है जो आपके कंप्यूटर के हार्डवेयर डिवाइस और __________ सॉफ्टवेयर को एक साथ काम करने में सक्षम बनाता है?\n  <br>", "option1": "मैनेजमेंट\n  <br>", "option2": "प्रोसेसिंग\n  <br>", "option3": "यूटिलिटी\n  <br>", "option4": "एप्लीकेशन\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "सिस्टम सॉफ़्टवेयर प्रोग्रामों का वह सेट है जो आपके कंप्यूटर के हार्डवेयर उपकरणों और \n  <b>एप्लिकेशन</b> सॉफ़्टवेयर को एक साथ काम करने में सक्षम बनाता है।\n  <br>", "question_heading": ""}, {"sr_no": 145, "question": "एक्सेस में फ़ाइल किए गए टेक्स्ट का डिफ़ॉल्ट और अधिकतम आकार ______ है?\n  <br>", "option1": "266 वर्ण और 6400 वर्ण\n  <br>", "option2": "288 वर्ण और 6880 वर्ण\n  <br>", "option3": "299 वर्ण और 6499 वर्ण\n  <br>", "option4": "50 और 255 वर्ण\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "एक्सेस में फ़ाइल किए गए टेक्स्ट का डिफ़ॉल्ट और अधिकतम आकार \n  <b>50 और 255 अक्षर</b> है।\n  <br>", "question_heading": ""}, {"sr_no": 146, "question": "निम्नलिखित में से कौन सा शब्द पर्सनल बैकअप के बजाय पर्सनल गेन (लाभ) के लिए उपयोग किए जाने वाले सॉफ़्टवेयर की अनधिकृत प्रतिलिपि (अनऑथराइज्ड कॉपिंग) के लिए उपयोग किया जाता है?\n  <br>", "option1": "प्रोग्राम थिवरी\n  <br>", "option2": "डेटा स्नैचिंग\n  <br>", "option3": "सॉफ्टवेयर पाइरेसी\n  <br>", "option4": "प्रोग्राम लूटिंग\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<b>सॉफ़्टवेयर पाइरेसी</b> सॉफ़्टवेयर की अवैध प्रतिलिपि बनाना, वितरण करना या उपयोग करना है।\n  <br>", "question_heading": ""}, {"sr_no": 147, "question": "गिनती की सूची (नंबर्ड लिस्ट) प्रारंभ करने के लिए _______ टाइप करें, और फिर स्पेसबार या टैब कुंजी दबाएँ?\n  <br>", "option1": "1# \n  <br>", "option2": "1$\n  <br>", "option3": "1. \n  <br>", "option4": "1*\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "1.\n  <b> </b>-> स्पेसबार -> इंटर, क्रमांकित सूची प्रारंभ हो जाएगी।\n  <br>", "question_heading": ""}, {"sr_no": 148, "question": "___________ एक वेब पेज या ईमेल में एम्बेड किया गया एक ऑब्जेक्ट है, जो सहज रूप से (आमतौर पर अदृश्य रूप से) यह जांचने की अनुमति देता है कि उपयोगकर्ता ने सामग्री (कॉन्टेंट) तक पहुंच बनाई है।\n  <br>", "option1": "ईमेल\n  <br>", "option2": "वायरस\n  <br>", "option3": "वेब बीकन\n  <br>", "option4": "स्पैम\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<b>वेब बीकन</b> का सामान्य उपयोग ईमेल ट्रैकिंग और वेब एनालिटिक्स के लिए पेज टैगिंग है। इसके वैकल्पिक नाम वेब बग, ट्रैकिंग बग, टैग या पेज टैग हैं।\n  <br>", "question_heading": ""}, {"sr_no": 149, "question": "किस प्रक्रिया में, प्रत्येक प्रोग्राम को निश्चित आकार के प्रोग्राम घटकों में विभाजित किया जाता है और जिसे पेज कहा जाता है?\n  <br>", "option1": "मल्टीटास्किंग\n  <br>", "option2": "लॉग ऑन\n  <br>", "option3": "पेजिंग\n  <br>", "option4": "शेड्यूलिंग\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<b>पेजिंग</b> एक ऐसी प्रक्रिया है जिसमें प्रत्येक प्रोग्राम को निश्चित आकार के प्रोग्राम घटकों में विभाजित किया जाता है जिन्हें पेज कहा जाता है। स्टोरेज की उपलब्धता और प्रोग्राम को निष्पादित करने की आवश्यकता के आधार पर इसके कुछ पेज मुख्य मेमोरी में लोड किए जाते हैं।\n  <br>", "question_heading": ""}, {"sr_no": 150, "question": "एमएस एक्सेल के नवीनतम संस्करण में कितनी पंक्तियाँ (रो) हैं? \n  <br>", "option1": "65536\n  <br>", "option2": "16,384\n  <br>", "option3": "1,048,576\n  <br>", "option4": "1,050,000\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "नवीनतम संस्करण में \n  <b>1,048,576</b> पंक्तियाँ और 16,384 कॉलम हैं।\n  <br>", "question_heading": ""}];
+
+let currentQuestion = 0;
+let answers = {};
+let bookmarks = new Set();
+let timerSeconds = 0;
+let timerInterval = null;
+let isPaletteOpen = false;
+
+const STORAGE_KEY = 'quizState_' + (document.title || 'default');
+
+function isImageURL(str) {
+  return str && (str.startsWith('http://') || str.startsWith('https://'));
+}
+
+function createOptionContent(optionText) {
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'option-content';
+    
+    if (isImageURL(optionText)) {
+        const img = document.createElement('img');
+        img.src = optionText;
+        img.className = 'option-image';
+        img.alt = 'Option image';
+        img.loading = 'lazy';
+        img.onerror = function() {
+            this.style.display = 'none';
+            const errorText = document.createTextNode('Image failed to load');
+            contentDiv.appendChild(errorText);
+        };
+        contentDiv.appendChild(img);
+    } else {
+        contentDiv.innerHTML = optionText;
+    }
+    
+    return contentDiv;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  initQuiz();
+  initEventListeners();
+  loadFromLocalStorage();
+  startTimer();
+  createPalette();
+  preventDoubleTapZoom();
+});
+
+function preventDoubleTapZoom() {
+  let lastTouchEnd = 0;
+  document.addEventListener('touchend', (event) => {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) {
+      event.preventDefault();
+    }
+    lastTouchEnd = now;
+  }, { passive: false });
+}
+
+function initTheme() {
+  const savedTheme = localStorage.getItem('quizTheme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  updateThemeIcon();
+}
+
+function updateThemeIcon() {
+  const theme = document.documentElement.getAttribute('data-theme');
+  const themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    themeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  }
+}
+
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('quizTheme', newTheme);
+  updateThemeIcon();
+}
+
+function initQuiz() {
+  loadQuestion(currentQuestion);
+  updateMarkingInfo();
+}
+
+function initEventListeners() {
+  const themeBtn = document.getElementById('themeToggle');
+  const fullscreenBtn = document.getElementById('fullscreenBtn');
+  
+  if (themeBtn) {
+    themeBtn.addEventListener('click', toggleTheme);
+    themeBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      toggleTheme();
+    });
+  }
+  
+  if (fullscreenBtn) {
+    fullscreenBtn.addEventListener('click', toggleFullscreen);
+    fullscreenBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      toggleFullscreen();
+    });
+  }
+  
+  addButtonListener('prevBtn', prevQuestion);
+  addButtonListener('nextBtn', nextQuestion);
+  addButtonListener('clearBtn', clearAnswer);
+  addButtonListener('submitBtn', confirmSubmit);
+  addButtonListener('bookmarkBtn', toggleBookmark);
+  
+  addButtonListener('paletteFab', togglePalette);
+  addButtonListener('paletteClose', closePalette);
+  
+  const overlay = document.getElementById('paletteOverlay');
+  if (overlay) {
+    overlay.addEventListener('click', closePalette);
+    overlay.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      closePalette();
+    });
+  }
+  
+  const searchInput = document.getElementById('paletteSearch');
+  if (searchInput) {
+    searchInput.addEventListener('input', handleSearch);
+    searchInput.addEventListener('change', jumpToQuestion);
+  }
+  
+  document.addEventListener('keydown', handleKeyPress);
+  
+  setInterval(saveToLocalStorage, 5000);
+  
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      updatePalette();
+    }
+  });
+}
+
+function addButtonListener(id, handler) {
+  const btn = document.getElementById(id);
+  if (btn) {
+    btn.addEventListener('click', handler);
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      handler();
+    });
+  }
+}
+
+function jumpToQuestion(e) {
+  const questionNum = parseInt(e.target.value);
+  if (questionNum >= 1 && questionNum <= questions.length) {
+    goToQuestion(questionNum - 1);
+    closePalette();
+    e.target.value = '';
+  }
+}
+
+function togglePalette() {
+  isPaletteOpen = !isPaletteOpen;
+  const palette = document.getElementById('questionPalette');
+  const overlay = document.getElementById('paletteOverlay');
+  const fab = document.getElementById('paletteFab');
+  
+  if (isPaletteOpen) {
+    palette.classList.add('active');
+    overlay.classList.add('active');
+    fab.classList.add('active');
+    fab.innerHTML = '✕<span class="badge" id="answeredBadge">' + Object.keys(answers).length + '</span>';
+    document.body.classList.add('palette-open');
+  } else {
+    closePalette();
+  }
+}
+
+function closePalette() {
+  isPaletteOpen = false;
+  const palette = document.getElementById('questionPalette');
+  const overlay = document.getElementById('paletteOverlay');
+  const fab = document.getElementById('paletteFab');
+  
+  if (palette) palette.classList.remove('active');
+  if (overlay) overlay.classList.remove('active');
+  if (fab) {
+    fab.classList.remove('active');
+    fab.innerHTML = '📋<span class="badge" id="answeredBadge">' + Object.keys(answers).length + '</span>';
+  }
+  document.body.classList.remove('palette-open');
+}
+
+function handleSearch(e) {
+  const searchTerm = e.target.value.toLowerCase();
+  if (!searchTerm) {
+    document.querySelectorAll('.palette-btn').forEach(btn => {
+      btn.style.display = '';
+    });
+    return;
+  }
+  
+  const buttons = document.querySelectorAll('.palette-btn');
+  buttons.forEach((btn, index) => {
+    const questionNum = (index + 1).toString();
+    if (questionNum.includes(searchTerm)) {
+      btn.style.display = '';
+    } else {
+      btn.style.display = 'none';
+    }
+  });
+}
+
+function handleKeyPress(e) {
+  if (document.getElementById('resultSection').classList.contains('hidden')) {
+    if (e.key === 'Escape' && isPaletteOpen) {
+      closePalette();
+    } else if (!isPaletteOpen && e.target.tagName !== 'INPUT') {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevQuestion();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        nextQuestion();
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        nextQuestion();
+      } else if (e.key === 'b' || e.key === 'B') {
+        e.preventDefault();
+        toggleBookmark();
+      } else if (e.key === 'c' || e.key === 'C') {
+        e.preventDefault();
+        clearAnswer();
+      } else if (e.key === 'p' || e.key === 'P') {
+        e.preventDefault();
+        togglePalette();
+      } else if (e.key >= '1' && e.key <= '4') {
+        e.preventDefault();
+        selectOption(parseInt(e.key));
+      }
+    }
+  }
+}
+
+function selectOption(optionNum) {
+  const q = questions[currentQuestion];
+  const radio = document.querySelector(`input[name="q${q.sr_no}"][value="${optionNum}"]`);
+  if (radio) {
+    radio.checked = true;
+    const label = radio.closest('.option-label');
+    if (label) {
+      document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      saveAnswer();
+    }
+  }
+}
+
+function toggleFullscreen() {
+  try {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(err => {
+        console.log('Fullscreen error:', err);
+      });
+    } else {
+      document.exitFullscreen();
+    }
+  } catch (err) {
+    console.log('Fullscreen not supported');
+  }
+}
+
+function startTimer() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+  timerInterval = setInterval(() => {
+    timerSeconds++;
+    updateTimer();
+    if (timerSeconds > 600) {
+      const timer = document.getElementById('timer');
+      if (timer) timer.classList.add('warning');
+    }
+  }, 1000);
+}
+
+function updateTimer() {
+  const minutes = Math.floor(timerSeconds / 60);
+  const seconds = timerSeconds % 60;
+  const timer = document.getElementById('timer');
+  if (timer) {
+    timer.textContent = 
+      `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  }
+}
+
+function createPalette() {
+  const grid = document.getElementById('paletteGrid');
+  if (!grid) return;
+  
+  grid.innerHTML = '';
+  questions.forEach((q, index) => {
+    const btn = document.createElement('button');
+    btn.textContent = index + 1;
+    btn.className = 'palette-btn';
+    btn.setAttribute('aria-label', `Go to question ${index + 1}`);
+    btn.setAttribute('type', 'button');
+    
+    btn.addEventListener('click', () => {
+      goToQuestion(index);
+      closePalette();
+    });
+    
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      goToQuestion(index);
+      closePalette();
+    });
+    
+    grid.appendChild(btn);
+  });
+  updatePalette();
+}
+
+function updatePalette() {
+  const buttons = document.querySelectorAll('.palette-btn');
+  buttons.forEach((btn, index) => {
+    btn.className = 'palette-btn';
+    if (index === currentQuestion) btn.classList.add('current');
+    if (answers[questions[index].sr_no]) btn.classList.add('answered');
+    if (bookmarks.has(questions[index].sr_no)) btn.classList.add('bookmarked');
+  });
+  
+  updatePaletteStats();
+}
+
+function updatePaletteStats() {
+  const answered = Object.keys(answers).length;
+  const unanswered = questions.length - answered;
+  const bookmarkedCount = bookmarks.size;
+  
+  const answeredEl = document.getElementById('paletteAnswered');
+  const unansweredEl = document.getElementById('paletteUnanswered');
+  const bookmarkedEl = document.getElementById('paletteBookmarked');
+  
+  if (answeredEl) answeredEl.textContent = answered;
+  if (unansweredEl) unansweredEl.textContent = unanswered;
+  if (bookmarkedEl) bookmarkedEl.textContent = bookmarkedCount;
+  
+  const badge = document.querySelector('.palette-fab .badge');
+  if (badge) badge.textContent = answered;
+}
+
+function goToQuestion(index) {
+  if (index < 0 || index >= questions.length) return;
+  saveAnswer();
+  currentQuestion = index;
+  loadQuestion(currentQuestion);
+  
+  const questionSection = document.getElementById('questionSection');
+  if (questionSection) {
+    setTimeout(() => {
+      questionSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+}
+
+function loadQuestion(index) {
+  const q = questions[index];
+  
+  const questionNumber = document.getElementById('questionNumber');
+  const questionText = document.getElementById('questionText');
+  
+  if (questionNumber) {
+    questionNumber.textContent = `Question ${index + 1} of ${questions.length}`;
+  }
+  
+  if (questionText) {
+    questionText.innerHTML = '';
+    
+    // 🌟 NEW: Create the Heading Box if it exists!
+    let headingHtml = '';
+    if (q.question_heading && q.question_heading.trim() !== '') {
+      headingHtml = `<div style="background: var(--bg-tertiary); padding: 15px; border-left: 4px solid var(--primary-color); margin-bottom: 20px; border-radius: 8px; overflow-x: auto;">${q.question_heading}</div>`;
+      questionText.innerHTML = headingHtml; // Inject heading first
+    }
+
+    if (isImageURL(q.question)) {
+      const img = document.createElement('img');
+      img.src = q.question;
+      img.className = 'question-image';
+      img.alt = 'Question image';
+      img.loading = 'lazy';
+      img.onerror = function() {
+        this.style.display = 'none';
+        questionText.innerHTML += q.question;
+      };
+      questionText.appendChild(img);
+    } else {
+      questionText.innerHTML += q.question; // Append question after heading
+    }
+  }
+  
+  const container = document.getElementById('optionsContainer');
+  if (!container) return;
+  
+  container.innerHTML = '';
+  
+  for (let i = 1; i <= 4; i++) {
+    const label = document.createElement('label');
+    label.className = 'option-label';
+    if (answers[q.sr_no] == i) label.classList.add('selected');
+    
+    const radio = document.createElement('input');
+    radio.type = 'radio';
+    radio.name = `q${q.sr_no}`;
+    radio.value = i;
+    radio.checked = answers[q.sr_no] == i;
+    
+    const changeHandler = () => {
+      document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      saveAnswer();
+    };
+    
+    radio.addEventListener('change', changeHandler);
+    label.addEventListener('click', (e) => {
+      if (e.target !== radio) {
+        radio.checked = true;
+        changeHandler();
+      }
+    });
+    
+    label.appendChild(radio);
+    
+    const optionContent = createOptionContent(q[`option${i}`]);
+    label.appendChild(optionContent);
+    
+    container.appendChild(label);
+  }
+  
+  const bookmarkBtn = document.getElementById('bookmarkBtn');
+  if (bookmarkBtn) {
+    if (bookmarks.has(q.sr_no)) {
+      bookmarkBtn.classList.add('active');
+    } else {
+      bookmarkBtn.classList.remove('active');
+    }
+  }
+  
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const submitBtn = document.getElementById('submitBtn');
+  
+  if (prevBtn) prevBtn.disabled = index === 0;
+  
+  if (index === questions.length - 1) {
+    if (nextBtn) nextBtn.classList.add('hidden');
+    if (submitBtn) submitBtn.classList.remove('hidden');
+  } else {
+    if (nextBtn) nextBtn.classList.remove('hidden');
+    if (submitBtn) submitBtn.classList.add('hidden');
+  }
+  
+  updateProgress();
+  updatePalette();
+}
+
+function updateMarkingInfo() {
+  if(questions.length > 0) {
+      const q = questions[0];
+      const markingInfo = document.getElementById('markingInfo');
+      if (markingInfo) {
+        markingInfo.textContent = `Marking: +${q.positive_marking}, -${q.negative_marking}`;
+      }
+  }
+}
+
+function updateProgress() {
+  const attempted = Object.keys(answers).length;
+  const currentProgress = ((currentQuestion + 1) / questions.length) * 100;
+  
+  const progressBar = document.getElementById('progressBar');
+  const progressText = document.getElementById('progressText');
+  const attemptedText = document.getElementById('attemptedText');
+  
+  if (progressBar) progressBar.style.width = `${currentProgress}%`;
+  if (progressText) progressText.textContent = `${currentQuestion + 1}/${questions.length}`;
+  if (attemptedText) attemptedText.textContent = attempted;
+}
+
+function saveAnswer() {
+  const q = questions[currentQuestion];
+  const selected = document.querySelector(`input[name="q${q.sr_no}"]:checked`);
+  
+  if (selected) {
+    answers[q.sr_no] = selected.value;
+  }
+  
+  updateProgress();
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function clearAnswer() {
+  const q = questions[currentQuestion];
+  delete answers[q.sr_no];
+  
+  const selected = document.querySelector(`input[name="q${q.sr_no}"]:checked`);
+  if (selected) selected.checked = false;
+  
+  document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+  
+  updateProgress();
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function toggleBookmark() {
+  const q = questions[currentQuestion];
+  const btn = document.getElementById('bookmarkBtn');
+  
+  if (bookmarks.has(q.sr_no)) {
+    bookmarks.delete(q.sr_no);
+    if (btn) btn.classList.remove('active');
+  } else {
+    bookmarks.add(q.sr_no);
+    if (btn) btn.classList.add('active');
+  }
+  
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function nextQuestion() {
+  saveAnswer();
+  if (currentQuestion < questions.length - 1) {
+    currentQuestion++;
+    loadQuestion(currentQuestion);
+  }
+}
+
+function prevQuestion() {
+  saveAnswer();
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    loadQuestion(currentQuestion);
+  }
+}
+
+function confirmSubmit() {
+  const unattempted = questions.length - Object.keys(answers).length;
+  let message = 'Are you sure you want to submit the quiz?';
+  
+  if (unattempted > 0) {
+    message += `\n\nYou have ${unattempted} unanswered question(s).`;
+  }
+  
+  if (confirm(message)) {
+    submitQuiz();
+  }
+}
+
+function submitQuiz() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+  }
+  saveAnswer();
+  closePalette();
+  
+  let correct = 0, wrong = 0, unattempted = 0, score = 0;
+  
+  questions.forEach(q => {
+    const userAns = answers[q.sr_no];
+    const posMark = parseFloat(q.positive_marking) || 0;
+    const negMark = parseFloat(q.negative_marking) || 0;
+    
+    if (!userAns) {
+      unattempted++;
+    } else if (userAns == q.answer) {
+      correct++;
+      score += posMark;
+    } else {
+      wrong++;
+      score -= negMark;
+    }
+  });
+  
+  displayResults(correct, wrong, unattempted, score);
+  
+  const fab = document.getElementById('paletteFab');
+  const nav = document.getElementById('navigation');
+  if (fab) fab.style.display = 'none';
+  if (nav) nav.style.display = 'none';
+  
+  document.body.style.paddingBottom = '20px';
+  
+  clearLocalStorage();
+}
+
+function displayResults(correct, wrong, unattempted, score) {
+  const totalQuestions = questions.length;
+  const percentage = ((correct / totalQuestions) * 100).toFixed(1);
+  const timerEl = document.getElementById('timer');
+  const timeText = timerEl ? timerEl.textContent : '00:00';
+  
+  let html = `
+    <div class="score-card">
+      <h2>${score}/${totalQuestions}</h2>
+      <p>Your Score: ${percentage}%</p>
+      <p>Time Taken: ${timeText}</p>
+    </div>
+    
+    <div class="stats-grid">
+      <div class="stat-card correct">
+        <h3>${correct}</h3>
+        <p>Correct</p>
+      </div>
+      <div class="stat-card wrong">
+        <h3>${wrong}</h3>
+        <p>Wrong</p>
+      </div>
+      <div class="stat-card unattempted">
+        <h3>${unattempted}</h3>
+        <p>Unattempted</p>
+      </div>
+      <div class="stat-card">
+        <h3>${totalQuestions}</h3>
+        <p>Total</p>
+      </div>
+    </div>
+  `;
+  
+  questions.forEach(q => {
+    const userAns = answers[q.sr_no];
+    
+    // 🌟 NEW: Add the Heading to the results review screen!
+    let headingHtml = (q.question_heading && q.question_heading.trim() !== '') 
+      ? `<div style="background: var(--bg-tertiary); padding: 10px; margin-bottom: 15px; border-left: 4px solid var(--primary-color); border-radius: 5px; overflow-x: auto;">${q.question_heading}</div>` 
+      : '';
+      
+    const questionHeader = isImageURL(q.question)
+      ? `<h4>Q${q.sr_no}:</h4>${headingHtml}<img src="${q.question}" class="question-image" alt="Question ${q.sr_no}">`
+      : `<h4>Q${q.sr_no}:</h4>${headingHtml}<div style="margin-bottom: 10px;">${q.question}</div>`;
+      
+    html += `<div class="question-review">${questionHeader}`;
+    
+    for (let i = 1; i <= 4; i++) {
+      const isCorrect = i.toString() === q.answer;
+      const isUserAnswer = userAns == i.toString();
+      
+      let className = 'review-option';
+      if (isCorrect) className += ' correct';
+      if (isUserAnswer && !isCorrect) className += ' wrong';
+      if (isUserAnswer) className += ' user-selected';
+      
+      const optionValue = q[`option${i}`];
+      
+      if (isImageURL(optionValue)) {
+        html += `<div class="${className}">
+          ${isCorrect ? '✓ ' : ''}${isUserAnswer ? '➤ ' : ''} 
+          <img src="${optionValue}" class="option-image" alt="Option ${i}">
+        </div>`;
+      } else {
+        html += `<div class="${className}">
+          ${isCorrect ? '✓ ' : ''}${isUserAnswer ? '➤ ' : ''}${optionValue}
+        </div>`;
+      }
+    }
+    
+    if (q.solution_text && q.solution_text.trim() !== '') {
+      const solutionContent = isImageURL(q.solution_text)
+        ? `<img src="${q.solution_text}" class="solution-image" alt="Solution">`
+        : q.solution_text;
+      html += `<div class="solution-section">
+        <div class="solution-label">📝 Solution:</div>
+        <div class="solution-content">${solutionContent}</div>
+      </div>`;
+    }
+    
+    html += `</div>`; 
+});
+  
+  html += `
+    <div class="action-buttons">
+      <button class="action-btn restart" onclick="restartQuiz()">Restart Quiz</button>
+      <button class="action-btn download" onclick="downloadResults()">Download Results</button>
+      <button class="action-btn print" onclick="window.print()">Print Results</button>
+    </div>
+  `;
+  
+  const resultSection = document.getElementById('resultSection');
+  const questionSection = document.getElementById('questionSection');
+  const progressSection = document.querySelector('.progress-section');
+  
+  if (resultSection) {
+    resultSection.innerHTML = html;
+    resultSection.classList.remove('hidden');
+  }
+  if (questionSection) questionSection.classList.add('hidden');
+  if (progressSection) progressSection.classList.add('hidden');
+  
+  const quizContainer = document.getElementById('quizContainer');
+  if (quizContainer) {
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
+  }
+}
+
+function restartQuiz() {
+  if (confirm('Are you sure you want to restart? All progress will be lost.')) {
+    currentQuestion = 0;
+    answers = {};
+    bookmarks.clear();
+    timerSeconds = 0;
+    
+    const resultSection = document.getElementById('resultSection');
+    const questionSection = document.getElementById('questionSection');
+    const progressSection = document.querySelector('.progress-section');
+    const fab = document.getElementById('paletteFab');
+    const nav = document.getElementById('navigation');
+    
+    if (resultSection) {
+      resultSection.classList.add('hidden');
+      resultSection.innerHTML = '';
+    }
+    if (questionSection) questionSection.classList.remove('hidden');
+    if (progressSection) progressSection.classList.remove('hidden');
+    if (fab) fab.style.display = 'flex';
+    if (nav) nav.style.display = 'grid';
+    
+    document.body.style.paddingBottom = 'var(--nav-height)';
+    
+    if (timerInterval) {
+      clearInterval(timerInterval);
+    }
+    startTimer();
+    
+    loadQuestion(currentQuestion);
+    createPalette();
+  }
+}
+
+function downloadResults() {
+  const resultSection = document.getElementById('resultSection');
+  if (!resultSection) return;
+  
+  const resultHTML = resultSection.innerHTML;
+  const fullHTML = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Results</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; max-width: 900px; margin: 0 auto; }
+    .score-card { background: linear-gradient(135deg, #007bff, #28a745); color: white; padding: 30px; border-radius: 15px; text-align: center; margin-bottom: 20px; }
+    .score-card h2 { font-size: 48px; margin-bottom: 10px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 30px; }
+    .stat-card { background: white; padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #ddd; }
+    .stat-card h3 { font-size: 32px; margin-bottom: 8px; }
+    .stat-card.correct h3 { color: #28a745; }
+    .stat-card.wrong h3 { color: #dc3545; }
+    .stat-card.unattempted h3 { color: #6c757d; }
+    .question-review { background: white; border: 2px solid #ddd; border-radius: 10px; padding: 20px; margin-bottom: 15px; }
+    .question-review h4 { margin-bottom: 15px; font-size: 16px; line-height: 1.6; }
+    .review-option { padding: 10px 15px; margin: 8px 0; border-radius: 8px; border: 2px solid #ddd; display: flex; align-items: center; gap: 10px; }
+    .option-image { max-width: 150px; max-height: 100px; border-radius: 8px; }
+    .review-option.correct { background: #d4edda; border-color: #28a745; color: #155724; }
+    .review-option.wrong { background: #f8d7da; border-color: #dc3545; color: #721c24; }
+    .review-option.user-selected { border-width: 3px; font-weight: bold; }
+    @media print { body { background: white; } }
+    @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center; color: #007bff;">Quiz Results</h1>
+  <p style="text-align: center; color: #666; margin-bottom: 30px;">Generated on: ${new Date().toLocaleString()}</p>
+  ${resultHTML.replace(/<div class="action-buttons">[\s\S]*?<\/div>/, '')}
+</body>
+</html>
+  `;
+  
+  try {
+    const blob = new Blob([fullHTML], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `Quiz_Results_${new Date().getTime()}.html`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  } catch (err) {
+    alert('Download failed. Please try using the Print option instead.');
+    console.error('Download error:', err);
+  }
+}
+
+function saveToLocalStorage() {
+  try {
+    const state = {
+      currentQuestion,
+      answers,
+      bookmarks: Array.from(bookmarks),
+      timerSeconds,
+      timestamp: Date.now()
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch (err) {
+    console.error('Save error:', err);
+  }
+}
+
+function loadFromLocalStorage() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const state = JSON.parse(saved);
+      const hasProgress = (state && (
+        (state.currentQuestion && state.currentQuestion > 0) ||
+        (state.answers && Object.keys(state.answers).length > 0) ||
+        (state.timerSeconds && state.timerSeconds > 0)
+      ));
+      if (hasProgress && (Date.now() - state.timestamp < 24 * 60 * 60 * 1000)) {
+        if (confirm('Resume previous quiz session?')) {
+          currentQuestion = state.currentQuestion || 0;
+          answers = state.answers || {};
+          bookmarks = new Set(state.bookmarks || []);
+          timerSeconds = state.timerSeconds || 0;
+          updateTimer();
+          loadQuestion(currentQuestion);
+        }
+      } else {
+        clearLocalStorage();
+      }
+    }
+  } catch (err) {
+    console.error('Load error:', err);
+    clearLocalStorage();
+  }
+}
+
+function clearLocalStorage() {
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (err) {
+    console.error('Clear storage error:', err);
+  }
+}
+
+window.addEventListener('beforeunload', (e) => {
+  const resultSection = document.getElementById('resultSection');
+  if (resultSection && !resultSection.classList.contains('hidden')) {
+    return;
+  }
+  e.preventDefault();
+  e.returnValue = '';
+});
+
+window.addEventListener('unload', () => {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+});
+</script>
+</body>
+</html>
