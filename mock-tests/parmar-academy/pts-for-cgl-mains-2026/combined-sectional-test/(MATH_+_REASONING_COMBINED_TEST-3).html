@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>9.) MATH + REASONING COMBINED TEST-3 - Hindi</title>
+<style>
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0069d9;
+  --success-color: #28a745;
+  --success-hover: #218838;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --secondary-color: #6c757d;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --border-color: #dee2e6;
+  --shadow: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
+  --overlay: rgba(0,0,0,0.5);
+  --nav-height: 80px;
+}
+
+[data-theme="dark"] {
+  --primary-color: #4dabf7;
+  --primary-hover: #339af0;
+  --success-color: #51cf66;
+  --success-hover: #40c057;
+  --danger-color: #ff6b6b;
+  --warning-color: #ffd43b;
+  --secondary-color: #868e96;
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #404040;
+  --text-primary: #f8f9fa;
+  --text-secondary: #adb5bd;
+  --border-color: #495057;
+  --shadow: 0 4px 6px rgba(0,0,0,0.3);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.4);
+  --overlay: rgba(0,0,0,0.7);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+  overflow-x: hidden;
+  position: relative;
+  padding-bottom: var(--nav-height);
+}
+
+body.palette-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-primary);
+  padding: 20px 30px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+
+.header h1 {
+  font-size: 28px;
+  color: var(--primary-color);
+  font-weight: 700;
+  user-select: none;
+}
+
+.header-controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.theme-toggle, .fullscreen-btn {
+  background: var(--bg-tertiary);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.3s;
+  min-width: 44px;
+  min-height: 44px;
+  user-select: none;
+}
+
+.theme-toggle:active, .fullscreen-btn:active {
+  transform: scale(0.95);
+}
+
+.theme-toggle:hover, .fullscreen-btn:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+.bot-link-btn {
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+}
+.bot-link-btn:active {
+  transform: scale(0.95);
+}
+.bot-link-btn:hover {
+  background: var(--primary-hover);
+}
+
+.timer {
+  background: var(--warning-color);
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 18px;
+  min-width: 100px;
+  text-align: center;
+  user-select: none;
+}
+
+.timer.warning {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.palette-fab {
+  position: fixed;
+  bottom: calc(var(--nav-height) + 20px);
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  box-shadow: 0 6px 20px rgba(0,123,255,0.4);
+  transition: all 0.3s ease;
+  z-index: 998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.palette-fab:active {
+  transform: scale(0.9);
+}
+
+.palette-fab:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0,123,255,0.6);
+}
+
+.palette-fab.active {
+  background: var(--danger-color);
+}
+
+.palette-fab .badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: var(--success-color);
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--bg-secondary);
+  pointer-events: none;
+}
+.solution-section {
+  margin-top: 20px;
+  padding: 15px;
+  background: #e7f3ff;
+  border-left: 4px solid var(--primary-color);
+  border-radius: 8px;
+}
+
+.solution-label {
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.solution-content {
+  line-height: 1.6;
+  color: #333;
+}
+
+.solution-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.palette-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 999;
+  touch-action: none;
+}
+
+.palette-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.question-palette {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 450px;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--bg-primary);
+  box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+  transition: right 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.question-palette.active {
+  right: 0;
+}
+
+.palette-header {
+  padding: 20px;
+  background: var(--primary-color);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.palette-header h3 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.palette-close {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: background 0.2s;
+  line-height: 1;
+  touch-action: manipulation;
+}
+
+.palette-close:active {
+  transform: scale(0.9);
+}
+
+.palette-close:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.palette-stats {
+  padding: 15px 20px;
+  background: var(--bg-tertiary);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  font-size: 13px;
+  text-align: center;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border-color);
+  user-select: none;
+}
+
+.palette-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.palette-stat .number {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.palette-stat.answered .number { color: var(--success-color); }
+.palette-stat.unanswered .number { color: var(--secondary-color); }
+.palette-stat.bookmarked .number { color: var(--warning-color); }
+
+.palette-search {
+  padding: 15px 20px;
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+}
+
+.palette-search input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 14px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.palette-search input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.palette-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 10px;
+}
+
+.palette-btn {
+  aspect-ratio: 1;
+  border: 2px solid var(--border-color);
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+  min-width: 40px;
+  min-height: 40px;
+  color: var(--text-primary);
+  position: relative;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.palette-btn:active {
+  transform: scale(0.9);
+}
+
+.palette-btn:hover {
+  transform: scale(1.1);
+  z-index: 10;
+  box-shadow: var(--shadow);
+}
+
+.palette-btn.current {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  animation: currentPulse 2s infinite;
+}
+
+@keyframes currentPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,123,255,0.7); }
+  50% { box-shadow: 0 0 0 8px rgba(0,123,255,0); }
+}
+
+.palette-btn.answered {
+  background: var(--success-color);
+  color: white;
+  border-color: var(--success-color);
+}
+
+.palette-btn.bookmarked::after {
+  content: '🔖';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.palette-btn.bookmarked.answered {
+  background: var(--success-color);
+}
+
+.palette-legend {
+  padding: 20px;
+  border-top: 1px solid var(--border-color);
+  font-size: 13px;
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.legend-color {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.quiz-container {
+  background: var(--bg-primary);
+  border-radius: 15px;
+  box-shadow: var(--shadow-lg);
+  padding: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  scroll-margin-top: 20px;
+}
+
+.quiz-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.marking-info {
+  display: inline-block;
+  background: var(--bg-tertiary);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.progress-section {
+  margin-bottom: 25px;
+}
+
+.progress-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.progress-bar-container {
+  background: var(--bg-tertiary);
+  border-radius: 12px;
+  overflow: hidden;
+  height: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+  transition: width 0.4s ease;
+  border-radius: 12px;
+}
+
+.question-section {
+  min-height: 300px;
+  scroll-margin-top: 80px;
+  margin-bottom: 20px;
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.question-number {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary-color);
+  user-select: none;
+}
+
+.bookmark-btn {
+  background: transparent;
+  border: 2px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 44px;
+  min-height: 44px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.bookmark-btn:active {
+  transform: scale(0.95);
+}
+
+.bookmark-btn.active {
+  background: var(--warning-color);
+  border-color: var(--warning-color);
+  color: #000;
+}
+
+.question {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 25px;
+  color: var(--text-primary);
+  user-select: text;
+}
+
+.question-image {
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: 10px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  padding: 10px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--border-color);
+  padding: 16px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--bg-secondary);
+  min-height: 60px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.option-label:active {
+  transform: scale(0.98);
+}
+
+.option-label:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--primary-color);
+}
+
+.option-label.selected {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.option-label input[type="radio"] {
+  margin-right: 15px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.option-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.option-image {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  padding: 10px;
+}
+
+.option-label.selected .option-image {
+  background: rgba(255,255,255,0.1);
+}
+
+/* FIXED NAVIGATION - KEY UPDATE */
+.navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-primary);
+  border-top: 2px solid var(--border-color);
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  z-index: 997;
+  padding: 15px 20px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 10px;
+  max-width: 100%;
+}
+
+.nav-btn {
+  padding: 14px 20px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+.nav-btn:active {
+  transform: scale(0.97);
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.nav-btn.prev {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.nav-btn.prev:hover:not(:disabled) {
+  background: #5a6268;
+}
+
+.nav-btn.next {
+  background: var(--primary-color);
+  color: white;
+}
+
+.nav-btn.next:hover:not(:disabled) {
+  background: var(--primary-hover);
+}
+
+.nav-btn.clear {
+  background: var(--danger-color);
+  color: white;
+}
+
+.nav-btn.clear:hover {
+  background: #c82333;
+}
+
+.nav-btn.submit {
+  background: var(--success-color);
+  color: white;
+  grid-column: 1 / -1;
+}
+
+.nav-btn.submit:hover {
+  background: var(--success-hover);
+}
+
+.result-section {
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.score-card {
+  background: linear-gradient(135deg, var(--primary-color), var(--success-color));
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  margin-bottom: 30px;
+  user-select: none;
+}
+
+.score-card h2 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.score-card p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: var(--bg-secondary);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  border: 2px solid var(--border-color);
+  user-select: none;
+}
+
+.stat-card h3 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.stat-card.correct h3 { color: var(--success-color); }
+.stat-card.wrong h3 { color: var(--danger-color); }
+.stat-card.unattempted h3 { color: var(--secondary-color); }
+
+.question-review {
+  border: 2px solid var(--border-color);
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 20px;
+  background: var(--bg-secondary);
+}
+
+.question-review h4 {
+  margin-bottom: 15px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.review-option {
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 2px solid var(--border-color);
+  background: var(--bg-primary);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.review-option .option-image {
+  max-width: 150px;
+  max-height: 100px;
+}
+
+.review-option.correct {
+  background: #d4edda;
+  border-color: var(--success-color);
+  color: #155724;
+}
+
+.review-option.wrong {
+  background: #f8d7da;
+  border-color: var(--danger-color);
+  color: #721c24;
+}
+
+.review-option.user-selected {
+  border-width: 3px;
+  font-weight: 600;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.action-btn {
+  padding: 14px 30px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  min-width: 150px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.action-btn:active {
+  transform: scale(0.95);
+}
+
+.action-btn.restart {
+  background: var(--danger-color);
+  color: white;
+}
+
+.action-btn.restart:hover {
+  background: #c82333;
+}
+
+.action-btn.download {
+  background: var(--primary-color);
+  color: white;
+}
+
+.action-btn.download:hover {
+  background: var(--primary-hover);
+}
+
+.action-btn.print {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.action-btn.print:hover {
+  background: #5a6268;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.palette-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.palette-content::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+}
+
+.palette-content::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+.palette-content::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 140px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .header h1 {
+    font-size: 22px;
+  }
+
+  .quiz-container {
+    padding: 20px 15px;
+  }
+
+  .question-palette {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .palette-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+  }
+
+  .palette-btn {
+    font-size: 13px;
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  .palette-fab {
+    bottom: calc(var(--nav-height) + 10px);
+    right: 15px;
+    width: 56px;
+    height: 56px;
+    font-size: 22px;
+  }
+
+  .navigation {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 12px 15px;
+  }
+
+  .nav-btn {
+    min-height: 44px;
+    font-size: 15px;
+  }
+
+  .nav-btn.clear {
+    order: 3;
+  }
+
+  .nav-btn.submit {
+    grid-column: auto;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .legend-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .question {
+    font-size: 16px;
+  }
+
+  .option-label {
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  .option-image {
+    max-height: 150px;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .palette-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+
+  .palette-btn {
+    font-size: 12px;
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .timer {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  .option-image {
+    max-height: 120px;
+  }
+}
+
+@media print {
+  .header-controls, .navigation, .palette-fab, .palette-overlay, .question-palette, .action-buttons, .bookmark-btn {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    padding-bottom: 0;
+  }
+
+  .container {
+    padding-bottom: 20px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>9.) MATH + REASONING COMBINED TEST-3 - Hindi</h1>
+    <div class="header-controls">
+      <a href="https://t.me/ssc_prepX" target="_blank" class="bot-link-btn" title="Open Bot in Telegram">🤖 Bot</a>
+      
+      <div class="timer" id="timer">00:00</div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle Theme">🌙</button>
+      <button class="fullscreen-btn" id="fullscreenBtn" aria-label="Toggle fullscreen" title="Fullscreen">⛶</button>
+    </div>
+  </div>
+
+  <div class="quiz-container" id="quizContainer">
+    <div class="quiz-header">
+      <div class="marking-info" id="markingInfo">Marking: +1, -0</div>
+    </div>
+
+    <div class="progress-section">
+      <div class="progress-stats">
+        <span>Progress: <strong id="progressText">1/2</strong></span>
+        <span>Attempted: <strong id="attemptedText">0</strong></span>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+
+    <div class="question-section" id="questionSection">
+      <div class="question-header">
+        <div class="question-number" id="questionNumber">Question 1 of 2</div>
+        <button class="bookmark-btn" id="bookmarkBtn" aria-label="Bookmark question">
+          <span>🔖</span> <span>Bookmark</span>
+        </button>
+      </div>
+      
+      <div class="question" id="questionText"></div>
+      
+      <div class="options" id="optionsContainer"></div>
+    </div>
+
+    <div class="result-section hidden" id="resultSection"></div>
+  </div>
+</div>
+
+<div class="navigation" id="navigation">
+  <button class="nav-btn prev" id="prevBtn" aria-label="Previous question">
+    <span>←</span> Previous
+  </button>
+  <button class="nav-btn clear" id="clearBtn" aria-label="Clear answer">
+    Clear
+  </button>
+  <button class="nav-btn next" id="nextBtn" aria-label="Next question">
+    Next <span>→</span>
+  </button>
+  <button class="nav-btn submit hidden" id="submitBtn" aria-label="Submit quiz">
+    Submit Quiz
+  </button>
+</div>
+
+<button class="palette-fab" id="paletteFab" aria-label="Toggle question palette" title="Question Palette (P)">
+  📋
+  <span class="badge" id="answeredBadge">0</span>
+</button>
+
+<div class="palette-overlay" id="paletteOverlay"></div>
+
+<div class="question-palette" id="questionPalette">
+  <div class="palette-header">
+    <h3>Question Palette</h3>
+    <button class="palette-close" id="paletteClose" aria-label="Close palette">×</button>
+  </div>
+
+  <div class="palette-stats">
+    <div class="palette-stat answered">
+      <div class="number" id="paletteAnswered">0</div>
+      <div>Answered</div>
+    </div>
+    <div class="palette-stat unanswered">
+      <div class="number" id="paletteUnanswered">2</div>
+      <div>Not Answered</div>
+    </div>
+    <div class="palette-stat bookmarked">
+      <div class="number" id="paletteBookmarked">0</div>
+      <div>Bookmarked</div>
+    </div>
+  </div>
+
+  <div class="palette-search">
+    <input type="number" id="paletteSearch" placeholder="Jump to question number..." aria-label="Search questions" inputmode="numeric" pattern="[0-9]*">
+  </div>
+
+  <div class="palette-content">
+    <div class="palette-grid" id="paletteGrid"></div>
+  </div>
+
+  <div class="palette-legend">
+    <div class="legend-grid">
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--success-color);"></div>
+        <span>Answered</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--bg-secondary); border: 2px solid var(--border-color);"></div>
+        <span>Not Answered</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--primary-color);"></div>
+        <span>Current Question</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--warning-color);"></div>
+        <span>🔖 Bookmarked</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// JSON INJECTION HAPPENS HERE
+const questions = [{"sr_no": 1, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>If the mean of 8 observations is 15 and the mean of another 12 observations is 20, find the mean of all 20 observations.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>17</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>18</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>18.5</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>19</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Combined mean = (n₁x̄₁ + n₂x̄₂)/(n₁ + n₂).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Sum of the first group = 8 × 15 = 120.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. Sum of the second group = 12 × 20 = 240.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. Combined mean = (120 + 240)/20 = 360/20 = 18.</span></p>", "question_heading": ""}, {"sr_no": 2, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Find the least positive integer which leaves remainders 2, 3 and 4 when divided by 3, 5 and 7, respectively.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>53</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>48</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>104</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>68</span></p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: N = divisor × quotient + remainder; solve the congruences step by step (the numbers in the periodic pattern repeat after LCM(3, 5, 7) = 105).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. N ≡ 4 (mod 7), so N = 7k + 4.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. N ≡ 3 (mod 5): 7k + 4 ≡ 3, i.e. 2k ≡ 4 (mod 5), so k ≡ 2 (mod 5). Hence N = 18 + 35m.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. N ≡ 2 (mod 3): 18 + 35m ≡ 2m ≡ 2 (mod 3), so m ≡ 1 (mod 3). Least m = 1.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4. N = 18 + 35 = 53.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Check: 53 = 3×17 + 2 = 5×10 + 3 = 7×7 + 4 ✓</span></p>", "question_heading": ""}, {"sr_no": 3, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>A right circular cylinder and a right circular cone have the same base radius and the same height. Find the ratio of the volume of the cylinder to the volume of the cone.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2 : 3</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3 : 1</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1 : 3</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1 : 2</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Volume of cylinder = πr²h; volume of cone = (1/3)πr²h.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Cylinder : Cone = πr²h : (1/3)πr²h.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. = 1 : 1/3.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. = 3 : 1.</span></p>", "question_heading": ""}, {"sr_no": 4, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>The following table shows the number of students in different mark ranges (each range includes its lower limit but not its upper limit): 0–20: 12; 20–40: 18; 40–60: 24; 60–80: 30; 80–100: 16. Find the percentage of students who obtained 40 or more marks.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>65%</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>60%</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>70%</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>75%</span></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Percentage = (required number / total number) × 100.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Total students = 12 + 18 + 24 + 30 + 16 = 100.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. Students with 40 or more marks = 24 + 30 + 16 = 70.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. Percentage = 70/100 × 100 = 70%.</span></p>", "question_heading": ""}, {"sr_no": 5, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>If the roots of the equation 2x² − 7x + k = 0 differ by 1, find k.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>51/8</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>49/8</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>47/8</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>45/8</span></p>", "answer": "4", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: For roots α, β: α + β = −b/a, αβ = c/a, and (α − β)² = (α + β)² − 4αβ.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. α + β = 7/2 and αβ = k/2.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. (α − β)² = 1 gives 49/4 − 2k = 1.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. 2k = 45/4, so k = 45/8.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Check: roots are 9/4 and 5/4; sum = 7/2 ✓, difference = 1 ✓</span></p>", "question_heading": ""}, {"sr_no": 6, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>A person walks 8 km east, then 6 km north, then 3 km west and finally 1 km south. Find his shortest distance from the starting point.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>5√3 km</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>5√2 km</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>5√5 km</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>10 km</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Shortest distance = √[(net east–west)² + (net north–south)²] (Pythagoras).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Net east = 8 − 3 = 5 km.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. Net north = 6 − 1 = 5 km.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. Distance = √(5² + 5²) = √50 = 5√2 km.</span></p>", "question_heading": ""}, {"sr_no": 7, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Find the number of integral values of x satisfying 2x² − 9x + 7 ≤ 0.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>5</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3</span></p>", "answer": "4", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: A quadratic with positive leading coefficient is ≤ 0 between its roots (inclusive).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Factorise: 2x² − 9x + 7 = (2x − 7)(x − 1).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. The roots are x = 1 and x = 7/2.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. So 1 ≤ x ≤ 3.5.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4. Integers: 1, 2, 3, i.e. 3 values.</span></p>", "question_heading": ""}, {"sr_no": 8, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Two articles are sold for ₹1,200 each. On one article the seller gains 20%, while on the other he incurs a loss of 20%. Find his overall percentage loss or gain.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>No profit, no loss</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2% loss</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4% loss</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2% gain</span></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: CP = SP × 100 / (100 ± r%); overall % = (total SP − total CP) / total CP × 100.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. CP of the article sold at 20% gain = 1200 × 100/120 = ₹1,000.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. CP of the article sold at 20% loss = 1200 × 100/80 = ₹1,500.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. Total CP = ₹2,500; total SP = ₹2,400.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4. Loss = ₹100, so loss % = 100/2500 × 100 = 4%.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Check (shortcut): equal-SP, equal-% case gives loss = (20)²/100 = 4% ✓</span></p>", "question_heading": ""}, {"sr_no": 9, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>A chord of a circle of radius 14 cm subtends a right angle at the centre. Find the area of the minor segment. (Take π = 22/7)</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>56 cm²</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>154 cm²</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>98 cm²</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>42 cm²</span></p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Area of minor segment = area of sector − area of triangle = (θ/360°)πr² − ½r² sin θ.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Sector area = (90/360) × (22/7) × 14 × 14 = 154 cm².</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. Triangle area = ½ × 14 × 14 = 98 cm².</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. Segment area = 154 − 98 = 56 cm².</span></p>", "question_heading": ""}, {"sr_no": 10, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>If x + y = 8 and x³ + y³ = 224, find xy.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>16</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>14</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>12</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>10</span></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: x³ + y³ = (x + y)³ − 3xy(x + y).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. 224 = 8³ − 3·xy·8 = 512 − 24xy.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. 24xy = 288.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. xy = 12.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Check: x and y are the roots of t² − 8t + 12 = 0, i.e. 2 and 6; 8 + 216 = 224 ✓</span></p>", "question_heading": ""}, {"sr_no": 11, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>A number is selected at random from the integers 1 to 100. Find the probability that it is divisible by 3 or 5 but not by both.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>47/100</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>40/100</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>37/100</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>41/100</span></p>", "answer": "4", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Exactly one of A, B = n(A) + n(B) − 2n(A ∩ B).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Multiples of 3 up to 100: ⌊100/3⌋ = 33.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. Multiples of 5: ⌊100/5⌋ = 20.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. Multiples of both (i.e. of 15): ⌊100/15⌋ = 6.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4. Favourable = 33 + 20 − 2 × 6 = 41.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>5. P = 41/100.</span></p>", "question_heading": ""}, {"sr_no": 12, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>The mean of five observations is 18. If one observation, 24, is replaced by 14, find the new mean.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>18</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>16</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>15</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>17</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Mean = (sum of observations)/(number of observations).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Original sum = 5 × 18 = 90.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. New sum = 90 − 24 + 14 = 80.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. New mean = 80/5 = 16.</span></p>", "question_heading": ""}, {"sr_no": 13, "question": "A ृयस cयnपोinौ 5 थुiपध, 4 ृिोcा ोnक 3 नधक ृोििस. Tुनधध ृोििस ोनध कनोथn ौiंिहपोnधयहौिद. Finक पुध ूनयृोृiिiपद पुोप ोिि पुनधध ृोििस ोनध यी कiीीधनधnप cिययहनौ.", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4/11</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3/11</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2/11</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>5/11</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: P = (favourable combinations)/(total combinations), using nCr.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Total ways = 12C3 = 220.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. Favourable = 5C1 × 4C1 × 3C1 = 60.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. P = 60/220 = 3/11.</span></p>", "question_heading": ""}, {"sr_no": 14, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>The sum of the interior angles of a polygon is 1,980°. Find the number of diagonals of the polygon.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>75</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>90</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>105</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>65</span></p>", "answer": "4", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Sum of interior angles = (n − 2) × 180°; number of diagonals = n(n − 3)/2.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. (n − 2) × 180 = 1980, so n − 2 = 11 and n = 13.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. Diagonals = 13 × (13 − 3)/2.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. = 13 × 10/2 = 65.</span></p>", "question_heading": ""}, {"sr_no": 15, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Find the standard deviation of the five observations 4, 6, 8, 10 and 12 (treat them as the entire population).</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4√2</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2√2</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4</span></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: σ = √[Σ(xᵢ − x̄)² / n].</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Mean x̄ = (4 + 6 + 8 + 10 + 12)/5 = 8.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. Squared deviations: 16, 4, 0, 4, 16, sum = 40.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. Variance = 40/5 = 8.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4. σ = √8 = 2√2.</span></p>", "question_heading": ""}, {"sr_no": 16, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>In a class of 60 students, 35 study Mathematics, 30 study Science and 15 study both subjects. How many students study neither Mathematics nor Science?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>10</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>5</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>15</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>20</span></p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: n(M ∪ S) = n(M) + n(S) − n(M ∩ S); neither = total − n(M ∪ S).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. n(M ∪ S) = 35 + 30 − 15 = 50.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. Neither = 60 − 50 = 10.</span></p>", "question_heading": ""}, {"sr_no": 17, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>If tan θ + cot θ = 10/3, find the value of sec²θ + cosec²θ.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>109/9</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>118/9</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>100/9</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>127/9</span></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: tan θ + cot θ = 1/(sin θ cos θ); sec²θ + cosec²θ = 1/(sin²θ cos²θ).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. 1/(sin θ cos θ) = 10/3, so sin θ cos θ = 3/10.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. sec²θ + cosec²θ = 1/(sin²θ cos²θ) = [1/(sin θ cos θ)]².</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. = (10/3)² = 100/9.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Check: sec²θ + cosec²θ = 1/cos²θ + 1/sin²θ = (sin²θ + cos²θ)/(sin²θ cos²θ) ✓</span></p>", "question_heading": ""}, {"sr_no": 18, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>When the polynomial x³ + ax² + bx + 6 is divided by (x − 1), the remainder is 9. If it is exactly divisible by (x + 2), find the value of a + b.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>−2</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>−4</span></p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Remainder Theorem: when p(x) is divided by (x − c), the remainder is p(c).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. p(1) = 1 + a + b + 6 = 9, so a + b = 2.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. p(−2) = −8 + 4a − 2b + 6 = 0, so 2a − b = 1.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. Adding the two equations: 3a = 3, so a = 1 and b = 1.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4. a + b = 2.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Check: p(x) = x³ + x² + x + 6; p(1) = 9 ✓ and p(−2) = −8 + 4 − 2 + 6 = 0 ✓</span></p>", "question_heading": ""}, {"sr_no": 19, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Two solid metallic spheres of radii 3 cm and 4 cm are melted to form a hollow sphere of external radius 6 cm. Find the internal radius of the hollow sphere.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3 cm</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4.5 cm</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4 cm</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>5 cm</span></p>", "answer": "4", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Volume of a sphere = (4/3)πr³; volume of a hollow sphere = (4/3)π(R³ − r³); volume is conserved on melting.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Total volume melted ∝ 3³ + 4³ = 27 + 64 = 91.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. Hollow sphere volume ∝ 6³ − r³ = 216 − r³.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. 216 − r³ = 91, so r³ = 125.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4. r = 5 cm.</span></p>", "question_heading": ""}, {"sr_no": 20, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Three fair coins are tossed simultaneously. Find the probability of getting at least two heads.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3/8</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1/4</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>5/8</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1/2</span></p>", "answer": "4", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Probability = favourable outcomes / total outcomes.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Total outcomes = 2³ = 8.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. Exactly 2 heads: 3C2 = 3 ways; exactly 3 heads: 1 way.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. Favourable = 3 + 1 = 4.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4. Probability = 4/8 = 1/2.</span></p>", "question_heading": ""}, {"sr_no": 21, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>If sin θ + cos θ = √(3/2), find the value of sin 2θ.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3/4</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1/2</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1/4</span></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: (sin θ + cos θ)² = 1 + 2 sin θ cos θ = 1 + sin 2θ.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Square both sides: (sin θ + cos θ)² = 3/2.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. 1 + sin 2θ = 3/2.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. sin 2θ = 1/2.</span></p>", "question_heading": ""}, {"sr_no": 22, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>The centroid of a triangle is (3, 4). Two of its vertices are (1, 2) and (5, 3). Find the third vertex.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>(3, 7)</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>(4, 7)</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>(3, 8)</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>(4, 8)</span></p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Centroid G = ((x₁ + x₂ + x₃)/3, (y₁ + y₂ + y₃)/3).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. (1 + 5 + x)/3 = 3, so 6 + x = 9 and x = 3.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. (2 + 3 + y)/3 = 4, so 5 + y = 12 and y = 7.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. Third vertex = (3, 7).</span></p>", "question_heading": ""}, {"sr_no": 23, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>A four-digit number is formed using the digits 1, 2, 3, 4 and 5 without repetition. How many such numbers are divisible by 5?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>12</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>30</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>18</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>24</span></p>", "answer": "4", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: A number is divisible by 5 if its units digit is 0 or 5; arrangements of r items from n = nPr = n!/(n − r)!.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. The units digit must be 5 (0 is not available), so it is fixed in 1 way.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. The remaining 3 places are filled from the digits 1, 2, 3, 4 without repetition.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. Number of ways = 4P3 = 4 × 3 × 2 = 24.</span></p>", "question_heading": ""}, {"sr_no": 24, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>A right circular cone has a curved surface area of 550 cm² and a base radius of 7 cm. Find its volume. (Take π = 22/7)</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1,386 cm³</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1,540 cm³</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1,694 cm³</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1,232 cm³</span></p>", "answer": "4", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: CSA = πrl; l² = r² + h²; volume = (1/3)πr²h.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. 550 = (22/7) × 7 × l = 22l, so l = 25 cm.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. h = √(25² − 7²) = √(625 − 49) = √576 = 24 cm.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. V = (1/3) × (22/7) × 49 × 24.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4. V = 1,232 cm³.</span></p>", "question_heading": ""}, {"sr_no": 25, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>The sum of the digits of a two-digit number is 11. If the digits are interchanged, the resulting number is 27 greater than the original number. Find the original number.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>65</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>47</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>56</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>38</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Number = 10a + b; reversed number = 10b + a; difference = 9(b − a).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Let the digits be a (tens) and b (units): a + b = 11.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. (10b + a) − (10a + b) = 9(b − a) = 27, so b − a = 3.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. Adding: 2b = 14, so b = 7 and a = 4.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4. Original number = 47.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Check: 74 − 47 = 27 ✓</span></p>", "question_heading": ""}, {"sr_no": 26, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Three-sevenths of a number is 24 less than five-ninths of the same number. Find the number.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>196</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>189</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>168</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>180</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Form a linear equation from the statement: (5/9)x − (3/7)x = 24.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. LCM of 7 and 9 = 63, so (35x − 27x)/63 = 24.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. 8x/63 = 24.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. x = 24 × 63/8 = 189.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Check: 5/9 of 189 = 105 and 3/7 of 189 = 81; 105 − 81 = 24 ✓</span></p>", "question_heading": ""}, {"sr_no": 27, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>From the top of a building 60 m high, the angles of depression of the top and bottom of a tower are 30° and 60°, respectively. Find the height of the tower.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>40 m</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>30 m</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>20 m</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>45 m</span></p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: In a right triangle, tan θ = perpendicular / base.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Horizontal distance d = 60/tan 60° = 60/√3 = 20√3 m.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. The top of the tower is below the building top by d × tan 30° = 20√3 × (1/√3) = 20 m.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. Tower height = 60 − 20 = 40 m.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Check: tan 60° = 60/(20√3) = √3 ✓</span></p>", "question_heading": ""}, {"sr_no": 28, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>A circular arc subtends an angle of 120° at the centre of a circle of radius 21 cm. Find the length of the arc. (Take π = 22/7)</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>48 cm</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>42 cm</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>44 cm</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>46 cm</span></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Arc length = (θ/360°) × 2πr.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Arc = (120/360) × 2 × (22/7) × 21.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. = (1/3) × 132.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. = 44 cm.</span></p>", "question_heading": ""}, {"sr_no": 29, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Find the number of trailing zeroes in 200!.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>49</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>50</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>48</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>45</span></p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Number of trailing zeroes in n! = ⌊n/5⌋ + ⌊n/25⌋ + ⌊n/125⌋ + …</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. ⌊200/5⌋ = 40.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. ⌊200/25⌋ = 8.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. ⌊200/125⌋ = 1 (625 &gt; 200, so stop).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4. Total = 40 + 8 + 1 = 49.</span></p>", "question_heading": ""}, {"sr_no": 30, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>The vertices of a triangle are A(1, 2), B(7, 4) and C(3, 6). Find the length of the median drawn from vertex A.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>5</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2√5</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3√5</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>√10</span></p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Midpoint = ((x₁ + x₂)/2, (y₁ + y₂)/2); distance = √[(x₂ − x₁)² + (y₂ − y₁)²].</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Midpoint M of BC = ((7 + 3)/2, (4 + 6)/2) = (5, 5).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. AM = √[(5 − 1)² + (5 − 2)²].</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. AM = √(16 + 9) = √25 = 5.</span></p>", "question_heading": ""}, {"sr_no": 31, "question": "  <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">A statement is followed by four conclusions numbered I, II, III, and IV. Assuming the given statement to be true, identify which of the conclusions is/are definitely true.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Statement:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image001.png\" width=\"177\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Conclusions:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">I. </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image002.png\" width=\"43\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">II. </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image003.png\" width=\"47\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">III. </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image004.png\" width=\"48\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">IV. </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image005.png\" width=\"43\" height=\"21\" alt style=\"vertical-align:middle\" ></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Only conclusion I is true</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Both conclusions I and III are true</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Only conclusion III is true</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Both conclusions II and IV are true</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">1. For conclusion I (</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image002.png\" width=\"43\" height=\"21\" alt style=\"vertical-align:middle\" ><span style=\"font-weight:bold\">):</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>From the statement, </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image006.png\" width=\"105\" height=\"21\" alt style=\"vertical-align:middle\" ><span>. Since there is a strict inequality sign (</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image007.png\" width=\"21\" height=\"21\" alt style=\"vertical-align:middle\" ><span>) between H and L, </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image008.png\" width=\"42\" height=\"21\" alt style=\"vertical-align:middle\" ><span> is definitely true.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">2. For conclusion II (</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image003.png\" width=\"47\" height=\"21\" alt style=\"vertical-align:middle\" ><span style=\"font-weight:bold\">):</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>From </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image009.png\" width=\"107\" height=\"21\" alt style=\"vertical-align:middle\" ><span>, we get </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image010.png\" width=\"45\" height=\"21\" alt style=\"vertical-align:middle\" ><span>. Hence, </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image011.png\" width=\"45\" height=\"21\" alt style=\"vertical-align:middle\" ><span> is false.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">3. For conclusion III (</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image004.png\" width=\"48\" height=\"21\" alt style=\"vertical-align:middle\" ><span style=\"font-weight:bold\">):</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>From </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image012.png\" width=\"76\" height=\"21\" alt style=\"vertical-align:middle\" ><span>, we get </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image013.png\" width=\"46\" height=\"21\" alt style=\"vertical-align:middle\" ><span>. Thus, conclusion III is definitely true.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">4. For conclusion IV (</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image005.png\" width=\"43\" height=\"21\" alt style=\"vertical-align:middle\" ><span style=\"font-weight:bold\">):</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Between L and N, the relationship is </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image014.png\" width=\"76\" height=\"21\" alt style=\"vertical-align:middle\" ><span>. The opposite inequality signs indicate that no definite relation can be established between L and N. Hence, conclusion IV is not definitely true.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">Therefore, both conclusions I and III are true.</span></p>", "question_heading": ""}, {"sr_no": 32, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Given below is a statement followed by two possible reasons numbered I and II. Read the statement carefully and decide which of the two explains the event/observation given in the statement.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Statement:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">In recent years, many major IT and tech firms have established their operational branches in Tier-2 cities instead of further expanding in Tier-1 metropolitan hubs.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Reasons:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">I) Tier-2 cities offer lower operational and real estate costs along with access to a growing pool of skilled talent.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">II) Municipal corporations in Tier-1 cities have completely prohibited the setup of new commercial offices.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Only I is a possible reason.</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Only II is a possible reason.</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Both I and II are possible reasons.</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Neither I nor II is a possible reason.</span></p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">Reason I is a valid</span><span> and logically sound explanation. Companies expand into Tier-2 cities primarily to reduce overhead expenditure (real estate, infrastructure, and living costs) and to leverage the increasing availability of qualified talent outside major metropolitan areas.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">Reason II is an extreme</span><span> and factually baseless assumption; municipal authorities in Tier-1 cities have not banned the establishment of commercial offices.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">Therefore, only Reason I is a possible reason.</span></p>", "question_heading": ""}, {"sr_no": 33, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Which number should replace the question mark (?) in the following series?</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">12, 38, 116, 350, 1052, ?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3154</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3158</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3160</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3164</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>The pattern followed in the given series is:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image015.png\" width=\"112\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image016.png\" width=\"121\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image017.png\" width=\"130\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image018.png\" width=\"139\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image019.png\" width=\"147\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Therefore, the missing number is 3158.</span></p>", "question_heading": ""}, {"sr_no": 34, "question": "  <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Select the figure from among the given options that can replace the question mark (?) in the following series.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image020.png\" width=\"500\" height=\"100\" alt ></p>", "option1": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image021.png\" width=\"100\" height=\"100\" alt ></p>", "option2": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image022.png\" width=\"100\" height=\"100\" alt ></p>", "option3": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image023.png\" width=\"100\" height=\"100\" alt ></p>", "option4": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image024.png\" width=\"100\" height=\"100\" alt ></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>The series follows two distinct patterns:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">1. Movement of the Arrow (Top-Left):</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>• Step 1 to 2: Rotates </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image025.png\" width=\"25\" height=\"21\" alt style=\"vertical-align:middle\" ><span> counter-clockwise (↑ to ←).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>• Step 2 to 3: Reverses / rotates </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image026.png\" width=\"34\" height=\"21\" alt style=\"vertical-align:middle\" ><span> (← to →).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>• Step 3 to 4: Rotates </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image025.png\" width=\"25\" height=\"21\" alt style=\"vertical-align:middle\" ><span> counter-clockwise (→ to ↑).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>• Step 4 to 5: Reverses / rotates </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image026.png\" width=\"34\" height=\"21\" alt style=\"vertical-align:middle\" ><span> (↑ to ↓).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Thus, the arrow in the 5th figure must point downward (↓).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">2. Movement of the Other Five Symbols:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>• The symbol at the 4th (rightmost) position of the middle row moves to the bottom center.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>• The symbol at the bottom center moves to the 1st (leftmost) position of the middle row.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>• The symbols at positions 1, 2, and 3 each shift one place to the right (to positions 2, 3, and 4).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Applying this from Frame 4 to Frame 5:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>• Symbol at position 4 ('D') moves to the bottom center.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>• Symbol at the bottom ('S') moves to position 1 of the middle row.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>• 'K', 'V', and '△' shift to positions 2, 3, and 4 respectively.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Hence, the middle row contains </span><span style=\"font-weight:bold\">S, K, V, △</span><span> from left to right, and the bottom center has </span><span style=\"font-weight:bold\">D</span><span>. This correctly matches figure (C).</span></p>", "question_heading": ""}, {"sr_no": 35, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Select the set in which the numbers are related in the same way as are the numbers of the following sets.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">(NOTE: Operations should be performed on the whole numbers, without breaking down the numbers into its constituent digits. E.g., 13 – Operations on 13 such as adding/subtracting/multiplying etc. to 13 can be performed. Breaking down 13 into 1 and 3 and then performing mathematical operations on 1 and 3 is not allowed.)</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">(11, 7, 72)</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">(15, 9, 144)</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>(13, 8, 105)</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>(12, 6, 100)</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>(14, 5, 175)</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>(16, 10, 160)</span></p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>The logic followed here is: </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image027.png\" width=\"83\" height=\"21\" alt style=\"vertical-align:middle\" ><span> (where </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image028.png\" width=\"9\" height=\"21\" alt style=\"vertical-align:middle\" ><span>, </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image029.png\" width=\"9\" height=\"21\" alt style=\"vertical-align:middle\" ><span>, and </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image030.png\" width=\"8\" height=\"21\" alt style=\"vertical-align:middle\" ><span> are the first, second, and third numbers respectively).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">First set: (11, 7, 72)</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image031.png\" width=\"185\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">Second set: (15, 9, 144)</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image032.png\" width=\"193\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Checking the options:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">Option A: (13, 8, 105)</span><span> → </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image033.png\" width=\"193\" height=\"21\" alt style=\"vertical-align:middle\" ><span> (Follows the pattern)</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">Option B: (12, 6, 100)</span><span> → </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image034.png\" width=\"241\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">Option C: (14, 5, 175)</span><span> → </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image035.png\" width=\"241\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">Option D: (16, 10, 160)</span><span> → </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image036.png\" width=\"259\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">Thus, the correct set is (13, 8, 105).</span></p>", "question_heading": ""}, {"sr_no": 36, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Select the correct option that indicates the arrangement of the given words in a logical and meaningful order.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">1. Paper</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">2. Book</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">3. Tree</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">4. Printing</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">5. Pulp</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3, 5, 1, 4, 2</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3, 1, 5, 4, 2</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>5, 3, 1, 2, 4</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3, 5, 4, 1, 2</span></p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>The given words represent the sequential process of producing a book from raw material:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>1. </span><span style=\"font-weight:bold\">Tree</span><span> (3) is cut to obtain wood.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>2. The wood is converted into </span><span style=\"font-weight:bold\">Pulp</span><span> (5).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3. The pulp is processed to manufacture </span><span style=\"font-weight:bold\">Paper</span><span> (1).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>4. </span><span style=\"font-weight:bold\">Printing</span><span> (4) is done on the paper.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>5. Finally, the printed pages are compiled to form a </span><span style=\"font-weight:bold\">Book</span><span> (2).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Therefore, the logical and meaningful order is </span><span style=\"font-weight:bold\">3, 5, 1, 4, 2</span><span>.</span></p>", "question_heading": ""}, {"sr_no": 37, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Select the combination of letters that when sequentially placed in the blanks of the given series will complete the series.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">C_GH JL_O _SUV XZ_C E_IJ</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>FNQAG</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>ENQBG</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>EMQBG</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>ENRBH</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">The given series consists of 4-letter clusters following a consistent pattern:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">Within each cluster:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">1st letter to 2nd letter = +2</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">2nd letter to 3rd letter = +2</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">3rd letter to 4th letter = +1</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">Between consecutive clusters (last letter to the first letter of the next cluster):</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">+2</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Applying the pattern:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>C (3) + 2 = </span><span style=\"font-weight:bold\">E</span><span> (5), E + 2 = G (7), G + 1 = H (8) → C</span><span style=\"font-weight:bold\">E</span><span>GH</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>H (8) + 2 = J (10), J + 2 = L (12), L + 2 = </span><span style=\"font-weight:bold\">N</span><span> (14), N + 1 = O (15) → JL</span><span style=\"font-weight:bold\">N</span><span>O</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>O (15) + 2 = </span><span style=\"font-weight:bold\">Q</span><span> (17), Q + 2 = S (19), S + 2 = U (21), U + 1 = V (22) → </span><span style=\"font-weight:bold\">Q</span><span>SUV</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>V (22) + 2 = X (24), X + 2 = Z (26), Z + 2 = </span><span style=\"font-weight:bold\">B</span><span> (2), B + 1 = C (3) → XZ</span><span style=\"font-weight:bold\">B</span><span>C</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>C (3) + 2 = E (5), E + 2 = </span><span style=\"font-weight:bold\">G</span><span> (7), G + 2 = I (9), I + 1 = J (10) → E</span><span style=\"font-weight:bold\">G</span><span>IJ</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Thus, the required letters in sequence are </span><span style=\"font-weight:bold\">ENQBG</span><span>.</span></p>", "question_heading": ""}, {"sr_no": 38, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">If all the digits in the number 48316275 are arranged in ascending order from left to right, the position of how many digits will remain unchanged as compared to their position in the original number?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>None</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>One</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Two</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Three</span></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Original number: 4 8 3 1 6 2 7 5</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Arranging the digits in ascending order from left to right:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>New arrangement: 1 2 3 4 5 6 7 8</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Comparing the positions of the digits in both numbers:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>- 3rd position: 3 remains unchanged</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>- 7th position: 7 remains unchanged</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Thus, the positions of exactly two digits (3 and 7) remain unchanged.</span></p>", "question_heading": ""}, {"sr_no": 39, "question": "  <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">What will come in the place of the question mark (?) in the following equation if '</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image037.png\" width=\"20\" height=\"21\" alt style=\"vertical-align:middle\" ><span style=\"font-weight:bold\">' and '</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image038.png\" width=\"19\" height=\"21\" alt style=\"vertical-align:middle\" ><span style=\"font-weight:bold\">' are interchanged and '</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image039.png\" width=\"20\" height=\"21\" alt style=\"vertical-align:middle\" ><span style=\"font-weight:bold\">' and '</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image040.png\" width=\"20\" height=\"21\" alt style=\"vertical-align:middle\" ><span style=\"font-weight:bold\">' are interchanged?</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image041.png\" width=\"190\" height=\"21\" alt style=\"vertical-align:middle\" ></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>73</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>79</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>84</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>92</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Given equation: </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image042.png\" width=\"183\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>After interchanging '</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image037.png\" width=\"20\" height=\"21\" alt style=\"vertical-align:middle\" ><span>' with '</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image038.png\" width=\"19\" height=\"21\" alt style=\"vertical-align:middle\" ><span>' and '</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image039.png\" width=\"20\" height=\"21\" alt style=\"vertical-align:middle\" ><span>' with '</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image040.png\" width=\"20\" height=\"21\" alt style=\"vertical-align:middle\" ><span>', the equation becomes:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image043.png\" width=\"156\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Applying the BODMAS rule:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>= </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image044.png\" width=\"119\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>= </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image045.png\" width=\"92\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>= </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image046.png\" width=\"94\" height=\"21\" alt style=\"vertical-align:middle\" ><span>.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Hence, 79 is the correct answer.</span></p>", "question_heading": ""}, {"sr_no": 40, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">A certain number of persons are sitting in a straight row facing north. P sits fifth from the left end of the row. Only two persons sit between P and Q, where Q sits to the right of P. R sits third to the right of Q. Only four persons sit between R and S, where S sits to the right of R at the extreme right end of the row. What is the total number of persons sitting in the row?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>14</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>15</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>16</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>17</span></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Numbering the positions from left to right starting from 1:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>1. P sits fifth from the left end, so Position of P = 5.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>2. Q sits to the right of P with two persons between them, so Position of Q = 5 + 2 + 1 = 8.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3. R sits third to the right of Q, so Position of R = 8 + 3 = 11.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>4. S sits to the right of R with four persons between them, so Position of S = 11 + 4 + 1 = 16.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Since S is at the extreme right end, the total number of persons in the row is 16.</span></p>", "question_heading": ""}, {"sr_no": 41, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Three of the following four word-pairs are alike in a certain way and one is different. Pick the odd word-pair out.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">(The words must be considered as meaningful English words and must not be grouped based on the number of letters/number of consonants/vowels in the word.)</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Cautious : Careful</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Feeble : Strong</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Huge : Colossal</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Genuine : Authentic</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>In all pairs except 'Feeble : Strong', the two words are synonyms of each other:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>• Cautious and Careful are synonyms.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>• Huge and Colossal are synonyms.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>• Genuine and Authentic are synonyms.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>However, 'Feeble' and 'Strong' are antonyms of each other. Therefore, </span><span style=\"font-weight:bold\">'Feeble : Strong' does not belong to the group.</span></p>", "question_heading": ""}, {"sr_no": 42, "question": "  <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">What will come in the place of the question mark (?) in the following equation if '+' and '-' are interchanged and '</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image038.png\" width=\"19\" height=\"21\" alt style=\"vertical-align:middle\" ><span style=\"font-weight:bold\">' and '</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image040.png\" width=\"20\" height=\"21\" alt style=\"vertical-align:middle\" ><span style=\"font-weight:bold\">' are interchanged?</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image047.png\" width=\"199\" height=\"21\" alt style=\"vertical-align:middle\" ></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>247</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>237</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>225</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>253</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Given equation: </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image048.png\" width=\"192\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>After interchanging '+' with '-' and '</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image038.png\" width=\"19\" height=\"21\" alt style=\"vertical-align:middle\" ><span>' with '</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image040.png\" width=\"20\" height=\"21\" alt style=\"vertical-align:middle\" ><span>', we get:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image049.png\" width=\"165\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Applying the BODMAS rule:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image050.png\" width=\"140\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image051.png\" width=\"121\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image052.png\" width=\"132\" height=\"21\" alt style=\"vertical-align:middle\" ><span>.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Hence, 237 is the correct answer.</span></p>", "question_heading": ""}, {"sr_no": 43, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">A question is given, followed by two statements labelled (I) and (II). Identify which of the statements is/are sufficient to answer the question.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Question: Six persons A, B, C, D, E, and F are sitting around a circular table facing the centre. Who sits to the immediate left of D?</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Statements:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">(I) D sits second to the right of B. Only one person sits between B and E.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">(II) A sits to the immediate right of D. F is not an immediate neighbor of E.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Statement I alone is sufficient while statement II alone is not sufficient.</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Statement II alone is sufficient while statement I alone is not sufficient.</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Both statements I and II together are not sufficient.</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Both statements I and II together are sufficient.</span></p>", "answer": "4", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Let the 6 positions around the circular table facing the centre be numbered 1 to 6 in a clockwise direction.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Facing the centre means moving clockwise is to the left, and moving counter-clockwise is to the right.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">From Statement (I):</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Let D be at position 1.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Since D sits second to the right of B, B must be at position 3.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Only one person sits between B and E, which means E can be at position 1 or position 5. Since position 1 is occupied by D, E must be at position 5.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>The remaining positions (2, 4, 6) are occupied by A, C, and F in some order. Position 2 (the immediate left of D) cannot be uniquely determined.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Thus, Statement (I) alone is not sufficient.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">From Statement (II):</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>A sits to the immediate right of D (position 6). We do not have sufficient information about the positions of other persons.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Thus, Statement (II) alone is not sufficient.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">Combining Statements (I) and (II):</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>D is at position 1, B is at position 3, and E is at position 5.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>From Statement (II), A is at position 6 (immediate right of D).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Now, only positions 2 and 4 remain for C and F.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Since F is not an immediate neighbor of E (position 5), F cannot sit at position 4. Therefore, F must sit at position 2, and C sits at position 4.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Hence, F sits to the immediate left of D (position 2).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Therefore, both statements (I) and (II) together are sufficient to answer the question.</span></p>", "question_heading": ""}, {"sr_no": 44, "question": "  <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Four of the following five figures are alike in a certain way and thus form a group. Which is the one that does NOT belong to that group?</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image053.png\" width=\"500\" height=\"120\" alt ></p>", "option1": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image054.png\" width=\"100\" height=\"100\" alt ></p>", "option2": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image055.png\" width=\"100\" height=\"100\" alt ></p>", "option3": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image056.png\" width=\"100\" height=\"100\" alt ></p>", "option4": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image057.png\" width=\"100\" height=\"100\" alt ></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>In all figures except Figure (D), the innermost shape at the center is a circle. In Figure (D), the innermost shape is a small diamond/square (a polygon). Hence, Figure (D) does not belong to the group.</span></p>", "question_heading": ""}, {"sr_no": 45, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">One statement is given, followed by two inferences numbered I and II. Read the statement and decide which of the inferences is/are true based on the given statement.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Statement: Despite recording the highest agricultural output of food grains this year, the retail prices of essential cereals in the domestic market have continued to surge.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Inferences:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">I. A record increase in production does not automatically guarantee a decline in retail prices.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">II. Hoarding by private traders is the primary cause behind this surge in food grain prices.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Only inference I is true.</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Only inference II is true.</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Both inferences I and II are true.</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Neither inference I nor II is true.</span></p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>From the statement, it is evident that despite a record harvest, retail prices continued to rise. This directly leads to the logical inference that higher production alone does not ensure or guarantee lower retail prices, making inference I true.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Inference II introduces an external factor (hoarding by private traders) as the main cause, which is neither mentioned nor can be logically deduced solely from the statement. Therefore, inference II is not true.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Hence, only inference I is true.</span></p>", "question_heading": ""}, {"sr_no": 46, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">The question below consists of a question followed by two statements numbered (I) and (II). You have to decide whether the data provided in the statements are sufficient to answer the question.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Question: How is Divya related to Rohan?</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">(I) Rohan is the son of Suresh, and Suresh is the brother of Kavita.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">(II) Divya is the daughter of Kavita.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Statement (I) alone is sufficient while statement (II) alone is not sufficient.</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Statement (II) alone is sufficient while statement (I) alone is not sufficient.</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Both statements (I) and (II) together are necessary.</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Neither statement (I) nor statement (II) is sufficient.</span></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>From Statement (I): Rohan is the son of Suresh, and Suresh is the brother of Kavita. Here, there is no information about Divya, so statement (I) alone is not sufficient.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>From Statement (II): Divya is the daughter of Kavita. Here, there is no information about Rohan, so statement (II) alone is not sufficient.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Combining Statements (I) and (II): Suresh is the father of Rohan, Kavita is Suresh's sister, and Divya is Kavita's daughter. Therefore, Divya is the daughter of Rohan's paternal aunt (i.e., Rohan's cousin). Thus, both statements (I) and (II) together are necessary to answer the question.</span></p>", "question_heading": ""}, {"sr_no": 47, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Select the option that is related to the third word in the same way as the second word is related to the first word.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">(The words must be considered as meaningful English words and must not be related to each other based on the number of letters/number of consonants/vowels in the word.)</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Taciturn : Speech :: Frugal : ?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Waste</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Wealth</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Expenditure</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Income</span></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>A person who is 'Taciturn' is reserved and exercises restraint in 'Speech'. Similarly, a person who is 'Frugal' is economical and exercises restraint in 'Expenditure'. Therefore, 'Expenditure' is the correct related word.</span></p>", "question_heading": ""}, {"sr_no": 48, "question": "  <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">What will come in the place of the question mark (?) in the following equation if '+' and '</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image038.png\" width=\"19\" height=\"21\" alt style=\"vertical-align:middle\" ><span style=\"font-weight:bold\">' are interchanged and '-' and '</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image040.png\" width=\"20\" height=\"21\" alt style=\"vertical-align:middle\" ><span style=\"font-weight:bold\">' are interchanged?</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image058.png\" width=\"180\" height=\"21\" alt style=\"vertical-align:middle\" ></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>68</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>76</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>82</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>94</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Given equation: </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image059.png\" width=\"175\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>After interchanging '+' with '</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image038.png\" width=\"19\" height=\"21\" alt style=\"vertical-align:middle\" ><span>' and '-' with '</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image040.png\" width=\"20\" height=\"21\" alt style=\"vertical-align:middle\" ><span>', the equation becomes:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image060.png\" width=\"175\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Applying the BODMAS rule:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image061.png\" width=\"140\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image062.png\" width=\"113\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image063.png\" width=\"114\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Therefore, the correct answer is 76.</span></p>", "question_heading": ""}, {"sr_no": 49, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">In a family of six members — K, L, M, N, O, and P: M is the unmarried sister of P. K is the mother of P and the wife of L. L is the father-in-law of N, who is the father of O. How is M related to O?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Maternal aunt</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Paternal aunt</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Sister</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Mother</span></p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>From the given information:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>1. K is the wife of L, and K is the mother of P. Hence, L and K are husband and wife, and both are parents to P.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>2. M is the unmarried sister of P, which means M is also a daughter of L and K.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3. L is the father-in-law of N (who is male, being the father of O). Since M is unmarried, N must be married to P. Therefore, P is female and the wife of N.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>4. Since N is the father of O and married to P, P is the mother of O.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>5. M is the sister of P (O's mother). Thus, M is the maternal aunt of O.</span></p>", "question_heading": ""}, {"sr_no": 50, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">The marks scored by 16 students in a class test are given as follows: 15, 18, 16, 14, 15, 20, 17, 18, 19, 15, 21, 18, 13, 22, 16, and 25. Find the product of the modes of this given data set.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>240</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>270</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>285</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>255</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>To find the mode, we determine the frequency of each observation in the data set:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>13 occurs 1 time</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>14 occurs 1 time</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>15 occurs 3 times</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>16 occurs 2 times</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>17 occurs 1 time</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>18 occurs 3 times</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>19 occurs 1 time</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>20 occurs 1 time</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>21 occurs 1 time</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>22 occurs 1 time</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>25 occurs 1 time</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>The highest frequency is 3, which occurs for both 15 and 18. Thus, the given data set is bimodal with modes 15 and 18.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Product of the modes = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image064.png\" width=\"102\" height=\"21\" alt style=\"vertical-align:middle\" ><span>.</span></p>", "question_heading": ""}, {"sr_no": 51, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Seven people, P, Q, R, S, T, U and V, are sitting in a straight row facing north. Only two people sit to the left of T. Only two people sit between T and U. V sits to the immediate right of U. R sits second to the left of Q. P sits somewhere to the left of S. Who sits exactly in the middle of the row?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>T</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Q</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>S</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>U</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Based on the given information, we can determine the seating order from left to right (positions 1 to 7):</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>1. Only two people sit to the left of T, which places T at position 3: _ _ T _ _ _ _</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>2. Only two people sit between T and U, placing U at position 6: _ _ T _ _ U _</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3. V sits to the immediate right of U, so V is at position 7: _ _ T _ _ U V</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>4. R sits second to the left of Q. The only available positions fitting this are position 2 for R and position 4 for Q: _ R T Q _ U V</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>5. P sits to the left of S, so P must be at position 1 and S at position 5.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>The complete arrangement from left to right is: P, R, T, Q, S, U, V.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Therefore, Q sits exactly in the middle (4th position) of the row.</span></p>", "question_heading": ""}, {"sr_no": 52, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Select the combination of letters that when sequentially placed in the blanks of the given series will make it logically complete.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">_ K T P _ R M _ T _ N R M K _ P N _</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>M N K T P R</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>M N K P T R</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>N M K P T R</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>M K N P T R</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>The given series has a total of 18 letters. Dividing the series into 3 equal groups of 6 letters each:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>_ K T P _ R / M _ T _ N R / M K _ P N _</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>The repeating pattern in each group is </span><span style=\"font-weight:bold\">M K T P N R</span><span>:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>1st group: </span><span style=\"font-weight:bold\">M</span><span> K T P </span><span style=\"font-weight:bold\">N</span><span> R</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>2nd group: M </span><span style=\"font-weight:bold\">K</span><span> T </span><span style=\"font-weight:bold\">P</span><span> N R</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3rd group: M K </span><span style=\"font-weight:bold\">T</span><span> P N </span><span style=\"font-weight:bold\">R</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Thus, the letters required to complete the series in sequential order are </span><span style=\"font-weight:bold\">M N K P T R</span><span>.</span></p>", "question_heading": ""}, {"sr_no": 53, "question": "  <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Figure A is related to B in a certain pattern. Following the same pattern, figure C is related to D. Study the pattern and select the figure which should be placed in place of D.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image065.png\" width=\"500\" height=\"139\" alt ></p>", "option1": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image066.png\" width=\"100\" height=\"100\" alt ></p>", "option2": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image067.png\" width=\"100\" height=\"100\" alt ></p>", "option3": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image068.png\" width=\"100\" height=\"100\" alt ></p>", "option4": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image069.png\" width=\"100\" height=\"100\" alt ></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>The pattern from Figure A to Figure B is a complete 180° rotation (point reflection about the center):</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>The central figure rotates 180°: the circular head moves from top to bottom, and the downward-pointing triangle moves to the top and points upward.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>The corner element in the top-left moves diagonally to the bottom-right corner and rotates by 180° (the triangle pointing right now points left).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Applying the identical 180° rotation to Figure C to obtain Figure D:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>The central arrow pointing upward with a ring at its base rotates 180°, so the ring is at the top and the arrowhead points downward at the bottom.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>The letter 'F' in the top-left corner moves to the bottom-right corner and rotates 180° (it becomes upside-down with its horizontal arms pointing left).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Thus, the figure in option (B) correctly replaces D.</span></p>", "question_heading": ""}, {"sr_no": 54, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">How many meaningful English words can be formed with the second, third, fourth, and sixth letters of the word STREAM (when counted from left to right) using each letter only once in each word?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Zero</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>One</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Two</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Three</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Given word: STREAM</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Counting from left to right:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>2nd letter = T</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3rd letter = R</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>4th letter = E</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>6th letter = M</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>The letters obtained are T, R, E, and M.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Using each letter only once, the only meaningful English word that can be formed is </span><span style=\"font-weight:bold\">TERM</span><span>.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Therefore, only one meaningful English word can be formed.</span></p>", "question_heading": ""}, {"sr_no": 55, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Three of the following four number-pairs are alike in a certain way and thus form a group. Which is the pair that does not belong to that group?</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">(NOTE: Operations should be performed on the whole numbers, without breaking down the numbers into its constituent digits. E.g. 13 – Operations on 13 such as adding /subtracting /multiplying etc. to 13 can be performed. Breaking down 13 into 1 and 3 and then performing mathematical operations on 1 and 3 is not allowed.)</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>12 - 156</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>14 - 210</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>17 - 304</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>15 - 240</span></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>The logic followed here is: Second number = First number </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image038.png\" width=\"19\" height=\"21\" alt style=\"vertical-align:middle\" ><span> (First number + 1)</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>12 - 156 </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image070.png\" width=\"231\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>14 - 210 </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image071.png\" width=\"231\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>15 - 240 </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image072.png\" width=\"231\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>17 - 304 </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image073.png\" width=\"279\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Therefore, '17 - 304' does not belong to the group.</span></p>", "question_heading": ""}, {"sr_no": 56, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">In a certain code language, 'PRINCE' is coded as 'RUMLZA' and 'KNIGHT' is coded as 'MQMEEP'. How will 'CASTLE' be coded in that language?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>EDXQIA</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>EDWRIA</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>ECWSHA</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>EDWRIB</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>The pattern followed here is dividing the 6-letter word into two halves of 3 letters each:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>For the first three letters: +2, +3, +4</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>For the last three letters: -2, -3, -4</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Applying this to 'PRINCE':</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>P + 2 = R</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>R + 3 = U</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>I + 4 = M</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>N - 2 = L</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>C - 3 = Z</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>E - 4 = A</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Similarly, for 'CASTLE':</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>C + 2 = E</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>A + 3 = D</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>S + 4 = W</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>T - 2 = R</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>L - 3 = I</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>E - 4 = A</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Thus, 'CASTLE' is coded as 'EDWRIA'.</span></p>", "question_heading": ""}, {"sr_no": 57, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Read the given statements and conclusions carefully. You have to take the given statements to be true even if they seem to be at variance from commonly known facts. You have to decide which conclusions logically follow(s) from the given statements.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Statements:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">All mobiles are laptops.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Some laptops are tablets.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">All tablets are computers.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Conclusions:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">(I) Some computers are laptops.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">(II) Some mobiles are tablets.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Only conclusion (I) follows</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Only conclusion (II) follows</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Both conclusions (I) and (II) follow</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Neither conclusion (I) nor (II) follows</span></p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>From the given statements:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image074.png\" width=\"275\" height=\"147\" alt ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>1: Combining these, since a part of laptops is tablets and all tablets are computers, that overlapping part of laptops is definitely inside computers. Therefore, 'Some computers are laptops' logically follows. </span><span style=\"font-weight:bold\">Hence, Conclusion (I) follows.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>2: Mobiles are contained within laptops, and tablets overlap with laptops, but there is no definite relation given between mobiles and tablets. They may or may not overlap. Thus, 'Some mobiles are tablets' does not necessarily follow. </span><span style=\"font-weight:bold\">Hence, Conclusion (II) does not follow.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">Therefore, only conclusion (I) follows.</span></p>", "question_heading": ""}, {"sr_no": 58, "question": "  <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Select the option figure that will replace the question mark (?) in the figure given below to complete the pattern.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image075.png\" width=\"298\" height=\"297\" alt ></p>", "option1": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image076.png\" width=\"120\" height=\"120\" alt ></p>", "option2": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image077.png\" width=\"126\" height=\"127\" alt ></p>", "option3": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image078.png\" width=\"127\" height=\"126\" alt ></p>", "option4": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image079.png\" width=\"120\" height=\"120\" alt ></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>To complete the symmetric pattern in the given figure, the missing top-right quadrant must contain:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image080.png\" width=\"296\" height=\"284\" alt ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Option </span><span style=\"font-weight:bold\">(C)</span><span> correctly includes all these elements in their proper positions and orientations.</span></p>", "question_heading": ""}, {"sr_no": 59, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">In a certain code language, ‘CARD’ is coded as ‘9143’, ‘DATE’ is coded as ‘4732’, ‘TEAM’ is coded as ‘7264’, and ‘MORE’ is coded as ‘8697’. What is the code for ‘T’ in the given code language?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>4</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>7</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>2</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>6</span></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>To find the code for ‘T’, we compare the common letters and digits across the given words:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>1. The letter ‘T’ appears in ‘DATE’ (4732) and ‘TEAM’ (7264).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>2. The common letters between ‘DATE’ and ‘TEAM’ are ‘A’, ‘E’, and ‘T’. The common digits between ‘4732’ and ‘7264’ are 2, 4, and 7.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3. To eliminate ‘A’ and ‘E’:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>- ‘A’ is also present in ‘CARD’ (9143). The common digit among ‘CARD’ (9143), ‘DATE’ (4732), and ‘TEAM’ (7264) is 4. Therefore, ‘A’ = 4.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>- ‘E’ is also present in ‘MORE’ (8697). The common digit among ‘DATE’ (4732), ‘TEAM’ (7264), and ‘MORE’ (8697) is 7. Therefore, ‘E’ = 7.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>4. Since the common letters {A, E, T} correspond to digits {2, 4, 7}, and A = 4, E = 7, the code for ‘T’ must be 2.</span></p>", "question_heading": ""}, {"sr_no": 60, "question": "  <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">When the sheet of paper shown in the figure below is folded to form a cube, which symbol will be on the face opposite to the face showing the star (★) symbol?</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image081.png\" width=\"200\" height=\"260\" alt ></p>", "option1": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image082.png\" width=\"100\" height=\"100\" alt ></p>", "option2": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image083.png\" width=\"100\" height=\"100\" alt ></p>", "option3": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image084.png\" width=\"100\" height=\"100\" alt ></p>", "option4": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021488613_image085.png\" width=\"100\" height=\"100\" alt ></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>In an open dice net, faces that are separated by one intervening face in the same straight line (row or column) are opposite to each other when folded into a cube:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>1. In the central vertical column of four faces:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>• The top face with the plus sign (+) is opposite to the third face with the double circle.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>• The second face with the triangle (△) is opposite to the fourth face with the star (★).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>2. The two outer lateral flaps are opposite to each other:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>• The diamond face is opposite to the pentagon face.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Therefore, the face opposite to the star (★) symbol is the triangle (△), which corresponds to option (B).</span></p>", "question_heading": ""}];
+
+let currentQuestion = 0;
+let answers = {};
+let bookmarks = new Set();
+let timerSeconds = 0;
+let timerInterval = null;
+let isPaletteOpen = false;
+
+const STORAGE_KEY = 'quizState_' + (document.title || 'default');
+
+function isImageURL(str) {
+  return str && (str.startsWith('http://') || str.startsWith('https://'));
+}
+
+function createOptionContent(optionText) {
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'option-content';
+    
+    if (isImageURL(optionText)) {
+        const img = document.createElement('img');
+        img.src = optionText;
+        img.className = 'option-image';
+        img.alt = 'Option image';
+        img.loading = 'lazy';
+        img.onerror = function() {
+            this.style.display = 'none';
+            const errorText = document.createTextNode('Image failed to load');
+            contentDiv.appendChild(errorText);
+        };
+        contentDiv.appendChild(img);
+    } else {
+        contentDiv.innerHTML = optionText;
+    }
+    
+    return contentDiv;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  initQuiz();
+  initEventListeners();
+  loadFromLocalStorage();
+  startTimer();
+  createPalette();
+  preventDoubleTapZoom();
+});
+
+function preventDoubleTapZoom() {
+  let lastTouchEnd = 0;
+  document.addEventListener('touchend', (event) => {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) {
+      event.preventDefault();
+    }
+    lastTouchEnd = now;
+  }, { passive: false });
+}
+
+function initTheme() {
+  const savedTheme = localStorage.getItem('quizTheme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  updateThemeIcon();
+}
+
+function updateThemeIcon() {
+  const theme = document.documentElement.getAttribute('data-theme');
+  const themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    themeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  }
+}
+
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('quizTheme', newTheme);
+  updateThemeIcon();
+}
+
+function initQuiz() {
+  loadQuestion(currentQuestion);
+  updateMarkingInfo();
+}
+
+function initEventListeners() {
+  const themeBtn = document.getElementById('themeToggle');
+  const fullscreenBtn = document.getElementById('fullscreenBtn');
+  
+  if (themeBtn) {
+    themeBtn.addEventListener('click', toggleTheme);
+    themeBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      toggleTheme();
+    });
+  }
+  
+  if (fullscreenBtn) {
+    fullscreenBtn.addEventListener('click', toggleFullscreen);
+    fullscreenBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      toggleFullscreen();
+    });
+  }
+  
+  addButtonListener('prevBtn', prevQuestion);
+  addButtonListener('nextBtn', nextQuestion);
+  addButtonListener('clearBtn', clearAnswer);
+  addButtonListener('submitBtn', confirmSubmit);
+  addButtonListener('bookmarkBtn', toggleBookmark);
+  
+  addButtonListener('paletteFab', togglePalette);
+  addButtonListener('paletteClose', closePalette);
+  
+  const overlay = document.getElementById('paletteOverlay');
+  if (overlay) {
+    overlay.addEventListener('click', closePalette);
+    overlay.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      closePalette();
+    });
+  }
+  
+  const searchInput = document.getElementById('paletteSearch');
+  if (searchInput) {
+    searchInput.addEventListener('input', handleSearch);
+    searchInput.addEventListener('change', jumpToQuestion);
+  }
+  
+  document.addEventListener('keydown', handleKeyPress);
+  
+  setInterval(saveToLocalStorage, 5000);
+  
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      updatePalette();
+    }
+  });
+}
+
+function addButtonListener(id, handler) {
+  const btn = document.getElementById(id);
+  if (btn) {
+    btn.addEventListener('click', handler);
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      handler();
+    });
+  }
+}
+
+function jumpToQuestion(e) {
+  const questionNum = parseInt(e.target.value);
+  if (questionNum >= 1 && questionNum <= questions.length) {
+    goToQuestion(questionNum - 1);
+    closePalette();
+    e.target.value = '';
+  }
+}
+
+function togglePalette() {
+  isPaletteOpen = !isPaletteOpen;
+  const palette = document.getElementById('questionPalette');
+  const overlay = document.getElementById('paletteOverlay');
+  const fab = document.getElementById('paletteFab');
+  
+  if (isPaletteOpen) {
+    palette.classList.add('active');
+    overlay.classList.add('active');
+    fab.classList.add('active');
+    fab.innerHTML = '✕<span class="badge" id="answeredBadge">' + Object.keys(answers).length + '</span>';
+    document.body.classList.add('palette-open');
+  } else {
+    closePalette();
+  }
+}
+
+function closePalette() {
+  isPaletteOpen = false;
+  const palette = document.getElementById('questionPalette');
+  const overlay = document.getElementById('paletteOverlay');
+  const fab = document.getElementById('paletteFab');
+  
+  if (palette) palette.classList.remove('active');
+  if (overlay) overlay.classList.remove('active');
+  if (fab) {
+    fab.classList.remove('active');
+    fab.innerHTML = '📋<span class="badge" id="answeredBadge">' + Object.keys(answers).length + '</span>';
+  }
+  document.body.classList.remove('palette-open');
+}
+
+function handleSearch(e) {
+  const searchTerm = e.target.value.toLowerCase();
+  if (!searchTerm) {
+    document.querySelectorAll('.palette-btn').forEach(btn => {
+      btn.style.display = '';
+    });
+    return;
+  }
+  
+  const buttons = document.querySelectorAll('.palette-btn');
+  buttons.forEach((btn, index) => {
+    const questionNum = (index + 1).toString();
+    if (questionNum.includes(searchTerm)) {
+      btn.style.display = '';
+    } else {
+      btn.style.display = 'none';
+    }
+  });
+}
+
+function handleKeyPress(e) {
+  if (document.getElementById('resultSection').classList.contains('hidden')) {
+    if (e.key === 'Escape' && isPaletteOpen) {
+      closePalette();
+    } else if (!isPaletteOpen && e.target.tagName !== 'INPUT') {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevQuestion();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        nextQuestion();
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        nextQuestion();
+      } else if (e.key === 'b' || e.key === 'B') {
+        e.preventDefault();
+        toggleBookmark();
+      } else if (e.key === 'c' || e.key === 'C') {
+        e.preventDefault();
+        clearAnswer();
+      } else if (e.key === 'p' || e.key === 'P') {
+        e.preventDefault();
+        togglePalette();
+      } else if (e.key >= '1' && e.key <= '4') {
+        e.preventDefault();
+        selectOption(parseInt(e.key));
+      }
+    }
+  }
+}
+
+function selectOption(optionNum) {
+  const q = questions[currentQuestion];
+  const radio = document.querySelector(`input[name="q${q.sr_no}"][value="${optionNum}"]`);
+  if (radio) {
+    radio.checked = true;
+    const label = radio.closest('.option-label');
+    if (label) {
+      document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      saveAnswer();
+    }
+  }
+}
+
+function toggleFullscreen() {
+  try {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(err => {
+        console.log('Fullscreen error:', err);
+      });
+    } else {
+      document.exitFullscreen();
+    }
+  } catch (err) {
+    console.log('Fullscreen not supported');
+  }
+}
+
+function startTimer() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+  timerInterval = setInterval(() => {
+    timerSeconds++;
+    updateTimer();
+    if (timerSeconds > 600) {
+      const timer = document.getElementById('timer');
+      if (timer) timer.classList.add('warning');
+    }
+  }, 1000);
+}
+
+function updateTimer() {
+  const minutes = Math.floor(timerSeconds / 60);
+  const seconds = timerSeconds % 60;
+  const timer = document.getElementById('timer');
+  if (timer) {
+    timer.textContent = 
+      `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  }
+}
+
+function createPalette() {
+  const grid = document.getElementById('paletteGrid');
+  if (!grid) return;
+  
+  grid.innerHTML = '';
+  questions.forEach((q, index) => {
+    const btn = document.createElement('button');
+    btn.textContent = index + 1;
+    btn.className = 'palette-btn';
+    btn.setAttribute('aria-label', `Go to question ${index + 1}`);
+    btn.setAttribute('type', 'button');
+    
+    btn.addEventListener('click', () => {
+      goToQuestion(index);
+      closePalette();
+    });
+    
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      goToQuestion(index);
+      closePalette();
+    });
+    
+    grid.appendChild(btn);
+  });
+  updatePalette();
+}
+
+function updatePalette() {
+  const buttons = document.querySelectorAll('.palette-btn');
+  buttons.forEach((btn, index) => {
+    btn.className = 'palette-btn';
+    if (index === currentQuestion) btn.classList.add('current');
+    if (answers[questions[index].sr_no]) btn.classList.add('answered');
+    if (bookmarks.has(questions[index].sr_no)) btn.classList.add('bookmarked');
+  });
+  
+  updatePaletteStats();
+}
+
+function updatePaletteStats() {
+  const answered = Object.keys(answers).length;
+  const unanswered = questions.length - answered;
+  const bookmarkedCount = bookmarks.size;
+  
+  const answeredEl = document.getElementById('paletteAnswered');
+  const unansweredEl = document.getElementById('paletteUnanswered');
+  const bookmarkedEl = document.getElementById('paletteBookmarked');
+  
+  if (answeredEl) answeredEl.textContent = answered;
+  if (unansweredEl) unansweredEl.textContent = unanswered;
+  if (bookmarkedEl) bookmarkedEl.textContent = bookmarkedCount;
+  
+  const badge = document.querySelector('.palette-fab .badge');
+  if (badge) badge.textContent = answered;
+}
+
+function goToQuestion(index) {
+  if (index < 0 || index >= questions.length) return;
+  saveAnswer();
+  currentQuestion = index;
+  loadQuestion(currentQuestion);
+  
+  const questionSection = document.getElementById('questionSection');
+  if (questionSection) {
+    setTimeout(() => {
+      questionSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+}
+
+function loadQuestion(index) {
+  const q = questions[index];
+  
+  const questionNumber = document.getElementById('questionNumber');
+  const questionText = document.getElementById('questionText');
+  
+  if (questionNumber) {
+    questionNumber.textContent = `Question ${index + 1} of ${questions.length}`;
+  }
+  
+  if (questionText) {
+    questionText.innerHTML = '';
+    
+    // 🌟 NEW: Create the Heading Box if it exists!
+    let headingHtml = '';
+    if (q.question_heading && q.question_heading.trim() !== '') {
+      headingHtml = `<div style="background: var(--bg-tertiary); padding: 15px; border-left: 4px solid var(--primary-color); margin-bottom: 20px; border-radius: 8px; overflow-x: auto;">${q.question_heading}</div>`;
+      questionText.innerHTML = headingHtml; // Inject heading first
+    }
+
+    if (isImageURL(q.question)) {
+      const img = document.createElement('img');
+      img.src = q.question;
+      img.className = 'question-image';
+      img.alt = 'Question image';
+      img.loading = 'lazy';
+      img.onerror = function() {
+        this.style.display = 'none';
+        questionText.innerHTML += q.question;
+      };
+      questionText.appendChild(img);
+    } else {
+      questionText.innerHTML += q.question; // Append question after heading
+    }
+  }
+  
+  const container = document.getElementById('optionsContainer');
+  if (!container) return;
+  
+  container.innerHTML = '';
+  
+  for (let i = 1; i <= 4; i++) {
+    const label = document.createElement('label');
+    label.className = 'option-label';
+    if (answers[q.sr_no] == i) label.classList.add('selected');
+    
+    const radio = document.createElement('input');
+    radio.type = 'radio';
+    radio.name = `q${q.sr_no}`;
+    radio.value = i;
+    radio.checked = answers[q.sr_no] == i;
+    
+    const changeHandler = () => {
+      document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      saveAnswer();
+    };
+    
+    radio.addEventListener('change', changeHandler);
+    label.addEventListener('click', (e) => {
+      if (e.target !== radio) {
+        radio.checked = true;
+        changeHandler();
+      }
+    });
+    
+    label.appendChild(radio);
+    
+    const optionContent = createOptionContent(q[`option${i}`]);
+    label.appendChild(optionContent);
+    
+    container.appendChild(label);
+  }
+  
+  const bookmarkBtn = document.getElementById('bookmarkBtn');
+  if (bookmarkBtn) {
+    if (bookmarks.has(q.sr_no)) {
+      bookmarkBtn.classList.add('active');
+    } else {
+      bookmarkBtn.classList.remove('active');
+    }
+  }
+  
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const submitBtn = document.getElementById('submitBtn');
+  
+  if (prevBtn) prevBtn.disabled = index === 0;
+  
+  if (index === questions.length - 1) {
+    if (nextBtn) nextBtn.classList.add('hidden');
+    if (submitBtn) submitBtn.classList.remove('hidden');
+  } else {
+    if (nextBtn) nextBtn.classList.remove('hidden');
+    if (submitBtn) submitBtn.classList.add('hidden');
+  }
+  
+  updateProgress();
+  updatePalette();
+}
+
+function updateMarkingInfo() {
+  if(questions.length > 0) {
+      const q = questions[0];
+      const markingInfo = document.getElementById('markingInfo');
+      if (markingInfo) {
+        markingInfo.textContent = `Marking: +${q.positive_marking}, -${q.negative_marking}`;
+      }
+  }
+}
+
+function updateProgress() {
+  const attempted = Object.keys(answers).length;
+  const currentProgress = ((currentQuestion + 1) / questions.length) * 100;
+  
+  const progressBar = document.getElementById('progressBar');
+  const progressText = document.getElementById('progressText');
+  const attemptedText = document.getElementById('attemptedText');
+  
+  if (progressBar) progressBar.style.width = `${currentProgress}%`;
+  if (progressText) progressText.textContent = `${currentQuestion + 1}/${questions.length}`;
+  if (attemptedText) attemptedText.textContent = attempted;
+}
+
+function saveAnswer() {
+  const q = questions[currentQuestion];
+  const selected = document.querySelector(`input[name="q${q.sr_no}"]:checked`);
+  
+  if (selected) {
+    answers[q.sr_no] = selected.value;
+  }
+  
+  updateProgress();
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function clearAnswer() {
+  const q = questions[currentQuestion];
+  delete answers[q.sr_no];
+  
+  const selected = document.querySelector(`input[name="q${q.sr_no}"]:checked`);
+  if (selected) selected.checked = false;
+  
+  document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+  
+  updateProgress();
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function toggleBookmark() {
+  const q = questions[currentQuestion];
+  const btn = document.getElementById('bookmarkBtn');
+  
+  if (bookmarks.has(q.sr_no)) {
+    bookmarks.delete(q.sr_no);
+    if (btn) btn.classList.remove('active');
+  } else {
+    bookmarks.add(q.sr_no);
+    if (btn) btn.classList.add('active');
+  }
+  
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function nextQuestion() {
+  saveAnswer();
+  if (currentQuestion < questions.length - 1) {
+    currentQuestion++;
+    loadQuestion(currentQuestion);
+  }
+}
+
+function prevQuestion() {
+  saveAnswer();
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    loadQuestion(currentQuestion);
+  }
+}
+
+function confirmSubmit() {
+  const unattempted = questions.length - Object.keys(answers).length;
+  let message = 'Are you sure you want to submit the quiz?';
+  
+  if (unattempted > 0) {
+    message += `\n\nYou have ${unattempted} unanswered question(s).`;
+  }
+  
+  if (confirm(message)) {
+    submitQuiz();
+  }
+}
+
+function submitQuiz() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+  }
+  saveAnswer();
+  closePalette();
+  
+  let correct = 0, wrong = 0, unattempted = 0, score = 0;
+  
+  questions.forEach(q => {
+    const userAns = answers[q.sr_no];
+    const posMark = parseFloat(q.positive_marking) || 0;
+    const negMark = parseFloat(q.negative_marking) || 0;
+    
+    if (!userAns) {
+      unattempted++;
+    } else if (userAns == q.answer) {
+      correct++;
+      score += posMark;
+    } else {
+      wrong++;
+      score -= negMark;
+    }
+  });
+  
+  displayResults(correct, wrong, unattempted, score);
+  
+  const fab = document.getElementById('paletteFab');
+  const nav = document.getElementById('navigation');
+  if (fab) fab.style.display = 'none';
+  if (nav) nav.style.display = 'none';
+  
+  document.body.style.paddingBottom = '20px';
+  
+  clearLocalStorage();
+}
+
+function displayResults(correct, wrong, unattempted, score) {
+  const totalQuestions = questions.length;
+  const percentage = ((correct / totalQuestions) * 100).toFixed(1);
+  const timerEl = document.getElementById('timer');
+  const timeText = timerEl ? timerEl.textContent : '00:00';
+  
+  let html = `
+    <div class="score-card">
+      <h2>${score}/${totalQuestions}</h2>
+      <p>Your Score: ${percentage}%</p>
+      <p>Time Taken: ${timeText}</p>
+    </div>
+    
+    <div class="stats-grid">
+      <div class="stat-card correct">
+        <h3>${correct}</h3>
+        <p>Correct</p>
+      </div>
+      <div class="stat-card wrong">
+        <h3>${wrong}</h3>
+        <p>Wrong</p>
+      </div>
+      <div class="stat-card unattempted">
+        <h3>${unattempted}</h3>
+        <p>Unattempted</p>
+      </div>
+      <div class="stat-card">
+        <h3>${totalQuestions}</h3>
+        <p>Total</p>
+      </div>
+    </div>
+  `;
+  
+  questions.forEach(q => {
+    const userAns = answers[q.sr_no];
+    
+    // 🌟 NEW: Add the Heading to the results review screen!
+    let headingHtml = (q.question_heading && q.question_heading.trim() !== '') 
+      ? `<div style="background: var(--bg-tertiary); padding: 10px; margin-bottom: 15px; border-left: 4px solid var(--primary-color); border-radius: 5px; overflow-x: auto;">${q.question_heading}</div>` 
+      : '';
+      
+    const questionHeader = isImageURL(q.question)
+      ? `<h4>Q${q.sr_no}:</h4>${headingHtml}<img src="${q.question}" class="question-image" alt="Question ${q.sr_no}">`
+      : `<h4>Q${q.sr_no}:</h4>${headingHtml}<div style="margin-bottom: 10px;">${q.question}</div>`;
+      
+    html += `<div class="question-review">${questionHeader}`;
+    
+    for (let i = 1; i <= 4; i++) {
+      const isCorrect = i.toString() === q.answer;
+      const isUserAnswer = userAns == i.toString();
+      
+      let className = 'review-option';
+      if (isCorrect) className += ' correct';
+      if (isUserAnswer && !isCorrect) className += ' wrong';
+      if (isUserAnswer) className += ' user-selected';
+      
+      const optionValue = q[`option${i}`];
+      
+      if (isImageURL(optionValue)) {
+        html += `<div class="${className}">
+          ${isCorrect ? '✓ ' : ''}${isUserAnswer ? '➤ ' : ''} 
+          <img src="${optionValue}" class="option-image" alt="Option ${i}">
+        </div>`;
+      } else {
+        html += `<div class="${className}">
+          ${isCorrect ? '✓ ' : ''}${isUserAnswer ? '➤ ' : ''}${optionValue}
+        </div>`;
+      }
+    }
+    
+    if (q.solution_text && q.solution_text.trim() !== '') {
+      const solutionContent = isImageURL(q.solution_text)
+        ? `<img src="${q.solution_text}" class="solution-image" alt="Solution">`
+        : q.solution_text;
+      html += `<div class="solution-section">
+        <div class="solution-label">📝 Solution:</div>
+        <div class="solution-content">${solutionContent}</div>
+      </div>`;
+    }
+    
+    html += `</div>`; 
+});
+  
+  html += `
+    <div class="action-buttons">
+      <button class="action-btn restart" onclick="restartQuiz()">Restart Quiz</button>
+      <button class="action-btn download" onclick="downloadResults()">Download Results</button>
+      <button class="action-btn print" onclick="window.print()">Print Results</button>
+    </div>
+  `;
+  
+  const resultSection = document.getElementById('resultSection');
+  const questionSection = document.getElementById('questionSection');
+  const progressSection = document.querySelector('.progress-section');
+  
+  if (resultSection) {
+    resultSection.innerHTML = html;
+    resultSection.classList.remove('hidden');
+  }
+  if (questionSection) questionSection.classList.add('hidden');
+  if (progressSection) progressSection.classList.add('hidden');
+  
+  const quizContainer = document.getElementById('quizContainer');
+  if (quizContainer) {
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
+  }
+}
+
+function restartQuiz() {
+  if (confirm('Are you sure you want to restart? All progress will be lost.')) {
+    currentQuestion = 0;
+    answers = {};
+    bookmarks.clear();
+    timerSeconds = 0;
+    
+    const resultSection = document.getElementById('resultSection');
+    const questionSection = document.getElementById('questionSection');
+    const progressSection = document.querySelector('.progress-section');
+    const fab = document.getElementById('paletteFab');
+    const nav = document.getElementById('navigation');
+    
+    if (resultSection) {
+      resultSection.classList.add('hidden');
+      resultSection.innerHTML = '';
+    }
+    if (questionSection) questionSection.classList.remove('hidden');
+    if (progressSection) progressSection.classList.remove('hidden');
+    if (fab) fab.style.display = 'flex';
+    if (nav) nav.style.display = 'grid';
+    
+    document.body.style.paddingBottom = 'var(--nav-height)';
+    
+    if (timerInterval) {
+      clearInterval(timerInterval);
+    }
+    startTimer();
+    
+    loadQuestion(currentQuestion);
+    createPalette();
+  }
+}
+
+function downloadResults() {
+  const resultSection = document.getElementById('resultSection');
+  if (!resultSection) return;
+  
+  const resultHTML = resultSection.innerHTML;
+  const fullHTML = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Results</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; max-width: 900px; margin: 0 auto; }
+    .score-card { background: linear-gradient(135deg, #007bff, #28a745); color: white; padding: 30px; border-radius: 15px; text-align: center; margin-bottom: 20px; }
+    .score-card h2 { font-size: 48px; margin-bottom: 10px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 30px; }
+    .stat-card { background: white; padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #ddd; }
+    .stat-card h3 { font-size: 32px; margin-bottom: 8px; }
+    .stat-card.correct h3 { color: #28a745; }
+    .stat-card.wrong h3 { color: #dc3545; }
+    .stat-card.unattempted h3 { color: #6c757d; }
+    .question-review { background: white; border: 2px solid #ddd; border-radius: 10px; padding: 20px; margin-bottom: 15px; }
+    .question-review h4 { margin-bottom: 15px; font-size: 16px; line-height: 1.6; }
+    .review-option { padding: 10px 15px; margin: 8px 0; border-radius: 8px; border: 2px solid #ddd; display: flex; align-items: center; gap: 10px; }
+    .option-image { max-width: 150px; max-height: 100px; border-radius: 8px; }
+    .review-option.correct { background: #d4edda; border-color: #28a745; color: #155724; }
+    .review-option.wrong { background: #f8d7da; border-color: #dc3545; color: #721c24; }
+    .review-option.user-selected { border-width: 3px; font-weight: bold; }
+    @media print { body { background: white; } }
+    @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center; color: #007bff;">Quiz Results</h1>
+  <p style="text-align: center; color: #666; margin-bottom: 30px;">Generated on: ${new Date().toLocaleString()}</p>
+  ${resultHTML.replace(/<div class="action-buttons">[\s\S]*?<\/div>/, '')}
+</body>
+</html>
+  `;
+  
+  try {
+    const blob = new Blob([fullHTML], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `Quiz_Results_${new Date().getTime()}.html`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  } catch (err) {
+    alert('Download failed. Please try using the Print option instead.');
+    console.error('Download error:', err);
+  }
+}
+
+function saveToLocalStorage() {
+  try {
+    const state = {
+      currentQuestion,
+      answers,
+      bookmarks: Array.from(bookmarks),
+      timerSeconds,
+      timestamp: Date.now()
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch (err) {
+    console.error('Save error:', err);
+  }
+}
+
+function loadFromLocalStorage() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const state = JSON.parse(saved);
+      const hasProgress = (state && (
+        (state.currentQuestion && state.currentQuestion > 0) ||
+        (state.answers && Object.keys(state.answers).length > 0) ||
+        (state.timerSeconds && state.timerSeconds > 0)
+      ));
+      if (hasProgress && (Date.now() - state.timestamp < 24 * 60 * 60 * 1000)) {
+        if (confirm('Resume previous quiz session?')) {
+          currentQuestion = state.currentQuestion || 0;
+          answers = state.answers || {};
+          bookmarks = new Set(state.bookmarks || []);
+          timerSeconds = state.timerSeconds || 0;
+          updateTimer();
+          loadQuestion(currentQuestion);
+        }
+      } else {
+        clearLocalStorage();
+      }
+    }
+  } catch (err) {
+    console.error('Load error:', err);
+    clearLocalStorage();
+  }
+}
+
+function clearLocalStorage() {
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (err) {
+    console.error('Clear storage error:', err);
+  }
+}
+
+window.addEventListener('beforeunload', (e) => {
+  const resultSection = document.getElementById('resultSection');
+  if (resultSection && !resultSection.classList.contains('hidden')) {
+    return;
+  }
+  e.preventDefault();
+  e.returnValue = '';
+});
+
+window.addEventListener('unload', () => {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+});
+</script>
+</body>
+</html>
