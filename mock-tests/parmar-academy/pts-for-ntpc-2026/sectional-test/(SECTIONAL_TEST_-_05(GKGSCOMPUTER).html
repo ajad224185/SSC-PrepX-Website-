@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>22.) SECTIONAL TEST - 05(GK/GS/COMPUTER - Hindi</title>
+<style>
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0069d9;
+  --success-color: #28a745;
+  --success-hover: #218838;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --secondary-color: #6c757d;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --border-color: #dee2e6;
+  --shadow: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
+  --overlay: rgba(0,0,0,0.5);
+  --nav-height: 80px;
+}
+
+[data-theme="dark"] {
+  --primary-color: #4dabf7;
+  --primary-hover: #339af0;
+  --success-color: #51cf66;
+  --success-hover: #40c057;
+  --danger-color: #ff6b6b;
+  --warning-color: #ffd43b;
+  --secondary-color: #868e96;
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #404040;
+  --text-primary: #f8f9fa;
+  --text-secondary: #adb5bd;
+  --border-color: #495057;
+  --shadow: 0 4px 6px rgba(0,0,0,0.3);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.4);
+  --overlay: rgba(0,0,0,0.7);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+  overflow-x: hidden;
+  position: relative;
+  padding-bottom: var(--nav-height);
+}
+
+body.palette-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-primary);
+  padding: 20px 30px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+
+.header h1 {
+  font-size: 28px;
+  color: var(--primary-color);
+  font-weight: 700;
+  user-select: none;
+}
+
+.header-controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.theme-toggle, .fullscreen-btn {
+  background: var(--bg-tertiary);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.3s;
+  min-width: 44px;
+  min-height: 44px;
+  user-select: none;
+}
+
+.theme-toggle:active, .fullscreen-btn:active {
+  transform: scale(0.95);
+}
+
+.theme-toggle:hover, .fullscreen-btn:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+.bot-link-btn {
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+}
+.bot-link-btn:active {
+  transform: scale(0.95);
+}
+.bot-link-btn:hover {
+  background: var(--primary-hover);
+}
+
+.timer {
+  background: var(--warning-color);
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 18px;
+  min-width: 100px;
+  text-align: center;
+  user-select: none;
+}
+
+.timer.warning {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.palette-fab {
+  position: fixed;
+  bottom: calc(var(--nav-height) + 20px);
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  box-shadow: 0 6px 20px rgba(0,123,255,0.4);
+  transition: all 0.3s ease;
+  z-index: 998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.palette-fab:active {
+  transform: scale(0.9);
+}
+
+.palette-fab:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0,123,255,0.6);
+}
+
+.palette-fab.active {
+  background: var(--danger-color);
+}
+
+.palette-fab .badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: var(--success-color);
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--bg-secondary);
+  pointer-events: none;
+}
+.solution-section {
+  margin-top: 20px;
+  padding: 15px;
+  background: #e7f3ff;
+  border-left: 4px solid var(--primary-color);
+  border-radius: 8px;
+}
+
+.solution-label {
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.solution-content {
+  line-height: 1.6;
+  color: #333;
+}
+
+.solution-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.palette-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 999;
+  touch-action: none;
+}
+
+.palette-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.question-palette {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 450px;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--bg-primary);
+  box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+  transition: right 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.question-palette.active {
+  right: 0;
+}
+
+.palette-header {
+  padding: 20px;
+  background: var(--primary-color);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.palette-header h3 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.palette-close {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: background 0.2s;
+  line-height: 1;
+  touch-action: manipulation;
+}
+
+.palette-close:active {
+  transform: scale(0.9);
+}
+
+.palette-close:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.palette-stats {
+  padding: 15px 20px;
+  background: var(--bg-tertiary);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  font-size: 13px;
+  text-align: center;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border-color);
+  user-select: none;
+}
+
+.palette-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.palette-stat .number {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.palette-stat.answered .number { color: var(--success-color); }
+.palette-stat.unanswered .number { color: var(--secondary-color); }
+.palette-stat.bookmarked .number { color: var(--warning-color); }
+
+.palette-search {
+  padding: 15px 20px;
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+}
+
+.palette-search input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 14px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.palette-search input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.palette-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 10px;
+}
+
+.palette-btn {
+  aspect-ratio: 1;
+  border: 2px solid var(--border-color);
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+  min-width: 40px;
+  min-height: 40px;
+  color: var(--text-primary);
+  position: relative;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.palette-btn:active {
+  transform: scale(0.9);
+}
+
+.palette-btn:hover {
+  transform: scale(1.1);
+  z-index: 10;
+  box-shadow: var(--shadow);
+}
+
+.palette-btn.current {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  animation: currentPulse 2s infinite;
+}
+
+@keyframes currentPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,123,255,0.7); }
+  50% { box-shadow: 0 0 0 8px rgba(0,123,255,0); }
+}
+
+.palette-btn.answered {
+  background: var(--success-color);
+  color: white;
+  border-color: var(--success-color);
+}
+
+.palette-btn.bookmarked::after {
+  content: '🔖';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.palette-btn.bookmarked.answered {
+  background: var(--success-color);
+}
+
+.palette-legend {
+  padding: 20px;
+  border-top: 1px solid var(--border-color);
+  font-size: 13px;
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.legend-color {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.quiz-container {
+  background: var(--bg-primary);
+  border-radius: 15px;
+  box-shadow: var(--shadow-lg);
+  padding: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  scroll-margin-top: 20px;
+}
+
+.quiz-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.marking-info {
+  display: inline-block;
+  background: var(--bg-tertiary);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.progress-section {
+  margin-bottom: 25px;
+}
+
+.progress-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.progress-bar-container {
+  background: var(--bg-tertiary);
+  border-radius: 12px;
+  overflow: hidden;
+  height: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+  transition: width 0.4s ease;
+  border-radius: 12px;
+}
+
+.question-section {
+  min-height: 300px;
+  scroll-margin-top: 80px;
+  margin-bottom: 20px;
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.question-number {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary-color);
+  user-select: none;
+}
+
+.bookmark-btn {
+  background: transparent;
+  border: 2px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 44px;
+  min-height: 44px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.bookmark-btn:active {
+  transform: scale(0.95);
+}
+
+.bookmark-btn.active {
+  background: var(--warning-color);
+  border-color: var(--warning-color);
+  color: #000;
+}
+
+.question {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 25px;
+  color: var(--text-primary);
+  user-select: text;
+}
+
+.question-image {
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: 10px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  padding: 10px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--border-color);
+  padding: 16px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--bg-secondary);
+  min-height: 60px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.option-label:active {
+  transform: scale(0.98);
+}
+
+.option-label:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--primary-color);
+}
+
+.option-label.selected {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.option-label input[type="radio"] {
+  margin-right: 15px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.option-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.option-image {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  padding: 10px;
+}
+
+.option-label.selected .option-image {
+  background: rgba(255,255,255,0.1);
+}
+
+/* FIXED NAVIGATION - KEY UPDATE */
+.navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-primary);
+  border-top: 2px solid var(--border-color);
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  z-index: 997;
+  padding: 15px 20px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 10px;
+  max-width: 100%;
+}
+
+.nav-btn {
+  padding: 14px 20px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+.nav-btn:active {
+  transform: scale(0.97);
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.nav-btn.prev {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.nav-btn.prev:hover:not(:disabled) {
+  background: #5a6268;
+}
+
+.nav-btn.next {
+  background: var(--primary-color);
+  color: white;
+}
+
+.nav-btn.next:hover:not(:disabled) {
+  background: var(--primary-hover);
+}
+
+.nav-btn.clear {
+  background: var(--danger-color);
+  color: white;
+}
+
+.nav-btn.clear:hover {
+  background: #c82333;
+}
+
+.nav-btn.submit {
+  background: var(--success-color);
+  color: white;
+  grid-column: 1 / -1;
+}
+
+.nav-btn.submit:hover {
+  background: var(--success-hover);
+}
+
+.result-section {
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.score-card {
+  background: linear-gradient(135deg, var(--primary-color), var(--success-color));
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  margin-bottom: 30px;
+  user-select: none;
+}
+
+.score-card h2 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.score-card p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: var(--bg-secondary);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  border: 2px solid var(--border-color);
+  user-select: none;
+}
+
+.stat-card h3 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.stat-card.correct h3 { color: var(--success-color); }
+.stat-card.wrong h3 { color: var(--danger-color); }
+.stat-card.unattempted h3 { color: var(--secondary-color); }
+
+.question-review {
+  border: 2px solid var(--border-color);
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 20px;
+  background: var(--bg-secondary);
+}
+
+.question-review h4 {
+  margin-bottom: 15px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.review-option {
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 2px solid var(--border-color);
+  background: var(--bg-primary);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.review-option .option-image {
+  max-width: 150px;
+  max-height: 100px;
+}
+
+.review-option.correct {
+  background: #d4edda;
+  border-color: var(--success-color);
+  color: #155724;
+}
+
+.review-option.wrong {
+  background: #f8d7da;
+  border-color: var(--danger-color);
+  color: #721c24;
+}
+
+.review-option.user-selected {
+  border-width: 3px;
+  font-weight: 600;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.action-btn {
+  padding: 14px 30px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  min-width: 150px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.action-btn:active {
+  transform: scale(0.95);
+}
+
+.action-btn.restart {
+  background: var(--danger-color);
+  color: white;
+}
+
+.action-btn.restart:hover {
+  background: #c82333;
+}
+
+.action-btn.download {
+  background: var(--primary-color);
+  color: white;
+}
+
+.action-btn.download:hover {
+  background: var(--primary-hover);
+}
+
+.action-btn.print {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.action-btn.print:hover {
+  background: #5a6268;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.palette-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.palette-content::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+}
+
+.palette-content::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+.palette-content::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 140px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .header h1 {
+    font-size: 22px;
+  }
+
+  .quiz-container {
+    padding: 20px 15px;
+  }
+
+  .question-palette {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .palette-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+  }
+
+  .palette-btn {
+    font-size: 13px;
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  .palette-fab {
+    bottom: calc(var(--nav-height) + 10px);
+    right: 15px;
+    width: 56px;
+    height: 56px;
+    font-size: 22px;
+  }
+
+  .navigation {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 12px 15px;
+  }
+
+  .nav-btn {
+    min-height: 44px;
+    font-size: 15px;
+  }
+
+  .nav-btn.clear {
+    order: 3;
+  }
+
+  .nav-btn.submit {
+    grid-column: auto;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .legend-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .question {
+    font-size: 16px;
+  }
+
+  .option-label {
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  .option-image {
+    max-height: 150px;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .palette-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+
+  .palette-btn {
+    font-size: 12px;
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .timer {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  .option-image {
+    max-height: 120px;
+  }
+}
+
+@media print {
+  .header-controls, .navigation, .palette-fab, .palette-overlay, .question-palette, .action-buttons, .bookmark-btn {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    padding-bottom: 0;
+  }
+
+  .container {
+    padding-bottom: 20px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>22.) SECTIONAL TEST - 05(GK/GS/COMPUTER - Hindi</h1>
+    <div class="header-controls">
+      <a href="https://t.me/ssc_prepX" target="_blank" class="bot-link-btn" title="Open Bot in Telegram">🤖 Bot</a>
+      
+      <div class="timer" id="timer">00:00</div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle Theme">🌙</button>
+      <button class="fullscreen-btn" id="fullscreenBtn" aria-label="Toggle fullscreen" title="Fullscreen">⛶</button>
+    </div>
+  </div>
+
+  <div class="quiz-container" id="quizContainer">
+    <div class="quiz-header">
+      <div class="marking-info" id="markingInfo">Marking: +1, -0</div>
+    </div>
+
+    <div class="progress-section">
+      <div class="progress-stats">
+        <span>Progress: <strong id="progressText">1/2</strong></span>
+        <span>Attempted: <strong id="attemptedText">0</strong></span>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+
+    <div class="question-section" id="questionSection">
+      <div class="question-header">
+        <div class="question-number" id="questionNumber">Question 1 of 2</div>
+        <button class="bookmark-btn" id="bookmarkBtn" aria-label="Bookmark question">
+          <span>🔖</span> <span>Bookmark</span>
+        </button>
+      </div>
+      
+      <div class="question" id="questionText"></div>
+      
+      <div class="options" id="optionsContainer"></div>
+    </div>
+
+    <div class="result-section hidden" id="resultSection"></div>
+  </div>
+</div>
+
+<div class="navigation" id="navigation">
+  <button class="nav-btn prev" id="prevBtn" aria-label="Previous question">
+    <span>←</span> Previous
+  </button>
+  <button class="nav-btn clear" id="clearBtn" aria-label="Clear answer">
+    Clear
+  </button>
+  <button class="nav-btn next" id="nextBtn" aria-label="Next question">
+    Next <span>→</span>
+  </button>
+  <button class="nav-btn submit hidden" id="submitBtn" aria-label="Submit quiz">
+    Submit Quiz
+  </button>
+</div>
+
+<button class="palette-fab" id="paletteFab" aria-label="Toggle question palette" title="Question Palette (P)">
+  📋
+  <span class="badge" id="answeredBadge">0</span>
+</button>
+
+<div class="palette-overlay" id="paletteOverlay"></div>
+
+<div class="question-palette" id="questionPalette">
+  <div class="palette-header">
+    <h3>Question Palette</h3>
+    <button class="palette-close" id="paletteClose" aria-label="Close palette">×</button>
+  </div>
+
+  <div class="palette-stats">
+    <div class="palette-stat answered">
+      <div class="number" id="paletteAnswered">0</div>
+      <div>Answered</div>
+    </div>
+    <div class="palette-stat unanswered">
+      <div class="number" id="paletteUnanswered">2</div>
+      <div>Not Answered</div>
+    </div>
+    <div class="palette-stat bookmarked">
+      <div class="number" id="paletteBookmarked">0</div>
+      <div>Bookmarked</div>
+    </div>
+  </div>
+
+  <div class="palette-search">
+    <input type="number" id="paletteSearch" placeholder="Jump to question number..." aria-label="Search questions" inputmode="numeric" pattern="[0-9]*">
+  </div>
+
+  <div class="palette-content">
+    <div class="palette-grid" id="paletteGrid"></div>
+  </div>
+
+  <div class="palette-legend">
+    <div class="legend-grid">
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--success-color);"></div>
+        <span>Answered</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--bg-secondary); border: 2px solid var(--border-color);"></div>
+        <span>Not Answered</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--primary-color);"></div>
+        <span>Current Question</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--warning-color);"></div>
+        <span>🔖 Bookmarked</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// JSON INJECTION HAPPENS HERE
+const questions = [{"sr_no": 1, "question": " <p style=\"orphans:0;widows:0\">    <b>Which body was formed by Gandhi on 24 February 1919 to oppose    the Rowlatt Act?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Congress Committee</p>", "option2": " <p style=\"orphans:0;widows:0\">    Swaraj Sabha</p>", "option3": " <p style=\"orphans:0;widows:0\">    Khilafat Committee</p>", "option4": " <p style=\"orphans:0;widows:0\">    Satyagraha Sabha</p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>24 February 1919:</b> Mahatma Gandhi established the <b>Satyagraha    Sabha in Bombay (Mumbai)</b> to oppose the <b>Rowlatt Act, 1919</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Rowlatt    Act:</b> Allowed the British government to <b>arrest and detain    individuals without trial</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Members of    the Sabha pledged to <b>non-violent resistance (Satyagraha)</b>    against the Act.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">The movement    involved <b>students, lawyers and the general public</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Gandhi gave a    call for an <b>all-India hartal on 6 April 1919</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">The agitation    became one of Gandhi’s first major <b>all-India mass movements</b>    after his return from South Africa.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">The Rowlatt    agitation was followed by the <b>Jallianwala Bagh massacre on 13    April 1919</b> at Amritsar.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><u><b>IN    SHORT:</b></u></p>    <p style=\"orphans:0;widows:0\"><b>Satyagraha Sabha → 24    February 1919 → Rowlatt Act → 6 April 1919 Hartal →    Jallianwala Bagh, 13 April 1919.</b></p>", "question_heading": ""}, {"sr_no": 2, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>With reference to the constitutional changes introduced after    the Revolt of 1857, which of the following statements is/are    correct?</b></p>    <ol>     <li><p style=\"orphans:0;widows:0;margin-bottom:0in\">     <b>The Government of India Act, 1858 abolished the system of     double government established under the Pitt’s India Act, 1784.</b></p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\">     <b>The office of the Secretary of State for India was created,     but he was assisted by a Council of India.</b></p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\">     <b>The Governor-General of India continued to be the     representative of the East India Company in India.</b></p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\">     <b>The Act transferred the powers previously exercised by the     Court of Directors and Board of Control to the British Crown.</b></p>    </li></ol>    <p style=\"orphans:0;widows:0\"><b>Select the    correct answer using the code below:</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    1 and 2 only</p>", "option2": " <p style=\"orphans:0;widows:0\">    1, 2 and 4 only</p>", "option3": " <p style=\"orphans:0;widows:0\">    2 and 3 only</p>", "option4": " <p style=\"orphans:0;widows:0\">    1, 3 and 4 only</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Statement 1 – Correct:</b> The Government of India Act, 1858    abolished the <b>dual system of control</b> created by the Pitt’s    India Act, 1784.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    2 – Correct:</b> The Act created the <b>Secretary of State for    India</b>, assisted by a <b>Council of India</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    3 – Incorrect:</b> The Governor-General became the <b>Viceroy</b>,    representing the <b>British Crown</b>, not the East India Company.</p>    <p style=\"orphans:0;widows:0\"><b>Statement 4 – Correct:</b>    The administrative powers of the <b>East India Company</b> were    transferred to the <b>British Crown</b>.</p>", "question_heading": ""}, {"sr_no": 3, "question": " <p style=\"orphans:0;widows:0\">    <b>During the Indus Valley Civilisation, the presence of jewellery    made from precious metals and semi-precious stones in small-town    settings supports the argument that_____.</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    the civilisation was ruled by autocratic priest-kings</p>", "option2": " <p style=\"orphans:0;widows:0\">    there was an equal access to material goods</p>", "option3": " <p style=\"orphans:0;widows:0\">    there was strong social stratification</p>", "option4": " <p style=\"orphans:0;widows:0\">    only the elite had access to luxury items</p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The selective presence of jewellery and luxury items in small-town    and urban sites of the Indus Valley Civilisation indicates that    such goods were concentrated among elites, reflecting clear social    divisions and hierarchy. This distribution shows that wealth and    material culture were not equally accessible, supporting the    existence of strong social stratification in Harappan society.</p>", "question_heading": ""}, {"sr_no": 4, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Match the following. Indus Valley Civilisation Site Excavator:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>(A) Harappa – I. S.R. Rao;</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>(B) Dholavira – II. J.P. Joshi;</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>(C) Surkotada – III. R.S. Bisht;</b></p>    <p style=\"orphans:0;widows:0\"><b>(D) Lothal –    IV. Daya Ram Sahni.</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    (a) A-IV; B-III; C-II; D-I</p>", "option2": " <p style=\"orphans:0;widows:0\">    (b) A-I; B-III; C-II; D-IV</p>", "option3": " <p style=\"orphans:0;widows:0\">    (c) A-III; B-I; C-IV; D-II</p>", "option4": " <p style=\"orphans:0;widows:0\">    (d) A-II; B-IV; C-III; D-I</p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The Indus Valley Civilization (IVC) is the earliest known urban    culture of the northwestern regions of the Indian subcontinent. It    is one of the world’s three earliest civilizations alongside    Mesopotamia and ancient Egypt. Important Sites of the IVC:</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Harappa - On    the banks of river Ravi, in Montgomery district of Punjab (now in    Pakistan).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Dholavira -    Present-day Gujarat, in the Rann of Kachchh.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Surkotada -    Gujarat.</p>    <p style=\"orphans:0;widows:0\">Lothal - Gujarat, on the Bhogva    River, near the Gulf of Cambay.</p>", "question_heading": ""}, {"sr_no": 5, "question": " <p style=\"orphans:0;widows:0\">    <b>In the Rig Vedic period, which term was used for the groups of    people who were considered opponents of the Vedic Aryans and were    often associated with non-performance of Vedic rituals?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Dasyus</p>", "option2": " <p style=\"orphans:0;widows:0\">    Rajanyas</p>", "option3": " <p style=\"orphans:0;widows:0\">    Vis</p>", "option4": " <p style=\"orphans:0;widows:0\">    Brahmanas</p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    In the <b>Rig Veda</b>, the term <b>Dasyu</b> was used for groups    portrayed as opponents of the Vedic Aryans and as people who did    not follow their religious practices.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Vis</b>    referred to the common people or clan members,</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Rajanya</b>    was associated with the warrior/ruling class.</p>    <p style=\"orphans:0;widows:0\"><b>Brahmanas</b> were associated    with priestly functions.</p>", "question_heading": ""}, {"sr_no": 6, "question": " <p style=\"orphans:0;widows:0\">    <b>Which of the following ancient Jain texts was composed by    Acharya Umaswami and is regarded as one of the most important    systematic works on Jain philosophy, accepted by both the    Digambara and Śvētāmbara traditions?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Samayasara</p>", "option2": " <p style=\"orphans:0;widows:0\">    Tattvarthasutra</p>", "option3": " <p style=\"orphans:0;widows:0\">    Niyamasara</p>", "option4": " <p style=\"orphans:0;widows:0\">    Panchastikayasara</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Tattvarthasutra</b> was composed by <b>Acharya Umaswami    (Umasvati)</b>. It presents Jain philosophy in a systematic manner    and is notable for being accepted by <b>both Digambara and    Śvētāmbara sects</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Samayasara</b>    → Written by <b>Kundakunda</b>, deals with the nature of the    soul and spiritual purity.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Niyamasara</b>    → Written by <b>Kundakunda</b>, focuses on spiritual discipline.</p>    <p style=\"orphans:0;widows:0\"><b>Panchastikayasara</b> → Also    attributed to <b>Kundakunda</b>, discusses the fundamental    substances of Jain philosophy.</p>", "question_heading": ""}, {"sr_no": 7, "question": " <p style=\"orphans:0;widows:0\">    <b>Which of the following Buddhist scriptures contains the rules    and regulations governing the conduct and discipline of Buddhist    monks and nuns?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Sutta Pitaka</p>", "option2": " <p style=\"orphans:0;widows:0\">    Abhidhamma Pitaka</p>", "option3": " <p style=\"orphans:0;widows:0\">    Vinaya Pitaka</p>", "option4": " <p style=\"orphans:0;widows:0\">    Jataka</p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The <b>Vinaya Pitaka</b> is one of the three divisions of the    Buddhist Tripitaka. It deals with the rules, regulations and    disciplinary codes governing the monastic life of Buddhist monks    and nuns.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Vinaya    Pitaka</b> → Rules of monastic discipline.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Sutta    Pitaka</b> → Discourses and teachings of Gautama Buddha.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Abhidhamma    Pitaka</b> → Philosophical and psychological analysis of    Buddhist teachings.</p>    <p style=\"orphans:0;widows:0\"><b>Jataka Tales</b> → Stories    about the previous births of Gautama Buddha.</p>", "question_heading": ""}, {"sr_no": 8, "question": " <p style=\"orphans:0;widows:0\">    <b>Which ruler of the Haryanka dynasty shifted the capital of    Magadha from Rajagriha to Pataliputra?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Bimbisara</p>", "option2": " <p style=\"orphans:0;widows:0\">    Ajatashatru</p>", "option3": " <p style=\"orphans:0;widows:0\">    Udayin</p>", "option4": " <p style=\"orphans:0;widows:0\">    Shishunaga</p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Udayin was the third ruler of the <b>Haryanka dynasty</b>. He    established Pataliputra at the confluence of the rivers <b>Ganga    and Son</b> and shifted the capital of Magadha from Rajagriha to    Pataliputra.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Bimbisara</b>    → Founder of the Haryanka dynasty; made Rajagriha his capital.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Ajatashatru</b>    → Son of Bimbisara; fortified Pataligrama.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Udayin</b>    → Shifted the capital from Rajagriha to Pataliputra.</p>    <p style=\"orphans:0;widows:0\"><b>Shishunaga</b> → Founder of    the Shishunaga dynasty.</p>", "question_heading": ""}, {"sr_no": 9, "question": " <p style=\"orphans:0;widows:0\">    <b>Which Ashokan inscription provides the earliest explicit    evidence identifying the title ‘Devanampiya Piyadasi’ with    Emperor Ashoka by mentioning his personal name?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Girnar Inscription</p>", "option2": " <p style=\"orphans:0;widows:0\">    Maski Inscription</p>", "option3": " <p style=\"orphans:0;widows:0\">    Dhauli Inscription</p>", "option4": " <p style=\"orphans:0;widows:0\">    Sarnath Inscription</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The <b>Maski Minor Rock Edict</b> was discovered by <b>C. Beadon    in 1915</b> at Maski in the Raichur district of Karnataka. It is    particularly significant because it explicitly mentions the name    <b>Ashoka</b>, helping establish that Devanampiya Piyadasi    referred to Emperor Ashoka.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Discoverer:</b>    C. Beadon</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Year:</b>    1915</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Location:</b>    Maski, Karnataka</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Language:</b>    Prakrit</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Script:</b>    Brahmi</p>    <p style=\"orphans:0;widows:0\"><b>Period:</b> 3rd century BCE</p>", "question_heading": ""}, {"sr_no": 10, "question": " <p style=\"orphans:0;widows:0\">    <b>During the Gupta administration, which officer was responsible    for handling matters related to peace, war and diplomatic    relations with other kingdoms?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Mahasenapati</p>", "option2": " <p style=\"orphans:0;widows:0\">    Sandhivigrahika</p>", "option3": " <p style=\"orphans:0;widows:0\">    Mahadandanayaka</p>", "option4": " <p style=\"orphans:0;widows:0\">    Uparika</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Sandhivigrahika</b> was an important official in the Gupta    administration who dealt with matters of peace, war, treaties and    foreign relations.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Mahasenapati</b>    → Commander-in-Chief of the army.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Sandhivigrahika</b>    → Minister of peace and war (foreign affairs).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Uparika</b>    → Provincial governor (Bhukti).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Mahadandanayaka</b>    → High-ranking judicial/military-administrative official.</p>    <p style=\"orphans:0;widows:0\"><b>Amatya</b> → Minister or    administrative officer.</p>", "question_heading": ""}, {"sr_no": 11, "question": " <p style=\"orphans:0;widows:0\">    <b>Which Chola ruler assumed the title ‘Gangaikonda Chola’    after his successful military expedition to the Gangetic region?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Rajaraja Chola I</p>", "option2": " <p style=\"orphans:0;widows:0\">    Rajendra Chola I</p>", "option3": " <p style=\"orphans:0;widows:0\">    Kulottunga Chola I</p>", "option4": " <p style=\"orphans:0;widows:0\">    Aditya Chola I</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Rajendra Chola I undertook a military expedition towards the    Gangetic region and defeated several rulers. To commemorate this    victory, he assumed the title <b>‘Gangaikonda Chola’</b>,    meaning the Chola who conquered the Ganga region.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Gangaikonda    Cholapuram</b> → Founded by Rajendra Chola I.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Gangaikonda    Choleshwaram Temple</b> → Built by Rajendra Chola I.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Naval    expedition (c. 1025 CE)</b> → Against the Sri Vijaya Empire    (Sumatra, Indonesia).</p>    <p style=\"orphans:0;widows:0\"><b>Rajaraja Chola I</b> →    Father of Rajendra Chola I; built Brihadeeswara Temple at    Thanjavur.</p>", "question_heading": ""}, {"sr_no": 12, "question": " <p style=\"orphans:0;widows:0\">    <b>Which of the following European powers first established a    permanent trading factory at Surat in the early 17th century?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Portuguese</p>", "option2": " <p style=\"orphans:0;widows:0\">    Dutch</p>", "option3": " <p style=\"orphans:0;widows:0\">    English</p>", "option4": " <p style=\"orphans:0;widows:0\">    French</p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The <b>English East India Company</b> established its first    permanent factory at Surat in <b>1613</b>, after receiving    permission from Mughal Emperor Jahangir. This marked an important    development in the expansion of English trade in India.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>1600</b> →    English East India Company established.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>1602</b> →    Dutch East India Company (VOC) established.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>1613</b> →    English established a permanent factory at Surat.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>1615</b> →    Sir Thomas Roe arrived at Jahangir's court.</p>    <p style=\"orphans:0;widows:0\"><b>1668</b> → Bombay was    transferred to the English East India Company.</p>", "question_heading": ""}, {"sr_no": 13, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Consider the following pairs of foreign travellers and their    accounts of India:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>1. Hiuen Tsang – Si-Yu-Ki</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>2. Al-Biruni – Kitab-ul-Hind</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>3. Megasthenes – Indica</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>4. Domingo Paes – Account of Vijayanagara.</b></p>    <p style=\"orphans:0;widows:0\"><b>Which of the    above pairs are correctly matched?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    1, 2 and 3 only</p>", "option2": " <p style=\"orphans:0;widows:0\">    2, 3 and 4 only</p>", "option3": " <p style=\"orphans:0;widows:0\">    1 and 4 only</p>", "option4": " <p style=\"orphans:0;widows:0\">    1, 2, 3 and 4</p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    All four pairs are correctly matched.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Hiuen    Tsang (Xuanzang):</b> Chinese traveller who visited India during    Harshavardhana's reign; account – <i>Si-Yu-Ki</i>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Al-Biruni:</b>    Wrote <i>Kitab-ul-Hind</i> during the Ghaznavid period.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Megasthenes:</b>    Greek ambassador in Chandragupta Maurya's court; wrote <i>Indica</i>.</p>    <p style=\"orphans:0;widows:0\"><b>Domingo Paes:</b> Portuguese    traveller who described Vijayanagara during the reign of    Krishnadevaraya.</p>", "question_heading": ""}, {"sr_no": 14, "question": " <p style=\"orphans:0;widows:0\">    <b>Who among the following rulers commissioned the construction of    the Qutub Minar in Delhi, which was later completed by his    successor?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Iltutmish</p>", "option2": " <p style=\"orphans:0;widows:0\">    Qutb-ud-din Aibak</p>", "option3": " <p style=\"orphans:0;widows:0\">    Balban</p>", "option4": " <p style=\"orphans:0;widows:0\">    Alauddin Khilji</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Qutb-ud-din Aibak initiated the construction of <b>Qutub Minar in    1199 CE</b> to commemorate the victory of Muslim rule in northern    India. He completed its first storey, while his successor    <b>Iltutmish added three more storeys</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Adhai Din    Ka Jhonpra</b> → Ajmer; converted into a mosque by Qutb-ud-din    Aibak.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Qutub    Minar</b> → Construction started by Qutb-ud-din Aibak.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Iltutmish</b>    → Completed three additional storeys.</p>    <p style=\"orphans:0;widows:0\"><b>Quwwat-ul-Islam Mosque</b> →    Built by Qutb-ud-din Aibak in Delhi.</p>", "question_heading": ""}, {"sr_no": 15, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Consider the following statements regarding the Mongol    invasions during the reign of Alauddin Khalji:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>1. The Mongol invasion led by Qutlugh Khwaja took place in 1299    CE.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>2. Zafar Khan played an important role in resisting the Mongol    forces during this invasion.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>3. Alauddin Khalji established the city of Siri primarily to    strengthen the defence of Delhi against Mongol attacks.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>4. The Mongol invasion led by Timur took place during the reign    of Alauddin Khalji.</b></p>    <p style=\"orphans:0;widows:0\"><b>Which of the    statements given above are correct?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    1, 2 and 3 only</p>", "option2": " <p style=\"orphans:0;widows:0\">    1 and 4 only</p>", "option3": " <p style=\"orphans:0;widows:0\">    2 and 3 only</p>", "option4": " <p style=\"orphans:0;widows:0\">    1, 2, 3 and 4</p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Statement 1 – Correct:</b> Qutlugh Khwaja invaded India in    1299 CE during Alauddin Khalji's reign.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    2 – Correct:</b> Zafar Khan fought bravely against the Mongols    in the Battle of Kili (1299).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    3 – Correct:</b> Alauddin Khalji established Siri, a fortified    city near Delhi, partly to strengthen defence against Mongol    invasions.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    4 – Incorrect:</b> Timur invaded India in <b>1398 CE</b> during    the reign of Nasir-ud-Din Mahmud Shah Tughlaq, not Alauddin    Khalji.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><u><b>IN    SHORT:</b></u></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Jalaluddin    Khalji</b> → Founder of Khalji dynasty (1290).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Alauddin    Khalji</b> → Faced repeated Mongol invasions.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Battle of    Kili</b> → 1299 CE.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Timur's    invasion</b> → 1398 CE.</p>    <p style=\"orphans:0;widows:0\"><b>Siri Fort</b> → Associated    with Alauddin Khalji.</p>", "question_heading": ""}, {"sr_no": 16, "question": " <p style=\"orphans:0;widows:0\">    <b>Which Delhi Sultan sent his general Malik Kafur on military    expeditions to Devagiri, Warangal, Dwarasamudra and Madurai?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Jalaluddin Khalji</p>", "option2": " <p style=\"orphans:0;widows:0\">    Alauddin Khalji</p>", "option3": " <p style=\"orphans:0;widows:0\">    Ghiyasuddin Tughlaq</p>", "option4": " <p style=\"orphans:0;widows:0\">    Muhammad bin Tughlaq</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Malik Kafur was the famous military commander of Alauddin Khalji.    He led several southern military expeditions between 1308 and 1311    CE, expanding the influence of the Delhi Sultanate in South India.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Devagiri    (1308)</b> → Yadava kingdom.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Warangal    (1310)</b> → Kakatiya ruler Prataparudra II.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Dwarasamudra    (1311)</b> → Hoysala kingdom.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Madurai    (1311)</b> → Pandya kingdom.</p>    <p style=\"orphans:0;widows:0\"><b>Malik Kafur</b> → Also known    as Hazar Dinari.</p>", "question_heading": ""}, {"sr_no": 17, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Which of the following statements regarding Babur is/are    correct?</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>1. Babur defeated Ibrahim Lodi in the First Battle of Panipat    in 1526.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>2. Babur defeated Rana Sanga in the Battle of Khanwa in 1527.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>3. Babur defeated Medini Rai in the Battle of Chanderi in 1528.</b></p>    <p style=\"orphans:0;widows:0\"><b>4. Babur    fought the Battle of Ghaghra against Sher Shah Suri in 1529.</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    1, 2 and 3 only</p>", "option2": " <p style=\"orphans:0;widows:0\">    1 and 4 only</p>", "option3": " <p style=\"orphans:0;widows:0\">    2, 3 and 4 only</p>", "option4": " <p style=\"orphans:0;widows:0\">    1, 2, 3 and 4</p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Statement 1 – Correct:</b> First Battle of Panipat (1526) was    fought between Babur and Ibrahim Lodi.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    2 – Correct:</b> Battle of Khanwa (1527) was fought between    Babur and Rana Sanga.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    3 – Correct:</b> Battle of Chanderi (1528) was fought against    Medini Rai.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    4 – Incorrect:</b> Babur fought the Battle of Ghaghra (1529)    against the Afghan forces led by Mahmud Lodi, not Sher Shah Suri.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><u><b>IN    SHORT</b></u></p>    <table>     <col>      <col>      <col>      <tr>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Battle</p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Year</p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Opponent</p>      </td>     </tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Panipat</p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       1526</p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Ibrahim Lodi</p>      </td>     </tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Khanwa</p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       1527</p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Rana Sanga</p>      </td>     </tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Chanderi</p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       1528</p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Medini Rai</p>      </td>     </tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Ghaghra</p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       1529</p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Mahmud Lodi</p>      </td>     </tr>    </table>", "question_heading": ""}, {"sr_no": 18, "question": " <p style=\"orphans:0;widows:0\">    <b>Who was the ruler of the Vijayanagara Empire during the Battle    of Talikota (1565), which resulted in a major defeat for the    empire?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Devaraya II</p>", "option2": " <p style=\"orphans:0;widows:0\">    Krishnadevaraya</p>", "option3": " <p style=\"orphans:0;widows:0\">    Aliya Rama Raya</p>", "option4": " <p style=\"orphans:0;widows:0\">    Sadashiva Raya</p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Sadashiva Raya was the nominal ruler of the Vijayanagara Empire    during the Battle of Talikota (1565). However, the actual    political and military authority was exercised by <b>Aliya Rama    Raya</b>, who led the Vijayanagara forces against the combined    Deccan Sultanates.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">The battle    was fought between the Vijayanagara Empire and an alliance of four    Deccan Sultanates.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><u><b>IN    SHORT:</b></u></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Battle:</b>    Talikota (1565).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Other    names:</b> Bannihatti / Rakshasa-Tangadi.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Vijayanagara    leader:</b> Aliya Rama Raya.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Nominal    ruler:</b> Sadashiva Raya.</p>    <p style=\"orphans:0;widows:0\"><b>Result:</b> Defeat of    Vijayanagara forces and destruction of Hampi.</p>", "question_heading": ""}, {"sr_no": 19, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Which of the following statements regarding the Directive    Principles of State Policy (DPSP) is/are correct?</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>1. DPSPs are mentioned in Part IV of the Indian Constitution,    covering Articles 36–51.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>2. The provisions of DPSP are enforceable by courts.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>3. Article 37 declares that DPSPs are fundamental in the    governance of the country.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>4. The Constitution (42nd Amendment) Act, 1976 added four new    Directive Principles.</b></p>    <p style=\"orphans:0;widows:0\"><b>Select the    correct answer:</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    1 and 2 only</p>", "option2": " <p style=\"orphans:0;widows:0\">    1, 3 and 4 only</p>", "option3": " <p style=\"orphans:0;widows:0\">    2 and 3 only</p>", "option4": " <p style=\"orphans:0;widows:0\">    1, 2, 3 and 4</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Statement 2 – Incorrect:</b> DPSPs are non-justiciable,    meaning they cannot be directly enforced by courts.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    3 – Correct:</b> Article 37 declares DPSPs fundamental in the    governance of the country.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    4 – Correct:</b> The 42nd Constitutional Amendment Act, 1976    added four Directive Principles (including Articles 39A, 43A and    48A; Article 39(f) was also modified).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Article 36</b>    → Definition of State.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Article 37</b>    → Application of DPSPs.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Article    39A</b> → Equal justice and free legal aid.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Article    43A</b> → Workers' participation in management.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Article    48A</b> → Protection of environment, forests and wildlife.</p>    <p style=\"orphans:0;widows:0\"><b>Article 51</b> →    International peace and security.</p>", "question_heading": ""}, {"sr_no": 20, "question": " <p style=\"orphans:0;widows:0\">    <b>Under which Article of the Indian Constitution does Parliament    have the exclusive power to legislate on matters not enumerated in    the State List or Concurrent List?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Article 246</p>", "option2": " <p style=\"orphans:0;widows:0\">    Article 248</p>", "option3": " <p style=\"orphans:0;widows:0\">    Article 249</p>", "option4": " <p style=\"orphans:0;widows:0\">    Article 250</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Article 248 deals with <b>Residuary Powers of Legislation</b>. It    gives Parliament exclusive authority to make laws on subjects not    mentioned in the State List or Concurrent List, including the    power to impose taxes not mentioned in these lists.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Article    246</b> → Distribution of legislative powers among Union, State    and Concurrent Lists.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Article    248</b> → Residuary powers of legislation.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Article    249</b> → Parliament can legislate on State List subjects in the    national interest.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Article    250</b> → Parliament can legislate on State List subjects during    a National Emergency.</p>    <p style=\"orphans:0;widows:0\"><b>Article 254</b> →    Inconsistency between Union and State laws on Concurrent List    subjects.</p>", "question_heading": ""}, {"sr_no": 21, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Consider the following statements regarding the Lakshadweep    Islands:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>1. Lakshadweep Islands are located in the Arabian Sea.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>2. These islands are primarily of coral origin.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>3. Minicoy is separated from Lakshadweep by the Eight Degree    Channel.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>4. The capital of Lakshadweep is Kavaratti.</b></p>    <p style=\"orphans:0;widows:0\"><b>Which of the    statements given above are correct?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    1, 2 and 4 only</p>", "option2": " <p style=\"orphans:0;widows:0\">    1 and 3 only</p>", "option3": " <p style=\"orphans:0;widows:0\">    2, 3 and 4 only</p>", "option4": " <p style=\"orphans:0;widows:0\">    1, 2, 3 and 4</p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Statement 1 – Correct:</b> Lakshadweep is located in the    Arabian Sea, off India's southwestern coast.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    2 – Correct:</b> Lakshadweep Islands are primarily coral    islands.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    3 – Incorrect:</b> The Nine Degree Channel separates Minicoy    from the rest of Lakshadweep. The Eight Degree Channel separates    Minicoy from the Maldives.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    4 – Correct:</b> Kavaratti is the capital of Lakshadweep.</p>    <table>     <col>      <col>      <tr>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Channel</p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Separates</p>      </td>     </tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Eight Degree Channel</p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Minicoy and Maldives</p>      </td>     </tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Nine Degree Channel</p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Minicoy and the rest of Lakshadweep</p>      </td>     </tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Ten Degree Channel</p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Andaman and Nicobar Islands</p>      </td>     </tr>    </table>", "question_heading": ""}, {"sr_no": 22, "question": " <p style=\"orphans:0;widows:0\">    <b>In India, irrigation projects having a Cultivable Command Area    (CCA) of 2,000 hectares or less are classified as which type of    projects?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Major Projects</p>", "option2": " <p style=\"orphans:0;widows:0\">    Medium Projects</p>", "option3": " <p style=\"orphans:0;widows:0\">    Minor Projects</p>", "option4": " <p style=\"orphans:0;widows:0\">    Multipurpose Projects</p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0;margin-bottom:0in\">    In India, irrigation projects are classified on the basis of their    <b>Cultivable Command Area (CCA)</b>.</p>    <table>     <col>      <col>      <tr>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Type of Project</p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Cultivable Command Area (CCA)</p>      </td>     </tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Major Projects</p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       More than 10,000 hectares</p>      </td>     </tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Medium Projects</p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       2,000–10,000 hectares</p>      </td>     </tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Minor Projects</p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Up to 2,000 hectares</p>      </td>     </tr>    </table>", "question_heading": ""}, {"sr_no": 23, "question": " <p style=\"orphans:0;widows:0\">    <b>Which of the following is the primary objective of    disinvestment in public sector enterprises?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    To increase government control over industries</p>", "option2": " <p style=\"orphans:0;widows:0\">    To reduce private sector participation</p>", "option3": " <p style=\"orphans:0;widows:0\">    To mobilise resources and improve the efficiency of public    enterprises</p>", "option4": " <p style=\"orphans:0;widows:0\">    To increase government expenditure</p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Disinvestment</b> means selling a part or whole of the    government's shareholding in a public sector enterprise (PSE).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">It helps the    government raise revenue and reduce its financial burden.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">It can    improve operational efficiency through greater private    participation and accountability.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><u><b>FACTS</b></u></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Privatisation:</b>    Transfer of ownership or control from the public sector to the    private sector.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Disinvestment:</b>    Sale of government equity in a public sector enterprise; it may or    may not lead to privatisation.</p>    <p style=\"orphans:0;widows:0\"><b>Strategic disinvestment:</b>    Transfer of substantial government shareholding along with    management control.</p>", "question_heading": ""}, {"sr_no": 24, "question": " <p style=\"orphans:0;widows:0\">    <b>Which of the following conditions occurs when the eyeball is    elongated or the focal length of the eye lens becomes too short?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Hypermetropia</p>", "option2": " <p style=\"orphans:0;widows:0\">    Presbyopia</p>", "option3": " <p style=\"orphans:0;widows:0\">    Myopia</p>", "option4": " <p style=\"orphans:0;widows:0\">    Astigmatism</p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0;margin-bottom:0in\">    In <b>Myopia</b>, distant objects appear blurred because the image    forms <b>in front of the retina</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">It may occur    due to excessive curvature of the eye lens or elongation of the    eyeball.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Correction:</b>    Concave lens (diverging lens).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><u><b>Facts:</b></u></p>    <table>     <col>      <col>      <col>      <tr>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Defect</p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Image formation / Cause</p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Correction</p>      </td>     </tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Myopia</p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       In front of retina</p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Concave lens</p>      </td>     </tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Hypermetropia</p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Behind retina</p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Convex lens</p>      </td>     </tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Presbyopia</p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Reduced accommodation with age</p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Bifocal/progressive lens</p>      </td>     </tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Cataract</p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Clouding of eye lens</p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Surgery</p>      </td>     </tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Astigmatism</p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Unequal curvature of cornea/lens</p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Cylindrical lens</p>      </td>     </tr>    </table>", "question_heading": ""}, {"sr_no": 25, "question": " <p style=\"orphans:0;widows:0\">    <b>Which of the following is a non-metallic mineral commonly used    in the manufacture of cement?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Manganese</p>", "option2": " <p style=\"orphans:0;widows:0\">    Mica</p>", "option3": " <p style=\"orphans:0;widows:0\">    Limestone</p>", "option4": " <p style=\"orphans:0;widows:0\">    Bauxite</p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Limestone</b> is a non-metallic mineral and a sedimentary rock    primarily composed of calcium carbonate (CaCO₃).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">It is an    important raw material used in the manufacture of <b>cement, lime    and glass</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Manganese:</b>    Used in steel manufacturing.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Mica:</b>    Non-metallic mineral used in electrical and electronic industries.</p>    <p style=\"orphans:0;widows:0\"><b>Bauxite:</b> Principal ore of    aluminium.</p>", "question_heading": ""}, {"sr_no": 26, "question": " <p style=\"orphans:0;widows:0\">    <b>Which cell organelle is known as the site of photosynthesis in    green plants?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Mitochondria</p>", "option2": " <p style=\"orphans:0;widows:0\">    Ribosome</p>", "option3": " <p style=\"orphans:0;widows:0\">    Chloroplast</p>", "option4": " <p style=\"orphans:0;widows:0\">    Nucleus</p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Chloroplasts</b> contain the green pigment <b>chlorophyll</b>,    which absorbs sunlight for photosynthesis.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">During    photosynthesis, plants use carbon dioxide and water in the    presence of light to prepare glucose and release oxygen.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Mitochondria:</b>    Site of cellular respiration; known as the powerhouse of the cell.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Ribosomes:</b>    Responsible for protein synthesis.</p>    <p style=\"orphans:0;widows:0\"><b>Nucleus:</b> Controls cellular    activities.</p>", "question_heading": ""}, {"sr_no": 27, "question": " <p style=\"orphans:0;widows:0\">    <b>Backup is _____</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Protecting data by copying it from the original source to a    different destination.</p>", "option2": " <p style=\"orphans:0;widows:0\">    Accessing data on tape</p>", "option3": " <p style=\"orphans:0;widows:0\">    Restoring the information backup</p>", "option4": " <p style=\"orphans:0;widows:0\">    A &amp; C</p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Backup is the process of creating a duplicate copy of data to    prevent data loss.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">It helps    recover information in case of accidental deletion, hardware    failure or virus attacks.</p>    <p style=\"orphans:0;widows:0\">Restoring means recovering data    from an existing backup.</p>", "question_heading": ""}, {"sr_no": 28, "question": " <p style=\"orphans:0;widows:0\">    <b>_______is a secondary memory device.</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Speaker</p>", "option2": " <p style=\"orphans:0;widows:0\">    Scanner</p>", "option3": " <p style=\"orphans:0;widows:0\">    Antenna</p>", "option4": " <p style=\"orphans:0;widows:0\">    Disk</p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    A disk (Hard Disk / SSD) is used for secondary storage of data.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Secondary    memory is non-volatile, meaning it retains data even when the    power is switched off.</p>    <p style=\"orphans:0;widows:0\">Examples: HDD, SSD, CD, DVD and    Pen Drive.</p>", "question_heading": ""}, {"sr_no": 29, "question": " <p style=\"orphans:0;widows:0\">    <b>Switch is a network device whose responsibility is to________</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Connect Network devices</p>", "option2": " <p style=\"orphans:0;widows:0\">    Restart the Network</p>", "option3": " <p style=\"orphans:0;widows:0\">    Protect from virus attack</p>", "option4": " <p style=\"orphans:0;widows:0\">    Connect the Other Devices</p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    A network switch connects multiple devices within a Local Area    Network (LAN).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">It forwards    data to the intended device using MAC addresses.</p>    <p style=\"orphans:0;widows:0\">It operates primarily at the Data    Link Layer (Layer 2) of the OSI Model.</p>", "question_heading": ""}, {"sr_no": 30, "question": " <p style=\"orphans:0;widows:0\">    <b>Which of the following translates internet domain and host    names to IP address?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Translator</p>", "option2": " <p style=\"orphans:0;widows:0\">    DNS</p>", "option3": " <p style=\"orphans:0;widows:0\">    Software</p>", "option4": " <p style=\"orphans:0;widows:0\">    Super Computer</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    DNS stands for <b>Domain Name System</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">It translates    human-readable domain names into IP addresses.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Example: It    helps locate the IP address associated with a domain name such as    google.com.</p>    <p style=\"orphans:0;widows:0\">DNS is also known as the    Phonebook of the Internet.</p>", "question_heading": ""}, {"sr_no": 31, "question": " <p style=\"orphans:0;widows:0\">    <b>On the occasion of World No Tobacco Day 2026, which official    launched the pilot version of the \"Tobacco-Free Educational    Institutions\" (ToFEI) Application under the National Tobacco    Control Programme?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Mansukh Mandaviya</p>", "option2": " <p style=\"orphans:0;widows:0\">    Punya Salila Srivastava</p>", "option3": " <p style=\"orphans:0;widows:0\">    Apurva Chandra</p>", "option4": " <p style=\"orphans:0;widows:0\">    Rajesh Bhushan</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Observed on:</b> 31 May every year.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Application:</b>    Tobacco-Free Educational Institutions (ToFEI) App.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Launched    by:</b> Punya Salila Srivastava, Union Health Secretary.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Objective:</b>    To strengthen monitoring and compliance with tobacco-free norms in    schools and colleges.</p>    <p style=\"orphans:0;widows:0\"><b>2026 Theme:</b> “Unmasking    the appeal – countering nicotine and tobacco addiction.”</p>", "question_heading": ""}, {"sr_no": 32, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Consider the following statements regarding the 'Mission for    Cotton Productivity' approved by the Union Cabinet:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>1. The mission was initially announced in the Union Budget    2025–26.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>2. It aims to address issues related to productivity    bottlenecks, declining growth, and quality concerns in the cotton    sector.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>3. The total approved financial outlay for the mission is Rs.    12,980 crore.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>4. The mission is designed to be implemented over a period of 5    years, from FY 2026–27 to FY 2030–31.</b></p>    <p style=\"orphans:0;widows:0\"><b>Which of the    statements given above are correct?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    1, 2, and 3 only</p>", "option2": " <p style=\"orphans:0;widows:0\">    1, 2, and 4 only</p>", "option3": " <p style=\"orphans:0;widows:0\">    2, 3, and 4 only</p>", "option4": " <p style=\"orphans:0;widows:0\">    1, 3, and 4 only</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Statements 1, 2, and 4 are correct.</p>    <p style=\"orphans:0;widows:0\">Statement 3 is incorrect because    the approved financial outlay for the mission is Rs. 5,659.22    crore, not Rs. 12,980 crore (which relates to the Bharat Maritime    Insurance Pool).</p>", "question_heading": ""}, {"sr_no": 33, "question": " <p style=\"orphans:0;widows:0\">    <b>Raja Randhir Singh, who passed away in May 2026, was a    legendary sports administrator and a five-time Olympian. Which of    the following positions did he hold at the time of his passing or    shortly before it?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    President of the Indian Olympic Association (IOA)</p>", "option2": " <p style=\"orphans:0;widows:0\">    President of the Olympic Council of Asia (OCA)</p>", "option3": " <p style=\"orphans:0;widows:0\">    President of the International Olympic Committee (IOC)</p>", "option4": " <p style=\"orphans:0;widows:0\">    Secretary General of the World Anti-Doping Agency (WADA)</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Born:</b> 18 October 1946, Patiala, Punjab.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Died:</b>    27 May 2026, aged 79.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Field:</b>    Shooting and sports administration.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>First    Indian to become President of:</b> Olympic Council of Asia (OCA).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Elected:</b>    September 2024, at the 44th OCA General Assembly, New Delhi.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Asian    Games Gold:</b> 1978, Bangkok (Men's Trap Shooting).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Distinction:</b>    First Indian shooter to win an Asian Games gold medal.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Indian    Olympic Association (IOA):</b> Secretary General from 1987 to    2012.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Olympic    Council of Asia:</b> Secretary General from 1991 to 2015.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>International    Olympic Committee (IOC):</b> Member from 2001 to 2014; later    Honorary Member.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Olympic    participation:</b> Five-time Olympian (1968–1984).</p>    <p style=\"orphans:0;widows:0\"><b>Award:</b> Arjuna Award    (1979).</p>", "question_heading": ""}, {"sr_no": 34, "question": " <p style=\"orphans:0;widows:0\">    <b>The second edition of the India-Cambodia Bilateral Military    Exercise, CINBAX-II 2026, was recently concluded. In which country    was this joint military exercise held?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    India</p>", "option2": " <p style=\"orphans:0;widows:0\">    Cambodia</p>", "option3": " <p style=\"orphans:0;widows:0\">    Vietnam</p>", "option4": " <p style=\"orphans:0;widows:0\">    Thailand</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The second edition of the India-Cambodia Bilateral Military    Exercise, known as CINBAX-II 2026, was successfully concluded in    Cambodia. The exercise focused on strengthening military    cooperation, interoperability, and sharing best practices in    counter-insurgency and humanitarian assistance operations.</p>", "question_heading": ""}, {"sr_no": 35, "question": " <p style=\"orphans:0;widows:0\">    <b>Which launch vehicle will be utilized to launch the Shukrayaan    mission?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    PSLV-XL</p>", "option2": " <p style=\"orphans:0;widows:0\">    GSLV Mk II</p>", "option3": " <p style=\"orphans:0;widows:0\">    LVM-3</p>", "option4": " <p style=\"orphans:0;widows:0\">    SSLV-D3</p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Shukrayaan Mission Profile &amp; Timeline:</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">● Launch    Date: March 29, 2028.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">● Venus    Orbit Insertion: July 19, 2028 (following a 112-day journey).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">● Launch    Vehicle: LVM-3 (upgraded for higher payload capacity).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">● Mission    Life: Planned for 4 years in Venusian orbit.</p>    <p style=\"orphans:0;widows:0\">● Sweden joined India's    Shukrayaan (Venus Orbiter Mission) to conduct scientific research    on Venus's atmosphere.</p>", "question_heading": ""}, {"sr_no": 36, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>With reference to the Nuclear Energy Mission announced in the    Union Budget 2025–26, consider the following statements:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>1. A budgetary allocation of ₹20,000 crore has been made    specifically for the research, design, and deployment of Small    Modular Reactors (SMRs).</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>2. The mission aims to operationalize at least five indigenous    SMRs by 2033.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>3. The mission excludes private sector participation in the    development of nuclear energy technologies.</b></p>    <p style=\"orphans:0;widows:0\"><b>Which of the    statements given above are correct?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    1 and 2 only</p>", "option2": " <p style=\"orphans:0;widows:0\">    2 and 3 only</p>", "option3": " <p style=\"orphans:0;widows:0\">    1 and 3 only</p>", "option4": " <p style=\"orphans:0;widows:0\">    1, 2, and 3</p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Statement 3 is incorrect. The Nuclear Energy Mission explicitly    encourages partnerships with the private sector for the research,    development, and setting up of reactors (such as the Bharat Small    Reactors), marking a shift in India’s long-standing policy of    state-led nuclear development.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">● India’s    Nuclear Energy Mission is a strategic government initiative aimed    at rapidly expanding the country's nuclear power capacity to 100    GW by 2047, aligning with the goal of achieving Net-Zero emissions    by 2070.</p>    <p style=\"orphans:0;widows:0\">● The mission was launched with    an initial allocation of ₹20,000 crore to drive the research and    development of Small Modular Reactors (SMRs).</p>", "question_heading": ""}, {"sr_no": 37, "question": " <p style=\"orphans:0;widows:0\">    <b>Which of the following is the main objective of the PM-Surya    Ghar: Muft Bijli Yojana, launched in February 2024?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    To provide free LPG connections to 1 crore households</p>", "option2": " <p style=\"orphans:0;widows:0\">    To promote rooftop solar installations in 1 crore households</p>", "option3": " <p style=\"orphans:0;widows:0\">    To provide free electricity to farmers</p>", "option4": " <p style=\"orphans:0;widows:0\">    To promote solar parks in rural areas</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <u><b>PM-Surya Ghar: Muft Bijli Yojana</b></u></p>    <table>     <col>      <col>      <tr>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       <u><b>Particulars</b></u></p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       <u><b>Details</b></u></p>      </td>     </tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       <b>Launched By</b></p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Prime Minister Narendra Modi</p>      </td>     </tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       <b>Launch Date</b></p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       13 February 2024</p>      </td>     </tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       <b>Objective</b></p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Promote rooftop solar installation in residential houses</p>      </td>     </tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       <b>Total Outlay</b></p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       ₹75,021 crore</p>      </td>     </tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       <b>Target Beneficiaries</b></p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       1 crore households</p>      </td>     </tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       <b>Main Benefit</b></p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Up to 300 units of free electricity per month</p>      </td>     </tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       <b>Solar System Type</b></p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Rooftop Solar Panels</p>      </td>     </tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr></tr>     <tr>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       <b>Nodal Ministry</b></p>      </td>      <td style=\"border: 1px solid black;\">\n<p style=\"orphans:0;widows:0\">       Ministry of New and Renewable Energy (MNRE)</p>      </td>     </tr>    </table>", "question_heading": ""}, {"sr_no": 38, "question": " <p style=\"orphans:0;widows:0\">    <b>Which European Union nation recently passed landmark    legislation to become the first in the bloc to ban social media    access for children under 15 years old?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    France</p>", "option2": " <p style=\"orphans:0;widows:0\">    Germany</p>", "option3": " <p style=\"orphans:0;widows:0\">    Spain</p>", "option4": " <p style=\"orphans:0;widows:0\">    Italy</p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    France's parliament approved landmark legislation making it the    first European Union country to ban social media access for    children under 15, aiming to protect minors from cyberbullying,    addictive algorithms, and adverse mental health impacts</p>", "question_heading": ""}, {"sr_no": 39, "question": " <p style=\"orphans:0;widows:0\">    <b>PV Sindhu captured the women's singles title at the Japan Open    2026 by defeating which player in the final to become the    first-ever Indian to win the tournament?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Tai Tzu-ying</p>", "option2": " <p style=\"orphans:0;widows:0\">    An Se-young</p>", "option3": " <p style=\"orphans:0;widows:0\">    Akane Yamaguchi</p>", "option4": " <p style=\"orphans:0;widows:0\">    Chen Yufei</p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    ● Men’s singles: Christo Popov (France) defeating Koki    Watanabe (Japan)</p>    <p style=\"orphans:0;widows:0\">● Women’s singles: P. V.    Sindhu (India) defeating Akane Yamaguchi (Japan)</p>", "question_heading": ""}, {"sr_no": 40, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Consider the following statements regarding Mission Aagaman and    the Vikram-1 launch vehicle:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>1. Mission Aagaman marked India's historic first private    sub-orbital flight, launching successfully from the Dr. APJ Abdul    Kalam Island.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>2. Vikram-1 is India's first government-owned orbital-class    launch vehicle designed exclusively for crewed missions to the    International Space Station.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>3. The mission successfully placed six payloads into a 450 km    Low Earth Orbit.</b></p>    <p style=\"orphans:0;widows:0\"><b>Which of the    statements given above are incorrect?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    1 and 2 only</p>", "option2": " <p style=\"orphans:0;widows:0\">    2 and 3 only</p>", "option3": " <p style=\"orphans:0;widows:0\">    1 and 3 only</p>", "option4": " <p style=\"orphans:0;widows:0\">    1, 2 and 3</p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    ● Statements 1 and 2 are incorrect. Mission Aagaman was India's    first private orbital rocket flight (not sub-orbital) launched    from Sriharikota.</p>    <p style=\"orphans:0;widows:0\">● Vikram-1 is India's first    privately developed (not government-owned) orbital-class launch    vehicle built by Skyroot Aerospace.</p>", "question_heading": ""}];
+
+let currentQuestion = 0;
+let answers = {};
+let bookmarks = new Set();
+let timerSeconds = 0;
+let timerInterval = null;
+let isPaletteOpen = false;
+
+const STORAGE_KEY = 'quizState_' + (document.title || 'default');
+
+function isImageURL(str) {
+  return str && (str.startsWith('http://') || str.startsWith('https://'));
+}
+
+function createOptionContent(optionText) {
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'option-content';
+    
+    if (isImageURL(optionText)) {
+        const img = document.createElement('img');
+        img.src = optionText;
+        img.className = 'option-image';
+        img.alt = 'Option image';
+        img.loading = 'lazy';
+        img.onerror = function() {
+            this.style.display = 'none';
+            const errorText = document.createTextNode('Image failed to load');
+            contentDiv.appendChild(errorText);
+        };
+        contentDiv.appendChild(img);
+    } else {
+        contentDiv.innerHTML = optionText;
+    }
+    
+    return contentDiv;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  initQuiz();
+  initEventListeners();
+  loadFromLocalStorage();
+  startTimer();
+  createPalette();
+  preventDoubleTapZoom();
+});
+
+function preventDoubleTapZoom() {
+  let lastTouchEnd = 0;
+  document.addEventListener('touchend', (event) => {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) {
+      event.preventDefault();
+    }
+    lastTouchEnd = now;
+  }, { passive: false });
+}
+
+function initTheme() {
+  const savedTheme = localStorage.getItem('quizTheme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  updateThemeIcon();
+}
+
+function updateThemeIcon() {
+  const theme = document.documentElement.getAttribute('data-theme');
+  const themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    themeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  }
+}
+
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('quizTheme', newTheme);
+  updateThemeIcon();
+}
+
+function initQuiz() {
+  loadQuestion(currentQuestion);
+  updateMarkingInfo();
+}
+
+function initEventListeners() {
+  const themeBtn = document.getElementById('themeToggle');
+  const fullscreenBtn = document.getElementById('fullscreenBtn');
+  
+  if (themeBtn) {
+    themeBtn.addEventListener('click', toggleTheme);
+    themeBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      toggleTheme();
+    });
+  }
+  
+  if (fullscreenBtn) {
+    fullscreenBtn.addEventListener('click', toggleFullscreen);
+    fullscreenBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      toggleFullscreen();
+    });
+  }
+  
+  addButtonListener('prevBtn', prevQuestion);
+  addButtonListener('nextBtn', nextQuestion);
+  addButtonListener('clearBtn', clearAnswer);
+  addButtonListener('submitBtn', confirmSubmit);
+  addButtonListener('bookmarkBtn', toggleBookmark);
+  
+  addButtonListener('paletteFab', togglePalette);
+  addButtonListener('paletteClose', closePalette);
+  
+  const overlay = document.getElementById('paletteOverlay');
+  if (overlay) {
+    overlay.addEventListener('click', closePalette);
+    overlay.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      closePalette();
+    });
+  }
+  
+  const searchInput = document.getElementById('paletteSearch');
+  if (searchInput) {
+    searchInput.addEventListener('input', handleSearch);
+    searchInput.addEventListener('change', jumpToQuestion);
+  }
+  
+  document.addEventListener('keydown', handleKeyPress);
+  
+  setInterval(saveToLocalStorage, 5000);
+  
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      updatePalette();
+    }
+  });
+}
+
+function addButtonListener(id, handler) {
+  const btn = document.getElementById(id);
+  if (btn) {
+    btn.addEventListener('click', handler);
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      handler();
+    });
+  }
+}
+
+function jumpToQuestion(e) {
+  const questionNum = parseInt(e.target.value);
+  if (questionNum >= 1 && questionNum <= questions.length) {
+    goToQuestion(questionNum - 1);
+    closePalette();
+    e.target.value = '';
+  }
+}
+
+function togglePalette() {
+  isPaletteOpen = !isPaletteOpen;
+  const palette = document.getElementById('questionPalette');
+  const overlay = document.getElementById('paletteOverlay');
+  const fab = document.getElementById('paletteFab');
+  
+  if (isPaletteOpen) {
+    palette.classList.add('active');
+    overlay.classList.add('active');
+    fab.classList.add('active');
+    fab.innerHTML = '✕<span class="badge" id="answeredBadge">' + Object.keys(answers).length + '</span>';
+    document.body.classList.add('palette-open');
+  } else {
+    closePalette();
+  }
+}
+
+function closePalette() {
+  isPaletteOpen = false;
+  const palette = document.getElementById('questionPalette');
+  const overlay = document.getElementById('paletteOverlay');
+  const fab = document.getElementById('paletteFab');
+  
+  if (palette) palette.classList.remove('active');
+  if (overlay) overlay.classList.remove('active');
+  if (fab) {
+    fab.classList.remove('active');
+    fab.innerHTML = '📋<span class="badge" id="answeredBadge">' + Object.keys(answers).length + '</span>';
+  }
+  document.body.classList.remove('palette-open');
+}
+
+function handleSearch(e) {
+  const searchTerm = e.target.value.toLowerCase();
+  if (!searchTerm) {
+    document.querySelectorAll('.palette-btn').forEach(btn => {
+      btn.style.display = '';
+    });
+    return;
+  }
+  
+  const buttons = document.querySelectorAll('.palette-btn');
+  buttons.forEach((btn, index) => {
+    const questionNum = (index + 1).toString();
+    if (questionNum.includes(searchTerm)) {
+      btn.style.display = '';
+    } else {
+      btn.style.display = 'none';
+    }
+  });
+}
+
+function handleKeyPress(e) {
+  if (document.getElementById('resultSection').classList.contains('hidden')) {
+    if (e.key === 'Escape' && isPaletteOpen) {
+      closePalette();
+    } else if (!isPaletteOpen && e.target.tagName !== 'INPUT') {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevQuestion();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        nextQuestion();
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        nextQuestion();
+      } else if (e.key === 'b' || e.key === 'B') {
+        e.preventDefault();
+        toggleBookmark();
+      } else if (e.key === 'c' || e.key === 'C') {
+        e.preventDefault();
+        clearAnswer();
+      } else if (e.key === 'p' || e.key === 'P') {
+        e.preventDefault();
+        togglePalette();
+      } else if (e.key >= '1' && e.key <= '4') {
+        e.preventDefault();
+        selectOption(parseInt(e.key));
+      }
+    }
+  }
+}
+
+function selectOption(optionNum) {
+  const q = questions[currentQuestion];
+  const radio = document.querySelector(`input[name="q${q.sr_no}"][value="${optionNum}"]`);
+  if (radio) {
+    radio.checked = true;
+    const label = radio.closest('.option-label');
+    if (label) {
+      document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      saveAnswer();
+    }
+  }
+}
+
+function toggleFullscreen() {
+  try {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(err => {
+        console.log('Fullscreen error:', err);
+      });
+    } else {
+      document.exitFullscreen();
+    }
+  } catch (err) {
+    console.log('Fullscreen not supported');
+  }
+}
+
+function startTimer() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+  timerInterval = setInterval(() => {
+    timerSeconds++;
+    updateTimer();
+    if (timerSeconds > 600) {
+      const timer = document.getElementById('timer');
+      if (timer) timer.classList.add('warning');
+    }
+  }, 1000);
+}
+
+function updateTimer() {
+  const minutes = Math.floor(timerSeconds / 60);
+  const seconds = timerSeconds % 60;
+  const timer = document.getElementById('timer');
+  if (timer) {
+    timer.textContent = 
+      `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  }
+}
+
+function createPalette() {
+  const grid = document.getElementById('paletteGrid');
+  if (!grid) return;
+  
+  grid.innerHTML = '';
+  questions.forEach((q, index) => {
+    const btn = document.createElement('button');
+    btn.textContent = index + 1;
+    btn.className = 'palette-btn';
+    btn.setAttribute('aria-label', `Go to question ${index + 1}`);
+    btn.setAttribute('type', 'button');
+    
+    btn.addEventListener('click', () => {
+      goToQuestion(index);
+      closePalette();
+    });
+    
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      goToQuestion(index);
+      closePalette();
+    });
+    
+    grid.appendChild(btn);
+  });
+  updatePalette();
+}
+
+function updatePalette() {
+  const buttons = document.querySelectorAll('.palette-btn');
+  buttons.forEach((btn, index) => {
+    btn.className = 'palette-btn';
+    if (index === currentQuestion) btn.classList.add('current');
+    if (answers[questions[index].sr_no]) btn.classList.add('answered');
+    if (bookmarks.has(questions[index].sr_no)) btn.classList.add('bookmarked');
+  });
+  
+  updatePaletteStats();
+}
+
+function updatePaletteStats() {
+  const answered = Object.keys(answers).length;
+  const unanswered = questions.length - answered;
+  const bookmarkedCount = bookmarks.size;
+  
+  const answeredEl = document.getElementById('paletteAnswered');
+  const unansweredEl = document.getElementById('paletteUnanswered');
+  const bookmarkedEl = document.getElementById('paletteBookmarked');
+  
+  if (answeredEl) answeredEl.textContent = answered;
+  if (unansweredEl) unansweredEl.textContent = unanswered;
+  if (bookmarkedEl) bookmarkedEl.textContent = bookmarkedCount;
+  
+  const badge = document.querySelector('.palette-fab .badge');
+  if (badge) badge.textContent = answered;
+}
+
+function goToQuestion(index) {
+  if (index < 0 || index >= questions.length) return;
+  saveAnswer();
+  currentQuestion = index;
+  loadQuestion(currentQuestion);
+  
+  const questionSection = document.getElementById('questionSection');
+  if (questionSection) {
+    setTimeout(() => {
+      questionSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+}
+
+function loadQuestion(index) {
+  const q = questions[index];
+  
+  const questionNumber = document.getElementById('questionNumber');
+  const questionText = document.getElementById('questionText');
+  
+  if (questionNumber) {
+    questionNumber.textContent = `Question ${index + 1} of ${questions.length}`;
+  }
+  
+  if (questionText) {
+    questionText.innerHTML = '';
+    
+    // 🌟 NEW: Create the Heading Box if it exists!
+    let headingHtml = '';
+    if (q.question_heading && q.question_heading.trim() !== '') {
+      headingHtml = `<div style="background: var(--bg-tertiary); padding: 15px; border-left: 4px solid var(--primary-color); margin-bottom: 20px; border-radius: 8px; overflow-x: auto;">${q.question_heading}</div>`;
+      questionText.innerHTML = headingHtml; // Inject heading first
+    }
+
+    if (isImageURL(q.question)) {
+      const img = document.createElement('img');
+      img.src = q.question;
+      img.className = 'question-image';
+      img.alt = 'Question image';
+      img.loading = 'lazy';
+      img.onerror = function() {
+        this.style.display = 'none';
+        questionText.innerHTML += q.question;
+      };
+      questionText.appendChild(img);
+    } else {
+      questionText.innerHTML += q.question; // Append question after heading
+    }
+  }
+  
+  const container = document.getElementById('optionsContainer');
+  if (!container) return;
+  
+  container.innerHTML = '';
+  
+  for (let i = 1; i <= 4; i++) {
+    const label = document.createElement('label');
+    label.className = 'option-label';
+    if (answers[q.sr_no] == i) label.classList.add('selected');
+    
+    const radio = document.createElement('input');
+    radio.type = 'radio';
+    radio.name = `q${q.sr_no}`;
+    radio.value = i;
+    radio.checked = answers[q.sr_no] == i;
+    
+    const changeHandler = () => {
+      document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      saveAnswer();
+    };
+    
+    radio.addEventListener('change', changeHandler);
+    label.addEventListener('click', (e) => {
+      if (e.target !== radio) {
+        radio.checked = true;
+        changeHandler();
+      }
+    });
+    
+    label.appendChild(radio);
+    
+    const optionContent = createOptionContent(q[`option${i}`]);
+    label.appendChild(optionContent);
+    
+    container.appendChild(label);
+  }
+  
+  const bookmarkBtn = document.getElementById('bookmarkBtn');
+  if (bookmarkBtn) {
+    if (bookmarks.has(q.sr_no)) {
+      bookmarkBtn.classList.add('active');
+    } else {
+      bookmarkBtn.classList.remove('active');
+    }
+  }
+  
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const submitBtn = document.getElementById('submitBtn');
+  
+  if (prevBtn) prevBtn.disabled = index === 0;
+  
+  if (index === questions.length - 1) {
+    if (nextBtn) nextBtn.classList.add('hidden');
+    if (submitBtn) submitBtn.classList.remove('hidden');
+  } else {
+    if (nextBtn) nextBtn.classList.remove('hidden');
+    if (submitBtn) submitBtn.classList.add('hidden');
+  }
+  
+  updateProgress();
+  updatePalette();
+}
+
+function updateMarkingInfo() {
+  if(questions.length > 0) {
+      const q = questions[0];
+      const markingInfo = document.getElementById('markingInfo');
+      if (markingInfo) {
+        markingInfo.textContent = `Marking: +${q.positive_marking}, -${q.negative_marking}`;
+      }
+  }
+}
+
+function updateProgress() {
+  const attempted = Object.keys(answers).length;
+  const currentProgress = ((currentQuestion + 1) / questions.length) * 100;
+  
+  const progressBar = document.getElementById('progressBar');
+  const progressText = document.getElementById('progressText');
+  const attemptedText = document.getElementById('attemptedText');
+  
+  if (progressBar) progressBar.style.width = `${currentProgress}%`;
+  if (progressText) progressText.textContent = `${currentQuestion + 1}/${questions.length}`;
+  if (attemptedText) attemptedText.textContent = attempted;
+}
+
+function saveAnswer() {
+  const q = questions[currentQuestion];
+  const selected = document.querySelector(`input[name="q${q.sr_no}"]:checked`);
+  
+  if (selected) {
+    answers[q.sr_no] = selected.value;
+  }
+  
+  updateProgress();
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function clearAnswer() {
+  const q = questions[currentQuestion];
+  delete answers[q.sr_no];
+  
+  const selected = document.querySelector(`input[name="q${q.sr_no}"]:checked`);
+  if (selected) selected.checked = false;
+  
+  document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+  
+  updateProgress();
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function toggleBookmark() {
+  const q = questions[currentQuestion];
+  const btn = document.getElementById('bookmarkBtn');
+  
+  if (bookmarks.has(q.sr_no)) {
+    bookmarks.delete(q.sr_no);
+    if (btn) btn.classList.remove('active');
+  } else {
+    bookmarks.add(q.sr_no);
+    if (btn) btn.classList.add('active');
+  }
+  
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function nextQuestion() {
+  saveAnswer();
+  if (currentQuestion < questions.length - 1) {
+    currentQuestion++;
+    loadQuestion(currentQuestion);
+  }
+}
+
+function prevQuestion() {
+  saveAnswer();
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    loadQuestion(currentQuestion);
+  }
+}
+
+function confirmSubmit() {
+  const unattempted = questions.length - Object.keys(answers).length;
+  let message = 'Are you sure you want to submit the quiz?';
+  
+  if (unattempted > 0) {
+    message += `\n\nYou have ${unattempted} unanswered question(s).`;
+  }
+  
+  if (confirm(message)) {
+    submitQuiz();
+  }
+}
+
+function submitQuiz() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+  }
+  saveAnswer();
+  closePalette();
+  
+  let correct = 0, wrong = 0, unattempted = 0, score = 0;
+  
+  questions.forEach(q => {
+    const userAns = answers[q.sr_no];
+    const posMark = parseFloat(q.positive_marking) || 0;
+    const negMark = parseFloat(q.negative_marking) || 0;
+    
+    if (!userAns) {
+      unattempted++;
+    } else if (userAns == q.answer) {
+      correct++;
+      score += posMark;
+    } else {
+      wrong++;
+      score -= negMark;
+    }
+  });
+  
+  displayResults(correct, wrong, unattempted, score);
+  
+  const fab = document.getElementById('paletteFab');
+  const nav = document.getElementById('navigation');
+  if (fab) fab.style.display = 'none';
+  if (nav) nav.style.display = 'none';
+  
+  document.body.style.paddingBottom = '20px';
+  
+  clearLocalStorage();
+}
+
+function displayResults(correct, wrong, unattempted, score) {
+  const totalQuestions = questions.length;
+  const percentage = ((correct / totalQuestions) * 100).toFixed(1);
+  const timerEl = document.getElementById('timer');
+  const timeText = timerEl ? timerEl.textContent : '00:00';
+  
+  let html = `
+    <div class="score-card">
+      <h2>${score}/${totalQuestions}</h2>
+      <p>Your Score: ${percentage}%</p>
+      <p>Time Taken: ${timeText}</p>
+    </div>
+    
+    <div class="stats-grid">
+      <div class="stat-card correct">
+        <h3>${correct}</h3>
+        <p>Correct</p>
+      </div>
+      <div class="stat-card wrong">
+        <h3>${wrong}</h3>
+        <p>Wrong</p>
+      </div>
+      <div class="stat-card unattempted">
+        <h3>${unattempted}</h3>
+        <p>Unattempted</p>
+      </div>
+      <div class="stat-card">
+        <h3>${totalQuestions}</h3>
+        <p>Total</p>
+      </div>
+    </div>
+  `;
+  
+  questions.forEach(q => {
+    const userAns = answers[q.sr_no];
+    
+    // 🌟 NEW: Add the Heading to the results review screen!
+    let headingHtml = (q.question_heading && q.question_heading.trim() !== '') 
+      ? `<div style="background: var(--bg-tertiary); padding: 10px; margin-bottom: 15px; border-left: 4px solid var(--primary-color); border-radius: 5px; overflow-x: auto;">${q.question_heading}</div>` 
+      : '';
+      
+    const questionHeader = isImageURL(q.question)
+      ? `<h4>Q${q.sr_no}:</h4>${headingHtml}<img src="${q.question}" class="question-image" alt="Question ${q.sr_no}">`
+      : `<h4>Q${q.sr_no}:</h4>${headingHtml}<div style="margin-bottom: 10px;">${q.question}</div>`;
+      
+    html += `<div class="question-review">${questionHeader}`;
+    
+    for (let i = 1; i <= 4; i++) {
+      const isCorrect = i.toString() === q.answer;
+      const isUserAnswer = userAns == i.toString();
+      
+      let className = 'review-option';
+      if (isCorrect) className += ' correct';
+      if (isUserAnswer && !isCorrect) className += ' wrong';
+      if (isUserAnswer) className += ' user-selected';
+      
+      const optionValue = q[`option${i}`];
+      
+      if (isImageURL(optionValue)) {
+        html += `<div class="${className}">
+          ${isCorrect ? '✓ ' : ''}${isUserAnswer ? '➤ ' : ''} 
+          <img src="${optionValue}" class="option-image" alt="Option ${i}">
+        </div>`;
+      } else {
+        html += `<div class="${className}">
+          ${isCorrect ? '✓ ' : ''}${isUserAnswer ? '➤ ' : ''}${optionValue}
+        </div>`;
+      }
+    }
+    
+    if (q.solution_text && q.solution_text.trim() !== '') {
+      const solutionContent = isImageURL(q.solution_text)
+        ? `<img src="${q.solution_text}" class="solution-image" alt="Solution">`
+        : q.solution_text;
+      html += `<div class="solution-section">
+        <div class="solution-label">📝 Solution:</div>
+        <div class="solution-content">${solutionContent}</div>
+      </div>`;
+    }
+    
+    html += `</div>`; 
+});
+  
+  html += `
+    <div class="action-buttons">
+      <button class="action-btn restart" onclick="restartQuiz()">Restart Quiz</button>
+      <button class="action-btn download" onclick="downloadResults()">Download Results</button>
+      <button class="action-btn print" onclick="window.print()">Print Results</button>
+    </div>
+  `;
+  
+  const resultSection = document.getElementById('resultSection');
+  const questionSection = document.getElementById('questionSection');
+  const progressSection = document.querySelector('.progress-section');
+  
+  if (resultSection) {
+    resultSection.innerHTML = html;
+    resultSection.classList.remove('hidden');
+  }
+  if (questionSection) questionSection.classList.add('hidden');
+  if (progressSection) progressSection.classList.add('hidden');
+  
+  const quizContainer = document.getElementById('quizContainer');
+  if (quizContainer) {
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
+  }
+}
+
+function restartQuiz() {
+  if (confirm('Are you sure you want to restart? All progress will be lost.')) {
+    currentQuestion = 0;
+    answers = {};
+    bookmarks.clear();
+    timerSeconds = 0;
+    
+    const resultSection = document.getElementById('resultSection');
+    const questionSection = document.getElementById('questionSection');
+    const progressSection = document.querySelector('.progress-section');
+    const fab = document.getElementById('paletteFab');
+    const nav = document.getElementById('navigation');
+    
+    if (resultSection) {
+      resultSection.classList.add('hidden');
+      resultSection.innerHTML = '';
+    }
+    if (questionSection) questionSection.classList.remove('hidden');
+    if (progressSection) progressSection.classList.remove('hidden');
+    if (fab) fab.style.display = 'flex';
+    if (nav) nav.style.display = 'grid';
+    
+    document.body.style.paddingBottom = 'var(--nav-height)';
+    
+    if (timerInterval) {
+      clearInterval(timerInterval);
+    }
+    startTimer();
+    
+    loadQuestion(currentQuestion);
+    createPalette();
+  }
+}
+
+function downloadResults() {
+  const resultSection = document.getElementById('resultSection');
+  if (!resultSection) return;
+  
+  const resultHTML = resultSection.innerHTML;
+  const fullHTML = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Results</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; max-width: 900px; margin: 0 auto; }
+    .score-card { background: linear-gradient(135deg, #007bff, #28a745); color: white; padding: 30px; border-radius: 15px; text-align: center; margin-bottom: 20px; }
+    .score-card h2 { font-size: 48px; margin-bottom: 10px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 30px; }
+    .stat-card { background: white; padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #ddd; }
+    .stat-card h3 { font-size: 32px; margin-bottom: 8px; }
+    .stat-card.correct h3 { color: #28a745; }
+    .stat-card.wrong h3 { color: #dc3545; }
+    .stat-card.unattempted h3 { color: #6c757d; }
+    .question-review { background: white; border: 2px solid #ddd; border-radius: 10px; padding: 20px; margin-bottom: 15px; }
+    .question-review h4 { margin-bottom: 15px; font-size: 16px; line-height: 1.6; }
+    .review-option { padding: 10px 15px; margin: 8px 0; border-radius: 8px; border: 2px solid #ddd; display: flex; align-items: center; gap: 10px; }
+    .option-image { max-width: 150px; max-height: 100px; border-radius: 8px; }
+    .review-option.correct { background: #d4edda; border-color: #28a745; color: #155724; }
+    .review-option.wrong { background: #f8d7da; border-color: #dc3545; color: #721c24; }
+    .review-option.user-selected { border-width: 3px; font-weight: bold; }
+    @media print { body { background: white; } }
+    @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center; color: #007bff;">Quiz Results</h1>
+  <p style="text-align: center; color: #666; margin-bottom: 30px;">Generated on: ${new Date().toLocaleString()}</p>
+  ${resultHTML.replace(/<div class="action-buttons">[\s\S]*?<\/div>/, '')}
+</body>
+</html>
+  `;
+  
+  try {
+    const blob = new Blob([fullHTML], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `Quiz_Results_${new Date().getTime()}.html`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  } catch (err) {
+    alert('Download failed. Please try using the Print option instead.');
+    console.error('Download error:', err);
+  }
+}
+
+function saveToLocalStorage() {
+  try {
+    const state = {
+      currentQuestion,
+      answers,
+      bookmarks: Array.from(bookmarks),
+      timerSeconds,
+      timestamp: Date.now()
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch (err) {
+    console.error('Save error:', err);
+  }
+}
+
+function loadFromLocalStorage() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const state = JSON.parse(saved);
+      const hasProgress = (state && (
+        (state.currentQuestion && state.currentQuestion > 0) ||
+        (state.answers && Object.keys(state.answers).length > 0) ||
+        (state.timerSeconds && state.timerSeconds > 0)
+      ));
+      if (hasProgress && (Date.now() - state.timestamp < 24 * 60 * 60 * 1000)) {
+        if (confirm('Resume previous quiz session?')) {
+          currentQuestion = state.currentQuestion || 0;
+          answers = state.answers || {};
+          bookmarks = new Set(state.bookmarks || []);
+          timerSeconds = state.timerSeconds || 0;
+          updateTimer();
+          loadQuestion(currentQuestion);
+        }
+      } else {
+        clearLocalStorage();
+      }
+    }
+  } catch (err) {
+    console.error('Load error:', err);
+    clearLocalStorage();
+  }
+}
+
+function clearLocalStorage() {
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (err) {
+    console.error('Clear storage error:', err);
+  }
+}
+
+window.addEventListener('beforeunload', (e) => {
+  const resultSection = document.getElementById('resultSection');
+  if (resultSection && !resultSection.classList.contains('hidden')) {
+    return;
+  }
+  e.preventDefault();
+  e.returnValue = '';
+});
+
+window.addEventListener('unload', () => {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+});
+</script>
+</body>
+</html>
