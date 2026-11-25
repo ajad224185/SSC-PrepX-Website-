@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>1.) ENGLISH + GK COMBINED TEST-1 - Hindi</title>
+<style>
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0069d9;
+  --success-color: #28a745;
+  --success-hover: #218838;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --secondary-color: #6c757d;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --border-color: #dee2e6;
+  --shadow: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
+  --overlay: rgba(0,0,0,0.5);
+  --nav-height: 80px;
+}
+
+[data-theme="dark"] {
+  --primary-color: #4dabf7;
+  --primary-hover: #339af0;
+  --success-color: #51cf66;
+  --success-hover: #40c057;
+  --danger-color: #ff6b6b;
+  --warning-color: #ffd43b;
+  --secondary-color: #868e96;
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #404040;
+  --text-primary: #f8f9fa;
+  --text-secondary: #adb5bd;
+  --border-color: #495057;
+  --shadow: 0 4px 6px rgba(0,0,0,0.3);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.4);
+  --overlay: rgba(0,0,0,0.7);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+  overflow-x: hidden;
+  position: relative;
+  padding-bottom: var(--nav-height);
+}
+
+body.palette-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-primary);
+  padding: 20px 30px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+
+.header h1 {
+  font-size: 28px;
+  color: var(--primary-color);
+  font-weight: 700;
+  user-select: none;
+}
+
+.header-controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.theme-toggle, .fullscreen-btn {
+  background: var(--bg-tertiary);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.3s;
+  min-width: 44px;
+  min-height: 44px;
+  user-select: none;
+}
+
+.theme-toggle:active, .fullscreen-btn:active {
+  transform: scale(0.95);
+}
+
+.theme-toggle:hover, .fullscreen-btn:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+.bot-link-btn {
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+}
+.bot-link-btn:active {
+  transform: scale(0.95);
+}
+.bot-link-btn:hover {
+  background: var(--primary-hover);
+}
+
+.timer {
+  background: var(--warning-color);
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 18px;
+  min-width: 100px;
+  text-align: center;
+  user-select: none;
+}
+
+.timer.warning {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.palette-fab {
+  position: fixed;
+  bottom: calc(var(--nav-height) + 20px);
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  box-shadow: 0 6px 20px rgba(0,123,255,0.4);
+  transition: all 0.3s ease;
+  z-index: 998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.palette-fab:active {
+  transform: scale(0.9);
+}
+
+.palette-fab:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0,123,255,0.6);
+}
+
+.palette-fab.active {
+  background: var(--danger-color);
+}
+
+.palette-fab .badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: var(--success-color);
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--bg-secondary);
+  pointer-events: none;
+}
+.solution-section {
+  margin-top: 20px;
+  padding: 15px;
+  background: #e7f3ff;
+  border-left: 4px solid var(--primary-color);
+  border-radius: 8px;
+}
+
+.solution-label {
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.solution-content {
+  line-height: 1.6;
+  color: #333;
+}
+
+.solution-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.palette-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 999;
+  touch-action: none;
+}
+
+.palette-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.question-palette {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 450px;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--bg-primary);
+  box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+  transition: right 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.question-palette.active {
+  right: 0;
+}
+
+.palette-header {
+  padding: 20px;
+  background: var(--primary-color);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.palette-header h3 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.palette-close {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: background 0.2s;
+  line-height: 1;
+  touch-action: manipulation;
+}
+
+.palette-close:active {
+  transform: scale(0.9);
+}
+
+.palette-close:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.palette-stats {
+  padding: 15px 20px;
+  background: var(--bg-tertiary);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  font-size: 13px;
+  text-align: center;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border-color);
+  user-select: none;
+}
+
+.palette-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.palette-stat .number {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.palette-stat.answered .number { color: var(--success-color); }
+.palette-stat.unanswered .number { color: var(--secondary-color); }
+.palette-stat.bookmarked .number { color: var(--warning-color); }
+
+.palette-search {
+  padding: 15px 20px;
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+}
+
+.palette-search input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 14px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.palette-search input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.palette-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 10px;
+}
+
+.palette-btn {
+  aspect-ratio: 1;
+  border: 2px solid var(--border-color);
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+  min-width: 40px;
+  min-height: 40px;
+  color: var(--text-primary);
+  position: relative;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.palette-btn:active {
+  transform: scale(0.9);
+}
+
+.palette-btn:hover {
+  transform: scale(1.1);
+  z-index: 10;
+  box-shadow: var(--shadow);
+}
+
+.palette-btn.current {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  animation: currentPulse 2s infinite;
+}
+
+@keyframes currentPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,123,255,0.7); }
+  50% { box-shadow: 0 0 0 8px rgba(0,123,255,0); }
+}
+
+.palette-btn.answered {
+  background: var(--success-color);
+  color: white;
+  border-color: var(--success-color);
+}
+
+.palette-btn.bookmarked::after {
+  content: '🔖';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.palette-btn.bookmarked.answered {
+  background: var(--success-color);
+}
+
+.palette-legend {
+  padding: 20px;
+  border-top: 1px solid var(--border-color);
+  font-size: 13px;
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.legend-color {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.quiz-container {
+  background: var(--bg-primary);
+  border-radius: 15px;
+  box-shadow: var(--shadow-lg);
+  padding: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  scroll-margin-top: 20px;
+}
+
+.quiz-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.marking-info {
+  display: inline-block;
+  background: var(--bg-tertiary);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.progress-section {
+  margin-bottom: 25px;
+}
+
+.progress-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.progress-bar-container {
+  background: var(--bg-tertiary);
+  border-radius: 12px;
+  overflow: hidden;
+  height: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+  transition: width 0.4s ease;
+  border-radius: 12px;
+}
+
+.question-section {
+  min-height: 300px;
+  scroll-margin-top: 80px;
+  margin-bottom: 20px;
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.question-number {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary-color);
+  user-select: none;
+}
+
+.bookmark-btn {
+  background: transparent;
+  border: 2px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 44px;
+  min-height: 44px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.bookmark-btn:active {
+  transform: scale(0.95);
+}
+
+.bookmark-btn.active {
+  background: var(--warning-color);
+  border-color: var(--warning-color);
+  color: #000;
+}
+
+.question {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 25px;
+  color: var(--text-primary);
+  user-select: text;
+}
+
+.question-image {
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: 10px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  padding: 10px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--border-color);
+  padding: 16px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--bg-secondary);
+  min-height: 60px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.option-label:active {
+  transform: scale(0.98);
+}
+
+.option-label:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--primary-color);
+}
+
+.option-label.selected {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.option-label input[type="radio"] {
+  margin-right: 15px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.option-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.option-image {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  padding: 10px;
+}
+
+.option-label.selected .option-image {
+  background: rgba(255,255,255,0.1);
+}
+
+/* FIXED NAVIGATION - KEY UPDATE */
+.navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-primary);
+  border-top: 2px solid var(--border-color);
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  z-index: 997;
+  padding: 15px 20px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 10px;
+  max-width: 100%;
+}
+
+.nav-btn {
+  padding: 14px 20px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+.nav-btn:active {
+  transform: scale(0.97);
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.nav-btn.prev {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.nav-btn.prev:hover:not(:disabled) {
+  background: #5a6268;
+}
+
+.nav-btn.next {
+  background: var(--primary-color);
+  color: white;
+}
+
+.nav-btn.next:hover:not(:disabled) {
+  background: var(--primary-hover);
+}
+
+.nav-btn.clear {
+  background: var(--danger-color);
+  color: white;
+}
+
+.nav-btn.clear:hover {
+  background: #c82333;
+}
+
+.nav-btn.submit {
+  background: var(--success-color);
+  color: white;
+  grid-column: 1 / -1;
+}
+
+.nav-btn.submit:hover {
+  background: var(--success-hover);
+}
+
+.result-section {
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.score-card {
+  background: linear-gradient(135deg, var(--primary-color), var(--success-color));
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  margin-bottom: 30px;
+  user-select: none;
+}
+
+.score-card h2 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.score-card p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: var(--bg-secondary);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  border: 2px solid var(--border-color);
+  user-select: none;
+}
+
+.stat-card h3 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.stat-card.correct h3 { color: var(--success-color); }
+.stat-card.wrong h3 { color: var(--danger-color); }
+.stat-card.unattempted h3 { color: var(--secondary-color); }
+
+.question-review {
+  border: 2px solid var(--border-color);
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 20px;
+  background: var(--bg-secondary);
+}
+
+.question-review h4 {
+  margin-bottom: 15px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.review-option {
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 2px solid var(--border-color);
+  background: var(--bg-primary);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.review-option .option-image {
+  max-width: 150px;
+  max-height: 100px;
+}
+
+.review-option.correct {
+  background: #d4edda;
+  border-color: var(--success-color);
+  color: #155724;
+}
+
+.review-option.wrong {
+  background: #f8d7da;
+  border-color: var(--danger-color);
+  color: #721c24;
+}
+
+.review-option.user-selected {
+  border-width: 3px;
+  font-weight: 600;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.action-btn {
+  padding: 14px 30px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  min-width: 150px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.action-btn:active {
+  transform: scale(0.95);
+}
+
+.action-btn.restart {
+  background: var(--danger-color);
+  color: white;
+}
+
+.action-btn.restart:hover {
+  background: #c82333;
+}
+
+.action-btn.download {
+  background: var(--primary-color);
+  color: white;
+}
+
+.action-btn.download:hover {
+  background: var(--primary-hover);
+}
+
+.action-btn.print {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.action-btn.print:hover {
+  background: #5a6268;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.palette-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.palette-content::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+}
+
+.palette-content::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+.palette-content::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 140px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .header h1 {
+    font-size: 22px;
+  }
+
+  .quiz-container {
+    padding: 20px 15px;
+  }
+
+  .question-palette {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .palette-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+  }
+
+  .palette-btn {
+    font-size: 13px;
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  .palette-fab {
+    bottom: calc(var(--nav-height) + 10px);
+    right: 15px;
+    width: 56px;
+    height: 56px;
+    font-size: 22px;
+  }
+
+  .navigation {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 12px 15px;
+  }
+
+  .nav-btn {
+    min-height: 44px;
+    font-size: 15px;
+  }
+
+  .nav-btn.clear {
+    order: 3;
+  }
+
+  .nav-btn.submit {
+    grid-column: auto;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .legend-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .question {
+    font-size: 16px;
+  }
+
+  .option-label {
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  .option-image {
+    max-height: 150px;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .palette-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+
+  .palette-btn {
+    font-size: 12px;
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .timer {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  .option-image {
+    max-height: 120px;
+  }
+}
+
+@media print {
+  .header-controls, .navigation, .palette-fab, .palette-overlay, .question-palette, .action-buttons, .bookmark-btn {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    padding-bottom: 0;
+  }
+
+  .container {
+    padding-bottom: 20px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>1.) ENGLISH + GK COMBINED TEST-1 - Hindi</h1>
+    <div class="header-controls">
+      <a href="https://t.me/ssc_prepX" target="_blank" class="bot-link-btn" title="Open Bot in Telegram">🤖 Bot</a>
+      
+      <div class="timer" id="timer">00:00</div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle Theme">🌙</button>
+      <button class="fullscreen-btn" id="fullscreenBtn" aria-label="Toggle fullscreen" title="Fullscreen">⛶</button>
+    </div>
+  </div>
+
+  <div class="quiz-container" id="quizContainer">
+    <div class="quiz-header">
+      <div class="marking-info" id="markingInfo">Marking: +1, -0</div>
+    </div>
+
+    <div class="progress-section">
+      <div class="progress-stats">
+        <span>Progress: <strong id="progressText">1/2</strong></span>
+        <span>Attempted: <strong id="attemptedText">0</strong></span>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+
+    <div class="question-section" id="questionSection">
+      <div class="question-header">
+        <div class="question-number" id="questionNumber">Question 1 of 2</div>
+        <button class="bookmark-btn" id="bookmarkBtn" aria-label="Bookmark question">
+          <span>🔖</span> <span>Bookmark</span>
+        </button>
+      </div>
+      
+      <div class="question" id="questionText"></div>
+      
+      <div class="options" id="optionsContainer"></div>
+    </div>
+
+    <div class="result-section hidden" id="resultSection"></div>
+  </div>
+</div>
+
+<div class="navigation" id="navigation">
+  <button class="nav-btn prev" id="prevBtn" aria-label="Previous question">
+    <span>←</span> Previous
+  </button>
+  <button class="nav-btn clear" id="clearBtn" aria-label="Clear answer">
+    Clear
+  </button>
+  <button class="nav-btn next" id="nextBtn" aria-label="Next question">
+    Next <span>→</span>
+  </button>
+  <button class="nav-btn submit hidden" id="submitBtn" aria-label="Submit quiz">
+    Submit Quiz
+  </button>
+</div>
+
+<button class="palette-fab" id="paletteFab" aria-label="Toggle question palette" title="Question Palette (P)">
+  📋
+  <span class="badge" id="answeredBadge">0</span>
+</button>
+
+<div class="palette-overlay" id="paletteOverlay"></div>
+
+<div class="question-palette" id="questionPalette">
+  <div class="palette-header">
+    <h3>Question Palette</h3>
+    <button class="palette-close" id="paletteClose" aria-label="Close palette">×</button>
+  </div>
+
+  <div class="palette-stats">
+    <div class="palette-stat answered">
+      <div class="number" id="paletteAnswered">0</div>
+      <div>Answered</div>
+    </div>
+    <div class="palette-stat unanswered">
+      <div class="number" id="paletteUnanswered">2</div>
+      <div>Not Answered</div>
+    </div>
+    <div class="palette-stat bookmarked">
+      <div class="number" id="paletteBookmarked">0</div>
+      <div>Bookmarked</div>
+    </div>
+  </div>
+
+  <div class="palette-search">
+    <input type="number" id="paletteSearch" placeholder="Jump to question number..." aria-label="Search questions" inputmode="numeric" pattern="[0-9]*">
+  </div>
+
+  <div class="palette-content">
+    <div class="palette-grid" id="paletteGrid"></div>
+  </div>
+
+  <div class="palette-legend">
+    <div class="legend-grid">
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--success-color);"></div>
+        <span>Answered</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--bg-secondary); border: 2px solid var(--border-color);"></div>
+        <span>Not Answered</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--primary-color);"></div>
+        <span>Current Question</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--warning-color);"></div>
+        <span>🔖 Bookmarked</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// JSON INJECTION HAPPENS HERE
+const questions = [{"sr_no": 1, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Select the most appropriate synonym of the underlined word.</b></p>    <p style=\"orphans:0;widows:0\">The supervisor struggled to    manage the <u>recalcitrant</u> worker who consistently refused to    follow safety guidelines.</p>", "option1": "<p style=\"orphans:0;widows:0\">    Submissive</p>", "option2": " <p style=\"orphans:0;widows:0\">    Intractable</p>", "option3": " <p style=\"orphans:0;widows:0\">    Indolent</p>", "option4": " <p style=\"orphans:0;widows:0\">    Benevolent</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The correct option is (B). <b>Intractable</b>.</p>    <ul>     <li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Recalcitrant</b>     means having an obstinately uncooperative attitude toward     authority or discipline; stubbornly defiant or disobedient.</p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Intractable</b>     means very difficult to manage, control, or govern; stubborn.</p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\">Meanings     of the other options:</p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Submissive:</b>     ready to conform to the authority or will of others; obedient.</p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Indolent:</b>     wanting to avoid activity or exertion; lazy.</p>     </li><li><p style=\"orphans:0;widows:0\"><b>Benevolent:</b>     well-meaning, kindly, and charitable.</p>    </li></ul>", "question_heading": ""}, {"sr_no": 2, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Select the most appropriate synonym of the underlined word in the    given sentence.</p>    <p style=\"orphans:0;widows:0\">The documentary ended on a    <u>lugubrious</u> note, leaving the entire auditorium in solemn    silence.</p>", "option1": "<p style=\"orphans:0;widows:0\">    Doleful</p>", "option2": " <p style=\"orphans:0;widows:0\">    Exuberant</p>", "option3": " <p style=\"orphans:0;widows:0\">    Sanguine</p>", "option4": " <p style=\"orphans:0;widows:0\">    Frivolous</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The word <b>lugubrious</b> means looking or sounding sad, dismal,    or mournful.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Meanings of    the options:</p>    <ul>     <li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Doleful:</b>     expressing sorrow; mournful or melancholy (closest synonym).</p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Exuberant:</b>     full of energy, excitement, and cheerfulness.</p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Sanguine:</b>     optimistic or positive, especially in an apparently bad     situation.</p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Frivolous:</b>     carefree and not serious; lacking purpose or value.</p>    </li></ul>    <p style=\"orphans:0;widows:0\">Hence, <b>Doleful</b> is the    correct synonym.</p>", "question_heading": ""}, {"sr_no": 3, "question": " <p style=\"orphans:0;widows:0\">    Select the wrongly spelt word out of the four alternatives.</p>", "option1": "<p style=\"orphans:0;widows:0\">    Convalescence</p>", "option2": " <p style=\"orphans:0;widows:0\">    Inocculate</p>", "option3": " <p style=\"orphans:0;widows:0\">    Surveillance</p>", "option4": " <p style=\"orphans:0;widows:0\">    Acquiescence</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The wrongly spelt word is <b>Inocculate</b>. The correct spelling    is <b>Inoculate</b> (with a single 'c'), which means to introduce    a vaccine or antigen into an organism to produce immunity. All    other options are correctly spelt.</p>", "question_heading": ""}, {"sr_no": 4, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Select the most appropriate option to fill in the blank.</p>    <p style=\"orphans:0;widows:0\">Owing to erratic rainfall and    depleting groundwater, the smallholders in this drought-prone    region lead a ________ existence, perpetually vulnerable to crop    failure.</p>", "option1": "<p style=\"orphans:0;widows:0\">    lucrative</p>", "option2": " <p style=\"orphans:0;widows:0\">    resilient</p>", "option3": " <p style=\"orphans:0;widows:0\">    precarious</p>", "option4": " <p style=\"orphans:0;widows:0\">    impervious</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The correct option is (C). <b>precarious</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">The context    clue <i>'perpetually vulnerable to crop failure'</i> indicates    that the farmers live in a state of high uncertainty, danger, or    instability.</p>    <ul>     <li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Precarious:</b>     not securely held or in position; dangerously uncertain,     insecure, or risky.</p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Lucrative:</b>     producing a great deal of profit.</p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Resilient:</b>     able to withstand or recover quickly from difficult conditions.</p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Impervious:</b>     unable to be affected by something.</p>    </li></ul>    <p style=\"orphans:0;widows:0\">Therefore, 'precarious' correctly    completes the sentence.</p>", "question_heading": ""}, {"sr_no": 5, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    From the given options, select the word that corresponds to both    Definition (P) and Definition (Q).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">(P) The legal    action of taking custody of property or assets until a dispute or    debt is resolved.</p>    <p style=\"orphans:0;widows:0\">(Q) The biological or    environmental process of capturing, isolating, and storing a    substance (such as carbon dioxide) to prevent its release or    dispersion.</p>", "option1": "<p style=\"orphans:0;widows:0\">    Expropriation</p>", "option2": " <p style=\"orphans:0;widows:0\">    Sequestration</p>", "option3": " <p style=\"orphans:0;widows:0\">    Invalidation</p>", "option4": " <p style=\"orphans:0;widows:0\">    Amortisation</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The correct option is <b>Sequestration</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">1. In law,    <b>sequestration</b> refers to the act of removing, isolating, or    seizing property from the possession of the owner under legal    process until a claim or debt is satisfied.</p>    <p style=\"orphans:0;widows:0\">2. In environmental and    biological sciences, <b>sequestration</b> (most commonly seen in    'carbon sequestration') refers to the long-term capture, locking    away, and storage of a chemical compound or substance to mitigate    its impact on the biosphere.</p>", "question_heading": ""}, {"sr_no": 6, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>In the following question, some of the words in the passage    have been left out. Read the passage carefully and choose the    correct word for each blank, out of the four alternatives and fill    in the blanks.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">India’s    foreign exchange reserves have displayed remarkable resilience,    scaling unprecedented heights ________ (1) persistent headwinds in    the global macroeconomic landscape. Even as aggressive monetary    tightening across developed markets triggered capital outflows,    prudent interventions by the central bank have ________ (2)    excessive volatility in currency markets. Strategic accumulation    of foreign currency assets, coupled with robust domestic    macroeconomic fundamentals, ________ (3) the external balance    sheet against sudden geopolitical shocks. Analysts observe that    this buffer has significantly ________ (4) foreign investor    confidence, facilitating sustained capital inflows into sovereign    debt and key manufacturing sectors. Consequently, India remains    well ________ (5) to navigate emerging risks in global financial    liquidity.</p>    <p style=\"orphans:0;widows:0\"><b>What should come in blank (1)    ?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    despite</p>", "option2": " <p style=\"orphans:0;widows:0\">    between</p>", "option3": " <p style=\"orphans:0;widows:0\">    towards</p>", "option4": " <p style=\"orphans:0;widows:0\">    upon</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The passage highlights resilience in the face of difficulties    ('persistent headwinds'). The preposition 'despite' means 'in    spite of' or 'without being affected by', which correctly conveys    that the reserves rose even though there were unfavourable global    conditions. The other options ('between', 'towards', 'upon') are    semantically and syntactically unsuitable.</p>", "question_heading": ""}, {"sr_no": 7, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>In the following question, some of the words in the passage    have been left out. Read the passage carefully and choose the    correct word for each blank, out of the four alternatives and fill    in the blanks.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">India’s    foreign exchange reserves have displayed remarkable resilience,    scaling unprecedented heights ________ (1) persistent headwinds in    the global macroeconomic landscape. Even as aggressive monetary    tightening across developed markets triggered capital outflows,    prudent interventions by the central bank have ________ (2)    excessive volatility in currency markets. Strategic accumulation    of foreign currency assets, coupled with robust domestic    macroeconomic fundamentals, ________ (3) the external balance    sheet against sudden geopolitical shocks. Analysts observe that    this buffer has significantly ________ (4) foreign investor    confidence, facilitating sustained capital inflows into sovereign    debt and key manufacturing sectors. Consequently, India remains    well ________ (5) to navigate emerging risks in global financial    liquidity.</p>    <p style=\"orphans:0;widows:0\"><b>What should come in blank (2)    ?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    aggravated</p>", "option2": " <p style=\"orphans:0;widows:0\">    mitigated</p>", "option3": " <p style=\"orphans:0;widows:0\">    simulated</p>", "option4": " <p style=\"orphans:0;widows:0\">    capitulated</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The blank requires a past participle form following 'have'. The    context refers to 'prudent interventions' designed to curb or    reduce harmful currency market fluctuations. 'Mitigated' means    made less severe or alleviated, which fits precisely. 'Aggravated'    (made worse), 'simulated' (imitated), and 'capitulated'    (surrendered) do not fit the context.</p>", "question_heading": ""}, {"sr_no": 8, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>In the following question, some of the words in the passage    have been left out. Read the passage carefully and choose the    correct word for each blank, out of the four alternatives and fill    in the blanks.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">India’s    foreign exchange reserves have displayed remarkable resilience,    scaling unprecedented heights ________ (1) persistent headwinds in    the global macroeconomic landscape. Even as aggressive monetary    tightening across developed markets triggered capital outflows,    prudent interventions by the central bank have ________ (2)    excessive volatility in currency markets. Strategic accumulation    of foreign currency assets, coupled with robust domestic    macroeconomic fundamentals, ________ (3) the external balance    sheet against sudden geopolitical shocks. Analysts observe that    this buffer has significantly ________ (4) foreign investor    confidence, facilitating sustained capital inflows into sovereign    debt and key manufacturing sectors. Consequently, India remains    well ________ (5) to navigate emerging risks in global financial    liquidity.</p>    <p style=\"orphans:0;widows:0\"><b>What should come in blank (3)    ?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    exposed</p>", "option2": " <p style=\"orphans:0;widows:0\">    imperiled</p>", "option3": " <p style=\"orphans:0;widows:0\">    insulated</p>", "option4": " <p style=\"orphans:0;widows:0\">    dismantled</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The sentence describes protecting the balance sheet against shocks    ('against sudden geopolitical shocks'). 'Insulated' means    protected or shielded from an unpleasant or detrimental influence,    and it correctly collocates with 'against'. The other options    ('exposed', 'imperiled', 'dismantled') express vulnerability or    destruction, contradicting the positive context.</p>", "question_heading": ""}, {"sr_no": 9, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>In the following question, some of the words in the passage    have been left out. Read the passage carefully and choose the    correct word for each blank, out of the four alternatives and fill    in the blanks</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">India’s    foreign exchange reserves have displayed remarkable resilience,    scaling unprecedented heights ________ (1) persistent headwinds in    the global macroeconomic landscape. Even as aggressive monetary    tightening across developed markets triggered capital outflows,    prudent interventions by the central bank have ________ (2)    excessive volatility in currency markets. Strategic accumulation    of foreign currency assets, coupled with robust domestic    macroeconomic fundamentals, ________ (3) the external balance    sheet against sudden geopolitical shocks. Analysts observe that    this buffer has significantly ________ (4) foreign investor    confidence, facilitating sustained capital inflows into sovereign    debt and key manufacturing sectors. Consequently, India remains    well ________ (5) to navigate emerging risks in global financial    liquidity.</p>    <p style=\"orphans:0;widows:0\"><b>What should come in blank (4)    ?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    impaired</p>", "option2": " <p style=\"orphans:0;widows:0\">    bolstered</p>", "option3": " <p style=\"orphans:0;widows:0\">    forfeited</p>", "option4": " <p style=\"orphans:0;widows:0\">    alienated</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The sentence explains that the reserves buffer helped in    'facilitating sustained capital inflows'. Therefore, it must have    strengthened investor confidence. 'Bolstered' means supported or    reinforced. 'Impaired' (damaged), 'forfeited' (lost), and    'alienated' (estranged) convey negative meanings opposite to the    intended sense.</p>", "question_heading": ""}, {"sr_no": 10, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>In the following question, some of the words in the passage    have been left out. Read the passage carefully and choose the    correct word for each blank, out of the four alternatives and fill    in the blanks.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">India’s    foreign exchange reserves have displayed remarkable resilience,    scaling unprecedented heights ________ (1) persistent headwinds in    the global macroeconomic landscape. Even as aggressive monetary    tightening across developed markets triggered capital outflows,    prudent interventions by the central bank have ________ (2)    excessive volatility in currency markets. Strategic accumulation    of foreign currency assets, coupled with robust domestic    macroeconomic fundamentals, ________ (3) the external balance    sheet against sudden geopolitical shocks. Analysts observe that    this buffer has significantly ________ (4) foreign investor    confidence, facilitating sustained capital inflows into sovereign    debt and key manufacturing sectors. Consequently, India remains    well ________ (5) to navigate emerging risks in global financial    liquidity.</p>    <p style=\"orphans:0;widows:0\"><b>What should come in blank (5)    ?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    poised</p>", "option2": " <p style=\"orphans:0;widows:0\">    stranded</p>", "option3": " <p style=\"orphans:0;widows:0\">    marred</p>", "option4": " <p style=\"orphans:0;widows:0\">    waived</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The phrase 'well poised to' is a standard idiom meaning well    positioned, ready, or prepared to take action or handle a    situation. 'Stranded' (abandoned/left helpless), 'marred'    (disfigured/spoiled), and 'waived' (relinquished) make no sense in    this context.</p>", "question_heading": ""}, {"sr_no": 11, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The following sentence has been divided into four parts. Identify    the part which contains a grammatical error.</p>    <p style=\"orphans:0;widows:0\">Between the two shortlisted    candidates (A) / for the managerial position, (B) / Nidhi is    undeniably the most qualified (C) / due to her diverse industry    experience. (D)</p>", "option1": "<p style=\"orphans:0;widows:0\">    B</p>", "option2": " <p style=\"orphans:0;widows:0\">    D</p>", "option3": " <p style=\"orphans:0;widows:0\">    C</p>", "option4": " <p style=\"orphans:0;widows:0\">    A</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The error lies in part (C) of the sentence.</p>    <ul>     <li><p style=\"orphans:0;widows:0;margin-bottom:0in\">When a     comparison or selection is made between only two persons or     things, the comparative degree of the adjective is used, preceded     by the definite article 'the' (i.e., <i>the + comparative     degree</i>), rather than the superlative degree.</p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\">Here,     the comparison is strictly between 'the two shortlisted     candidates'. Therefore, the superlative form <b>'the most     qualified'</b> must be replaced by the comparative form <b>'the     more qualified'</b>.</p>    </li></ul>    <p style=\"orphans:0;widows:0\"><b>Correct sentence:</b> \"Between    the two shortlisted candidates for the managerial position, Nidhi    is undeniably <b>the more qualified</b> due to her diverse    industry experience.\"</p>", "question_heading": ""}, {"sr_no": 12, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Given below are four jumbled parts of a sentence. Select the    option that gives their correct order.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">A) but it    also accelerates the mass migration of distressed farmers</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">B) undermine    food security for vulnerable rural populations</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">C) toward    already overburdened urban centers</p>    <p style=\"orphans:0;widows:0\">D) not only does the persistent    degradation of fertile topsoil</p>", "option1": "<p style=\"orphans:0;widows:0\">    DBAC</p>", "option2": " <p style=\"orphans:0;widows:0\">    DABC</p>", "option3": " <p style=\"orphans:0;widows:0\">    BADC</p>", "option4": " <p style=\"orphans:0;widows:0\">    CADB</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The correct order is <b>DBAC</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">1. <b>D</b>    introduces the sentence using the inverted structure <i>'Not only    does + subject'</i> ('not only does the persistent degradation of    fertile topsoil...').</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">2. Following    the auxiliary verb 'does' in D, the base-form verb is required to    complete the clause. <b>B</b> ('undermine food security for    vulnerable rural populations') provides this verb ('undermine'),    establishing <b>DB</b> as a mandatory pair.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">3. The    correlative conjunction pair for 'Not only' is 'but also', which    begins part <b>A</b> ('but it also accelerates the mass migration    of distressed farmers').</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">4. Part <b>C</b>    ('toward already overburdened urban centers') functions as the    directional prepositional phrase that completes 'the mass    migration of distressed farmers' in part A, forming the pair <b>AC</b>.</p>    <p style=\"orphans:0;widows:0\">Connecting all parts logically    gives: <i>'Not only does the persistent degradation of fertile    topsoil undermine food security for vulnerable rural populations,    but it also accelerates the mass migration of distressed farmers    toward already overburdened urban centers.'</i></p>", "question_heading": ""}, {"sr_no": 13, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Select the correct passive form of the given sentence.</p>    <p style=\"orphans:0;widows:0\">The investigator questioned    several witnesses in the office. Even the documents have been    seized.</p>", "option1": "<p style=\"orphans:0;widows:0\">    Several witnesses had been questioned in the office by the    investigator. Even the documents were seized.</p>", "option2": " <p style=\"orphans:0;widows:0\">    Several witnesses in the office were questioned by the    investigator. Even the documents have been seized.</p>", "option3": " <p style=\"orphans:0;widows:0\">    Several witnesses in the office were being questioned by the    investigator. Even the documents have seized.</p>", "option4": " <p style=\"orphans:0;widows:0\">    Even the documents had been seized when the investigator    questioned several witnesses in the office.</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The given text consists of two sentences: the first sentence is in    the Simple Past tense (Active Voice), and the second sentence is    already in the Present Perfect tense (Passive Voice).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">The active    structure of Simple Past is: <i>Subject + V2 + Object</i> ('The    investigator questioned several witnesses...').</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Its passive    structure is: <i>Object + was/were + V3 + by + Subject</i>    ('Several witnesses in the office were questioned by the    investigator').</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Since the    second sentence ('Even the documents have been seized') is already    in passive voice, it remains unchanged.</p>    <p style=\"orphans:0;widows:0\">Therefore, option B is the    correct passive form.</p>", "question_heading": ""}, {"sr_no": 14, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Given below are four jumbled sentences. Select the option that    gives their correct order.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">A. Here,    towering skyscrapers coexist seamlessly with centuries-old Shinto    shrines and bustling street markets.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">B. In many    rapidly developing nations, relentless urban expansion often leads    to the complete erasure of historical architecture.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">C. Ancient    heritage structures are frequently demolished to make way for    high-rise glass-and-steel complexes.</p>    <p style=\"orphans:0;widows:0\">D. Yet, Japan presents a    remarkable harmony between the ancient past and the hyper-modern    present.</p>", "option1": "<p style=\"orphans:0;widows:0\">    BCDA</p>", "option2": " <p style=\"orphans:0;widows:0\">    BDAC</p>", "option3": " <p style=\"orphans:0;widows:0\">    CBDA</p>", "option4": " <p style=\"orphans:0;widows:0\">    BACD</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The correct logical order is <b>BCDA</b>:</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Sentence B</b>    serves as the introductory statement, establishing the general    problem that urban expansion often erases historical architecture.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Sentence C</b>    directly elaborates on sentence B by describing how ancient    heritage structures are demolished for high-rise buildings.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Sentence D</b>    introduces a contrasting example using the transition word 'Yet',    bringing in Japan as an exception to the trend mentioned in B and    C.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Sentence A</b>    follows D naturally, using the adverb of place 'Here' to refer to    Japan and describing the specific harmony between modern    skyscrapers and traditional shrines.</p>    <p style=\"orphans:0;widows:0\">Hence, the correct sequence is    BCDA.</p>", "question_heading": ""}, {"sr_no": 15, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Select the option that correctly explains the meaning of the given    idiom/proverb.</p>    <p style=\"orphans:0;widows:0\">Strike while the iron is hot</p>", "option1": "<p style=\"orphans:0;widows:0\">    To ruin something by rushing into it</p>", "option2": " <p style=\"orphans:0;widows:0\">    To take prompt action when an opportunity presents itself</p>", "option3": " <p style=\"orphans:0;widows:0\">    To get angry quickly and lose control</p>", "option4": " <p style=\"orphans:0;widows:0\">    To work continuously without taking any rest</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The proverb <b>'Strike while the iron is hot'</b> means to take    decisive action immediately when conditions or opportunities are    most favorable, just as blacksmiths hammer iron when it is hot and    malleable. Hence, option B is correct.</p>", "question_heading": ""}, {"sr_no": 16, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Select the correct direct form of the given sentence.</p>    <p style=\"orphans:0;widows:0\">The teacher inquired whether the    new student was present.</p>", "option1": "<p style=\"orphans:0;widows:0\">    The teacher asked, \"Is the new student present?\"</p>", "option2": " <p style=\"orphans:0;widows:0\">    The teacher asked, \"Was the new student present?\"</p>", "option3": " <p style=\"orphans:0;widows:0\">    The teacher said, \"Whether the new student was present?\"</p>", "option4": " <p style=\"orphans:0;widows:0\">    The teacher asked, \"The new student is present?\"</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    To convert an indirect speech interrogative sentence into direct    speech, follow these rules:</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">1. The    reporting verb 'inquired' changes to 'asked' or 'said'.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">2. The    conjunction 'whether' or 'if' is removed.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">3. The simple    past tense ('was') in indirect speech reverts to the simple    present tense ('is') in direct speech.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">4. An    inverted word order (Auxiliary verb + Subject) is used to form the    question: \"Is the new student present?\".</p>    <p style=\"orphans:0;widows:0\">Therefore, Option A is the    correct direct form.</p>", "question_heading": ""}, {"sr_no": 17, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Select the most appropriate synonym of the given word.</p>    <p style=\"orphans:0;widows:0\">Transient</p>", "option1": "<p style=\"orphans:0;widows:0\">    Permanent</p>", "option2": " <p style=\"orphans:0;widows:0\">    Ephemeral</p>", "option3": " <p style=\"orphans:0;widows:0\">    Essential</p>", "option4": " <p style=\"orphans:0;widows:0\">    Ordinary</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The word 'Transient' means lasting only for a short time;    impermanent. 'Ephemeral' also means lasting for a very short time.    Hence, 'Ephemeral' is the correct synonym of 'Transient'.</p>", "question_heading": ""}, {"sr_no": 18, "question": " <p style=\"orphans:0;widows:0\">    Select the correctly spelt word out of the four alternatives.</p>", "option1": "<p style=\"orphans:0;widows:0\">    Camoflage</p>", "option2": " <p style=\"orphans:0;widows:0\">    Camouflage</p>", "option3": " <p style=\"orphans:0;widows:0\">    Camoflauge</p>", "option4": " <p style=\"orphans:0;widows:0\">    Cammouflage</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The correctly spelt word is 'Camouflage', which means the    disguising of military personnel, equipment, or installations by    painting or covering them to make them blend in with their    surroundings.</p>", "question_heading": ""}, {"sr_no": 19, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Select the correct indirect form of the given sentence.</p>    <p style=\"orphans:0;widows:0\">“Do you think you can outsmart    the entire team?” sneered the captain.</p>", "option1": "<p style=\"orphans:0;widows:0\">    The captain sneered that did he think he could outsmart the entire    team.</p>", "option2": " <p style=\"orphans:0;widows:0\">    The captain sneered and asked whether he thought he could outsmart    the entire team.</p>", "option3": " <p style=\"orphans:0;widows:0\">    The captain sneered and asked if you thought you can outsmart the    entire team.</p>", "option4": " <p style=\"orphans:0;widows:0\">    The captain sneered and asked whether he has thought he could    outsmart the entire team.</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The correct indirect form is: <b>The captain sneered and asked    whether he thought he could outsmart the entire team.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Rules for    conversion:</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">The reporting    verb ‘sneered’ can be expanded to ‘sneered and asked’ to    properly introduce the interrogative clause.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">In yes/no    questions, the conjunction ‘if’ or ‘whether’ is used, and    the question form changes into an assertive clause (subject +    verb).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Present    Indefinite tense (‘Do you think’) changes to Past Indefinite    tense (‘he thought’).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">The modal    ‘can’ changes to ‘could’.</p>    <p style=\"orphans:0;widows:0\">The second-person pronoun ‘you’    changes to the third-person pronoun ‘he’.</p>", "question_heading": ""}, {"sr_no": 20, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Choose the option that contains the homonym of the highlighted    word in the given sentence.</p>    <p style=\"orphans:0;widows:0\">The young author spent over three    years writing his debut historical <b>novel</b>.</p>", "option1": "<p style=\"orphans:0;widows:0\">    She spent the entire weekend reading an intriguing detective novel    by her favorite writer.</p>", "option2": " <p style=\"orphans:0;widows:0\">    The library recently added a wide collection of classic Russian    novels to its literature section.</p>", "option3": " <p style=\"orphans:0;widows:0\">    The research team proposed a novel approach to significantly    reduce industrial carbon emissions.</p>", "option4": " <p style=\"orphans:0;widows:0\">    He bought a vintage fantasy novel from the secondhand bookstore    downtown.</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    A homonym is a word that has the same spelling and pronunciation    as another word, but has a different meaning.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">In the given    sentence, <b>novel</b> is used as a noun meaning a book of long    narrative fiction (an extended work of prose).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">In option C,    <b>novel</b> is used as an adjective meaning 'new, innovative, or    original'.</p>    <p style=\"orphans:0;widows:0\">In options A, B, and D, 'novel'    carries the same meaning as in the prompt sentence (a book/story).    Hence, option C is the correct answer.</p>", "question_heading": ""}, {"sr_no": 21, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    In the following question, out of the four alternatives, choose    the one which gives the meaning of the given idiom or phrase.</p>    <p style=\"orphans:0;widows:0\">To carry coals to Newcastle</p>", "option1": "<p style=\"orphans:0;widows:0\">    To do something that is redundant or completely unnecessary</p>", "option2": " <p style=\"orphans:0;widows:0\">    To undertake an extremely hazardous and difficult journey</p>", "option3": " <p style=\"orphans:0;widows:0\">    To work hard to achieve success in a new business</p>", "option4": " <p style=\"orphans:0;widows:0\">    To exploit workers for one's personal financial gain</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The idiom <b>'To carry coals to Newcastle'</b> means to supply    something that is already abundant, or to do something that is    completely redundant and pointless (as Newcastle was historically    a major coal-producing port in England). Therefore, option A is    the correct answer.</p>", "question_heading": ""}, {"sr_no": 22, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Given below are four jumbled parts of a sentence. Select the    option that gives their correct order.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">A) over the    rapid depletion of</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">B) that    sustain marine ecosystems</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">C) natural    resources and habitats</p>    <p style=\"orphans:0;widows:0\">D) the environmentalist expressed    deep concern</p>", "option1": "<p style=\"orphans:0;widows:0\">    ADCB</p>", "option2": " <p style=\"orphans:0;widows:0\">    DACB</p>", "option3": " <p style=\"orphans:0;widows:0\">    DCAB</p>", "option4": " <p style=\"orphans:0;widows:0\">    BCDA</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The correct sequence is <b>DACB</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Part <b>D</b>    introduces the main subject and verb ('the environmentalist    expressed deep concern'), making it the logical starting point.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Part <b>A</b>    ('over the rapid depletion of') correctly follows 'expressed deep    concern' by indicating what the concern is about.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Part <b>C</b>    ('natural resources and habitats') serves as the object of the    preposition 'of'.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Part <b>B</b>    ('that sustain marine ecosystems') is a relative clause modifying    the antecedent 'natural resources and habitats'.</p>    <p style=\"orphans:0;widows:0\">Thus, the complete coherent    sentence is: <i>\"The environmentalist expressed deep concern    over the rapid depletion of natural resources and habitats that    sustain marine ecosystems.\"</i></p>", "question_heading": ""}, {"sr_no": 23, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Select the correct indirect form of the given sentence.</p>    <p style=\"orphans:0;widows:0\">“Bring the files to my cabin    immediately,” said the director to his assistant.</p>", "option1": "<p style=\"orphans:0;widows:0\">    The director requested his assistant that he should bring the    files to his cabin immediately.</p>", "option2": " <p style=\"orphans:0;widows:0\">    The director ordered his assistant to bring the files to his cabin    immediately.</p>", "option3": " <p style=\"orphans:0;widows:0\">    The director told his assistant that bring the files to his cabin    immediately.</p>", "option4": " <p style=\"orphans:0;widows:0\">    The director ordered to his assistant to brought the files to his    cabin immediately.</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    To convert an imperative sentence into indirect speech:</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">1. The    reporting verb 'said to' is changed to 'ordered', 'commanded', or    'instructed' depending on the tone of the sentence.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">2. The    imperative mood is replaced by an infinitive structure ('to' +    base form of the verb, i.e., 'to bring').</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">3. The    first-person possessive pronoun 'my' changes according to the    subject ('the director') to 'his'.</p>    <p style=\"orphans:0;widows:0\">Therefore, the correct indirect    form is: \"The director ordered his assistant to bring the    files to his cabin immediately.\"</p>", "question_heading": ""}, {"sr_no": 24, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Select the correct active form of the given sentence.</p>    <p style=\"orphans:0;widows:0\">The confidential documents were    being thoroughly examined by the senior auditor when the fire    alarm rang.</p>", "option1": "<p style=\"orphans:0;widows:0\">    The senior auditor thoroughly examined the confidential documents    when the fire alarm rang.</p>", "option2": " <p style=\"orphans:0;widows:0\">    The senior auditor was thoroughly examining the confidential    documents when the fire alarm rang.</p>", "option3": " <p style=\"orphans:0;widows:0\">    The senior auditor had examined the confidential documents when    the fire alarm rang.</p>", "option4": " <p style=\"orphans:0;widows:0\">    The senior auditor is thoroughly examining the confidential    documents when the fire alarm rang.</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The given sentence is in the passive voice of the past continuous    tense.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Passive    Structure: Object + was/were + being +     <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1793819444229_html_a2a1051d25850e4a.gif\" >     + by + Subject</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Active    Structure: Subject + was/were +     <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1793819444229_html_6d47a5ab5429ad09.gif\" >     + ing + Object</p>    <p style=\"orphans:0;widows:0\">Here, 'the senior auditor' is a    singular subject, so it takes 'was thoroughly examining'.    Therefore, option B correctly represents the active voice.</p>", "question_heading": ""}, {"sr_no": 25, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Select the correct direct form of the given sentence.</b></p>    <p style=\"orphans:0;widows:0\">Father asked me whether I would    accompany him to the market.</p>", "option1": "<p style=\"orphans:0;widows:0\">    Father said to me, “Can you accompany him to the market?”</p>", "option2": " <p style=\"orphans:0;widows:0\">    Father said to me, “Will you accompany me to the market?”</p>", "option3": " <p style=\"orphans:0;widows:0\">    Father said to me, “Will he accompany me to the market?”</p>", "option4": " <p style=\"orphans:0;widows:0\">    Father asked to me, “Would you accompany me to the market?”</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The given sentence is in indirect speech and needs to be converted    into direct speech.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Rules of    conversion from indirect to direct speech for interrogative    sentences:The reporting verb 'asked' changes back to 'said to'.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">The    conjunction 'whether' is removed, and quotation marks (“...”)    with a question mark (?) are introduced.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">The pronoun    'I' (referring to the listener 'me') changes to the second-person    pronoun 'you'.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">The modal    auxiliary 'would' changes back to 'will' in the direct question    addressing 'you'.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">The pronoun    'him' (referring to Father) changes to the first-person pronoun    'me'.</p>    <p style=\"orphans:0;widows:0\">Therefore, the correct direct    speech is: <b>Father said to me, “Will you accompany me to the    market?”</b></p>", "question_heading": ""}, {"sr_no": 26, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Choose the most appropriate option to fill in the blank in the    given sentence.</b></p>    <p style=\"orphans:0;widows:0\">The fire department worked    tirelessly to ________ the raging forest fire.</p>", "option1": "<p style=\"orphans:0;widows:0\">    put out</p>", "option2": " <p style=\"orphans:0;widows:0\">    put off</p>", "option3": " <p style=\"orphans:0;widows:0\">    put up</p>", "option4": " <p style=\"orphans:0;widows:0\">    put down</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The phrasal verb <b>'put out'</b> means to extinguish something    that is burning (such as a fire or candle). Hence, 'put out' fits    the context correctly.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">- <b>put off</b>:    to postpone or delay.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">- <b>put up</b>:    to construct, erect, or accommodate.</p>    <p style=\"orphans:0;widows:0\">- <b>put down</b>: to suppress by    force or to write down.</p>", "question_heading": ""}, {"sr_no": 27, "question": "Rधोक पुध ीियियथing ूोौौोgध ोnक ोnौथधन पुध तहधौपiयnौ ृोौधक यn पुध ूोौौोgध : In ोn धनो cुोनोcपधनप्रधक ृद ोn हnूनधcधकधnपधक किधहgध यी inीयनंोपiयn, ुहंोniपद cयnीनयnपौ ो ूनयीयहnक यnपिययgicोि ूोनोकयस: पुध ंयनध धूुधंधनोि यहन नधcयनकing ंधकiहंौ ृधcयंध, पुध gनधोपधन यहन iििहौiयn यी ूधनंोnधnप ंधंयनद. Hiौपयनicोििद, ciॅiिप्रोपiयnोि ंधंयनद थोौ inौcनiृधक हूयn कहनोृिध ंोपनicधौ—cहnधiीयनं पोृिधपौ, ॅिधिहं cयकicधौ, ोnक ौपयnध ौपिधोध—थुयौध ूुदौicोि नधौiिiधncध ोिियथधक ीनोgंधnपोनद nोननोपiॅधौ पय ौहनॅiॅध ोcनयौौ ंiििधnniो. In ौपोना cयnपनोौप, ंयकधनn कigiपोि ोनcुiॅधौ धसiौप in ो ौपोपध यी ूनधcोनiयहौ ॅियोपiिiपद, निधiोnप हूयn पनोnौiधnप ीiिध ीयनंोपौ, ीनोgiिध िधधcपनयंोgnधपic ौपयनोgध, ोnक धूुधंधनोि ौधनॅधन inीनोौपनहcपहनधौ. Tुध ूधनॅोौiॅध cयnॅicपiयn पुोप कigiपोि ोृहnकोncध gहोनोnपधधौ ुiौपयनicोि iंंयनपोिiपद iौ ो कधcधूपiॅध ुहृनiौे in नधोिiपद, ुदूधन-कigiपप्रोपiयn ृनधधकौ कigiपोि ोंnधौiो. Wुोप ौcुियोनौ कधौignोपध ोौ ैृiप नयपै—पुध ौहृिपध कधgनोकोपiयn यी ृinोनद कोपो यॅधन पiंध—cयंृinधक थiपु ुोनकथोनध यृौियधौcधncध, पुनधोपधnौ पय नधnकधन cयnपधंूयनोनद cधnपहनiधौ ीोन ंयनध यूोतहध पय ीहपहनध ुiौपयनiोnौ पुोn पुध Bनयnशध Agध. Fहनपुधनंयनध, पुध ोिgयनiपुंic cहनोपiयn gयॅधनning कigiपोि ूनधौधनॅोपiयn यूधनोपधौ यn धcयnयंic हपiिiपद नोपुधन पुोn cिहपहनोि ूयौपधनiपद. Cियहक ोनcुiपधcपहनधौ ूनiयनiपप्रध ंयnधपप्रोृिध पनोीीic ोnक ोcपiॅध धngोgधंधnप, cयnौigning हnूनयीiपोृिध यन यृौcहनध cिहपहनोि ोनपiीोcपौ पय कigiपोि यृिiॅiयn. Unिiाध पुध ौधनधnकiूiपद यी ोn हncोपोियgहधक ूोनcुंधnप ौहनॅiॅing in ो cिiंोपध-cयnपनियिधक cनदूप, हnंोinपोinधक कigiपोि नधcयनकौ ौiंूिद ॅोniौु थुधn ुयौपing ीधधौ िोूौध यन यूधनोपing ौदौपधंौ ंहपोपध. Eॅधn inौपiपहपiयnोि नधूयौiपयनiधौ धncयहnपधन पुध Siौदूुधोn यनकधोि यी धnिकधौौ ीयनंोप ंigनोपiयn, थुधनध धोcु पधcुnिययgicोि पनोnौiपiयn नiौो कोपो cयननहूपiयn यन ौधंोnपic कनiीप. Uिपiंोपिधद, nोॅigोपing पुiौ ूनधौधनॅोपiयn cनiौiौ कधंोnकौ ंयनध पुोn ंधनध पधcुnिययgicोि नधकहnकोncदे iप नधतहiनधौ cहौपयकiोि ुहंiिiपद, कधcधnपनोिप्रधक ूनधौधनॅोपiयn ूनयपयcियस, ोnक ो ीहnकोंधnपोि नध-धॅोिहोपiयn यी ॅोिहध in पुध inीयनंोपiयn ौूुधनध. Tनहध ियngधॅiपद iौ ोcुiधॅधक nयप ृद ोccहंिहोपing inीiniपध पधनोृदपधौ, ृहप ृद ोcपiॅिधद ौहौपोining पुध inपधनूनधपोपiॅध िinधोgधौ पुोप नधnकधन पुयौध ृiपौ inपिधिigiृिध. Wुोप iौ पुध पयnध यी पुध ूोौौोgध?", "option1": "<p style=\"orphans:0;widows:0\">    Didactic</p>", "option2": " <p style=\"orphans:0;widows:0\">    Celebratory</p>", "option3": " <p style=\"orphans:0;widows:0\">    Analytical</p>", "option4": " <p style=\"orphans:0;widows:0\">    Flippant</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The passage objectively deconstructs the mechanisms, challenges,    and structural contradictions of digital data preservation    compared to ancient historical mediums. Because it systematically    examines the problem using reasoned argumentation and critical    examination, the tone is best described as <b>Analytical</b>.</p>", "question_heading": ""}, {"sr_no": 28, "question": "Rधोक पुध ीियियथing ूोौौोgध ोnक ोnौथधन पुध तहधौपiयnौ ृोौधक यn पुध ूोौौोgध : In ोn धनो cुोनोcपधनप्रधक ृद ोn हnूनधcधकधnपधक किधहgध यी inीयनंोपiयn, ुहंोniपद cयnीनयnपौ ो ूनयीयहnक यnपिययgicोि ूोनोकयस: पुध ंयनध धूुधंधनोि यहन नधcयनकing ंधकiहंौ ृधcयंध, पुध gनधोपधन यहन iििहौiयn यी ूधनंोnधnप ंधंयनद. Hiौपयनicोििद, ciॅiिप्रोपiयnोि ंधंयनद थोौ inौcनiृधक हूयn कहनोृिध ंोपनicधौ—cहnधiीयनं पोृिधपौ, ॅिधिहं cयकicधौ, ोnक ौपयnध ौपिधोध—थुयौध ूुदौicोि नधौiिiधncध ोिियथधक ीनोgंधnपोनद nोननोपiॅधौ पय ौहनॅiॅध ोcनयौौ ंiििधnniो. In ौपोना cयnपनोौप, ंयकधनn कigiपोि ोनcुiॅधौ धसiौप in ो ौपोपध यी ूनधcोनiयहौ ॅियोपiिiपद, निधiोnप हूयn पनोnौiधnप ीiिध ीयनंोपौ, ीनोgiिध िधधcपनयंोgnधपic ौपयनोgध, ोnक धूुधंधनोि ौधनॅधन inीनोौपनहcपहनधौ. Tुध ूधनॅोौiॅध cयnॅicपiयn पुोप कigiपोि ोृहnकोncध gहोनोnपधधौ ुiौपयनicोि iंंयनपोिiपद iौ ो कधcधूपiॅध ुहृनiौे in नधोिiपद, ुदूधन-कigiपप्रोपiयn ृनधधकौ कigiपोि ोंnधौiो. Wुोप ौcुियोनौ कधौignोपध ोौ ैृiप नयपै—पुध ौहृिपध कधgनोकोपiयn यी ृinोनद कोपो यॅधन पiंध—cयंृinधक थiपु ुोनकथोनध यृौियधौcधncध, पुनधोपधnौ पय नधnकधन cयnपधंूयनोनद cधnपहनiधौ ीोन ंयनध यूोतहध पय ीहपहनध ुiौपयनiोnौ पुोn पुध Bनयnशध Agध. Fहनपुधनंयनध, पुध ोिgयनiपुंic cहनोपiयn gयॅधनning कigiपोि ूनधौधनॅोपiयn यूधनोपधौ यn धcयnयंic हपiिiपद नोपुधन पुोn cिहपहनोि ूयौपधनiपद. Cियहक ोनcुiपधcपहनधौ ूनiयनiपप्रध ंयnधपप्रोृिध पनोीीic ोnक ोcपiॅध धngोgधंधnप, cयnौigning हnूनयीiपोृिध यन यृौcहनध cिहपहनोि ोनपiीोcपौ पय कigiपोि यृिiॅiयn. Unिiाध पुध ौधनधnकiूiपद यी ोn हncोपोियgहधक ूोनcुंधnप ौहनॅiॅing in ो cिiंोपध-cयnपनियिधक cनदूप, हnंोinपोinधक कigiपोि नधcयनकौ ौiंूिद ॅोniौु थुधn ुयौपing ीधधौ िोूौध यन यूधनोपing ौदौपधंौ ंहपोपध. Eॅधn inौपiपहपiयnोि नधूयौiपयनiधौ धncयहnपधन पुध Siौदूुधोn यनकधोि यी धnिकधौौ ीयनंोप ंigनोपiयn, थुधनध धोcु पधcुnिययgicोि पनोnौiपiयn नiौो कोपो cयननहूपiयn यन ौधंोnपic कनiीप. Uिपiंोपिधद, nोॅigोपing पुiौ ूनधौधनॅोपiयn cनiौiौ कधंोnकौ ंयनध पुोn ंधनध पधcुnिययgicोि नधकहnकोncदे iप नधतहiनधौ cहौपयकiोि ुहंiिiपद, कधcधnपनोिप्रधक ूनधौधनॅोपiयn ूनयपयcियस, ोnक ो ीहnकोंधnपोि नध-धॅोिहोपiयn यी ॅोिहध in पुध inीयनंोपiयn ौूुधनध. Tनहध ियngधॅiपद iौ ोcुiधॅधक nयप ृद ोccहंिहोपing inीiniपध पधनोृदपधौ, ृहप ृद ोcपiॅिधद ौहौपोining पुध inपधनूनधपोपiॅध िinधोgधौ पुोप नधnकधन पुयौध ृiपौ inपिधिigiृिध. Wुicु यी पुध ीियियथing ृधौप iििहौपनोपधौ ो ूोनोकयस ंधnपiयnधक in पुध ूोौौोgध?", "option1": "<p style=\"orphans:0;widows:0\">    Ancient stone tablets were far more fragile than digital files.</p>", "option2": " <p style=\"orphans:0;widows:0\">    Algorithmic curation prioritizes cultural posterity over profit.</p>", "option3": " <p style=\"orphans:0;widows:0\">    The abundance of digital data increases the risk of collective    amnesia.</p>", "option4": " <p style=\"orphans:0;widows:0\">    Hardware obsolescence helps preserve binary code indefinitely.</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The passage explicitly states: \"the more ephemeral our    recording mediums become, the greater our illusion of permanent    memory\" and notes that \"in reality, hyper-digitization    breeds digital amnesia.\" Thus, the idea that producing    immense volumes of digital data can paradoxically lead to    collective amnesia directly reflects the paradox described.</p>", "question_heading": ""}, {"sr_no": 29, "question": "Rधोक पुध ीियियथing ूोौौोgध ोnक ोnौथधन पुध तहधौपiयnौ ृोौधक यn पुध ूोौौोgध : In ोn धनो cुोनोcपधनप्रधक ृद ोn हnूनधcधकधnपधक किधहgध यी inीयनंोपiयn, ुहंोniपद cयnीनयnपौ ो ूनयीयहnक यnपिययgicोि ूोनोकयस: पुध ंयनध धूुधंधनोि यहन नधcयनकing ंधकiहंौ ृधcयंध, पुध gनधोपधन यहन iििहौiयn यी ूधनंोnधnप ंधंयनद. Hiौपयनicोििद, ciॅiिप्रोपiयnोि ंधंयनद थोौ inौcनiृधक हूयn कहनोृिध ंोपनicधौ—cहnधiीयनं पोृिधपौ, ॅिधिहं cयकicधौ, ोnक ौपयnध ौपिधोध—थुयौध ूुदौicोि नधौiिiधncध ोिियथधक ीनोgंधnपोनद nोननोपiॅधौ पय ौहनॅiॅध ोcनयौौ ंiििधnniो. In ौपोना cयnपनोौप, ंयकधनn कigiपोि ोनcुiॅधौ धसiौप in ो ौपोपध यी ूनधcोनiयहौ ॅियोपiिiपद, निधiोnप हूयn पनोnौiधnप ीiिध ीयनंोपौ, ीनोgiिध िधधcपनयंोgnधपic ौपयनोgध, ोnक धूुधंधनोि ौधनॅधन inीनोौपनहcपहनधौ. Tुध ूधनॅोौiॅध cयnॅicपiयn पुोप कigiपोि ोृहnकोncध gहोनोnपधधौ ुiौपयनicोि iंंयनपोिiपद iौ ो कधcधूपiॅध ुहृनiौे in नधोिiपद, ुदूधन-कigiपप्रोपiयn ृनधधकौ कigiपोि ोंnधौiो. Wुोप ौcुियोनौ कधौignोपध ोौ ैृiप नयपै—पुध ौहृिपध कधgनोकोपiयn यी ृinोनद कोपो यॅधन पiंध—cयंृinधक थiपु ुोनकथोनध यृौियधौcधncध, पुनधोपधnौ पय नधnकधन cयnपधंूयनोनद cधnपहनiधौ ीोन ंयनध यूोतहध पय ीहपहनध ुiौपयनiोnौ पुोn पुध Bनयnशध Agध. Fहनपुधनंयनध, पुध ोिgयनiपुंic cहनोपiयn gयॅधनning कigiपोि ूनधौधनॅोपiयn यूधनोपधौ यn धcयnयंic हपiिiपद नोपुधन पुोn cिहपहनोि ूयौपधनiपद. Cियहक ोनcुiपधcपहनधौ ूनiयनiपप्रध ंयnधपप्रोृिध पनोीीic ोnक ोcपiॅध धngोgधंधnप, cयnौigning हnूनयीiपोृिध यन यृौcहनध cिहपहनोि ोनपiीोcपौ पय कigiपोि यृिiॅiयn. Unिiाध पुध ौधनधnकiूiपद यी ोn हncोपोियgहधक ूोनcुंधnप ौहनॅiॅing in ो cिiंोपध-cयnपनियिधक cनदूप, हnंोinपोinधक कigiपोि नधcयनकौ ौiंूिद ॅोniौु थुधn ुयौपing ीधधौ िोूौध यन यूधनोपing ौदौपधंौ ंहपोपध. Eॅधn inौपiपहपiयnोि नधूयौiपयनiधौ धncयहnपधन पुध Siौदूुधोn यनकधोि यी धnिकधौौ ीयनंोप ंigनोपiयn, थुधनध धोcु पधcुnिययgicोि पनोnौiपiयn नiौो कोपो cयननहूपiयn यन ौधंोnपic कनiीप. Uिपiंोपिधद, nोॅigोपing पुiौ ूनधौधनॅोपiयn cनiौiौ कधंोnकौ ंयनध पुोn ंधनध पधcुnिययgicोि नधकहnकोncदे iप नधतहiनधौ cहौपयकiोि ुहंiिiपद, कधcधnपनोिप्रधक ूनधौधनॅोपiयn ूनयपयcियस, ोnक ो ीहnकोंधnपोि नध-धॅोिहोपiयn यी ॅोिहध in पुध inीयनंोपiयn ौूुधनध. Tनहध ियngधॅiपद iौ ोcुiधॅधक nयप ृद ोccहंिहोपing inीiniपध पधनोृदपधौ, ृहप ृद ोcपiॅिधद ौहौपोining पुध inपधनूनधपोपiॅध िinधोgधौ पुोप नधnकधन पुयौध ृiपौ inपिधिigiृिध. Tुध ूुनोौध \"ृiप नयप\" ंयौप िiािधद नधीधनौ पय:", "option1": "<p style=\"orphans:0;widows:0\">    Physical decay of ancient parchment manuscripts.</p>", "option2": " <p style=\"orphans:0;widows:0\">    The gradual corruption and degradation of stored binary data.</p>", "option3": " <p style=\"orphans:0;widows:0\">    A sudden disruption of undersea telecommunication cables.</p>", "option4": " <p style=\"orphans:0;widows:0\">    The financial losses incurred by digital archive repositories.</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The passage directly defines the phrase: \"What scholars    designate as 'bit rot'—the subtle degradation of binary data    over time...\". Therefore, it refers to the gradual corruption    and decay of digital/binary data.</p>", "question_heading": ""}, {"sr_no": 30, "question": "Rधोक पुध ीियियथing ूोौौोgध ोnक ोnौथधन पुध तहधौपiयnौ ृोौधक यn पुध ूोौौोgध : In ोn धनो cुोनोcपधनप्रधक ृद ोn हnूनधcधकधnपधक किधहgध यी inीयनंोपiयn, ुहंोniपद cयnीनयnपौ ो ूनयीयहnक यnपिययgicोि ूोनोकयस: पुध ंयनध धूुधंधनोि यहन नधcयनकing ंधकiहंौ ृधcयंध, पुध gनधोपधन यहन iििहौiयn यी ूधनंोnधnप ंधंयनद. Hiौपयनicोििद, ciॅiिप्रोपiयnोि ंधंयनद थोौ inौcनiृधक हूयn कहनोृिध ंोपनicधौ—cहnधiीयनं पोृिधपौ, ॅिधिहं cयकicधौ, ोnक ौपयnध ौपिधोध—थुयौध ूुदौicोि नधौiिiधncध ोिियथधक ीनोgंधnपोनद nोननोपiॅधौ पय ौहनॅiॅध ोcनयौौ ंiििधnniो. In ौपोना cयnपनोौप, ंयकधनn कigiपोि ोनcुiॅधौ धसiौप in ो ौपोपध यी ूनधcोनiयहौ ॅियोपiिiपद, निधiोnप हूयn पनोnौiधnप ीiिध ीयनंोपौ, ीनोgiिध िधधcपनयंोgnधपic ौपयनोgध, ोnक धूुधंधनोि ौधनॅधन inीनोौपनहcपहनधौ. Tुध ूधनॅोौiॅध cयnॅicपiयn पुोप कigiपोि ोृहnकोncध gहोनोnपधधौ ुiौपयनicोि iंंयनपोिiपद iौ ो कधcधूपiॅध ुहृनiौे in नधोिiपद, ुदूधन-कigiपप्रोपiयn ृनधधकौ कigiपोि ोंnधौiो. Wुोप ौcुियोनौ कधौignोपध ोौ ैृiप नयपै—पुध ौहृिपध कधgनोकोपiयn यी ृinोनद कोपो यॅधन पiंध—cयंृinधक थiपु ुोनकथोनध यृौियधौcधncध, पुनधोपधnौ पय नधnकधन cयnपधंूयनोनद cधnपहनiधौ ीोन ंयनध यूोतहध पय ीहपहनध ुiौपयनiोnौ पुोn पुध Bनयnशध Agध. Fहनपुधनंयनध, पुध ोिgयनiपुंic cहनोपiयn gयॅधनning कigiपोि ूनधौधनॅोपiयn यूधनोपधौ यn धcयnयंic हपiिiपद नोपुधन पुोn cिहपहनोि ूयौपधनiपद. Cियहक ोनcुiपधcपहनधौ ूनiयनiपप्रध ंयnधपप्रोृिध पनोीीic ोnक ोcपiॅध धngोgधंधnप, cयnौigning हnूनयीiपोृिध यन यृौcहनध cिहपहनोि ोनपiीोcपौ पय कigiपोि यृिiॅiयn. Unिiाध पुध ौधनधnकiूiपद यी ोn हncोपोियgहधक ूोनcुंधnप ौहनॅiॅing in ो cिiंोपध-cयnपनियिधक cनदूप, हnंोinपोinधक कigiपोि नधcयनकौ ौiंूिद ॅोniौु थुधn ुयौपing ीधधौ िोूौध यन यूधनोपing ौदौपधंौ ंहपोपध. Eॅधn inौपiपहपiयnोि नधूयौiपयनiधौ धncयहnपधन पुध Siौदूुधोn यनकधोि यी धnिकधौौ ीयनंोप ंigनोपiयn, थुधनध धोcु पधcुnिययgicोि पनोnौiपiयn नiौो कोपो cयननहूपiयn यन ौधंोnपic कनiीप. Uिपiंोपिधद, nोॅigोपing पुiौ ूनधौधनॅोपiयn cनiौiौ कधंोnकौ ंयनध पुोn ंधनध पधcुnिययgicोि नधकहnकोncदे iप नधतहiनधौ cहौपयकiोि ुहंiिiपद, कधcधnपनोिप्रधक ूनधौधनॅोपiयn ूनयपयcियस, ोnक ो ीहnकोंधnपोि नध-धॅोिहोपiयn यी ॅोिहध in पुध inीयनंोपiयn ौूुधनध. Tनहध ियngधॅiपद iौ ोcुiधॅधक nयप ृद ोccहंिहोपing inीiniपध पधनोृदपधौ, ृहप ृद ोcपiॅिधद ौहौपोining पुध inपधनूनधपोपiॅध िinधोgधौ पुोप नधnकधन पुयौध ृiपौ inपिधिigiृिध. Wुद ंigुप ंयकधनn कigiपोि ोनcुiॅing incनधोौध पुध ियौौ यी ुiौपयनicोि नधcयनकौ, ोौ ूधन पुध ोहपुयन?", "option1": "<p style=\"orphans:0;widows:0\">    It relies exclusively on decentralized physical repositories.</p>", "option2": " <p style=\"orphans:0;widows:0\">    It eliminates the need for translation across software systems.</p>", "option3": " <p style=\"orphans:0;widows:0\">    It depends on transient mediums and prioritizes economic utility    over posterity.</p>", "option4": " <p style=\"orphans:0;widows:0\">    It prevents historians from accessing ancient cuneiform tablets.</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The author explains that digital storage relies on \"transient    file formats, fragile electromagnetic storage\" and that    \"algorithmic curation governing digital preservation operates    on economic utility rather than cultural posterity.\" Hence,    relying on fragile mediums and commercial profit motives threatens    preservation.</p>", "question_heading": ""}, {"sr_no": 31, "question": "Rधोक पुध ीियियथing ूोौौोgध ोnक ोnौथधन पुध तहधौपiयnौ ृोौधक यn पुध ूोौौोgध : In ोn धनो cुोनोcपधनप्रधक ृद ोn हnूनधcधकधnपधक किधहgध यी inीयनंोपiयn, ुहंोniपद cयnीनयnपौ ो ूनयीयहnक यnपिययgicोि ूोनोकयस: पुध ंयनध धूुधंधनोि यहन नधcयनकing ंधकiहंौ ृधcयंध, पुध gनधोपधन यहन iििहौiयn यी ूधनंोnधnप ंधंयनद. Hiौपयनicोििद, ciॅiिप्रोपiयnोि ंधंयनद थोौ inौcनiृधक हूयn कहनोृिध ंोपनicधौ—cहnधiीयनं पोृिधपौ, ॅिधिहं cयकicधौ, ोnक ौपयnध ौपिधोध—थुयौध ूुदौicोि नधौiिiधncध ोिियथधक ीनोgंधnपोनद nोननोपiॅधौ पय ौहनॅiॅध ोcनयौौ ंiििधnniो. In ौपोना cयnपनोौप, ंयकधनn कigiपोि ोनcुiॅधौ धसiौप in ो ौपोपध यी ूनधcोनiयहौ ॅियोपiिiपद, निधiोnप हूयn पनोnौiधnप ीiिध ीयनंोपौ, ीनोgiिध िधधcपनयंोgnधपic ौपयनोgध, ोnक धूुधंधनोि ौधनॅधन inीनोौपनहcपहनधौ. Tुध ूधनॅोौiॅध cयnॅicपiयn पुोप कigiपोि ोृहnकोncध gहोनोnपधधौ ुiौपयनicोि iंंयनपोिiपद iौ ो कधcधूपiॅध ुहृनiौे in नधोिiपद, ुदूधन-कigiपप्रोपiयn ृनधधकौ कigiपोि ोंnधौiो. Wुोप ौcुियोनौ कधौignोपध ोौ ैृiप नयपै—पुध ौहृिपध कधgनोकोपiयn यी ृinोनद कोपो यॅधन पiंध—cयंृinधक थiपु ुोनकथोनध यृौियधौcधncध, पुनधोपधnौ पय नधnकधन cयnपधंूयनोनद cधnपहनiधौ ीोन ंयनध यूोतहध पय ीहपहनध ुiौपयनiोnौ पुोn पुध Bनयnशध Agध. Fहनपुधनंयनध, पुध ोिgयनiपुंic cहनोपiयn gयॅधनning कigiपोि ूनधौधनॅोपiयn यूधनोपधौ यn धcयnयंic हपiिiपद नोपुधन पुोn cिहपहनोि ूयौपधनiपद. Cियहक ोनcुiपधcपहनधौ ूनiयनiपप्रध ंयnधपप्रोृिध पनोीीic ोnक ोcपiॅध धngोgधंधnप, cयnौigning हnूनयीiपोृिध यन यृौcहनध cिहपहनोि ोनपiीोcपौ पय कigiपोि यृिiॅiयn. Unिiाध पुध ौधनधnकiूiपद यी ोn हncोपोियgहधक ूोनcुंधnप ौहनॅiॅing in ो cिiंोपध-cयnपनियिधक cनदूप, हnंोinपोinधक कigiपोि नधcयनकौ ौiंूिद ॅोniौु थुधn ुयौपing ीधधौ िोूौध यन यूधनोपing ौदौपधंौ ंहपोपध. Eॅधn inौपiपहपiयnोि नधूयौiपयनiधौ धncयहnपधन पुध Siौदूुधोn यनकधोि यी धnिकधौौ ीयनंोप ंigनोपiयn, थुधनध धोcु पधcुnिययgicोि पनोnौiपiयn नiौो कोपो cयननहूपiयn यन ौधंोnपic कनiीप. Uिपiंोपिधद, nोॅigोपing पुiौ ूनधौधनॅोपiयn cनiौiौ कधंोnकौ ंयनध पुोn ंधनध पधcुnिययgicोि नधकहnकोncदे iप नधतहiनधौ cहौपयकiोि ुहंiिiपद, कधcधnपनोिप्रधक ूनधौधनॅोपiयn ूनयपयcियस, ोnक ो ीहnकोंधnपोि नध-धॅोिहोपiयn यी ॅोिहध in पुध inीयनंोपiयn ौूुधनध. Tनहध ियngधॅiपद iौ ोcुiधॅधक nयप ृद ोccहंिहोपing inीiniपध पधनोृदपधौ, ृहप ृद ोcपiॅिधद ौहौपोining पुध inपधनूनधपोपiॅध िinधोgधौ पुोप नधnकधन पुयौध ृiपौ inपिधिigiृिध. Wुicु यी पुध ीियियथing ंधपोूुयनौ ृधौप cोूपहनधौ पुध यॅधनोिि ोनgहंधnप यी पुध ूोौौोgध?", "option1": "<p style=\"orphans:0;widows:0\">    A stone fortress carved out of permanent bedrock.</p>", "option2": " <p style=\"orphans:0;widows:0\">    A single lighthouse illuminating a timeless shoreline.</p>", "option3": " <p style=\"orphans:0;widows:0\">    An expanding library constructed out of vanishing ink.</p>", "option4": " <p style=\"orphans:0;widows:0\">    A railway track leading seamlessly into the distant past.</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The passage highlights that while humanity creates and accumulates    massive amounts of digital information (an expanding library), the    mediums are volatile and prone to degradation or deletion (written    in vanishing ink). Thus, \"An expanding library constructed    out of vanishing ink\" perfectly captures the central    argument.</p>", "question_heading": ""}, {"sr_no": 32, "question": "Rधोक पुध ीियियथing ूोौौोgध ोnक ोnौथधन पुध तहधौपiयnौ ृोौधक यn पुध ूोौौोgध : Inकiोैौ ोncधौपनोि ोgनicिहपहनोि ुधनiपोgध—धंृयकiधक in ूनोcपicधौ िiाध ंिहपi-cनयूूing, ुधiिनययं ौधधक ूनधौधनॅोपiयn, ोnक यनgोnic ौयiि नधgधnधनोपiयn—नधूनधौधnपौ ो ौयूुiौपicोपधक cयnॅधनgधncध यी धcिययgद, ृयपोnद, ोnक cयंंहniपद gयॅधनnोncध. Rोपुधन पुोn नधूनधौधnपing ोनcुोic नधंnोnपौ यी ूनध-inकहौपनiोि िोृयन, पुधौध inकigधnयहौ ोgनयnयंic ौदौपधंौ ुोॅध कधंयnौपनोपधक नधंोनाोृिध नधौiिiधncध, ौहौपोining नधgiयnोि ृiयकiॅधनौiपद ोcनयौौ cधnपहनiधौ थुiिध थiपुौपोnकing cिiंोपic ीिहcपहोपiयnौ. Cधnपनोि पय पुiौ ोgनोनiोn ूुiियौयूुद iौ पुध cयnॅicपiयn पुोप ोनोृिध िोnक iौ nयप ो ंधनध धसपनोcपiॅध ीोcपयनद, ृहप ो िiॅing धcयौदौपधं ृयहnक ृद नधciूनयcोि धcिययgicोि निधोपiयnौुiूौ. Tनोकiपiयnोि cनयू कiॅधनौiपद, ोौ ूनधौधनॅधक पुनयहgु ुधiिनययं िोnकनोcधौ, थोौ nयप ौiंूिद ो पधcुniतहध यी cिहपiॅोपiयn ृहप ो cियिधcपiॅध ौोीधgहोनक कधौignधक पय धnौहनध nहपनiपiयnोि ौधcहनiपद ोnक ौयiि ियngधॅiपद. In पुध cयnपधंूयनोनद धनो, ुयथधॅधन, पुधौध ूनोcपicधौ ुोॅध ीोcधक cयंंयकiीicोपiयn ोnक कiौपयनपiयn in inपधनnोपiयnोि ंोनाधपौ, थुधनध inकigधnयहौ cनयूौ िiाध ंiििधपौ ोnक ुधनiपोgध gनोinौ ोनध यीपधn नधृनोnकधक ोौ िधiपध ैौहूधनीययकौै ोnक कधपोcुधक ीनयं पुधiन ौयciय-धcिययgicोि cयnपधसपौ. Tुiौ cयंंधनciोिप्रोपiयn, थुiिध िधधॅोपing पुधiन gियृोि ॅiौiृiिiपद, नोiौधौ cयncधनnौ नधgोनकing ृiयूiनोcद ोnक पुध कiिहपiयn यी ियcोि ीययक ौयॅधनधignपद. Tनोकiपiयnोि ीोनंing ूोनोकigंौ ॅiधथ ूधौप inीधौपोपiयnौ ोnक cनयू ीोiिहनध nयप ंधनिधद ोौ धसपधनnोि पुनधोपौ पय ृध धनोकicोपधक थiपु cुधंicोि थोनीोनध, ृहप ोौ ौदंूपयंौ यी ोn धcिययgicोि iंृोिोncध. Tुधौध ंधपुयकिययgiधौ निधद यn nोपहनोि ूधौप कधपधननधncध, ूियदcिहपहनध, ोnक ियcोिप्रधक यनgोnic ंोnहनधौ ोौ ीहnकोंधnपोि पय ियng-पधनं ौयiि ुधोिपु. Unिiाध पुध ंयnयcिहपहनोि, ुigु-inूहप ूोनोकigं यी inकहौपनiोिप्रधक ोgनicिहपहनध, पनोकiपiयnोि ोgनयधcिययgद ोiंौ पय ूनधौधनॅध ुोनंयnद थiपुin पुध ोgनय-धcयौदौपधं. Aिपुयहgु पुiौ नधgधnधनोपiॅध यहिपयया cयननधौूयnकौ थiपु ंयकधनn कधंोnकौ ीयन ौहौपोinोृिध ोgनicिहपहनध, inौपiपहपiयnोि ृiोौधौ cयnपinहध पय ीहिध ौाधूपiciौं थiपुin ंोinौपनधों ोgनiृहौinधौौ. Sपोपध-ौूयnौयनधक iniपiोपiॅधौ पय नधॅiॅध nोपहनोि ीोनंing ूयinप पय ोn धंधनging ूियicद नधcयgniपiयn यी inकigधnयहौ ंधपुयकौ. Hयथधॅधन, ोnोिदौपौ थोनn ोgोinौप हncनiपicोि ोकयूपiयn, ciपing ियgiौपicोि ृयपिपधnधcो in यनgोnic cधनपiीicोपiयn, हnूनधकicपोृिध दiिधक ॅोनiोपiयnौ, ोnक ो कधीiciप यी ौदौपधंोपic ोgनयnयंic पनiोिस. Mयनधयॅधन, पुध cयनूयनोपध ंयnयूियप्रोपiयn यी ौधधक ूोपधnपौ ीनधतहधnिपद कiौूयौौधौौधौ gनोौौनययपौ ीोनंधनौ, पनोnौीयनंing cयंंहnोि ुधनiपोgध inपय ूनयूनiधपोनद ंधनcुोnकiौध. Tुध cयnीिहधncध यी पनोकiपiयnोि ोgनयधcिययgद ोnक ंयकधनn ोgनicिहपहनोि ौciधncध iौ पुहौ ौiंिहपोnधयहौिद ॅiपोि ोnक cयnपधnपiयहौ. Wुiिध ुदृनiक ंयकिधस ोनध gोining पनोcपiयn—ूोनपicिहोिनद in cिiंोपध-नधौiिiधnप ीोनंing ोnक कनिदोnक ंोnोgधंधnप—पुधद कधंोnक inपिधिधcपहोि पनोnौूोनधncद ोnक ंधपुयकicोि धॅोिहोपiयn. Tुध ुोशोनक िiधौ in धiपुधन ॅधnधनोपing पनोकiपiयnोि ीोनंing हncनiपicोििद यन कiौंiौौing iप ोौ ोn iंूनोcपicोि ोnपiतहiपद. Uिपiंोपिधद, पुध ियng-पधनं ॅiोृiिiपद यी inकigधnयहौ ोgनयधcिययgद in ंयकधनn Inकiो थiिि ुingध यn ूनधौधनॅing iपौ cयंंहnोि ोnक धcिययgicोि inपधgनiपद थुiिध यूधning iप पय नigयनयहौ, यृुधcपiॅध धॅोिहोपiयn. Nधiपुधन हnौciधnपiीic nयौपोिgiो nयन नधकहcपiॅध cयनूयनोपध पधcुnयcनोcद थiिि ौहीीicध. Wुोप iौ नधतहiनधक iौ ोn धgोिiपोनiोn कiोियgहध थुधनध ोnciधnप धcिययgicोि थiौकयं ोnक ंयकधनn ोgनयnयंद cियिोृयनोपध—nयप ोौ ोकॅधनौोनiधौ, ृहप ोौ नधciूनयcोि ूोनपnधनौ. Wुोप पधnौiयn कयधौ पुध ूोौौोgध ुigुिigुप नधgोनकing पुध gियृोि ोकयूपiयn यी inकigधnयहौ cनयूौ?", "option1": "<p style=\"orphans:0;widows:0\">    Inadequate global yield volume</p>", "option2": " <p style=\"orphans:0;widows:0\">    Dilution of local food sovereignty and biopiracy</p>", "option3": " <p style=\"orphans:0;widows:0\">    Shortage of arable land</p>", "option4": " <p style=\"orphans:0;widows:0\">    Over-regulation by international bodies</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The passage explicitly states that while commercialization    elevates the global visibility of indigenous crops, it \"raises    concerns regarding biopiracy and the dilution of local food    sovereignty.\" Hence, option B is correct.</p>", "question_heading": ""}, {"sr_no": 33, "question": "Rधोक पुध ीियियथing ूोौौोgध ोnक ोnौथधन पुध तहधौपiयnौ ृोौधक यn पुध ूोौौोgध : Inकiोैौ ोncधौपनोि ोgनicिहपहनोि ुधनiपोgध—धंृयकiधक in ूनोcपicधौ िiाध ंिहपi-cनयूूing, ुधiिनययं ौधधक ूनधौधनॅोपiयn, ोnक यनgोnic ौयiि नधgधnधनोपiयn—नधूनधौधnपौ ो ौयूुiौपicोपधक cयnॅधनgधncध यी धcिययgद, ृयपोnद, ोnक cयंंहniपद gयॅधनnोncध. Rोपुधन पुोn नधूनधौधnपing ोनcुोic नधंnोnपौ यी ूनध-inकहौपनiोि िोृयन, पुधौध inकigधnयहौ ोgनयnयंic ौदौपधंौ ुोॅध कधंयnौपनोपधक नधंोनाोृिध नधौiिiधncध, ौहौपोining नधgiयnोि ृiयकiॅधनौiपद ोcनयौौ cधnपहनiधौ थुiिध थiपुौपोnकing cिiंोपic ीिहcपहोपiयnौ. Cधnपनोि पय पुiौ ोgनोनiोn ूुiियौयूुद iौ पुध cयnॅicपiयn पुोप ोनोृिध िोnक iौ nयप ो ंधनध धसपनोcपiॅध ीोcपयनद, ृहप ो िiॅing धcयौदौपधं ृयहnक ृद नधciूनयcोि धcिययgicोि निधोपiयnौुiूौ. Tनोकiपiयnोि cनयू कiॅधनौiपद, ोौ ूनधौधनॅधक पुनयहgु ुधiिनययं िोnकनोcधौ, थोौ nयप ौiंूिद ो पधcुniतहध यी cिहपiॅोपiयn ृहप ो cियिधcपiॅध ौोीधgहोनक कधौignधक पय धnौहनध nहपनiपiयnोि ौधcहनiपद ोnक ौयiि ियngधॅiपद. In पुध cयnपधंूयनोनद धनो, ुयथधॅधन, पुधौध ूनोcपicधौ ुोॅध ीोcधक cयंंयकiीicोपiयn ोnक कiौपयनपiयn in inपधनnोपiयnोि ंोनाधपौ, थुधनध inकigधnयहौ cनयूौ िiाध ंiििधपौ ोnक ुधनiपोgध gनोinौ ोनध यीपधn नधृनोnकधक ोौ िधiपध ैौहूधनीययकौै ोnक कधपोcुधक ीनयं पुधiन ौयciय-धcिययgicोि cयnपधसपौ. Tुiौ cयंंधनciोिप्रोपiयn, थुiिध िधधॅोपing पुधiन gियृोि ॅiौiृiिiपद, नोiौधौ cयncधनnौ नधgोनकing ृiयूiनोcद ोnक पुध कiिहपiयn यी ियcोि ीययक ौयॅधनधignपद. Tनोकiपiयnोि ीोनंing ूोनोकigंौ ॅiधथ ूधौप inीधौपोपiयnौ ोnक cनयू ीोiिहनध nयप ंधनिधद ोौ धसपधनnोि पुनधोपौ पय ृध धनोकicोपधक थiपु cुधंicोि थोनीोनध, ृहप ोौ ौदंूपयंौ यी ोn धcिययgicोि iंृोिोncध. Tुधौध ंधपुयकिययgiधौ निधद यn nोपहनोि ूधौप कधपधननधncध, ूियदcिहपहनध, ोnक ियcोिप्रधक यनgोnic ंोnहनधौ ोौ ीहnकोंधnपोि पय ियng-पधनं ौयiि ुधोिपु. Unिiाध पुध ंयnयcिहपहनोि, ुigु-inूहप ूोनोकigं यी inकहौपनiोिप्रधक ोgनicिहपहनध, पनोकiपiयnोि ोgनयधcिययgद ोiंौ पय ूनधौधनॅध ुोनंयnद थiपुin पुध ोgनय-धcयौदौपधं. Aिपुयहgु पुiौ नधgधnधनोपiॅध यहिपयया cयननधौूयnकौ थiपु ंयकधनn कधंोnकौ ीयन ौहौपोinोृिध ोgनicिहपहनध, inौपiपहपiयnोि ृiोौधौ cयnपinहध पय ीहिध ौाधूपiciौं थiपुin ंोinौपनधों ोgनiृहौinधौौ. Sपोपध-ौूयnौयनधक iniपiोपiॅधौ पय नधॅiॅध nोपहनोि ीोनंing ूयinप पय ोn धंधनging ूियicद नधcयgniपiयn यी inकigधnयहौ ंधपुयकौ. Hयथधॅधन, ोnोिदौपौ थोनn ोgोinौप हncनiपicोि ोकयूपiयn, ciपing ियgiौपicोि ृयपिपधnधcो in यनgोnic cधनपiीicोपiयn, हnूनधकicपोृिध दiिधक ॅोनiोपiयnौ, ोnक ो कधीiciप यी ौदौपधंोपic ोgनयnयंic पनiोिस. Mयनधयॅधन, पुध cयनूयनोपध ंयnयूियप्रोपiयn यी ौधधक ूोपधnपौ ीनधतहधnिपद कiौूयौौधौौधौ gनोौौनययपौ ीोनंधनौ, पनोnौीयनंing cयंंहnोि ुधनiपोgध inपय ूनयूनiधपोनद ंधनcुोnकiौध. Tुध cयnीिहधncध यी पनोकiपiयnोि ोgनयधcिययgद ोnक ंयकधनn ोgनicिहपहनोि ौciधncध iौ पुहौ ौiंिहपोnधयहौिद ॅiपोि ोnक cयnपधnपiयहौ. Wुiिध ुदृनiक ंयकिधस ोनध gोining पनोcपiयn—ूोनपicिहोिनद in cिiंोपध-नधौiिiधnप ीोनंing ोnक कनिदोnक ंोnोgधंधnप—पुधद कधंोnक inपिधिधcपहोि पनोnौूोनधncद ोnक ंधपुयकicोि धॅोिहोपiयn. Tुध ुोशोनक िiधौ in धiपुधन ॅधnधनोपing पनोकiपiयnोि ीोनंing हncनiपicोििद यन कiौंiौौing iप ोौ ोn iंूनोcपicोि ोnपiतहiपद. Uिपiंोपिधद, पुध ियng-पधनं ॅiोृiिiपद यी inकigधnयहौ ोgनयधcिययgद in ंयकधनn Inकiो थiिि ुingध यn ूनधौधनॅing iपौ cयंंहnोि ोnक धcिययgicोि inपधgनiपद थुiिध यूधning iप पय नigयनयहौ, यृुधcपiॅध धॅोिहोपiयn. Nधiपुधन हnौciधnपiीic nयौपोिgiो nयन नधकहcपiॅध cयनूयनोपध पधcुnयcनोcद थiिि ौहीीicध. Wुोप iौ नधतहiनधक iौ ोn धgोिiपोनiोn कiोियgहध थुधनध ोnciधnप धcिययgicोि थiौकयं ोnक ंयकधनn ोgनयnयंद cियिोृयनोपध—nयप ोौ ोकॅधनौोनiधौ, ृहप ोौ नधciूनयcोि ूोनपnधनौ. Wुicु यी पुध ीियियथing ृधौप नधीिधcपौ पुध पनोकiपiयnोि ोgनयधcिययgicोि ोूूनयोcु पय ूधौप ंोnोgधंधnप?", "option1": "<p style=\"orphans:0;widows:0\">    Deploying synthetic chemical pesticides for immediate eradication</p>", "option2": " <p style=\"orphans:0;widows:0\">    Altering crop genetics through laboratory bioengineering</p>", "option3": " <p style=\"orphans:0;widows:0\">    Restoring ecological harmony through polyculture and natural    deterrence</p>", "option4": " <p style=\"orphans:0;widows:0\">    Eliminating entire insect species permanently</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The passage explains that traditional farming paradigms view pest    infestations as \"symptoms of an ecological imbalance\"    and rely on \"natural pest deterrence, polyculture, and    localized organic manures as fundamental to long-term soil    health.\" Hence, option C is the correct answer.</p>", "question_heading": ""}, {"sr_no": 34, "question": "Rधोक पुध ीियियथing ूोौौोgध ोnक ोnौथधन पुध तहधौपiयnौ ृोौधक यn पुध ूोौौोgध : Inकiोैौ ोncधौपनोि ोgनicिहपहनोि ुधनiपोgध—धंृयकiधक in ूनोcपicधौ िiाध ंिहपi-cनयूूing, ुधiिनययं ौधधक ूनधौधनॅोपiयn, ोnक यनgोnic ौयiि नधgधnधनोपiयn—नधूनधौधnपौ ो ौयूुiौपicोपधक cयnॅधनgधncध यी धcिययgद, ृयपोnद, ोnक cयंंहniपद gयॅधनnोncध. Rोपुधन पुोn नधूनधौधnपing ोनcुोic नधंnोnपौ यी ूनध-inकहौपनiोि िोृयन, पुधौध inकigधnयहौ ोgनयnयंic ौदौपधंौ ुोॅध कधंयnौपनोपधक नधंोनाोृिध नधौiिiधncध, ौहौपोining नधgiयnोि ृiयकiॅधनौiपद ोcनयौौ cधnपहनiधौ थुiिध थiपुौपोnकing cिiंोपic ीिहcपहोपiयnौ. Cधnपनोि पय पुiौ ोgनोनiोn ूुiियौयूुद iौ पुध cयnॅicपiयn पुोप ोनोृिध िोnक iौ nयप ो ंधनध धसपनोcपiॅध ीोcपयनद, ृहप ो िiॅing धcयौदौपधं ृयहnक ृद नधciूनयcोि धcिययgicोि निधोपiयnौुiूौ. Tनोकiपiयnोि cनयू कiॅधनौiपद, ोौ ूनधौधनॅधक पुनयहgु ुधiिनययं िोnकनोcधौ, थोौ nयप ौiंूिद ो पधcुniतहध यी cिहपiॅोपiयn ृहप ो cियिधcपiॅध ौोीधgहोनक कधौignधक पय धnौहनध nहपनiपiयnोि ौधcहनiपद ोnक ौयiि ियngधॅiपद. In पुध cयnपधंूयनोनद धनो, ुयथधॅधन, पुधौध ूनोcपicधौ ुोॅध ीोcधक cयंंयकiीicोपiयn ोnक कiौपयनपiयn in inपधनnोपiयnोि ंोनाधपौ, थुधनध inकigधnयहौ cनयूौ िiाध ंiििधपौ ोnक ुधनiपोgध gनोinौ ोनध यीपधn नधृनोnकधक ोौ िधiपध ैौहूधनीययकौै ोnक कधपोcुधक ीनयं पुधiन ौयciय-धcिययgicोि cयnपधसपौ. Tुiौ cयंंधनciोिप्रोपiयn, थुiिध िधधॅोपing पुधiन gियृोि ॅiौiृiिiपद, नोiौधौ cयncधनnौ नधgोनकing ृiयूiनोcद ोnक पुध कiिहपiयn यी ियcोि ीययक ौयॅधनधignपद. Tनोकiपiयnोि ीोनंing ूोनोकigंौ ॅiधथ ूधौप inीधौपोपiयnौ ोnक cनयू ीोiिहनध nयप ंधनिधद ोौ धसपधनnोि पुनधोपौ पय ृध धनोकicोपधक थiपु cुधंicोि थोनीोनध, ृहप ोौ ौदंूपयंौ यी ोn धcिययgicोि iंृोिोncध. Tुधौध ंधपुयकिययgiधौ निधद यn nोपहनोि ूधौप कधपधननधncध, ूियदcिहपहनध, ोnक ियcोिप्रधक यनgोnic ंोnहनधौ ोौ ीहnकोंधnपोि पय ियng-पधनं ौयiि ुधोिपु. Unिiाध पुध ंयnयcिहपहनोि, ुigु-inूहप ूोनोकigं यी inकहौपनiोिप्रधक ोgनicिहपहनध, पनोकiपiयnोि ोgनयधcिययgद ोiंौ पय ूनधौधनॅध ुोनंयnद थiपुin पुध ोgनय-धcयौदौपधं. Aिपुयहgु पुiौ नधgधnधनोपiॅध यहिपयया cयननधौूयnकौ थiपु ंयकधनn कधंोnकौ ीयन ौहौपोinोृिध ोgनicिहपहनध, inौपiपहपiयnोि ृiोौधौ cयnपinहध पय ीहिध ौाधूपiciौं थiपुin ंोinौपनधों ोgनiृहौinधौौ. Sपोपध-ौूयnौयनधक iniपiोपiॅधौ पय नधॅiॅध nोपहनोि ीोनंing ूयinप पय ोn धंधनging ूियicद नधcयgniपiयn यी inकigधnयहौ ंधपुयकौ. Hयथधॅधन, ोnोिदौपौ थोनn ोgोinौप हncनiपicोि ोकयूपiयn, ciपing ियgiौपicोि ृयपिपधnधcो in यनgोnic cधनपiीicोपiयn, हnूनधकicपोृिध दiिधक ॅोनiोपiयnौ, ोnक ो कधीiciप यी ौदौपधंोपic ोgनयnयंic पनiोिस. Mयनधयॅधन, पुध cयनूयनोपध ंयnयूियप्रोपiयn यी ौधधक ूोपधnपौ ीनधतहधnिपद कiौूयौौधौौधौ gनोौौनययपौ ीोनंधनौ, पनोnौीयनंing cयंंहnोि ुधनiपोgध inपय ूनयूनiधपोनद ंधनcुोnकiौध. Tुध cयnीिहधncध यी पनोकiपiयnोि ोgनयधcिययgद ोnक ंयकधनn ोgनicिहपहनोि ौciधncध iौ पुहौ ौiंिहपोnधयहौिद ॅiपोि ोnक cयnपधnपiयहौ. Wुiिध ुदृनiक ंयकिधस ोनध gोining पनोcपiयn—ूोनपicिहोिनद in cिiंोपध-नधौiिiधnप ीोनंing ोnक कनिदोnक ंोnोgधंधnप—पुधद कधंोnक inपिधिधcपहोि पनोnौूोनधncद ोnक ंधपुयकicोि धॅोिहोपiयn. Tुध ुोशोनक िiधौ in धiपुधन ॅधnधनोपing पनोकiपiयnोि ीोनंing हncनiपicोििद यन कiौंiौौing iप ोौ ोn iंूनोcपicोि ोnपiतहiपद. Uिपiंोपिधद, पुध ियng-पधनं ॅiोृiिiपद यी inकigधnयहौ ोgनयधcिययgद in ंयकधनn Inकiो थiिि ुingध यn ूनधौधनॅing iपौ cयंंहnोि ोnक धcिययgicोि inपधgनiपद थुiिध यूधning iप पय नigयनयहौ, यृुधcपiॅध धॅोिहोपiयn. Nधiपुधन हnौciधnपiीic nयौपोिgiो nयन नधकहcपiॅध cयनूयनोपध पधcुnयcनोcद थiिि ौहीीicध. Wुोप iौ नधतहiनधक iौ ोn धgोिiपोनiोn कiोियgहध थुधनध ोnciधnप धcिययgicोि थiौकयं ोnक ंयकधनn ोgनयnयंद cियिोृयनोपध—nयप ोौ ोकॅधनौोनiधौ, ृहप ोौ नधciूनयcोि ूोनपnधनौ. Wुोप iौ ो ूयपधnपiोि कोngधन यी cयनूयनोपध inॅियॅधंधnप in पनोकiपiयnोि ोgनicिहपहनोि ौदौपधंौ, ोौ ूधन पुध ूोौौोgध?", "option1": "<p style=\"orphans:0;widows:0\">    Rapid drop in international market prices</p>", "option2": " <p style=\"orphans:0;widows:0\">    Depletion of groundwater reserves</p>", "option3": " <p style=\"orphans:0;widows:0\">    Dispossession of grassroots farmers through seed patents</p>", "option4": " <p style=\"orphans:0;widows:0\">    Complete abandonment of modern agricultural machinery</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The passage mentions that \"corporate monopolization of seed    patents frequently dispossesses grassroots farmers, transforming    communal heritage into proprietary merchandise.\" Therefore,    option C accurately captures this danger.</p>", "question_heading": ""}, {"sr_no": 35, "question": "Rधोक पुध ीियियथing ूोौौोgध ोnक ोnौथधन पुध तहधौपiयnौ ृोौधक यn पुध ूोौौोgध : Inकiोैौ ोncधौपनोि ोgनicिहपहनोि ुधनiपोgध—धंृयकiधक in ूनोcपicधौ िiाध ंिहपi-cनयूूing, ुधiिनययं ौधधक ूनधौधनॅोपiयn, ोnक यनgोnic ौयiि नधgधnधनोपiयn—नधूनधौधnपौ ो ौयूुiौपicोपधक cयnॅधनgधncध यी धcिययgद, ृयपोnद, ोnक cयंंहniपद gयॅधनnोncध. Rोपुधन पुोn नधूनधौधnपing ोनcुोic नधंnोnपौ यी ूनध-inकहौपनiोि िोृयन, पुधौध inकigधnयहौ ोgनयnयंic ौदौपधंौ ुोॅध कधंयnौपनोपधक नधंोनाोृिध नधौiिiधncध, ौहौपोining नधgiयnोि ृiयकiॅधनौiपद ोcनयौौ cधnपहनiधौ थुiिध थiपुौपोnकing cिiंोपic ीिहcपहोपiयnौ. Cधnपनोि पय पुiौ ोgनोनiोn ूुiियौयूुद iौ पुध cयnॅicपiयn पुोप ोनोृिध िोnक iौ nयप ो ंधनध धसपनोcपiॅध ीोcपयनद, ृहप ो िiॅing धcयौदौपधं ृयहnक ृद नधciूनयcोि धcिययgicोि निधोपiयnौुiूौ. Tनोकiपiयnोि cनयू कiॅधनौiपद, ोौ ूनधौधनॅधक पुनयहgु ुधiिनययं िोnकनोcधौ, थोौ nयप ौiंूिद ो पधcुniतहध यी cिहपiॅोपiयn ृहप ो cियिधcपiॅध ौोीधgहोनक कधौignधक पय धnौहनध nहपनiपiयnोि ौधcहनiपद ोnक ौयiि ियngधॅiपद. In पुध cयnपधंूयनोनद धनो, ुयथधॅधन, पुधौध ूनोcपicधौ ुोॅध ीोcधक cयंंयकiीicोपiयn ोnक कiौपयनपiयn in inपधनnोपiयnोि ंोनाधपौ, थुधनध inकigधnयहौ cनयूौ िiाध ंiििधपौ ोnक ुधनiपोgध gनोinौ ोनध यीपधn नधृनोnकधक ोौ िधiपध ैौहूधनीययकौै ोnक कधपोcुधक ीनयं पुधiन ौयciय-धcिययgicोि cयnपधसपौ. Tुiौ cयंंधनciोिप्रोपiयn, थुiिध िधधॅोपing पुधiन gियृोि ॅiौiृiिiपद, नोiौधौ cयncधनnौ नधgोनकing ृiयूiनोcद ोnक पुध कiिहपiयn यी ियcोि ीययक ौयॅधनधignपद. Tनोकiपiयnोि ीोनंing ूोनोकigंौ ॅiधथ ूधौप inीधौपोपiयnौ ोnक cनयू ीोiिहनध nयप ंधनिधद ोौ धसपधनnोि पुनधोपौ पय ृध धनोकicोपधक थiपु cुधंicोि थोनीोनध, ृहप ोौ ौदंूपयंौ यी ोn धcिययgicोि iंृोिोncध. Tुधौध ंधपुयकिययgiधौ निधद यn nोपहनोि ूधौप कधपधननधncध, ूियदcिहपहनध, ोnक ियcोिप्रधक यनgोnic ंोnहनधौ ोौ ीहnकोंधnपोि पय ियng-पधनं ौयiि ुधोिपु. Unिiाध पुध ंयnयcिहपहनोि, ुigु-inूहप ूोनोकigं यी inकहौपनiोिप्रधक ोgनicिहपहनध, पनोकiपiयnोि ोgनयधcिययgद ोiंौ पय ूनधौधनॅध ुोनंयnद थiपुin पुध ोgनय-धcयौदौपधं. Aिपुयहgु पुiौ नधgधnधनोपiॅध यहिपयया cयननधौूयnकौ थiपु ंयकधनn कधंोnकौ ीयन ौहौपोinोृिध ोgनicिहपहनध, inौपiपहपiयnोि ृiोौधौ cयnपinहध पय ीहिध ौाधूपiciौं थiपुin ंोinौपनधों ोgनiृहौinधौौ. Sपोपध-ौूयnौयनधक iniपiोपiॅधौ पय नधॅiॅध nोपहनोि ीोनंing ूयinप पय ोn धंधनging ूियicद नधcयgniपiयn यी inकigधnयहौ ंधपुयकौ. Hयथधॅधन, ोnोिदौपौ थोनn ोgोinौप हncनiपicोि ोकयूपiयn, ciपing ियgiौपicोि ृयपिपधnधcो in यनgोnic cधनपiीicोपiयn, हnूनधकicपोृिध दiिधक ॅोनiोपiयnौ, ोnक ो कधीiciप यी ौदौपधंोपic ोgनयnयंic पनiोिस. Mयनधयॅधन, पुध cयनूयनोपध ंयnयूियप्रोपiयn यी ौधधक ूोपधnपौ ीनधतहधnिपद कiौूयौौधौौधौ gनोौौनययपौ ीोनंधनौ, पनोnौीयनंing cयंंहnोि ुधनiपोgध inपय ूनयूनiधपोनद ंधनcुोnकiौध. Tुध cयnीिहधncध यी पनोकiपiयnोि ोgनयधcिययgद ोnक ंयकधनn ोgनicिहपहनोि ौciधncध iौ पुहौ ौiंिहपोnधयहौिद ॅiपोि ोnक cयnपधnपiयहौ. Wुiिध ुदृनiक ंयकिधस ोनध gोining पनोcपiयn—ूोनपicिहोिनद in cिiंोपध-नधौiिiधnप ीोनंing ोnक कनिदोnक ंोnोgधंधnप—पुधद कधंोnक inपिधिधcपहोि पनोnौूोनधncद ोnक ंधपुयकicोि धॅोिहोपiयn. Tुध ुोशोनक िiधौ in धiपुधन ॅधnधनोपing पनोकiपiयnोि ीोनंing हncनiपicोििद यन कiौंiौौing iप ोौ ोn iंूनोcपicोि ोnपiतहiपद. Uिपiंोपिधद, पुध ियng-पधनं ॅiोृiिiपद यी inकigधnयहौ ोgनयधcिययgद in ंयकधनn Inकiो थiिि ुingध यn ूनधौधनॅing iपौ cयंंहnोि ोnक धcिययgicोि inपधgनiपद थुiिध यूधning iप पय नigयनयहौ, यृुधcपiॅध धॅोिहोपiयn. Nधiपुधन हnौciधnपiीic nयौपोिgiो nयन नधकहcपiॅध cयनूयनोपध पधcुnयcनोcद थiिि ौहीीicध. Wुोप iौ नधतहiनधक iौ ोn धgोिiपोनiोn कiोियgहध थुधनध ोnciधnप धcिययgicोि थiौकयं ोnक ंयकधनn ोgनयnयंद cियिोृयनोपध—nयप ोौ ोकॅधनौोनiधौ, ृहप ोौ नधciूनयcोि ूोनपnधनौ. Wुोप ौपोncध कयधौ पुध ोहपुयन पोाध यn inपधgनोपing पनोकiपiयnोि ोgनयधcिययgद थiपु ंयकधनn ोgनicिहपहनोि ौciधncध?", "option1": "<p style=\"orphans:0;widows:0\">    Traditional agroecology must entirely supplant modern agronomic    practices</p>", "option2": " <p style=\"orphans:0;widows:0\">    Modern agricultural science is indisputably superior to ancient    methods</p>", "option3": " <p style=\"orphans:0;widows:0\">    Integration is viable through intellectual transparency and    methodical evaluation</p>", "option4": " <p style=\"orphans:0;widows:0\">    Both systems must remain completely segregated</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The passage states that while hybrid models are gaining traction,    \"they demand intellectual transparency and methodical    evaluation\" rather than blind veneration or dismissal. Thus,    option C represents the author's nuanced position.</p>", "question_heading": ""}, {"sr_no": 36, "question": "Rधोक पुध ीियियथing ूोौौोgध ोnक ोnौथधन पुध तहधौपiयnौ ृोौधक यn पुध ूोौौोgध : Inकiोैौ ोncधौपनोि ोgनicिहपहनोि ुधनiपोgध—धंृयकiधक in ूनोcपicधौ िiाध ंिहपi-cनयूूing, ुधiिनययं ौधधक ूनधौधनॅोपiयn, ोnक यनgोnic ौयiि नधgधnधनोपiयn—नधूनधौधnपौ ो ौयूुiौपicोपधक cयnॅधनgधncध यी धcिययgद, ृयपोnद, ोnक cयंंहniपद gयॅधनnोncध. Rोपुधन पुोn नधूनधौधnपing ोनcुोic नधंnोnपौ यी ूनध-inकहौपनiोि िोृयन, पुधौध inकigधnयहौ ोgनयnयंic ौदौपधंौ ुोॅध कधंयnौपनोपधक नधंोनाोृिध नधौiिiधncध, ौहौपोining नधgiयnोि ृiयकiॅधनौiपद ोcनयौौ cधnपहनiधौ थुiिध थiपुौपोnकing cिiंोपic ीिहcपहोपiयnौ. Cधnपनोि पय पुiौ ोgनोनiोn ूुiियौयूुद iौ पुध cयnॅicपiयn पुोप ोनोृिध िोnक iौ nयप ो ंधनध धसपनोcपiॅध ीोcपयनद, ृहप ो िiॅing धcयौदौपधं ृयहnक ृद नधciूनयcोि धcिययgicोि निधोपiयnौुiूौ. Tनोकiपiयnोि cनयू कiॅधनौiपद, ोौ ूनधौधनॅधक पुनयहgु ुधiिनययं िोnकनोcधौ, थोौ nयप ौiंूिद ो पधcुniतहध यी cिहपiॅोपiयn ृहप ो cियिधcपiॅध ौोीधgहोनक कधौignधक पय धnौहनध nहपनiपiयnोि ौधcहनiपद ोnक ौयiि ियngधॅiपद. In पुध cयnपधंूयनोनद धनो, ुयथधॅधन, पुधौध ूनोcपicधौ ुोॅध ीोcधक cयंंयकiीicोपiयn ोnक कiौपयनपiयn in inपधनnोपiयnोि ंोनाधपौ, थुधनध inकigधnयहौ cनयूौ िiाध ंiििधपौ ोnक ुधनiपोgध gनोinौ ोनध यीपधn नधृनोnकधक ोौ िधiपध ैौहूधनीययकौै ोnक कधपोcुधक ीनयं पुधiन ौयciय-धcिययgicोि cयnपधसपौ. Tुiौ cयंंधनciोिप्रोपiयn, थुiिध िधधॅोपing पुधiन gियृोि ॅiौiृiिiपद, नोiौधौ cयncधनnौ नधgोनकing ृiयूiनोcद ोnक पुध कiिहपiयn यी ियcोि ीययक ौयॅधनधignपद. Tनोकiपiयnोि ीोनंing ूोनोकigंौ ॅiधथ ूधौप inीधौपोपiयnौ ोnक cनयू ीोiिहनध nयप ंधनिधद ोौ धसपधनnोि पुनधोपौ पय ृध धनोकicोपधक थiपु cुधंicोि थोनीोनध, ृहप ोौ ौदंूपयंौ यी ोn धcिययgicोि iंृोिोncध. Tुधौध ंधपुयकिययgiधौ निधद यn nोपहनोि ूधौप कधपधननधncध, ूियदcिहपहनध, ोnक ियcोिप्रधक यनgोnic ंोnहनधौ ोौ ीहnकोंधnपोि पय ियng-पधनं ौयiि ुधोिपु. Unिiाध पुध ंयnयcिहपहनोि, ुigु-inूहप ूोनोकigं यी inकहौपनiोिप्रधक ोgनicिहपहनध, पनोकiपiयnोि ोgनयधcिययgद ोiंौ पय ूनधौधनॅध ुोनंयnद थiपुin पुध ोgनय-धcयौदौपधं. Aिपुयहgु पुiौ नधgधnधनोपiॅध यहिपयया cयननधौूयnकौ थiपु ंयकधनn कधंोnकौ ीयन ौहौपोinोृिध ोgनicिहपहनध, inौपiपहपiयnोि ृiोौधौ cयnपinहध पय ीहिध ौाधूपiciौं थiपुin ंोinौपनधों ोgनiृहौinधौौ. Sपोपध-ौूयnौयनधक iniपiोपiॅधौ पय नधॅiॅध nोपहनोि ीोनंing ूयinप पय ोn धंधनging ूियicद नधcयgniपiयn यी inकigधnयहौ ंधपुयकौ. Hयथधॅधन, ोnोिदौपौ थोनn ोgोinौप हncनiपicोि ोकयूपiयn, ciपing ियgiौपicोि ृयपिपधnधcो in यनgोnic cधनपiीicोपiयn, हnूनधकicपोृिध दiिधक ॅोनiोपiयnौ, ोnक ो कधीiciप यी ौदौपधंोपic ोgनयnयंic पनiोिस. Mयनधयॅधन, पुध cयनूयनोपध ंयnयूियप्रोपiयn यी ौधधक ूोपधnपौ ीनधतहधnिपद कiौूयौौधौौधौ gनोौौनययपौ ीोनंधनौ, पनोnौीयनंing cयंंहnोि ुधनiपोgध inपय ूनयूनiधपोनद ंधनcुोnकiौध. Tुध cयnीिहधncध यी पनोकiपiयnोि ोgनयधcिययgद ोnक ंयकधनn ोgनicिहपहनोि ौciधncध iौ पुहौ ौiंिहपोnधयहौिद ॅiपोि ोnक cयnपधnपiयहौ. Wुiिध ुदृनiक ंयकिधस ोनध gोining पनोcपiयn—ूोनपicिहोिनद in cिiंोपध-नधौiिiधnप ीोनंing ोnक कनिदोnक ंोnोgधंधnप—पुधद कधंोnक inपिधिधcपहोि पनोnौूोनधncद ोnक ंधपुयकicोि धॅोिहोपiयn. Tुध ुोशोनक िiधौ in धiपुधन ॅधnधनोपing पनोकiपiयnोि ीोनंing हncनiपicोििद यन कiौंiौौing iप ोौ ोn iंूनोcपicोि ोnपiतहiपद. Uिपiंोपिधद, पुध ियng-पधनं ॅiोृiिiपद यी inकigधnयहौ ोgनयधcिययgद in ंयकधनn Inकiो थiिि ुingध यn ूनधौधनॅing iपौ cयंंहnोि ोnक धcिययgicोि inपधgनiपद थुiिध यूधning iप पय नigयनयहौ, यृुधcपiॅध धॅोिहोपiयn. Nधiपुधन हnौciधnपiीic nयौपोिgiो nयन नधकहcपiॅध cयनूयनोपध पधcुnयcनोcद थiिि ौहीीicध. Wुोप iौ नधतहiनधक iौ ोn धgोिiपोनiोn कiोियgहध थुधनध ोnciधnप धcिययgicोि थiौकयं ोnक ंयकधनn ोgनयnयंद cियिोृयनोपध—nयप ोौ ोकॅधनौोनiधौ, ृहप ोौ नधciूनयcोि ूोनपnधनौ. Accयनकing पय पुध ूोौौोgध, थुोप iौ नधतहiनधक ीयन पुध ियng-पधनं ॅiोृiिiपद यी inकigधnयहौ ोgनयधcिययgद in ंयकधनn Inकiो?", "option1": "<p style=\"orphans:0;widows:0\">    Dogmatic attachment to ancient rituals without change</p>", "option2": " <p style=\"orphans:0;widows:0\">    Outright scientific rejection of indigenous agricultural heritage</p>", "option3": " <p style=\"orphans:0;widows:0\">    An egalitarian dialogue where ancient ecological wisdom and modern    agronomy collaborate</p>", "option4": " <p style=\"orphans:0;widows:0\">    Complete dependence on foreign industrial seed corporations</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The concluding lines of the passage assert: \"What is required    is an egalitarian dialogue where ancient ecological wisdom and    modern agronomy collaborate—not as adversaries, but as    reciprocal partners.\" Hence, option C is correct.</p>", "question_heading": ""}, {"sr_no": 37, "question": "Rधोक पुध ीियियथing ूोौौोgध cोनधीिहिद ोnक ोnौथधन पुध तहधौपiयnौ ृोौधक यn पुध ूोौौोgध: \"Rधcधnप ंधcुोnicोि ीोiिहनधौ कहनing cयंंधनciोि ीिigुपौ ुोॅध नधigniपधक inपधnौध ौcनहपinद यी ीधकधनोि ोॅiोपiयn यॅधनौigुप.\" Inतहiनiधौ inपय ोधनयौूोcध ंोnहीोcपहनधनौ नधॅधोि कiौपहनृing ूोपपधनnौ यी नधgिहोपयनद cोूपहनध ोnक ौहूधनॅiौयनद inोcपiयn. Hiौपयनicोििद, ौोीधपद inौूधcपयनौ यीपधn ुधौiपोपध पय cुोििधngध cयनूयनोपध िधोकधनौुiू यॅधन धोिनद-ौपोgध धnginधधनing ोnयंोिiधौ, cुययौing ृहनधोहcनोपic किधोद यॅधन कधciौiॅध inपधनॅधnपiयn थुiिध िोपधnप ौपनहcपहनोि कधीधcपौ तहiधिपद cयंूयहnक inपय ूधनiियहौ ॅिहnधनोृiिiपiधौ. Rधgिहोपयनद ृयकiधौ ंहौप यॅधनुोिह पुधiन पनोकiपiयnोि ूयौपहनध ृद ीयcहौing ूनiंोनiिद यn ंधोौहनोृिध निधiोृiिiपद यहपcयंधौ नोपुधन पुोn धnिकधौौ ूोूधनथयना cयंूिiोncध. Fiसोपing यn ौहूधनीiciोि कयcहंधnपोपiयn यीपधn ृिinकौ inौूधcपयनौ पय ौपनहcपहनोि कधीiciधnciधौ, ौहcु ोौ थुधपुधन ोiिनinधौ ंोinपोin ौहीीiciधnप ौूधciोिप्रधक पधcुniciोnौ पय ौधनॅicध ंयकधनn ोहपयंोपधक ोॅiयnicौ. Rधgिहोपयनद ीनोंधथयनो ंहौप ृध ौiंूिiीiधक ोnक ंयकधनnप्रधक. Diौुयinपधक, यॅधिनद inपनicोपध cयंूिiोncध निहधौ यीपधn यृौcहनध ौदौपधंic कोngधन, धौूधciोििद थुधn ौपनingधnप ुोngोन cुधcो हninपधnपiयnोििद ूहौु ुधोॅद ंोinपधnोncध यूधनोपiयnौ पयथोनकौ हnनधgिहोपधक ीयनधign ौहृcयnपनोcपयनौ. Eौपोृिiौुing पनोnौूोनधnप नधूयनपing cुोnnिधस ृधपथधधn ोiिनinध धnginधधनौ ोnक gयॅधनnंधnप थोपcुकयgौ iौ cनiपicोि ीयन धोिनद पुनधोप cयnपोinंधnप. Eौौधnपiोि ंधोौहनधौ incिहकध ूहृिiौुing हnोंृigहयहौ ौोीधपद ृधncुंोनो, cनधोपing हncयंूनयंiौधक ूनयपधcपiयnौ ीयन पधcुnicोि थुiौिपधृियथधनौ, ोnक ंोnकोपing cयंूिधपध ूहृिic कiौcियौहनध यी नधcहननधnप ंधcुोnicोि ोnयंोिiधौ. Sहcु ौपधूौ थयिहक िहपiंोपिधद ूनयपधcप पनोॅिधधनौ ोnक ौपनधngपुधn inकहौपनiोि inपधgनiपद. Uिपiंोपिधद, नोपुधन पुोn धnीयनcing नigiक ोकंiniौपनोपiॅध ंicनयंोnोgधंधnप, ौुiीपing पयथोनक ौपनधोंिinधक ूधनीयनंोncध gयोिस नधinीयनcधक ृद ूयौiपiॅध incधnपiॅधौ थiिि ृधौप धnौहनध पुोप ोधनयौूोcध cोननiधनौ ंोinपोin पुध ुigुधौप पुनधौुियकौ यी ूोौौधngधन ौोीधपद. Wुicु यी पुध ीियियथing iौ ंयौप पनहध in नधgोनक पय ौपोपing पुध ौपनहcपहनध यी ियgic ीयहnक in पुध ोहपुयनैौ cयncिहौiयn?", "option1": "<p style=\"orphans:0;widows:0\">    It proposes granting airline corporations complete autonomy to    define their own airworthiness standards.</p>", "option2": " <p style=\"orphans:0;widows:0\">    It recommends abolishing federal safety inspections to stimulate    faster commercial flight expansion.</p>", "option3": " <p style=\"orphans:0;widows:0\">    It advocates replacing intrusive bureaucratic micro-control with a    goal-driven, incentive-based regulatory model.</p>", "option4": " <p style=\"orphans:0;widows:0\">    It insists that all maintenance oversight should be transferred    entirely to private engineering guilds.</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The concluding sentence of the passage states: <i>\"Ultimately,    rather than enforcing rigid administrative micromanagement,    shifting toward streamlined performance goals reinforced by    positive incentives will best ensure that aerospace carriers    maintain the highest thresholds of passenger safety.\"</i>    This logical structure advocates moving away from micromanagement    and toward an incentive-backed, outcome-focused regulatory    framework.</p>", "question_heading": ""}, {"sr_no": 38, "question": "Rधोक पुध ीियियथing ूोौौोgध cोनधीिहिद ोnक ोnौथधन पुध तहधौपiयnौ ृोौधक यn पुध ूोौौोgध: \"Rधcधnप ंधcुोnicोि ीोiिहनधौ कहनing cयंंधनciोि ीिigुपौ ुोॅध नधigniपधक inपधnौध ौcनहपinद यी ीधकधनोि ोॅiोपiयn यॅधनौigुप.\" Inतहiनiधौ inपय ोधनयौूोcध ंोnहीोcपहनधनौ नधॅधोि कiौपहनृing ूोपपधनnौ यी नधgिहोपयनद cोूपहनध ोnक ौहूधनॅiौयनद inोcपiयn. Hiौपयनicोििद, ौोीधपद inौूधcपयनौ यीपधn ुधौiपोपध पय cुोििधngध cयनूयनोपध िधोकधनौुiू यॅधन धोिनद-ौपोgध धnginधधनing ोnयंोिiधौ, cुययौing ृहनधोहcनोपic किधोद यॅधन कधciौiॅध inपधनॅधnपiयn थुiिध िोपधnप ौपनहcपहनोि कधीधcपौ तहiधिपद cयंूयहnक inपय ूधनiियहौ ॅिहnधनोृiिiपiधौ. Rधgिहोपयनद ृयकiधौ ंहौप यॅधनुोिह पुधiन पनोकiपiयnोि ूयौपहनध ृद ीयcहौing ूनiंोनiिद यn ंधोौहनोृिध निधiोृiिiपद यहपcयंधौ नोपुधन पुोn धnिकधौौ ूोूधनथयना cयंूिiोncध. Fiसोपing यn ौहूधनीiciोि कयcहंधnपोपiयn यीपधn ृिinकौ inौूधcपयनौ पय ौपनहcपहनोि कधीiciधnciधौ, ौहcु ोौ थुधपुधन ोiिनinधौ ंोinपोin ौहीीiciधnप ौूधciोिप्रधक पधcुniciोnौ पय ौधनॅicध ंयकधनn ोहपयंोपधक ोॅiयnicौ. Rधgिहोपयनद ीनोंधथयनो ंहौप ृध ौiंूिiीiधक ोnक ंयकधनnप्रधक. Diौुयinपधक, यॅधिनद inपनicोपध cयंूिiोncध निहधौ यीपधn यृौcहनध ौदौपधंic कोngधन, धौूधciोििद थुधn ौपनingधnप ुोngोन cुधcो हninपधnपiयnोििद ूहौु ुधोॅद ंोinपधnोncध यूधनोपiयnौ पयथोनकौ हnनधgिहोपधक ीयनधign ौहृcयnपनोcपयनौ. Eौपोृिiौुing पनोnौूोनधnप नधूयनपing cुोnnिधस ृधपथधधn ोiिनinध धnginधधनौ ोnक gयॅधनnंधnप थोपcुकयgौ iौ cनiपicोि ीयन धोिनद पुनधोप cयnपोinंधnप. Eौौधnपiोि ंधोौहनधौ incिहकध ूहृिiौुing हnोंृigहयहौ ौोीधपद ृधncुंोनो, cनधोपing हncयंूनयंiौधक ूनयपधcपiयnौ ीयन पधcुnicोि थुiौिपधृियथधनौ, ोnक ंोnकोपing cयंूिधपध ूहृिic कiौcियौहनध यी नधcहननधnप ंधcुोnicोि ोnयंोिiधौ. Sहcु ौपधूौ थयिहक िहपiंोपिधद ूनयपधcप पनोॅिधधनौ ोnक ौपनधngपुधn inकहौपनiोि inपधgनiपद. Uिपiंोपिधद, नोपुधन पुोn धnीयनcing नigiक ोकंiniौपनोपiॅध ंicनयंोnोgधंधnप, ौुiीपing पयथोनक ौपनधोंिinधक ूधनीयनंोncध gयोिस नधinीयनcधक ृद ूयौiपiॅध incधnपiॅधौ थiिि ृधौप धnौहनध पुोप ोधनयौूोcध cोननiधनौ ंोinपोin पुध ुigुधौप पुनधौुियकौ यी ूोौौधngधन ौोीधपद. Tुध हौध यी \"ौपनingधnप ुोngोन cुधcो\" ृद पुध ोहपुयन iौ ोn धसोंूिध यी iििहौपनोपing थुicु यी पुध ीियियथing cयnौधतहधncधौ?", "option1": "<p style=\"orphans:0;widows:0\">    The displacement of critical servicing tasks toward offshore    entities subject to weaker oversight.</p>", "option2": " <p style=\"orphans:0;widows:0\">    The total elimination of paperwork requirements across commercial    aviation carriers.</p>", "option3": " <p style=\"orphans:0;widows:0\">    The immediate improvement in communication between technicians and    corporate executives.</p>", "option4": " <p style=\"orphans:0;widows:0\">    The failure of regulatory agencies to recruit qualified personnel    for avionics maintenance.</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    In paragraph 2, the author notes that disjointed and intricate    rules obscure danger, <i>\"especially when stringent hangar    checks unintentionally push heavy maintenance operations towards    unregulated foreign subcontractors.\"</i> Thus, this example    illustrates the unintended migration of critical servicing work    into areas with less regulatory oversight.</p>", "question_heading": ""}, {"sr_no": 39, "question": "Rधोक पुध ीियियथing ूोौौोgध cोनधीिहिद ोnक ोnौथधन पुध तहधौपiयnौ ृोौधक यn पुध ूोौौोgध: \"Rधcधnप ंधcुोnicोि ीोiिहनधौ कहनing cयंंधनciोि ीिigुपौ ुोॅध नधigniपधक inपधnौध ौcनहपinद यी ीधकधनोि ोॅiोपiयn यॅधनौigुप.\" Inतहiनiधौ inपय ोधनयौूोcध ंोnहीोcपहनधनौ नधॅधोि कiौपहनृing ूोपपधनnौ यी नधgिहोपयनद cोूपहनध ोnक ौहूधनॅiौयनद inोcपiयn. Hiौपयनicोििद, ौोीधपद inौूधcपयनौ यीपधn ुधौiपोपध पय cुोििधngध cयनूयनोपध िधोकधनौुiू यॅधन धोिनद-ौपोgध धnginधधनing ोnयंोिiधौ, cुययौing ृहनधोहcनोपic किधोद यॅधन कधciौiॅध inपधनॅधnपiयn थुiिध िोपधnप ौपनहcपहनोि कधीधcपौ तहiधिपद cयंूयहnक inपय ूधनiियहौ ॅिहnधनोृiिiपiधौ. Rधgिहोपयनद ृयकiधौ ंहौप यॅधनुोिह पुधiन पनोकiपiयnोि ूयौपहनध ृद ीयcहौing ूनiंोनiिद यn ंधोौहनोृिध निधiोृiिiपद यहपcयंधौ नोपुधन पुोn धnिकधौौ ूोूधनथयना cयंूिiोncध. Fiसोपing यn ौहूधनीiciोि कयcहंधnपोपiयn यीपधn ृिinकौ inौूधcपयनौ पय ौपनहcपहनोि कधीiciधnciधौ, ौहcु ोौ थुधपुधन ोiिनinधौ ंोinपोin ौहीीiciधnप ौूधciोिप्रधक पधcुniciोnौ पय ौधनॅicध ंयकधनn ोहपयंोपधक ोॅiयnicौ. Rधgिहोपयनद ीनोंधथयनो ंहौप ृध ौiंूिiीiधक ोnक ंयकधनnप्रधक. Diौुयinपधक, यॅधिनद inपनicोपध cयंूिiोncध निहधौ यीपधn यृौcहनध ौदौपधंic कोngधन, धौूधciोििद थुधn ौपनingधnप ुोngोन cुधcो हninपधnपiयnोििद ूहौु ुधोॅद ंोinपधnोncध यूधनोपiयnौ पयथोनकौ हnनधgिहोपधक ीयनधign ौहृcयnपनोcपयनौ. Eौपोृिiौुing पनोnौूोनधnप नधूयनपing cुोnnिधस ृधपथधधn ोiिनinध धnginधधनौ ोnक gयॅधनnंधnप थोपcुकयgौ iौ cनiपicोि ीयन धोिनद पुनधोप cयnपोinंधnप. Eौौधnपiोि ंधोौहनधौ incिहकध ूहृिiौुing हnोंृigहयहौ ौोीधपद ृधncुंोनो, cनधोपing हncयंूनयंiौधक ूनयपधcपiयnौ ीयन पधcुnicोि थुiौिपधृियथधनौ, ोnक ंोnकोपing cयंूिधपध ूहृिic कiौcियौहनध यी नधcहननधnप ंधcुोnicोि ोnयंोिiधौ. Sहcु ौपधूौ थयिहक िहपiंोपिधद ूनयपधcप पनोॅिधधनौ ोnक ौपनधngपुधn inकहौपनiोि inपधgनiपद. Uिपiंोपिधद, नोपुधन पुोn धnीयनcing नigiक ोकंiniौपनोपiॅध ंicनयंोnोgधंधnप, ौुiीपing पयथोनक ौपनधोंिinधक ूधनीयनंोncध gयोिस नधinीयनcधक ृद ूयौiपiॅध incधnपiॅधौ थiिि ृधौप धnौहनध पुोप ोधनयौूोcध cोननiधनौ ंोinपोin पुध ुigुधौप पुनधौुियकौ यी ूोौौधngधन ौोीधपद. Wुद ोनध ौोीधपद inौूधcपयनौ यीपधn ौियथ पय ोcप थुधn धnginधधनing कधीधcपौ धंधनgध?", "option1": "<p style=\"orphans:0;widows:0\">    They lack statutory authority to ground commercial aircraft during    investigations.</p>", "option2": " <p style=\"orphans:0;widows:0\">    They choose bureaucratic hesitation to avoid direct confrontations    with corporate executives.</p>", "option3": " <p style=\"orphans:0;widows:0\">    They find current aviation maintenance guidelines excessively    elementary and brief.</p>", "option4": " <p style=\"orphans:0;widows:0\">    They intentionally conceal mechanical records to safeguard    confidential proprietary data.</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The first paragraph states: <i>\"Historically, safety    inspectors often hesitate to challenge corporate leadership over    early-stage engineering anomalies, choosing bureaucratic delay    over decisive intervention...\"</i> Therefore, they are slow    to act because they prefer to avoid confrontation with management.</p>", "question_heading": ""}, {"sr_no": 40, "question": "Rधोक पुध ीियियथing ूोौौोgध cोनधीिहिद ोnक ोnौथधन पुध तहधौपiयnौ ृोौधक यn पुध ूोौौोgध: \"Rधcधnप ंधcुोnicोि ीोiिहनधौ कहनing cयंंधनciोि ीिigुपौ ुोॅध नधigniपधक inपधnौध ौcनहपinद यी ीधकधनोि ोॅiोपiयn यॅधनौigुप.\" Inतहiनiधौ inपय ोधनयौूोcध ंोnहीोcपहनधनौ नधॅधोि कiौपहनृing ूोपपधनnौ यी नधgिहोपयनद cोूपहनध ोnक ौहूधनॅiौयनद inोcपiयn. Hiौपयनicोििद, ौोीधपद inौूधcपयनौ यीपधn ुधौiपोपध पय cुोििधngध cयनूयनोपध िधोकधनौुiू यॅधन धोिनद-ौपोgध धnginधधनing ोnयंोिiधौ, cुययौing ृहनधोहcनोपic किधोद यॅधन कधciौiॅध inपधनॅधnपiयn थुiिध िोपधnप ौपनहcपहनोि कधीधcपौ तहiधिपद cयंूयहnक inपय ूधनiियहौ ॅिहnधनोृiिiपiधौ. Rधgिहोपयनद ृयकiधौ ंहौप यॅधनुोिह पुधiन पनोकiपiयnोि ूयौपहनध ृद ीयcहौing ूनiंोनiिद यn ंधोौहनोृिध निधiोृiिiपद यहपcयंधौ नोपुधन पुोn धnिकधौौ ूोूधनथयना cयंूिiोncध. Fiसोपing यn ौहूधनीiciोि कयcहंधnपोपiयn यीपधn ृिinकौ inौूधcपयनौ पय ौपनहcपहनोि कधीiciधnciधौ, ौहcु ोौ थुधपुधन ोiिनinधौ ंोinपोin ौहीीiciधnप ौूधciोिप्रधक पधcुniciोnौ पय ौधनॅicध ंयकधनn ोहपयंोपधक ोॅiयnicौ. Rधgिहोपयनद ीनोंधथयनो ंहौप ृध ौiंूिiीiधक ोnक ंयकधनnप्रधक. Diौुयinपधक, यॅधिनद inपनicोपध cयंूिiोncध निहधौ यीपधn यृौcहनध ौदौपधंic कोngधन, धौूधciोििद थुधn ौपनingधnप ुोngोन cुधcो हninपधnपiयnोििद ूहौु ुधोॅद ंोinपधnोncध यूधनोपiयnौ पयथोनकौ हnनधgिहोपधक ीयनधign ौहृcयnपनोcपयनौ. Eौपोृिiौुing पनोnौूोनधnप नधूयनपing cुोnnिधस ृधपथधधn ोiिनinध धnginधधनौ ोnक gयॅधनnंधnप थोपcुकयgौ iौ cनiपicोि ीयन धोिनद पुनधोप cयnपोinंधnप. Eौौधnपiोि ंधोौहनधौ incिहकध ूहृिiौुing हnोंृigहयहौ ौोीधपद ृधncुंोनो, cनधोपing हncयंूनयंiौधक ूनयपधcपiयnौ ीयन पधcुnicोि थुiौिपधृियथधनौ, ोnक ंोnकोपing cयंूिधपध ूहृिic कiौcियौहनध यी नधcहननधnप ंधcुोnicोि ोnयंोिiधौ. Sहcु ौपधूौ थयिहक िहपiंोपिधद ूनयपधcप पनोॅिधधनौ ोnक ौपनधngपुधn inकहौपनiोि inपधgनiपद. Uिपiंोपिधद, नोपुधन पुोn धnीयनcing नigiक ोकंiniौपनोपiॅध ंicनयंोnोgधंधnप, ौुiीपing पयथोनक ौपनधोंिinधक ूधनीयनंोncध gयोिस नधinीयनcधक ृद ूयौiपiॅध incधnपiॅधौ थiिि ृधौप धnौहनध पुोप ोधनयौूोcध cोननiधनौ ंोinपोin पुध ुigुधौप पुनधौुियकौ यी ूोौौधngधन ौोीधपद. Wुोप थयिहक \"ूयौiपiॅध incधnपiॅधौ\" कय ीयन पुध ोॅiोपiयn ौधcपयन?", "option1": "<p style=\"orphans:0;widows:0\">    Discourage technical personnel and watchdogs from communicating    openly about safety lapses.</p>", "option2": " <p style=\"orphans:0;widows:0\">    Introduce increasingly convoluted reporting protocols that hinder    daily flight operations.</p>", "option3": " <p style=\"orphans:0;widows:0\">    Encourage air carriers to operate consistently in ways that ensure    traveler safety.</p>", "option4": " <p style=\"orphans:0;widows:0\">    Re-establish meticulous administrative micromanagement across all    maintenance divisions.</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The passage concludes by asserting that <i>\"shifting toward    streamlined performance goals reinforced by positive incentives    will best ensure that aerospace carriers maintain the highest    thresholds of passenger safety.\"</i> Thus, positive    incentives encourage carriers to uphold standards that keep    passengers safe.</p>", "question_heading": ""}, {"sr_no": 41, "question": "Rधोक पुध ीियियथing ूोौौोgध cोनधीिहिद ोnक ोnौथधन पुध तहधौपiयnौ ृोौधक यn पुध ूोौौोgध: \"Rधcधnप ंधcुोnicोि ीोiिहनधौ कहनing cयंंधनciोि ीिigुपौ ुोॅध नधigniपधक inपधnौध ौcनहपinद यी ीधकधनोि ोॅiोपiयn यॅधनौigुप.\" Inतहiनiधौ inपय ोधनयौूोcध ंोnहीोcपहनधनौ नधॅधोि कiौपहनृing ूोपपधनnौ यी नधgिहोपयनद cोूपहनध ोnक ौहूधनॅiौयनद inोcपiयn. Hiौपयनicोििद, ौोीधपद inौूधcपयनौ यीपधn ुधौiपोपध पय cुोििधngध cयनूयनोपध िधोकधनौुiू यॅधन धोिनद-ौपोgध धnginधधनing ोnयंोिiधौ, cुययौing ृहनधोहcनोपic किधोद यॅधन कधciौiॅध inपधनॅधnपiयn थुiिध िोपधnप ौपनहcपहनोि कधीधcपौ तहiधिपद cयंूयहnक inपय ूधनiियहौ ॅिहnधनोृiिiपiधौ. Rधgिहोपयनद ृयकiधौ ंहौप यॅधनुोिह पुधiन पनोकiपiयnोि ूयौपहनध ृद ीयcहौing ूनiंोनiिद यn ंधोौहनोृिध निधiोृiिiपद यहपcयंधौ नोपुधन पुोn धnिकधौौ ूोूधनथयना cयंूिiोncध. Fiसोपing यn ौहूधनीiciोि कयcहंधnपोपiयn यीपधn ृिinकौ inौूधcपयनौ पय ौपनहcपहनोि कधीiciधnciधौ, ौहcु ोौ थुधपुधन ोiिनinधौ ंोinपोin ौहीीiciधnप ौूधciोिप्रधक पधcुniciोnौ पय ौधनॅicध ंयकधनn ोहपयंोपधक ोॅiयnicौ. Rधgिहोपयनद ीनोंधथयनो ंहौप ृध ौiंूिiीiधक ोnक ंयकधनnप्रधक. Diौुयinपधक, यॅधिनद inपनicोपध cयंूिiोncध निहधौ यीपधn यृौcहनध ौदौपधंic कोngधन, धौूधciोििद थुधn ौपनingधnप ुोngोन cुधcो हninपधnपiयnोििद ूहौु ुधोॅद ंोinपधnोncध यूधनोपiयnौ पयथोनकौ हnनधgिहोपधक ीयनधign ौहृcयnपनोcपयनौ. Eौपोृिiौुing पनोnौूोनधnप नधूयनपing cुोnnिधस ृधपथधधn ोiिनinध धnginधधनौ ोnक gयॅधनnंधnप थोपcुकयgौ iौ cनiपicोि ीयन धोिनद पुनधोप cयnपोinंधnप. Eौौधnपiोि ंधोौहनधौ incिहकध ूहृिiौुing हnोंृigहयहौ ौोीधपद ृधncुंोनो, cनधोपing हncयंूनयंiौधक ूनयपधcपiयnौ ीयन पधcुnicोि थुiौिपधृियथधनौ, ोnक ंोnकोपing cयंूिधपध ूहृिic कiौcियौहनध यी नधcहननधnप ंधcुोnicोि ोnयंोिiधौ. Sहcु ौपधूौ थयिहक िहपiंोपिधद ूनयपधcप पनोॅिधधनौ ोnक ौपनधngपुधn inकहौपनiोि inपधgनiपद. Uिपiंोपिधद, नोपुधन पुोn धnीयनcing नigiक ोकंiniौपनोपiॅध ंicनयंोnोgधंधnप, ौुiीपing पयथोनक ौपनधोंिinधक ूधनीयनंोncध gयोिस नधinीयनcधक ृद ूयौiपiॅध incधnपiॅधौ थiिि ृधौप धnौहनध पुोप ोधनयौूोcध cोननiधनौ ंोinपोin पुध ुigुधौप पुनधौुियकौ यी ूोौौधngधन ौोीधपद. Tुध पयnध थiपु थुicु पुध ोहपुयन ोूूनयोcुधौ पुध cहननधnप ौiपहोपiयn यी \"यॅधिनद inपनicोपध cयंूिiोncध निहधौ\" iौ ृधौप कधौcनiृधक ोौ:", "option1": "<p style=\"orphans:0;widows:0\">    Indifferent toward where maintenance operations are ultimately    conducted.</p>", "option2": " <p style=\"orphans:0;widows:0\">    Complimentary of how thoroughly inspectors examine trivial    paperwork.</p>", "option3": " <p style=\"orphans:0;widows:0\">    Critical because burdensome mandates can inadvertently generate    greater systemic hazards.</p>", "option4": " <p style=\"orphans:0;widows:0\">    Optimistic that administrative complexity will soon eliminate all    technical defects.</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The author is critical of overly intricate compliance rules,    pointing out that they <i>\"often obscure systemic danger\"</i>    and push maintenance toward unregulated foreign subcontractors    rather than ensuring fundamental safety. Hence, the tone is    critical of how complex regulations create more risks.</p>", "question_heading": ""}, {"sr_no": 42, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Select the correct direct form of the given sentence.</p>    <p style=\"orphans:0;widows:0\">Pooja stated that she was cooking    dinner when the guests arrived.</p>", "option1": "<p style=\"orphans:0;widows:0\">    Pooja said, “She was cooking dinner when the guests arrived.”</p>", "option2": " <p style=\"orphans:0;widows:0\">    Pooja said, “I was cooking dinner when the guests arrived.”</p>", "option3": " <p style=\"orphans:0;widows:0\">    Pooja says, “I was cooking dinner when the guests arrived.”</p>", "option4": " <p style=\"orphans:0;widows:0\">    Pooja said, “I am cooking dinner when the guests arrived.”</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    To convert the indirect speech into direct speech:</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">1. The    reporting verb in the past ('stated') changes back to 'said'.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">2. The    conjunction 'that' is removed and replaced by a comma and inverted    commas.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">3. The    third-person pronoun 'she' refers to the speaker (Pooja), so it    changes to the first-person pronoun 'I'.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">4. In a time    clause indicating an action ongoing when another took place in the    past, the past continuous tense ('was cooking') remains unchanged.</p>    <p style=\"orphans:0;widows:0\">Thus, the correct direct form is:    <b>Pooja said, “I was cooking dinner when the guests arrived.”</b></p>", "question_heading": ""}, {"sr_no": 43, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Select the most appropriate option to substitute the underlined    segment in the given sentence. If no substitution is required,    select 'No improvement required'.</p>    <p style=\"orphans:0;widows:0\">Had the meteorologist issued the    severe weather alert on time, <u>the coastal villagers would    evacuate</u> to safety before the hurricane struck.</p>", "option1": "<p style=\"orphans:0;widows:0\">    the coastal villagers would evacuated</p>", "option2": " <p style=\"orphans:0;widows:0\">    the coastal villagers will have evacuated</p>", "option3": " <p style=\"orphans:0;widows:0\">    the coastal villagers would have evacuated</p>", "option4": " <p style=\"orphans:0;widows:0\">    No improvement required</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The given sentence is an inverted third conditional sentence. The    standard structure for such inverted conditionals is:</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Had +    Subject + V3 (past participle) ..., Subject + would/could/might +    have + V3 (past participle) ...</b></p>    <p style=\"orphans:0;widows:0\">Here, the conditional clause    begins with 'Had the meteorologist issued', so the main clause    must use 'would have evacuated' instead of 'would evacuate'.    Therefore, option C correctly substitutes the underlined segment.</p>", "question_heading": ""}, {"sr_no": 44, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Select the option that can be used as a one-word substitute for    the given group of words.</p>    <p style=\"orphans:0;widows:0\"><b>An instrument used for    measuring the speed or velocity of the wind</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Altimeter</p>", "option2": " <p style=\"orphans:0;widows:0\">    Chronometer</p>", "option3": " <p style=\"orphans:0;widows:0\">    Anemometer</p>", "option4": " <p style=\"orphans:0;widows:0\">    Odometer</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The correct one-word substitute is <b>Anemometer</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">•    <b>Anemometer:</b> An instrument used for measuring the speed and    direction of the wind.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">•    <b>Altimeter:</b> An instrument used to measure the altitude of an    object above a fixed level.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">•    <b>Chronometer:</b> An instrument for measuring time accurately,    typically used at sea.</p>    <p style=\"orphans:0;widows:0\">• <b>Odometer:</b> An    instrument for measuring the distance traveled by a vehicle.</p>", "question_heading": ""}, {"sr_no": 45, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Select the most appropriate option to substitute the underlined    segment in the given sentence. If there is no need to substitute    it, select 'No improvement required'.</p>    <p style=\"orphans:0;widows:0\">Following the governor's    directive issued during the Great Plague of 1665, the city    magistrate <u>imposes strict quarantine rules on all merchant    ships who arrived at</u> the dockyard.</p>", "option1": "<p style=\"orphans:0;widows:0\">    imposed strict quarantine rules on all merchant ships arriving at</p>", "option2": " <p style=\"orphans:0;widows:0\">    is imposing strict quarantine rules on every merchant ship who    arrive at</p>", "option3": " <p style=\"orphans:0;widows:0\">    has imposed strict quarantine rules on all merchant ship's arrival    at</p>", "option4": " <p style=\"orphans:0;widows:0\">    No improvement required</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The given sentence refers to a specific past historical event    ('during the Great Plague of 1665'), which requires the simple    past tense (<b>imposed</b> instead of the simple present    'imposes'). Additionally, the relative pronoun 'who' cannot be    used for inanimate objects such as 'merchant ships'; instead, a    present participle modifier like <b>arriving at</b> correctly and    concisely modifies 'merchant ships'. Therefore, option A is the    correct substitution.</p>", "question_heading": ""}, {"sr_no": 46, "question": " <p style=\"orphans:0;widows:0\">    <b>Which famous poet, musician, and Sufi mystic of the Delhi    Sultanate era was famously known by the title 'Tuti-e-Hind'    (Parrot of India)?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Tansen</p>", "option2": " <p style=\"orphans:0;widows:0\">    Amir Khusrau</p>", "option3": " <p style=\"orphans:0;widows:0\">    Kabir Das</p>", "option4": " <p style=\"orphans:0;widows:0\">    Mirza Ghalib</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    Amir Khusrau (1253–1325), an iconic Sufi musician, poet, and    scholar associated with the Delhi Sultanate, was conferred the    title 'Tuti-e-Hind' (Parrot of India) on account of his sweet and    eloquent poetic expression. He is also regarded as the 'Father of    Qawwali' and introduced various Persian and Arabic elements into    Indian classical music.</p>", "question_heading": ""}, {"sr_no": 47, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Arrange the following foreign travellers who visited India    during the Medieval period in correct chronological order:</b></p>    <ol>     <li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Abdur     Razzaq</b></p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Jean-Baptiste     Tavernier</b></p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Nicolo     de Conti</b></p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Francois     Bernier </b>     </p>    </li></ol>    <p style=\"orphans:0;widows:0\"><b>Select the correct answer    using the code given below:</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    3 – 1 – 2 – 4</p>", "option2": " <p style=\"orphans:0;widows:0\">    1 – 3 – 4 – 2</p>", "option3": " <p style=\"orphans:0;widows:0\">    3 – 1 – 4 – 2</p>", "option4": " <p style=\"orphans:0;widows:0\">    1 – 3 – 2 – 4</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    Nicolo de Conti visited Vijayanagara around 1420 CE, Abdur Razzaq    in 1443 CE, Tavernier arrived in the 1630s CE, and Francois    Bernier came in 1658 CE.</p>", "question_heading": ""}, {"sr_no": 48, "question": " <p style=\"orphans:0;widows:0\">    <b>The state anthem of Assam, 'O Mur Apunar Desh', was penned by    which of the following literary doyens, who was famously conferred    the honorific title 'Sahityarathi' (Charioteer of Literature)?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Hemchandra Barua</p>", "option2": " <p style=\"orphans:0;widows:0\">    Jyoti Prasad Agarwala</p>", "option3": " <p style=\"orphans:0;widows:0\">    Lakshminath Bezbaroa</p>", "option4": " <p style=\"orphans:0;widows:0\">    Bishnu Prasad Rabha</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    Lakshminath Bezbaroa (1864–1938) was a celebrated pioneer of    modern Assamese literature. He was conferred the title    'Sahityarathi' (Charioteer of Literature) by the Asam Sahitya    Sabha in 1931 for his immense contributions across poetry, drama,    and fiction. He also composed Assam's state song, 'O Mur Apunar    Desh'.</p>", "question_heading": ""}, {"sr_no": 49, "question": " <p style=\"orphans:0;widows:0\">    <b>Which celebrated Indian dramatist, painter, and musician, who    played a pioneering role in modern Assamese culture and arts, is    famously known by the honorific title 'Kalaguru'?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Jyoti Prasad Agarwala</p>", "option2": " <p style=\"orphans:0;widows:0\">    Bishnu Prasad Rabha</p>", "option3": " <p style=\"orphans:0;widows:0\">    Lakshminath Bezbaroa</p>", "option4": " <p style=\"orphans:0;widows:0\">    Phani Sarma</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    Bishnu Prasad Rabha (1909–1969) was an acclaimed cultural    stalwart, freedom fighter, and polymath from Assam. He was    bestowed with the title 'Kalaguru' (Master of Arts) by Dr.    Sarvepalli Radhakrishnan at Banaras Hindu University in    appreciation of his mastery over Indian classical arts,    particularly the Tandava dance, music, literature, and painting.    Among other prominent Assamese figures, Jyoti Prasad Agarwala is    known as 'Rupkonwar', Phani Sarma as 'Natasurya', and Lakshminath    Bezbaroa as 'Sahityarathi'.</p>", "question_heading": ""}, {"sr_no": 50, "question": " <p style=\"orphans:0;widows:0\">    <b>The evolutionary transition of temple architecture in South    India—progressing sequentially from rock-cut cave shrines    (mandapas) to monolithic shrines (rathas), and culminating in    freestanding structural stone temples—is most comprehensively    exemplified under the patronage of which dynasty?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Pallava dynasty</p>", "option2": " <p style=\"orphans:0;widows:0\">    Chola dynasty</p>", "option3": " <p style=\"orphans:0;widows:0\">    Hoysala dynasty</p>", "option4": " <p style=\"orphans:0;widows:0\">    Rashtrakuta dynasty</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The architectural evolution of South Indian temples under the    Pallavas occurred across four distinct stages: (1) <b>Mahendra    Group</b> (c. 600–625 CE) characterized by simple rock-cut    pillared halls (mandapas); (2) <b>Mamalla Group</b> under    Narasimhavarman I (c. 625–674 CE) marked by monolithic    free-standing shrines carved out of single boulders, famously    known as the <i>Rathas</i> (e.g., Pancha Rathas at Mahabalipuram);    (3) <b>Rajasimha Group</b> under Narasimhavarman II (c. 700–728    CE) which initiated structural stone masonry temples, such as the    Shore Temple at Mamallapuram and the Kailasanathar Temple at    Kanchipuram; and (4) <b>Nandivarman Group</b> representing mature,    smaller structural temples (e.g., Vaikunta Perumal Temple). Hence,    the Pallavas uniquely capture this entire sequence of    architectural evolution.</p>", "question_heading": ""}, {"sr_no": 51, "question": " <p style=\"orphans:0;widows:0\">    <b>Under Section 106(1) of the Bharatiya Nyaya Sanhita, 2023    (BNS), what is the maximum punishment prescribed if the death of    any person is caused by a registered medical practitioner while    performing a medical procedure through a rash or negligent act?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Imprisonment up to 2 years and a fine</p>", "option2": " <p style=\"orphans:0;widows:0\">    Imprisonment up to 5 years and a fine</p>", "option3": " <p style=\"orphans:0;widows:0\">    Imprisonment up to 3 years, or fine, or both</p>", "option4": " <p style=\"orphans:0;widows:0\">    Imprisonment up to 1 year and a fine</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    According to Section 106(1) of the Bharatiya Nyaya Sanhita, 2023    (BNS), causing death by any rash or negligent act not amounting to    culpable homicide generally attracts imprisonment of either    description for a term that may extend up to 5 years, along with a    fine. However, a specific proviso reduces the maximum punishment    to imprisonment of up to 2 years and a fine if such an act is    committed by a registered medical practitioner while performing a    medical procedure.</p>", "question_heading": ""}, {"sr_no": 52, "question": " <p style=\"orphans:0;widows:0\">    <b>During strenuous exercise, anaerobic respiration leads to the    accumulation of lactic acid in skeletal muscles. Which organ is    primarily responsible for removing this lactic acid from the    bloodstream and converting it back into glucose?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Spleen</p>", "option2": " <p style=\"orphans:0;widows:0\">    Liver</p>", "option3": " <p style=\"orphans:0;widows:0\">    Kidneys</p>", "option4": " <p style=\"orphans:0;widows:0\">    Heart</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    During vigorous muscular exercise, oxygen demand exceeds supply,    causing skeletal muscles to undergo anaerobic glycolysis, which    produces lactic acid. The accumulated lactic acid diffuses into    the bloodstream and is transported to the <b>liver</b>. In the    liver, it is converted back into pyruvate and then into glucose    via gluconeogenesis in a metabolic pathway known as the <b>Cori    cycle</b> (or lactic acid cycle).</p>", "question_heading": ""}, {"sr_no": 53, "question": " <p style=\"orphans:0;widows:0\">    <b>With reference to the British expansionist policy through the    'Subsidiary Alliance' system, which of the following statements is    INCORRECT?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    The French Governor Joseph François Dupleix was the first to    initiate the practice of providing European troops to native    rulers in return for subsidies.</p>", "option2": " <p style=\"orphans:0;widows:0\">    In 1801, the Nawab of Awadh was compelled to surrender more than    half of his territory for failing to pay the maintenance cost of    the subsidiary force.</p>", "option3": " <p style=\"orphans:0;widows:0\">    Yashwantrao Holkar became the first Maratha ruler to accept the    Subsidiary Alliance following his victory at the Battle of    Hadapsar (1802).</p>", "option4": " <p style=\"orphans:0;widows:0\">    An allied Indian ruler was not permitted to declare war or conduct    diplomatic negotiations with any other state without the prior    approval of the British.</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Statement C is INCORRECT.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">After    Yashwantrao Holkar defeated the combined armies of Peshwa Baji Rao    II and Daulat Rao Scindia at the <b>Battle of Hadapsar</b>    (October 1802), it was <b>Peshwa Baji Rao II</b> who fled to    Bassein and signed the <b>Treaty of Bassein (31 December 1802)</b>,    thereby becoming the first Maratha leader to accept the Subsidiary    Alliance.</p>    <p style=\"orphans:0;widows:0\">Yashwantrao Holkar, far from    accepting the alliance, fiercely resisted British supremacy and    fought against them in the Second Anglo-Maratha War until    concluding the Treaty of Rajghat in December 1805.</p>", "question_heading": ""}, {"sr_no": 54, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>With reference to the constitutional provisions governing the    President and the Vice President of India, consider the following    statements:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>1.    Nominated members of both Houses of Parliament do not participate    in the election of the President, but they participate in the    impeachment of the President.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>2. The    election of a person as Vice President cannot be challenged on the    ground of the existence of any vacancy for whatever reason among    the members of the electoral college.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>3. In the    election of the Vice President, the value of the vote of each    Member of Parliament is determined on the basis of the population    of the State they represent, similar to the Presidential election.</b></p>    <p style=\"orphans:0;widows:0\"><b>Which of the statements given    above is/are </b><b>correct</b><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    1 and 2 only</p>", "option2": " <p style=\"orphans:0;widows:0\">    2 and 3 only</p>", "option3": " <p style=\"orphans:0;widows:0\">    1 only</p>", "option4": " <p style=\"orphans:0;widows:0\">    1, 2 and 3</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Statement 1 is correct:</b> Under Article 54, only elected    members of Parliament and State Legislative Assemblies form the    Electoral College for the President. However, under Article 61,    the impeachment resolution requires a majority of not less than    two-thirds of the total membership of the House, meaning nominated    members also participate.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    2 is correct:</b> Under Article 71(4) (inserted by the 11th    Constitutional Amendment Act, 1961), the election of a person as    President or Vice President cannot be called in question on the    ground of the existence of any vacancy for whatever reason among    the members of the electoral college electing them.</p>    <p style=\"orphans:0;widows:0\"><b>Statement 3 is incorrect:</b>    The weighted system of calculating the value of votes based on    population applies only to the election of the President (Article    55) to ensure uniformity among states and parity between the Union    and the States. In the Vice-Presidential election (Article 66),    each Member of Parliament possesses one vote of equal value (value    = 1).</p>", "question_heading": ""}, {"sr_no": 55, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Consider the following statements regarding the legislative    powers of Parliament with respect to the State List:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    I:</b><b> Under Article 249, a resolution passed by the Rajya    Sabha empowering Parliament to legislate on a State subject    remains in force for a period not exceeding one year at a time.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    II:</b><b> A law enacted by Parliament on a State subject under    Article 252 (upon the request of two or more States) can    subsequently be amended or repealed by the State Legislature of an    adopting State.</b></p>    <p style=\"orphans:0;widows:0\"><b>Which of the above statements    is/are </b><b>correct</b><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Only Statement I is correct</p>", "option2": " <p style=\"orphans:0;widows:0\">    Only Statement II is correct</p>", "option3": " <p style=\"orphans:0;widows:0\">    Both Statements I and II are correct</p>", "option4": " <p style=\"orphans:0;widows:0\">    Neither Statement I nor II is correct</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Statement I is correct:</b> Under Article 249(2) of the Indian    Constitution, a resolution passed by the Rajya Sabha (by a    majority of not less than two-thirds of the members present and    voting) empowering Parliament to legislate on a State List subject    remains in force for a period not exceeding one year at a time. It    can be extended any number of times, but for not more than one    year at a time.</p>    <p style=\"orphans:0;widows:0\"><b>Statement II is incorrect:</b>    According to Article 252(2), any Act passed by Parliament with    respect to a State matter at the request of two or more States can    be amended or repealed only by an Act of Parliament; it <i>cannot</i>    be amended or repealed by an Act of the Legislature of that State.    The adopting States surrender their legislative competence on that    subject matter to Parliament.</p>", "question_heading": ""}, {"sr_no": 56, "question": " <p style=\"orphans:0;widows:0\">    <b>Which Five-Year Plan in India was formulated under the guidance    of D. R. Gadgil with the twin objectives of 'growth with    stability' and 'progressive achievement of self-reliance', and    witnessed both the nationalisation of 14 major commercial banks    and the 1971 Indo-Pak war?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Third Five-Year Plan</p>", "option2": " <p style=\"orphans:0;widows:0\">    Fourth Five-Year Plan</p>", "option3": " <p style=\"orphans:0;widows:0\">    Fifth Five-Year Plan</p>", "option4": " <p style=\"orphans:0;widows:0\">    Sixth Five-Year Plan</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The correct answer is the <b>Fourth Five-Year Plan</b>    (1969–1974).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Key details    of the Fourth Five-Year Plan:</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Leadership    and Model:</b> Formulated under Prime Minister Indira Gandhi and    Planning Commission Deputy Chairman D. R. Gadgil; it also    operationalised the 'Gadgil Formula' for allocating central plan    assistance to states.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Core    Objectives:</b> 'Growth with stability' and 'progressive    achievement of self-reliance'.</p>    <p style=\"orphans:0;widows:0\"><b>Key Events:</b>    Nationalisation of 14 major commercial banks took place in July    1969, the Indo-Pak War of 1971 occurred during this plan, and the    Smiling Buddha (Pokhran-I) nuclear test took place in May 1974.</p>", "question_heading": ""}, {"sr_no": 57, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>With reference to the Ganges River Dolphin (</b><i><b>Platanista    gangetica</b></i><b>), consider the following statements:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    1:</b><b> It is granted the highest degree of legal protection    under Schedule I of the Wildlife (Protection) Act, 1972.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    2:</b><b> It is officially classified as 'Critically Endangered'    on the IUCN Red List of Threatened Species.</b></p>    <p style=\"orphans:0;widows:0\"><b>Which of the statements given    above is/are </b><b>correct</b><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Only Statement 1</p>", "option2": " <p style=\"orphans:0;widows:0\">    Only Statement 2</p>", "option3": " <p style=\"orphans:0;widows:0\">    Both Statement 1 and Statement 2</p>", "option4": " <p style=\"orphans:0;widows:0\">    Neither Statement 1 nor Statement 2</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Statement 1 is correct:</b> The Ganges River Dolphin    (<i>Platanista gangetica</i>) is included under <b>Schedule I</b>    of the Wildlife (Protection) Act, 1972, granting it the highest    level of legal protection in India, with severe penalties    prescribed for poaching or harming it.</p>    <p style=\"orphans:0;widows:0\"><b>Statement 2 is incorrect:</b>    The Ganges River Dolphin is categorized as <b>Endangered (EN)</b>,    not 'Critically Endangered', on the IUCN Red List of Threatened    Species. It is also listed in Appendix I of CITES and was    recognized as the National Aquatic Animal of India in 2009.</p>", "question_heading": ""}, {"sr_no": 58, "question": " <p style=\"orphans:0;widows:0\">    <b>With reference to the Lunar Polar Exploration (LUPEX) mission,    which of the following statements is </b><b>correct</b><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    It is a joint initiative of ISRO and ESA aimed at exploring the    lunar equatorial plains.</p>", "option2": " <p style=\"orphans:0;widows:0\">    ISRO is responsible for the lunar rover, while JAXA is providing    the lander platform.</p>", "option3": " <p style=\"orphans:0;widows:0\">    It is a joint mission of ISRO and JAXA targeting the exploration    of water ice in the Moon's polar regions.</p>", "option4": " <p style=\"orphans:0;widows:0\">    The mission is planned to be launched exclusively using ISRO's    Launch Vehicle Mark-3 (LVM3).</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The Lunar Polar Exploration Mission (LUPEX) is a collaborative    robotic space mission between the Indian Space Research    Organisation (ISRO) and the Japan Aerospace Exploration Agency    (JAXA). Its primary objective is to explore the Moon's south pole    region to investigate the availability and quantity of water ice    reserves. Under the mission agreement, JAXA will provide the rover    and the H3 launch vehicle, whereas ISRO will provide the lander    module.</p>", "question_heading": ""}, {"sr_no": 59, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Which of the following statements is/are true?</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>i. An    indifference curve is typically convex to the origin due to the    diminishing Marginal Rate of Substitution (MRS).</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>ii. The    Law of Variable Proportions operates in the long-run production    function where all inputs are variable.</b></p>    <p style=\"orphans:0;widows:0\"><b>iii. An isocost line shows all    combinations of two inputs that a firm can purchase for a given    total cost.</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Only i and iii</p>", "option2": " <p style=\"orphans:0;widows:0\">    Only i</p>", "option3": " <p style=\"orphans:0;widows:0\">    Only ii and iii</p>", "option4": " <p style=\"orphans:0;widows:0\">    Only iii</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    Statement i is correct because an indifference curve is convex to    the origin as a result of the diminishing Marginal Rate of    Substitution (MRS). Statement ii is incorrect because the Law of    Variable Proportions is a short-run production concept where some    inputs are fixed while others vary; the long run involves Returns    to Scale. Statement iii is correct because an isocost line    represents all combinations of two factors (e.g., labor and    capital) that can be bought with a given total expenditure at    given factor prices.</p>", "question_heading": ""}, {"sr_no": 60, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Which of the following statements is/are correct regarding    production theory in economics?</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>i. An    isoquant represents all possible combinations of two inputs that    produce the same level of output.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>ii.    Returns to scale describe the behavior of output when all inputs    are increased simultaneously in the same proportion.</b></p>    <p style=\"orphans:0;widows:0\"><b>iii. In the short run, all    inputs of production can be varied freely to adjust the level of    output.</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Only i and ii</p>", "option2": " <p style=\"orphans:0;widows:0\">    Only ii and iii</p>", "option3": " <p style=\"orphans:0;widows:0\">    Only i and iii</p>", "option4": " <p style=\"orphans:0;widows:0\">    i, ii and iii</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Statement i is correct: An isoquant (equal-product curve) shows    various combinations of two inputs (like labour and capital) that    yield the exact same quantity of output.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Statement ii    is correct: Returns to scale examine the proportionate change in    output when all inputs are scaled up simultaneously by the same    proportion (a long-run concept).</p>    <p style=\"orphans:0;widows:0\">Statement iii is incorrect: In    the short run, at least one input of production (such as capital,    plant size, or land) remains fixed and cannot be varied freely;    only variable inputs (such as labour or raw materials) can be    adjusted.</p>", "question_heading": ""}, {"sr_no": 61, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Select the most appropriate answer from the options given below    regarding Census 2011.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    1. </b><b>As per Census 2011, the population density of India was    382 persons per square kilometre, up from 325 in 2001.</b></p>    <p style=\"orphans:0;widows:0\"><b>Statement 2. </b><b>Among all    Indian states, Bihar recorded the highest population density in    Census 2011.</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Only statement 1 is correct.</p>", "option2": " <p style=\"orphans:0;widows:0\">    Only statement 2 is correct.</p>", "option3": " <p style=\"orphans:0;widows:0\">    Neither statement 1 nor statement 2 is correct.</p>", "option4": " <p style=\"orphans:0;widows:0\">    Both statements 1 and 2 are correct.</p>", "answer": "4", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Both statements are correct:</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">1. <b>Statement    1 is correct:</b> According to Census 2011, the population density    of India increased from 325 persons per sq. km in 2001 to 382    persons per sq. km in 2011, registering a growth of 17.5%.</p>    <p style=\"orphans:0;widows:0\">2. <b>Statement 2 is correct:</b>    Among the states, Bihar had the highest population density with    1,106 persons per sq. km, overtaking West Bengal (1,028 persons    per sq. km). Among Union Territories, the NCT of Delhi held the    highest population density (11,320 persons per sq. km).</p>", "question_heading": ""}, {"sr_no": 62, "question": " <p style=\"orphans:0;widows:0\">    <b>Under the New Industrial Policy announced in July 1991, the    number of industries reserved exclusively for the public sector    was reduced from 17 to:</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    6</p>", "option2": " <p style=\"orphans:0;widows:0\">    8</p>", "option3": " <p style=\"orphans:0;widows:0\">    10</p>", "option4": " <p style=\"orphans:0;widows:0\">    12</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    Under the Industrial Policy Resolution (IPR) of 1956, 17    industries were reserved exclusively for the public sector. With    the announcement of the New Industrial Policy on 24 July 1991 as    part of the LPG (Liberalisation, Privatisation, and Globalisation)    reforms, this list was drastically reduced from 17 to 8    industries. Over time, this was pruned further, leaving only    atomic energy and railway operations reserved for the public    sector.</p>", "question_heading": ""}, {"sr_no": 63, "question": " <p style=\"orphans:0;widows:0\">    <b>Inflation caused by a persistent rise in the costs of    production inputs—such as raw material prices, wages, or    imported energy—is classified as:</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Demand-Pull Inflation</p>", "option2": " <p style=\"orphans:0;widows:0\">    Cost-Push Inflation</p>", "option3": " <p style=\"orphans:0;widows:0\">    Built-in Creeping Inflation</p>", "option4": " <p style=\"orphans:0;widows:0\">    Hyperinflation</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Cost-Push Inflation</b> is driven by supply-side disruptions.    Increases in input costs (like crude oil spikes or wage hikes)    force producers to raise end-product prices, leading to reduced    overall output alongside inflation (sometimes causing    <b>Stagflation</b>). Important Points:</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Demand-Pull    Inflation</b>: Triggered by high aggregate demand exceeding    economic capacity (\"too much money chasing too few goods\").</p>    <p style=\"orphans:0;widows:0\"><b>Stagflation</b>: High    inflation combined with stagnant economic growth and high    unemployment. Exam Alert: The <b>Head-line Inflation</b> rate in    India is based on the <b>Consumer Price Index (CPI-Combined)</b>,    with a target of <b>4% ± 2%</b> assigned to the RBI's Monetary    Policy Committee.</p>", "question_heading": ""}, {"sr_no": 64, "question": "  <p style=\"orphans:0;widows:0\">    <b>Which naturally occurring mineral, composed chemically of    lead(II) sulfide (</b><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1793823928113_html_94300e2c98034718.gif\" > <b>),    typically crystallizes in the cubic crystal system and serves as    the principal ore of lead?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Cinnabar</p>", "option2": " <p style=\"orphans:0;widows:0\">    Galena</p>", "option3": " <p style=\"orphans:0;widows:0\">    Bauxite</p>", "option4": " <p style=\"orphans:0;widows:0\">    Sphalerite</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    Galena is the primary ore mineral of lead, with the chemical    formula     <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1793823928113_html_94300e2c98034718.gif\" >     (lead(II) sulfide). It typically forms distinct cubic crystals    with octahedral truncations and exhibits a characteristic metallic    luster and high specific gravity. In contrast, Cinnabar is the ore    of mercury (<img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1793823928113_html_b67d3744086b1f30.gif\" > ),    Sphalerite is the principal ore of zinc (<img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1793823928113_html_602e5676b28d7c53.gif\" > ),    and Bauxite is the primary ore of aluminum.</p>", "question_heading": ""}, {"sr_no": 65, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Consider the following statements regarding planetary and local    wind systems:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><i><b>Chinook</b></i><b>    is a warm, dry wind that blows down the eastern slopes of the    Rocky Mountains in North America.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><i><b>Harmattan</b></i><b>    is a dry, dusty trade wind blowing southwestwards from the Sahara    across West Africa, locally called \"The Doctor\".</b></p>    <p style=\"orphans:0;widows:0\"><b>Which of the statements given    above is/are correct?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Only 1</p>", "option2": " <p style=\"orphans:0;widows:0\">    Only 2</p>", "option3": " <p style=\"orphans:0;widows:0\">    Both 1 and 2</p>", "option4": " <p style=\"orphans:0;widows:0\">    Neither 1 nor 2</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Both statements are correct. <b>Chinook</b> winds cause a rapid    rise in winter temperatures across the Canadian Prairies, earning    them the nickname \"<b>snow eaters</b>.\" The <b>Harmattan</b>    provides relief from the humid coastal weather in West Africa,    which is why it is called \"<b>the Doctor</b>.\"<br> <b>Important    points:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Sirocco</b>:    A hot, dry, dusty wind that blows northward from the Sahara toward    the Mediterranean Sea.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Mistral:</b>    A cold, dry, northerly katabatic (downslope) wind that blows into    the Gulf of Lion in France.</p>    <p style=\"orphans:0;widows:0\"><b>Loo:</b> A hot and dry local    wind that blows across the northern plains of India during summer    afternoons.</p>", "question_heading": ""}, {"sr_no": 66, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Which of the following statements is/are correct?</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statements:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>1) The    direction of the magnetic field produced by a straight    current-carrying conductor can be determined using the Right-Hand    Thumb Rule.</b></p>    <p style=\"orphans:0;widows:0\"><b>2) The magnetic field inside a    long straight current-carrying solenoid is non-uniform and varies    significantly from point to point.</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Only Statement 1</p>", "option2": " <p style=\"orphans:0;widows:0\">    Only Statement 2</p>", "option3": " <p style=\"orphans:0;widows:0\">    Both Statements 1 and 2</p>", "option4": " <p style=\"orphans:0;widows:0\">    Neither Statement 1 nor 2</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Statement 1 is correct: According to the Right-Hand Thumb Rule, if    you hold a straight current-carrying conductor in your right hand    such that your thumb points in the direction of the electric    current, then your fingers will curl in the direction of the    magnetic field lines.</p>    <p style=\"orphans:0;widows:0\">Statement 2 is incorrect: Inside    a long, straight, current-carrying solenoid, the magnetic field    lines are parallel straight lines, which indicates that the    magnetic field inside the solenoid is uniform (the same at all    points).</p>", "question_heading": ""}, {"sr_no": 67, "question": " <p style=\"orphans:0;widows:0\">    <b>World Social Justice Day is observed globally on 20 February    every year. What is the primary objective of the 2026 theme,    \"Renewed Commitment to Social Development and Social    Justice\"?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    To advocate for universal basic income as the only solution to    global poverty.</p>", "option2": " <p style=\"orphans:0;widows:0\">    To strengthen global solidarity in addressing systemic    inequalities and ensuring equitable access to opportunities.</p>", "option3": " <p style=\"orphans:0;widows:0\">    To focus exclusively on the impact of climate change on coastal    communities.</p>", "option4": " <p style=\"orphans:0;widows:0\">    To promote the privatization of public services as a means to    improve efficiency.</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The primary objective of the 2026 theme, \"Renewed Commitment    to Social Development and Social Justice,\" is to translate    high-level political affirmations-specifically those arising from    the Second World Summit for Social Development and the Doha    Political Declaration-into concrete, measurable, and    cross-sectoral policy actions.</p>", "question_heading": ""}, {"sr_no": 68, "question": " <p style=\"orphans:0;widows:0\">    <b>What is the official theme for the International Day of Women    and Girls in Science 2026?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Empowering Women through Digital Literacy and Coding</p>", "option2": " <p style=\"orphans:0;widows:0\">    Sustainable Development Goals: The Role of Women Scientists</p>", "option3": " <p style=\"orphans:0;widows:0\">    Closing the Gender Gap in Science and Technology</p>", "option4": "Sदnधनgप्रing AI, Sयciोि Sciधncध, STEM ोnक Finोncध: Bहiिकing Incिहौiॅध Fहपहनधौ ीयन Wयंधn ोnक Giिनस", "answer": "4", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The International Day of Women and Girls in Science (IDWGIS),    observed annually on February 11, focuses on advocating for full    and equal access to and participation in science for women and    girls. The theme for the 2026 observance emphasizes a holistic,    interdisciplinary approach to tackling persistent gender    inequalities in scientific fields.</p>", "question_heading": ""}, {"sr_no": 69, "question": " <p style=\"orphans:0;widows:0\">    <b>The successful qualification level load test of the Drogue    Parachute for the Gaganyaan mission was conducted at which of the    following facilities?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Satish Dhawan Space Centre (SDSC), Sriharikota</p>", "option2": " <p style=\"orphans:0;widows:0\">    Vikram Sarabhai Space Centre (VSSC), Thiruvananthapuram</p>", "option3": " <p style=\"orphans:0;widows:0\">    Rail Track Rocket Sled (RTRS) facility of DRDO, Chandigarh</p>", "option4": " <p style=\"orphans:0;widows:0\">    Liquid Propulsion Systems Centre (LPSC), Mahendragiri</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The Rail Track Rocket Sled (RTRS) facility, operated by the    Terminal Ballistics Research Laboratory (TBRL) under the DRDO, is    uniquely suited for such complex tests. It allows for    high-velocity simulation of deployment conditions that are    otherwise impossible to replicate in a wind tunnel.</p>", "question_heading": ""}, {"sr_no": 70, "question": " <p style=\"orphans:0;widows:0\">    <b>The Tetanus and Adult Diphtheria (Td) vaccine was recently    launched by Union Minister Shri J.P. Nadda at which prestigious    institute?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Indian Institute of Science (IISc), Bengaluru</p>", "option2": " <p style=\"orphans:0;widows:0\">    Central Research Institute (CRI), Kasauli</p>", "option3": " <p style=\"orphans:0;widows:0\">    All India Institute of Medical Sciences (AIIMS), New Delhi</p>", "option4": " <p style=\"orphans:0;widows:0\">    National Institute of Virology (NIV), Pune</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    Union Minister for Health and Family Welfare, Shri J.P. Nadda,    launched the indigenously manufactured Tetanus and Adult    Diphtheria (Td) vaccine at the Central Research Institute (CRI) in    Kasauli, Himachal Pradesh, on February 21, 2026.</p>", "question_heading": ""}];
+
+let currentQuestion = 0;
+let answers = {};
+let bookmarks = new Set();
+let timerSeconds = 0;
+let timerInterval = null;
+let isPaletteOpen = false;
+
+const STORAGE_KEY = 'quizState_' + (document.title || 'default');
+
+function isImageURL(str) {
+  return str && (str.startsWith('http://') || str.startsWith('https://'));
+}
+
+function createOptionContent(optionText) {
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'option-content';
+    
+    if (isImageURL(optionText)) {
+        const img = document.createElement('img');
+        img.src = optionText;
+        img.className = 'option-image';
+        img.alt = 'Option image';
+        img.loading = 'lazy';
+        img.onerror = function() {
+            this.style.display = 'none';
+            const errorText = document.createTextNode('Image failed to load');
+            contentDiv.appendChild(errorText);
+        };
+        contentDiv.appendChild(img);
+    } else {
+        contentDiv.innerHTML = optionText;
+    }
+    
+    return contentDiv;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  initQuiz();
+  initEventListeners();
+  loadFromLocalStorage();
+  startTimer();
+  createPalette();
+  preventDoubleTapZoom();
+});
+
+function preventDoubleTapZoom() {
+  let lastTouchEnd = 0;
+  document.addEventListener('touchend', (event) => {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) {
+      event.preventDefault();
+    }
+    lastTouchEnd = now;
+  }, { passive: false });
+}
+
+function initTheme() {
+  const savedTheme = localStorage.getItem('quizTheme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  updateThemeIcon();
+}
+
+function updateThemeIcon() {
+  const theme = document.documentElement.getAttribute('data-theme');
+  const themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    themeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  }
+}
+
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('quizTheme', newTheme);
+  updateThemeIcon();
+}
+
+function initQuiz() {
+  loadQuestion(currentQuestion);
+  updateMarkingInfo();
+}
+
+function initEventListeners() {
+  const themeBtn = document.getElementById('themeToggle');
+  const fullscreenBtn = document.getElementById('fullscreenBtn');
+  
+  if (themeBtn) {
+    themeBtn.addEventListener('click', toggleTheme);
+    themeBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      toggleTheme();
+    });
+  }
+  
+  if (fullscreenBtn) {
+    fullscreenBtn.addEventListener('click', toggleFullscreen);
+    fullscreenBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      toggleFullscreen();
+    });
+  }
+  
+  addButtonListener('prevBtn', prevQuestion);
+  addButtonListener('nextBtn', nextQuestion);
+  addButtonListener('clearBtn', clearAnswer);
+  addButtonListener('submitBtn', confirmSubmit);
+  addButtonListener('bookmarkBtn', toggleBookmark);
+  
+  addButtonListener('paletteFab', togglePalette);
+  addButtonListener('paletteClose', closePalette);
+  
+  const overlay = document.getElementById('paletteOverlay');
+  if (overlay) {
+    overlay.addEventListener('click', closePalette);
+    overlay.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      closePalette();
+    });
+  }
+  
+  const searchInput = document.getElementById('paletteSearch');
+  if (searchInput) {
+    searchInput.addEventListener('input', handleSearch);
+    searchInput.addEventListener('change', jumpToQuestion);
+  }
+  
+  document.addEventListener('keydown', handleKeyPress);
+  
+  setInterval(saveToLocalStorage, 5000);
+  
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      updatePalette();
+    }
+  });
+}
+
+function addButtonListener(id, handler) {
+  const btn = document.getElementById(id);
+  if (btn) {
+    btn.addEventListener('click', handler);
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      handler();
+    });
+  }
+}
+
+function jumpToQuestion(e) {
+  const questionNum = parseInt(e.target.value);
+  if (questionNum >= 1 && questionNum <= questions.length) {
+    goToQuestion(questionNum - 1);
+    closePalette();
+    e.target.value = '';
+  }
+}
+
+function togglePalette() {
+  isPaletteOpen = !isPaletteOpen;
+  const palette = document.getElementById('questionPalette');
+  const overlay = document.getElementById('paletteOverlay');
+  const fab = document.getElementById('paletteFab');
+  
+  if (isPaletteOpen) {
+    palette.classList.add('active');
+    overlay.classList.add('active');
+    fab.classList.add('active');
+    fab.innerHTML = '✕<span class="badge" id="answeredBadge">' + Object.keys(answers).length + '</span>';
+    document.body.classList.add('palette-open');
+  } else {
+    closePalette();
+  }
+}
+
+function closePalette() {
+  isPaletteOpen = false;
+  const palette = document.getElementById('questionPalette');
+  const overlay = document.getElementById('paletteOverlay');
+  const fab = document.getElementById('paletteFab');
+  
+  if (palette) palette.classList.remove('active');
+  if (overlay) overlay.classList.remove('active');
+  if (fab) {
+    fab.classList.remove('active');
+    fab.innerHTML = '📋<span class="badge" id="answeredBadge">' + Object.keys(answers).length + '</span>';
+  }
+  document.body.classList.remove('palette-open');
+}
+
+function handleSearch(e) {
+  const searchTerm = e.target.value.toLowerCase();
+  if (!searchTerm) {
+    document.querySelectorAll('.palette-btn').forEach(btn => {
+      btn.style.display = '';
+    });
+    return;
+  }
+  
+  const buttons = document.querySelectorAll('.palette-btn');
+  buttons.forEach((btn, index) => {
+    const questionNum = (index + 1).toString();
+    if (questionNum.includes(searchTerm)) {
+      btn.style.display = '';
+    } else {
+      btn.style.display = 'none';
+    }
+  });
+}
+
+function handleKeyPress(e) {
+  if (document.getElementById('resultSection').classList.contains('hidden')) {
+    if (e.key === 'Escape' && isPaletteOpen) {
+      closePalette();
+    } else if (!isPaletteOpen && e.target.tagName !== 'INPUT') {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevQuestion();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        nextQuestion();
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        nextQuestion();
+      } else if (e.key === 'b' || e.key === 'B') {
+        e.preventDefault();
+        toggleBookmark();
+      } else if (e.key === 'c' || e.key === 'C') {
+        e.preventDefault();
+        clearAnswer();
+      } else if (e.key === 'p' || e.key === 'P') {
+        e.preventDefault();
+        togglePalette();
+      } else if (e.key >= '1' && e.key <= '4') {
+        e.preventDefault();
+        selectOption(parseInt(e.key));
+      }
+    }
+  }
+}
+
+function selectOption(optionNum) {
+  const q = questions[currentQuestion];
+  const radio = document.querySelector(`input[name="q${q.sr_no}"][value="${optionNum}"]`);
+  if (radio) {
+    radio.checked = true;
+    const label = radio.closest('.option-label');
+    if (label) {
+      document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      saveAnswer();
+    }
+  }
+}
+
+function toggleFullscreen() {
+  try {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(err => {
+        console.log('Fullscreen error:', err);
+      });
+    } else {
+      document.exitFullscreen();
+    }
+  } catch (err) {
+    console.log('Fullscreen not supported');
+  }
+}
+
+function startTimer() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+  timerInterval = setInterval(() => {
+    timerSeconds++;
+    updateTimer();
+    if (timerSeconds > 600) {
+      const timer = document.getElementById('timer');
+      if (timer) timer.classList.add('warning');
+    }
+  }, 1000);
+}
+
+function updateTimer() {
+  const minutes = Math.floor(timerSeconds / 60);
+  const seconds = timerSeconds % 60;
+  const timer = document.getElementById('timer');
+  if (timer) {
+    timer.textContent = 
+      `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  }
+}
+
+function createPalette() {
+  const grid = document.getElementById('paletteGrid');
+  if (!grid) return;
+  
+  grid.innerHTML = '';
+  questions.forEach((q, index) => {
+    const btn = document.createElement('button');
+    btn.textContent = index + 1;
+    btn.className = 'palette-btn';
+    btn.setAttribute('aria-label', `Go to question ${index + 1}`);
+    btn.setAttribute('type', 'button');
+    
+    btn.addEventListener('click', () => {
+      goToQuestion(index);
+      closePalette();
+    });
+    
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      goToQuestion(index);
+      closePalette();
+    });
+    
+    grid.appendChild(btn);
+  });
+  updatePalette();
+}
+
+function updatePalette() {
+  const buttons = document.querySelectorAll('.palette-btn');
+  buttons.forEach((btn, index) => {
+    btn.className = 'palette-btn';
+    if (index === currentQuestion) btn.classList.add('current');
+    if (answers[questions[index].sr_no]) btn.classList.add('answered');
+    if (bookmarks.has(questions[index].sr_no)) btn.classList.add('bookmarked');
+  });
+  
+  updatePaletteStats();
+}
+
+function updatePaletteStats() {
+  const answered = Object.keys(answers).length;
+  const unanswered = questions.length - answered;
+  const bookmarkedCount = bookmarks.size;
+  
+  const answeredEl = document.getElementById('paletteAnswered');
+  const unansweredEl = document.getElementById('paletteUnanswered');
+  const bookmarkedEl = document.getElementById('paletteBookmarked');
+  
+  if (answeredEl) answeredEl.textContent = answered;
+  if (unansweredEl) unansweredEl.textContent = unanswered;
+  if (bookmarkedEl) bookmarkedEl.textContent = bookmarkedCount;
+  
+  const badge = document.querySelector('.palette-fab .badge');
+  if (badge) badge.textContent = answered;
+}
+
+function goToQuestion(index) {
+  if (index < 0 || index >= questions.length) return;
+  saveAnswer();
+  currentQuestion = index;
+  loadQuestion(currentQuestion);
+  
+  const questionSection = document.getElementById('questionSection');
+  if (questionSection) {
+    setTimeout(() => {
+      questionSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+}
+
+function loadQuestion(index) {
+  const q = questions[index];
+  
+  const questionNumber = document.getElementById('questionNumber');
+  const questionText = document.getElementById('questionText');
+  
+  if (questionNumber) {
+    questionNumber.textContent = `Question ${index + 1} of ${questions.length}`;
+  }
+  
+  if (questionText) {
+    questionText.innerHTML = '';
+    
+    // 🌟 NEW: Create the Heading Box if it exists!
+    let headingHtml = '';
+    if (q.question_heading && q.question_heading.trim() !== '') {
+      headingHtml = `<div style="background: var(--bg-tertiary); padding: 15px; border-left: 4px solid var(--primary-color); margin-bottom: 20px; border-radius: 8px; overflow-x: auto;">${q.question_heading}</div>`;
+      questionText.innerHTML = headingHtml; // Inject heading first
+    }
+
+    if (isImageURL(q.question)) {
+      const img = document.createElement('img');
+      img.src = q.question;
+      img.className = 'question-image';
+      img.alt = 'Question image';
+      img.loading = 'lazy';
+      img.onerror = function() {
+        this.style.display = 'none';
+        questionText.innerHTML += q.question;
+      };
+      questionText.appendChild(img);
+    } else {
+      questionText.innerHTML += q.question; // Append question after heading
+    }
+  }
+  
+  const container = document.getElementById('optionsContainer');
+  if (!container) return;
+  
+  container.innerHTML = '';
+  
+  for (let i = 1; i <= 4; i++) {
+    const label = document.createElement('label');
+    label.className = 'option-label';
+    if (answers[q.sr_no] == i) label.classList.add('selected');
+    
+    const radio = document.createElement('input');
+    radio.type = 'radio';
+    radio.name = `q${q.sr_no}`;
+    radio.value = i;
+    radio.checked = answers[q.sr_no] == i;
+    
+    const changeHandler = () => {
+      document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      saveAnswer();
+    };
+    
+    radio.addEventListener('change', changeHandler);
+    label.addEventListener('click', (e) => {
+      if (e.target !== radio) {
+        radio.checked = true;
+        changeHandler();
+      }
+    });
+    
+    label.appendChild(radio);
+    
+    const optionContent = createOptionContent(q[`option${i}`]);
+    label.appendChild(optionContent);
+    
+    container.appendChild(label);
+  }
+  
+  const bookmarkBtn = document.getElementById('bookmarkBtn');
+  if (bookmarkBtn) {
+    if (bookmarks.has(q.sr_no)) {
+      bookmarkBtn.classList.add('active');
+    } else {
+      bookmarkBtn.classList.remove('active');
+    }
+  }
+  
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const submitBtn = document.getElementById('submitBtn');
+  
+  if (prevBtn) prevBtn.disabled = index === 0;
+  
+  if (index === questions.length - 1) {
+    if (nextBtn) nextBtn.classList.add('hidden');
+    if (submitBtn) submitBtn.classList.remove('hidden');
+  } else {
+    if (nextBtn) nextBtn.classList.remove('hidden');
+    if (submitBtn) submitBtn.classList.add('hidden');
+  }
+  
+  updateProgress();
+  updatePalette();
+}
+
+function updateMarkingInfo() {
+  if(questions.length > 0) {
+      const q = questions[0];
+      const markingInfo = document.getElementById('markingInfo');
+      if (markingInfo) {
+        markingInfo.textContent = `Marking: +${q.positive_marking}, -${q.negative_marking}`;
+      }
+  }
+}
+
+function updateProgress() {
+  const attempted = Object.keys(answers).length;
+  const currentProgress = ((currentQuestion + 1) / questions.length) * 100;
+  
+  const progressBar = document.getElementById('progressBar');
+  const progressText = document.getElementById('progressText');
+  const attemptedText = document.getElementById('attemptedText');
+  
+  if (progressBar) progressBar.style.width = `${currentProgress}%`;
+  if (progressText) progressText.textContent = `${currentQuestion + 1}/${questions.length}`;
+  if (attemptedText) attemptedText.textContent = attempted;
+}
+
+function saveAnswer() {
+  const q = questions[currentQuestion];
+  const selected = document.querySelector(`input[name="q${q.sr_no}"]:checked`);
+  
+  if (selected) {
+    answers[q.sr_no] = selected.value;
+  }
+  
+  updateProgress();
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function clearAnswer() {
+  const q = questions[currentQuestion];
+  delete answers[q.sr_no];
+  
+  const selected = document.querySelector(`input[name="q${q.sr_no}"]:checked`);
+  if (selected) selected.checked = false;
+  
+  document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+  
+  updateProgress();
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function toggleBookmark() {
+  const q = questions[currentQuestion];
+  const btn = document.getElementById('bookmarkBtn');
+  
+  if (bookmarks.has(q.sr_no)) {
+    bookmarks.delete(q.sr_no);
+    if (btn) btn.classList.remove('active');
+  } else {
+    bookmarks.add(q.sr_no);
+    if (btn) btn.classList.add('active');
+  }
+  
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function nextQuestion() {
+  saveAnswer();
+  if (currentQuestion < questions.length - 1) {
+    currentQuestion++;
+    loadQuestion(currentQuestion);
+  }
+}
+
+function prevQuestion() {
+  saveAnswer();
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    loadQuestion(currentQuestion);
+  }
+}
+
+function confirmSubmit() {
+  const unattempted = questions.length - Object.keys(answers).length;
+  let message = 'Are you sure you want to submit the quiz?';
+  
+  if (unattempted > 0) {
+    message += `\n\nYou have ${unattempted} unanswered question(s).`;
+  }
+  
+  if (confirm(message)) {
+    submitQuiz();
+  }
+}
+
+function submitQuiz() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+  }
+  saveAnswer();
+  closePalette();
+  
+  let correct = 0, wrong = 0, unattempted = 0, score = 0;
+  
+  questions.forEach(q => {
+    const userAns = answers[q.sr_no];
+    const posMark = parseFloat(q.positive_marking) || 0;
+    const negMark = parseFloat(q.negative_marking) || 0;
+    
+    if (!userAns) {
+      unattempted++;
+    } else if (userAns == q.answer) {
+      correct++;
+      score += posMark;
+    } else {
+      wrong++;
+      score -= negMark;
+    }
+  });
+  
+  displayResults(correct, wrong, unattempted, score);
+  
+  const fab = document.getElementById('paletteFab');
+  const nav = document.getElementById('navigation');
+  if (fab) fab.style.display = 'none';
+  if (nav) nav.style.display = 'none';
+  
+  document.body.style.paddingBottom = '20px';
+  
+  clearLocalStorage();
+}
+
+function displayResults(correct, wrong, unattempted, score) {
+  const totalQuestions = questions.length;
+  const percentage = ((correct / totalQuestions) * 100).toFixed(1);
+  const timerEl = document.getElementById('timer');
+  const timeText = timerEl ? timerEl.textContent : '00:00';
+  
+  let html = `
+    <div class="score-card">
+      <h2>${score}/${totalQuestions}</h2>
+      <p>Your Score: ${percentage}%</p>
+      <p>Time Taken: ${timeText}</p>
+    </div>
+    
+    <div class="stats-grid">
+      <div class="stat-card correct">
+        <h3>${correct}</h3>
+        <p>Correct</p>
+      </div>
+      <div class="stat-card wrong">
+        <h3>${wrong}</h3>
+        <p>Wrong</p>
+      </div>
+      <div class="stat-card unattempted">
+        <h3>${unattempted}</h3>
+        <p>Unattempted</p>
+      </div>
+      <div class="stat-card">
+        <h3>${totalQuestions}</h3>
+        <p>Total</p>
+      </div>
+    </div>
+  `;
+  
+  questions.forEach(q => {
+    const userAns = answers[q.sr_no];
+    
+    // 🌟 NEW: Add the Heading to the results review screen!
+    let headingHtml = (q.question_heading && q.question_heading.trim() !== '') 
+      ? `<div style="background: var(--bg-tertiary); padding: 10px; margin-bottom: 15px; border-left: 4px solid var(--primary-color); border-radius: 5px; overflow-x: auto;">${q.question_heading}</div>` 
+      : '';
+      
+    const questionHeader = isImageURL(q.question)
+      ? `<h4>Q${q.sr_no}:</h4>${headingHtml}<img src="${q.question}" class="question-image" alt="Question ${q.sr_no}">`
+      : `<h4>Q${q.sr_no}:</h4>${headingHtml}<div style="margin-bottom: 10px;">${q.question}</div>`;
+      
+    html += `<div class="question-review">${questionHeader}`;
+    
+    for (let i = 1; i <= 4; i++) {
+      const isCorrect = i.toString() === q.answer;
+      const isUserAnswer = userAns == i.toString();
+      
+      let className = 'review-option';
+      if (isCorrect) className += ' correct';
+      if (isUserAnswer && !isCorrect) className += ' wrong';
+      if (isUserAnswer) className += ' user-selected';
+      
+      const optionValue = q[`option${i}`];
+      
+      if (isImageURL(optionValue)) {
+        html += `<div class="${className}">
+          ${isCorrect ? '✓ ' : ''}${isUserAnswer ? '➤ ' : ''} 
+          <img src="${optionValue}" class="option-image" alt="Option ${i}">
+        </div>`;
+      } else {
+        html += `<div class="${className}">
+          ${isCorrect ? '✓ ' : ''}${isUserAnswer ? '➤ ' : ''}${optionValue}
+        </div>`;
+      }
+    }
+    
+    if (q.solution_text && q.solution_text.trim() !== '') {
+      const solutionContent = isImageURL(q.solution_text)
+        ? `<img src="${q.solution_text}" class="solution-image" alt="Solution">`
+        : q.solution_text;
+      html += `<div class="solution-section">
+        <div class="solution-label">📝 Solution:</div>
+        <div class="solution-content">${solutionContent}</div>
+      </div>`;
+    }
+    
+    html += `</div>`; 
+});
+  
+  html += `
+    <div class="action-buttons">
+      <button class="action-btn restart" onclick="restartQuiz()">Restart Quiz</button>
+      <button class="action-btn download" onclick="downloadResults()">Download Results</button>
+      <button class="action-btn print" onclick="window.print()">Print Results</button>
+    </div>
+  `;
+  
+  const resultSection = document.getElementById('resultSection');
+  const questionSection = document.getElementById('questionSection');
+  const progressSection = document.querySelector('.progress-section');
+  
+  if (resultSection) {
+    resultSection.innerHTML = html;
+    resultSection.classList.remove('hidden');
+  }
+  if (questionSection) questionSection.classList.add('hidden');
+  if (progressSection) progressSection.classList.add('hidden');
+  
+  const quizContainer = document.getElementById('quizContainer');
+  if (quizContainer) {
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
+  }
+}
+
+function restartQuiz() {
+  if (confirm('Are you sure you want to restart? All progress will be lost.')) {
+    currentQuestion = 0;
+    answers = {};
+    bookmarks.clear();
+    timerSeconds = 0;
+    
+    const resultSection = document.getElementById('resultSection');
+    const questionSection = document.getElementById('questionSection');
+    const progressSection = document.querySelector('.progress-section');
+    const fab = document.getElementById('paletteFab');
+    const nav = document.getElementById('navigation');
+    
+    if (resultSection) {
+      resultSection.classList.add('hidden');
+      resultSection.innerHTML = '';
+    }
+    if (questionSection) questionSection.classList.remove('hidden');
+    if (progressSection) progressSection.classList.remove('hidden');
+    if (fab) fab.style.display = 'flex';
+    if (nav) nav.style.display = 'grid';
+    
+    document.body.style.paddingBottom = 'var(--nav-height)';
+    
+    if (timerInterval) {
+      clearInterval(timerInterval);
+    }
+    startTimer();
+    
+    loadQuestion(currentQuestion);
+    createPalette();
+  }
+}
+
+function downloadResults() {
+  const resultSection = document.getElementById('resultSection');
+  if (!resultSection) return;
+  
+  const resultHTML = resultSection.innerHTML;
+  const fullHTML = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Results</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; max-width: 900px; margin: 0 auto; }
+    .score-card { background: linear-gradient(135deg, #007bff, #28a745); color: white; padding: 30px; border-radius: 15px; text-align: center; margin-bottom: 20px; }
+    .score-card h2 { font-size: 48px; margin-bottom: 10px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 30px; }
+    .stat-card { background: white; padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #ddd; }
+    .stat-card h3 { font-size: 32px; margin-bottom: 8px; }
+    .stat-card.correct h3 { color: #28a745; }
+    .stat-card.wrong h3 { color: #dc3545; }
+    .stat-card.unattempted h3 { color: #6c757d; }
+    .question-review { background: white; border: 2px solid #ddd; border-radius: 10px; padding: 20px; margin-bottom: 15px; }
+    .question-review h4 { margin-bottom: 15px; font-size: 16px; line-height: 1.6; }
+    .review-option { padding: 10px 15px; margin: 8px 0; border-radius: 8px; border: 2px solid #ddd; display: flex; align-items: center; gap: 10px; }
+    .option-image { max-width: 150px; max-height: 100px; border-radius: 8px; }
+    .review-option.correct { background: #d4edda; border-color: #28a745; color: #155724; }
+    .review-option.wrong { background: #f8d7da; border-color: #dc3545; color: #721c24; }
+    .review-option.user-selected { border-width: 3px; font-weight: bold; }
+    @media print { body { background: white; } }
+    @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center; color: #007bff;">Quiz Results</h1>
+  <p style="text-align: center; color: #666; margin-bottom: 30px;">Generated on: ${new Date().toLocaleString()}</p>
+  ${resultHTML.replace(/<div class="action-buttons">[\s\S]*?<\/div>/, '')}
+</body>
+</html>
+  `;
+  
+  try {
+    const blob = new Blob([fullHTML], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `Quiz_Results_${new Date().getTime()}.html`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  } catch (err) {
+    alert('Download failed. Please try using the Print option instead.');
+    console.error('Download error:', err);
+  }
+}
+
+function saveToLocalStorage() {
+  try {
+    const state = {
+      currentQuestion,
+      answers,
+      bookmarks: Array.from(bookmarks),
+      timerSeconds,
+      timestamp: Date.now()
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch (err) {
+    console.error('Save error:', err);
+  }
+}
+
+function loadFromLocalStorage() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const state = JSON.parse(saved);
+      const hasProgress = (state && (
+        (state.currentQuestion && state.currentQuestion > 0) ||
+        (state.answers && Object.keys(state.answers).length > 0) ||
+        (state.timerSeconds && state.timerSeconds > 0)
+      ));
+      if (hasProgress && (Date.now() - state.timestamp < 24 * 60 * 60 * 1000)) {
+        if (confirm('Resume previous quiz session?')) {
+          currentQuestion = state.currentQuestion || 0;
+          answers = state.answers || {};
+          bookmarks = new Set(state.bookmarks || []);
+          timerSeconds = state.timerSeconds || 0;
+          updateTimer();
+          loadQuestion(currentQuestion);
+        }
+      } else {
+        clearLocalStorage();
+      }
+    }
+  } catch (err) {
+    console.error('Load error:', err);
+    clearLocalStorage();
+  }
+}
+
+function clearLocalStorage() {
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (err) {
+    console.error('Clear storage error:', err);
+  }
+}
+
+window.addEventListener('beforeunload', (e) => {
+  const resultSection = document.getElementById('resultSection');
+  if (resultSection && !resultSection.classList.contains('hidden')) {
+    return;
+  }
+  e.preventDefault();
+  e.returnValue = '';
+});
+
+window.addEventListener('unload', () => {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+});
+</script>
+</body>
+</html>
