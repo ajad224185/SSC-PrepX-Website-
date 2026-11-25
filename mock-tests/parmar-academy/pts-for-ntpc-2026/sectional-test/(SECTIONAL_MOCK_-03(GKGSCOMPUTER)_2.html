@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>8.) SECTIONAL MOCK -03(GK/GS/COMPUTER - English</title>
+<style>
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0069d9;
+  --success-color: #28a745;
+  --success-hover: #218838;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --secondary-color: #6c757d;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --border-color: #dee2e6;
+  --shadow: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
+  --overlay: rgba(0,0,0,0.5);
+  --nav-height: 80px;
+}
+
+[data-theme="dark"] {
+  --primary-color: #4dabf7;
+  --primary-hover: #339af0;
+  --success-color: #51cf66;
+  --success-hover: #40c057;
+  --danger-color: #ff6b6b;
+  --warning-color: #ffd43b;
+  --secondary-color: #868e96;
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #404040;
+  --text-primary: #f8f9fa;
+  --text-secondary: #adb5bd;
+  --border-color: #495057;
+  --shadow: 0 4px 6px rgba(0,0,0,0.3);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.4);
+  --overlay: rgba(0,0,0,0.7);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+  overflow-x: hidden;
+  position: relative;
+  padding-bottom: var(--nav-height);
+}
+
+body.palette-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-primary);
+  padding: 20px 30px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+
+.header h1 {
+  font-size: 28px;
+  color: var(--primary-color);
+  font-weight: 700;
+  user-select: none;
+}
+
+.header-controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.theme-toggle, .fullscreen-btn {
+  background: var(--bg-tertiary);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.3s;
+  min-width: 44px;
+  min-height: 44px;
+  user-select: none;
+}
+
+.theme-toggle:active, .fullscreen-btn:active {
+  transform: scale(0.95);
+}
+
+.theme-toggle:hover, .fullscreen-btn:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+.bot-link-btn {
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+}
+.bot-link-btn:active {
+  transform: scale(0.95);
+}
+.bot-link-btn:hover {
+  background: var(--primary-hover);
+}
+
+.timer {
+  background: var(--warning-color);
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 18px;
+  min-width: 100px;
+  text-align: center;
+  user-select: none;
+}
+
+.timer.warning {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.palette-fab {
+  position: fixed;
+  bottom: calc(var(--nav-height) + 20px);
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  box-shadow: 0 6px 20px rgba(0,123,255,0.4);
+  transition: all 0.3s ease;
+  z-index: 998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.palette-fab:active {
+  transform: scale(0.9);
+}
+
+.palette-fab:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0,123,255,0.6);
+}
+
+.palette-fab.active {
+  background: var(--danger-color);
+}
+
+.palette-fab .badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: var(--success-color);
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--bg-secondary);
+  pointer-events: none;
+}
+.solution-section {
+  margin-top: 20px;
+  padding: 15px;
+  background: #e7f3ff;
+  border-left: 4px solid var(--primary-color);
+  border-radius: 8px;
+}
+
+.solution-label {
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.solution-content {
+  line-height: 1.6;
+  color: #333;
+}
+
+.solution-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.palette-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 999;
+  touch-action: none;
+}
+
+.palette-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.question-palette {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 450px;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--bg-primary);
+  box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+  transition: right 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.question-palette.active {
+  right: 0;
+}
+
+.palette-header {
+  padding: 20px;
+  background: var(--primary-color);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.palette-header h3 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.palette-close {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: background 0.2s;
+  line-height: 1;
+  touch-action: manipulation;
+}
+
+.palette-close:active {
+  transform: scale(0.9);
+}
+
+.palette-close:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.palette-stats {
+  padding: 15px 20px;
+  background: var(--bg-tertiary);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  font-size: 13px;
+  text-align: center;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border-color);
+  user-select: none;
+}
+
+.palette-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.palette-stat .number {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.palette-stat.answered .number { color: var(--success-color); }
+.palette-stat.unanswered .number { color: var(--secondary-color); }
+.palette-stat.bookmarked .number { color: var(--warning-color); }
+
+.palette-search {
+  padding: 15px 20px;
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+}
+
+.palette-search input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 14px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.palette-search input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.palette-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 10px;
+}
+
+.palette-btn {
+  aspect-ratio: 1;
+  border: 2px solid var(--border-color);
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+  min-width: 40px;
+  min-height: 40px;
+  color: var(--text-primary);
+  position: relative;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.palette-btn:active {
+  transform: scale(0.9);
+}
+
+.palette-btn:hover {
+  transform: scale(1.1);
+  z-index: 10;
+  box-shadow: var(--shadow);
+}
+
+.palette-btn.current {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  animation: currentPulse 2s infinite;
+}
+
+@keyframes currentPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,123,255,0.7); }
+  50% { box-shadow: 0 0 0 8px rgba(0,123,255,0); }
+}
+
+.palette-btn.answered {
+  background: var(--success-color);
+  color: white;
+  border-color: var(--success-color);
+}
+
+.palette-btn.bookmarked::after {
+  content: '🔖';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.palette-btn.bookmarked.answered {
+  background: var(--success-color);
+}
+
+.palette-legend {
+  padding: 20px;
+  border-top: 1px solid var(--border-color);
+  font-size: 13px;
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.legend-color {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.quiz-container {
+  background: var(--bg-primary);
+  border-radius: 15px;
+  box-shadow: var(--shadow-lg);
+  padding: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  scroll-margin-top: 20px;
+}
+
+.quiz-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.marking-info {
+  display: inline-block;
+  background: var(--bg-tertiary);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.progress-section {
+  margin-bottom: 25px;
+}
+
+.progress-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.progress-bar-container {
+  background: var(--bg-tertiary);
+  border-radius: 12px;
+  overflow: hidden;
+  height: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+  transition: width 0.4s ease;
+  border-radius: 12px;
+}
+
+.question-section {
+  min-height: 300px;
+  scroll-margin-top: 80px;
+  margin-bottom: 20px;
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.question-number {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary-color);
+  user-select: none;
+}
+
+.bookmark-btn {
+  background: transparent;
+  border: 2px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 44px;
+  min-height: 44px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.bookmark-btn:active {
+  transform: scale(0.95);
+}
+
+.bookmark-btn.active {
+  background: var(--warning-color);
+  border-color: var(--warning-color);
+  color: #000;
+}
+
+.question {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 25px;
+  color: var(--text-primary);
+  user-select: text;
+}
+
+.question-image {
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: 10px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  padding: 10px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--border-color);
+  padding: 16px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--bg-secondary);
+  min-height: 60px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.option-label:active {
+  transform: scale(0.98);
+}
+
+.option-label:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--primary-color);
+}
+
+.option-label.selected {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.option-label input[type="radio"] {
+  margin-right: 15px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.option-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.option-image {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  padding: 10px;
+}
+
+.option-label.selected .option-image {
+  background: rgba(255,255,255,0.1);
+}
+
+/* FIXED NAVIGATION - KEY UPDATE */
+.navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-primary);
+  border-top: 2px solid var(--border-color);
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  z-index: 997;
+  padding: 15px 20px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 10px;
+  max-width: 100%;
+}
+
+.nav-btn {
+  padding: 14px 20px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+.nav-btn:active {
+  transform: scale(0.97);
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.nav-btn.prev {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.nav-btn.prev:hover:not(:disabled) {
+  background: #5a6268;
+}
+
+.nav-btn.next {
+  background: var(--primary-color);
+  color: white;
+}
+
+.nav-btn.next:hover:not(:disabled) {
+  background: var(--primary-hover);
+}
+
+.nav-btn.clear {
+  background: var(--danger-color);
+  color: white;
+}
+
+.nav-btn.clear:hover {
+  background: #c82333;
+}
+
+.nav-btn.submit {
+  background: var(--success-color);
+  color: white;
+  grid-column: 1 / -1;
+}
+
+.nav-btn.submit:hover {
+  background: var(--success-hover);
+}
+
+.result-section {
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.score-card {
+  background: linear-gradient(135deg, var(--primary-color), var(--success-color));
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  margin-bottom: 30px;
+  user-select: none;
+}
+
+.score-card h2 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.score-card p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: var(--bg-secondary);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  border: 2px solid var(--border-color);
+  user-select: none;
+}
+
+.stat-card h3 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.stat-card.correct h3 { color: var(--success-color); }
+.stat-card.wrong h3 { color: var(--danger-color); }
+.stat-card.unattempted h3 { color: var(--secondary-color); }
+
+.question-review {
+  border: 2px solid var(--border-color);
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 20px;
+  background: var(--bg-secondary);
+}
+
+.question-review h4 {
+  margin-bottom: 15px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.review-option {
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 2px solid var(--border-color);
+  background: var(--bg-primary);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.review-option .option-image {
+  max-width: 150px;
+  max-height: 100px;
+}
+
+.review-option.correct {
+  background: #d4edda;
+  border-color: var(--success-color);
+  color: #155724;
+}
+
+.review-option.wrong {
+  background: #f8d7da;
+  border-color: var(--danger-color);
+  color: #721c24;
+}
+
+.review-option.user-selected {
+  border-width: 3px;
+  font-weight: 600;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.action-btn {
+  padding: 14px 30px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  min-width: 150px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.action-btn:active {
+  transform: scale(0.95);
+}
+
+.action-btn.restart {
+  background: var(--danger-color);
+  color: white;
+}
+
+.action-btn.restart:hover {
+  background: #c82333;
+}
+
+.action-btn.download {
+  background: var(--primary-color);
+  color: white;
+}
+
+.action-btn.download:hover {
+  background: var(--primary-hover);
+}
+
+.action-btn.print {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.action-btn.print:hover {
+  background: #5a6268;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.palette-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.palette-content::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+}
+
+.palette-content::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+.palette-content::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 140px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .header h1 {
+    font-size: 22px;
+  }
+
+  .quiz-container {
+    padding: 20px 15px;
+  }
+
+  .question-palette {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .palette-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+  }
+
+  .palette-btn {
+    font-size: 13px;
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  .palette-fab {
+    bottom: calc(var(--nav-height) + 10px);
+    right: 15px;
+    width: 56px;
+    height: 56px;
+    font-size: 22px;
+  }
+
+  .navigation {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 12px 15px;
+  }
+
+  .nav-btn {
+    min-height: 44px;
+    font-size: 15px;
+  }
+
+  .nav-btn.clear {
+    order: 3;
+  }
+
+  .nav-btn.submit {
+    grid-column: auto;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .legend-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .question {
+    font-size: 16px;
+  }
+
+  .option-label {
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  .option-image {
+    max-height: 150px;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .palette-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+
+  .palette-btn {
+    font-size: 12px;
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .timer {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  .option-image {
+    max-height: 120px;
+  }
+}
+
+@media print {
+  .header-controls, .navigation, .palette-fab, .palette-overlay, .question-palette, .action-buttons, .bookmark-btn {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    padding-bottom: 0;
+  }
+
+  .container {
+    padding-bottom: 20px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>8.) SECTIONAL MOCK -03(GK/GS/COMPUTER - English</h1>
+    <div class="header-controls">
+      <a href="https://t.me/ssc_prepX" target="_blank" class="bot-link-btn" title="Open Bot in Telegram">🤖 Bot</a>
+      
+      <div class="timer" id="timer">00:00</div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle Theme">🌙</button>
+      <button class="fullscreen-btn" id="fullscreenBtn" aria-label="Toggle fullscreen" title="Fullscreen">⛶</button>
+    </div>
+  </div>
+
+  <div class="quiz-container" id="quizContainer">
+    <div class="quiz-header">
+      <div class="marking-info" id="markingInfo">Marking: +1, -0</div>
+    </div>
+
+    <div class="progress-section">
+      <div class="progress-stats">
+        <span>Progress: <strong id="progressText">1/2</strong></span>
+        <span>Attempted: <strong id="attemptedText">0</strong></span>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+
+    <div class="question-section" id="questionSection">
+      <div class="question-header">
+        <div class="question-number" id="questionNumber">Question 1 of 2</div>
+        <button class="bookmark-btn" id="bookmarkBtn" aria-label="Bookmark question">
+          <span>🔖</span> <span>Bookmark</span>
+        </button>
+      </div>
+      
+      <div class="question" id="questionText"></div>
+      
+      <div class="options" id="optionsContainer"></div>
+    </div>
+
+    <div class="result-section hidden" id="resultSection"></div>
+  </div>
+</div>
+
+<div class="navigation" id="navigation">
+  <button class="nav-btn prev" id="prevBtn" aria-label="Previous question">
+    <span>←</span> Previous
+  </button>
+  <button class="nav-btn clear" id="clearBtn" aria-label="Clear answer">
+    Clear
+  </button>
+  <button class="nav-btn next" id="nextBtn" aria-label="Next question">
+    Next <span>→</span>
+  </button>
+  <button class="nav-btn submit hidden" id="submitBtn" aria-label="Submit quiz">
+    Submit Quiz
+  </button>
+</div>
+
+<button class="palette-fab" id="paletteFab" aria-label="Toggle question palette" title="Question Palette (P)">
+  📋
+  <span class="badge" id="answeredBadge">0</span>
+</button>
+
+<div class="palette-overlay" id="paletteOverlay"></div>
+
+<div class="question-palette" id="questionPalette">
+  <div class="palette-header">
+    <h3>Question Palette</h3>
+    <button class="palette-close" id="paletteClose" aria-label="Close palette">×</button>
+  </div>
+
+  <div class="palette-stats">
+    <div class="palette-stat answered">
+      <div class="number" id="paletteAnswered">0</div>
+      <div>Answered</div>
+    </div>
+    <div class="palette-stat unanswered">
+      <div class="number" id="paletteUnanswered">2</div>
+      <div>Not Answered</div>
+    </div>
+    <div class="palette-stat bookmarked">
+      <div class="number" id="paletteBookmarked">0</div>
+      <div>Bookmarked</div>
+    </div>
+  </div>
+
+  <div class="palette-search">
+    <input type="number" id="paletteSearch" placeholder="Jump to question number..." aria-label="Search questions" inputmode="numeric" pattern="[0-9]*">
+  </div>
+
+  <div class="palette-content">
+    <div class="palette-grid" id="paletteGrid"></div>
+  </div>
+
+  <div class="palette-legend">
+    <div class="legend-grid">
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--success-color);"></div>
+        <span>Answered</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--bg-secondary); border: 2px solid var(--border-color);"></div>
+        <span>Not Answered</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--primary-color);"></div>
+        <span>Current Question</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--warning-color);"></div>
+        <span>🔖 Bookmarked</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// JSON INJECTION HAPPENS HERE
+const questions = [{"sr_no": 1, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>निम्नलिखित    में से कौन</span></span><b>-</b><span style=\"font-family:'Nirmala UI'\"><span>सा    कथन सिंधु घाटी सभ्यता के    स्थलों कालीबंगन और धोलावीरा    के पुरातात्विक महत्व को    सही रूप से दर्शाता है</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>कालीबंगन    एक प्रमुख बंदरगाह नगर था</span></span>;    <span style=\"font-family:'Nirmala UI'\"><span>धोलावीरा    मनके बनाने का प्राथमिक    केंद्र था</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>कालीबंगन    जुते हुए खेत के साक्ष्य के    लिए प्रसिद्ध है</span></span>; <span style=\"font-family:'Nirmala UI'\"><span>धोलावीरा    अपनी अनूठी जल संचयन प्रणाली    के लिए जाना जाता है</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>कालीबंगन    और धोलावीरा दोनों में किसी    भी प्रकार का दुर्गीकृत नगर    </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>सिटाडेल</span></span>)    <span style=\"font-family:'Nirmala UI'\"><span>नहीं था</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>कालीबंगन    और धोलावीरा दोनों वर्तमान    राजस्थान में स्थित हैं</span></span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>राजस्थान    के हनुमानगढ़ जिले में स्थित    कालीबंगन से एक जुते हुए खेत    के साक्ष्य प्राप्त हुए हैं</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>जो कृषि    कार्य की प्रारंभिक तकनीकों    को दर्शाते हैं। वहीं दूसरी    ओर</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>गुजरात    के कच्छ जिले में स्थित    धोलावीरा अपनी परिष्कृत जल    संरक्षण और संचयन </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>वॉटर    हार्वेस्टिंग</span></span>) <span style=\"font-family:'Nirmala UI'\"><span>प्रणाली    तथा विशाल जलाशयों के लिए    प्रसिद्ध है। साथ ही</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>धोलावीरा    नगर तीन भागों </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>दुर्ग</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>मध्य नगर    और निचला नगर</span></span>) <span style=\"font-family:'Nirmala UI'\"><span>में    विभाजित था।</span></span></p>", "question_heading": ""}, {"sr_no": 2, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>सम्राट अशोक    के शासनकाल के दौरान स्थापित    अत्यधिक पॉलिश किए गए एकाश्म    </span></span><b>(</b><span style=\"font-family:'Nirmala UI'\"><span>मोनोलिथिक</span></span><b>)    </b><span style=\"font-family:'Nirmala UI'\"><span>स्तंभ    मुख्य रूप से निम्नलिखित    में से किस पत्थर से तराशे    गए थे</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>चुनार बलुआ    पत्थर</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>मकराना    संगमरमर</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>मथुरा का    चित्तीदार लाल बलुआ पत्थर</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>कडप्पा चूना    पत्थर</span></span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>सम्राट अशोक    के शासनकाल के दौरान पूरे    उपमहाद्वीप में स्थापित    एकाश्म स्तंभ मुख्य रूप से    चुनार </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>उत्तर    प्रदेश में मिर्जापुर</span></span>/<span style=\"font-family:'Nirmala UI'\"><span>वाराणसी    के निकट</span></span>) <span style=\"font-family:'Nirmala UI'\"><span>से    लाए गए महीन दानेदार बादामी    या धूसर बलुआ पत्थर से तराशे    गए थे। इन स्तंभों की सतह पर    कांच जैसी चमकदार </span></span>'<span style=\"font-family:'Nirmala UI'\"><span>मौर्य    पॉलिश</span></span>' <span style=\"font-family:'Nirmala UI'\"><span>की    गई थी</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>जो    मौर्य कला की एक प्रमुख विशेषता    है।</span></span></p>", "question_heading": ""}, {"sr_no": 3, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>प्रकृति    की पूजा और साल के वृक्ष के    खिलने का प्रतीक</span></span><b>,    </b><span style=\"font-family:'Nirmala UI'\"><span>जनजातीय    त्योहार </span></span><b>'</b><span style=\"font-family:'Nirmala UI'\"><span>सरहुल</span></span><b>'    </b><span style=\"font-family:'Nirmala UI'\"><span>मुख्य रूप    से भारत के किस राज्य में    मनाया जाता है</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>झारखंड</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>गुजरात</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>केरल</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>पंजाब</span></span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>सरहुल मुख्य    रूप से झारखंड राज्य में    उरांव</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>मुंडा    और हो जैसे विभिन्न आदिवासी    समुदायों द्वारा मनाया जाने    वाला एक प्रमुख वसंतोत्सव    है। यह इन जनजातियों के लिए    नए साल की शुरुआत का प्रतीक    है और इसमें साल के वृक्ष की    पूजा की जाती है</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>जो    प्रकृति के प्रति सम्मान को    दर्शाता है।</span></span></p>", "question_heading": ""}, {"sr_no": 4, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>निम्नलिखित    में से कौन</span></span><b>-</b><span style=\"font-family:'Nirmala UI'\"><span>सी    पुस्तक भारत के पूर्व राष्ट्रपति    डॉ</span></span><b>. </b><span style=\"font-family:'Nirmala UI'\"><span>ए</span></span><b>.</b><span style=\"font-family:'Nirmala UI'\"><span>पी</span></span><b>.</b><span style=\"font-family:'Nirmala UI'\"><span>जे</span></span><b>.    </b><span style=\"font-family:'Nirmala UI'\"><span>अब्दुल    कलाम की आत्मकथा है</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>विंग्स ऑफ    फायर</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>द डिस्कवरी    ऑफ इंडिया</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>माई    एक्सपेरिमेंट्स विद ट्रुथ</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>द रेस ऑफ    माई लाइफ</span></span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    '<span style=\"font-family:'Nirmala UI'\"><span>विंग्स ऑफ    फायर</span></span>' <span style=\"font-family:'Nirmala UI'\"><span>भारत    के पूर्व राष्ट्रपति डॉ</span></span>.    <span style=\"font-family:'Nirmala UI'\"><span>ए</span></span>.<span style=\"font-family:'Nirmala UI'\"><span>पी</span></span>.<span style=\"font-family:'Nirmala UI'\"><span>जे</span></span>.    <span style=\"font-family:'Nirmala UI'\"><span>अब्दुल कलाम    की आत्मकथा है</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>जिसे    उन्होंने अरुण तिवारी के    साथ मिलकर लिखा है। इसमें    उनके प्रारंभिक जीवन</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>शिक्षा और    भारत के अंतरिक्ष तथा मिसाइल    विकास कार्यक्रमों में उनके    योगदान का विवरण है।</span></span></p>", "question_heading": ""}, {"sr_no": 5, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>पृथ्वी की    सतह पर स्थित किसी प्रेक्षक    के सापेक्ष एक कृत्रिम उपग्रह    के स्थिर प्रतीत होने के लिए    निम्नलिखित में से किस शर्त    का पूरा होना आवश्यक है</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>इसे </span></span>12    <span style=\"font-family:'Nirmala UI'\"><span>घंटे की    कक्षीय अवधि के साथ ध्रुवीय    तल में परिक्रमा करनी चाहिए।</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>इसे किसी    भी मनमानी ऊंचाई पर पूर्व    से पश्चिम की ओर परिक्रमा    करनी चाहिए।</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>इसे भूमध्यरेखीय    तल में </span></span>24 <span style=\"font-family:'Nirmala UI'\"><span>घंटे    की समयावधि के साथ पश्चिम    से पूर्व की ओर परिक्रमा करनी    चाहिए।</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>इसका द्रव्यमान    चंद्रमा के द्रव्यमान के    समान होना चाहिए।</span></span></p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>किसी उपग्रह    को भूस्थिर </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>पृथ्वी    पर किसी बिंदु के सापेक्ष    स्थिर प्रतीत होने वाला</span></span>)    <span style=\"font-family:'Nirmala UI'\"><span>होने के लिए    विशिष्ट कक्षीय शर्तों को    पूरा करना आवश्यक है</span></span>:    <span style=\"font-family:'Nirmala UI'\"><span>इसे पृथ्वी    के भूमध्यरेखीय तल में परिक्रमा    करनी चाहिए</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>पृथ्वी    के घूर्णन की ही दिशा में    </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>पश्चिम    से पूर्व</span></span>) <span style=\"font-family:'Nirmala UI'\"><span>घूमना    चाहिए</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>और    इसकी कक्षीय अवधि पृथ्वी के    घूर्णन काल </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>लगभग    </span></span>24 <span style=\"font-family:'Nirmala UI'\"><span>घंटे</span></span>)    <span style=\"font-family:'Nirmala UI'\"><span>के बराबर    होनी चाहिए। यह वृत्ताकार    कक्षा पृथ्वी की सतह से लगभग    </span></span>35,786 <span style=\"font-family:'Nirmala UI'\"><span>किमी    की ऊंचाई पर स्थित होती है।    उपग्रह का द्रव्यमान उसकी    कक्षीय अवधि या स्थिरता को    प्रभावित नहीं करता है।</span></span></p>", "question_heading": ""}, {"sr_no": 6, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>तत्काल    सुरक्षा प्रदान करने के लिए    पहले से निर्मित एंटीबॉडी</span></span><b>,    </b><span style=\"font-family:'Nirmala UI'\"><span>जैसे    सर्प</span></span><b>-</b><span style=\"font-family:'Nirmala UI'\"><span>विष    रोधी </span></span><b>(</b><span style=\"font-family:'Nirmala UI'\"><span>एंटी</span></span><b>-</b><span style=\"font-family:'Nirmala UI'\"><span>वेनम</span></span><b>)    </b><span style=\"font-family:'Nirmala UI'\"><span>या टिटनेस</span></span><b>-</b><span style=\"font-family:'Nirmala UI'\"><span>रोधी    सीरम</span></span><b>, </b><span style=\"font-family:'Nirmala UI'\"><span>किस    प्रकार की प्रतिरक्षा का    उदाहरण है</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>सक्रिय    प्राकृतिक प्रतिरक्षा</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>निष्क्रिय    प्राकृतिक प्रतिरक्षा</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>सक्रिय    कृत्रिम प्रतिरक्षा</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>निष्क्रिय    कृत्रिम प्रतिरक्षा</span></span></p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>निष्क्रिय    कृत्रिम प्रतिरक्षा तब    प्राप्त होती है जब किसी    प्रतिजन </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>एंटीजन</span></span>)    <span style=\"font-family:'Nirmala UI'\"><span>के विरुद्ध    तत्काल सुरक्षा प्रदान करने    के लिए किसी अन्य जीव द्वारा    तैयार किए गए एंटीबॉडी शरीर    में प्रविष्ट कराए जाते हैं।    इसके उदाहरणों में सर्प</span></span>-<span style=\"font-family:'Nirmala UI'\"><span>विष    रोधी </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>एंटी</span></span>-<span style=\"font-family:'Nirmala UI'\"><span>वेनम</span></span>),    <span style=\"font-family:'Nirmala UI'\"><span>रेबीज    एंटीसीरम और टिटनेस</span></span>-<span style=\"font-family:'Nirmala UI'\"><span>रोधी    सीरम शामिल हैं। सक्रिय    प्रतिरक्षा के विपरीत</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>इसमें शरीर    की अपनी प्रतिरक्षा प्रणाली    एंटीबॉडी नहीं बनाती है</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>इसलिए इसमें    कोई दीर्घकालिक प्रतिरक्षा    स्मृति </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>मेमोरी</span></span>)    <span style=\"font-family:'Nirmala UI'\"><span>विकसित नहीं    होती है।</span></span></p>", "question_heading": ""}, {"sr_no": 7, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>भारत सरकार    अधिनियम</span></span><b>, 1919 </b><span style=\"font-family:'Nirmala UI'\"><span>द्वारा    निम्नलिखित में से कौन</span></span><b>-</b><span style=\"font-family:'Nirmala UI'\"><span>सी    प्रमुख विशेषता शुरू की गई    थी</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>प्रांतों    में द्वैध शासन की शुरुआत</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>केंद्र में    द्वैध शासन की शुरुआत</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>प्रांतीय    स्वायत्तता प्रदान करना</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>संघीय    न्यायालय </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>फेडरल    कोर्ट</span></span>) <span style=\"font-family:'Nirmala UI'\"><span>की    स्थापना</span></span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>भारत सरकार    अधिनियम</span></span>, 1919 (<span style=\"font-family:'Nirmala UI'\"><span>जिसे    मोंटेग्यू</span></span>-<span style=\"font-family:'Nirmala UI'\"><span>चेम्सफोर्ड    सुधार भी कहा जाता है</span></span>)    <span style=\"font-family:'Nirmala UI'\"><span>द्वारा    प्रांतों की कार्यकारी सरकार    में </span></span>'<span style=\"font-family:'Nirmala UI'\"><span>द्वैध    शासन</span></span>' (Dyarchy) <span style=\"font-family:'Nirmala UI'\"><span>की    शुरुआत की गई थी। इसके तहत    प्रांतीय विषयों को </span></span>'<span style=\"font-family:'Nirmala UI'\"><span>हस्तांतरित</span></span>'    <span style=\"font-family:'Nirmala UI'\"><span>और </span></span>'<span style=\"font-family:'Nirmala UI'\"><span>आरक्षित</span></span>'    <span style=\"font-family:'Nirmala UI'\"><span>विषयों में    विभाजित किया गया था। जबकि    प्रांतीय स्वायत्तता</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>केंद्र में    द्वैध शासन और संघीय न्यायालय    की स्थापना के प्रावधान भारत    सरकार अधिनियम</span></span>, 1935 <span style=\"font-family:'Nirmala UI'\"><span>से    संबंधित हैं।</span></span></p>", "question_heading": ""}, {"sr_no": 8, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>प्रतिष्ठित    ज्ञानपीठ पुरस्कार प्राप्त    करने वाली पहली महिला साहित्यकार    निम्नलिखित में से कौन थीं</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>अमृता प्रीतम</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>आशापूर्णा    देवी</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>महादेवी    वर्मा</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>महाश्वेता    देवी</span></span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>आशापूर्णा    देवी </span></span>1976 <span style=\"font-family:'Nirmala UI'\"><span>में    अपने प्रसिद्ध बंगाली उपन्यास    <i>प्रथम प्रतिश्रुति</i> के    लिए भारत के सर्वोच्च साहित्यिक    सम्मान ज्ञानपीठ पुरस्कार    से सम्मानित होने वाली पहली    महिला थीं। इसके बाद </span></span>1981    <span style=\"font-family:'Nirmala UI'\"><span>में अमृता    प्रीतम</span></span>, 1982 <span style=\"font-family:'Nirmala UI'\"><span>में    महादेवी वर्मा और </span></span>1996    <span style=\"font-family:'Nirmala UI'\"><span>में महाश्वेता    देवी को यह पुरस्कार प्राप्त    हुआ।</span></span></p>", "question_heading": ""}, {"sr_no": 9, "question": " <p style=\"orphans:0;widows:0\">    <b>24 </b><span style=\"font-family:'Nirmala UI'\"><span>जुलाई    </span></span><b>1991 </b><span style=\"font-family:'Nirmala UI'\"><span>को    घोषित नई औद्योगिक नीति के    तहत</span></span><b>, </b><span style=\"font-family:'Nirmala UI'\"><span>प्रारंभ    में क्रमशः कितने उद्योगों    को अनिवार्य लाइसेंसिंग के    अंतर्गत रखा गया था और कितने    उद्योगों को विशेष रूप से    सार्वजनिक क्षेत्र के लिए    आरक्षित किया गया था</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    18 <span style=\"font-family:'Nirmala UI'\"><span>और </span></span>8</p>", "option2": " <p style=\"orphans:0;widows:0\">    8 <span style=\"font-family:'Nirmala UI'\"><span>और </span></span>18</p>", "option3": " <p style=\"orphans:0;widows:0\">    17 <span style=\"font-family:'Nirmala UI'\"><span>और </span></span>6</p>", "option4": " <p style=\"orphans:0;widows:0\">    14 <span style=\"font-family:'Nirmala UI'\"><span>और </span></span>4</p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    24 <span style=\"font-family:'Nirmala UI'\"><span>जुलाई </span></span>1991    <span style=\"font-family:'Nirmala UI'\"><span>को घोषित    नई औद्योगिक नीति </span></span>(NIP)    <span style=\"font-family:'Nirmala UI'\"><span>के तहत</span></span>:</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">1. <span style=\"font-family:'Nirmala UI'\"><span><b>अनिवार्य    लाइसेंसिंग</b></span></span><b>:</b> <span style=\"font-family:'Nirmala UI'\"><span>अनुबंध    </span></span>II (Annex II) <span style=\"font-family:'Nirmala UI'\"><span>में    निर्दिष्ट </span></span><b>18 </b><span style=\"font-family:'Nirmala UI'\"><span><b>उद्योगों</b>    </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>जैसे    खतरनाक रसायन</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>मोटर    कार</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>दवाइयाँ    आदि</span></span>) <span style=\"font-family:'Nirmala UI'\"><span>को    छोड़कर लगभग सभी क्षेत्रों    के लिए औद्योगिक लाइसेंसिंग    समाप्त कर दी गई थी।</span></span></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">2. <span style=\"font-family:'Nirmala UI'\"><span><b>सार्वजनिक    क्षेत्र का आरक्षण</b></span></span><b>:</b>    <span style=\"font-family:'Nirmala UI'\"><span>विशेष रूप    से सार्वजनिक क्षेत्र के    लिए आरक्षित उद्योगों की    संख्या को औद्योगिक नीति    प्रस्ताव</span></span>, 1956 <span style=\"font-family:'Nirmala UI'\"><span>के    </span></span>17 <span style=\"font-family:'Nirmala UI'\"><span>से    घटाकर </span></span><b>8 </b><span style=\"font-family:'Nirmala UI'\"><span><b>उद्योग</b>    </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>अनुबंध    </span></span>I) <span style=\"font-family:'Nirmala UI'\"><span>कर    दिया गया था </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>जिनमें    रक्षा</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>परमाणु    ऊर्जा</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>कोयला</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>खनिज तेल    और रेलवे आदि शामिल थे</span></span>)<span style=\"font-family:'Nirmala UI'\"><span>।    बाद में इसे और घटाकर केवल    </span></span>2 <span style=\"font-family:'Nirmala UI'\"><span>कर    दिया गया।</span></span></p>    <p style=\"orphans:0;widows:0\"><span style=\"font-family:'Nirmala UI'\"><span>अतः</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>सही क्रमशः    संख्या </span></span>18 <span style=\"font-family:'Nirmala UI'\"><span>और    </span></span>8 <span style=\"font-family:'Nirmala UI'\"><span>है।</span></span></p>", "question_heading": ""}, {"sr_no": 10, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>भारत निर्वाचन    आयोग </span></span><b>(ECI) </b><span style=\"font-family:'Nirmala UI'\"><span>द्वारा    शुरू किए गए चुनावी सुधारों    के संदर्भ में</span></span><b>,    '</b><span style=\"font-family:'Nirmala UI'\"><span>इलेक्ट्रॉनिक    रूप से प्रेषित डाक मतपत्र    प्रणाली</span></span><b>' (ETPBS) </b><span style=\"font-family:'Nirmala UI'\"><span>के    संबंध में निम्नलिखित में    से कौन</span></span><b>-</b><span style=\"font-family:'Nirmala UI'\"><span>सा    कथन सही है</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>यह वर्तमान    में सभी प्रवासी </span></span>(NRI)    <span style=\"font-family:'Nirmala UI'\"><span>मतदाताओं    के लिए विदेश से मतदान करने    हेतु उपलब्ध है।</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>यह पात्र    मतदाताओं को एक सुरक्षित    वेब पोर्टल के माध्यम से पूरी    तरह से ऑनलाइन मतदान करने    और जमा करने की अनुमति देता    है।</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>यह पंजीकृत    सेवा मतदाताओं को डाक मतपत्र    इलेक्ट्रॉनिक रूप से प्राप्त    करने और उन्हें डाक </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>पोस्ट</span></span>)    <span style=\"font-family:'Nirmala UI'\"><span>के माध्यम    से वापस भेजने की सुविधा    प्रदान करता है।</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>इसने सीमावर्ती    निर्वाचन क्षेत्रों में    इलेक्ट्रॉनिक वोटिंग मशीन    </span></span>(EVM) <span style=\"font-family:'Nirmala UI'\"><span>को    पूरी तरह से प्रतिस्थापित    कर दिया है।</span></span></p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>इलेक्ट्रॉनिक    रूप से प्रेषित डाक मतपत्र    प्रणाली </span></span>(ETPBS) <span style=\"font-family:'Nirmala UI'\"><span>को    भारत निर्वाचन आयोग </span></span>(ECI)    <span style=\"font-family:'Nirmala UI'\"><span>द्वारा    </span></span>C-DAC <span style=\"font-family:'Nirmala UI'\"><span>के    सहयोग से विकसित किया गया    था ताकि सेवा मतदाताओं </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>जैसे    सशस्त्र बल के कर्मियों और    अपने निर्वाचन क्षेत्र से    बाहर तैनात सरकारी कर्मचारियों</span></span>)    <span style=\"font-family:'Nirmala UI'\"><span>को अपने    मताधिकार का प्रयोग करने    में सुविधा मिल सके। इस प्रणाली    के तहत</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>खाली    डाक मतपत्र पंजीकृत सेवा    मतदाताओं को इलेक्ट्रॉनिक    रूप से प्रेषित किए जाते हैं</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>जिन्हें    वे डाउनलोड और प्रिंट करते    हैं</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>अपना    मत अंकित करते हैं और फिर डाक    </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>भौतिक    पोस्ट</span></span>) <span style=\"font-family:'Nirmala UI'\"><span>के    माध्यम से निर्वाचन अधिकारी    को वापस भेजते हैं।</span></span></p>", "question_heading": ""}, {"sr_no": 11, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>भारत में    चिकित्सा शिक्षा और अभ्यास    के विनियमन के लिए सितंबर    </span></span><b>2020 </b><span style=\"font-family:'Nirmala UI'\"><span>में    भारतीय चिकित्सा परिषद </span></span><b>(MCI)    </b><span style=\"font-family:'Nirmala UI'\"><span>के स्थान    पर निम्नलिखित में से किस    निकाय की स्थापना की गई थी</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>विश्वविद्यालय    अनुदान आयोग</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>राष्ट्रीय    चिकित्सा आयोग</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>भारतीय    फार्मेसी परिषद</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>भारतीय दंत    परिषद</span></span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>राष्ट्रीय    चिकित्सा आयोग </span></span>(NMC) <span style=\"font-family:'Nirmala UI'\"><span>एक    वैधानिक निकाय है जो राष्ट्रीय    चिकित्सा आयोग अधिनियम</span></span>,    2019 <span style=\"font-family:'Nirmala UI'\"><span>के तहत    </span></span>25 <span style=\"font-family:'Nirmala UI'\"><span>सितंबर    </span></span>2020 <span style=\"font-family:'Nirmala UI'\"><span>को    अस्तित्व में आया। इसने    भारतीय चिकित्सा परिषद </span></span>(MCI)    <span style=\"font-family:'Nirmala UI'\"><span>का स्थान    लिया</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>जिसे    भारतीय चिकित्सा परिषद    अधिनियम के तहत </span></span>1934 <span style=\"font-family:'Nirmala UI'\"><span>में    स्थापित किया गया था।</span></span></p>", "question_heading": ""}, {"sr_no": 12, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>कपड़ों से    जंग </span></span><b>(</b><span style=\"font-family:'Nirmala UI'\"><span>रस्ट</span></span><b>)    </b><span style=\"font-family:'Nirmala UI'\"><span>के धब्बे    हटाने और लकड़ी की सफाई के    लिए आमतौर पर निम्नलिखित    में से किस कार्बनिक अम्ल    का उपयोग किया जाता है</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>फॉर्मिक    अम्ल</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>ऑक्सालिक    अम्ल</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>टार्टरिक    अम्ल</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>मैलिक अम्ल</span></span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>ऑक्सालिक    अम्ल का उपयोग जंग हटाने के    लिए व्यापक रूप से किया जाता    है क्योंकि यह अघुलनशील    आयरन</span></span>(III) <span style=\"font-family:'Nirmala UI'\"><span>यौगिकों    </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>जंग</span></span>)    <span style=\"font-family:'Nirmala UI'\"><span>के साथ    अभिक्रिया करके पानी में    घुलनशील आयरन ऑक्सालेट संकुल    </span></span>(complex) <span style=\"font-family:'Nirmala UI'\"><span>बनाता    है</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>जिसे    आसानी से धोकर हटाया जा सकता    है।</span></span></p>", "question_heading": ""}, {"sr_no": 13, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>औद्योगिक    नीति संकल्प </span></span><b>(IPR) 1956, </b><span style=\"font-family:'Nirmala UI'\"><span>जिसका    उद्देश्य </span></span><b>'</b><span style=\"font-family:'Nirmala UI'\"><span>समाज    के समाजवादी स्वरूप</span></span><b>'    </b><span style=\"font-family:'Nirmala UI'\"><span>की स्थापना    करना था</span></span><b>, </b><span style=\"font-family:'Nirmala UI'\"><span>भारत    की किस पंचवर्षीय योजना का    आधार बना</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>प्रथम    पंचवर्षीय योजना</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>द्वितीय    पंचवर्षीय योजना</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>तृतीय    पंचवर्षीय योजना</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>चतुर्थ    पंचवर्षीय योजना</span></span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>औद्योगिक    नीति संकल्प </span></span>(IPR) 1956 <span style=\"font-family:'Nirmala UI'\"><span>द्वितीय    पंचवर्षीय योजना </span></span>(1956-1961)    <span style=\"font-family:'Nirmala UI'\"><span>का मुख्य    आधार था</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>जिसे    महालनोबिस मॉडल के नाम से    भी जाना जाता है। इसने भारी    और बुनियादी उद्योगों पर    ध्यान केंद्रित करते हुए    तीव्र औद्योगिकीकरण पर जोर    दिया तथा सार्वजनिक क्षेत्र    का विस्तार करके </span></span>'<span style=\"font-family:'Nirmala UI'\"><span>समाज    के समाजवादी स्वरूप</span></span>'    <span style=\"font-family:'Nirmala UI'\"><span>की स्थापना    का लक्ष्य रखा।</span></span></p>", "question_heading": ""}, {"sr_no": 14, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>निम्नलिखित    में से कौन</span></span><b>-</b><span style=\"font-family:'Nirmala UI'\"><span>सा    देश दक्षिण एशियाई क्षेत्रीय    सहयोग संगठन </span></span><b>(SAARC) </b><span style=\"font-family:'Nirmala UI'\"><span>का    सदस्य नहीं है</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>अफ़गानिस्तान</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>बांग्लादेश</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>म्यांमार</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>मालदीव</span></span></p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>सार्क </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>दक्षिण    एशियाई क्षेत्रीय सहयोग    संगठन</span></span>) <span style=\"font-family:'Nirmala UI'\"><span>की    स्थापना </span></span>1985 <span style=\"font-family:'Nirmala UI'\"><span>में    हुई थी और वर्तमान में इसके    आठ सदस्य देश हैं</span></span>:    <span style=\"font-family:'Nirmala UI'\"><span>अफ़गानिस्तान</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>बांग्लादेश</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>भूटान</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>भारत</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>मालदीव</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>नेपाल</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>पाकिस्तान    और श्रीलंका। म्यांमार सार्क    का सदस्य नहीं है </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>यह    केवल एक पर्यवेक्षक देश है</span></span>),    <span style=\"font-family:'Nirmala UI'\"><span>हालांकि    यह बिम्सटेक </span></span>(BIMSTEC) <span style=\"font-family:'Nirmala UI'\"><span>और    आसियान </span></span>(ASEAN) <span style=\"font-family:'Nirmala UI'\"><span>का    सदस्य है।</span></span></p>", "question_heading": ""}, {"sr_no": 15, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>विश्व डोपिंग    रोधी एजेंसी </span></span><b>(WADA) </b><span style=\"font-family:'Nirmala UI'\"><span>का    मुख्यालय कहाँ स्थित है</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>लुसाने</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>स्विट्जरलैंड</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>मॉन्ट्रियल</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>कनाडा</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>लंदन</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>यूनाइटेड    किंगडम</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>पेरिस</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>फ्रांस</span></span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>विश्व डोपिंग    रोधी एजेंसी </span></span>(WADA) <span style=\"font-family:'Nirmala UI'\"><span>का    मुख्यालय मॉन्ट्रियल</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>कनाडा में    स्थित है। </span></span>WADA <span style=\"font-family:'Nirmala UI'\"><span>एक    अंतरराष्ट्रीय स्वतंत्र    एजेंसी है जिसे खेलों में    सभी प्रकार के डोपिंग के    खिलाफ लड़ाई को बढ़ावा देने</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>समन्वय करने    और निगरानी करने के लिए    अंतरराष्ट्रीय ओलंपिक समिति    </span></span>(IOC) <span style=\"font-family:'Nirmala UI'\"><span>की    पहल पर स्थापित किया गया था।</span></span></p>", "question_heading": ""}, {"sr_no": 16, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>शुद्ध घरेलू    उत्पाद </span></span><b>(NDP) </b><span style=\"font-family:'Nirmala UI'\"><span>की    गणना करने के लिए सकल घरेलू    उत्पाद </span></span><b>(GDP) </b><span style=\"font-family:'Nirmala UI'\"><span>में    से निम्नलिखित में से क्या    घटाया जाता है</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>मूल्यह्रास</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>शुद्ध    अप्रत्यक्ष कर</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>हस्तांतरण    भुगतान</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>विदेशों    से शुद्ध साधन आय</span></span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>शुद्ध घरेलू    उत्पाद </span></span>(NDP) <span style=\"font-family:'Nirmala UI'\"><span>अर्थव्यवस्था    के शुद्ध उत्पादन को मापता    है। इसे सकल घरेलू उत्पाद    </span></span>(GDP) <span style=\"font-family:'Nirmala UI'\"><span>में    से मूल्यह्रास </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>अचल    पूंजी के उपभोग</span></span>) <span style=\"font-family:'Nirmala UI'\"><span>को    घटाकर प्राप्त किया जाता    है</span></span>:     <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794746969288_html_68eb67fb35755492.gif\" > <span style=\"font-family:'Nirmala UI'\"><span>मूल्यह्रास।</span></span></p>", "question_heading": ""}, {"sr_no": 17, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>भारतीय    संविधान के अनुसार</span></span><b>,    </b><span style=\"font-family:'Nirmala UI'\"><span>मंत्रिपरिषद    और भारत के राष्ट्रपति के    बीच संचार </span></span><b>(</b><span style=\"font-family:'Nirmala UI'\"><span>संवाद</span></span><b>)    </b><span style=\"font-family:'Nirmala UI'\"><span>की मुख्य    कड़ी के रूप में कौन कार्य    करता है</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>लोकसभा    अध्यक्ष</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>प्रधानमंत्री</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>मंत्रिमंडल    सचिव </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>कैबिनेट    सचिव</span></span>)</p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>उपराष्ट्रपति</span></span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>भारतीय    संविधान के अनुच्छेद </span></span>78    <span style=\"font-family:'Nirmala UI'\"><span>के तहत</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>प्रधानमंत्री    राष्ट्रपति और मंत्रिपरिषद    के बीच संचार </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>संवाद</span></span>)    <span style=\"font-family:'Nirmala UI'\"><span>की मुख्य    कड़ी के रूप में कार्य करते    हैं। संघ के मामलों के प्रशासन    और विधान के प्रस्तावों से    संबंधित मंत्रिपरिषद के सभी    निर्णयों से राष्ट्रपति को    अवगत कराना प्रधानमंत्री    का संवैधानिक कर्तव्य है।</span></span></p>", "question_heading": ""}, {"sr_no": 18, "question": " <p style=\"orphans:0;widows:0\">    <b>'</b><span style=\"font-family:'Nirmala UI'\"><span>वीरों    का नृत्य</span></span><b>' </b><span style=\"font-family:'Nirmala UI'\"><span>के    नाम से भी जाना जाने वाला    वीरनाट्यम </span></span><b>(Veeranatyam), </b><span style=\"font-family:'Nirmala UI'\"><span>मुख्य    रूप से भारत के किस राज्य से    संबंधित एक पारंपरिक अनुष्ठानिक    नृत्य है</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>आंध्र प्रदेश</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>केरल</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>ओडिशा</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>गुजरात</span></span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>वीरनाट्यम    आंध्र प्रदेश राज्य का एक    पारंपरिक अनुष्ठानिक नृत्य    रूप है। यह भगवान शिव और    वीरभद्र के सम्मान में किया    जाता है</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>जिसका    राज्य में गहरा धार्मिक और    सांस्कृतिक महत्व है।</span></span></p>", "question_heading": ""}, {"sr_no": 19, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>प्राचीन    भारतीय चार आश्रम व्यवस्था    में</span></span><b>, </b><span style=\"font-family:'Nirmala UI'\"><span>कौन</span></span><b>-</b><span style=\"font-family:'Nirmala UI'\"><span>सा    चरण गृहस्थ के पारिवारिक    जीवन का प्रतिनिधित्व करता    है</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>ब्रह्मचर्य</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>गृहस्थ</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>वानप्रस्थ</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>संन्यास</span></span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>प्राचीन    भारतीय परंपरा में मानव जीवन    को चार चरणों या आश्रमों में    विभाजित किया गया था</span></span>:    1. <span style=\"font-family:'Nirmala UI'\"><span>ब्रह्मचर्य    </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>शिक्षा    और विद्या प्राप्ति का चरण</span></span>),    2. <span style=\"font-family:'Nirmala UI'\"><span>गृहस्थ    </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>विवाह</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>परिवार और    सांसारिक कर्तव्यों का चरण</span></span>),    3. <span style=\"font-family:'Nirmala UI'\"><span>वानप्रस्थ    </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>वानप्रस्थ    या सांसारिक कार्यों से    निवृत्ति का चरण</span></span>), <span style=\"font-family:'Nirmala UI'\"><span>और    </span></span>4. <span style=\"font-family:'Nirmala UI'\"><span>संन्यास    </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>सांसारिक    मोह</span></span>-<span style=\"font-family:'Nirmala UI'\"><span>माया    का पूर्ण त्याग</span></span>)<span style=\"font-family:'Nirmala UI'\"><span>।</span></span></p>", "question_heading": ""}, {"sr_no": 20, "question": "  <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>किसी गतिमान    वस्तु का औसत वेग सूत्र     <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794746969288_html_b530b7a470a1300c.gif\" >     </span></span><b>(</b><span style=\"font-family:'Nirmala UI'\"><span>जहाँ       <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794746969288_html_ca251a9e165ee99b.gif\" >     प्रारंभिक वेग और     <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794746969288_html_acc4ed3bbe33fd32.gif\" >     अंतिम वेग है</span></span><b>) </b><span style=\"font-family:'Nirmala UI'\"><span>द्वारा    केवल तभी दिया जाता है जब    वस्तु गति करती है</span></span><b>:</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>परिवर्ती    त्वरण के साथ</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>एकसमान    त्वरण के साथ</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>केवल घटते    वेग के साथ</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>गैर</span></span>-<span style=\"font-family:'Nirmala UI'\"><span>रेखीय    त्वरण के साथ</span></span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>जब कोई वस्तु    एक सीधी रेखा में वेग के एकसमान    परिवर्तन की दर से गति करती    है</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>तो    उसका त्वरण स्थिर रहता है।    ऐसी एकसमान त्वरित गति में</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>किसी दिए    गए समयांतराल में औसत वेग    की गणना प्रारंभिक वेग </span></span>(<img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794746969288_html_ca251a9e165ee99b.gif\" > )    <span style=\"font-family:'Nirmala UI'\"><span>और अंतिम    वेग </span></span>(<img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794746969288_html_acc4ed3bbe33fd32.gif\" > )    <span style=\"font-family:'Nirmala UI'\"><span>के अंकगणितीय    माध्य के रूप में की जाती है</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>जो कि     <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794746969288_html_b530b7a470a1300c.gif\" >     द्वारा दी जाती है। यदि त्वरण    एकसमान नहीं होता है</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>तो यह संबंध    लागू नहीं होता है।</span></span></p>", "question_heading": ""}, {"sr_no": 21, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>निम्नलिखित    में से किसने </span></span><b>1910 </b><span style=\"font-family:'Nirmala UI'\"><span>में    इलाहाबाद में महिला शिक्षा    और उत्थान को बढ़ावा देने    के लिए </span></span><b>'</b><span style=\"font-family:'Nirmala UI'\"><span>भारत    स्त्री महामंडल</span></span><b>' </b><span style=\"font-family:'Nirmala UI'\"><span>की    स्थापना की थी</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>पंडिता    रमाबाई</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>सरला देवी    चौधरानी</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>मुथुलक्ष्मी    रेड्डी</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>मैडम भीकाजी    कामा</span></span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    '<span style=\"font-family:'Nirmala UI'\"><span>भारत स्त्री    महामंडल</span></span>' <span style=\"font-family:'Nirmala UI'\"><span>की    स्थापना </span></span>1910 <span style=\"font-family:'Nirmala UI'\"><span>में    इलाहाबाद में सरला देवी    चौधरानी द्वारा की गई थी।    इसे किसी भारतीय महिला द्वारा    शुरू किया गया पहला अखिल    भारतीय महिला संगठन माना    जाता है। इसके मुख्य उद्देश्यों    में महिला शिक्षा को बढ़ावा    देना</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>पर्दा    प्रथा जैसी सामाजिक कुरीतियों    को दूर करना और भारत के विभिन्न    हिस्सों में महिलाओं के बीच    एकजुटता लाना शामिल था।</span></span></p>", "question_heading": ""}, {"sr_no": 22, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>भारत के    राष्ट्रीय वायु गुणवत्ता    सूचकांक </span></span><b>(AQI) </b><span style=\"font-family:'Nirmala UI'\"><span>की    गणना में निम्नलिखित में से    कौन</span></span><b>-</b><span style=\"font-family:'Nirmala UI'\"><span>सा    वायु प्रदूषक शामिल नहीं    है</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>अमोनिया</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>सतही ओजोन</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>कार्बन    डाइऑक्साइड</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>सीसा </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>लेड</span></span>)</p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>भारत के    पर्यावरण</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>वन    और जलवायु परिवर्तन मंत्रालय    द्वारा शुरू किए गए राष्ट्रीय    वायु गुणवत्ता सूचकांक </span></span>(AQI)    <span style=\"font-family:'Nirmala UI'\"><span>में आठ प्रमुख    प्रदूषकों की निगरानी की    जाती है</span></span>:     <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794746969288_html_1bb8cdf910505f1e.gif\" > ,       <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794746969288_html_9de060da64187a24.gif\" > ,    <span style=\"font-family:'Nirmala UI'\"><span>नाइट्रोजन    डाइऑक्साइड </span></span>(<img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794746969288_html_caacd6c15be41594.gif\" > ),    <span style=\"font-family:'Nirmala UI'\"><span>सल्फर    डाइऑक्साइड </span></span>(<img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794746969288_html_ad1c47d7870d63d2.gif\" > ),    <span style=\"font-family:'Nirmala UI'\"><span>कार्बन    मोनोऑक्साइड </span></span>(<img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794746969288_html_8469c365275aaa93.gif\" > ),    <span style=\"font-family:'Nirmala UI'\"><span>ओजोन </span></span>(<img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794746969288_html_8b3fec3be935eb0a.gif\" > ),    <span style=\"font-family:'Nirmala UI'\"><span>अमोनिया    </span></span>(<img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794746969288_html_c37ba8c35aff4759.gif\" > )    <span style=\"font-family:'Nirmala UI'\"><span>और सीसा    </span></span>(<img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794746969288_html_9398cb4c7491cd5.gif\" > )<span style=\"font-family:'Nirmala UI'\"><span>।    कार्बन डाइऑक्साइड </span></span>(<img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794746969288_html_3798a84b74d573f9.gif\" > )    <span style=\"font-family:'Nirmala UI'\"><span>एक ग्रीनहाउस    गैस है और इसे </span></span>AQI <span style=\"font-family:'Nirmala UI'\"><span>के    मापदंडों में शामिल नहीं    किया गया है।</span></span></p>", "question_heading": ""}, {"sr_no": 23, "question": " <p style=\"orphans:0;widows:0\">    <b>MS-word </b><span style=\"font-family:'Nirmala UI'\"><span>में</span></span><b>,    </b><span style=\"font-family:'Nirmala UI'\"><span>रिप्लेस    विकल्प मेनू के अंतर्गत आता    है</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    View.</p>", "option2": " <p style=\"orphans:0;widows:0\">    File.</p>", "option3": " <p style=\"orphans:0;widows:0\">    Insert.</p>", "option4": " <p style=\"orphans:0;widows:0\">    Edit.</p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    <b>Replace</b> <span style=\"font-family:'Nirmala UI'\"><span>कमांड    का उपयोग विशिष्ट पाठ को    ढूंढने और उसे दूसरे पाठ से    बदलने के लिए किया जाता है।    </span></span>MS Word <span style=\"font-family:'Nirmala UI'\"><span>के    पुराने संस्करणों में</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>यह </span></span><b>Edit</b>    <span style=\"font-family:'Nirmala UI'\"><span>मेनू के    अंतर्गत उपलब्ध होता है।</span></span></p>", "question_heading": ""}, {"sr_no": 24, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>असेंबली    भाषा में प्रयुक्त प्रतीक    हैं</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>कोड्स।</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>म्नेमोनिक्स।</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>असेंबलर।</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>मशीन कोड्स।</span></span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span><b>म्नेमोनिक्स</b>    असेंबली भाषा में प्रयुक्त    प्रतीकात्मक निर्देश होते    हैं</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>जैसे    </span></span><b>ADD, SUB, MOV, </b><span style=\"font-family:'Nirmala UI'\"><span><b>और    </b></span></span><b>JMP</b><span style=\"font-family:'Nirmala UI'\"><span>।    ये प्रोग्रामर के लिए बाइनरी    मशीन कोड की तुलना में याद    रखने में आसान होते हैं।</span></span></p>", "question_heading": ""}, {"sr_no": 25, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>असेम्बली    भाषा को मशीनी भाषा में अनुवाद    करने वाला प्रोग्राम क्या    है</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>असेम्बलर।</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>कम्पाइलर।</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>इंटरप्रेटर।</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>लिंकर।</span></span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>एक <b>असेम्बलर</b>    <b>असेम्बली भाषा </b></span></span><b>(</b><span style=\"font-family:'Nirmala UI'\"><span><b>म्नेमोनिक्स</b></span></span><b>)</b>    <span style=\"font-family:'Nirmala UI'\"><span>को <b>मशीनी    भाषा </b></span></span><b>(</b><span style=\"font-family:'Nirmala UI'\"><span><b>बाइनरी</b></span></span><b>/</b><span style=\"font-family:'Nirmala UI'\"><span><b>ऑब्जेक्ट    कोड</b></span></span><b>)</b> <span style=\"font-family:'Nirmala UI'\"><span>में    परिवर्तित करता है जिसे    कंप्यूटर के प्रोसेसर द्वारा    समझा जा सकता है।</span></span></p>", "question_heading": ""}, {"sr_no": 26, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>भारत का    सुपर कंप्यूटर </span></span><b>\"PARAM\"    </b><span style=\"font-family:'Nirmala UI'\"><span>कहाँ स्थित    है</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>चेन्नई।</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>पुणे।</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>बेंगलुरु।</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>कोलकाता।</span></span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>PARAM </b><span style=\"font-family:'Nirmala UI'\"><span><b>सुपरकंप्यूटर    श्रृंखला</b> को </span></span><b>C-DAC (</b><span style=\"font-family:'Nirmala UI'\"><span><b>सेंटर    फॉर डेवलपमेंट ऑफ एडवांस्ड    कंप्यूटिंग</b></span></span><b>)</b> <span style=\"font-family:'Nirmala UI'\"><span>द्वारा    विकसित किया गया था</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>जिसका    मुख्यालय <b>पुणे</b></span></span><b>,    </b><span style=\"font-family:'Nirmala UI'\"><span><b>महाराष्ट्र</b>    में है।</span></span></p>    <p style=\"orphans:0;widows:0\"><b>PARAM 8000</b> <span style=\"font-family:'Nirmala UI'\"><span>भारत    का पहला प्रमुख स्वदेशी    समानांतर सुपरकंप्यूटर था</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>जिसे </span></span>1991    <span style=\"font-family:'Nirmala UI'\"><span>में विकसित    किया गया था।</span></span></p>", "question_heading": ""}, {"sr_no": 27, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <span style=\"font-family:'Nirmala UI'\"><span>गांधीवादी    युग के दौरान भारतीय राष्ट्रीय    आंदोलन के संदर्भ में</span></span><b>,    </b><span style=\"font-family:'Nirmala UI'\"><span>निम्नलिखित    कथनों पर विचार कीजिए</span></span><b>:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>1. </b><span style=\"font-family:'Nirmala UI'\"><span>असहयोग    आंदोलन </span></span><b>(1920–22) </b><span style=\"font-family:'Nirmala UI'\"><span>को    गांधी द्वारा चौरी चौरा घटना    के बाद वापस ले लिया गया था</span></span><b>,    </b><span style=\"font-family:'Nirmala UI'\"><span>लेकिन इस    आंदोलन ने पहले ही सरकारी    स्कूलों</span></span><b>, </b><span style=\"font-family:'Nirmala UI'\"><span>कॉलेजों</span></span><b>,    </b><span style=\"font-family:'Nirmala UI'\"><span>अदालतों    और विदेशी कपड़े के बहिष्कार    को प्रेरित कर दिया था।</span></span></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>2. </b><span style=\"font-family:'Nirmala UI'\"><span>सविनय    अवज्ञा आंदोलन की शुरुआत    </span></span><b>1930 </b><span style=\"font-family:'Nirmala UI'\"><span>में    दांडी मार्च के साथ हुई थी</span></span><b>,    </b><span style=\"font-family:'Nirmala UI'\"><span>और असहयोग    आंदोलन के विपरीत</span></span><b>,    </b><span style=\"font-family:'Nirmala UI'\"><span>इसमें    विशिष्ट औपनिवेशिक कानूनों    का जानबूझकर उल्लंघन शामिल    था।</span></span></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>3. </b><span style=\"font-family:'Nirmala UI'\"><span>गांधी</span></span><b>-</b><span style=\"font-family:'Nirmala UI'\"><span>इरविन    समझौते </span></span><b>(1931) </b><span style=\"font-family:'Nirmala UI'\"><span>के    परिणामस्वरूप ब्रिटिश सरकार    द्वारा कांग्रेस की सभी    प्रमुख मांगों को पूरी तरह    से स्वीकार कर लिया गया</span></span><b>,    </b><span style=\"font-family:'Nirmala UI'\"><span>जिसमें    तत्काल पूर्ण स्वतंत्रता    प्रदान करना भी शामिल था।</span></span></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>4. </b><span style=\"font-family:'Nirmala UI'\"><span>भारत    छोड़ो आंदोलन </span></span><b>(1942) </b><span style=\"font-family:'Nirmala UI'\"><span>क्रिप्स    मिशन की विफलता के बाद शुरू    किया गया था</span></span><b>, </b><span style=\"font-family:'Nirmala UI'\"><span>जिसमें    ब्रिटिशों को तुरंत भारत    छोड़ने का आह्वान किया गया    था।</span></span></p>    <p style=\"orphans:0;widows:0\"><span style=\"font-family:'Nirmala UI'\"><span>उपर्युक्त    कथनों में से कौन</span></span><b>-</b><span style=\"font-family:'Nirmala UI'\"><span>से    सही हैं</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    1, 2 <span style=\"font-family:'Nirmala UI'\"><span>और </span></span>4    <span style=\"font-family:'Nirmala UI'\"><span>केवल</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    1 <span style=\"font-family:'Nirmala UI'\"><span>और </span></span>3    <span style=\"font-family:'Nirmala UI'\"><span>केवल</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    2, 3 <span style=\"font-family:'Nirmala UI'\"><span>और </span></span>4    <span style=\"font-family:'Nirmala UI'\"><span>केवल</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    1, 2, 3 <span style=\"font-family:'Nirmala UI'\"><span>और </span></span>4</p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <span style=\"font-family:'Nirmala UI'\"><span><b>कथन </b></span></span><b>1    — </b><span style=\"font-family:'Nirmala UI'\"><span><b>सही</b></span></span><b>:</b>    <span style=\"font-family:'Nirmala UI'\"><span>असहयोग    आंदोलन को <b>चौरी चौरा घटना</b>    के बाद फरवरी </span></span>1922 <span style=\"font-family:'Nirmala UI'\"><span>में    वापस ले लिया गया था।</span></span></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><span style=\"font-family:'Nirmala UI'\"><span><b>कथन    </b></span></span><b>2 — </b><span style=\"font-family:'Nirmala UI'\"><span><b>सही</b></span></span><b>:</b>    <span style=\"font-family:'Nirmala UI'\"><span>सविनय अवज्ञा    आंदोलन की शुरुआत गांधी के    <b>दांडी मार्च </b></span></span><b>(12    </b><span style=\"font-family:'Nirmala UI'\"><span><b>मार्च–</b></span></span><b>6    </b><span style=\"font-family:'Nirmala UI'\"><span><b>अप्रैल    </b></span></span><b>1930)</b> <span style=\"font-family:'Nirmala UI'\"><span>के    साथ हुई थी और इसमें औपनिवेशिक    कानूनों को तोड़ना शामिल    था</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>विशेष    रूप से <b>नमक कानून</b> को।</span></span></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><span style=\"font-family:'Nirmala UI'\"><span><b>कथन    </b></span></span><b>3 — </b><span style=\"font-family:'Nirmala UI'\"><span><b>गलत</b></span></span><b>:</b>    <span style=\"font-family:'Nirmala UI'\"><span>गांधी</span></span>-<span style=\"font-family:'Nirmala UI'\"><span>इरविन    समझौते ने पूर्ण स्वतंत्रता    प्रदान <b>नहीं</b> की थी। गांधी    ने आंदोलन को स्थगित करने    और द्वितीय गोलमेज सम्मेलन    में भाग लेने पर सहमति व्यक्त    की थी।</span></span></p>    <p style=\"orphans:0;widows:0\"><span style=\"font-family:'Nirmala UI'\"><span><b>कथन    </b></span></span><b>4 — </b><span style=\"font-family:'Nirmala UI'\"><span><b>सही</b></span></span><b>:</b>    <span style=\"font-family:'Nirmala UI'\"><span>भारत छोड़ो    आंदोलन <b>अगस्त </b></span></span><b>1942</b>    <span style=\"font-family:'Nirmala UI'\"><span>में क्रिप्स    मिशन की विफलता के बाद शुरू    किया गया था</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>जिसमें    ऐतिहासिक <b>“करो या मरो”</b>    का नारा दिया गया था।</span></span></p>", "question_heading": ""}, {"sr_no": 28, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <span style=\"font-family:'Nirmala UI'\"><span>दिल्ली    सल्तनत की प्रशासनिक और    राजनीतिक प्रणाली के संदर्भ    में</span></span><b>, </b><span style=\"font-family:'Nirmala UI'\"><span>निम्नलिखित    कथनों पर विचार कीजिए</span></span><b>:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>1. </b><span style=\"font-family:'Nirmala UI'\"><span>इल्तुतमिश    ने इक्ता प्रणाली को अधिक    व्यवस्थित ढंग से लागू किया    और सल्तनत के प्रशासन को    मजबूत करने के लिए चहलगानी    </span></span><b>(</b><span style=\"font-family:'Nirmala UI'\"><span>चालीस    का समूह</span></span><b>) </b><span style=\"font-family:'Nirmala UI'\"><span>का    गठन किया।</span></span></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>2. </b><span style=\"font-family:'Nirmala UI'\"><span>अलाउद्दीन    खिलजी ने मुख्य रूप से कम    वेतन पर एक बड़ी स्थायी सेना    बनाए रखने के लिए सख्त    बाजार</span></span><b>-</b><span style=\"font-family:'Nirmala UI'\"><span>नियंत्रण    उपाय लागू किए।</span></span></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>3. </b><span style=\"font-family:'Nirmala UI'\"><span>मुहम्मद    बिन तुगलक ने राजधानी को    दिल्ली से दौलताबाद स्थानांतरित    किया और बाद में इस निर्णय    को पलटते हुए राजधानी को वापस    दिल्ली लाया।</span></span></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>4. </b><span style=\"font-family:'Nirmala UI'\"><span>फिरोज    शाह तुगलक ने इक्ता धारकों    के पद पर वंशानुगत उत्तराधिकार    की प्रथा को समाप्त कर दिया।</span></span></p>    <p style=\"orphans:0;widows:0\"><span style=\"font-family:'Nirmala UI'\"><span>उपर्युक्त    कथनों में से कौन</span></span><b>-</b><span style=\"font-family:'Nirmala UI'\"><span>से    सही हैं</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    1, 2 <span style=\"font-family:'Nirmala UI'\"><span>और </span></span>3    <span style=\"font-family:'Nirmala UI'\"><span>केवल</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    1 <span style=\"font-family:'Nirmala UI'\"><span>और </span></span>4    <span style=\"font-family:'Nirmala UI'\"><span>केवल</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    2, 3 <span style=\"font-family:'Nirmala UI'\"><span>और </span></span>4    <span style=\"font-family:'Nirmala UI'\"><span>केवल</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    1, 2, 3 <span style=\"font-family:'Nirmala UI'\"><span>और </span></span>4</p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <span style=\"font-family:'Nirmala UI'\"><span><b>कथन </b></span></span><b>1    — </b><span style=\"font-family:'Nirmala UI'\"><span><b>सही</b></span></span><b>:</b>    <span style=\"font-family:'Nirmala UI'\"><span>इल्तुतमिश    ने <b>इक्ता प्रणाली</b> को मजबूत    किया और <b>चहलगानी</b> का गठन    किया</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>जो    तुर्की अमीरों का एक शक्तिशाली    समूह था।</span></span></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><span style=\"font-family:'Nirmala UI'\"><span><b>कथन    </b></span></span><b>2 — </b><span style=\"font-family:'Nirmala UI'\"><span><b>सही</b></span></span><b>:</b>    <span style=\"font-family:'Nirmala UI'\"><span>अलाउद्दीन    खिलजी की <b>बाजार</b></span></span><b>-</b><span style=\"font-family:'Nirmala UI'\"><span><b>नियंत्रण    नीति</b> नियंत्रित लागत पर    एक बड़ी सेना बनाए रखने से    सीधे जुड़ी हुई थी।</span></span></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><span style=\"font-family:'Nirmala UI'\"><span><b>कथन    </b></span></span><b>3 — </b><span style=\"font-family:'Nirmala UI'\"><span><b>सही</b></span></span><b>:</b>    <span style=\"font-family:'Nirmala UI'\"><span>मुहम्मद    बिन तुगलक ने राजधानी को    <b>दिल्ली से दौलताबाद</b>    स्थानांतरित किया और बाद    में इसे वापस दिल्ली लाया।</span></span></p>    <p style=\"orphans:0;widows:0\"><span style=\"font-family:'Nirmala UI'\"><span><b>कथन    </b></span></span><b>4 — </b><span style=\"font-family:'Nirmala UI'\"><span><b>गलत</b></span></span><b>:</b>    <span style=\"font-family:'Nirmala UI'\"><span>फिरोज शाह    तुगलक ने इक्ता सहित कई    प्रशासनिक और सैन्य पदों पर    <b>वंशानुगत उत्तराधिकार</b>    को प्रोत्साहित किया।</span></span></p>", "question_heading": ""}, {"sr_no": 29, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>भारतीय    संविधान की प्रस्तावना में    निम्नलिखित में से कौन सा    शब्द </span></span><b>42</b><span style=\"font-family:'Nirmala UI'\"><span>वें    संविधान संशोधन अधिनियम</span></span><b>,    1976 </b><span style=\"font-family:'Nirmala UI'\"><span>द्वारा    जोड़ा गया था</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>न्याय</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>स्वतंत्रता    और समानता</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>समाजवादी</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>धर्मनिरपेक्ष    और अखंडता</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>संप्रभु</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>लोकतांत्रिक    और गणराज्य</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>भाईचारा</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>समानता और    स्वतंत्रता</span></span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>42</b><span style=\"font-family:'Nirmala UI'\"><span><b>वें    संविधान संशोधन अधिनियम</b></span></span><b>,    1976</b> <span style=\"font-family:'Nirmala UI'\"><span>ने    प्रस्तावना में तीन शब्द    जोड़े</span></span>:</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><span style=\"font-family:'Nirmala UI'\"><span>समाजवादी</span></span></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><span style=\"font-family:'Nirmala UI'\"><span>धर्मनिरपेक्ष</span></span></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><span style=\"font-family:'Nirmala UI'\"><span>अखंडता</span></span></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><span style=\"font-family:'Nirmala UI'\"><span>मूल    अभिव्यक्ति </span></span><b>\"</b><span style=\"font-family:'Nirmala UI'\"><span><b>राष्ट्र    की एकता</b></span></span><b>\"</b> <span style=\"font-family:'Nirmala UI'\"><span>को    बदलकर </span></span><b>\"</b><span style=\"font-family:'Nirmala UI'\"><span><b>राष्ट्र    की एकता और अखंडता</b></span></span><b>\"</b>    <span style=\"font-family:'Nirmala UI'\"><span>कर दिया    गया।</span></span></p>    <p style=\"orphans:0;widows:0\"><span style=\"font-family:'Nirmala UI'\"><span>यह    संशोधन प्रधानमंत्री <b>इंदिरा    गांधी</b> के कार्यकाल में    पारित किया गया था।</span></span></p>", "question_heading": ""}, {"sr_no": 30, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>निम्नलिखित    में से कौन सा कोशिका अंगक    </span></span><b>'</b><span style=\"font-family:'Nirmala UI'\"><span>कोशिका    का पावरहाउस</span></span><b>' </b><span style=\"font-family:'Nirmala UI'\"><span>के    रूप में जाना जाता है</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>राइबोसोम</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>माइटोकॉन्ड्रिया</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>गॉल्जी    उपकरण</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>लाइसोसोम</span></span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <span style=\"font-family:'Nirmala UI'\"><span><b>माइटोकॉन्ड्रिया</b>    को कोशिका का पावरहाउस कहा    जाता है क्योंकि ये सेलुलर    श्वसन के माध्यम से <b>एटीपी    </b></span></span><b>(</b><span style=\"font-family:'Nirmala UI'\"><span><b>एडेनोसिन    ट्राइफॉस्फेट</b></span></span><b>)</b> <span style=\"font-family:'Nirmala UI'\"><span>के    रूप में अधिकांश ऊर्जा का    उत्पादन करते हैं।</span></span></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><span style=\"font-family:'Nirmala UI'\"><span>इन्हें    <b>अर्ध</b></span></span><b>-</b><span style=\"font-family:'Nirmala UI'\"><span><b>स्वायत्त    अंगक</b> कहा जाता है क्योंकि    इनमें अपना डीएनए और राइबोसोम    होते हैं।</span></span></p>    <p style=\"orphans:0;widows:0\"><span style=\"font-family:'Nirmala UI'\"><span>माइटोकॉन्ड्रिया    मुख्य रूप से एरोबिक श्वसन    के लिए जिम्मेदार होते हैं।</span></span></p>", "question_heading": ""}, {"sr_no": 31, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>दिल्ली    सरकार ने विस्तारित एएनएमओएल    </span></span><b>(</b><span style=\"font-family:'Nirmala UI'\"><span>एडवांस्ड    न्यूबॉर्न मॉनिटरिंग एंड    ऑप्टिमल लाइफकेयर</span></span><b>)    </b><span style=\"font-family:'Nirmala UI'\"><span>योजना की    शुरुआत की</span></span><b>, </b><span style=\"font-family:'Nirmala UI'\"><span>जिसके    तहत सार्वभौमिक शिशु आनुवंशिक    स्क्रीनिंग के लिए किस अभियान    को शुरू किया गया</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>मिशन इंद्रधनुष</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>सेवा संकल्प    अभियान</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>आयुष्मान    भारत मिशन</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>पोषण अभियान</span></span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span><b>दिल्ली    सरकार</b> ने सार्वभौमिक शिशु    आनुवंशिक स्क्रीनिंग के लिए    <b>सेवा संकल्प अभियान</b> के    तहत विस्तारित <b>एएनएमओएल</b>    </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>एडवांस्ड    न्यूबॉर्न मॉनिटरिंग एंड    ऑप्टिमल लाइफकेयर</span></span>)    <span style=\"font-family:'Nirmala UI'\"><span>योजना शुरू    की। </span></span>CREATE QUES WITH OPTION</p>", "question_heading": ""}, {"sr_no": 32, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>दूसरा <b>भारतीय    नौसेना कमांडर्स सम्मेलन    </b></span></span><b>2026</b><b> </b><span style=\"font-family:'Nirmala UI'\"><span>कहाँ    आरंभ किया गया था</span></span><b>, </b><span style=\"font-family:'Nirmala UI'\"><span>जिसके    दौरान जेएआई स्तंभों के तहत    ऑपरेशन ऊर्जा सुरक्षा की    समीक्षा की गई थी</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>आईएनएस    वलसुरा</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>गुजरात</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>नौसेना भवन</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>नई दिल्ली</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>नौसेना    मुख्यालय</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>मुंबई</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>दक्षिणी    नौसेना कमान</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>कोच्चि</span></span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span><b>भारतीय    नौसेना</b> ने दूसरा <b>कमांडर्स    सम्मेलन </b></span></span><b>2026</b> <span style=\"font-family:'Nirmala UI'\"><span><b>नौसेना    भवन</b></span></span><b>, </b><span style=\"font-family:'Nirmala UI'\"><span><b>नई    दिल्ली</b> में आरंभ किया</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>जिसमें    </span></span><b>'</b><span style=\"font-family:'Nirmala UI'\"><span><b>ऑपरेशन    ऊर्जा सुरक्षा</b></span></span><b>'</b> <span style=\"font-family:'Nirmala UI'\"><span>की    </span></span><b>'</b><span style=\"font-family:'Nirmala UI'\"><span><b>जेएआई</b></span></span><b>'</b>    (<span style=\"font-family:'Nirmala UI'\"><span>संयुक्तता</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>आत्मनिर्भरता</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>नवाचार</span></span>)    <span style=\"font-family:'Nirmala UI'\"><span>स्तंभों    के तहत समीक्षा की गई।</span></span></p>", "question_heading": ""}, {"sr_no": 33, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>किसने </span></span><b>2026    </b><span style=\"font-family:'Nirmala UI'\"><span>के आसियान</span></span><b>-</b><span style=\"font-family:'Nirmala UI'\"><span>भारत    समुद्री सहयोग वर्ष के तहत    नई दिल्ली में पहले आसियान</span></span><b>-</b><span style=\"font-family:'Nirmala UI'\"><span>भारत    रक्षा थिंक टैंक फोरम का    उद्घाटन किया</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>राजनाथ सिंह</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>अमित शाह</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>एस</span></span>.    <span style=\"font-family:'Nirmala UI'\"><span>जयशंकर</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>नरेंद्र    मोदी</span></span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <span style=\"font-family:'Nirmala UI'\"><span>रक्षा मंत्री    राजनाथ सिंह ने <b>पहले आसियान</b></span></span><b>-</b><span style=\"font-family:'Nirmala UI'\"><span><b>भारत    रक्षा थिंक टैंक फोरम</b> का    उद्घाटन नई दिल्ली में मनोहर    पर्रिकर इंस्टीट्यूट फॉर    डिफेंस स्टडीज एंड एनालिसिस    </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>एमपी</span></span>-<span style=\"font-family:'Nirmala UI'\"><span>आईडीएसए</span></span>)    <span style=\"font-family:'Nirmala UI'\"><span>में </span></span><b>2026    </b><span style=\"font-family:'Nirmala UI'\"><span><b>के    आसियान</b></span></span><b>-</b><span style=\"font-family:'Nirmala UI'\"><span><b>भारत    समुद्री सहयोग वर्ष</b> के तहत    किया। </span></span>    </p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">❖ <span style=\"font-family:'Nirmala UI'\"><span><b>अतिरिक्त    जानकारी</b></span></span><b>:-</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">➢ <span style=\"font-family:'Nirmala UI'\"><span><b>एक्ट    ईस्ट पॉलिसी</b></span></span><b>:</b> <span style=\"font-family:'Nirmala UI'\"><span>शुरू    की गई </span></span><b>2014</b> <span style=\"font-family:'Nirmala UI'\"><span>में    </span></span>(1991 <span style=\"font-family:'Nirmala UI'\"><span>की    लुक ईस्ट पॉलिसी से उन्नत</span></span>);    <span style=\"font-family:'Nirmala UI'\"><span><b>आसियान    केंद्रीयता</b> पर ध्यान केंद्रित    करती है </span></span><b>3 </b><span style=\"font-family:'Nirmala UI'\"><span><b>सी</b>    </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>कॉमर्स</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>कनेक्टिविटी</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>कल्चर</span></span>)    <span style=\"font-family:'Nirmala UI'\"><span>के माध्यम    से।</span></span></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">➢ <span style=\"font-family:'Nirmala UI'\"><span><b>सागर</b></span></span><b>:</b>    <span style=\"font-family:'Nirmala UI'\"><span>शुरू की गई    </span></span><b>2015</b> <span style=\"font-family:'Nirmala UI'\"><span>में    </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>क्षेत्र    में सभी के लिए सुरक्षा और    विकास</span></span>); <span style=\"font-family:'Nirmala UI'\"><span>भारत    को <b>आईओआर</b> में प्राथमिक    सुरक्षा भागीदार</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>प्रथम    प्रतिक्रियादाता और ब्लू    इकोनॉमी नेता बनाती है।</span></span></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">➢ <span style=\"font-family:'Nirmala UI'\"><span><b>महासागर</b></span></span><b>:</b>    <span style=\"font-family:'Nirmala UI'\"><span>शुरू की गई    </span></span><b>2025</b> <span style=\"font-family:'Nirmala UI'\"><span>में    </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>क्षेत्रों    में सुरक्षा और विकास के लिए    पारस्परिक और समग्र उन्नति</span></span>);    <span style=\"font-family:'Nirmala UI'\"><span>समुद्री    संवाद को <b>ग्लोबल साउथ</b> में    आईओआर से आगे बढ़ाती है।</span></span></p>    <p style=\"orphans:0;widows:0\">➢ <span style=\"font-family:'Nirmala UI'\"><span><b>एमपी</b></span></span><b>-</b><span style=\"font-family:'Nirmala UI'\"><span><b>आईडीएसए</b></span></span><b>:</b>    <span style=\"font-family:'Nirmala UI'\"><span>स्थापित    </span></span><b>1965</b> <span style=\"font-family:'Nirmala UI'\"><span>में    </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>नई    दिल्ली</span></span>; <span style=\"font-family:'Nirmala UI'\"><span>स्वायत्त    रक्षा मंत्रालय थिंक टैंक</span></span>);    <span style=\"font-family:'Nirmala UI'\"><span>नाम बदला    गया </span></span><b>2020</b> <span style=\"font-family:'Nirmala UI'\"><span>में    </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>मनोहर    पर्रिकर</span></span>); <span style=\"font-family:'Nirmala UI'\"><span><b>रक्षा    मंत्री</b> पदेन अध्यक्ष होते    हैं।</span></span></p>", "question_heading": ""}, {"sr_no": 34, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>हाल ही में    निधन होने वाली प्रसिद्ध    कथक नृत्यांगना रोशन कुमारी    कथक के किस घराने से जुड़ी    थीं</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>लखनऊ घराना</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>रायगढ़    घराना</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>बनारस घराना</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>जयपुर घराना</span></span></p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span><b>कथक की    प्रतिष्ठित हस्ती और पद्म    श्री </b></span></span><b>(1984) </b><span style=\"font-family:'Nirmala UI'\"><span><b>पुरस्कार    विजेता रोशन कुमारी</b></span></span>,    <span style=\"font-family:'Nirmala UI'\"><span><b>जयपुर    घराने</b> की प्रमुख प्रतिपादक</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>का </span></span>88    <span style=\"font-family:'Nirmala UI'\"><span>वर्ष की आयु    में मुंबई में निधन हो गया।</span></span></p>", "question_heading": ""}, {"sr_no": 35, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>भारतीय    रिजर्व बैंक </span></span><b>(RBI) </b><span style=\"font-family:'Nirmala UI'\"><span>ने    मुद्रास्फीति जोखिमों को    प्रबंधित करने के लिए रेपो    दर में </span></span><b>25 </b><span style=\"font-family:'Nirmala UI'\"><span>आधार    अंक की वृद्धि करके इसे कितने    प्रतिशत तक बढ़ा दिया</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    5.00%</p>", "option2": " <p style=\"orphans:0;widows:0\">    5.25%</p>", "option3": " <p style=\"orphans:0;widows:0\">    5.50%</p>", "option4": " <p style=\"orphans:0;widows:0\">    5.75%</p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <span style=\"font-family:'Nirmala UI'\"><span>भारतीय    रिजर्व बैंक ने मुद्रास्फीति    जोखिमों को प्रबंधित करने    के लिए <b>रेपो दर</b> में </span></span>25    <span style=\"font-family:'Nirmala UI'\"><span>आधार अंक    की वृद्धि करके इसे </span></span><b>5.50%</b>    <span style=\"font-family:'Nirmala UI'\"><span>तक बढ़ा    दिया।</span></span></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">❖ <span style=\"font-family:'Nirmala UI'\"><span><b>स्टैंडिंग    डिपॉजिट फैसिलिटी </b></span></span><b>(SDF)    </b><span style=\"font-family:'Nirmala UI'\"><span><b>दर</b></span></span><b>:</b>    5.25%</p>    <p style=\"orphans:0;widows:0\"><span style=\"font-family:'Nirmala UI'\"><span><b>बैंक    दर </b></span></span><b>/ MSF </b><span style=\"font-family:'Nirmala UI'\"><span><b>दर</b></span></span><b>:</b>    5.75%</p>", "question_heading": ""}, {"sr_no": 36, "question": " <p style=\"orphans:0;widows:0\">    <b>9</b><span style=\"font-family:'Nirmala UI'\"><span>वां    राष्ट्रीय पोषण माह </span></span><b>2026    </b><span style=\"font-family:'Nirmala UI'\"><span>किस थीम    के तहत उत्तर प्रदेश के वाराणसी    में लॉन्च किया गया था</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>पोषण भी    पढ़ाई भी</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>स्वस्थ    भारत</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>समृद्ध    भारत</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>हमारी    आंगनवाड़ी हमारी जिम्मेदारी</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>सुपोषित    भारत</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>सक्षम    भारत</span></span></p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>9</b><span style=\"font-family:'Nirmala UI'\"><span><b>वां    राष्ट्रीय पोषण माह </b></span></span><b>2026</b>,    <span style=\"font-family:'Nirmala UI'\"><span>जिसका आयोजन    <b>महिला एवं बाल विकास मंत्रालय</b>    द्वारा किया गया था</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span><b>वाराणसी</b></span></span><b>,    </b><span style=\"font-family:'Nirmala UI'\"><span><b>उत्तर    प्रदेश</b> में </span></span><b>\"</b><span style=\"font-family:'Nirmala UI'\"><span><b>हमारी    आंगनवाड़ी हमारी जिम्मेदारी</b></span></span><b>\"</b>    <span style=\"font-family:'Nirmala UI'\"><span>थीम के तहत    लॉन्च किया गया था।</span></span></p>    <p style=\"orphans:0;widows:0\">❖ <span style=\"font-family:'Nirmala UI'\"><span>इस    अभियान ने <b>प्रधानमंत्री    मातृ वंदना योजना </b></span></span><b>(PMMVY)    [</b><span style=\"font-family:'Nirmala UI'\"><span><b>लॉन्च</b></span></span><b>:    1 </b><span style=\"font-family:'Nirmala UI'\"><span><b>जनवरी    </b></span></span><b>2017] </b><span style=\"font-family:'Nirmala UI'\"><span><b>के    </b></span></span><b>10 </b><span style=\"font-family:'Nirmala UI'\"><span><b>वर्ष</b>    पूरे किए।</span></span></p>", "question_heading": ""}, {"sr_no": 37, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>मुंबई में    आयोजित </span></span><b>6</b><span style=\"font-family:'Nirmala UI'\"><span>वीं    अखिल भारतीय राजभाषा सम्मेलन    और हिंदी दिवस </span></span><b>2026 </b><span style=\"font-family:'Nirmala UI'\"><span>समारोह    का उद्घाटन किसने किया</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>राजनाथ सिंह</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>अमित शाह</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>धर्मेंद्र    प्रधान</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>पियूष गोयल</span></span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <span style=\"font-family:'Nirmala UI'\"><span>केंद्रीय    गृह एवं सहकारिता मंत्री    अमित शाह ने <b>मुंबई में </b></span></span><b>6</b><span style=\"font-family:'Nirmala UI'\"><span><b>वीं    अखिल भारतीय राजभाषा सम्मेलन    और हिंदी दिवस </b></span></span><b>2026    </b><span style=\"font-family:'Nirmala UI'\"><span><b>समारोह</b>    का उद्घाटन किया</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>जो    राजभाषा विभाग </span></span>(<span style=\"font-family:'Nirmala UI'\"><span>गृह    मंत्रालय</span></span>) <span style=\"font-family:'Nirmala UI'\"><span>द्वारा    </span></span>2021 <span style=\"font-family:'Nirmala UI'\"><span>से    प्रतिवर्ष आयोजित किया जाता    है।</span></span></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">❖ <span style=\"font-family:'Nirmala UI'\"><span><b>मुख्य    बिंदु</b></span></span><b>:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">➢ <span style=\"font-family:'Nirmala UI'\"><span><b>कंठस्थ    </b></span></span><b>2.0:</b> <span style=\"font-family:'Nirmala UI'\"><span>विदेशी    उपयोगकर्ताओं के लिए </span></span>AI-<span style=\"font-family:'Nirmala UI'\"><span>आधारित    अनुवाद उपकरण </span></span>(5+ <span style=\"font-family:'Nirmala UI'\"><span>करोड़    वाक्य डेटाबेस</span></span>) <span style=\"font-family:'Nirmala UI'\"><span>खोला    गया।</span></span></p>    <p style=\"orphans:0;widows:0\">➢ <span style=\"font-family:'Nirmala UI'\"><span><b>प्रकाशन</b></span></span><b>:</b>    <span style=\"font-family:'Nirmala UI'\"><span>स्मारक    प्रकाशन </span></span><i>'</i><span style=\"font-family:'Nirmala UI'\"><span><i>वंदे    मातरम के </i></span></span><i>150 </i><span style=\"font-family:'Nirmala UI'\"><span><i>अध्याय</i></span></span><i>'</i>    <span style=\"font-family:'Nirmala UI'\"><span>के साथ</span></span>-<span style=\"font-family:'Nirmala UI'\"><span>साथ    <i>राजभाषा भारती</i> के विशेष    संस्करण </span></span><i>'</i><span style=\"font-family:'Nirmala UI'\"><span><i>शिव    अनादि हैं</i></span></span><i>, </i><span style=\"font-family:'Nirmala UI'\"><span><i>अनंत    हैं</i></span></span><i>'</i>, <i>'</i><span style=\"font-family:'Nirmala UI'\"><span><i>भारतीय    ज्ञान तंत्र</i></span></span><i>: </i><span style=\"font-family:'Nirmala UI'\"><span><i>स्रोत    और स्वरूप</i></span></span><i>'</i>, <i>'</i><span style=\"font-family:'Nirmala UI'\"><span><i>अंधेरों    से उजालों तक</i></span></span><i>'</i>, <span style=\"font-family:'Nirmala UI'\"><span>और    </span></span><i>'</i><span style=\"font-family:'Nirmala UI'\"><span><i>वंदे    मातरम</i></span></span><i>'</i> <span style=\"font-family:'Nirmala UI'\"><span>जारी    किए गए।</span></span></p>", "question_heading": ""}, {"sr_no": 38, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>बिश्केक    में आयोजित </span></span><b>26</b><span style=\"font-family:'Nirmala UI'\"><span>वें    शंघाई सहयोग संगठन </span></span><b>(</b><span style=\"font-family:'Nirmala UI'\"><span>एससीओ</span></span><b>)    </b><span style=\"font-family:'Nirmala UI'\"><span>शिखर    सम्मेलन में</span></span><b>, </b><span style=\"font-family:'Nirmala UI'\"><span>प्रधानमंत्री    नरेंद्र मोदी ने भारत की    मुख्य प्राथमिकताओं के रूप    में किन तीन स्तंभों को    रेखांकित किया</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>सुरक्षा</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>संपर्कता    और अवसर</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>शांति</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>समृद्धि    और सहयोग</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>व्यापार</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>प्रौद्योगिकी    और सुरक्षा</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>विकास</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>कूटनीति    और संपर्कता</span></span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <span style=\"font-family:'Nirmala UI'\"><span><b>बिश्केक    में </b></span></span><b>26</b><span style=\"font-family:'Nirmala UI'\"><span><b>वें    एससीओ शिखर सम्मेलन</b> में</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>प्रधानमंत्री    नरेंद्र मोदी ने सुरक्षा</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>संपर्कता    और अवसर को भारत के मुख्य    स्तंभों के रूप में रेखांकित    किया</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>साथ    ही आतंकवाद के प्रति शून्य    सहनशीलता की मांग करते हुए    चार प्रमुख भारतीय पहलों की    घोषणा की।</span></span></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">❖ <span style=\"font-family:'Nirmala UI'\"><span><b>भारत    की पहलें</b></span></span><b>:</b> <span style=\"font-family:'Nirmala UI'\"><span>एससीओ    चार्टर में अंग्रेजी को    आधिकारिक भाषा के रूप में</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>सभ्यता    संवाद मंच</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>युवा    वैज्ञानिक मंच और युवा लेखक    सम्मेलन</span></span></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">❖ <span style=\"font-family:'Nirmala UI'\"><span><b>विषय</b></span></span><b>:</b>    <span style=\"font-family:'Nirmala UI'\"><span>एससीओ के    </span></span>25 <span style=\"font-family:'Nirmala UI'\"><span>वर्ष</span></span>:    <span style=\"font-family:'Nirmala UI'\"><span>सतत शांति</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>विकास और    समृद्धि की ओर साथ</span></span>-<span style=\"font-family:'Nirmala UI'\"><span>साथ</span></span></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><span style=\"font-family:'Nirmala UI'\"><span><b>शंघाई    सहयोग संगठन </b></span></span><b>(</b><span style=\"font-family:'Nirmala UI'\"><span><b>एससीओ</b></span></span><b>)</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">➢ <span style=\"font-family:'Nirmala UI'\"><span><b>स्थापना</b></span></span><b>:</b>    2001</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">➢ <span style=\"font-family:'Nirmala UI'\"><span><b>मुख्यालय</b></span></span><b>:</b>    <span style=\"font-family:'Nirmala UI'\"><span>बीजिंग</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>चीन</span></span></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">➢ <span style=\"font-family:'Nirmala UI'\"><span><b>सदस्य</b></span></span><b>:</b>    10 <span style=\"font-family:'Nirmala UI'\"><span>सदस्य देश</span></span></p>    <p style=\"orphans:0;widows:0\">➢ <span style=\"font-family:'Nirmala UI'\"><span><b>संस्थापक    सदस्य</b></span></span><b>:</b> <span style=\"font-family:'Nirmala UI'\"><span>चीन</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>कजाखस्तान</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>किर्गिज़स्तान</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>रूस</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>ताजिकिस्तान    और उज़्बेकिस्तान</span></span></p>", "question_heading": ""}, {"sr_no": 39, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>अभ्यास    युद्ध अभ्यास </span></span><b>2026,    </b><span style=\"font-family:'Nirmala UI'\"><span>भारत</span></span><b>-</b><span style=\"font-family:'Nirmala UI'\"><span>अमेरिका    संयुक्त सैन्य अभ्यास का    </span></span><b>22</b><span style=\"font-family:'Nirmala UI'\"><span>वां    संस्करण</span></span><b>, </b><span style=\"font-family:'Nirmala UI'\"><span>किन    स्थानों पर आयोजित किया गया    था</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>पोखरण</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>राजस्थान    और लेह</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>लद्दाख</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>महाजन फील्ड    फायरिंग रेंज</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>राजस्थान    और औली</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>उत्तराखंड</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>देवलाली</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>महाराष्ट्र    और औली</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>उत्तराखंड</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>बबीना</span></span>,    <span style=\"font-family:'Nirmala UI'\"><span>उत्तर प्रदेश    और बीकानेर</span></span>, <span style=\"font-family:'Nirmala UI'\"><span>राजस्थान</span></span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span><b>अभ्यास    युद्ध अभ्यास </b></span></span><b>2026</b>,    <span style=\"font-family:'Nirmala UI'\"><span>भारत</span></span>-<span style=\"font-family:'Nirmala UI'\"><span>अमेरिका    संयुक्त सैन्य अभ्यास का    </span></span><b>22</b><span style=\"font-family:'Nirmala UI'\"><span><b>वां    संस्करण</b></span></span>, <span style=\"font-family:'Nirmala UI'\"><span><b>महाजन    फील्ड फायरिंग रेंज</b></span></span><b>,    </b><span style=\"font-family:'Nirmala UI'\"><span><b>बीकानेर</b></span></span><b>,    </b><span style=\"font-family:'Nirmala UI'\"><span><b>राजस्थान    और औली</b></span></span><b>, </b><span style=\"font-family:'Nirmala UI'\"><span><b>उत्तराखंड</b>    में आयोजित किया गया था।</span></span></p>", "question_heading": ""}, {"sr_no": 40, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\"><span>विश्व    पर्यावरण दिवस </span></span><b>2026 </b><span style=\"font-family:'Nirmala UI'\"><span>किस    तारीख को</span></span><b>, \"</b><span style=\"font-family:'Nirmala UI'\"><span>प्रकृति    से प्रेरित। जलवायु के लिए।    हमारे भविष्य के लिए।</span></span><b>\"    </b><span style=\"font-family:'Nirmala UI'\"><span>विषय के    तहत मनाया गया था</span></span><b>?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    22 <span style=\"font-family:'Nirmala UI'\"><span>अप्रैल</span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    5 <span style=\"font-family:'Nirmala UI'\"><span>जून</span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    16 <span style=\"font-family:'Nirmala UI'\"><span>सितंबर</span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    2 <span style=\"font-family:'Nirmala UI'\"><span>अक्टूबर</span></span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <span style=\"font-family:'Nirmala UI'\"><span>विश्व    पर्यावरण दिवस </span></span>2026 <b>5 </b><span style=\"font-family:'Nirmala UI'\"><span><b>जून</b></span></span><b>,    2026</b> <span style=\"font-family:'Nirmala UI'\"><span>को मनाया    गया था</span></span></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><span style=\"font-family:'Nirmala UI'\"><span><b>तारीख</b></span></span><b>:</b>    5 <span style=\"font-family:'Nirmala UI'\"><span>जून</span></span>,    2026</p>    <p style=\"orphans:0;widows:0\"><span style=\"font-family:'Nirmala UI'\"><span><b>विषय</b></span></span><b>:</b>    \"<span style=\"font-family:'Nirmala UI'\"><span>प्रकृति    से प्रेरित। जलवायु के लिए।    हमारे भविष्य के लिए।</span></span>\"</p>", "question_heading": ""}];
+
+let currentQuestion = 0;
+let answers = {};
+let bookmarks = new Set();
+let timerSeconds = 0;
+let timerInterval = null;
+let isPaletteOpen = false;
+
+const STORAGE_KEY = 'quizState_' + (document.title || 'default');
+
+function isImageURL(str) {
+  return str && (str.startsWith('http://') || str.startsWith('https://'));
+}
+
+function createOptionContent(optionText) {
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'option-content';
+    
+    if (isImageURL(optionText)) {
+        const img = document.createElement('img');
+        img.src = optionText;
+        img.className = 'option-image';
+        img.alt = 'Option image';
+        img.loading = 'lazy';
+        img.onerror = function() {
+            this.style.display = 'none';
+            const errorText = document.createTextNode('Image failed to load');
+            contentDiv.appendChild(errorText);
+        };
+        contentDiv.appendChild(img);
+    } else {
+        contentDiv.innerHTML = optionText;
+    }
+    
+    return contentDiv;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  initQuiz();
+  initEventListeners();
+  loadFromLocalStorage();
+  startTimer();
+  createPalette();
+  preventDoubleTapZoom();
+});
+
+function preventDoubleTapZoom() {
+  let lastTouchEnd = 0;
+  document.addEventListener('touchend', (event) => {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) {
+      event.preventDefault();
+    }
+    lastTouchEnd = now;
+  }, { passive: false });
+}
+
+function initTheme() {
+  const savedTheme = localStorage.getItem('quizTheme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  updateThemeIcon();
+}
+
+function updateThemeIcon() {
+  const theme = document.documentElement.getAttribute('data-theme');
+  const themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    themeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  }
+}
+
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('quizTheme', newTheme);
+  updateThemeIcon();
+}
+
+function initQuiz() {
+  loadQuestion(currentQuestion);
+  updateMarkingInfo();
+}
+
+function initEventListeners() {
+  const themeBtn = document.getElementById('themeToggle');
+  const fullscreenBtn = document.getElementById('fullscreenBtn');
+  
+  if (themeBtn) {
+    themeBtn.addEventListener('click', toggleTheme);
+    themeBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      toggleTheme();
+    });
+  }
+  
+  if (fullscreenBtn) {
+    fullscreenBtn.addEventListener('click', toggleFullscreen);
+    fullscreenBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      toggleFullscreen();
+    });
+  }
+  
+  addButtonListener('prevBtn', prevQuestion);
+  addButtonListener('nextBtn', nextQuestion);
+  addButtonListener('clearBtn', clearAnswer);
+  addButtonListener('submitBtn', confirmSubmit);
+  addButtonListener('bookmarkBtn', toggleBookmark);
+  
+  addButtonListener('paletteFab', togglePalette);
+  addButtonListener('paletteClose', closePalette);
+  
+  const overlay = document.getElementById('paletteOverlay');
+  if (overlay) {
+    overlay.addEventListener('click', closePalette);
+    overlay.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      closePalette();
+    });
+  }
+  
+  const searchInput = document.getElementById('paletteSearch');
+  if (searchInput) {
+    searchInput.addEventListener('input', handleSearch);
+    searchInput.addEventListener('change', jumpToQuestion);
+  }
+  
+  document.addEventListener('keydown', handleKeyPress);
+  
+  setInterval(saveToLocalStorage, 5000);
+  
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      updatePalette();
+    }
+  });
+}
+
+function addButtonListener(id, handler) {
+  const btn = document.getElementById(id);
+  if (btn) {
+    btn.addEventListener('click', handler);
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      handler();
+    });
+  }
+}
+
+function jumpToQuestion(e) {
+  const questionNum = parseInt(e.target.value);
+  if (questionNum >= 1 && questionNum <= questions.length) {
+    goToQuestion(questionNum - 1);
+    closePalette();
+    e.target.value = '';
+  }
+}
+
+function togglePalette() {
+  isPaletteOpen = !isPaletteOpen;
+  const palette = document.getElementById('questionPalette');
+  const overlay = document.getElementById('paletteOverlay');
+  const fab = document.getElementById('paletteFab');
+  
+  if (isPaletteOpen) {
+    palette.classList.add('active');
+    overlay.classList.add('active');
+    fab.classList.add('active');
+    fab.innerHTML = '✕<span class="badge" id="answeredBadge">' + Object.keys(answers).length + '</span>';
+    document.body.classList.add('palette-open');
+  } else {
+    closePalette();
+  }
+}
+
+function closePalette() {
+  isPaletteOpen = false;
+  const palette = document.getElementById('questionPalette');
+  const overlay = document.getElementById('paletteOverlay');
+  const fab = document.getElementById('paletteFab');
+  
+  if (palette) palette.classList.remove('active');
+  if (overlay) overlay.classList.remove('active');
+  if (fab) {
+    fab.classList.remove('active');
+    fab.innerHTML = '📋<span class="badge" id="answeredBadge">' + Object.keys(answers).length + '</span>';
+  }
+  document.body.classList.remove('palette-open');
+}
+
+function handleSearch(e) {
+  const searchTerm = e.target.value.toLowerCase();
+  if (!searchTerm) {
+    document.querySelectorAll('.palette-btn').forEach(btn => {
+      btn.style.display = '';
+    });
+    return;
+  }
+  
+  const buttons = document.querySelectorAll('.palette-btn');
+  buttons.forEach((btn, index) => {
+    const questionNum = (index + 1).toString();
+    if (questionNum.includes(searchTerm)) {
+      btn.style.display = '';
+    } else {
+      btn.style.display = 'none';
+    }
+  });
+}
+
+function handleKeyPress(e) {
+  if (document.getElementById('resultSection').classList.contains('hidden')) {
+    if (e.key === 'Escape' && isPaletteOpen) {
+      closePalette();
+    } else if (!isPaletteOpen && e.target.tagName !== 'INPUT') {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevQuestion();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        nextQuestion();
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        nextQuestion();
+      } else if (e.key === 'b' || e.key === 'B') {
+        e.preventDefault();
+        toggleBookmark();
+      } else if (e.key === 'c' || e.key === 'C') {
+        e.preventDefault();
+        clearAnswer();
+      } else if (e.key === 'p' || e.key === 'P') {
+        e.preventDefault();
+        togglePalette();
+      } else if (e.key >= '1' && e.key <= '4') {
+        e.preventDefault();
+        selectOption(parseInt(e.key));
+      }
+    }
+  }
+}
+
+function selectOption(optionNum) {
+  const q = questions[currentQuestion];
+  const radio = document.querySelector(`input[name="q${q.sr_no}"][value="${optionNum}"]`);
+  if (radio) {
+    radio.checked = true;
+    const label = radio.closest('.option-label');
+    if (label) {
+      document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      saveAnswer();
+    }
+  }
+}
+
+function toggleFullscreen() {
+  try {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(err => {
+        console.log('Fullscreen error:', err);
+      });
+    } else {
+      document.exitFullscreen();
+    }
+  } catch (err) {
+    console.log('Fullscreen not supported');
+  }
+}
+
+function startTimer() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+  timerInterval = setInterval(() => {
+    timerSeconds++;
+    updateTimer();
+    if (timerSeconds > 600) {
+      const timer = document.getElementById('timer');
+      if (timer) timer.classList.add('warning');
+    }
+  }, 1000);
+}
+
+function updateTimer() {
+  const minutes = Math.floor(timerSeconds / 60);
+  const seconds = timerSeconds % 60;
+  const timer = document.getElementById('timer');
+  if (timer) {
+    timer.textContent = 
+      `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  }
+}
+
+function createPalette() {
+  const grid = document.getElementById('paletteGrid');
+  if (!grid) return;
+  
+  grid.innerHTML = '';
+  questions.forEach((q, index) => {
+    const btn = document.createElement('button');
+    btn.textContent = index + 1;
+    btn.className = 'palette-btn';
+    btn.setAttribute('aria-label', `Go to question ${index + 1}`);
+    btn.setAttribute('type', 'button');
+    
+    btn.addEventListener('click', () => {
+      goToQuestion(index);
+      closePalette();
+    });
+    
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      goToQuestion(index);
+      closePalette();
+    });
+    
+    grid.appendChild(btn);
+  });
+  updatePalette();
+}
+
+function updatePalette() {
+  const buttons = document.querySelectorAll('.palette-btn');
+  buttons.forEach((btn, index) => {
+    btn.className = 'palette-btn';
+    if (index === currentQuestion) btn.classList.add('current');
+    if (answers[questions[index].sr_no]) btn.classList.add('answered');
+    if (bookmarks.has(questions[index].sr_no)) btn.classList.add('bookmarked');
+  });
+  
+  updatePaletteStats();
+}
+
+function updatePaletteStats() {
+  const answered = Object.keys(answers).length;
+  const unanswered = questions.length - answered;
+  const bookmarkedCount = bookmarks.size;
+  
+  const answeredEl = document.getElementById('paletteAnswered');
+  const unansweredEl = document.getElementById('paletteUnanswered');
+  const bookmarkedEl = document.getElementById('paletteBookmarked');
+  
+  if (answeredEl) answeredEl.textContent = answered;
+  if (unansweredEl) unansweredEl.textContent = unanswered;
+  if (bookmarkedEl) bookmarkedEl.textContent = bookmarkedCount;
+  
+  const badge = document.querySelector('.palette-fab .badge');
+  if (badge) badge.textContent = answered;
+}
+
+function goToQuestion(index) {
+  if (index < 0 || index >= questions.length) return;
+  saveAnswer();
+  currentQuestion = index;
+  loadQuestion(currentQuestion);
+  
+  const questionSection = document.getElementById('questionSection');
+  if (questionSection) {
+    setTimeout(() => {
+      questionSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+}
+
+function loadQuestion(index) {
+  const q = questions[index];
+  
+  const questionNumber = document.getElementById('questionNumber');
+  const questionText = document.getElementById('questionText');
+  
+  if (questionNumber) {
+    questionNumber.textContent = `Question ${index + 1} of ${questions.length}`;
+  }
+  
+  if (questionText) {
+    questionText.innerHTML = '';
+    
+    // 🌟 NEW: Create the Heading Box if it exists!
+    let headingHtml = '';
+    if (q.question_heading && q.question_heading.trim() !== '') {
+      headingHtml = `<div style="background: var(--bg-tertiary); padding: 15px; border-left: 4px solid var(--primary-color); margin-bottom: 20px; border-radius: 8px; overflow-x: auto;">${q.question_heading}</div>`;
+      questionText.innerHTML = headingHtml; // Inject heading first
+    }
+
+    if (isImageURL(q.question)) {
+      const img = document.createElement('img');
+      img.src = q.question;
+      img.className = 'question-image';
+      img.alt = 'Question image';
+      img.loading = 'lazy';
+      img.onerror = function() {
+        this.style.display = 'none';
+        questionText.innerHTML += q.question;
+      };
+      questionText.appendChild(img);
+    } else {
+      questionText.innerHTML += q.question; // Append question after heading
+    }
+  }
+  
+  const container = document.getElementById('optionsContainer');
+  if (!container) return;
+  
+  container.innerHTML = '';
+  
+  for (let i = 1; i <= 4; i++) {
+    const label = document.createElement('label');
+    label.className = 'option-label';
+    if (answers[q.sr_no] == i) label.classList.add('selected');
+    
+    const radio = document.createElement('input');
+    radio.type = 'radio';
+    radio.name = `q${q.sr_no}`;
+    radio.value = i;
+    radio.checked = answers[q.sr_no] == i;
+    
+    const changeHandler = () => {
+      document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      saveAnswer();
+    };
+    
+    radio.addEventListener('change', changeHandler);
+    label.addEventListener('click', (e) => {
+      if (e.target !== radio) {
+        radio.checked = true;
+        changeHandler();
+      }
+    });
+    
+    label.appendChild(radio);
+    
+    const optionContent = createOptionContent(q[`option${i}`]);
+    label.appendChild(optionContent);
+    
+    container.appendChild(label);
+  }
+  
+  const bookmarkBtn = document.getElementById('bookmarkBtn');
+  if (bookmarkBtn) {
+    if (bookmarks.has(q.sr_no)) {
+      bookmarkBtn.classList.add('active');
+    } else {
+      bookmarkBtn.classList.remove('active');
+    }
+  }
+  
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const submitBtn = document.getElementById('submitBtn');
+  
+  if (prevBtn) prevBtn.disabled = index === 0;
+  
+  if (index === questions.length - 1) {
+    if (nextBtn) nextBtn.classList.add('hidden');
+    if (submitBtn) submitBtn.classList.remove('hidden');
+  } else {
+    if (nextBtn) nextBtn.classList.remove('hidden');
+    if (submitBtn) submitBtn.classList.add('hidden');
+  }
+  
+  updateProgress();
+  updatePalette();
+}
+
+function updateMarkingInfo() {
+  if(questions.length > 0) {
+      const q = questions[0];
+      const markingInfo = document.getElementById('markingInfo');
+      if (markingInfo) {
+        markingInfo.textContent = `Marking: +${q.positive_marking}, -${q.negative_marking}`;
+      }
+  }
+}
+
+function updateProgress() {
+  const attempted = Object.keys(answers).length;
+  const currentProgress = ((currentQuestion + 1) / questions.length) * 100;
+  
+  const progressBar = document.getElementById('progressBar');
+  const progressText = document.getElementById('progressText');
+  const attemptedText = document.getElementById('attemptedText');
+  
+  if (progressBar) progressBar.style.width = `${currentProgress}%`;
+  if (progressText) progressText.textContent = `${currentQuestion + 1}/${questions.length}`;
+  if (attemptedText) attemptedText.textContent = attempted;
+}
+
+function saveAnswer() {
+  const q = questions[currentQuestion];
+  const selected = document.querySelector(`input[name="q${q.sr_no}"]:checked`);
+  
+  if (selected) {
+    answers[q.sr_no] = selected.value;
+  }
+  
+  updateProgress();
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function clearAnswer() {
+  const q = questions[currentQuestion];
+  delete answers[q.sr_no];
+  
+  const selected = document.querySelector(`input[name="q${q.sr_no}"]:checked`);
+  if (selected) selected.checked = false;
+  
+  document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+  
+  updateProgress();
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function toggleBookmark() {
+  const q = questions[currentQuestion];
+  const btn = document.getElementById('bookmarkBtn');
+  
+  if (bookmarks.has(q.sr_no)) {
+    bookmarks.delete(q.sr_no);
+    if (btn) btn.classList.remove('active');
+  } else {
+    bookmarks.add(q.sr_no);
+    if (btn) btn.classList.add('active');
+  }
+  
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function nextQuestion() {
+  saveAnswer();
+  if (currentQuestion < questions.length - 1) {
+    currentQuestion++;
+    loadQuestion(currentQuestion);
+  }
+}
+
+function prevQuestion() {
+  saveAnswer();
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    loadQuestion(currentQuestion);
+  }
+}
+
+function confirmSubmit() {
+  const unattempted = questions.length - Object.keys(answers).length;
+  let message = 'Are you sure you want to submit the quiz?';
+  
+  if (unattempted > 0) {
+    message += `\n\nYou have ${unattempted} unanswered question(s).`;
+  }
+  
+  if (confirm(message)) {
+    submitQuiz();
+  }
+}
+
+function submitQuiz() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+  }
+  saveAnswer();
+  closePalette();
+  
+  let correct = 0, wrong = 0, unattempted = 0, score = 0;
+  
+  questions.forEach(q => {
+    const userAns = answers[q.sr_no];
+    const posMark = parseFloat(q.positive_marking) || 0;
+    const negMark = parseFloat(q.negative_marking) || 0;
+    
+    if (!userAns) {
+      unattempted++;
+    } else if (userAns == q.answer) {
+      correct++;
+      score += posMark;
+    } else {
+      wrong++;
+      score -= negMark;
+    }
+  });
+  
+  displayResults(correct, wrong, unattempted, score);
+  
+  const fab = document.getElementById('paletteFab');
+  const nav = document.getElementById('navigation');
+  if (fab) fab.style.display = 'none';
+  if (nav) nav.style.display = 'none';
+  
+  document.body.style.paddingBottom = '20px';
+  
+  clearLocalStorage();
+}
+
+function displayResults(correct, wrong, unattempted, score) {
+  const totalQuestions = questions.length;
+  const percentage = ((correct / totalQuestions) * 100).toFixed(1);
+  const timerEl = document.getElementById('timer');
+  const timeText = timerEl ? timerEl.textContent : '00:00';
+  
+  let html = `
+    <div class="score-card">
+      <h2>${score}/${totalQuestions}</h2>
+      <p>Your Score: ${percentage}%</p>
+      <p>Time Taken: ${timeText}</p>
+    </div>
+    
+    <div class="stats-grid">
+      <div class="stat-card correct">
+        <h3>${correct}</h3>
+        <p>Correct</p>
+      </div>
+      <div class="stat-card wrong">
+        <h3>${wrong}</h3>
+        <p>Wrong</p>
+      </div>
+      <div class="stat-card unattempted">
+        <h3>${unattempted}</h3>
+        <p>Unattempted</p>
+      </div>
+      <div class="stat-card">
+        <h3>${totalQuestions}</h3>
+        <p>Total</p>
+      </div>
+    </div>
+  `;
+  
+  questions.forEach(q => {
+    const userAns = answers[q.sr_no];
+    
+    // 🌟 NEW: Add the Heading to the results review screen!
+    let headingHtml = (q.question_heading && q.question_heading.trim() !== '') 
+      ? `<div style="background: var(--bg-tertiary); padding: 10px; margin-bottom: 15px; border-left: 4px solid var(--primary-color); border-radius: 5px; overflow-x: auto;">${q.question_heading}</div>` 
+      : '';
+      
+    const questionHeader = isImageURL(q.question)
+      ? `<h4>Q${q.sr_no}:</h4>${headingHtml}<img src="${q.question}" class="question-image" alt="Question ${q.sr_no}">`
+      : `<h4>Q${q.sr_no}:</h4>${headingHtml}<div style="margin-bottom: 10px;">${q.question}</div>`;
+      
+    html += `<div class="question-review">${questionHeader}`;
+    
+    for (let i = 1; i <= 4; i++) {
+      const isCorrect = i.toString() === q.answer;
+      const isUserAnswer = userAns == i.toString();
+      
+      let className = 'review-option';
+      if (isCorrect) className += ' correct';
+      if (isUserAnswer && !isCorrect) className += ' wrong';
+      if (isUserAnswer) className += ' user-selected';
+      
+      const optionValue = q[`option${i}`];
+      
+      if (isImageURL(optionValue)) {
+        html += `<div class="${className}">
+          ${isCorrect ? '✓ ' : ''}${isUserAnswer ? '➤ ' : ''} 
+          <img src="${optionValue}" class="option-image" alt="Option ${i}">
+        </div>`;
+      } else {
+        html += `<div class="${className}">
+          ${isCorrect ? '✓ ' : ''}${isUserAnswer ? '➤ ' : ''}${optionValue}
+        </div>`;
+      }
+    }
+    
+    if (q.solution_text && q.solution_text.trim() !== '') {
+      const solutionContent = isImageURL(q.solution_text)
+        ? `<img src="${q.solution_text}" class="solution-image" alt="Solution">`
+        : q.solution_text;
+      html += `<div class="solution-section">
+        <div class="solution-label">📝 Solution:</div>
+        <div class="solution-content">${solutionContent}</div>
+      </div>`;
+    }
+    
+    html += `</div>`; 
+});
+  
+  html += `
+    <div class="action-buttons">
+      <button class="action-btn restart" onclick="restartQuiz()">Restart Quiz</button>
+      <button class="action-btn download" onclick="downloadResults()">Download Results</button>
+      <button class="action-btn print" onclick="window.print()">Print Results</button>
+    </div>
+  `;
+  
+  const resultSection = document.getElementById('resultSection');
+  const questionSection = document.getElementById('questionSection');
+  const progressSection = document.querySelector('.progress-section');
+  
+  if (resultSection) {
+    resultSection.innerHTML = html;
+    resultSection.classList.remove('hidden');
+  }
+  if (questionSection) questionSection.classList.add('hidden');
+  if (progressSection) progressSection.classList.add('hidden');
+  
+  const quizContainer = document.getElementById('quizContainer');
+  if (quizContainer) {
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
+  }
+}
+
+function restartQuiz() {
+  if (confirm('Are you sure you want to restart? All progress will be lost.')) {
+    currentQuestion = 0;
+    answers = {};
+    bookmarks.clear();
+    timerSeconds = 0;
+    
+    const resultSection = document.getElementById('resultSection');
+    const questionSection = document.getElementById('questionSection');
+    const progressSection = document.querySelector('.progress-section');
+    const fab = document.getElementById('paletteFab');
+    const nav = document.getElementById('navigation');
+    
+    if (resultSection) {
+      resultSection.classList.add('hidden');
+      resultSection.innerHTML = '';
+    }
+    if (questionSection) questionSection.classList.remove('hidden');
+    if (progressSection) progressSection.classList.remove('hidden');
+    if (fab) fab.style.display = 'flex';
+    if (nav) nav.style.display = 'grid';
+    
+    document.body.style.paddingBottom = 'var(--nav-height)';
+    
+    if (timerInterval) {
+      clearInterval(timerInterval);
+    }
+    startTimer();
+    
+    loadQuestion(currentQuestion);
+    createPalette();
+  }
+}
+
+function downloadResults() {
+  const resultSection = document.getElementById('resultSection');
+  if (!resultSection) return;
+  
+  const resultHTML = resultSection.innerHTML;
+  const fullHTML = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Results</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; max-width: 900px; margin: 0 auto; }
+    .score-card { background: linear-gradient(135deg, #007bff, #28a745); color: white; padding: 30px; border-radius: 15px; text-align: center; margin-bottom: 20px; }
+    .score-card h2 { font-size: 48px; margin-bottom: 10px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 30px; }
+    .stat-card { background: white; padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #ddd; }
+    .stat-card h3 { font-size: 32px; margin-bottom: 8px; }
+    .stat-card.correct h3 { color: #28a745; }
+    .stat-card.wrong h3 { color: #dc3545; }
+    .stat-card.unattempted h3 { color: #6c757d; }
+    .question-review { background: white; border: 2px solid #ddd; border-radius: 10px; padding: 20px; margin-bottom: 15px; }
+    .question-review h4 { margin-bottom: 15px; font-size: 16px; line-height: 1.6; }
+    .review-option { padding: 10px 15px; margin: 8px 0; border-radius: 8px; border: 2px solid #ddd; display: flex; align-items: center; gap: 10px; }
+    .option-image { max-width: 150px; max-height: 100px; border-radius: 8px; }
+    .review-option.correct { background: #d4edda; border-color: #28a745; color: #155724; }
+    .review-option.wrong { background: #f8d7da; border-color: #dc3545; color: #721c24; }
+    .review-option.user-selected { border-width: 3px; font-weight: bold; }
+    @media print { body { background: white; } }
+    @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center; color: #007bff;">Quiz Results</h1>
+  <p style="text-align: center; color: #666; margin-bottom: 30px;">Generated on: ${new Date().toLocaleString()}</p>
+  ${resultHTML.replace(/<div class="action-buttons">[\s\S]*?<\/div>/, '')}
+</body>
+</html>
+  `;
+  
+  try {
+    const blob = new Blob([fullHTML], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `Quiz_Results_${new Date().getTime()}.html`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  } catch (err) {
+    alert('Download failed. Please try using the Print option instead.');
+    console.error('Download error:', err);
+  }
+}
+
+function saveToLocalStorage() {
+  try {
+    const state = {
+      currentQuestion,
+      answers,
+      bookmarks: Array.from(bookmarks),
+      timerSeconds,
+      timestamp: Date.now()
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch (err) {
+    console.error('Save error:', err);
+  }
+}
+
+function loadFromLocalStorage() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const state = JSON.parse(saved);
+      const hasProgress = (state && (
+        (state.currentQuestion && state.currentQuestion > 0) ||
+        (state.answers && Object.keys(state.answers).length > 0) ||
+        (state.timerSeconds && state.timerSeconds > 0)
+      ));
+      if (hasProgress && (Date.now() - state.timestamp < 24 * 60 * 60 * 1000)) {
+        if (confirm('Resume previous quiz session?')) {
+          currentQuestion = state.currentQuestion || 0;
+          answers = state.answers || {};
+          bookmarks = new Set(state.bookmarks || []);
+          timerSeconds = state.timerSeconds || 0;
+          updateTimer();
+          loadQuestion(currentQuestion);
+        }
+      } else {
+        clearLocalStorage();
+      }
+    }
+  } catch (err) {
+    console.error('Load error:', err);
+    clearLocalStorage();
+  }
+}
+
+function clearLocalStorage() {
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (err) {
+    console.error('Clear storage error:', err);
+  }
+}
+
+window.addEventListener('beforeunload', (e) => {
+  const resultSection = document.getElementById('resultSection');
+  if (resultSection && !resultSection.classList.contains('hidden')) {
+    return;
+  }
+  e.preventDefault();
+  e.returnValue = '';
+});
+
+window.addEventListener('unload', () => {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+});
+</script>
+</body>
+</html>
