@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>13.) QUANT SECTIONAL-2 - English</title>
+<style>
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0069d9;
+  --success-color: #28a745;
+  --success-hover: #218838;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --secondary-color: #6c757d;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --border-color: #dee2e6;
+  --shadow: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
+  --overlay: rgba(0,0,0,0.5);
+  --nav-height: 80px;
+}
+
+[data-theme="dark"] {
+  --primary-color: #4dabf7;
+  --primary-hover: #339af0;
+  --success-color: #51cf66;
+  --success-hover: #40c057;
+  --danger-color: #ff6b6b;
+  --warning-color: #ffd43b;
+  --secondary-color: #868e96;
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #404040;
+  --text-primary: #f8f9fa;
+  --text-secondary: #adb5bd;
+  --border-color: #495057;
+  --shadow: 0 4px 6px rgba(0,0,0,0.3);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.4);
+  --overlay: rgba(0,0,0,0.7);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+  overflow-x: hidden;
+  position: relative;
+  padding-bottom: var(--nav-height);
+}
+
+body.palette-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-primary);
+  padding: 20px 30px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+
+.header h1 {
+  font-size: 28px;
+  color: var(--primary-color);
+  font-weight: 700;
+  user-select: none;
+}
+
+.header-controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.theme-toggle, .fullscreen-btn {
+  background: var(--bg-tertiary);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.3s;
+  min-width: 44px;
+  min-height: 44px;
+  user-select: none;
+}
+
+.theme-toggle:active, .fullscreen-btn:active {
+  transform: scale(0.95);
+}
+
+.theme-toggle:hover, .fullscreen-btn:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+.bot-link-btn {
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+}
+.bot-link-btn:active {
+  transform: scale(0.95);
+}
+.bot-link-btn:hover {
+  background: var(--primary-hover);
+}
+
+.timer {
+  background: var(--warning-color);
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 18px;
+  min-width: 100px;
+  text-align: center;
+  user-select: none;
+}
+
+.timer.warning {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.palette-fab {
+  position: fixed;
+  bottom: calc(var(--nav-height) + 20px);
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  box-shadow: 0 6px 20px rgba(0,123,255,0.4);
+  transition: all 0.3s ease;
+  z-index: 998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.palette-fab:active {
+  transform: scale(0.9);
+}
+
+.palette-fab:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0,123,255,0.6);
+}
+
+.palette-fab.active {
+  background: var(--danger-color);
+}
+
+.palette-fab .badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: var(--success-color);
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--bg-secondary);
+  pointer-events: none;
+}
+.solution-section {
+  margin-top: 20px;
+  padding: 15px;
+  background: #e7f3ff;
+  border-left: 4px solid var(--primary-color);
+  border-radius: 8px;
+}
+
+.solution-label {
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.solution-content {
+  line-height: 1.6;
+  color: #333;
+}
+
+.solution-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.palette-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 999;
+  touch-action: none;
+}
+
+.palette-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.question-palette {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 450px;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--bg-primary);
+  box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+  transition: right 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.question-palette.active {
+  right: 0;
+}
+
+.palette-header {
+  padding: 20px;
+  background: var(--primary-color);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.palette-header h3 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.palette-close {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: background 0.2s;
+  line-height: 1;
+  touch-action: manipulation;
+}
+
+.palette-close:active {
+  transform: scale(0.9);
+}
+
+.palette-close:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.palette-stats {
+  padding: 15px 20px;
+  background: var(--bg-tertiary);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  font-size: 13px;
+  text-align: center;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border-color);
+  user-select: none;
+}
+
+.palette-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.palette-stat .number {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.palette-stat.answered .number { color: var(--success-color); }
+.palette-stat.unanswered .number { color: var(--secondary-color); }
+.palette-stat.bookmarked .number { color: var(--warning-color); }
+
+.palette-search {
+  padding: 15px 20px;
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+}
+
+.palette-search input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 14px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.palette-search input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.palette-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 10px;
+}
+
+.palette-btn {
+  aspect-ratio: 1;
+  border: 2px solid var(--border-color);
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+  min-width: 40px;
+  min-height: 40px;
+  color: var(--text-primary);
+  position: relative;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.palette-btn:active {
+  transform: scale(0.9);
+}
+
+.palette-btn:hover {
+  transform: scale(1.1);
+  z-index: 10;
+  box-shadow: var(--shadow);
+}
+
+.palette-btn.current {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  animation: currentPulse 2s infinite;
+}
+
+@keyframes currentPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,123,255,0.7); }
+  50% { box-shadow: 0 0 0 8px rgba(0,123,255,0); }
+}
+
+.palette-btn.answered {
+  background: var(--success-color);
+  color: white;
+  border-color: var(--success-color);
+}
+
+.palette-btn.bookmarked::after {
+  content: '🔖';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.palette-btn.bookmarked.answered {
+  background: var(--success-color);
+}
+
+.palette-legend {
+  padding: 20px;
+  border-top: 1px solid var(--border-color);
+  font-size: 13px;
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.legend-color {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.quiz-container {
+  background: var(--bg-primary);
+  border-radius: 15px;
+  box-shadow: var(--shadow-lg);
+  padding: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  scroll-margin-top: 20px;
+}
+
+.quiz-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.marking-info {
+  display: inline-block;
+  background: var(--bg-tertiary);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.progress-section {
+  margin-bottom: 25px;
+}
+
+.progress-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.progress-bar-container {
+  background: var(--bg-tertiary);
+  border-radius: 12px;
+  overflow: hidden;
+  height: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+  transition: width 0.4s ease;
+  border-radius: 12px;
+}
+
+.question-section {
+  min-height: 300px;
+  scroll-margin-top: 80px;
+  margin-bottom: 20px;
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.question-number {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary-color);
+  user-select: none;
+}
+
+.bookmark-btn {
+  background: transparent;
+  border: 2px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 44px;
+  min-height: 44px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.bookmark-btn:active {
+  transform: scale(0.95);
+}
+
+.bookmark-btn.active {
+  background: var(--warning-color);
+  border-color: var(--warning-color);
+  color: #000;
+}
+
+.question {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 25px;
+  color: var(--text-primary);
+  user-select: text;
+}
+
+.question-image {
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: 10px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  padding: 10px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--border-color);
+  padding: 16px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--bg-secondary);
+  min-height: 60px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.option-label:active {
+  transform: scale(0.98);
+}
+
+.option-label:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--primary-color);
+}
+
+.option-label.selected {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.option-label input[type="radio"] {
+  margin-right: 15px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.option-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.option-image {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  padding: 10px;
+}
+
+.option-label.selected .option-image {
+  background: rgba(255,255,255,0.1);
+}
+
+/* FIXED NAVIGATION - KEY UPDATE */
+.navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-primary);
+  border-top: 2px solid var(--border-color);
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  z-index: 997;
+  padding: 15px 20px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 10px;
+  max-width: 100%;
+}
+
+.nav-btn {
+  padding: 14px 20px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+.nav-btn:active {
+  transform: scale(0.97);
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.nav-btn.prev {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.nav-btn.prev:hover:not(:disabled) {
+  background: #5a6268;
+}
+
+.nav-btn.next {
+  background: var(--primary-color);
+  color: white;
+}
+
+.nav-btn.next:hover:not(:disabled) {
+  background: var(--primary-hover);
+}
+
+.nav-btn.clear {
+  background: var(--danger-color);
+  color: white;
+}
+
+.nav-btn.clear:hover {
+  background: #c82333;
+}
+
+.nav-btn.submit {
+  background: var(--success-color);
+  color: white;
+  grid-column: 1 / -1;
+}
+
+.nav-btn.submit:hover {
+  background: var(--success-hover);
+}
+
+.result-section {
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.score-card {
+  background: linear-gradient(135deg, var(--primary-color), var(--success-color));
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  margin-bottom: 30px;
+  user-select: none;
+}
+
+.score-card h2 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.score-card p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: var(--bg-secondary);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  border: 2px solid var(--border-color);
+  user-select: none;
+}
+
+.stat-card h3 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.stat-card.correct h3 { color: var(--success-color); }
+.stat-card.wrong h3 { color: var(--danger-color); }
+.stat-card.unattempted h3 { color: var(--secondary-color); }
+
+.question-review {
+  border: 2px solid var(--border-color);
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 20px;
+  background: var(--bg-secondary);
+}
+
+.question-review h4 {
+  margin-bottom: 15px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.review-option {
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 2px solid var(--border-color);
+  background: var(--bg-primary);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.review-option .option-image {
+  max-width: 150px;
+  max-height: 100px;
+}
+
+.review-option.correct {
+  background: #d4edda;
+  border-color: var(--success-color);
+  color: #155724;
+}
+
+.review-option.wrong {
+  background: #f8d7da;
+  border-color: var(--danger-color);
+  color: #721c24;
+}
+
+.review-option.user-selected {
+  border-width: 3px;
+  font-weight: 600;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.action-btn {
+  padding: 14px 30px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  min-width: 150px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.action-btn:active {
+  transform: scale(0.95);
+}
+
+.action-btn.restart {
+  background: var(--danger-color);
+  color: white;
+}
+
+.action-btn.restart:hover {
+  background: #c82333;
+}
+
+.action-btn.download {
+  background: var(--primary-color);
+  color: white;
+}
+
+.action-btn.download:hover {
+  background: var(--primary-hover);
+}
+
+.action-btn.print {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.action-btn.print:hover {
+  background: #5a6268;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.palette-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.palette-content::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+}
+
+.palette-content::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+.palette-content::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 140px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .header h1 {
+    font-size: 22px;
+  }
+
+  .quiz-container {
+    padding: 20px 15px;
+  }
+
+  .question-palette {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .palette-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+  }
+
+  .palette-btn {
+    font-size: 13px;
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  .palette-fab {
+    bottom: calc(var(--nav-height) + 10px);
+    right: 15px;
+    width: 56px;
+    height: 56px;
+    font-size: 22px;
+  }
+
+  .navigation {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 12px 15px;
+  }
+
+  .nav-btn {
+    min-height: 44px;
+    font-size: 15px;
+  }
+
+  .nav-btn.clear {
+    order: 3;
+  }
+
+  .nav-btn.submit {
+    grid-column: auto;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .legend-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .question {
+    font-size: 16px;
+  }
+
+  .option-label {
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  .option-image {
+    max-height: 150px;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .palette-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+
+  .palette-btn {
+    font-size: 12px;
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .timer {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  .option-image {
+    max-height: 120px;
+  }
+}
+
+@media print {
+  .header-controls, .navigation, .palette-fab, .palette-overlay, .question-palette, .action-buttons, .bookmark-btn {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    padding-bottom: 0;
+  }
+
+  .container {
+    padding-bottom: 20px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>13.) QUANT SECTIONAL-2 - English</h1>
+    <div class="header-controls">
+      <a href="https://t.me/ssc_prepX" target="_blank" class="bot-link-btn" title="Open Bot in Telegram">🤖 Bot</a>
+      
+      <div class="timer" id="timer">00:00</div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle Theme">🌙</button>
+      <button class="fullscreen-btn" id="fullscreenBtn" aria-label="Toggle fullscreen" title="Fullscreen">⛶</button>
+    </div>
+  </div>
+
+  <div class="quiz-container" id="quizContainer">
+    <div class="quiz-header">
+      <div class="marking-info" id="markingInfo">Marking: +1, -0</div>
+    </div>
+
+    <div class="progress-section">
+      <div class="progress-stats">
+        <span>Progress: <strong id="progressText">1/2</strong></span>
+        <span>Attempted: <strong id="attemptedText">0</strong></span>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+
+    <div class="question-section" id="questionSection">
+      <div class="question-header">
+        <div class="question-number" id="questionNumber">Question 1 of 2</div>
+        <button class="bookmark-btn" id="bookmarkBtn" aria-label="Bookmark question">
+          <span>🔖</span> <span>Bookmark</span>
+        </button>
+      </div>
+      
+      <div class="question" id="questionText"></div>
+      
+      <div class="options" id="optionsContainer"></div>
+    </div>
+
+    <div class="result-section hidden" id="resultSection"></div>
+  </div>
+</div>
+
+<div class="navigation" id="navigation">
+  <button class="nav-btn prev" id="prevBtn" aria-label="Previous question">
+    <span>←</span> Previous
+  </button>
+  <button class="nav-btn clear" id="clearBtn" aria-label="Clear answer">
+    Clear
+  </button>
+  <button class="nav-btn next" id="nextBtn" aria-label="Next question">
+    Next <span>→</span>
+  </button>
+  <button class="nav-btn submit hidden" id="submitBtn" aria-label="Submit quiz">
+    Submit Quiz
+  </button>
+</div>
+
+<button class="palette-fab" id="paletteFab" aria-label="Toggle question palette" title="Question Palette (P)">
+  📋
+  <span class="badge" id="answeredBadge">0</span>
+</button>
+
+<div class="palette-overlay" id="paletteOverlay"></div>
+
+<div class="question-palette" id="questionPalette">
+  <div class="palette-header">
+    <h3>Question Palette</h3>
+    <button class="palette-close" id="paletteClose" aria-label="Close palette">×</button>
+  </div>
+
+  <div class="palette-stats">
+    <div class="palette-stat answered">
+      <div class="number" id="paletteAnswered">0</div>
+      <div>Answered</div>
+    </div>
+    <div class="palette-stat unanswered">
+      <div class="number" id="paletteUnanswered">2</div>
+      <div>Not Answered</div>
+    </div>
+    <div class="palette-stat bookmarked">
+      <div class="number" id="paletteBookmarked">0</div>
+      <div>Bookmarked</div>
+    </div>
+  </div>
+
+  <div class="palette-search">
+    <input type="number" id="paletteSearch" placeholder="Jump to question number..." aria-label="Search questions" inputmode="numeric" pattern="[0-9]*">
+  </div>
+
+  <div class="palette-content">
+    <div class="palette-grid" id="paletteGrid"></div>
+  </div>
+
+  <div class="palette-legend">
+    <div class="legend-grid">
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--success-color);"></div>
+        <span>Answered</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--bg-secondary); border: 2px solid var(--border-color);"></div>
+        <span>Not Answered</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--primary-color);"></div>
+        <span>Current Question</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--warning-color);"></div>
+        <span>🔖 Bookmarked</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// JSON INJECTION HAPPENS HERE
+const questions = [{"sr_no": 1, "question": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image001.png\" width=\"147\" height=\"33\" alt style=\"vertical-align:middle\" ><span> का मान ज्ञात कीजिए।</span></p>", "option1": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image002.png\" width=\"9\" height=\"21\" alt style=\"vertical-align:middle\" ></p>", "option2": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image003.png\" width=\"9\" height=\"21\" alt style=\"vertical-align:middle\" ></p>", "option3": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image004.png\" width=\"20\" height=\"22\" alt style=\"vertical-align:middle\" ></p>", "option4": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image005.png\" width=\"29\" height=\"23\" alt style=\"vertical-align:middle\" ></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>प्रत्येक पद के हर का अलग-अलग परिमेयकरण करने पर:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>पहला पद: </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image006.png\" width=\"340\" height=\"35\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दूसरा पद: </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image007.png\" width=\"340\" height=\"35\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>तीसरा पद: </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image008.png\" width=\"261\" height=\"35\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अब सभी पदों को संयोजित करने पर:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image009.png\" width=\"287\" height=\"23\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image010.png\" width=\"298\" height=\"23\" alt style=\"vertical-align:middle\" ><span>.</span></p>", "question_heading": ""}, {"sr_no": 2, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>4320 के ऐसे कुल गुणनखंडों की संख्या ज्ञात कीजिए जो 12 से विभाज्य हैं।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>24</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>18</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>32</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>28</span></p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>सर्वप्रथम, 4320 का अभाज्य गुणनखंडन करते हैं:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image011.png\" width=\"144\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>चूंकि गुणनखंड 12 से विभाज्य होने चाहिए, इसलिए हम </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image012.png\" width=\"91\" height=\"21\" alt style=\"vertical-align:middle\" ><span> को उभयनिष्ठ (बाहर) लेते हैं:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image013.png\" width=\"382\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः ऐसे गुणनखंडों की संख्या </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image014.png\" width=\"88\" height=\"21\" alt style=\"vertical-align:middle\" ><span> के कुल गुणनखंडों की संख्या के बराबर होगी।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>गुणनखंडों की संख्या = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image015.png\" width=\"274\" height=\"21\" alt style=\"vertical-align:middle\" ><span>.</span></p>", "question_heading": ""}, {"sr_no": 3, "question": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>यदि </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image016.png\" width=\"208\" height=\"40\" alt ><span> है, जहाँ </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image017.png\" width=\"9\" height=\"21\" alt style=\"vertical-align:middle\" ><span> और </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image018.png\" width=\"9\" height=\"21\" alt style=\"vertical-align:middle\" ><span> सह-अभाज्य धनात्मक पूर्णांक हैं, तो </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image019.png\" width=\"50\" height=\"21\" alt style=\"vertical-align:middle\" ><span> का मान क्या है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>14</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>16</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>18</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>20</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>मिश्रित आवर्त दशमलव </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image020.png\" width=\"43\" height=\"20\" alt ><span> को भिन्न में बदलने के लिए सूत्र है: </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image021.png\" width=\"35\" height=\"29\" alt style=\"vertical-align:middle\" ><span>।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image022.png\" width=\"187\" height=\"41\" alt ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image023.png\" width=\"187\" height=\"41\" alt ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image024.png\" width=\"187\" height=\"41\" alt ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अब, दिए गए व्यंजक को हल करने पर:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image025.png\" width=\"309\" height=\"29\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>यहाँ, </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image026.png\" width=\"43\" height=\"32\" alt style=\"vertical-align:middle\" ><span>, जहाँ </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image027.png\" width=\"39\" height=\"21\" alt style=\"vertical-align:middle\" ><span> और </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image028.png\" width=\"48\" height=\"21\" alt style=\"vertical-align:middle\" ><span> सह-अभाज्य धनात्मक पूर्णांक हैं।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः, </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image029.png\" width=\"142\" height=\"21\" alt style=\"vertical-align:middle\" ><span>।</span></p>", "question_heading": ""}, {"sr_no": 4, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>A और B एक व्यवसाय शुरू करते हैं। A, ₹40,000 का निवेश करता है और 6 महीने बाद ₹20,000 और निवेश करता है। B, ₹50,000 का निवेश करता है और 6 महीने बाद ₹20,000 निकाल लेता है। C, 4 महीने बाद ₹45,000 के निवेश के साथ उनके साथ जुड़ता है। A एक सक्रिय भागीदार है और व्यवसाय के प्रबंधन के लिए कुल लाभ का 10% प्राप्त करता है, तथा शेष लाभ उनके प्रभावी निवेश के अनुपात में साझा किया जाता है। यदि वर्ष के अंत में कुल लाभ ₹1,50,000 है, तो A का कुल हिस्सा क्या है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹62,500</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹71,250</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹67,500</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹75,000</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>प्रत्येक भागीदार के प्रभावी निवेश (1 माह के समकक्ष पूंजी) की गणना करें:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>A के लिए: </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image030.png\" width=\"444\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>B के लिए: </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image031.png\" width=\"444\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>C के लिए: </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image032.png\" width=\"164\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>लाभ विभाजन का अनुपात = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image033.png\" width=\"244\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अनुपाती भागों का योग = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image034.png\" width=\"104\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>कुल लाभ = ₹1,50,000</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>प्रबंधन के लिए A का कमीशन = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image035.png\" width=\"68\" height=\"21\" alt style=\"vertical-align:middle\" ><span> का </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image036.png\" width=\"109\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>शेष लाभ = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image037.png\" width=\"232\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>शेष लाभ में A का हिस्सा = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image038.png\" width=\"169\" height=\"29\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः, A का कुल हिस्सा = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image039.png\" width=\"208\" height=\"21\" alt style=\"vertical-align:middle\" ><span>।</span></p>", "question_heading": ""}, {"sr_no": 5, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>24 छात्रों के एक समूह का औसत वजन 55 किग्रा है। यदि 64 किग्रा वजन वाला एक छात्र समूह छोड़ देता है और दो नए छात्र समूह में शामिल होते हैं, तो समूह का औसत वजन 1 किग्रा बढ़ जाता है। यदि दोनों नए छात्रों के वजन का अनुपात 5 : 3 है, तो अधिक वजन वाले नए छात्र का वजन (किग्रा में) क्या है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>85</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>90</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>95</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>80</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>24 छात्रों का प्रारंभिक कुल वजन = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image040.png\" width=\"111\" height=\"21\" alt style=\"vertical-align:middle\" ><span> किग्रा।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>एक छात्र के जाने के बाद शेष वजन = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image041.png\" width=\"129\" height=\"21\" alt style=\"vertical-align:middle\" ><span> किग्रा।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>छात्रों की नई संख्या = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image042.png\" width=\"113\" height=\"21\" alt style=\"vertical-align:middle\" ><span>।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>नया औसत वजन = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image043.png\" width=\"85\" height=\"21\" alt style=\"vertical-align:middle\" ><span> किग्रा।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>25 छात्रों का नया कुल वजन = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image044.png\" width=\"111\" height=\"21\" alt style=\"vertical-align:middle\" ><span> किग्रा।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दोनों नए छात्रों के वजन का योग = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image045.png\" width=\"138\" height=\"21\" alt style=\"vertical-align:middle\" ><span> किग्रा।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>उनके वजन का अनुपात </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image046.png\" width=\"22\" height=\"21\" alt style=\"vertical-align:middle\" ><span> है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः, भारी छात्र का वजन = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image047.png\" width=\"245\" height=\"29\" alt style=\"vertical-align:middle\" ><span> किग्रा।</span></p>", "question_heading": ""}, {"sr_no": 6, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>यदि किसी संख्या का 18%, दूसरी संख्या के 24% के बराबर है, तथा पहली संख्या के 35% और दूसरी संख्या के 40% के बीच का अंतर 32 है, तो दोनों संख्याओं के योग का 12.5% क्या होगा?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>120</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>140</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>160</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>175</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>माना दो संख्याएँ </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image048.png\" width=\"11\" height=\"21\" alt style=\"vertical-align:middle\" ><span> और </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image049.png\" width=\"11\" height=\"21\" alt style=\"vertical-align:middle\" ><span> हैं।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>प्रश्नानुसार:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image048.png\" width=\"11\" height=\"21\" alt style=\"vertical-align:middle\" ><span> का </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image050.png\" width=\"64\" height=\"21\" alt style=\"vertical-align:middle\" ><span> का </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image051.png\" width=\"32\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image052.png\" width=\"215\" height=\"29\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>माना </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image053.png\" width=\"49\" height=\"21\" alt style=\"vertical-align:middle\" ><span> और </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image054.png\" width=\"50\" height=\"21\" alt style=\"vertical-align:middle\" ><span> है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>यह भी दिया गया है कि:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image048.png\" width=\"11\" height=\"21\" alt style=\"vertical-align:middle\" ><span> का </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image055.png\" width=\"62\" height=\"21\" alt style=\"vertical-align:middle\" ><span> का </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image056.png\" width=\"71\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image057.png\" width=\"180\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image058.png\" width=\"118\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image059.png\" width=\"182\" height=\"29\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दोनों संख्याओं का योग:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image060.png\" width=\"285\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अब, योग का 12.5% ज्ञात करना है:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image061.png\" width=\"73\" height=\"29\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अभीष्ट मान</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image062.png\" width=\"130\" height=\"29\" alt style=\"vertical-align:middle\" ></p>", "question_heading": ""}, {"sr_no": 7, "question": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>यदि किसी निश्चित धनराशि पर 20% प्रति वर्ष की दर से </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image063.png\" width=\"19\" height=\"29\" alt style=\"vertical-align:middle\" ><span> वर्ष के लिए चक्रवृद्धि ब्याज और साधारण ब्याज के बीच का अंतर ₹465 है, जबकि चक्रवृद्धि ब्याज अर्ध-वार्षिक रूप से संयोजित होता है, तो वह धनराशि ज्ञात कीजिए।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹12,500</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹15,000</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹16,000</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹14,500</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दिया गया है:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>समय </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image064.png\" width=\"50\" height=\"29\" alt style=\"vertical-align:middle\" ><span> वर्ष </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image065.png\" width=\"30\" height=\"21\" alt style=\"vertical-align:middle\" ><span> अर्ध-वर्ष</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>वार्षिक दर </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image066.png\" width=\"64\" height=\"21\" alt style=\"vertical-align:middle\" ><span> प्रति वर्ष</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अर्ध-वार्षिक दर </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image067.png\" width=\"107\" height=\"29\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image063.png\" width=\"19\" height=\"29\" alt style=\"vertical-align:middle\" ><span> वर्ष के लिए साधारण ब्याज:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image068.png\" width=\"211\" height=\"29\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>10% की दर से 3 अवधियों के लिए अर्ध-वार्षिक संयोजित चक्रवृद्धि ब्याज:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image069.png\" width=\"338\" height=\"32\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>CI और SI के बीच का अंतर:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image070.png\" width=\"248\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दिया गया है कि </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image071.png\" width=\"105\" height=\"21\" alt style=\"vertical-align:middle\" ><span>:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image072.png\" width=\"253\" height=\"29\" alt style=\"vertical-align:middle\" ></p>", "question_heading": ""}, {"sr_no": 8, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>एक घड़ी को ₹3,400 में बेचने पर हुआ लाभ, इसे ₹2,600 में बेचने पर हुई हानि के बराबर है। यदि घड़ी को ₹2,820 में बेचा जाता है, तो लाभ या हानि प्रतिशत क्या होगा?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>6% का लाभ</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>6% की हानि</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>5.5% का लाभ</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>5.5% की हानि</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>माना घड़ी का क्रय मूल्य </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image073.png\" width=\"20\" height=\"21\" alt style=\"vertical-align:middle\" ><span> है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>प्रश्नानुसार, ₹3,400 पर लाभ = ₹2,600 पर हानि:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image074.png\" width=\"169\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image075.png\" width=\"196\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image076.png\" width=\"88\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अब, नया विक्रय मूल्य </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image077.png\" width=\"100\" height=\"21\" alt style=\"vertical-align:middle\" ><span> है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>चूँकि </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image078.png\" width=\"59\" height=\"21\" alt style=\"vertical-align:middle\" ><span> है, अतः यहाँ हानि होगी:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>हानि</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image079.png\" width=\"167\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>हानि </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image080.png\" width=\"170\" height=\"29\" alt style=\"vertical-align:middle\" ><span>.</span></p>", "question_heading": ""}, {"sr_no": 9, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>एक बर्तन में अम्ल और पानी का मिश्रण 7 : 3 के अनुपात में है। जब मिश्रण में 15 लीटर पानी मिलाया जाता है, तो अम्ल और पानी का अनुपात 7 : 6 हो जाता है। यदि पानी मिलाने के बजाय, प्रारंभिक मिश्रण में 15 लीटर अम्ल मिलाया जाता, तो परिणामी मिश्रण में अम्ल और पानी का अनुपात क्या होता?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>8 : 3</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>10 : 3</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>5 : 2</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>7 : 2</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>माना अम्ल और पानी की प्रारंभिक मात्रा क्रमशः </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image081.png\" width=\"18\" height=\"21\" alt style=\"vertical-align:middle\" ><span> और </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image082.png\" width=\"18\" height=\"21\" alt style=\"vertical-align:middle\" ><span> लीटर है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>जब मिश्रण में 15 लीटर पानी मिलाया जाता है:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image083.png\" width=\"64\" height=\"29\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image084.png\" width=\"93\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image085.png\" width=\"114\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः, अम्ल की प्रारंभिक मात्रा = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image086.png\" width=\"75\" height=\"21\" alt style=\"vertical-align:middle\" ><span> लीटर, और पानी = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image087.png\" width=\"75\" height=\"21\" alt style=\"vertical-align:middle\" ><span> लीटर।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>यदि इसके स्थान पर 15 लीटर अम्ल मिलाया जाता:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अम्ल की नई मात्रा = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image088.png\" width=\"94\" height=\"21\" alt style=\"vertical-align:middle\" ><span> लीटर</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>पानी की मात्रा = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image089.png\" width=\"18\" height=\"21\" alt style=\"vertical-align:middle\" ><span> लीटर</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अभीष्ट अनुपात = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image090.png\" width=\"92\" height=\"21\" alt style=\"vertical-align:middle\" ><span>।</span></p>", "question_heading": ""}, {"sr_no": 10, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>A की कार्यकुशलता B की कार्यकुशलता की 2.5 गुनी है। यदि A किसी कार्य को पूरा करने में B से 21 दिन कम समय लेता है, तो दोनों मिलकर उसी कार्य को कितने दिनों में पूरा कर सकते हैं?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>8 दिन</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>10 दिन</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>12 दिन</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>15 दिन</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>A और B की कार्यक्षमता का अनुपात:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image091.png\" width=\"139\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>चूँकि लिया गया समय कार्यक्षमता के व्युत्क्रमानुपाती होता है:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>लिए गए समय का अनुपात, </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image092.png\" width=\"83\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>समय का अंतर </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image093.png\" width=\"88\" height=\"21\" alt style=\"vertical-align:middle\" ><span> इकाई</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>प्रश्नानुसार, </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image094.png\" width=\"9\" height=\"21\" alt style=\"vertical-align:middle\" ><span> इकाई</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image095.png\" width=\"39\" height=\"21\" alt style=\"vertical-align:middle\" ><span> दिन</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image096.png\" width=\"28\" height=\"21\" alt style=\"vertical-align:middle\" ><span> इकाई</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image097.png\" width=\"30\" height=\"21\" alt style=\"vertical-align:middle\" ><span> दिन</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>A द्वारा अकेले लिया गया समय </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image098.png\" width=\"96\" height=\"21\" alt style=\"vertical-align:middle\" ><span> दिन</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>कुल कार्य </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image099.png\" width=\"21\" height=\"21\" alt style=\"vertical-align:middle\" ><span>A की कार्यक्षमता</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image100.png\" width=\"141\" height=\"21\" alt style=\"vertical-align:middle\" ><span> इकाई</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>A और B की संयुक्त कार्यक्षमता </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image101.png\" width=\"88\" height=\"21\" alt style=\"vertical-align:middle\" ><span> इकाई/दिन</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दोनों द्वारा मिलकर कार्य पूरा करने में लगा समय </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image102.png\" width=\"75\" height=\"29\" alt style=\"vertical-align:middle\" ><span> दिन।</span></p>", "question_heading": ""}, {"sr_no": 11, "question": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>एक गश्ती वैन अपने से </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image103.png\" width=\"44\" height=\"21\" alt style=\"vertical-align:middle\" ><span> आगे जा रही एक तेज़ गति वाली कार को देखती है और तुरंत उसका पीछा करना शुरू कर देती है। गश्ती वैन </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image104.png\" width=\"61\" height=\"21\" alt style=\"vertical-align:middle\" ><span> की गति से चलती है, जबकि तेज़ गति वाली कार उसी दिशा में </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image105.png\" width=\"61\" height=\"21\" alt style=\"vertical-align:middle\" ><span> की गति से चल रही है। </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image106.png\" width=\"9\" height=\"21\" alt style=\"vertical-align:middle\" ><span> मिनट के बाद उनके बीच की दूरी कितनी होगी?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>120 m</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>150 m</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>200 m</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>250 m</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>गश्ती वैन और कार के बीच प्रारंभिक दूरी </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image103.png\" width=\"44\" height=\"21\" alt style=\"vertical-align:middle\" ><span> है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>चूँकि दोनों एक ही दिशा में चल रहे हैं, सापेक्ष चाल = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image107.png\" width=\"136\" height=\"21\" alt style=\"vertical-align:middle\" ><span>.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image108.png\" width=\"29\" height=\"21\" alt style=\"vertical-align:middle\" ><span> में बदलने पर:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>सापेक्ष चाल</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image109.png\" width=\"133\" height=\"29\" alt style=\"vertical-align:middle\" ><span>.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>समय = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image106.png\" width=\"9\" height=\"21\" alt style=\"vertical-align:middle\" ><span> मिनट</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image110.png\" width=\"114\" height=\"21\" alt style=\"vertical-align:middle\" ><span> सेकंड.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image111.png\" width=\"38\" height=\"21\" alt style=\"vertical-align:middle\" ><span> में कार के सापेक्ष गश्ती वैन द्वारा तय की गई दूरी:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दूरी</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image112.png\" width=\"140\" height=\"21\" alt style=\"vertical-align:middle\" ><span>.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः, </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image106.png\" width=\"9\" height=\"21\" alt style=\"vertical-align:middle\" ><span> मिनट के बाद उनके बीच की दूरी = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image113.png\" width=\"137\" height=\"21\" alt style=\"vertical-align:middle\" ><span>.</span></p>", "question_heading": ""}, {"sr_no": 12, "question": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>यदि </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image114.png\" width=\"65\" height=\"29\" alt style=\"vertical-align:middle\" ><span> है, तो </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image115.png\" width=\"49\" height=\"29\" alt style=\"vertical-align:middle\" ><span> का मान ज्ञात कीजिए।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>194</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>198</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>202</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>216</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दिया गया है, </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image114.png\" width=\"65\" height=\"29\" alt style=\"vertical-align:middle\" ><span>।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दोनों पक्षों का घन करने पर:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image116.png\" width=\"391\" height=\"32\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अब, इस परिणाम के दोनों पक्षों का वर्ग करने पर:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image117.png\" width=\"119\" height=\"32\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image118.png\" width=\"125\" height=\"29\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image119.png\" width=\"173\" height=\"29\" alt style=\"vertical-align:middle\" ><span>।</span></p>", "question_heading": ""}, {"sr_no": 13, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>0 ≤ X ≤ 1 और 0 ≤ Y ≤ 1 द्वारा परिभाषित वर्ग क्षेत्र से एक बिंदु (X, Y) को यादृच्छिक रूप से चुना जाता है। मूल बिंदु (0, 0) से बिंदु की दूरी 1 से कम या उसके बराबर होने की प्रायिकता क्या है?</span></p>", "option1": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image120.png\" width=\"8\" height=\"27\" alt style=\"vertical-align:middle\" ></p>", "option2": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image121.png\" width=\"8\" height=\"27\" alt style=\"vertical-align:middle\" ></p>", "option3": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image122.png\" width=\"8\" height=\"27\" alt style=\"vertical-align:middle\" ></p>", "option4": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image123.png\" width=\"7\" height=\"29\" alt style=\"vertical-align:middle\" ></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>प्रतिदर्श समष्टि का कुल क्षेत्रफल इकाई वर्ग का क्षेत्रफल है: कुल क्षेत्रफल</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image124.png\" width=\"87\" height=\"21\" alt style=\"vertical-align:middle\" ><span>।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>मूल बिंदु से दूरी 1 या उससे कम होने की शर्त है: </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image125.png\" width=\"96\" height=\"24\" alt style=\"vertical-align:middle\" ><span>, जो </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image126.png\" width=\"85\" height=\"21\" alt style=\"vertical-align:middle\" ><span> हो जाती है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>वर्ग </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image127.png\" width=\"70\" height=\"21\" alt style=\"vertical-align:middle\" ><span> और </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image128.png\" width=\"70\" height=\"21\" alt style=\"vertical-align:middle\" ><span> के भीतर, यह त्रिज्या </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image129.png\" width=\"38\" height=\"21\" alt style=\"vertical-align:middle\" ><span> वाले एक वृत्त के चतुर्थांश का क्षेत्र है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अनुकूल क्षेत्रफल = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image130.png\" width=\"135\" height=\"29\" alt style=\"vertical-align:middle\" ><span>।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः, अभीष्ट प्रायिकता है: </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image131.png\" width=\"189\" height=\"38\" alt style=\"vertical-align:middle\" ><span>।</span></p>", "question_heading": ""}, {"sr_no": 14, "question": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>150 m ऊँची एक इमारत के शीर्ष से एक पर्यवेक्षक 18 km/h की एकसमान गति से सीधे इमारत के आधार की ओर आ रहे एक ट्रक को देखता है। ट्रक का अवनमन कोण 30° से बदलकर 45° हो जाता है। इस परिवर्तन में कितना समय (सेकंड में) लगता है? (</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image132.png\" width=\"79\" height=\"23\" alt style=\"vertical-align:middle\" ><span> लीजिए)</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>18 सेकंड</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>25 सेकंड</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>22 सेकंड</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>28 सेकंड</span></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>माना इमारत की ऊँचाई </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image133.png\" width=\"74\" height=\"21\" alt style=\"vertical-align:middle\" ><span> है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>माना इमारत के आधार से ट्रक की प्रारंभिक दूरी </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image134.png\" width=\"17\" height=\"21\" alt style=\"vertical-align:middle\" ><span> और अंतिम दूरी </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image135.png\" width=\"17\" height=\"21\" alt style=\"vertical-align:middle\" ><span> है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image136.png\" width=\"176\" height=\"23\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image137.png\" width=\"232\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>ट्रक द्वारा तय की गई दूरी:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image138.png\" width=\"422\" height=\"42\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>ट्रक की गति (m/s में):</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image139.png\" width=\"142\" height=\"29\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>लगा हुआ समय:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image140.png\" width=\"186\" height=\"29\" alt style=\"vertical-align:middle\" ><span> सेकंड।</span></p>", "question_heading": ""}, {"sr_no": 15, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>एक लंब प्रिज्म का आधार 9 सेमी, 12 सेमी और 15 सेमी भुजाओं वाला एक त्रिभुज है। यदि प्रिज्म की ऊँचाई 16 सेमी है, तो प्रिज्म का कुल पृष्ठीय क्षेत्रफल ज्ञात कीजिए।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>648 सेमी²</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>684 सेमी²</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>720 सेमी²</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>612 सेमी²</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>आधार त्रिभुज की भुजाएँ 9 सेमी, 12 सेमी और 15 सेमी हैं।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>चूँकि </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image141.png\" width=\"240\" height=\"21\" alt style=\"vertical-align:middle\" ><span>, इसलिए यह त्रिभुज एक समकोण त्रिभुज है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>आधार का क्षेत्रफल = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image142.png\" width=\"109\" height=\"29\" alt style=\"vertical-align:middle\" ><span> सेमी</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image143.png\" width=\"8\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>आधार का परिमाप = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image144.png\" width=\"121\" height=\"21\" alt style=\"vertical-align:middle\" ><span> सेमी</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>पार्श्व पृष्ठीय क्षेत्रफल = परिमाप</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image145.png\" width=\"19\" height=\"21\" alt style=\"vertical-align:middle\" ><span>ऊँचाई</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image146.png\" width=\"123\" height=\"21\" alt style=\"vertical-align:middle\" ><span> सेमी</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image143.png\" width=\"8\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>कुल पृष्ठीय क्षेत्रफल = पार्श्व पृष्ठीय क्षेत्रफल</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image147.png\" width=\"43\" height=\"21\" alt style=\"vertical-align:middle\" ><span>आधार का क्षेत्रफल</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image148.png\" width=\"253\" height=\"21\" alt style=\"vertical-align:middle\" ><span> सेमी</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image143.png\" width=\"8\" height=\"21\" alt style=\"vertical-align:middle\" ></p>", "question_heading": ""}, {"sr_no": 16, "question": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>7 सेमी त्रिज्या वाले एक ठोस गोले को दो समान अर्धगोलों में काटा जाता है। दोनों अर्धगोलों के कुल पृष्ठीय क्षेत्रफलों का योग कितना है? (</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image149.png\" width=\"45\" height=\"29\" alt style=\"vertical-align:middle\" ><span> लीजिए)</span></p>", "option1": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image150.png\" width=\"60\" height=\"21\" alt style=\"vertical-align:middle\" ></p>", "option2": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image151.png\" width=\"60\" height=\"21\" alt style=\"vertical-align:middle\" ></p>", "option3": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image152.png\" width=\"60\" height=\"21\" alt style=\"vertical-align:middle\" ></p>", "option4": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image153.png\" width=\"68\" height=\"21\" alt style=\"vertical-align:middle\" ></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>जब त्रिज्या </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image154.png\" width=\"8\" height=\"21\" alt style=\"vertical-align:middle\" ><span> वाले एक ठोस गोले को दो बराबर अर्धगोलों में काटा जाता है, तो प्रत्येक अर्धगोले का वक्र पृष्ठीय क्षेत्रफल </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image155.png\" width=\"35\" height=\"21\" alt style=\"vertical-align:middle\" ><span> और वृत्ताकार आधार का क्षेत्रफल </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image156.png\" width=\"26\" height=\"21\" alt style=\"vertical-align:middle\" ><span> होता है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>एक अर्धगोले का कुल पृष्ठीय क्षेत्रफल = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image157.png\" width=\"133\" height=\"21\" alt style=\"vertical-align:middle\" ><span>.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः, दोनों अर्धगोलों के कुल पृष्ठीय क्षेत्रफलों का योग = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image158.png\" width=\"116\" height=\"21\" alt style=\"vertical-align:middle\" ><span>.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दिया गया है </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image159.png\" width=\"38\" height=\"21\" alt style=\"vertical-align:middle\" ><span> सेमी:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>कुल पृष्ठीय क्षेत्रफल</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image160.png\" width=\"237\" height=\"29\" alt style=\"vertical-align:middle\" ><span> सेमी</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image143.png\" width=\"8\" height=\"21\" alt style=\"vertical-align:middle\" ><span>.</span></p>", "question_heading": ""}, {"sr_no": 17, "question": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>50 मीटर </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image145.png\" width=\"19\" height=\"21\" alt style=\"vertical-align:middle\" ><span> 40 मीटर विमाओं वाले एक आयताकार बगीचे के केंद्र में 14 मीटर त्रिज्या वाला एक वृत्ताकार स्विमिंग पूल है। बगीचे का शेष भाग घास से ढका हुआ है। बगीचे के कुल क्षेत्रफल का कितना प्रतिशत भाग घास से ढका हुआ है? (</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image149.png\" width=\"45\" height=\"29\" alt style=\"vertical-align:middle\" ><span> लीजिए)</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>64.8%</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>69.2%</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>72.4%</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>75.6%</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>आयताकार बगीचे का कुल क्षेत्रफल = लंबाई</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image145.png\" width=\"19\" height=\"21\" alt style=\"vertical-align:middle\" ><span>चौड़ाई</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image161.png\" width=\"157\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>वृत्ताकार स्विमिंग पूल का क्षेत्रफल = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image162.png\" width=\"205\" height=\"29\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>घास से ढका हुआ क्षेत्रफल = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image163.png\" width=\"163\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>घास से ढके भाग का प्रतिशत = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image164.png\" width=\"156\" height=\"29\" alt style=\"vertical-align:middle\" ></p>", "question_heading": ""}, {"sr_no": 18, "question": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>किसी कोण के संपूरक कोण का माप उसके पूरक कोण के तीन गुना से </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image165.png\" width=\"25\" height=\"21\" alt style=\"vertical-align:middle\" ><span> अधिक है। उस कोण का माप क्या है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>65°</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>55°</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>45°</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>35°</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>माना कि कोण </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image166.png\" width=\"9\" height=\"21\" alt style=\"vertical-align:middle\" ><span> है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>कोण का पूरक कोण = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image167.png\" width=\"53\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>कोण का संपूरक कोण = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image168.png\" width=\"62\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>प्रश्नानुसार:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image169.png\" width=\"200\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image170.png\" width=\"195\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image171.png\" width=\"152\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image172.png\" width=\"152\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image173.png\" width=\"144\" height=\"21\" alt style=\"vertical-align:middle\" ><span>.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः, उस कोण का माप </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image174.png\" width=\"25\" height=\"21\" alt style=\"vertical-align:middle\" ><span> है।</span></p>", "question_heading": ""}, {"sr_no": 19, "question": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>यदि </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image175.png\" width=\"72\" height=\"23\" alt style=\"vertical-align:middle\" ><span> (जहाँ </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image176.png\" width=\"90\" height=\"21\" alt style=\"vertical-align:middle\" ><span>) है, तो </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image177.png\" width=\"70\" height=\"30\" alt style=\"vertical-align:middle\" ><span> का मान ज्ञात कीजिए।</span></p>", "option1": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image178.png\" width=\"7\" height=\"29\" alt style=\"vertical-align:middle\" ></p>", "option2": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image179.png\" width=\"7\" height=\"29\" alt style=\"vertical-align:middle\" ></p>", "option3": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image180.png\" width=\"7\" height=\"29\" alt style=\"vertical-align:middle\" ></p>", "option4": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image181.png\" width=\"7\" height=\"29\" alt style=\"vertical-align:middle\" ></p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दिया गया है: </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image175.png\" width=\"72\" height=\"23\" alt style=\"vertical-align:middle\" ><span>, जिससे </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image182.png\" width=\"70\" height=\"21\" alt style=\"vertical-align:middle\" ><span> और </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image183.png\" width=\"71\" height=\"29\" alt style=\"vertical-align:middle\" ><span> प्राप्त होता है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>मानक त्रिकोणमितीय सर्वसमिकाओं का उपयोग करने पर:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image184.png\" width=\"215\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image185.png\" width=\"215\" height=\"29\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दिए गए व्यंजक में ये मान प्रतिस्थापित करने पर:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image186.png\" width=\"213\" height=\"42\" alt style=\"vertical-align:middle\" ><span>.</span></p>", "question_heading": ""}, {"sr_no": 20, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>निम्नलिखित डेटा समुच्चय का अंतर-चतुर्थक परास (इन्टरक्वॉर्टाइल रेंज) ज्ञात कीजिए:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>25, 14, 37, 7, 48, 11, 42, 19, 31, 23, 29</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>21</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>23</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>25</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>27</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>सबसे पहले, दिए गए डेटा को आरोही क्रम में व्यवस्थित करते हैं:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>7, 11, 14, 19, 23, 25, 29, 31, 37, 42, 48</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>यहाँ, प्रेक्षणों की कुल संख्या </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image187.png\" width=\"48\" height=\"21\" alt style=\"vertical-align:middle\" ><span> है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>प्रथम चतुर्थक (</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image188.png\" width=\"19\" height=\"21\" alt style=\"vertical-align:middle\" ><span>) = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image189.png\" width=\"42\" height=\"29\" alt style=\"vertical-align:middle\" ><span>वाँ पद = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image190.png\" width=\"78\" height=\"29\" alt style=\"vertical-align:middle\" ><span>राँ पद = 14</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>तृतीय चतुर्थक (</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image191.png\" width=\"19\" height=\"21\" alt style=\"vertical-align:middle\" ><span>) = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image192.png\" width=\"58\" height=\"29\" alt style=\"vertical-align:middle\" ><span>वाँ पद = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image193.png\" width=\"78\" height=\"29\" alt style=\"vertical-align:middle\" ><span>वाँ पद = 37</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अंतर-चतुर्थक परास (</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image194.png\" width=\"28\" height=\"21\" alt style=\"vertical-align:middle\" ><span>) = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image195.png\" width=\"169\" height=\"21\" alt style=\"vertical-align:middle\" ><span>.</span></p>", "question_heading": ""}, {"sr_no": 21, "question": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>एक त्रिभुज में, परिकेन्द्र और केन्द्रक के निर्देशांक क्रमशः </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image196.png\" width=\"35\" height=\"21\" alt style=\"vertical-align:middle\" ><span> और </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image197.png\" width=\"35\" height=\"21\" alt style=\"vertical-align:middle\" ><span> हैं। इसके लंबकेन्द्र के निर्देशांक ज्ञात कीजिए।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>(-3, -1)</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>(-1, -3)</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>(2, 4)</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>(0, 1)</span></p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>किसी भी त्रिभुज में, केन्द्रक </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image198.png\" width=\"11\" height=\"21\" alt style=\"vertical-align:middle\" ><span>, लंबकेन्द्र </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image199.png\" width=\"12\" height=\"21\" alt style=\"vertical-align:middle\" ><span> और परिकेन्द्र </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image200.png\" width=\"11\" height=\"21\" alt style=\"vertical-align:middle\" ><span> को मिलाने वाले रेखाखंड को </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image201.png\" width=\"22\" height=\"21\" alt style=\"vertical-align:middle\" ><span> के अनुपात में अंतःविभाजित करता है, अर्थात् </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image202.png\" width=\"90\" height=\"21\" alt style=\"vertical-align:middle\" ><span>।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>विभाजन सूत्र का उपयोग करने पर:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image203.png\" width=\"148\" height=\"29\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः,</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image204.png\" width=\"314\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image205.png\" width=\"324\" height=\"22\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः, लंबकेन्द्र के निर्देशांक </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image206.png\" width=\"73\" height=\"21\" alt style=\"vertical-align:middle\" ><span> हैं।</span></p>", "question_heading": ""}, {"sr_no": 22, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>निम्नलिखित आँकड़ों का चतुर्थक विचलन ज्ञात कीजिए: 12, 8, 22, 5, 26, 15, 18।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>6</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>7</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>14</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>8</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>सबसे पहले, दिए गए आँकड़ों को आरोही क्रम में व्यवस्थित करें: 5, 8, 12, 15, 18, 22, 26।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>प्रेक्षणों की संख्या, </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image207.png\" width=\"39\" height=\"21\" alt style=\"vertical-align:middle\" ><span>।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>प्रथम चतुर्थक, </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image208.png\" width=\"91\" height=\"29\" alt style=\"vertical-align:middle\" ><span> पद</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image209.png\" width=\"110\" height=\"29\" alt style=\"vertical-align:middle\" ><span> पद</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image210.png\" width=\"30\" height=\"21\" alt style=\"vertical-align:middle\" ><span>।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>तृतीय चतुर्थक, </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image211.png\" width=\"107\" height=\"29\" alt style=\"vertical-align:middle\" ><span> पद</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image212.png\" width=\"41\" height=\"21\" alt style=\"vertical-align:middle\" ><span> पद</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image213.png\" width=\"39\" height=\"21\" alt style=\"vertical-align:middle\" ><span>।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>चतुर्थक विचलन </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image214.png\" width=\"175\" height=\"29\" alt style=\"vertical-align:middle\" ><span>।</span></p>", "question_heading": ""}, {"sr_no": 23, "question": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>केंद्र </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image200.png\" width=\"11\" height=\"21\" alt style=\"vertical-align:middle\" ><span> वाले एक वृत्त में, </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image215.png\" width=\"21\" height=\"21\" alt style=\"vertical-align:middle\" ><span> एक व्यास है। यदि वृत्त पर एक बिंदु </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image216.png\" width=\"10\" height=\"21\" alt style=\"vertical-align:middle\" ><span> इस प्रकार है कि </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image217.png\" width=\"86\" height=\"21\" alt style=\"vertical-align:middle\" ><span> है, तो </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image218.png\" width=\"41\" height=\"21\" alt style=\"vertical-align:middle\" ><span> का माप क्या है?</span></p>", "option1": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image219.png\" width=\"25\" height=\"21\" alt style=\"vertical-align:middle\" ></p>", "option2": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image174.png\" width=\"25\" height=\"21\" alt style=\"vertical-align:middle\" ></p>", "option3": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image220.png\" width=\"25\" height=\"21\" alt style=\"vertical-align:middle\" ></p>", "option4": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image221.png\" width=\"25\" height=\"21\" alt style=\"vertical-align:middle\" ></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>चूँकि </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image215.png\" width=\"21\" height=\"21\" alt style=\"vertical-align:middle\" ><span> वृत्त का व्यास है, अर्धवृत्त में बना कोण समकोण होता है। अतः, </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image222.png\" width=\"86\" height=\"21\" alt style=\"vertical-align:middle\" ><span>।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image223.png\" width=\"49\" height=\"21\" alt style=\"vertical-align:middle\" ><span> में, तीनों कोणों का योग </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image224.png\" width=\"34\" height=\"21\" alt style=\"vertical-align:middle\" ><span> होता है:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image225.png\" width=\"227\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image226.png\" width=\"344\" height=\"21\" alt style=\"vertical-align:middle\" ><span>।</span></p>", "question_heading": ""}, {"sr_no": 24, "question": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>बिन्दुओं </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image227.png\" width=\"35\" height=\"21\" alt style=\"vertical-align:middle\" ><span> और </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image228.png\" width=\"73\" height=\"21\" alt style=\"vertical-align:middle\" ><span> से होकर गुजरने वाली रेखा का y-अंतिम खंड (y-intercept) क्या है?</span></p>", "option1": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image229.png\" width=\"26\" height=\"29\" alt style=\"vertical-align:middle\" ></p>", "option2": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image230.png\" width=\"7\" height=\"29\" alt style=\"vertical-align:middle\" ></p>", "option3": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image231.png\" width=\"26\" height=\"29\" alt style=\"vertical-align:middle\" ></p>", "option4": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image232.png\" width=\"7\" height=\"29\" alt style=\"vertical-align:middle\" ></p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>बिन्दुओं </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image233.png\" width=\"49\" height=\"21\" alt style=\"vertical-align:middle\" ><span> और </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image234.png\" width=\"49\" height=\"21\" alt style=\"vertical-align:middle\" ><span> से गुजरने वाली रेखा की प्रवणता (ढाल) </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image235.png\" width=\"14\" height=\"21\" alt style=\"vertical-align:middle\" ><span> निम्न प्रकार दी जाती है:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image236.png\" width=\"70\" height=\"29\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>बिन्दुओं </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image227.png\" width=\"35\" height=\"21\" alt style=\"vertical-align:middle\" ><span> और </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image228.png\" width=\"73\" height=\"21\" alt style=\"vertical-align:middle\" ><span> के मान रखने पर:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image237.png\" width=\"132\" height=\"29\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>ढाल-अन्तःखण्ड रूप में रेखा का समीकरण </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image238.png\" width=\"79\" height=\"21\" alt style=\"vertical-align:middle\" ><span> होता है, जहाँ </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image239.png\" width=\"8\" height=\"21\" alt style=\"vertical-align:middle\" ><span>, y-अंतिम खंड है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>बिन्दु </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image227.png\" width=\"35\" height=\"21\" alt style=\"vertical-align:middle\" ><span> का उपयोग करने पर:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image240.png\" width=\"89\" height=\"29\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image241.png\" width=\"64\" height=\"29\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image242.png\" width=\"107\" height=\"29\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः रेखा का y-अंतिम खंड </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image229.png\" width=\"26\" height=\"29\" alt style=\"vertical-align:middle\" ><span> है।</span></p>", "question_heading": ""}, {"sr_no": 25, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दो संकेन्द्रीय वृत्तों की त्रिज्याएँ 17 सेमी और 8 सेमी हैं। बड़े वृत्त की उस जीवा की लंबाई ज्ञात कीजिए जो छोटे वृत्त को स्पर्श करती है।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>15 सेमी</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>25 सेमी</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>30 सेमी</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>34 सेमी</span></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>माना संकेन्द्रीय वृत्तों का उभयनिष्ठ केंद्र </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image200.png\" width=\"11\" height=\"21\" alt style=\"vertical-align:middle\" ><span> है। माना बड़े वृत्त की जीवा </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image215.png\" width=\"21\" height=\"21\" alt style=\"vertical-align:middle\" ><span> है, जो छोटे वृत्त को बिंदु </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image243.png\" width=\"10\" height=\"21\" alt style=\"vertical-align:middle\" ><span> पर स्पर्श करती है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>चूँकि स्पर्श बिंदु पर खींची गई त्रिज्या स्पर्श रेखा पर लम्ब होती है, अतः </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image244.png\" width=\"60\" height=\"21\" alt style=\"vertical-align:middle\" ><span> होगा।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>साथ ही, केंद्र से जीवा पर डाला गया लम्ब जीवा को समद्विभाजित करता है, इसलिए </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image245.png\" width=\"114\" height=\"29\" alt style=\"vertical-align:middle\" ><span>।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>समकोण त्रिभुज </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image246.png\" width=\"31\" height=\"21\" alt style=\"vertical-align:middle\" ><span> में:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image247.png\" width=\"91\" height=\"21\" alt style=\"vertical-align:middle\" ><span> सेमी</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image248.png\" width=\"80\" height=\"21\" alt style=\"vertical-align:middle\" ><span> सेमी</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>पाइथागोरस प्रमेय द्वारा:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image249.png\" width=\"413\" height=\"24\" alt style=\"vertical-align:middle\" ><span> सेमी</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः जीवा की लंबाई </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image250.png\" width=\"194\" height=\"21\" alt style=\"vertical-align:middle\" ><span> सेमी है।</span></p>", "question_heading": ""}, {"sr_no": 26, "question": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>एक लम्ब वृत्तीय शंकु का वक्र पृष्ठीय क्षेत्रफल </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image251.png\" width=\"68\" height=\"21\" alt style=\"vertical-align:middle\" ><span> है और इसकी तिर्यक ऊँचाई </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image252.png\" width=\"43\" height=\"21\" alt style=\"vertical-align:middle\" ><span> है। शंकु का आयतन (</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image253.png\" width=\"29\" height=\"21\" alt style=\"vertical-align:middle\" ><span> में) कितना है? (</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image149.png\" width=\"45\" height=\"29\" alt style=\"vertical-align:middle\" ><span> लीजिए)</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>11550</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>12936</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>13860</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>10780</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दिया गया है कि शंकु का वक्र पृष्ठीय क्षेत्रफल, </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image254.png\" width=\"161\" height=\"21\" alt style=\"vertical-align:middle\" ><span> तथा तिर्यक ऊँचाई </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image255.png\" width=\"68\" height=\"21\" alt style=\"vertical-align:middle\" ><span> है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image256.png\" width=\"331\" height=\"29\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अब, शंकु की ऊँचाई </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image257.png\" width=\"424\" height=\"24\" alt style=\"vertical-align:middle\" ><span> होगी।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>शंकु का आयतन </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image258.png\" width=\"443\" height=\"29\" alt style=\"vertical-align:middle\" ><span> है।</span></p>", "question_heading": ""}, {"sr_no": 27, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>यदि अमन की मासिक आय में 15% की वृद्धि होती है और उसके व्यय में 10% की वृद्धि होती है, तो उसकी बचत में ₹1,400 की वृद्धि होती है। यदि उसकी आरंभिक मासिक आय ₹20,000 थी, तो उसका आरंभिक व्यय कितना था? (मान लीजिए कि बचत = आय − व्यय)</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹14,000</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹16,000</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹15,000</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹18,000</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>हम जानते हैं कि:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>आय</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image099.png\" width=\"21\" height=\"21\" alt style=\"vertical-align:middle\" ><span>व्यय</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image259.png\" width=\"20\" height=\"21\" alt style=\"vertical-align:middle\" ><span>बचत</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः, आय में परिवर्तन = व्यय में परिवर्तन + बचत में परिवर्तन:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image260.png\" width=\"10\" height=\"21\" alt style=\"vertical-align:middle\" ><span>आय</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image261.png\" width=\"31\" height=\"21\" alt style=\"vertical-align:middle\" ><span>व्यय</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image262.png\" width=\"26\" height=\"21\" alt style=\"vertical-align:middle\" ><span>बचत</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दिया गया है:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>आरंभिक आय = ₹20,000</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>आय में वृद्धि = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image263.png\" width=\"48\" height=\"21\" alt style=\"vertical-align:middle\" ><span> का </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image264.png\" width=\"208\" height=\"29\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>बचत में वृद्धि = ₹1,400</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>इसलिए, व्यय में वृद्धि:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image260.png\" width=\"10\" height=\"21\" alt style=\"vertical-align:middle\" ><span>व्यय</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image261.png\" width=\"31\" height=\"21\" alt style=\"vertical-align:middle\" ><span>आय</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image265.png\" width=\"26\" height=\"21\" alt style=\"vertical-align:middle\" ><span>बचत</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image266.png\" width=\"186\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>माना आरंभिक व्यय </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image267.png\" width=\"10\" height=\"21\" alt style=\"vertical-align:middle\" ><span> है। चूंकि व्यय में 10% की वृद्धि होती है:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image267.png\" width=\"10\" height=\"21\" alt style=\"vertical-align:middle\" ><span> का </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image268.png\" width=\"92\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image269.png\" width=\"310\" height=\"29\" alt style=\"vertical-align:middle\" ><span>.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः, आरंभिक व्यय ₹16,000 था।</span></p>", "question_heading": ""}, {"sr_no": 28, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>एक दुकानदार एक वस्तु का मूल्य उसके क्रय मूल्य से 40% अधिक अंकित करता है और अंकित मूल्य पर 15% की छूट देता है। यदि वह ₹285 का लाभ अर्जित करता है, तो उस वस्तु का क्रय मूल्य क्या है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹1,400</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹1,500</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹1,650</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹1,800</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>माना वस्तु का क्रय मूल्य (CP) </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image270.png\" width=\"36\" height=\"21\" alt style=\"vertical-align:middle\" ><span> है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अंकित मूल्य (MP) = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image271.png\" width=\"90\" height=\"21\" alt style=\"vertical-align:middle\" ><span> का </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image272.png\" width=\"88\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>विक्रय मूल्य (SP) = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image273.png\" width=\"285\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>लाभ = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image274.png\" width=\"215\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दिया गया है, लाभ = ₹285</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image275.png\" width=\"140\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः, क्रय मूल्य (CP) = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image276.png\" width=\"131\" height=\"21\" alt style=\"vertical-align:middle\" ><span> है।</span></p>", "question_heading": ""}, {"sr_no": 29, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>चार अंकों की वह छोटी से छोटी संख्या ज्ञात कीजिए जो 16, 24, 28 और 32 से पूर्णतः विभाज्य हो।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>1008</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>1344</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>1248</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>1440</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अभीष्ट संख्या ज्ञात करने के लिए, सबसे पहले 16, 24, 28 और 32 का LCM ज्ञात करते हैं।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>संख्याओं का अभाज्य गुणनखंडन:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image277.png\" width=\"56\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image278.png\" width=\"83\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image279.png\" width=\"83\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image280.png\" width=\"56\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image281.png\" width=\"340\" height=\"21\" alt style=\"vertical-align:middle\" ><span>.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>चार अंकों की सबसे छोटी संख्या 1000 होती है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>1000 को 672 से भाग देने पर: </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image282.png\" width=\"111\" height=\"21\" alt style=\"vertical-align:middle\" ><span> और शेषफल </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image283.png\" width=\"27\" height=\"21\" alt style=\"vertical-align:middle\" ><span> प्राप्त होता है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः 672 से विभाज्य चार अंकों की सबसे छोटी संख्या होगी:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image284.png\" width=\"197\" height=\"21\" alt style=\"vertical-align:middle\" ><span> (या </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image285.png\" width=\"111\" height=\"21\" alt style=\"vertical-align:middle\" ><span>)।</span></p>", "question_heading": ""}, {"sr_no": 30, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>साधारण ब्याज की एक निश्चित दर पर निवेश की गई एक राशि 4 वर्ष में ₹8,400 और 7 वर्ष में ₹10,200 हो जाती है। निवेश की गई राशि ज्ञात कीजिए।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹5,600</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹6,000</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹6,400</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹5,800</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दिया गया है:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>7 वर्ष में मिश्रधन = ₹10,200</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>4 वर्ष में मिश्रधन = ₹8,400</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image286.png\" width=\"67\" height=\"21\" alt style=\"vertical-align:middle\" ><span> वर्ष का साधारण ब्याज = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image287.png\" width=\"190\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>1 वर्ष का साधारण ब्याज = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image288.png\" width=\"86\" height=\"29\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>4 वर्ष का साधारण ब्याज = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image289.png\" width=\"122\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>मूलधन (राशि) = 4 वर्ष बाद मिश्रधन </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image290.png\" width=\"20\" height=\"21\" alt style=\"vertical-align:middle\" ><span> 4 वर्ष का साधारण ब्याज</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>मूलधन</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794072820573_image291.png\" width=\"202\" height=\"21\" alt style=\"vertical-align:middle\" ></p>", "question_heading": ""}];
+
+let currentQuestion = 0;
+let answers = {};
+let bookmarks = new Set();
+let timerSeconds = 0;
+let timerInterval = null;
+let isPaletteOpen = false;
+
+const STORAGE_KEY = 'quizState_' + (document.title || 'default');
+
+function isImageURL(str) {
+  return str && (str.startsWith('http://') || str.startsWith('https://'));
+}
+
+function createOptionContent(optionText) {
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'option-content';
+    
+    if (isImageURL(optionText)) {
+        const img = document.createElement('img');
+        img.src = optionText;
+        img.className = 'option-image';
+        img.alt = 'Option image';
+        img.loading = 'lazy';
+        img.onerror = function() {
+            this.style.display = 'none';
+            const errorText = document.createTextNode('Image failed to load');
+            contentDiv.appendChild(errorText);
+        };
+        contentDiv.appendChild(img);
+    } else {
+        contentDiv.innerHTML = optionText;
+    }
+    
+    return contentDiv;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  initQuiz();
+  initEventListeners();
+  loadFromLocalStorage();
+  startTimer();
+  createPalette();
+  preventDoubleTapZoom();
+});
+
+function preventDoubleTapZoom() {
+  let lastTouchEnd = 0;
+  document.addEventListener('touchend', (event) => {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) {
+      event.preventDefault();
+    }
+    lastTouchEnd = now;
+  }, { passive: false });
+}
+
+function initTheme() {
+  const savedTheme = localStorage.getItem('quizTheme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  updateThemeIcon();
+}
+
+function updateThemeIcon() {
+  const theme = document.documentElement.getAttribute('data-theme');
+  const themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    themeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  }
+}
+
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('quizTheme', newTheme);
+  updateThemeIcon();
+}
+
+function initQuiz() {
+  loadQuestion(currentQuestion);
+  updateMarkingInfo();
+}
+
+function initEventListeners() {
+  const themeBtn = document.getElementById('themeToggle');
+  const fullscreenBtn = document.getElementById('fullscreenBtn');
+  
+  if (themeBtn) {
+    themeBtn.addEventListener('click', toggleTheme);
+    themeBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      toggleTheme();
+    });
+  }
+  
+  if (fullscreenBtn) {
+    fullscreenBtn.addEventListener('click', toggleFullscreen);
+    fullscreenBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      toggleFullscreen();
+    });
+  }
+  
+  addButtonListener('prevBtn', prevQuestion);
+  addButtonListener('nextBtn', nextQuestion);
+  addButtonListener('clearBtn', clearAnswer);
+  addButtonListener('submitBtn', confirmSubmit);
+  addButtonListener('bookmarkBtn', toggleBookmark);
+  
+  addButtonListener('paletteFab', togglePalette);
+  addButtonListener('paletteClose', closePalette);
+  
+  const overlay = document.getElementById('paletteOverlay');
+  if (overlay) {
+    overlay.addEventListener('click', closePalette);
+    overlay.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      closePalette();
+    });
+  }
+  
+  const searchInput = document.getElementById('paletteSearch');
+  if (searchInput) {
+    searchInput.addEventListener('input', handleSearch);
+    searchInput.addEventListener('change', jumpToQuestion);
+  }
+  
+  document.addEventListener('keydown', handleKeyPress);
+  
+  setInterval(saveToLocalStorage, 5000);
+  
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      updatePalette();
+    }
+  });
+}
+
+function addButtonListener(id, handler) {
+  const btn = document.getElementById(id);
+  if (btn) {
+    btn.addEventListener('click', handler);
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      handler();
+    });
+  }
+}
+
+function jumpToQuestion(e) {
+  const questionNum = parseInt(e.target.value);
+  if (questionNum >= 1 && questionNum <= questions.length) {
+    goToQuestion(questionNum - 1);
+    closePalette();
+    e.target.value = '';
+  }
+}
+
+function togglePalette() {
+  isPaletteOpen = !isPaletteOpen;
+  const palette = document.getElementById('questionPalette');
+  const overlay = document.getElementById('paletteOverlay');
+  const fab = document.getElementById('paletteFab');
+  
+  if (isPaletteOpen) {
+    palette.classList.add('active');
+    overlay.classList.add('active');
+    fab.classList.add('active');
+    fab.innerHTML = '✕<span class="badge" id="answeredBadge">' + Object.keys(answers).length + '</span>';
+    document.body.classList.add('palette-open');
+  } else {
+    closePalette();
+  }
+}
+
+function closePalette() {
+  isPaletteOpen = false;
+  const palette = document.getElementById('questionPalette');
+  const overlay = document.getElementById('paletteOverlay');
+  const fab = document.getElementById('paletteFab');
+  
+  if (palette) palette.classList.remove('active');
+  if (overlay) overlay.classList.remove('active');
+  if (fab) {
+    fab.classList.remove('active');
+    fab.innerHTML = '📋<span class="badge" id="answeredBadge">' + Object.keys(answers).length + '</span>';
+  }
+  document.body.classList.remove('palette-open');
+}
+
+function handleSearch(e) {
+  const searchTerm = e.target.value.toLowerCase();
+  if (!searchTerm) {
+    document.querySelectorAll('.palette-btn').forEach(btn => {
+      btn.style.display = '';
+    });
+    return;
+  }
+  
+  const buttons = document.querySelectorAll('.palette-btn');
+  buttons.forEach((btn, index) => {
+    const questionNum = (index + 1).toString();
+    if (questionNum.includes(searchTerm)) {
+      btn.style.display = '';
+    } else {
+      btn.style.display = 'none';
+    }
+  });
+}
+
+function handleKeyPress(e) {
+  if (document.getElementById('resultSection').classList.contains('hidden')) {
+    if (e.key === 'Escape' && isPaletteOpen) {
+      closePalette();
+    } else if (!isPaletteOpen && e.target.tagName !== 'INPUT') {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevQuestion();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        nextQuestion();
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        nextQuestion();
+      } else if (e.key === 'b' || e.key === 'B') {
+        e.preventDefault();
+        toggleBookmark();
+      } else if (e.key === 'c' || e.key === 'C') {
+        e.preventDefault();
+        clearAnswer();
+      } else if (e.key === 'p' || e.key === 'P') {
+        e.preventDefault();
+        togglePalette();
+      } else if (e.key >= '1' && e.key <= '4') {
+        e.preventDefault();
+        selectOption(parseInt(e.key));
+      }
+    }
+  }
+}
+
+function selectOption(optionNum) {
+  const q = questions[currentQuestion];
+  const radio = document.querySelector(`input[name="q${q.sr_no}"][value="${optionNum}"]`);
+  if (radio) {
+    radio.checked = true;
+    const label = radio.closest('.option-label');
+    if (label) {
+      document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      saveAnswer();
+    }
+  }
+}
+
+function toggleFullscreen() {
+  try {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(err => {
+        console.log('Fullscreen error:', err);
+      });
+    } else {
+      document.exitFullscreen();
+    }
+  } catch (err) {
+    console.log('Fullscreen not supported');
+  }
+}
+
+function startTimer() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+  timerInterval = setInterval(() => {
+    timerSeconds++;
+    updateTimer();
+    if (timerSeconds > 600) {
+      const timer = document.getElementById('timer');
+      if (timer) timer.classList.add('warning');
+    }
+  }, 1000);
+}
+
+function updateTimer() {
+  const minutes = Math.floor(timerSeconds / 60);
+  const seconds = timerSeconds % 60;
+  const timer = document.getElementById('timer');
+  if (timer) {
+    timer.textContent = 
+      `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  }
+}
+
+function createPalette() {
+  const grid = document.getElementById('paletteGrid');
+  if (!grid) return;
+  
+  grid.innerHTML = '';
+  questions.forEach((q, index) => {
+    const btn = document.createElement('button');
+    btn.textContent = index + 1;
+    btn.className = 'palette-btn';
+    btn.setAttribute('aria-label', `Go to question ${index + 1}`);
+    btn.setAttribute('type', 'button');
+    
+    btn.addEventListener('click', () => {
+      goToQuestion(index);
+      closePalette();
+    });
+    
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      goToQuestion(index);
+      closePalette();
+    });
+    
+    grid.appendChild(btn);
+  });
+  updatePalette();
+}
+
+function updatePalette() {
+  const buttons = document.querySelectorAll('.palette-btn');
+  buttons.forEach((btn, index) => {
+    btn.className = 'palette-btn';
+    if (index === currentQuestion) btn.classList.add('current');
+    if (answers[questions[index].sr_no]) btn.classList.add('answered');
+    if (bookmarks.has(questions[index].sr_no)) btn.classList.add('bookmarked');
+  });
+  
+  updatePaletteStats();
+}
+
+function updatePaletteStats() {
+  const answered = Object.keys(answers).length;
+  const unanswered = questions.length - answered;
+  const bookmarkedCount = bookmarks.size;
+  
+  const answeredEl = document.getElementById('paletteAnswered');
+  const unansweredEl = document.getElementById('paletteUnanswered');
+  const bookmarkedEl = document.getElementById('paletteBookmarked');
+  
+  if (answeredEl) answeredEl.textContent = answered;
+  if (unansweredEl) unansweredEl.textContent = unanswered;
+  if (bookmarkedEl) bookmarkedEl.textContent = bookmarkedCount;
+  
+  const badge = document.querySelector('.palette-fab .badge');
+  if (badge) badge.textContent = answered;
+}
+
+function goToQuestion(index) {
+  if (index < 0 || index >= questions.length) return;
+  saveAnswer();
+  currentQuestion = index;
+  loadQuestion(currentQuestion);
+  
+  const questionSection = document.getElementById('questionSection');
+  if (questionSection) {
+    setTimeout(() => {
+      questionSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+}
+
+function loadQuestion(index) {
+  const q = questions[index];
+  
+  const questionNumber = document.getElementById('questionNumber');
+  const questionText = document.getElementById('questionText');
+  
+  if (questionNumber) {
+    questionNumber.textContent = `Question ${index + 1} of ${questions.length}`;
+  }
+  
+  if (questionText) {
+    questionText.innerHTML = '';
+    
+    // 🌟 NEW: Create the Heading Box if it exists!
+    let headingHtml = '';
+    if (q.question_heading && q.question_heading.trim() !== '') {
+      headingHtml = `<div style="background: var(--bg-tertiary); padding: 15px; border-left: 4px solid var(--primary-color); margin-bottom: 20px; border-radius: 8px; overflow-x: auto;">${q.question_heading}</div>`;
+      questionText.innerHTML = headingHtml; // Inject heading first
+    }
+
+    if (isImageURL(q.question)) {
+      const img = document.createElement('img');
+      img.src = q.question;
+      img.className = 'question-image';
+      img.alt = 'Question image';
+      img.loading = 'lazy';
+      img.onerror = function() {
+        this.style.display = 'none';
+        questionText.innerHTML += q.question;
+      };
+      questionText.appendChild(img);
+    } else {
+      questionText.innerHTML += q.question; // Append question after heading
+    }
+  }
+  
+  const container = document.getElementById('optionsContainer');
+  if (!container) return;
+  
+  container.innerHTML = '';
+  
+  for (let i = 1; i <= 4; i++) {
+    const label = document.createElement('label');
+    label.className = 'option-label';
+    if (answers[q.sr_no] == i) label.classList.add('selected');
+    
+    const radio = document.createElement('input');
+    radio.type = 'radio';
+    radio.name = `q${q.sr_no}`;
+    radio.value = i;
+    radio.checked = answers[q.sr_no] == i;
+    
+    const changeHandler = () => {
+      document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      saveAnswer();
+    };
+    
+    radio.addEventListener('change', changeHandler);
+    label.addEventListener('click', (e) => {
+      if (e.target !== radio) {
+        radio.checked = true;
+        changeHandler();
+      }
+    });
+    
+    label.appendChild(radio);
+    
+    const optionContent = createOptionContent(q[`option${i}`]);
+    label.appendChild(optionContent);
+    
+    container.appendChild(label);
+  }
+  
+  const bookmarkBtn = document.getElementById('bookmarkBtn');
+  if (bookmarkBtn) {
+    if (bookmarks.has(q.sr_no)) {
+      bookmarkBtn.classList.add('active');
+    } else {
+      bookmarkBtn.classList.remove('active');
+    }
+  }
+  
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const submitBtn = document.getElementById('submitBtn');
+  
+  if (prevBtn) prevBtn.disabled = index === 0;
+  
+  if (index === questions.length - 1) {
+    if (nextBtn) nextBtn.classList.add('hidden');
+    if (submitBtn) submitBtn.classList.remove('hidden');
+  } else {
+    if (nextBtn) nextBtn.classList.remove('hidden');
+    if (submitBtn) submitBtn.classList.add('hidden');
+  }
+  
+  updateProgress();
+  updatePalette();
+}
+
+function updateMarkingInfo() {
+  if(questions.length > 0) {
+      const q = questions[0];
+      const markingInfo = document.getElementById('markingInfo');
+      if (markingInfo) {
+        markingInfo.textContent = `Marking: +${q.positive_marking}, -${q.negative_marking}`;
+      }
+  }
+}
+
+function updateProgress() {
+  const attempted = Object.keys(answers).length;
+  const currentProgress = ((currentQuestion + 1) / questions.length) * 100;
+  
+  const progressBar = document.getElementById('progressBar');
+  const progressText = document.getElementById('progressText');
+  const attemptedText = document.getElementById('attemptedText');
+  
+  if (progressBar) progressBar.style.width = `${currentProgress}%`;
+  if (progressText) progressText.textContent = `${currentQuestion + 1}/${questions.length}`;
+  if (attemptedText) attemptedText.textContent = attempted;
+}
+
+function saveAnswer() {
+  const q = questions[currentQuestion];
+  const selected = document.querySelector(`input[name="q${q.sr_no}"]:checked`);
+  
+  if (selected) {
+    answers[q.sr_no] = selected.value;
+  }
+  
+  updateProgress();
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function clearAnswer() {
+  const q = questions[currentQuestion];
+  delete answers[q.sr_no];
+  
+  const selected = document.querySelector(`input[name="q${q.sr_no}"]:checked`);
+  if (selected) selected.checked = false;
+  
+  document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+  
+  updateProgress();
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function toggleBookmark() {
+  const q = questions[currentQuestion];
+  const btn = document.getElementById('bookmarkBtn');
+  
+  if (bookmarks.has(q.sr_no)) {
+    bookmarks.delete(q.sr_no);
+    if (btn) btn.classList.remove('active');
+  } else {
+    bookmarks.add(q.sr_no);
+    if (btn) btn.classList.add('active');
+  }
+  
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function nextQuestion() {
+  saveAnswer();
+  if (currentQuestion < questions.length - 1) {
+    currentQuestion++;
+    loadQuestion(currentQuestion);
+  }
+}
+
+function prevQuestion() {
+  saveAnswer();
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    loadQuestion(currentQuestion);
+  }
+}
+
+function confirmSubmit() {
+  const unattempted = questions.length - Object.keys(answers).length;
+  let message = 'Are you sure you want to submit the quiz?';
+  
+  if (unattempted > 0) {
+    message += `\n\nYou have ${unattempted} unanswered question(s).`;
+  }
+  
+  if (confirm(message)) {
+    submitQuiz();
+  }
+}
+
+function submitQuiz() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+  }
+  saveAnswer();
+  closePalette();
+  
+  let correct = 0, wrong = 0, unattempted = 0, score = 0;
+  
+  questions.forEach(q => {
+    const userAns = answers[q.sr_no];
+    const posMark = parseFloat(q.positive_marking) || 0;
+    const negMark = parseFloat(q.negative_marking) || 0;
+    
+    if (!userAns) {
+      unattempted++;
+    } else if (userAns == q.answer) {
+      correct++;
+      score += posMark;
+    } else {
+      wrong++;
+      score -= negMark;
+    }
+  });
+  
+  displayResults(correct, wrong, unattempted, score);
+  
+  const fab = document.getElementById('paletteFab');
+  const nav = document.getElementById('navigation');
+  if (fab) fab.style.display = 'none';
+  if (nav) nav.style.display = 'none';
+  
+  document.body.style.paddingBottom = '20px';
+  
+  clearLocalStorage();
+}
+
+function displayResults(correct, wrong, unattempted, score) {
+  const totalQuestions = questions.length;
+  const percentage = ((correct / totalQuestions) * 100).toFixed(1);
+  const timerEl = document.getElementById('timer');
+  const timeText = timerEl ? timerEl.textContent : '00:00';
+  
+  let html = `
+    <div class="score-card">
+      <h2>${score}/${totalQuestions}</h2>
+      <p>Your Score: ${percentage}%</p>
+      <p>Time Taken: ${timeText}</p>
+    </div>
+    
+    <div class="stats-grid">
+      <div class="stat-card correct">
+        <h3>${correct}</h3>
+        <p>Correct</p>
+      </div>
+      <div class="stat-card wrong">
+        <h3>${wrong}</h3>
+        <p>Wrong</p>
+      </div>
+      <div class="stat-card unattempted">
+        <h3>${unattempted}</h3>
+        <p>Unattempted</p>
+      </div>
+      <div class="stat-card">
+        <h3>${totalQuestions}</h3>
+        <p>Total</p>
+      </div>
+    </div>
+  `;
+  
+  questions.forEach(q => {
+    const userAns = answers[q.sr_no];
+    
+    // 🌟 NEW: Add the Heading to the results review screen!
+    let headingHtml = (q.question_heading && q.question_heading.trim() !== '') 
+      ? `<div style="background: var(--bg-tertiary); padding: 10px; margin-bottom: 15px; border-left: 4px solid var(--primary-color); border-radius: 5px; overflow-x: auto;">${q.question_heading}</div>` 
+      : '';
+      
+    const questionHeader = isImageURL(q.question)
+      ? `<h4>Q${q.sr_no}:</h4>${headingHtml}<img src="${q.question}" class="question-image" alt="Question ${q.sr_no}">`
+      : `<h4>Q${q.sr_no}:</h4>${headingHtml}<div style="margin-bottom: 10px;">${q.question}</div>`;
+      
+    html += `<div class="question-review">${questionHeader}`;
+    
+    for (let i = 1; i <= 4; i++) {
+      const isCorrect = i.toString() === q.answer;
+      const isUserAnswer = userAns == i.toString();
+      
+      let className = 'review-option';
+      if (isCorrect) className += ' correct';
+      if (isUserAnswer && !isCorrect) className += ' wrong';
+      if (isUserAnswer) className += ' user-selected';
+      
+      const optionValue = q[`option${i}`];
+      
+      if (isImageURL(optionValue)) {
+        html += `<div class="${className}">
+          ${isCorrect ? '✓ ' : ''}${isUserAnswer ? '➤ ' : ''} 
+          <img src="${optionValue}" class="option-image" alt="Option ${i}">
+        </div>`;
+      } else {
+        html += `<div class="${className}">
+          ${isCorrect ? '✓ ' : ''}${isUserAnswer ? '➤ ' : ''}${optionValue}
+        </div>`;
+      }
+    }
+    
+    if (q.solution_text && q.solution_text.trim() !== '') {
+      const solutionContent = isImageURL(q.solution_text)
+        ? `<img src="${q.solution_text}" class="solution-image" alt="Solution">`
+        : q.solution_text;
+      html += `<div class="solution-section">
+        <div class="solution-label">📝 Solution:</div>
+        <div class="solution-content">${solutionContent}</div>
+      </div>`;
+    }
+    
+    html += `</div>`; 
+});
+  
+  html += `
+    <div class="action-buttons">
+      <button class="action-btn restart" onclick="restartQuiz()">Restart Quiz</button>
+      <button class="action-btn download" onclick="downloadResults()">Download Results</button>
+      <button class="action-btn print" onclick="window.print()">Print Results</button>
+    </div>
+  `;
+  
+  const resultSection = document.getElementById('resultSection');
+  const questionSection = document.getElementById('questionSection');
+  const progressSection = document.querySelector('.progress-section');
+  
+  if (resultSection) {
+    resultSection.innerHTML = html;
+    resultSection.classList.remove('hidden');
+  }
+  if (questionSection) questionSection.classList.add('hidden');
+  if (progressSection) progressSection.classList.add('hidden');
+  
+  const quizContainer = document.getElementById('quizContainer');
+  if (quizContainer) {
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
+  }
+}
+
+function restartQuiz() {
+  if (confirm('Are you sure you want to restart? All progress will be lost.')) {
+    currentQuestion = 0;
+    answers = {};
+    bookmarks.clear();
+    timerSeconds = 0;
+    
+    const resultSection = document.getElementById('resultSection');
+    const questionSection = document.getElementById('questionSection');
+    const progressSection = document.querySelector('.progress-section');
+    const fab = document.getElementById('paletteFab');
+    const nav = document.getElementById('navigation');
+    
+    if (resultSection) {
+      resultSection.classList.add('hidden');
+      resultSection.innerHTML = '';
+    }
+    if (questionSection) questionSection.classList.remove('hidden');
+    if (progressSection) progressSection.classList.remove('hidden');
+    if (fab) fab.style.display = 'flex';
+    if (nav) nav.style.display = 'grid';
+    
+    document.body.style.paddingBottom = 'var(--nav-height)';
+    
+    if (timerInterval) {
+      clearInterval(timerInterval);
+    }
+    startTimer();
+    
+    loadQuestion(currentQuestion);
+    createPalette();
+  }
+}
+
+function downloadResults() {
+  const resultSection = document.getElementById('resultSection');
+  if (!resultSection) return;
+  
+  const resultHTML = resultSection.innerHTML;
+  const fullHTML = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Results</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; max-width: 900px; margin: 0 auto; }
+    .score-card { background: linear-gradient(135deg, #007bff, #28a745); color: white; padding: 30px; border-radius: 15px; text-align: center; margin-bottom: 20px; }
+    .score-card h2 { font-size: 48px; margin-bottom: 10px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 30px; }
+    .stat-card { background: white; padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #ddd; }
+    .stat-card h3 { font-size: 32px; margin-bottom: 8px; }
+    .stat-card.correct h3 { color: #28a745; }
+    .stat-card.wrong h3 { color: #dc3545; }
+    .stat-card.unattempted h3 { color: #6c757d; }
+    .question-review { background: white; border: 2px solid #ddd; border-radius: 10px; padding: 20px; margin-bottom: 15px; }
+    .question-review h4 { margin-bottom: 15px; font-size: 16px; line-height: 1.6; }
+    .review-option { padding: 10px 15px; margin: 8px 0; border-radius: 8px; border: 2px solid #ddd; display: flex; align-items: center; gap: 10px; }
+    .option-image { max-width: 150px; max-height: 100px; border-radius: 8px; }
+    .review-option.correct { background: #d4edda; border-color: #28a745; color: #155724; }
+    .review-option.wrong { background: #f8d7da; border-color: #dc3545; color: #721c24; }
+    .review-option.user-selected { border-width: 3px; font-weight: bold; }
+    @media print { body { background: white; } }
+    @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center; color: #007bff;">Quiz Results</h1>
+  <p style="text-align: center; color: #666; margin-bottom: 30px;">Generated on: ${new Date().toLocaleString()}</p>
+  ${resultHTML.replace(/<div class="action-buttons">[\s\S]*?<\/div>/, '')}
+</body>
+</html>
+  `;
+  
+  try {
+    const blob = new Blob([fullHTML], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `Quiz_Results_${new Date().getTime()}.html`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  } catch (err) {
+    alert('Download failed. Please try using the Print option instead.');
+    console.error('Download error:', err);
+  }
+}
+
+function saveToLocalStorage() {
+  try {
+    const state = {
+      currentQuestion,
+      answers,
+      bookmarks: Array.from(bookmarks),
+      timerSeconds,
+      timestamp: Date.now()
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch (err) {
+    console.error('Save error:', err);
+  }
+}
+
+function loadFromLocalStorage() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const state = JSON.parse(saved);
+      const hasProgress = (state && (
+        (state.currentQuestion && state.currentQuestion > 0) ||
+        (state.answers && Object.keys(state.answers).length > 0) ||
+        (state.timerSeconds && state.timerSeconds > 0)
+      ));
+      if (hasProgress && (Date.now() - state.timestamp < 24 * 60 * 60 * 1000)) {
+        if (confirm('Resume previous quiz session?')) {
+          currentQuestion = state.currentQuestion || 0;
+          answers = state.answers || {};
+          bookmarks = new Set(state.bookmarks || []);
+          timerSeconds = state.timerSeconds || 0;
+          updateTimer();
+          loadQuestion(currentQuestion);
+        }
+      } else {
+        clearLocalStorage();
+      }
+    }
+  } catch (err) {
+    console.error('Load error:', err);
+    clearLocalStorage();
+  }
+}
+
+function clearLocalStorage() {
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (err) {
+    console.error('Clear storage error:', err);
+  }
+}
+
+window.addEventListener('beforeunload', (e) => {
+  const resultSection = document.getElementById('resultSection');
+  if (resultSection && !resultSection.classList.contains('hidden')) {
+    return;
+  }
+  e.preventDefault();
+  e.returnValue = '';
+});
+
+window.addEventListener('unload', () => {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+});
+</script>
+</body>
+</html>
