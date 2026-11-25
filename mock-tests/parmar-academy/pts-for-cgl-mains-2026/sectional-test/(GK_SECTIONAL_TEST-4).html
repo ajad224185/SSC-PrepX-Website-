@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>33.) GK SECTIONAL TEST-4 - Hindi</title>
+<style>
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0069d9;
+  --success-color: #28a745;
+  --success-hover: #218838;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --secondary-color: #6c757d;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --border-color: #dee2e6;
+  --shadow: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
+  --overlay: rgba(0,0,0,0.5);
+  --nav-height: 80px;
+}
+
+[data-theme="dark"] {
+  --primary-color: #4dabf7;
+  --primary-hover: #339af0;
+  --success-color: #51cf66;
+  --success-hover: #40c057;
+  --danger-color: #ff6b6b;
+  --warning-color: #ffd43b;
+  --secondary-color: #868e96;
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #404040;
+  --text-primary: #f8f9fa;
+  --text-secondary: #adb5bd;
+  --border-color: #495057;
+  --shadow: 0 4px 6px rgba(0,0,0,0.3);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.4);
+  --overlay: rgba(0,0,0,0.7);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+  overflow-x: hidden;
+  position: relative;
+  padding-bottom: var(--nav-height);
+}
+
+body.palette-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-primary);
+  padding: 20px 30px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+
+.header h1 {
+  font-size: 28px;
+  color: var(--primary-color);
+  font-weight: 700;
+  user-select: none;
+}
+
+.header-controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.theme-toggle, .fullscreen-btn {
+  background: var(--bg-tertiary);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.3s;
+  min-width: 44px;
+  min-height: 44px;
+  user-select: none;
+}
+
+.theme-toggle:active, .fullscreen-btn:active {
+  transform: scale(0.95);
+}
+
+.theme-toggle:hover, .fullscreen-btn:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+.bot-link-btn {
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+}
+.bot-link-btn:active {
+  transform: scale(0.95);
+}
+.bot-link-btn:hover {
+  background: var(--primary-hover);
+}
+
+.timer {
+  background: var(--warning-color);
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 18px;
+  min-width: 100px;
+  text-align: center;
+  user-select: none;
+}
+
+.timer.warning {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.palette-fab {
+  position: fixed;
+  bottom: calc(var(--nav-height) + 20px);
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  box-shadow: 0 6px 20px rgba(0,123,255,0.4);
+  transition: all 0.3s ease;
+  z-index: 998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.palette-fab:active {
+  transform: scale(0.9);
+}
+
+.palette-fab:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0,123,255,0.6);
+}
+
+.palette-fab.active {
+  background: var(--danger-color);
+}
+
+.palette-fab .badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: var(--success-color);
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--bg-secondary);
+  pointer-events: none;
+}
+.solution-section {
+  margin-top: 20px;
+  padding: 15px;
+  background: #e7f3ff;
+  border-left: 4px solid var(--primary-color);
+  border-radius: 8px;
+}
+
+.solution-label {
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.solution-content {
+  line-height: 1.6;
+  color: #333;
+}
+
+.solution-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.palette-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 999;
+  touch-action: none;
+}
+
+.palette-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.question-palette {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 450px;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--bg-primary);
+  box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+  transition: right 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.question-palette.active {
+  right: 0;
+}
+
+.palette-header {
+  padding: 20px;
+  background: var(--primary-color);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.palette-header h3 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.palette-close {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: background 0.2s;
+  line-height: 1;
+  touch-action: manipulation;
+}
+
+.palette-close:active {
+  transform: scale(0.9);
+}
+
+.palette-close:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.palette-stats {
+  padding: 15px 20px;
+  background: var(--bg-tertiary);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  font-size: 13px;
+  text-align: center;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border-color);
+  user-select: none;
+}
+
+.palette-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.palette-stat .number {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.palette-stat.answered .number { color: var(--success-color); }
+.palette-stat.unanswered .number { color: var(--secondary-color); }
+.palette-stat.bookmarked .number { color: var(--warning-color); }
+
+.palette-search {
+  padding: 15px 20px;
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+}
+
+.palette-search input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 14px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.palette-search input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.palette-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 10px;
+}
+
+.palette-btn {
+  aspect-ratio: 1;
+  border: 2px solid var(--border-color);
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+  min-width: 40px;
+  min-height: 40px;
+  color: var(--text-primary);
+  position: relative;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.palette-btn:active {
+  transform: scale(0.9);
+}
+
+.palette-btn:hover {
+  transform: scale(1.1);
+  z-index: 10;
+  box-shadow: var(--shadow);
+}
+
+.palette-btn.current {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  animation: currentPulse 2s infinite;
+}
+
+@keyframes currentPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,123,255,0.7); }
+  50% { box-shadow: 0 0 0 8px rgba(0,123,255,0); }
+}
+
+.palette-btn.answered {
+  background: var(--success-color);
+  color: white;
+  border-color: var(--success-color);
+}
+
+.palette-btn.bookmarked::after {
+  content: '🔖';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.palette-btn.bookmarked.answered {
+  background: var(--success-color);
+}
+
+.palette-legend {
+  padding: 20px;
+  border-top: 1px solid var(--border-color);
+  font-size: 13px;
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.legend-color {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.quiz-container {
+  background: var(--bg-primary);
+  border-radius: 15px;
+  box-shadow: var(--shadow-lg);
+  padding: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  scroll-margin-top: 20px;
+}
+
+.quiz-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.marking-info {
+  display: inline-block;
+  background: var(--bg-tertiary);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.progress-section {
+  margin-bottom: 25px;
+}
+
+.progress-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.progress-bar-container {
+  background: var(--bg-tertiary);
+  border-radius: 12px;
+  overflow: hidden;
+  height: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+  transition: width 0.4s ease;
+  border-radius: 12px;
+}
+
+.question-section {
+  min-height: 300px;
+  scroll-margin-top: 80px;
+  margin-bottom: 20px;
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.question-number {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary-color);
+  user-select: none;
+}
+
+.bookmark-btn {
+  background: transparent;
+  border: 2px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 44px;
+  min-height: 44px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.bookmark-btn:active {
+  transform: scale(0.95);
+}
+
+.bookmark-btn.active {
+  background: var(--warning-color);
+  border-color: var(--warning-color);
+  color: #000;
+}
+
+.question {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 25px;
+  color: var(--text-primary);
+  user-select: text;
+}
+
+.question-image {
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: 10px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  padding: 10px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--border-color);
+  padding: 16px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--bg-secondary);
+  min-height: 60px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.option-label:active {
+  transform: scale(0.98);
+}
+
+.option-label:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--primary-color);
+}
+
+.option-label.selected {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.option-label input[type="radio"] {
+  margin-right: 15px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.option-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.option-image {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  padding: 10px;
+}
+
+.option-label.selected .option-image {
+  background: rgba(255,255,255,0.1);
+}
+
+/* FIXED NAVIGATION - KEY UPDATE */
+.navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-primary);
+  border-top: 2px solid var(--border-color);
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  z-index: 997;
+  padding: 15px 20px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 10px;
+  max-width: 100%;
+}
+
+.nav-btn {
+  padding: 14px 20px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+.nav-btn:active {
+  transform: scale(0.97);
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.nav-btn.prev {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.nav-btn.prev:hover:not(:disabled) {
+  background: #5a6268;
+}
+
+.nav-btn.next {
+  background: var(--primary-color);
+  color: white;
+}
+
+.nav-btn.next:hover:not(:disabled) {
+  background: var(--primary-hover);
+}
+
+.nav-btn.clear {
+  background: var(--danger-color);
+  color: white;
+}
+
+.nav-btn.clear:hover {
+  background: #c82333;
+}
+
+.nav-btn.submit {
+  background: var(--success-color);
+  color: white;
+  grid-column: 1 / -1;
+}
+
+.nav-btn.submit:hover {
+  background: var(--success-hover);
+}
+
+.result-section {
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.score-card {
+  background: linear-gradient(135deg, var(--primary-color), var(--success-color));
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  margin-bottom: 30px;
+  user-select: none;
+}
+
+.score-card h2 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.score-card p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: var(--bg-secondary);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  border: 2px solid var(--border-color);
+  user-select: none;
+}
+
+.stat-card h3 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.stat-card.correct h3 { color: var(--success-color); }
+.stat-card.wrong h3 { color: var(--danger-color); }
+.stat-card.unattempted h3 { color: var(--secondary-color); }
+
+.question-review {
+  border: 2px solid var(--border-color);
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 20px;
+  background: var(--bg-secondary);
+}
+
+.question-review h4 {
+  margin-bottom: 15px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.review-option {
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 2px solid var(--border-color);
+  background: var(--bg-primary);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.review-option .option-image {
+  max-width: 150px;
+  max-height: 100px;
+}
+
+.review-option.correct {
+  background: #d4edda;
+  border-color: var(--success-color);
+  color: #155724;
+}
+
+.review-option.wrong {
+  background: #f8d7da;
+  border-color: var(--danger-color);
+  color: #721c24;
+}
+
+.review-option.user-selected {
+  border-width: 3px;
+  font-weight: 600;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.action-btn {
+  padding: 14px 30px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  min-width: 150px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.action-btn:active {
+  transform: scale(0.95);
+}
+
+.action-btn.restart {
+  background: var(--danger-color);
+  color: white;
+}
+
+.action-btn.restart:hover {
+  background: #c82333;
+}
+
+.action-btn.download {
+  background: var(--primary-color);
+  color: white;
+}
+
+.action-btn.download:hover {
+  background: var(--primary-hover);
+}
+
+.action-btn.print {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.action-btn.print:hover {
+  background: #5a6268;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.palette-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.palette-content::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+}
+
+.palette-content::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+.palette-content::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 140px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .header h1 {
+    font-size: 22px;
+  }
+
+  .quiz-container {
+    padding: 20px 15px;
+  }
+
+  .question-palette {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .palette-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+  }
+
+  .palette-btn {
+    font-size: 13px;
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  .palette-fab {
+    bottom: calc(var(--nav-height) + 10px);
+    right: 15px;
+    width: 56px;
+    height: 56px;
+    font-size: 22px;
+  }
+
+  .navigation {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 12px 15px;
+  }
+
+  .nav-btn {
+    min-height: 44px;
+    font-size: 15px;
+  }
+
+  .nav-btn.clear {
+    order: 3;
+  }
+
+  .nav-btn.submit {
+    grid-column: auto;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .legend-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .question {
+    font-size: 16px;
+  }
+
+  .option-label {
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  .option-image {
+    max-height: 150px;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .palette-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+
+  .palette-btn {
+    font-size: 12px;
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .timer {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  .option-image {
+    max-height: 120px;
+  }
+}
+
+@media print {
+  .header-controls, .navigation, .palette-fab, .palette-overlay, .question-palette, .action-buttons, .bookmark-btn {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    padding-bottom: 0;
+  }
+
+  .container {
+    padding-bottom: 20px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>33.) GK SECTIONAL TEST-4 - Hindi</h1>
+    <div class="header-controls">
+      <a href="https://t.me/ssc_prepX" target="_blank" class="bot-link-btn" title="Open Bot in Telegram">🤖 Bot</a>
+      
+      <div class="timer" id="timer">00:00</div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle Theme">🌙</button>
+      <button class="fullscreen-btn" id="fullscreenBtn" aria-label="Toggle fullscreen" title="Fullscreen">⛶</button>
+    </div>
+  </div>
+
+  <div class="quiz-container" id="quizContainer">
+    <div class="quiz-header">
+      <div class="marking-info" id="markingInfo">Marking: +1, -0</div>
+    </div>
+
+    <div class="progress-section">
+      <div class="progress-stats">
+        <span>Progress: <strong id="progressText">1/2</strong></span>
+        <span>Attempted: <strong id="attemptedText">0</strong></span>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+
+    <div class="question-section" id="questionSection">
+      <div class="question-header">
+        <div class="question-number" id="questionNumber">Question 1 of 2</div>
+        <button class="bookmark-btn" id="bookmarkBtn" aria-label="Bookmark question">
+          <span>🔖</span> <span>Bookmark</span>
+        </button>
+      </div>
+      
+      <div class="question" id="questionText"></div>
+      
+      <div class="options" id="optionsContainer"></div>
+    </div>
+
+    <div class="result-section hidden" id="resultSection"></div>
+  </div>
+</div>
+
+<div class="navigation" id="navigation">
+  <button class="nav-btn prev" id="prevBtn" aria-label="Previous question">
+    <span>←</span> Previous
+  </button>
+  <button class="nav-btn clear" id="clearBtn" aria-label="Clear answer">
+    Clear
+  </button>
+  <button class="nav-btn next" id="nextBtn" aria-label="Next question">
+    Next <span>→</span>
+  </button>
+  <button class="nav-btn submit hidden" id="submitBtn" aria-label="Submit quiz">
+    Submit Quiz
+  </button>
+</div>
+
+<button class="palette-fab" id="paletteFab" aria-label="Toggle question palette" title="Question Palette (P)">
+  📋
+  <span class="badge" id="answeredBadge">0</span>
+</button>
+
+<div class="palette-overlay" id="paletteOverlay"></div>
+
+<div class="question-palette" id="questionPalette">
+  <div class="palette-header">
+    <h3>Question Palette</h3>
+    <button class="palette-close" id="paletteClose" aria-label="Close palette">×</button>
+  </div>
+
+  <div class="palette-stats">
+    <div class="palette-stat answered">
+      <div class="number" id="paletteAnswered">0</div>
+      <div>Answered</div>
+    </div>
+    <div class="palette-stat unanswered">
+      <div class="number" id="paletteUnanswered">2</div>
+      <div>Not Answered</div>
+    </div>
+    <div class="palette-stat bookmarked">
+      <div class="number" id="paletteBookmarked">0</div>
+      <div>Bookmarked</div>
+    </div>
+  </div>
+
+  <div class="palette-search">
+    <input type="number" id="paletteSearch" placeholder="Jump to question number..." aria-label="Search questions" inputmode="numeric" pattern="[0-9]*">
+  </div>
+
+  <div class="palette-content">
+    <div class="palette-grid" id="paletteGrid"></div>
+  </div>
+
+  <div class="palette-legend">
+    <div class="legend-grid">
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--success-color);"></div>
+        <span>Answered</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--bg-secondary); border: 2px solid var(--border-color);"></div>
+        <span>Not Answered</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--primary-color);"></div>
+        <span>Current Question</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--warning-color);"></div>
+        <span>🔖 Bookmarked</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// JSON INJECTION HAPPENS HERE
+const questions = [{"sr_no": 1, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Consider the following statements regarding the Vijayanagara    Empire and its architectural and administrative legacy:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>1. The    Nayankara System was a major military-administrative institution    where military chiefs (Amara-Nayakas) were granted territory    (Amaram) in lieu of salary to maintain troops for the king.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>2.    Krishnadevaraya of the Tuluva Dynasty authored the Telugu treatise    on statecraft titled Amuktamalyada and the Sanskrit play Jambavati    Kalyanam.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>3. Foreign    travelers Niccolò de' Conti (Italian) and Abdur Razzaq (Persian)    visited Vijayanagara during the reign of Rama Raya of the Aravidu    Dynasty.</b></p>    <p style=\"orphans:0;widows:0\"><b>Which of the statements given    above are correct?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    1 and 2 only</p>", "option2": " <p style=\"orphans:0;widows:0\">    2 and 3 only</p>", "option3": " <p style=\"orphans:0;widows:0\">    1 and 3 only</p>", "option4": " <p style=\"orphans:0;widows:0\">    1, 2 and 3</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Founded in <b>1336 CE</b> by <b>Harihara I and Bukka Raya I</b> on    the banks of the <b>Tungabhadra River</b>, the Vijayanagara Empire    developed the <i>Amara-Nayaka</i> system (modeled on the Delhi    Sultanate's <i>Iqta</i> system) and reached its cultural zenith    under Krishnadevaraya (r. 1509–1529).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    1</b>: Correct. <i>Amara-Nayakas</i> collected taxes, maintained    horses/elephants, and remitted annual tribute to the royal    treasury.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    2</b>: Correct. Krishnadevaraya (<i>Andhra Bhoja</i>) patronized    the <i>Ashtadiggajas</i> (eight Telugu poets) and composed    <i>Amuktamalyada</i>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    3</b>: Incorrect. <b>Niccolò de' Conti</b> visited during <b>Deva    Raya I</b> (c. 1420), and <b>Abdur Razzaq</b> visited during <b>Deva    Raya II</b> (1443)—both belonging to the <b>Sangama Dynasty</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Portuguese    travelers Domingo Paes and Duarte Barbosa</b> visited Vijayanagara    during the reign of <b>Krishnadevaraya</b>, while <b>Fernão Nuniz</b>    visited during <b>Achyuta Deva Raya</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">The <b>Battle    of Talikota (Rakshasi-Tangadi, January 1565)</b> resulted in the    defeat of Rama Raya by the combined Deccan Sultanates.</p>    <p style=\"orphans:0;widows:0\">The <b>Vittala Temple</b> at    Hampi, famous for its iconic <b>Stone Chariot</b> and <b>56    musical pillars</b> (<i>SaReGaMa</i> pillars), was built during    the reign of <b>Deva Raya II</b> and expanded under    <b>Krishnadevaraya</b>.</p>", "question_heading": ""}, {"sr_no": 2, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Match List-I (19th-Century Socio-Religious Reform Organization)    with List-II (Founder &amp; Year):</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><u><b>List-I:    List-II: </b></u>    </p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>A. Brahmo    Samaj 1. Jyotirao Phule (1873)</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>B. Arya    Samaj 2. Raja Ram Mohan Roy (1828)</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>C. Satya    Shodhak Samaj 3. Atmaram Pandurang (1867)</b></p>    <p style=\"orphans:0;widows:0\"><b>D. Prarthana Samaj 4. Swami    Dayananda Saraswati (1875)</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    A-1, B-4, C-2, D-3</p>", "option2": " <p style=\"orphans:0;widows:0\">    A-2, B-1, C-4, D-3</p>", "option3": " <p style=\"orphans:0;widows:0\">    A-2, B-4, C-1, D-3</p>", "option4": " <p style=\"orphans:0;widows:0\">    A-3, B-4, C-1, D-2</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The 19th-century Indian Renaissance sparked organized movements    against caste discrimination, idolatry, sati, and child marriage    across Bengal, Bombay, and Punjab.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Brahmo    Samaj (2)</b>: Founded in <b>Calcutta (1828)</b> by <b>Raja Ram    Mohan Roy</b> (originally as <i>Brahmo Sabha</i>) advocating    monotheism and rationalism.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Arya Samaj    (4)</b>: Founded in <b>Bombay (1875)</b> (headquarters shifted to    Lahore in 1877) by <b>Swami Dayananda Saraswati</b> (<i>Mool    Shankar</i>) with the motto <i>\"Go Back to the Vedas\"</i>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Satya    Shodhak Samaj (1)</b>: Founded in <b>Pune (1873)</b> by <b>Jyotirao    Phule</b> to champion social equality and education for    marginalized castes and women.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Prarthana    Samaj (3)</b>: Founded in <b>Bombay (1867)</b> by <b>Dr. Atmaram    Pandurang</b> (inspired by Keshab Chandra Sen and later    strengthened by <b>M.G. Ranade</b>).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Swami    Dayananda Saraswati</b> authored <b>Satyarth Prakash</b> (in    Hindi) and pioneered the <b>Shuddhi Movement</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Jyotirao    Phule</b> authored <b>Gulamgiri (1873)</b> and <b>Shetkaryacha    Asud</b>, while <b>Savitribai Phule</b> opened India's first    girls' school at Bhide Wada, Pune in <b>1848</b>.</p>    <p style=\"orphans:0;widows:0\"><b>Tattvabodhini Sabha (1839)</b>    was founded in Calcutta by <b>Debendranath Tagore</b> to propagate    Raja Ram Mohan Roy's ideas.</p>", "question_heading": ""}, {"sr_no": 3, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Arrange the following landmark events of the 1940s Indian    Freedom Struggle in correct chronological order:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>1. Cripps    Mission arrival in India</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>2. Launch    of the Quit India Movement</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>3.    Formation of the Azad Hind Fauj (INA) in Singapore under Subhas    Chandra Bose's leadership</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>4. Cabinet    Mission arrival in India</b></p>    <p style=\"orphans:0;widows:0\"><b>Select the correct answer    using the code given below:</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    1 – 2 – 3 – 4</p>", "option2": " <p style=\"orphans:0;widows:0\">    1 – 3 – 2 – 4</p>", "option3": " <p style=\"orphans:0;widows:0\">    2 – 1 – 3 – 4</p>", "option4": " <p style=\"orphans:0;widows:0\">    1 – 2 – 4 – 3</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    World War II geopolitical pressures accelerated British    constitutional negotiations and final mass movements between 1942    and 1946.</p>    <ol>     <li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Cripps     Mission (March 1942)</b>: Led by Sir Stafford Cripps offering     Dominion Status after WWII; rejected by Gandhi as a \"post-dated     cheque.\"</p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Quit     India Movement (August 8–9, 1942)</b>: Launched at Gowalia Tank     Maidan (August Kranti Maidan), Bombay, with Gandhi's call of <i>\"Do     or Die\"</i>.</p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Subhas     Chandra Bose assuming leadership of INA &amp; Provisional     Government of Free India (July–October 1943)</b>: Rash Behari     Bose handed over Indian Independence League &amp; INA leadership     to Netaji in Singapore in July 1943, followed by <i>Arzi     Hukumat-e-Azad Hind</i> on October 21, 1943.</p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Cabinet     Mission (March 24, 1946)</b>: Three-member British delegation     (Pethick-Lawrence, Stafford Cripps, A.V. Alexander) proposing the     Constituent Assembly and a three-tier federal union.</p>    </li></ol>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">The <b>Indian    National Army (INA)</b> was originally conceived in Malaya in <b>1942</b>    by <b>Captain Mohan Singh</b> with Japanese assistance before    being revitalized by <b>Subhas Chandra Bose</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">During the    <b>1942 Quit India Movement</b>, parallel national governments    (<i>Prati Sarkar</i>) were formed at <b>Ballia</b> (Chittu    Pandey), <b>Tamluk</b> (<i>Jatiya Sarkar</i>), and <b>Satara</b>    (<i>Prati Sarkar</i> under Y.B. Chavan and Nana Patil).</p>    <p style=\"orphans:0;widows:0\"><b>Usha Mehta</b> operated an    underground secret radio station (<b>Congress Radio</b>) from    Bombay during the 1942 Quit India Movement.</p>", "question_heading": ""}, {"sr_no": 4, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Assertion (A)</b><b>: The Battle of Buxar (October 22, 1764)    proved far more decisive than the Battle of Plassey (1757) in    establishing British supremacy in northern India.</b></p>    <p style=\"orphans:0;widows:0\"><b>Reason (R): </b><b>At Buxar,    the British East India Company forces led by Major Hector Munro    defeated a combined triple alliance of Mir Qasim (Nawab of    Bengal), Shuja-ud-Daula (Nawab of Awadh), and Shah Alam II (Mughal    Emperor), directly leading to the Treaty of Allahabad (1765) and    the grant of Diwani rights.</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Both A and R are true, but R is NOT the correct explanation of A</p>", "option2": " <p style=\"orphans:0;widows:0\">    A is true, but R is false</p>", "option3": " <p style=\"orphans:0;widows:0\">    Both A and R are true, and R is the correct explanation of A</p>", "option4": " <p style=\"orphans:0;widows:0\">    A is false, but R is true</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    While Plassey (June 23, 1757) was won largely through conspiracy    with Mir Jafar, <b>Buxar (1764)</b> was an outright military    victory over the three most powerful rulers of northern India,    making the Company the de facto sovereign power in Bengal.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Assertion    (A)</b>: True. Buxar established unchallenged British military    dominance across Bengal, Bihar, and Awadh.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Reason    (R)</b>: True. Under the <b>Treaty of Allahabad (August 1765)</b>    negotiated by Robert Clive, Mughal Emperor Shah Alam II granted    the Company the <b>Diwani</b> (revenue collection rights) of    Bengal, Bihar, and Orissa in return for an annual pension of ₹26    lakh.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Following the    Treaty of Allahabad (1765), <b>Robert Clive</b> introduced the    <b>Dual System of Government (Dyarchy)</b> in Bengal (1765–1772),    separating <b>Diwani</b> (revenue, held by Company) from <b>Nizamat</b>    (police and judicial administration, left nominally to the Nawab).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Warren    Hastings</b> abolished the Dual System of Government in <b>1772</b>    and shifted the treasury from Murshidabad to Calcutta.</p>    <p style=\"orphans:0;widows:0\"><b>Major Hector Munro</b>    commanded the British forces at the <b>Battle of Buxar (1764)</b>—not    Robert Clive (who returned to India in 1765 to sign the Treaty of    Allahabad).</p>", "question_heading": ""}, {"sr_no": 5, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Consider the following statements regarding Plate Tectonics and    the formation of the Himalayas:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>1. The    Himalayas are young fold mountains formed along a    continent-continent convergent boundary due to the collision of    the northward-moving Indian Plate with the Eurasian Plate.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>2. Because    the Indian Plate has completely ceased moving northward, the    Himalayan region is now seismically inactive and free from major    earthquakes.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>3. The    Tethys Sea geosyncline lay between the northern Angaraland    (Laurasia) and the southern Gondwanaland before being uplifted    into the Himalayan mountain ranges.</b></p>    <p style=\"orphans:0;widows:0\"><b>Which of the statements given    above are correct?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    1 and 2 only</p>", "option2": " <p style=\"orphans:0;widows:0\">    2 and 3 only</p>", "option3": " <p style=\"orphans:0;widows:0\">    1 and 3 only</p>", "option4": " <p style=\"orphans:0;widows:0\">    1, 2 and 3</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Originating during the Cenozoic Era (Tertiary period) from the    compression of marine sediments deposited in the <b>Tethys Sea</b>,    the Himalayas consist of three parallel structural ranges    (Himadri, Himachal, and Shiwaliks) separated by major thrust    faults.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    1</b>: Correct. Continent-continent convergence crumpled thick    continental crust upward rather than subducting deeply.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    2</b>: Incorrect. Ongoing northward convergence causes continuous    uplift of Mount Everest and intense seismic activity (Zone IV and    Zone V).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    3</b>: Correct. Marine limestone and fossilized ammonites found    high in the Himalayas confirm their Tethyan seabed origin.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Indus-Tsangpo    Suture Zone (ITSZ)</b> marks the tectonic collision boundary    between the Indian Plate and the Eurasian Plate.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Main    Central Thrust (MCT)</b> separates the <b>Greater Himalayas    (Himadri)</b> from the <b>Lesser Himalayas (Himachal)</b>, while    the <b>Main Boundary Thrust (MBT)</b> separates the <b>Lesser    Himalayas</b> from the <b>Outer Himalayas (Shiwaliks)</b>.</p>    <p style=\"orphans:0;widows:0\"><b>Peninsular India</b> (Deccan    Plateau) is part of the ancient <b>Gondwanaland</b> landmass and    is one of the oldest, most stable Precambrian crustal blocks on    Earth.</p>", "question_heading": ""}, {"sr_no": 6, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Match List-I (Major Grassland Biome) with List-II (Continent /    Country):</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>List-I:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>A. Pampas</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>B. Veld</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>C. Downs</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>D. Steppes</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>List-II:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>1.    Australia</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>2. Eurasia    (Ukraine / Russia / Central Asia)</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>3. South    America (Argentina / Uruguay)</b></p>    <p style=\"orphans:0;widows:0\"><b>4. South Africa</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    A-4, B-3, C-1, D-2</p>", "option2": " <p style=\"orphans:0;widows:0\">    A-3, B-1, C-4, D-2</p>", "option3": " <p style=\"orphans:0;widows:0\">    A-3, B-4, C-1, D-2</p>", "option4": " <p style=\"orphans:0;widows:0\">    A-2, B-4, C-1, D-3</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Temperate grasslands develop in mid-latitude continental interiors    with moderate rainfall, supporting commercial wheat farming and    livestock ranching under distinct regional names.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Pampas    (3)</b>: Fertile temperate grasslands spanning <b>Argentina and    Uruguay</b> in South America (famous for alfalfa grass and cattle    ranching).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Veld (4)</b>:    Elevated temperate plateau grasslands of <b>South Africa</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Downs (1)</b>:    Temperate grasslands in the Murray-Darling basin of <b>Australia</b>    (while <b>Canterbury Plains</b> are in <b>New Zealand</b>).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Steppes    (2)</b>: Vast treeless temperate grasslands stretching across    <b>Eurasia</b> (Ukraine, Russia, Kazakhstan).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Prairies</b>:    Temperate grasslands of <b>North America</b> (USA &amp; Canada),    dubbed the \"Granary of the World\" due to extensive    mechanized wheat cultivation.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Pustaz</b>:    Temperate grasslands located in <b>Hungary</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Tropical    Grasslands (Savannas)</b> include <b>Llanos</b>    (Venezuela/Colombia) and <b>Campos</b> (Brazil).</p>    <p style=\"orphans:0;widows:0\">In India, high-altitude alpine    pasture meadows in the Himalayas are known locally as <b>Bugyals</b>    in <b>Uttarakhand</b> and <b>Margs</b> (e.g., Gulmarg, Sonamarg)    in <b>Jammu &amp; Kashmir</b>.</p>", "question_heading": ""}, {"sr_no": 7, "question": " <p style=\"orphans:0;widows:0\">    <b>Which major river basin in India—originating in the    Brahmagiri Hills of Kodagu (Coorg) district in Karnataka and    draining into the Bay of Bengal at Poompuhar—forms the fertile    Thanjavur Delta, historically known as the \"Granary of South    India\"?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Krishna River</p>", "option2": " <p style=\"orphans:0;widows:0\">    Kaveri River</p>", "option3": " <p style=\"orphans:0;widows:0\">    Pennar River</p>", "option4": " <p style=\"orphans:0;widows:0\">    Vaigai River</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Flowing ~800 km across Karnataka and Tamil Nadu, the Kaveri is fed    by both the South-West Monsoon (upper basin) and North-East    Monsoon (lower basin), supporting intensive paddy cultivation in    the Thanjavur alluvial fan.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Krishna    River</b>: Originates near <b>Mahabaleshwar</b> (Maharashtra) and    forms a delta with the Godavari in Andhra Pradesh.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Kaveri    River</b>: Correct. Major tributaries include <b>Kabini, Bhavani,    Noyyal, Amaravati, Hemavati, and Arkavathi</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Pennar    River</b>: Originates in the <b>Nandi Hills</b> (Chikkaballapur,    Karnataka) and flows through Andhra Pradesh into the Bay of    Bengal.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Vaigai    River</b>: Originates in the <b>Varushanad Hills</b> (Tamil Nadu),    flows through <b>Madurai</b>, and empties into the Palk Strait.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Sivasamudram    Falls</b> (Karnataka) on the Kaveri River is the site of one of    <b>Asia's earliest hydroelectric power stations</b>, commissioned    in <b>1902</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Mettur Dam</b>    (Stanley Reservoir) is constructed across the Kaveri River in    Salem district, Tamil Nadu, while <b>Krishna Raja Sagara (KRS) Dam</b>    is built across it near Mysuru, Karnataka.</p>    <p style=\"orphans:0;widows:0\">The <b>Kaveri River</b> splits    into multiple distributaries in Tiruchirappalli forming <b>Srirangam    Island</b>, with the northern branch named <b>Kollidam (Coleroon)</b>.</p>", "question_heading": ""}, {"sr_no": 8, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Consider the following statements regarding the Emergency    Provisions under Part XVIII of the Indian Constitution:</b></p>    <ol>     <li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Under     Article 352, a proclamation of National Emergency can be issued     by the President on grounds of war, external aggression, or armed     rebellion, and must be approved by both Houses of Parliament     within one month by a special majority.</b></p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>During     a National Emergency, the enforcement of Fundamental Rights     guaranteed under Articles 20 and 21 can never be suspended by any     Presidential Order under Article 359.</b></p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Under     Article 360, a proclamation of Financial Emergency has been     invoked only once in India—during the 1991 Balance of Payments     crisis.</b></p>    </li></ol>    <p style=\"orphans:0;widows:0\"><b>Which of the statements given    above are correct?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    1 and 3 only</p>", "option2": " <p style=\"orphans:0;widows:0\">    2 and 3 only</p>", "option3": " <p style=\"orphans:0;widows:0\">    1 and 2 only</p>", "option4": " <p style=\"orphans:0;widows:0\">    1, 2 and 3</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Emergency provisions (Articles 352–360) transform India's    federal structure into a unitary system during crises, subject to    strict parliamentary oversight instituted after 1978.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    1</b>: Correct. The <b>44th Amendment Act, 1978</b> replaced the    vague term \"internal disturbance\" with <b>\"armed    rebellion,\"</b> required written advice of the Union Cabinet,    shortened parliamentary approval time from 2 months to <b>1 month</b>,    and mandated a <b>Special Majority</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    2</b>: Correct. <b>Articles 20</b> (protection in respect of    conviction for offences) and <b>21</b> (protection of life and    personal liberty) remain non-suspendable even during a National    Emergency.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    3</b>: Incorrect. <b>Article 360 (Financial Emergency)</b> has    been invoked <b>zero times</b> since 1950.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>National    Emergency (Article 352)</b> has been proclaimed <b>three times</b>    in India: <b>1962</b> (China war), <b>1971</b> (Pakistan war), and    <b>1975</b> (internal disturbance).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>President's    Rule / State Emergency (Article 356)</b> requires parliamentary    approval within <b>2 months</b> by a <b>Simple Majority</b> and    can last for a maximum of <b>3 years</b> (subject to conditions    beyond 1 year).</p>    <p style=\"orphans:0;widows:0\">Under <b>Article 352(3)</b>, the    President can issue a proclamation of National Emergency <b>only    after receiving the written recommendation of the Union Cabinet</b>    (Prime Minister and Cabinet Ministers), a safeguard added by the    <b>44th Amendment Act, 1978</b>.</p>", "question_heading": ""}, {"sr_no": 9, "question": " <p style=\"orphans:0;widows:0\">    <b>Which constitutional provision empowers the Supreme Court of    India to pass any decree or make any order necessary for doing    \"complete justice\" in any cause or matter pending before    it, enforceable throughout the territory of India?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Article 131</p>", "option2": " <p style=\"orphans:0;widows:0\">    Article 137</p>", "option3": " <p style=\"orphans:0;widows:0\">    Article 142</p>", "option4": " <p style=\"orphans:0;widows:0\">    Article 143</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Article 142 ensures that procedural or statutory gaps do not    obstruct substantive justice in the apex court (invoked in    landmark cases ranging from the Bhopal Gas Tragedy compensation to    the Ayodhya dispute and environmental directives).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Article    131</b>: Grants <b>Original Jurisdiction</b> to the Supreme Court    in federal disputes between the Centre and States or between    States.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Article    137</b>: Grants the Supreme Court power to <b>review its own    judgments or orders</b> (Judicial Review of own decisions).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Article    142</b>: Correct. Enforcement of decrees and orders of Supreme    Court to do <b>\"complete justice.\"</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Article    143</b>: Grants <b>Advisory Jurisdiction</b> enabling the    President of India to seek the Supreme Court's opinion on    questions of law or fact of public importance.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Under <b>Article    129</b>, the Supreme Court is a <b>Court of Record</b>, possessing    the power to punish for contempt of itself.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Under <b>Article    141</b>, the law declared by the Supreme Court is <b>binding on    all courts</b> within the territory of India.</p>    <p style=\"orphans:0;widows:0\"><b>Article 215</b> confers the    status of a <b>Court of Record</b> upon every <b>High Court</b> in    India (analogous to Article 129 for the Supreme Court).</p>", "question_heading": ""}, {"sr_no": 10, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Match List-I (Writ / Constitutional Doctrinal Principle) with    List-II (Core Legal Meaning):</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>List-I:    List-II:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>A.    Doctrine of Basic Structure 1. Pre-constitutional laws    inconsistent with Fundamental Rights are not dead, but remain    dormant until the constitutional shadow is removed</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>B.    Doctrine of Severability 2. Parliament cannot alter the    foundational identity of the Constitution under Article 368</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>C.    Doctrine of Eclipse 3. Determines the true nature and character of    a law when a legislature appears to encroach upon another list in    the Seventh Schedule</b></p>    <p style=\"orphans:0;widows:0\"><b>D. Doctrine of Pith and    Substance 4. Only the unconstitutional portion of a statute is    declared void if it can be separated from the valid remainder</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    A-1, B-4, C-2, D-3</p>", "option2": " <p style=\"orphans:0;widows:0\">    A-2, B-1, C-4, D-3</p>", "option3": " <p style=\"orphans:0;widows:0\">    A-2, B-4, C-1, D-3</p>", "option4": " <p style=\"orphans:0;widows:0\">    A-3, B-4, C-1, D-2</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Constitutional interpretation doctrines developed by the Supreme    Court preserve legislative validity wherever possible while    protecting Fundamental Rights and federal balance.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Doctrine    of Basic Structure (2)</b>: Propounded by the 13-judge bench in    <b>Kesavananda Bharati v. State of Kerala (1973)</b> limiting    Parliament's amending power under Article 368.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Doctrine    of Severability (4)</b>: Derived from <b>Article 13</b>, striking    down only the offending clause of a statute while saving the    constitutional remainder.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Doctrine    of Eclipse (1)</b>: Derived from <b>Article 13(1)</b> (<i>Bhikaji    Narain Dhakras v. State of MP, 1955</i>), keeping pre-1950    inconsistent laws overshadowed rather than void ab initio.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Doctrine    of Pith and Substance (3)</b>: Applied in Seventh Schedule    disputes to validate legislation whose primary subject falls    within the enacting legislature's competence despite incidental    encroachment.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Doctrine    of Colourable Legislation</b> is based on the maxim <i>\"What    cannot be done directly, cannot also be done indirectly.\"</i></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Minerva    Mills v. Union of India (1980)</b> reaffirmed that <b>Judicial    Review</b> and harmony between Fundamental Rights and DPSPs are    essential features of the Basic Structure.</p>    <p style=\"orphans:0;widows:0\">The <b>13-judge bench</b> in    <b>Kesavananda Bharati (1973)</b> remains the <b>largest    constitutional bench</b> ever constituted in the history of the    Supreme Court of India (decided by a narrow 7:6 majority).</p>", "question_heading": ""}, {"sr_no": 11, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Consider the following statements regarding Balance of Payments    (BoP) and Exchange Rate Management in India:</b></p>    <ol>     <li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Devaluation     refers to a deliberate downward adjustment in the official value     of a domestic currency relative to foreign currencies by the     monetary authority under a fixed/pegged exchange rate regime,     whereas Depreciation occurs through market forces of demand and     supply under a floating exchange rate.</b></p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>When     the Rupee depreciates against the US Dollar (e.g., moving from     ₹84/USD to ₹87/USD), Indian exports generally become more     price-competitive in global markets, while imports become     costlier.</b></p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Purchasing     Power Parity (PPP) compares currencies using a \"basket of     goods\" approach to equalize purchasing power across     countries; by GDP (PPP), India is the fifth-largest economy in     the world behind the USA, China, Japan, and Germany.</b></p>    </li></ol>    <p style=\"orphans:0;widows:0\"><b>Which of the statements given    above are correct?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    1 and 2 only</p>", "option2": " <p style=\"orphans:0;widows:0\">    2 and 3 only</p>", "option3": " <p style=\"orphans:0;widows:0\">    1 and 3 only</p>", "option4": " <p style=\"orphans:0;widows:0\">    1, 2 and 3</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    India follows a <b>managed floating exchange rate</b> regime where    the Rupee's value is market-determined while RBI intervenes via    forex reserves solely to curb excessive volatility.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    1</b>: Correct. Devaluation is an administrative policy action;    depreciation is a market-driven movement.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    2</b>: Correct. A weaker Rupee yields more Rupees per Dollar    earned by exporters (boosting export competitiveness) while    raising the Rupee cost of imported crude oil and electronics.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    3</b>: Incorrect. India is the <b>3rd-largest economy globally in    PPP terms</b> (after China and the USA).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">India    officially devalued the Rupee three times post-independence: <b>1949</b>,    <b>1966</b>, and <b>July 1991</b> (in two steps during the BoP    crisis).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Special    Drawing Rights (SDRs)</b>—dubbed <b>\"Paper Gold\"</b>—is    an international reserve asset created by the <b>IMF in 1969</b>,    valued based on a basket of <b>five currencies</b>: US Dollar,    Euro, Chinese Renminbi, Japanese Yen, and British Pound Sterling.</p>    <p style=\"orphans:0;widows:0\"><b>Full Convertibility of the    Indian Rupee</b> exists on the <b>Current Account</b> (since    August 1994), whereas India maintains <b>Partial Convertibility</b>    on the <b>Capital Account</b> (as recommended by the <b>Tarapore    Committee</b>).</p>", "question_heading": ""}, {"sr_no": 12, "question": " <p style=\"orphans:0;widows:0\">    <b>Which type of unemployment occurs in an economy due to    structural shifts in technology, automation, or skill mismatches    between what employers require and what workers possess—rather    than temporary cyclical downturns in aggregate demand?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Frictional Unemployment</p>", "option2": " <p style=\"orphans:0;widows:0\">    Cyclical Unemployment</p>", "option3": " <p style=\"orphans:0;widows:0\">    Structural Unemployment</p>", "option4": " <p style=\"orphans:0;widows:0\">    Disguised Unemployment</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Economists distinguish unemployment types by root cause:    <b>Structural</b> (skill/tech mismatch), <b>Frictional</b>    (voluntary job transitions), <b>Cyclical</b> (recessionary demand    shortfall), and <b>Disguised</b> (zero marginal productivity in    overcrowded sectors).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Frictional    Unemployment</b>: Short-term transitional unemployment when    workers move between jobs or enter the workforce for the first    time.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Cyclical    Unemployment</b>: Caused by downturns in the <b>business cycle    (recession)</b> when aggregate demand falls and firms lay off    workers.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Structural    Unemployment</b>: Correct. Caused by mismatch between workers'    skills and modern industry demands.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Disguised    Unemployment</b>: Prevalent in Indian subsistence agriculture    where more workers are employed than needed, making the <b>marginal    productivity of extra labor equal to zero</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Natural    Rate of Unemployment (NAIRU)</b> equals the sum of <b>Frictional    Unemployment + Structural Unemployment</b> (meaning Cyclical    Unemployment is zero at full employment).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Okun's Law</b>    describes the empirical inverse relationship between a country's    unemployment rate and its GDP growth rate.</p>    <p style=\"orphans:0;widows:0\">In India, the <b>Periodic Labour    Force Survey (PLFS)</b> is conducted and published by the <b>National    Statistical Office (NSO)</b> under MoSPI.</p>", "question_heading": ""}, {"sr_no": 13, "question": " <p style=\"orphans:0;widows:0\">    <b>In public finance and economic development, what does the    Incremental Capital-Output Ratio (ICOR) measure?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Additional units of capital investment required to produce one    additional unit of economic output (GDP)</p>", "option2": " <p style=\"orphans:0;widows:0\">    Ratio of tax revenue collected to total public debt</p>", "option3": " <p style=\"orphans:0;widows:0\">    Ratio of foreign exchange reserves to short-term external debt</p>", "option4": " <p style=\"orphans:0;widows:0\">    Proportion of household income saved rather than consumed</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    A <b>lower ICOR</b> signifies higher capital productivity (less    investment needed per unit of GDP growth), whereas a <b>higher    ICOR</b> indicates lower efficiency or capital-intensive    infrastructure gestation.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Correct. GDP    Growth Rate = {Gross Capital Formation (% of GDP)} / ICOR.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Incorrect.    Describes a fiscal solvency/tax-to-debt metric, not ICOR.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Incorrect.    Describes the <b>Guidotti-Greenspan Rule</b> of external reserve    adequacy.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Incorrect.    Describes the <b>Average Propensity to Save (APS)</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">The    <b>Harrod-Domar Growth Model</b>—which formed the theoretical    basis of India's <b>First Five-Year Plan (1951–56)</b>—directly    links GDP growth to the <b>Savings Rate</b> divided by <b>ICOR</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Gross    Fixed Capital Formation (GFCF)</b> is the primary macroeconomic    indicator tracking net investment in physical infrastructure,    machinery, and buildings in National Accounts.</p>    <p style=\"orphans:0;widows:0\">Lowering <b>ICOR</b> through    logistics modernization (such as PM Gati Shakti) allows an economy    to achieve <b>higher GDP growth without needing an unsustainable    jump in the savings rate</b>.</p>", "question_heading": ""}, {"sr_no": 14, "question": " <p style=\"orphans:0;widows:0\">    <b>Why is a Concave Mirror preferred over a plane or convex mirror    as a reflector in automobile headlights, searchlights, and solar    concentrators?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    It always forms a virtual, erect, and diminished image regardless    of object distance</p>", "option2": " <p style=\"orphans:0;widows:0\">    When a light source is placed at its principal focus, it reflects    light rays into a powerful parallel beam</p>", "option3": " <p style=\"orphans:0;widows:0\">    It diverges incident light rays over a wide field of view behind    the vehicle</p>", "option4": " <p style=\"orphans:0;widows:0\">    It eliminates chromatic aberration by refracting all wavelengths    equally</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Conversely, in solar furnaces/concentrators, parallel rays from    the Sun converge sharply at the concave mirror's focus to generate    high temperatures.</p>    <ol type=\"a\">     <li><p style=\"orphans:0;widows:0;margin-bottom:0in\">Describes     a <b>Convex Mirror</b>, not a concave mirror.</p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\">Correct.     Explains why concave parabolic reflectors are used in headlights,     torches, and searchlights.</p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\">Describes     a <b>Convex Mirror</b>, which is used as a <b>rear-view wing     mirror</b> in vehicles because it always forms an erect,     diminished image with a wide field of view.</p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\">Incorrect.     Mirrors work by <b>reflection</b> (which is inherently free of     chromatic aberration), whereas refraction occurs in lenses.</p>    </li></ol>    <ul>     <li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Concave     Mirrors</b> are also used by <b>dentists and ENT specialists</b>     (forming an enlarged, erect virtual image when the object is     placed between the Pole P and Focus F) and as <b>shaving/makeup     mirrors</b>.</p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Mirror     Formula</b>: 1/f = 1/v + 1/u, where focal length f = R/2 (half     the radius of curvature).</p>     </li><li><p style=\"orphans:0;widows:0\">A <b>Convex Mirror</b> is     used in <b>ATM security mirrors, road sharp-turn blind-spot     mirrors, and vehicle rear-view mirrors</b> because it never forms     an inverted image and covers a wide area.</p>    </li></ul>", "question_heading": ""}, {"sr_no": 15, "question": " <p style=\"orphans:0;widows:0\">    <b>Which radioactive isotope of Carbon is widely utilized in    Radiocarbon Dating to determine the age of ancient organic    archaeological artifacts (such as wood, bone, and charcoal) up to    ~50,000 years old, and how many neutrons does its nucleus contain?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Carbon-12; 6 neutrons</p>", "option2": " <p style=\"orphans:0;widows:0\">    Carbon-13; 7 neutrons</p>", "option3": " <p style=\"orphans:0;widows:0\">    Carbon-14; 8 neutrons</p>", "option4": " <p style=\"orphans:0;widows:0\">    Carbon-14; 6 neutrons</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Cosmic rays continuously produce ¹⁴C in the upper atmosphere;    living organisms absorb ¹⁴C until death, after which it decays    into Nitrogen-14 (¹⁴/⁷ N) with a half-life of <b>5,730 years</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>a)    Carbon-12 (¹²/⁶C)</b>: Stable, most abundant isotope (~98.9%);    contains 6 protons + 6 neutrons.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>b)    Carbon-13 (¹³/⁶C)</b>: Stable isotope (~1.1%) used in NMR    spectroscopy; contains 6 protons + 7 neutrons.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>c)    Carbon-14 (¹⁴/⁶ C)</b>: Correct. Atomic number Z = 6    (protons), Mass number A = 14, so Neutrons = A - Z = 14 - 6 = 8.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>d)</b>:    Incorrect neutron count (6 neutrons corresponds to Carbon-12, not    Carbon-14).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Uranium-Lead    (⁻²³⁸U–²⁰⁶Pb) Dating</b> is used to determine the age    of <b>ancient rocks, minerals, and the Earth itself</b> (~4.54    billion years), as radiocarbon dating cannot date inorganic rocks    or samples older than ~50,000 years.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Cobalt-60    (⁶⁰Co)</b> emits gamma rays used in <b>cancer radiotherapy</b>,    while <b>Iodine-131 (¹³¹ I)</b> is used to treat    <b>hyperthyroidism and thyroid cancer</b>.</p>    <p style=\"orphans:0;widows:0\"><b>Isotopes</b> have the same    atomic number (protons) but different mass numbers (neutrons),    whereas <b>Isobars</b> (e.g., ¹⁴/⁶ C and ¹⁴/⁷ N, or    ⁴⁰/¹⁸ Ar and ⁴⁰/²⁰ Ca) have the same mass number but    different atomic numbers.</p>", "question_heading": ""}, {"sr_no": 16, "question": " <p style=\"orphans:0;widows:0\">    <b>In human cell biology, which double-membrane-bound    organelle—possessing its own circular DNA, 70S ribosomes, and    inner membrane folds called Cristae—serves as the primary site    of aerobic cellular respiration and ATP synthesis?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Endoplasmic Reticulum</p>", "option2": " <p style=\"orphans:0;widows:0\">    Golgi Apparatus</p>", "option3": " <p style=\"orphans:0;widows:0\">    Mitochondrion</p>", "option4": " <p style=\"orphans:0;widows:0\">    Lysosome</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    According to the <b>Endosymbiotic Theory</b>, mitochondria    (alongside chloroplasts in plants) are <b>semi-autonomous    organelles</b> containing their own circular double-stranded DNA    and bacterial-type <b>70S ribosomes</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Endoplasmic    Reticulum</b>: <b>Rough ER</b> (studded with 80S ribosomes)    synthesizes proteins; <b>Smooth ER</b> synthesizes lipids/steroid    hormones and detoxifies drugs in liver cells.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Golgi    Apparatus</b>: Discovered by Camillo Golgi; modifies, sorts, and    packages proteins/lipids into secretory vesicles and forms    <b>lysosomes</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Mitochondrion</b>:    Correct. Inner membrane folds (<b>cristae</b>) increase surface    area for ATP synthase enzymes.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Lysosome</b>:    Single-membrane organelle filled with acid hydrolase enzymes;    called <b>\"Suicidal Bags of the Cell\"</b> because they    digest damaged organelles or autolyze worn-out cells.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Mature    mammalian Red Blood Cells (Erythrocytes)</b> lack a nucleus,    mitochondria, and endoplasmic reticulum to maximize    hemoglobin-carrying capacity (generating ATP anaerobically via    glycolysis).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Ribosomes</b>    (discovered by George Palade) are <b>non-membrane-bound</b>    ribonucleoprotein particles (\"Protein Factories\")    present in both prokaryotic (70S) and eukaryotic (80S) cells.</p>    <p style=\"orphans:0;widows:0\"><b>Plastids (Chloroplasts,    Chromoplasts, Leucoplasts)</b> and a rigid <b>Cellulose Cell Wall</b>    are found in <b>plant cells</b> but are completely <b>absent in    animal cells</b>.</p>", "question_heading": ""}, {"sr_no": 17, "question": " <p style=\"orphans:0;widows:0\">    <b>Which iconic classical music Gharana of Hindustani vocal    music—founded in the 19th century by Ustad Abdul Karim Khan and    Ustad Abdul Wahid Khan—is renowned for soulful intonation (Sur),    slow-tempo Vilambit Khayal elaboration, and legendary exponents    such as Pandit Bhimsen Joshi and Gangubai Hangal?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Gwalior Gharana</p>", "option2": " <p style=\"orphans:0;widows:0\">    Kirana Gharana</p>", "option3": " <p style=\"orphans:0;widows:0\">    Agra Gharana</p>", "option4": " <p style=\"orphans:0;widows:0\">    Patiala Gharana</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Emphasizing emotional depth, precise pitch (<i>Swara</i>), and    meditative <i>Alap</i> over rhythmic acrobatics, the Kirana    Gharana became one of the most influential <i>Khayal</i>    traditions in modern India.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Gwalior    Gharana</b>: The <b>oldest Khayal Gharana</b> in Hindustani music    (associated with Haddu Khan, Hassu Khan, and Nathu Khan;    patronized by Raja Man Singh Tomar's legacy).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Kirana    Gharana</b>: Correct. Exponents include <b>Pandit Bhimsen Joshi</b>    (Bharat Ratna, 2008), <b>Gangubai Hangal</b>, <b>Roshan Ara Begum</b>,    and <b>Prabha Atre</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Agra    Gharana</b>: Known as the <i>Rangeela Gharana</i>, blending    <i>Dhrupad-Dhamar</i> vigor with <i>Khayal</i> (associated with    <b>Ustad Faiyaz Khan</b>).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Patiala    Gharana</b>: Founded by Ustad Fateh Ali Khan and Ustad Ali Baksh;    famed for intricate <i>Taan</i> patterns and <b>Thumri</b>    (epitomized by <b>Ustad Bade Ghulam Ali Khan</b>).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Tansen</b>    (born Ramtanu Pandey in Gwalior), one of Akbar's <i>Navaratnas</i>,    was a legendary master of <b>Dhrupad</b> and composed ragas such    as <i>Miyan ki Todi</i>, <i>Miyan ki Malhar</i>, and <i>Darbari    Kanada</i>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>M.S.    Subbulakshmi</b> (Carnatic vocal legend from Madurai) was the    <b>first musician ever to be awarded the Bharat Ratna (1998)</b>.</p>    <p style=\"orphans:0;widows:0\"><b>Hindustani Classical Music</b>    (North India) features distinct <i>Gharanas</i> and emphasis on    improvisation, whereas <b>Carnatic Classical Music</b> (South    India) is composition-based, shaped by the <b>Trinity of Carnatic    Music</b>: <b>Tyagaraja, Muthuswami Dikshitar, and Syama Sastri</b>.</p>", "question_heading": ""}, {"sr_no": 18, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Match List-I (Traditional Indian Handloom Saree / Textile    Craft) with List-II (Associated State):</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>List-I:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>A.    Pochampally Ikat</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>B.    Chanderi Silk</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>C. Muga    Silk</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>D.    Paithani Saree</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>List-II:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>1. Assam</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>2.    Maharashtra</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>3.    Telangana</b></p>    <p style=\"orphans:0;widows:0\"><b>4. Madhya Pradesh</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    A-4, B-3, C-1, D-2</p>", "option2": " <p style=\"orphans:0;widows:0\">    A-3, B-1, C-4, D-2</p>", "option3": " <p style=\"orphans:0;widows:0\">    A-3, B-4, C-1, D-2</p>", "option4": " <p style=\"orphans:0;widows:0\">    A-2, B-4, C-1, D-3</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    India's Geographical Indication (GI)-tagged handloom traditions    reflect centuries of regional weaving, tie-dye resist techniques,    and sericulture.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Pochampally    Ikat (3)</b>: Double-ikat geometric resist-dyed silk and cotton    weave from Bhoodan Pochampally in <b>Telangana</b> (awarded UNWTO    Best Tourism Village tag).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Chanderi    Silk (4)</b>: Sheer, lightweight, glossy handloom fabric woven in    Ashoknagar district of <b>Madhya Pradesh</b> (alongside <b>Maheshwari</b>    sarees).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Muga Silk    (1)</b>: Rare, naturally shimmering golden-yellow wild silk    produced exclusively in <b>Assam</b> by the silkworm <i>Antheraea    assamensis</i> (GI-tagged).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Paithani    Saree (2)</b>: Opulent handwoven silk saree with peacock and lotus    <i>zari</i> pallu motifs originating in Paithan (Chhatrapati    Sambhajinagar), <b>Maharashtra</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Kanjeevaram    (Kanchipuram) Silk</b> (Tamil Nadu), <b>Banarasi Brocade</b>    (Uttar Pradesh), <b>Patola Double Ikat</b> (Patan, Gujarat), and    <b>Baluchari Silk</b> (Bishnupur, West Bengal) are other premier    GI-tagged handlooms.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>National    Handloom Day</b> is celebrated annually on <b>August 7</b> to    commemorate the launch of the <b>Swadeshi Movement on August 7,    1905</b> at Calcutta Town Hall.</p>    <p style=\"orphans:0;widows:0\"><b>India</b> is the <b>only    country in the world</b> that produces all <b>five commercial    varieties of natural silk</b>: <b>Mulberry, Tropical Tasar, Oak    Tasar, Eri, and Muga</b>.</p>", "question_heading": ""}, {"sr_no": 19, "question": " <p style=\"orphans:0;widows:0\">    <b>Which statutory environmental legislation of India—enacted in    the aftermath of the 1984 Bhopal Gas Tragedy as an \"umbrella    legislation\" empowering the Central Government to coordinate    environmental authorities, set emission standards, and close    polluting industries—is known as the Environment (Protection)    Act?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Environment (Protection) Act, 1972</p>", "option2": " <p style=\"orphans:0;widows:0\">    Environment (Protection) Act, 1981</p>", "option3": " <p style=\"orphans:0;widows:0\">    Environment (Protection) Act, 1986</p>", "option4": " <p style=\"orphans:0;widows:0\">    Environment (Protection) Act, 2002</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Serving as India's overarching environmental umbrella statute, EPA    1986 provides the legal foundation for <b>Environmental Impact    Assessment (EIA)</b> notifications, <b>Coastal Regulation Zone    (CRZ)</b> rules, and <b>Eco-Sensitive Zones (ESZs)</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>1972</b>:    Year of the <b>Wildlife (Protection) Act, 1972</b> (which created    protected areas and Schedules for wildlife conservation).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>1981</b>:    Year of the <b>Air (Prevention and Control of Pollution) Act, 1981</b>    (amended in 1987 to include <b>noise</b> as an air pollutant).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Environment    (Protection) Act, 1986</b>: Correct. Umbrella environmental    legislation enacted in 1986.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Water    (Prevention and Control of Pollution) Act</b> was enacted in <b>1974</b>    (establishing the <b>Central Pollution Control Board – CPCB</b>).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Forest    (Conservation) Act</b> was enacted in <b>1980</b> to restrict the    de-reservation of forests and diversion of forest land for    non-forest purposes.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>National    Green Tribunal (NGT)</b> was established in <b>October 2010</b>    under the NGT Act, 2010 for expeditious disposal of environmental    cases (making India the third country after Australia and New    Zealand to set up a specialized environmental tribunal).</p>    <p style=\"orphans:0;widows:0\"><b>Project Tiger</b> was launched    on <b>April 1, 1973</b> from <b>Jim Corbett National Park</b>    (Uttarakhand), while <b>Project Elephant</b> was launched in <b>1992</b>.</p>", "question_heading": ""}, {"sr_no": 20, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Consider the following statements regarding Biodiversity    Conservation Strategies (In-situ vs. Ex-situ):</b></p>    <ol>     <li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>In a     National Park, regulated grazing of livestock and private     forestry rights are freely permitted as long as they do not     disturb core carnivores.</b></p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Ex-situ     conservation involves preserving threatened species outside their     natural habitats in Zoological Parks, Botanical Gardens, Seed     Banks, and Cryopreservation facilities.</b></p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>In-situ     conservation involves protecting endangered species within their     natural habitats through Biosphere Reserves, National Parks,     Wildlife Sanctuaries, and Sacred Groves.</b></p>    </li></ol>    <p style=\"orphans:0;widows:0\"><b>Which of the statements given    above are correct?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    1 and 2 only</p>", "option2": " <p style=\"orphans:0;widows:0\">    2 and 3 only</p>", "option3": " <p style=\"orphans:0;widows:0\">    1 and 3 only</p>", "option4": " <p style=\"orphans:0;widows:0\">    1, 2 and 3</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    While <b>Wildlife Sanctuaries</b> allow certain regulated human    activities (like limited grazing or firewood collection if    compatible with wildlife conservation), <b>National Parks</b>    enjoy a higher degree of statutory protection with zero human    exploitation permitted.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    1</b>: Incorrect. Grazing and private rights are strictly banned    inside a <b>National Park</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    2</b>: Correct. <i>Ex-situ</i> (\"off-site\") conservation    rescues critically endangered species using seed banks, tissue    culture, and cryopreservation in liquid nitrogen (-196° C).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    3</b>: Correct. <i>In-situ</i> (\"on-site\") conservation    protects entire ecosystems and evolutionary processes naturally.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Nilgiri    Biosphere Reserve</b> (established in <b>1986</b>, spanning Tamil    Nadu, Kerala, and Karnataka) was <b>India's first Biosphere    Reserve</b> and the first Indian site included in <b>UNESCO's Man    and the Biosphere (MAB) Programme</b> (2000).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>India has    4 Biodiversity Hotspots</b> (out of 36 globally, conceptualized by    <b>Norman Myers</b>): <b>Himalayas</b>, <b>Indo-Burma</b>, <b>Western    Ghats</b>, and <b>Sundaland</b> (Nicobar Islands).</p>    <p style=\"orphans:0;widows:0\"><b>Hemis National Park</b>    (Ladakh) is the <b>largest National Park in India</b> by area    (famous for Snow Leopards), whereas <b>South Button Island    National Park</b> (Andaman &amp; Nicobar Islands) is the <b>smallest    National Park in India</b>.</p>", "question_heading": ""}, {"sr_no": 21, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Match List-I (Famous Book / Literary Classic) with List-II    (Author):</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>List-I:    List-II: </b>    </p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>A. Train    to Pakistan, 1. Vikram Seth</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>B. The God    of Small Things, 2. Aravind Adiga,</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>C. A    Suitable Boy, 3. Khushwant Singh,</b></p>    <p style=\"orphans:0;widows:0\"><b>D. The White Tiger. 4.    Arundhati Roy.</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    A-4, B-3, C-1, D-2</p>", "option2": " <p style=\"orphans:0;widows:0\">    A-3, B-1, C-4, D-2</p>", "option3": " <p style=\"orphans:0;widows:0\">    A-3, B-4, C-1, D-2</p>", "option4": " <p style=\"orphans:0;widows:0\">    A-2, B-4, C-1, D-3</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Landmark works of modern Indian English fiction—including Booker    Prize winners and Partition classics—are high-frequency SSC    Static GK questions.     </p>    <ul>     <li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Train     to Pakistan (3)</b>: Iconic 1956 historical novel on the 1947     Partition of India authored by <b>Khushwant Singh</b>.</p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>The     God of Small Things (4)</b>: Debut novel set in Ayemenem (Kerala)     by <b>Arundhati Roy</b>, who became the <b>first Indian citizen     to win the Booker Prize (1997)</b>.</p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>A     Suitable Boy (1)</b>: Monumental post-independence Indian novel     authored by <b>Vikram Seth</b> (also author of <i>The Golden     Gate</i>).</p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>The     White Tiger (2)</b>: Satirical novel by <b>Aravind Adiga</b>,     winner of the <b>2008 Man Booker Prize</b>. Important Facts:</p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Midnight's     Children</b> (1981 Booker Prize &amp; Booker of Bookers) was     authored by <b>Salman Rushdie</b>, while <b>The Inheritance of     Loss</b> (2006 Booker Prize) was authored by <b>Kiran Desai</b>.</p>     </li><li><p style=\"orphans:0;widows:0\"><b>Tomb of Sand (</b><i><b>Ret     Samadhi</b></i><b>)</b>, written in Hindi by <b>Geetanjali Shree</b>     and translated into English by <b>Daisy Rockwell</b>, won the     <b>2022 International Booker Prize</b> (first Indian-language     book to win it). Exam Alert: <b>R.K. Narayan</b> created the     fictional South Indian town of <b>Malgudi</b> and won the <b>Sahitya     Akademi Award</b> for his novel <b>The Guide (1958)</b>.</p>    </li></ul>", "question_heading": ""}, {"sr_no": 22, "question": " <p style=\"orphans:0;widows:0\">    <b>Under the </b><b>PM-RAHAT (Road Accident Victim Hospitalization    and Assured Treatment) Scheme</b><b>—launched on </b><b>February    13, 2026</b><b> by the Ministry of Road Transport and Highways    under Section 162 of the Motor Vehicles Act, 1988—what is the    maximum cashless trauma treatment cover provided per road accident    victim for the first 7 days across any road category in India?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    ₹1 lakh per victim</p>", "option2": " <p style=\"orphans:0;widows:0\">    ₹1.5 lakh per victim</p>", "option3": " <p style=\"orphans:0;widows:0\">    ₹2.5 lakh per victim</p>", "option4": " <p style=\"orphans:0;widows:0\">    ₹5 lakh per victim</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Funded through the <b>Motor Vehicle Accident Fund (MVAF)</b>, the    scheme integrates the Emergency Response Support System (<b>ERSS –    112</b>) with designated trauma-care hospitals to guarantee    immediate life-saving stabilization during the critical <b>\"Golden    Hour\"</b> without upfront payment.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">₹<b>1 lakh</b>:    Incorrect. The statutory cap per victim is ₹1.5 lakh.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">₹<b>1.5    lakh per victim</b>: Correct. Covers cashless stabilization and    hospital treatment up to ₹1.5 lakh for the first 7 days.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">₹<b>2.5    lakh</b>: Incorrect. Not the notified ceiling under PM-RAHAT.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">₹<b>5 lakh</b>:    Annual family health insurance cover under <b>Ayushman Bharat –    PM-JAY</b>, whereas PM-RAHAT provides ₹1.5 lakh specifically for    road accident trauma.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>PM Surya    Sarovar Yojana (PM-SSY)</b> (announced in Union Budget 2026–27    with an outlay of <b>₹5,070 crore</b> for FY 2026–27 to    2030–31, implemented by SECI) targets <b>5,000 MW of floating    solar capacity</b> with co-located battery storage.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Bharat-VISTAAR</b>    (announced in Union Budget 2026–27; Phase 1 launched in <b>March    2026</b>) is a multilingual, voice-first AI platform delivering    customized agricultural advisories to farmers.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Biopharma    SHAKTI</b> (announced in Union Budget 2026–27 with a <b>₹10,000    crore</b> outlay over 5 years) aims to establish India as a global    hub for biologics and biosimilars.</p>    <p style=\"orphans:0;widows:0\">Under <b>Section 161 of the Motor    Vehicles Act, 1988</b> (Hit-and-Run Compensation Scheme),    compensation stands at <b>₹2 lakh in case of death</b> and    <b>₹50,000 in case of grievous hurt</b>, complementing    <b>PM-RAHAT's</b> ₹1.5 lakh immediate cashless hospitalization    cover.</p>", "question_heading": ""}, {"sr_no": 23, "question": " <p style=\"orphans:0;widows:0\">    <b>How many total Padma Awards were approved by the President of    India on the eve of Republic Day 2026 (January 25, 2026), which    included 5 Padma Vibhushan awardees such as legendary actor    Dharmendra Singh Deol (Posthumous), former Kerala CM V. S.    Achuthanandhan (Posthumous), and Hindustani violinist N. Rajam?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    131 Awards (5 Padma Vibhushan, 13 Padma Bhushan, 113 Padma Shri)</p>", "option2": " <p style=\"orphans:0;widows:0\">    139 Awards (7 Padma Vibhushan, 19 Padma Bhushan, 113 Padma Shri)</p>", "option3": " <p style=\"orphans:0;widows:0\">    128 Awards (4 Padma Vibhushan, 17 Padma Bhushan, 107 Padma Shri)</p>", "option4": " <p style=\"orphans:0;widows:0\">    132 Awards (5 Padma Vibhushan, 17 Padma Bhushan, 110 Padma Shri)</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Announced annually on the eve of Republic Day, the 2026 Padma list    featured <b>19 women awardees</b>, <b>16 posthumous honorees</b>,    <b>6 Foreigners/NRI/PIO/OCI recipients</b>, and <b>2 duo cases</b>    (counted as one award each).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>a) 131    Awards (5–13–113)</b>: Correct. Official Padma Awards tally    for <b>2026</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>b) 139    Awards (7–19–113)</b>: Official Padma Awards tally for the    previous year (<b>2025</b>).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>All 5    Padma Vibhushan 2026 Recipients</b>: <b>Dharmendra Singh Deol</b>    (Posthumous, Art – Maharashtra), <b>V. S. Achuthanandhan</b>    (Posthumous, Public Affairs – Kerala), <b>K. T. Thomas</b>    (Public Affairs – Kerala), <b>N. Rajam</b> (Art – Uttar    Pradesh), and <b>P. Narayanan</b> (Literature &amp; Education –    Kerala).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Prominent    Padma Bhushan 2026 Recipients</b>: <b>Mammootty</b> (Art), <b>Alka    Yagnik</b> (Art), <b>Piyush Pandey</b> (Posthumous, Art), <b>Shibu    Soren</b> (Posthumous, Public Affairs), <b>Uday Kotak</b> (Trade &amp;    Industry), and <b>Vijay Amritraj</b> (Sports).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Prominent    Padma Shri 2026 Sports Recipients</b>: Indian cricket captains    <b>Rohit Sharma</b> and <b>Harmanpreet Kaur Bhullar</b>, Indian    women's hockey goalkeeper <b>Savita Punia</b>, and para-high    jumper <b>Praveen Kumar</b>.</p>    <p style=\"orphans:0;widows:0\"><b>Bharat Ratna</b> and <b>Padma    Awards</b> were instituted on <b>January 2, 1954</b>; no Bharat    Ratna was conferred in 2025 or 2026, keeping the total Bharat    Ratna recipient count at <b>53</b>.</p>", "question_heading": ""}, {"sr_no": 24, "question": " <p style=\"orphans:0;widows:0\">    <b>Who was awarded the 2026 Nobel Peace Prize by the Norwegian    Nobel Committee in October 2026 \"for her efforts to promote    peace and international law\"?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Nihon Hidankyo</p>", "option2": " <p style=\"orphans:0;widows:0\">    María Corina Machado</p>", "option3": " <p style=\"orphans:0;widows:0\">    Anne Carson</p>", "option4": " <p style=\"orphans:0;widows:0\">    Navanethem \"Navi\" Pillay</p>", "answer": "4", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    A pioneering anti-apartheid lawyer who served as a judge on the    International Criminal Court (ICC) and President of the    International Criminal Tribunal for Rwanda (ICTR), Navi Pillay was    honored in October 2026.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Nihon    Hidankyo</b>: Japanese organization of atomic-bomb survivors that    won the <b>2024 Nobel Peace Prize</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>María    Corina Machado</b>: Venezuelan pro-democracy leader who won the    <b>2025 Nobel Peace Prize</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Anne    Carson</b>: Canadian poet and classicist who won the <b>2026 Nobel    Prize in Literature</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Navanethem    \"Navi\" Pillay</b>: Correct. Laureate of the <b>2026    Nobel Peace Prize</b>.<b> </b>    </p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Complete    2026 Nobel Prize Laureates</b>:</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Physics</b>:    <b>Francis Halzen</b> (for contributions to the <b>IceCube    Neutrino Observatory</b> at the South Pole and discovery of    high-energy astrophysical neutrinos).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Chemistry</b>:    <b>Henri B. Kagan</b> and <b>Kenso Soai</b> (for non-linear    effects and autocatalysis in asymmetric organic synthesis).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Physiology    or Medicine</b>: <b>Karl Deisseroth, Peter Hegemann, and Georg    Nagel</b> (for discoveries concerning light-gated ion channels and    <b>optogenetics</b>).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Literature</b>:    <b>Anne Carson</b> (Canada).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Economic    Sciences</b>: <b>Robert E. Hall</b> and <b>Michael Woodford</b>    (for microeconomic foundations of macroeconomic stabilization).</p>    <p style=\"orphans:0;widows:0\"><b>Karl Deisseroth, Peter    Hegemann, and Georg Nagel</b> won the <b>2026 Nobel Prize in    Medicine</b> for discovering <b>channelrhodopsins</b>    (light-sensitive algal proteins) and pioneering <b>optogenetics</b>,    which enables controlling specific neurons using light.</p>", "question_heading": ""}, {"sr_no": 25, "question": " <p style=\"orphans:0;widows:0\">    <b>Which breakthrough astrophysics observatory at the South    Pole—led by 2026 Nobel Prize in Physics laureate Francis    Halzen—embeds thousands of optical sensors deep inside Antarctic    glacial ice to detect high-energy cosmic neutrinos?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Vera C. Rubin Observatory</p>", "option2": " <p style=\"orphans:0;widows:0\">    LIGO-India Observatory</p>", "option3": " <p style=\"orphans:0;widows:0\">    Square Kilometre Array (SKA)</p>", "option4": " <p style=\"orphans:0;widows:0\">    IceCube Neutrino Observatory</p>", "answer": "4", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Because nearly massless, electrically neutral <b>neutrinos</b>    pass straight through galaxies and magnetic fields without    deflection, IceCube uses a cubic kilometer of ultra-clear    Antarctic ice as a Cherenkov radiation detector to pinpoint cosmic    particle accelerators like active galactic nuclei (blazars).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Vera C.    Rubin Observatory</b>: Wide-field optical survey telescope located    on <b>Cerro Pachón in Chile</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>LIGO-India    Observatory</b>: Upcoming gravitational-wave detector being built    in <b>Hingoli district, Maharashtra</b> (in collaboration with    Caltech and MIT).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Square    Kilometre Array (SKA)</b>: World's largest next-generation radio    telescope network being constructed across <b>South Africa and    Australia</b> (with India as a full member).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>IceCube    Neutrino Observatory</b>: Correct. South Pole neutrino telescope    honored with the 2026 Physics Nobel Prize. <b>India-based Neutrino    Observatory (INO)</b> is a proposed underground particle physics    project planned in <b>Bodi West Hills, Theni district (Tamil Nadu)</b>    to study atmospheric neutrinos.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Cherenkov    Radiation</b> is the characteristic blue glow emitted when a    charged particle travels through a dielectric medium (like water    or glacial ice) faster than the phase velocity of light in that    medium.</p>    <p style=\"orphans:0;widows:0\"><b>Neutrinos</b> are subatomic    leptons with <b>zero electric charge</b> and near-zero rest    mass—nicknamed <b>\"Ghost Particles\"</b> because    trillions pass through the human body every second without    interacting.</p>", "question_heading": ""}];
+
+let currentQuestion = 0;
+let answers = {};
+let bookmarks = new Set();
+let timerSeconds = 0;
+let timerInterval = null;
+let isPaletteOpen = false;
+
+const STORAGE_KEY = 'quizState_' + (document.title || 'default');
+
+function isImageURL(str) {
+  return str && (str.startsWith('http://') || str.startsWith('https://'));
+}
+
+function createOptionContent(optionText) {
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'option-content';
+    
+    if (isImageURL(optionText)) {
+        const img = document.createElement('img');
+        img.src = optionText;
+        img.className = 'option-image';
+        img.alt = 'Option image';
+        img.loading = 'lazy';
+        img.onerror = function() {
+            this.style.display = 'none';
+            const errorText = document.createTextNode('Image failed to load');
+            contentDiv.appendChild(errorText);
+        };
+        contentDiv.appendChild(img);
+    } else {
+        contentDiv.innerHTML = optionText;
+    }
+    
+    return contentDiv;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  initQuiz();
+  initEventListeners();
+  loadFromLocalStorage();
+  startTimer();
+  createPalette();
+  preventDoubleTapZoom();
+});
+
+function preventDoubleTapZoom() {
+  let lastTouchEnd = 0;
+  document.addEventListener('touchend', (event) => {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) {
+      event.preventDefault();
+    }
+    lastTouchEnd = now;
+  }, { passive: false });
+}
+
+function initTheme() {
+  const savedTheme = localStorage.getItem('quizTheme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  updateThemeIcon();
+}
+
+function updateThemeIcon() {
+  const theme = document.documentElement.getAttribute('data-theme');
+  const themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    themeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  }
+}
+
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('quizTheme', newTheme);
+  updateThemeIcon();
+}
+
+function initQuiz() {
+  loadQuestion(currentQuestion);
+  updateMarkingInfo();
+}
+
+function initEventListeners() {
+  const themeBtn = document.getElementById('themeToggle');
+  const fullscreenBtn = document.getElementById('fullscreenBtn');
+  
+  if (themeBtn) {
+    themeBtn.addEventListener('click', toggleTheme);
+    themeBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      toggleTheme();
+    });
+  }
+  
+  if (fullscreenBtn) {
+    fullscreenBtn.addEventListener('click', toggleFullscreen);
+    fullscreenBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      toggleFullscreen();
+    });
+  }
+  
+  addButtonListener('prevBtn', prevQuestion);
+  addButtonListener('nextBtn', nextQuestion);
+  addButtonListener('clearBtn', clearAnswer);
+  addButtonListener('submitBtn', confirmSubmit);
+  addButtonListener('bookmarkBtn', toggleBookmark);
+  
+  addButtonListener('paletteFab', togglePalette);
+  addButtonListener('paletteClose', closePalette);
+  
+  const overlay = document.getElementById('paletteOverlay');
+  if (overlay) {
+    overlay.addEventListener('click', closePalette);
+    overlay.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      closePalette();
+    });
+  }
+  
+  const searchInput = document.getElementById('paletteSearch');
+  if (searchInput) {
+    searchInput.addEventListener('input', handleSearch);
+    searchInput.addEventListener('change', jumpToQuestion);
+  }
+  
+  document.addEventListener('keydown', handleKeyPress);
+  
+  setInterval(saveToLocalStorage, 5000);
+  
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      updatePalette();
+    }
+  });
+}
+
+function addButtonListener(id, handler) {
+  const btn = document.getElementById(id);
+  if (btn) {
+    btn.addEventListener('click', handler);
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      handler();
+    });
+  }
+}
+
+function jumpToQuestion(e) {
+  const questionNum = parseInt(e.target.value);
+  if (questionNum >= 1 && questionNum <= questions.length) {
+    goToQuestion(questionNum - 1);
+    closePalette();
+    e.target.value = '';
+  }
+}
+
+function togglePalette() {
+  isPaletteOpen = !isPaletteOpen;
+  const palette = document.getElementById('questionPalette');
+  const overlay = document.getElementById('paletteOverlay');
+  const fab = document.getElementById('paletteFab');
+  
+  if (isPaletteOpen) {
+    palette.classList.add('active');
+    overlay.classList.add('active');
+    fab.classList.add('active');
+    fab.innerHTML = '✕<span class="badge" id="answeredBadge">' + Object.keys(answers).length + '</span>';
+    document.body.classList.add('palette-open');
+  } else {
+    closePalette();
+  }
+}
+
+function closePalette() {
+  isPaletteOpen = false;
+  const palette = document.getElementById('questionPalette');
+  const overlay = document.getElementById('paletteOverlay');
+  const fab = document.getElementById('paletteFab');
+  
+  if (palette) palette.classList.remove('active');
+  if (overlay) overlay.classList.remove('active');
+  if (fab) {
+    fab.classList.remove('active');
+    fab.innerHTML = '📋<span class="badge" id="answeredBadge">' + Object.keys(answers).length + '</span>';
+  }
+  document.body.classList.remove('palette-open');
+}
+
+function handleSearch(e) {
+  const searchTerm = e.target.value.toLowerCase();
+  if (!searchTerm) {
+    document.querySelectorAll('.palette-btn').forEach(btn => {
+      btn.style.display = '';
+    });
+    return;
+  }
+  
+  const buttons = document.querySelectorAll('.palette-btn');
+  buttons.forEach((btn, index) => {
+    const questionNum = (index + 1).toString();
+    if (questionNum.includes(searchTerm)) {
+      btn.style.display = '';
+    } else {
+      btn.style.display = 'none';
+    }
+  });
+}
+
+function handleKeyPress(e) {
+  if (document.getElementById('resultSection').classList.contains('hidden')) {
+    if (e.key === 'Escape' && isPaletteOpen) {
+      closePalette();
+    } else if (!isPaletteOpen && e.target.tagName !== 'INPUT') {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevQuestion();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        nextQuestion();
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        nextQuestion();
+      } else if (e.key === 'b' || e.key === 'B') {
+        e.preventDefault();
+        toggleBookmark();
+      } else if (e.key === 'c' || e.key === 'C') {
+        e.preventDefault();
+        clearAnswer();
+      } else if (e.key === 'p' || e.key === 'P') {
+        e.preventDefault();
+        togglePalette();
+      } else if (e.key >= '1' && e.key <= '4') {
+        e.preventDefault();
+        selectOption(parseInt(e.key));
+      }
+    }
+  }
+}
+
+function selectOption(optionNum) {
+  const q = questions[currentQuestion];
+  const radio = document.querySelector(`input[name="q${q.sr_no}"][value="${optionNum}"]`);
+  if (radio) {
+    radio.checked = true;
+    const label = radio.closest('.option-label');
+    if (label) {
+      document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      saveAnswer();
+    }
+  }
+}
+
+function toggleFullscreen() {
+  try {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(err => {
+        console.log('Fullscreen error:', err);
+      });
+    } else {
+      document.exitFullscreen();
+    }
+  } catch (err) {
+    console.log('Fullscreen not supported');
+  }
+}
+
+function startTimer() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+  timerInterval = setInterval(() => {
+    timerSeconds++;
+    updateTimer();
+    if (timerSeconds > 600) {
+      const timer = document.getElementById('timer');
+      if (timer) timer.classList.add('warning');
+    }
+  }, 1000);
+}
+
+function updateTimer() {
+  const minutes = Math.floor(timerSeconds / 60);
+  const seconds = timerSeconds % 60;
+  const timer = document.getElementById('timer');
+  if (timer) {
+    timer.textContent = 
+      `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  }
+}
+
+function createPalette() {
+  const grid = document.getElementById('paletteGrid');
+  if (!grid) return;
+  
+  grid.innerHTML = '';
+  questions.forEach((q, index) => {
+    const btn = document.createElement('button');
+    btn.textContent = index + 1;
+    btn.className = 'palette-btn';
+    btn.setAttribute('aria-label', `Go to question ${index + 1}`);
+    btn.setAttribute('type', 'button');
+    
+    btn.addEventListener('click', () => {
+      goToQuestion(index);
+      closePalette();
+    });
+    
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      goToQuestion(index);
+      closePalette();
+    });
+    
+    grid.appendChild(btn);
+  });
+  updatePalette();
+}
+
+function updatePalette() {
+  const buttons = document.querySelectorAll('.palette-btn');
+  buttons.forEach((btn, index) => {
+    btn.className = 'palette-btn';
+    if (index === currentQuestion) btn.classList.add('current');
+    if (answers[questions[index].sr_no]) btn.classList.add('answered');
+    if (bookmarks.has(questions[index].sr_no)) btn.classList.add('bookmarked');
+  });
+  
+  updatePaletteStats();
+}
+
+function updatePaletteStats() {
+  const answered = Object.keys(answers).length;
+  const unanswered = questions.length - answered;
+  const bookmarkedCount = bookmarks.size;
+  
+  const answeredEl = document.getElementById('paletteAnswered');
+  const unansweredEl = document.getElementById('paletteUnanswered');
+  const bookmarkedEl = document.getElementById('paletteBookmarked');
+  
+  if (answeredEl) answeredEl.textContent = answered;
+  if (unansweredEl) unansweredEl.textContent = unanswered;
+  if (bookmarkedEl) bookmarkedEl.textContent = bookmarkedCount;
+  
+  const badge = document.querySelector('.palette-fab .badge');
+  if (badge) badge.textContent = answered;
+}
+
+function goToQuestion(index) {
+  if (index < 0 || index >= questions.length) return;
+  saveAnswer();
+  currentQuestion = index;
+  loadQuestion(currentQuestion);
+  
+  const questionSection = document.getElementById('questionSection');
+  if (questionSection) {
+    setTimeout(() => {
+      questionSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+}
+
+function loadQuestion(index) {
+  const q = questions[index];
+  
+  const questionNumber = document.getElementById('questionNumber');
+  const questionText = document.getElementById('questionText');
+  
+  if (questionNumber) {
+    questionNumber.textContent = `Question ${index + 1} of ${questions.length}`;
+  }
+  
+  if (questionText) {
+    questionText.innerHTML = '';
+    
+    // 🌟 NEW: Create the Heading Box if it exists!
+    let headingHtml = '';
+    if (q.question_heading && q.question_heading.trim() !== '') {
+      headingHtml = `<div style="background: var(--bg-tertiary); padding: 15px; border-left: 4px solid var(--primary-color); margin-bottom: 20px; border-radius: 8px; overflow-x: auto;">${q.question_heading}</div>`;
+      questionText.innerHTML = headingHtml; // Inject heading first
+    }
+
+    if (isImageURL(q.question)) {
+      const img = document.createElement('img');
+      img.src = q.question;
+      img.className = 'question-image';
+      img.alt = 'Question image';
+      img.loading = 'lazy';
+      img.onerror = function() {
+        this.style.display = 'none';
+        questionText.innerHTML += q.question;
+      };
+      questionText.appendChild(img);
+    } else {
+      questionText.innerHTML += q.question; // Append question after heading
+    }
+  }
+  
+  const container = document.getElementById('optionsContainer');
+  if (!container) return;
+  
+  container.innerHTML = '';
+  
+  for (let i = 1; i <= 4; i++) {
+    const label = document.createElement('label');
+    label.className = 'option-label';
+    if (answers[q.sr_no] == i) label.classList.add('selected');
+    
+    const radio = document.createElement('input');
+    radio.type = 'radio';
+    radio.name = `q${q.sr_no}`;
+    radio.value = i;
+    radio.checked = answers[q.sr_no] == i;
+    
+    const changeHandler = () => {
+      document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      saveAnswer();
+    };
+    
+    radio.addEventListener('change', changeHandler);
+    label.addEventListener('click', (e) => {
+      if (e.target !== radio) {
+        radio.checked = true;
+        changeHandler();
+      }
+    });
+    
+    label.appendChild(radio);
+    
+    const optionContent = createOptionContent(q[`option${i}`]);
+    label.appendChild(optionContent);
+    
+    container.appendChild(label);
+  }
+  
+  const bookmarkBtn = document.getElementById('bookmarkBtn');
+  if (bookmarkBtn) {
+    if (bookmarks.has(q.sr_no)) {
+      bookmarkBtn.classList.add('active');
+    } else {
+      bookmarkBtn.classList.remove('active');
+    }
+  }
+  
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const submitBtn = document.getElementById('submitBtn');
+  
+  if (prevBtn) prevBtn.disabled = index === 0;
+  
+  if (index === questions.length - 1) {
+    if (nextBtn) nextBtn.classList.add('hidden');
+    if (submitBtn) submitBtn.classList.remove('hidden');
+  } else {
+    if (nextBtn) nextBtn.classList.remove('hidden');
+    if (submitBtn) submitBtn.classList.add('hidden');
+  }
+  
+  updateProgress();
+  updatePalette();
+}
+
+function updateMarkingInfo() {
+  if(questions.length > 0) {
+      const q = questions[0];
+      const markingInfo = document.getElementById('markingInfo');
+      if (markingInfo) {
+        markingInfo.textContent = `Marking: +${q.positive_marking}, -${q.negative_marking}`;
+      }
+  }
+}
+
+function updateProgress() {
+  const attempted = Object.keys(answers).length;
+  const currentProgress = ((currentQuestion + 1) / questions.length) * 100;
+  
+  const progressBar = document.getElementById('progressBar');
+  const progressText = document.getElementById('progressText');
+  const attemptedText = document.getElementById('attemptedText');
+  
+  if (progressBar) progressBar.style.width = `${currentProgress}%`;
+  if (progressText) progressText.textContent = `${currentQuestion + 1}/${questions.length}`;
+  if (attemptedText) attemptedText.textContent = attempted;
+}
+
+function saveAnswer() {
+  const q = questions[currentQuestion];
+  const selected = document.querySelector(`input[name="q${q.sr_no}"]:checked`);
+  
+  if (selected) {
+    answers[q.sr_no] = selected.value;
+  }
+  
+  updateProgress();
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function clearAnswer() {
+  const q = questions[currentQuestion];
+  delete answers[q.sr_no];
+  
+  const selected = document.querySelector(`input[name="q${q.sr_no}"]:checked`);
+  if (selected) selected.checked = false;
+  
+  document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+  
+  updateProgress();
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function toggleBookmark() {
+  const q = questions[currentQuestion];
+  const btn = document.getElementById('bookmarkBtn');
+  
+  if (bookmarks.has(q.sr_no)) {
+    bookmarks.delete(q.sr_no);
+    if (btn) btn.classList.remove('active');
+  } else {
+    bookmarks.add(q.sr_no);
+    if (btn) btn.classList.add('active');
+  }
+  
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function nextQuestion() {
+  saveAnswer();
+  if (currentQuestion < questions.length - 1) {
+    currentQuestion++;
+    loadQuestion(currentQuestion);
+  }
+}
+
+function prevQuestion() {
+  saveAnswer();
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    loadQuestion(currentQuestion);
+  }
+}
+
+function confirmSubmit() {
+  const unattempted = questions.length - Object.keys(answers).length;
+  let message = 'Are you sure you want to submit the quiz?';
+  
+  if (unattempted > 0) {
+    message += `\n\nYou have ${unattempted} unanswered question(s).`;
+  }
+  
+  if (confirm(message)) {
+    submitQuiz();
+  }
+}
+
+function submitQuiz() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+  }
+  saveAnswer();
+  closePalette();
+  
+  let correct = 0, wrong = 0, unattempted = 0, score = 0;
+  
+  questions.forEach(q => {
+    const userAns = answers[q.sr_no];
+    const posMark = parseFloat(q.positive_marking) || 0;
+    const negMark = parseFloat(q.negative_marking) || 0;
+    
+    if (!userAns) {
+      unattempted++;
+    } else if (userAns == q.answer) {
+      correct++;
+      score += posMark;
+    } else {
+      wrong++;
+      score -= negMark;
+    }
+  });
+  
+  displayResults(correct, wrong, unattempted, score);
+  
+  const fab = document.getElementById('paletteFab');
+  const nav = document.getElementById('navigation');
+  if (fab) fab.style.display = 'none';
+  if (nav) nav.style.display = 'none';
+  
+  document.body.style.paddingBottom = '20px';
+  
+  clearLocalStorage();
+}
+
+function displayResults(correct, wrong, unattempted, score) {
+  const totalQuestions = questions.length;
+  const percentage = ((correct / totalQuestions) * 100).toFixed(1);
+  const timerEl = document.getElementById('timer');
+  const timeText = timerEl ? timerEl.textContent : '00:00';
+  
+  let html = `
+    <div class="score-card">
+      <h2>${score}/${totalQuestions}</h2>
+      <p>Your Score: ${percentage}%</p>
+      <p>Time Taken: ${timeText}</p>
+    </div>
+    
+    <div class="stats-grid">
+      <div class="stat-card correct">
+        <h3>${correct}</h3>
+        <p>Correct</p>
+      </div>
+      <div class="stat-card wrong">
+        <h3>${wrong}</h3>
+        <p>Wrong</p>
+      </div>
+      <div class="stat-card unattempted">
+        <h3>${unattempted}</h3>
+        <p>Unattempted</p>
+      </div>
+      <div class="stat-card">
+        <h3>${totalQuestions}</h3>
+        <p>Total</p>
+      </div>
+    </div>
+  `;
+  
+  questions.forEach(q => {
+    const userAns = answers[q.sr_no];
+    
+    // 🌟 NEW: Add the Heading to the results review screen!
+    let headingHtml = (q.question_heading && q.question_heading.trim() !== '') 
+      ? `<div style="background: var(--bg-tertiary); padding: 10px; margin-bottom: 15px; border-left: 4px solid var(--primary-color); border-radius: 5px; overflow-x: auto;">${q.question_heading}</div>` 
+      : '';
+      
+    const questionHeader = isImageURL(q.question)
+      ? `<h4>Q${q.sr_no}:</h4>${headingHtml}<img src="${q.question}" class="question-image" alt="Question ${q.sr_no}">`
+      : `<h4>Q${q.sr_no}:</h4>${headingHtml}<div style="margin-bottom: 10px;">${q.question}</div>`;
+      
+    html += `<div class="question-review">${questionHeader}`;
+    
+    for (let i = 1; i <= 4; i++) {
+      const isCorrect = i.toString() === q.answer;
+      const isUserAnswer = userAns == i.toString();
+      
+      let className = 'review-option';
+      if (isCorrect) className += ' correct';
+      if (isUserAnswer && !isCorrect) className += ' wrong';
+      if (isUserAnswer) className += ' user-selected';
+      
+      const optionValue = q[`option${i}`];
+      
+      if (isImageURL(optionValue)) {
+        html += `<div class="${className}">
+          ${isCorrect ? '✓ ' : ''}${isUserAnswer ? '➤ ' : ''} 
+          <img src="${optionValue}" class="option-image" alt="Option ${i}">
+        </div>`;
+      } else {
+        html += `<div class="${className}">
+          ${isCorrect ? '✓ ' : ''}${isUserAnswer ? '➤ ' : ''}${optionValue}
+        </div>`;
+      }
+    }
+    
+    if (q.solution_text && q.solution_text.trim() !== '') {
+      const solutionContent = isImageURL(q.solution_text)
+        ? `<img src="${q.solution_text}" class="solution-image" alt="Solution">`
+        : q.solution_text;
+      html += `<div class="solution-section">
+        <div class="solution-label">📝 Solution:</div>
+        <div class="solution-content">${solutionContent}</div>
+      </div>`;
+    }
+    
+    html += `</div>`; 
+});
+  
+  html += `
+    <div class="action-buttons">
+      <button class="action-btn restart" onclick="restartQuiz()">Restart Quiz</button>
+      <button class="action-btn download" onclick="downloadResults()">Download Results</button>
+      <button class="action-btn print" onclick="window.print()">Print Results</button>
+    </div>
+  `;
+  
+  const resultSection = document.getElementById('resultSection');
+  const questionSection = document.getElementById('questionSection');
+  const progressSection = document.querySelector('.progress-section');
+  
+  if (resultSection) {
+    resultSection.innerHTML = html;
+    resultSection.classList.remove('hidden');
+  }
+  if (questionSection) questionSection.classList.add('hidden');
+  if (progressSection) progressSection.classList.add('hidden');
+  
+  const quizContainer = document.getElementById('quizContainer');
+  if (quizContainer) {
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
+  }
+}
+
+function restartQuiz() {
+  if (confirm('Are you sure you want to restart? All progress will be lost.')) {
+    currentQuestion = 0;
+    answers = {};
+    bookmarks.clear();
+    timerSeconds = 0;
+    
+    const resultSection = document.getElementById('resultSection');
+    const questionSection = document.getElementById('questionSection');
+    const progressSection = document.querySelector('.progress-section');
+    const fab = document.getElementById('paletteFab');
+    const nav = document.getElementById('navigation');
+    
+    if (resultSection) {
+      resultSection.classList.add('hidden');
+      resultSection.innerHTML = '';
+    }
+    if (questionSection) questionSection.classList.remove('hidden');
+    if (progressSection) progressSection.classList.remove('hidden');
+    if (fab) fab.style.display = 'flex';
+    if (nav) nav.style.display = 'grid';
+    
+    document.body.style.paddingBottom = 'var(--nav-height)';
+    
+    if (timerInterval) {
+      clearInterval(timerInterval);
+    }
+    startTimer();
+    
+    loadQuestion(currentQuestion);
+    createPalette();
+  }
+}
+
+function downloadResults() {
+  const resultSection = document.getElementById('resultSection');
+  if (!resultSection) return;
+  
+  const resultHTML = resultSection.innerHTML;
+  const fullHTML = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Results</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; max-width: 900px; margin: 0 auto; }
+    .score-card { background: linear-gradient(135deg, #007bff, #28a745); color: white; padding: 30px; border-radius: 15px; text-align: center; margin-bottom: 20px; }
+    .score-card h2 { font-size: 48px; margin-bottom: 10px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 30px; }
+    .stat-card { background: white; padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #ddd; }
+    .stat-card h3 { font-size: 32px; margin-bottom: 8px; }
+    .stat-card.correct h3 { color: #28a745; }
+    .stat-card.wrong h3 { color: #dc3545; }
+    .stat-card.unattempted h3 { color: #6c757d; }
+    .question-review { background: white; border: 2px solid #ddd; border-radius: 10px; padding: 20px; margin-bottom: 15px; }
+    .question-review h4 { margin-bottom: 15px; font-size: 16px; line-height: 1.6; }
+    .review-option { padding: 10px 15px; margin: 8px 0; border-radius: 8px; border: 2px solid #ddd; display: flex; align-items: center; gap: 10px; }
+    .option-image { max-width: 150px; max-height: 100px; border-radius: 8px; }
+    .review-option.correct { background: #d4edda; border-color: #28a745; color: #155724; }
+    .review-option.wrong { background: #f8d7da; border-color: #dc3545; color: #721c24; }
+    .review-option.user-selected { border-width: 3px; font-weight: bold; }
+    @media print { body { background: white; } }
+    @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center; color: #007bff;">Quiz Results</h1>
+  <p style="text-align: center; color: #666; margin-bottom: 30px;">Generated on: ${new Date().toLocaleString()}</p>
+  ${resultHTML.replace(/<div class="action-buttons">[\s\S]*?<\/div>/, '')}
+</body>
+</html>
+  `;
+  
+  try {
+    const blob = new Blob([fullHTML], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `Quiz_Results_${new Date().getTime()}.html`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  } catch (err) {
+    alert('Download failed. Please try using the Print option instead.');
+    console.error('Download error:', err);
+  }
+}
+
+function saveToLocalStorage() {
+  try {
+    const state = {
+      currentQuestion,
+      answers,
+      bookmarks: Array.from(bookmarks),
+      timerSeconds,
+      timestamp: Date.now()
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch (err) {
+    console.error('Save error:', err);
+  }
+}
+
+function loadFromLocalStorage() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const state = JSON.parse(saved);
+      const hasProgress = (state && (
+        (state.currentQuestion && state.currentQuestion > 0) ||
+        (state.answers && Object.keys(state.answers).length > 0) ||
+        (state.timerSeconds && state.timerSeconds > 0)
+      ));
+      if (hasProgress && (Date.now() - state.timestamp < 24 * 60 * 60 * 1000)) {
+        if (confirm('Resume previous quiz session?')) {
+          currentQuestion = state.currentQuestion || 0;
+          answers = state.answers || {};
+          bookmarks = new Set(state.bookmarks || []);
+          timerSeconds = state.timerSeconds || 0;
+          updateTimer();
+          loadQuestion(currentQuestion);
+        }
+      } else {
+        clearLocalStorage();
+      }
+    }
+  } catch (err) {
+    console.error('Load error:', err);
+    clearLocalStorage();
+  }
+}
+
+function clearLocalStorage() {
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (err) {
+    console.error('Clear storage error:', err);
+  }
+}
+
+window.addEventListener('beforeunload', (e) => {
+  const resultSection = document.getElementById('resultSection');
+  if (resultSection && !resultSection.classList.contains('hidden')) {
+    return;
+  }
+  e.preventDefault();
+  e.returnValue = '';
+});
+
+window.addEventListener('unload', () => {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+});
+</script>
+</body>
+</html>
