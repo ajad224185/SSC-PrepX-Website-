@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>13.) SECTIONAL MOCK-04(GK/GS/COMPUTER - Hindi</title>
+<style>
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0069d9;
+  --success-color: #28a745;
+  --success-hover: #218838;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --secondary-color: #6c757d;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --border-color: #dee2e6;
+  --shadow: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
+  --overlay: rgba(0,0,0,0.5);
+  --nav-height: 80px;
+}
+
+[data-theme="dark"] {
+  --primary-color: #4dabf7;
+  --primary-hover: #339af0;
+  --success-color: #51cf66;
+  --success-hover: #40c057;
+  --danger-color: #ff6b6b;
+  --warning-color: #ffd43b;
+  --secondary-color: #868e96;
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #404040;
+  --text-primary: #f8f9fa;
+  --text-secondary: #adb5bd;
+  --border-color: #495057;
+  --shadow: 0 4px 6px rgba(0,0,0,0.3);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.4);
+  --overlay: rgba(0,0,0,0.7);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+  overflow-x: hidden;
+  position: relative;
+  padding-bottom: var(--nav-height);
+}
+
+body.palette-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-primary);
+  padding: 20px 30px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+
+.header h1 {
+  font-size: 28px;
+  color: var(--primary-color);
+  font-weight: 700;
+  user-select: none;
+}
+
+.header-controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.theme-toggle, .fullscreen-btn {
+  background: var(--bg-tertiary);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.3s;
+  min-width: 44px;
+  min-height: 44px;
+  user-select: none;
+}
+
+.theme-toggle:active, .fullscreen-btn:active {
+  transform: scale(0.95);
+}
+
+.theme-toggle:hover, .fullscreen-btn:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+.bot-link-btn {
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+}
+.bot-link-btn:active {
+  transform: scale(0.95);
+}
+.bot-link-btn:hover {
+  background: var(--primary-hover);
+}
+
+.timer {
+  background: var(--warning-color);
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 18px;
+  min-width: 100px;
+  text-align: center;
+  user-select: none;
+}
+
+.timer.warning {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.palette-fab {
+  position: fixed;
+  bottom: calc(var(--nav-height) + 20px);
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  box-shadow: 0 6px 20px rgba(0,123,255,0.4);
+  transition: all 0.3s ease;
+  z-index: 998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.palette-fab:active {
+  transform: scale(0.9);
+}
+
+.palette-fab:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0,123,255,0.6);
+}
+
+.palette-fab.active {
+  background: var(--danger-color);
+}
+
+.palette-fab .badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: var(--success-color);
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--bg-secondary);
+  pointer-events: none;
+}
+.solution-section {
+  margin-top: 20px;
+  padding: 15px;
+  background: #e7f3ff;
+  border-left: 4px solid var(--primary-color);
+  border-radius: 8px;
+}
+
+.solution-label {
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.solution-content {
+  line-height: 1.6;
+  color: #333;
+}
+
+.solution-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.palette-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 999;
+  touch-action: none;
+}
+
+.palette-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.question-palette {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 450px;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--bg-primary);
+  box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+  transition: right 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.question-palette.active {
+  right: 0;
+}
+
+.palette-header {
+  padding: 20px;
+  background: var(--primary-color);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.palette-header h3 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.palette-close {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: background 0.2s;
+  line-height: 1;
+  touch-action: manipulation;
+}
+
+.palette-close:active {
+  transform: scale(0.9);
+}
+
+.palette-close:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.palette-stats {
+  padding: 15px 20px;
+  background: var(--bg-tertiary);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  font-size: 13px;
+  text-align: center;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border-color);
+  user-select: none;
+}
+
+.palette-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.palette-stat .number {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.palette-stat.answered .number { color: var(--success-color); }
+.palette-stat.unanswered .number { color: var(--secondary-color); }
+.palette-stat.bookmarked .number { color: var(--warning-color); }
+
+.palette-search {
+  padding: 15px 20px;
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+}
+
+.palette-search input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 14px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.palette-search input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.palette-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 10px;
+}
+
+.palette-btn {
+  aspect-ratio: 1;
+  border: 2px solid var(--border-color);
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+  min-width: 40px;
+  min-height: 40px;
+  color: var(--text-primary);
+  position: relative;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.palette-btn:active {
+  transform: scale(0.9);
+}
+
+.palette-btn:hover {
+  transform: scale(1.1);
+  z-index: 10;
+  box-shadow: var(--shadow);
+}
+
+.palette-btn.current {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  animation: currentPulse 2s infinite;
+}
+
+@keyframes currentPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,123,255,0.7); }
+  50% { box-shadow: 0 0 0 8px rgba(0,123,255,0); }
+}
+
+.palette-btn.answered {
+  background: var(--success-color);
+  color: white;
+  border-color: var(--success-color);
+}
+
+.palette-btn.bookmarked::after {
+  content: '🔖';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.palette-btn.bookmarked.answered {
+  background: var(--success-color);
+}
+
+.palette-legend {
+  padding: 20px;
+  border-top: 1px solid var(--border-color);
+  font-size: 13px;
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.legend-color {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.quiz-container {
+  background: var(--bg-primary);
+  border-radius: 15px;
+  box-shadow: var(--shadow-lg);
+  padding: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  scroll-margin-top: 20px;
+}
+
+.quiz-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.marking-info {
+  display: inline-block;
+  background: var(--bg-tertiary);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.progress-section {
+  margin-bottom: 25px;
+}
+
+.progress-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.progress-bar-container {
+  background: var(--bg-tertiary);
+  border-radius: 12px;
+  overflow: hidden;
+  height: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+  transition: width 0.4s ease;
+  border-radius: 12px;
+}
+
+.question-section {
+  min-height: 300px;
+  scroll-margin-top: 80px;
+  margin-bottom: 20px;
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.question-number {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary-color);
+  user-select: none;
+}
+
+.bookmark-btn {
+  background: transparent;
+  border: 2px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 44px;
+  min-height: 44px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.bookmark-btn:active {
+  transform: scale(0.95);
+}
+
+.bookmark-btn.active {
+  background: var(--warning-color);
+  border-color: var(--warning-color);
+  color: #000;
+}
+
+.question {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 25px;
+  color: var(--text-primary);
+  user-select: text;
+}
+
+.question-image {
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: 10px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  padding: 10px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--border-color);
+  padding: 16px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--bg-secondary);
+  min-height: 60px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.option-label:active {
+  transform: scale(0.98);
+}
+
+.option-label:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--primary-color);
+}
+
+.option-label.selected {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.option-label input[type="radio"] {
+  margin-right: 15px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.option-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.option-image {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  padding: 10px;
+}
+
+.option-label.selected .option-image {
+  background: rgba(255,255,255,0.1);
+}
+
+/* FIXED NAVIGATION - KEY UPDATE */
+.navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-primary);
+  border-top: 2px solid var(--border-color);
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  z-index: 997;
+  padding: 15px 20px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 10px;
+  max-width: 100%;
+}
+
+.nav-btn {
+  padding: 14px 20px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+.nav-btn:active {
+  transform: scale(0.97);
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.nav-btn.prev {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.nav-btn.prev:hover:not(:disabled) {
+  background: #5a6268;
+}
+
+.nav-btn.next {
+  background: var(--primary-color);
+  color: white;
+}
+
+.nav-btn.next:hover:not(:disabled) {
+  background: var(--primary-hover);
+}
+
+.nav-btn.clear {
+  background: var(--danger-color);
+  color: white;
+}
+
+.nav-btn.clear:hover {
+  background: #c82333;
+}
+
+.nav-btn.submit {
+  background: var(--success-color);
+  color: white;
+  grid-column: 1 / -1;
+}
+
+.nav-btn.submit:hover {
+  background: var(--success-hover);
+}
+
+.result-section {
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.score-card {
+  background: linear-gradient(135deg, var(--primary-color), var(--success-color));
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  margin-bottom: 30px;
+  user-select: none;
+}
+
+.score-card h2 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.score-card p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: var(--bg-secondary);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  border: 2px solid var(--border-color);
+  user-select: none;
+}
+
+.stat-card h3 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.stat-card.correct h3 { color: var(--success-color); }
+.stat-card.wrong h3 { color: var(--danger-color); }
+.stat-card.unattempted h3 { color: var(--secondary-color); }
+
+.question-review {
+  border: 2px solid var(--border-color);
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 20px;
+  background: var(--bg-secondary);
+}
+
+.question-review h4 {
+  margin-bottom: 15px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.review-option {
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 2px solid var(--border-color);
+  background: var(--bg-primary);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.review-option .option-image {
+  max-width: 150px;
+  max-height: 100px;
+}
+
+.review-option.correct {
+  background: #d4edda;
+  border-color: var(--success-color);
+  color: #155724;
+}
+
+.review-option.wrong {
+  background: #f8d7da;
+  border-color: var(--danger-color);
+  color: #721c24;
+}
+
+.review-option.user-selected {
+  border-width: 3px;
+  font-weight: 600;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.action-btn {
+  padding: 14px 30px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  min-width: 150px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.action-btn:active {
+  transform: scale(0.95);
+}
+
+.action-btn.restart {
+  background: var(--danger-color);
+  color: white;
+}
+
+.action-btn.restart:hover {
+  background: #c82333;
+}
+
+.action-btn.download {
+  background: var(--primary-color);
+  color: white;
+}
+
+.action-btn.download:hover {
+  background: var(--primary-hover);
+}
+
+.action-btn.print {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.action-btn.print:hover {
+  background: #5a6268;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.palette-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.palette-content::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+}
+
+.palette-content::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+.palette-content::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 140px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .header h1 {
+    font-size: 22px;
+  }
+
+  .quiz-container {
+    padding: 20px 15px;
+  }
+
+  .question-palette {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .palette-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+  }
+
+  .palette-btn {
+    font-size: 13px;
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  .palette-fab {
+    bottom: calc(var(--nav-height) + 10px);
+    right: 15px;
+    width: 56px;
+    height: 56px;
+    font-size: 22px;
+  }
+
+  .navigation {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 12px 15px;
+  }
+
+  .nav-btn {
+    min-height: 44px;
+    font-size: 15px;
+  }
+
+  .nav-btn.clear {
+    order: 3;
+  }
+
+  .nav-btn.submit {
+    grid-column: auto;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .legend-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .question {
+    font-size: 16px;
+  }
+
+  .option-label {
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  .option-image {
+    max-height: 150px;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .palette-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+
+  .palette-btn {
+    font-size: 12px;
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .timer {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  .option-image {
+    max-height: 120px;
+  }
+}
+
+@media print {
+  .header-controls, .navigation, .palette-fab, .palette-overlay, .question-palette, .action-buttons, .bookmark-btn {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    padding-bottom: 0;
+  }
+
+  .container {
+    padding-bottom: 20px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>13.) SECTIONAL MOCK-04(GK/GS/COMPUTER - Hindi</h1>
+    <div class="header-controls">
+      <a href="https://t.me/ssc_prepX" target="_blank" class="bot-link-btn" title="Open Bot in Telegram">🤖 Bot</a>
+      
+      <div class="timer" id="timer">00:00</div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle Theme">🌙</button>
+      <button class="fullscreen-btn" id="fullscreenBtn" aria-label="Toggle fullscreen" title="Fullscreen">⛶</button>
+    </div>
+  </div>
+
+  <div class="quiz-container" id="quizContainer">
+    <div class="quiz-header">
+      <div class="marking-info" id="markingInfo">Marking: +1, -0</div>
+    </div>
+
+    <div class="progress-section">
+      <div class="progress-stats">
+        <span>Progress: <strong id="progressText">1/2</strong></span>
+        <span>Attempted: <strong id="attemptedText">0</strong></span>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+
+    <div class="question-section" id="questionSection">
+      <div class="question-header">
+        <div class="question-number" id="questionNumber">Question 1 of 2</div>
+        <button class="bookmark-btn" id="bookmarkBtn" aria-label="Bookmark question">
+          <span>🔖</span> <span>Bookmark</span>
+        </button>
+      </div>
+      
+      <div class="question" id="questionText"></div>
+      
+      <div class="options" id="optionsContainer"></div>
+    </div>
+
+    <div class="result-section hidden" id="resultSection"></div>
+  </div>
+</div>
+
+<div class="navigation" id="navigation">
+  <button class="nav-btn prev" id="prevBtn" aria-label="Previous question">
+    <span>←</span> Previous
+  </button>
+  <button class="nav-btn clear" id="clearBtn" aria-label="Clear answer">
+    Clear
+  </button>
+  <button class="nav-btn next" id="nextBtn" aria-label="Next question">
+    Next <span>→</span>
+  </button>
+  <button class="nav-btn submit hidden" id="submitBtn" aria-label="Submit quiz">
+    Submit Quiz
+  </button>
+</div>
+
+<button class="palette-fab" id="paletteFab" aria-label="Toggle question palette" title="Question Palette (P)">
+  📋
+  <span class="badge" id="answeredBadge">0</span>
+</button>
+
+<div class="palette-overlay" id="paletteOverlay"></div>
+
+<div class="question-palette" id="questionPalette">
+  <div class="palette-header">
+    <h3>Question Palette</h3>
+    <button class="palette-close" id="paletteClose" aria-label="Close palette">×</button>
+  </div>
+
+  <div class="palette-stats">
+    <div class="palette-stat answered">
+      <div class="number" id="paletteAnswered">0</div>
+      <div>Answered</div>
+    </div>
+    <div class="palette-stat unanswered">
+      <div class="number" id="paletteUnanswered">2</div>
+      <div>Not Answered</div>
+    </div>
+    <div class="palette-stat bookmarked">
+      <div class="number" id="paletteBookmarked">0</div>
+      <div>Bookmarked</div>
+    </div>
+  </div>
+
+  <div class="palette-search">
+    <input type="number" id="paletteSearch" placeholder="Jump to question number..." aria-label="Search questions" inputmode="numeric" pattern="[0-9]*">
+  </div>
+
+  <div class="palette-content">
+    <div class="palette-grid" id="paletteGrid"></div>
+  </div>
+
+  <div class="palette-legend">
+    <div class="legend-grid">
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--success-color);"></div>
+        <span>Answered</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--bg-secondary); border: 2px solid var(--border-color);"></div>
+        <span>Not Answered</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--primary-color);"></div>
+        <span>Current Question</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--warning-color);"></div>
+        <span>🔖 Bookmarked</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// JSON INJECTION HAPPENS HERE
+const questions = [{"sr_no": 1, "question": " <p style=\"orphans:0;widows:0\">    <b>By which of the following Acts was the Governor-General of    Bengal redesignated as the Governor-General of India?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Regulating Act of 1773</p>", "option2": " <p style=\"orphans:0;widows:0\">    Pitt's India Act of 1784</p>", "option3": " <p style=\"orphans:0;widows:0\">    Charter Act of 1833</p>", "option4": " <p style=\"orphans:0;widows:0\">    Charter Act of 1853</p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The Charter Act of 1833 redesignated the Governor-General of    Bengal as the 'Governor-General of India' and vested in him all    civil and military powers. Lord William Bentinck became the first    Governor-General of India under this Act.</p>", "question_heading": ""}, {"sr_no": 2, "question": " <p style=\"orphans:0;widows:0\">    <b>Which of the following terms refers to the phase transition in    which a substance changes directly from a gas to a solid without    passing through the liquid state?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Sublimation</p>", "option2": " <p style=\"orphans:0;widows:0\">    Deposition</p>", "option3": " <p style=\"orphans:0;widows:0\">    Condensation</p>", "option4": " <p style=\"orphans:0;widows:0\">    Liquefaction</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    <b>Deposition</b> (also known as desublimation) is the    thermodynamic phase transition in which a gas transforms directly    into a solid without passing through the liquid phase. A common    natural example is the formation of frost on cold surfaces. In    contrast, <i>sublimation</i> is the direct transition from solid    to gas, and <i>condensation</i> is the change from gas to liquid.</p>", "question_heading": ""}, {"sr_no": 3, "question": " <p style=\"orphans:0;widows:0\">    <b>The foundational Ayurvedic treatise 'Charaka Samhita',    celebrated for its comprehensive exposition of internal medicine    (Kaya Chikitsa), is a redacted and expanded version of an earlier    text composed by which ancient scholar?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Agnivesha</p>", "option2": " <p style=\"orphans:0;widows:0\">    Sushruta</p>", "option3": " <p style=\"orphans:0;widows:0\">    Patanjali</p>", "option4": " <p style=\"orphans:0;widows:0\">    Vagbhata</p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The 'Charaka Samhita' is one of the foundational texts of    Ayurveda, primarily focusing on Kaya Chikitsa (internal medicine).    It is based on the 'Agnivesha Tantra', an earlier work composed by    Sage Agnivesha, who was a disciple of Sage Punarvasu Atreya.    Charaka, an eminent physician associated with the court of the    Kushana ruler Kanishka I, extensively revised, expanded, and    redacted Agnivesha's text, which subsequently came to be known as    the 'Charaka Samhita'.</p>", "question_heading": ""}, {"sr_no": 4, "question": " <p style=\"orphans:0;widows:0\">    <b>The Battle of Karnal (1739) was fought between the Persian    invader Nadir Shah and which of the following Mughal Emperors?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Farrukhsiyar</p>", "option2": " <p style=\"orphans:0;widows:0\">    Muhammad Shah</p>", "option3": " <p style=\"orphans:0;widows:0\">    Shah Alam II</p>", "option4": " <p style=\"orphans:0;widows:0\">    Jahandar Shah</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The Battle of Karnal was fought on 24 February 1739 between the    forces of Nadir Shah, the ruler of Afsharid Persia, and the Mughal    Emperor Muhammad Shah (popularly known as Muhammad Shah    'Rangila'). Nadir Shah decisively defeated the Mughal army,    captured Delhi, and looted immense wealth, including the famous    Peacock Throne (Takht-i-Taus) and the Koh-i-Noor diamond.</p>", "question_heading": ""}, {"sr_no": 5, "question": "In Aूनiि 1927, ीियियथing पुध Mोुोक Sोपदोgनोुो, Dन. B. R. Aंृधकाोन िोहncुधक थुicु यी पुध ीियियथing Mोनोपुi ीयनपnigुिपद ुयहनnोिस पय ोकॅयcोपध ीयन पुध नigुपौ यी पुध कधूनधौौधक cिोौौधौ?", "option1": "<p style=\"orphans:0;widows:0\">    Janata</p>", "option2": " <p style=\"orphans:0;widows:0\">    Bahishkrit Bharat</p>", "option3": " <p style=\"orphans:0;widows:0\">    Samata</p>", "option4": " <p style=\"orphans:0;widows:0\">    Prabuddha Bharat</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Dr. B. R. Ambedkar launched the Marathi fortnightly <b>Bahishkrit    Bharat</b> on 3 April 1927, shortly after the historic Mahad    Satyagraha (March 1927), to highlight the grievances and champion    the social and political rights of the depressed classes.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Key    periodicals founded by Dr. B. R. Ambedkar:</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Mooknayak:</b>    1920</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Bahishkrit    Bharat:</b> 1927</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Samata:</b>    1928</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Janata:</b>    1930</p>    <p style=\"orphans:0;widows:0\"><b>Prabuddha Bharat:</b> 1956    (renamed from Janata)</p>", "question_heading": ""}, {"sr_no": 6, "question": " <p style=\"orphans:0;widows:0\">    <b>Who among the following ancient Indian kings was a devout    follower and prominent royal patron of Jainism, as evidenced by    the Hathigumpha inscription?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Kharavela</p>", "option2": " <p style=\"orphans:0;widows:0\">    Gautamiputra Satakarni</p>", "option3": " <p style=\"orphans:0;widows:0\">    Pushyamitra Shunga</p>", "option4": " <p style=\"orphans:0;widows:0\">    Rudradaman I</p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    King Kharavela of Kalinga, the ruler of the Mahameghavahana    (Chedi) dynasty, was a devout follower and great royal patron of    Jainism. The famous Hathigumpha inscription, located in the    Udayagiri Hills near Bhubaneswar, Odisha, was inscribed by him. It    records his major achievements, military expeditions, and acts of    benevolence towards Jain monks, including the construction of    shelters (caves) for them.</p>", "question_heading": ""}, {"sr_no": 7, "question": " <p style=\"orphans:0;widows:0\">    <b>Who among the following presided over the first session of the    All India Kisan Sabha held at Lucknow in 1936?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    N. G. Ranga</p>", "option2": " <p style=\"orphans:0;widows:0\">    Swami Sahajanand Saraswati</p>", "option3": " <p style=\"orphans:0;widows:0\">    Indulal Yagnik</p>", "option4": " <p style=\"orphans:0;widows:0\">    Acharya Narendra Dev</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The All India Kisan Sabha (AIKS) was formed in April 1936 at the    Lucknow session of the Indian National Congress. Swami Sahajanand    Saraswati was elected as its first President, and N. G. Ranga was    appointed as its General Secretary.</p>", "question_heading": ""}, {"sr_no": 8, "question": " <p style=\"orphans:0;widows:0\">    <b>Who among the following is the author of the classic book on    Indian art and culture titled ‘The Dance of Shiva: Fourteen    Indian Essays’?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    E. B. Havell</p>", "option2": " <p style=\"orphans:0;widows:0\">    Stella Kramrisch</p>", "option3": " <p style=\"orphans:0;widows:0\">    Ananda Coomaraswamy</p>", "option4": " <p style=\"orphans:0;widows:0\">    Percy Brown</p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    <b>Ananda Coomaraswamy</b> (1877–1947) was a pioneering    historian and philosopher of Indian art who wrote the acclaimed    book <i>‘The Dance of Shiva: Fourteen Indian Essays’</i>    (published in 1918). The work interprets Indian aesthetics,    symbolism, and cultural traditions, especially the cosmic    symbolism of Nataraja (the dancing Shiva).</p>", "question_heading": ""}, {"sr_no": 9, "question": " <p style=\"orphans:0;widows:0\">    <b>Where is the headquarters (Secretariat) of the South Asian    Association for Regional Cooperation (SAARC) located?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    New Delhi</p>", "option2": " <p style=\"orphans:0;widows:0\">    Dhaka</p>", "option3": " <p style=\"orphans:0;widows:0\">    Kathmandu</p>", "option4": " <p style=\"orphans:0;widows:0\">    Colombo</p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The headquarters and Secretariat of the South Asian Association    for Regional Cooperation (SAARC) is located in Kathmandu, Nepal.    It was inaugurated on 16 January 1987.</p>", "question_heading": ""}, {"sr_no": 10, "question": " <p style=\"orphans:0;widows:0\">    <b>Which of the following committees was set up in 1995 to examine    issues related to Small Scale Enterprises (SSEs) and recommended    the dereservation of items reserved for the small-scale sector?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Abid Hussain Committee</p>", "option2": " <p style=\"orphans:0;widows:0\">    Rangarajan Committee</p>", "option3": " <p style=\"orphans:0;widows:0\">    Tarapore Committee</p>", "option4": " <p style=\"orphans:0;widows:0\">    Raja Chelliah Committee</p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The Abid Hussain Committee on Small Scale Enterprises was    constituted in December 1995 by the Government of India and    submitted its report in 1997. It recommended restructuring    policies for small-scale industries, including the complete    abolition of reservation of products for the SSI sector, financial    support, and technological upgradation to make them globally    competitive.</p>", "question_heading": ""}, {"sr_no": 11, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Consider the following statements regarding the Bharatiya    Nagarik Suraksha Sanhita (BNSS), 2023:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>1. It mandates the visit of a forensic expert to the crime    scene to collect evidence for offences punishable with    imprisonment of seven years or more.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>2. It introduces provisions for conducting the trial in    absentia of a proclaimed offender who has absconded.</b></p>    <p style=\"orphans:0;widows:0\"><b>Which of the    statements given above is/are correct?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    1 only</p>", "option2": " <p style=\"orphans:0;widows:0\">    2 only</p>", "option3": " <p style=\"orphans:0;widows:0\">    Both 1 and 2</p>", "option4": " <p style=\"orphans:0;widows:0\">    Neither 1 nor 2</p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Both statements 1 and 2 are correct.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">1. Under    Section 176(3) of the Bharatiya Nagarik Suraksha Sanhita (BNSS),    2023, the collection of forensic evidence is mandated for offences    punishable with imprisonment of seven years or more, requiring a    forensic expert to visit the crime scene.</p>    <p style=\"orphans:0;widows:0\">2. Section 356 of the BNSS    provides for inquiry, trial, or judgment in absentia for any    person declared as a proclaimed offender who has absconded to    evade trial.</p>", "question_heading": ""}, {"sr_no": 12, "question": " <p style=\"orphans:0;widows:0\">    <b>Which of the following pairs of 'Vedanga' and its primary field    of study is </b><b>INCORRECTLY</b><b> matched?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Siksha – Phonetics</p>", "option2": " <p style=\"orphans:0;widows:0\">    Kalpa – Rituals</p>", "option3": " <p style=\"orphans:0;widows:0\">    Nirukta – Astronomy</p>", "option4": " <p style=\"orphans:0;widows:0\">    Chhanda – Metrics</p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    There are six auxiliary disciplines associated with the study of    the Vedas, known as the Vedangas:</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Siksha:</b>    Phonetics and pronunciation</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Kalpa:</b>    Ritual instructions and sacrificial rites</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Vyakarana:</b>    Grammar and linguistic analysis</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Nirukta:</b>    Etymology and explanation of obscure words (composed by Yaska)</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Chhanda:</b>    Poetic meters/metrics</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Jyotisha:</b>    Astronomy and astrology (for determining auspicious times for    rituals)</p>    <p style=\"orphans:0;widows:0\">Therefore, 'Nirukta –    Astronomy' is incorrectly matched, as astronomy is the subject of    <b>Jyotisha</b>.</p>", "question_heading": ""}, {"sr_no": 13, "question": " <p style=\"orphans:0;widows:0\">    <b>In the experiment conducted by Avery, MacLeod, and McCarty to    determine the biochemical nature of the 'transforming principle',    the transformation of harmless bacteria into virulent bacteria was    inhibited by which of the following enzymes?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Protease</p>", "option2": " <p style=\"orphans:0;widows:0\">    RNase</p>", "option3": " <p style=\"orphans:0;widows:0\">    DNase</p>", "option4": " <p style=\"orphans:0;widows:0\">    Amylase</p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    Oswald Avery, Colin MacLeod, and Maclyn McCarty (1944) worked to    determine the biochemical nature of Griffith's 'transforming    principle'. They discovered that protein-digesting enzymes    (proteases) and RNA-digesting enzymes (RNases) did not affect    transformation, whereas digestion with deoxyribonuclease (DNase)    completely inhibited transformation. This proved that DNA, and not    protein or RNA, is the hereditary material responsible for    transformation.</p>", "question_heading": ""}, {"sr_no": 14, "question": " <p style=\"orphans:0;widows:0\">    <b>Which Olympic martial art literally translates to \"the way    of the foot and the fist\"?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Judo</p>", "option2": " <p style=\"orphans:0;widows:0\">    Karate</p>", "option3": " <p style=\"orphans:0;widows:0\">    Taekwondo</p>", "option4": " <p style=\"orphans:0;widows:0\">    Aikido</p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    <b>Taekwondo</b> is an Olympic combat sport that originated in    Korea. The name is derived from three Korean words: <b>Tae</b>    (meaning 'foot' or 'to kick'), <b>Kwon</b> (meaning 'fist' or 'to    strike with the hand'), and <b>Do</b> (meaning 'the way' or    'discipline'). Thus, it literally translates to \"the way of    the foot and the fist\". It made its debut as an official    Olympic medal sport at the Sydney 2000 Games.</p>", "question_heading": ""}, {"sr_no": 15, "question": " <p style=\"orphans:0;widows:0\">    <b>Which Indian scientist is widely regarded as the 'Father of    Indian Chemistry'?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Shanti Swaroop Bhatnagar</p>", "option2": " <p style=\"orphans:0;widows:0\">    Prafulla Chandra Ray</p>", "option3": " <p style=\"orphans:0;widows:0\">    Meghnad Saha</p>", "option4": " <p style=\"orphans:0;widows:0\">    Birbal Sahni</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    Acharya Prafulla Chandra Ray is widely regarded as the 'Father of    Indian Chemistry'. He was an eminent chemist, educationist, and    industrialist who established the first modern Indian research    school in chemistry and founded Bengal Chemical &amp;    Pharmaceutical Works, India's first pharmaceutical company.</p>", "question_heading": ""}, {"sr_no": 16, "question": " <p style=\"orphans:0;widows:0\">    <b>Who among the following founded 'Bengal Chemical &amp;    Pharmaceutical Works' in Kolkata, which was India's first    indigenous pharmaceutical company?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Meghnad Saha</p>", "option2": " <p style=\"orphans:0;widows:0\">    Prafulla Chandra Ray</p>", "option3": " <p style=\"orphans:0;widows:0\">    Jagadish Chandra Bose</p>", "option4": " <p style=\"orphans:0;widows:0\">    Shanti Swaroop Bhatnagar</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    Acharya Prafulla Chandra Ray, widely regarded as the 'Father of    Indian Chemistry', founded the Bengal Chemical &amp;    Pharmaceutical Works in Kolkata in 1901. It was India's first    indigenous pharmaceutical company, aimed at fostering    self-reliance and creating employment opportunities for Indian    youth during the colonial period.</p>", "question_heading": ""}, {"sr_no": 17, "question": " <p style=\"orphans:0;widows:0\">    <b>Who among the following served in the administration of Sher    Shah Suri and later formulated the famous 'Dahsala' land revenue    system under Mughal Emperor Akbar?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Raja Man Singh</p>", "option2": " <p style=\"orphans:0;widows:0\">    Raja Todar Mal</p>", "option3": " <p style=\"orphans:0;widows:0\">    Raja Birbal</p>", "option4": " <p style=\"orphans:0;widows:0\">    Faizi</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    Raja Todar Mal began his administrative career under the Sur    Empire during the reign of Sher Shah Suri, where he gained    extensive experience in land revenue management. Later, he joined    Mughal Emperor Akbar's court, serving as his finance minister    (Diwan-i-Kul). In 1580 CE, he introduced the famous    'Ain-i-Dahsala' (or Dahsala system), a standard land revenue    assessment system based on the average produce and prices of the    preceding ten years.</p>", "question_heading": ""}, {"sr_no": 18, "question": " <p style=\"orphans:0;widows:0\">    <b>Which Bhakti saint from Maharashtra is credited with    introducing the unique genre of metaphorical and dramatic    devotional folk-songs known as 'Bharud' and composing an    influential commentary on the 11th Skandha of the Bhagavata    Purana?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Sant Dnyaneshwar</p>", "option2": " <p style=\"orphans:0;widows:0\">    Sant Namdev</p>", "option3": " <p style=\"orphans:0;widows:0\">    Sant Eknath</p>", "option4": " <p style=\"orphans:0;widows:0\">    Sant Tukaram</p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    Sant Eknath (1533–1599) was a prominent saint-poet of the    Varkari tradition from Paithan, Maharashtra. He introduced    'Bharud', a didactic and theatrical folk-poetic composition used    to spread spiritual awareness among the masses. He is also    celebrated for his extensive commentary on the 11th Skandha of the    Bhagavata Purana (popularly known as Eknathi Bhagavata) and for    composing the 'Bhavartha Ramayana'.</p>", "question_heading": ""}, {"sr_no": 19, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Consider the following statements regarding the Modern Periodic    Table:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>1. The Modern Periodic Table consists of 18 groups and 7    periods.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>2. Elements belonging to the same group generally have the same    number of valence electrons.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>3. Atomic radius generally decreases from left to right across    a period.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>4. Metallic character generally increases from left to right    across a period.</b></p>    <p style=\"orphans:0;widows:0\"><b>Which of the    statements given above is/are correct?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    1 and 2 only</p>", "option2": " <p style=\"orphans:0;widows:0\">    1, 2 and 3 only</p>", "option3": " <p style=\"orphans:0;widows:0\">    2, 3 and 4 only</p>", "option4": " <p style=\"orphans:0;widows:0\">    1, 2, 3 and 4</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Statement 1 – Correct:</b> The Modern Periodic Table contains    18 groups (vertical columns) and 7 periods (horizontal rows).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    2 – Correct:</b> Elements in the same group generally have the    same number of valence electrons (exception: transition elements).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    3 – Correct:</b> Atomic radius generally decreases across a    period due to increasing effective nuclear charge.</p>    <p style=\"orphans:0;widows:0\"><b>Statement 4 – Incorrect:</b>    Metallic character generally <b>decreases</b> from left to right    across a period.</p>", "question_heading": ""}, {"sr_no": 20, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Consider the following statements regarding nutrients in the    human body:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>1. Carbohydrates are the primary source of energy for the human    body.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>2. Proteins are required for the growth and repair of body    tissues.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>3. Vitamins A, D, E and K are water-soluble vitamins.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>4. Iron is essential for the formation of haemoglobin.</b></p>    <p style=\"orphans:0;widows:0\"><b>Which of the    statements given above is/are correct?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    1 and 2 only</p>", "option2": " <p style=\"orphans:0;widows:0\">    1, 2 and 3 only</p>", "option3": " <p style=\"orphans:0;widows:0\">    1, 2 and 4 only</p>", "option4": " <p style=\"orphans:0;widows:0\">    1, 2, 3 and 4</p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Statement 1 – Correct:</b> Carbohydrates are the body's main    source of energy.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    2 – Correct:</b> Proteins help in the growth and repair of body    tissues.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    3 – Incorrect:</b> Vitamins A, D, E and K are <b>fat-soluble    vitamins</b>. Vitamins B and C are water-soluble.</p>    <p style=\"orphans:0;widows:0\"><b>Statement 4 – Correct:</b>    Iron is an essential component of haemoglobin, which transports    oxygen in the blood.</p>", "question_heading": ""}, {"sr_no": 21, "question": " <p style=\"orphans:0;widows:0\">    <b>Which of the following waves cannot travel through a vacuum?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Radio waves</p>", "option2": " <p style=\"orphans:0;widows:0\">    X-rays</p>", "option3": " <p style=\"orphans:0;widows:0\">    Sound waves</p>", "option4": " <p style=\"orphans:0;widows:0\">    Light waves</p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Sound waves are mechanical waves and require a material medium for    propagation.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Sound cannot    travel through a vacuum.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Light, radio    waves and X-rays are electromagnetic waves and can travel through    a vacuum.</p>    <p style=\"orphans:0;widows:0\">The speed of sound in air at 20°C    is approximately <b>343 m/s</b>.</p>", "question_heading": ""}, {"sr_no": 22, "question": " <p style=\"orphans:0;widows:0\">    <b>USB is ____ a type of storage?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Auxiliary.</p>", "option2": " <p style=\"orphans:0;widows:0\">    Primary.</p>", "option3": " <p style=\"orphans:0;widows:0\">    Secondary.</p>", "option4": " <p style=\"orphans:0;widows:0\">    Tertiary.</p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    USB (Universal Serial Bus) is used to connect external storage    devices such as pen drives.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Data stored    in USB flash drives is retained even when the power is switched    off.</p>    <p style=\"orphans:0;widows:0\">Therefore, USB flash storage is    classified as <b>Secondary Storage</b>.</p>", "question_heading": ""}, {"sr_no": 23, "question": " <p style=\"orphans:0;widows:0\">    <b>Which one of the following is odd?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    IMAP.</p>", "option2": " <p style=\"orphans:0;widows:0\">    POP.</p>", "option3": " <p style=\"orphans:0;widows:0\">    SNMP.</p>", "option4": " <p style=\"orphans:0;widows:0\">    SMTP.</p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    IMAP, POP and SMTP are protocols associated with email    communication.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">IMAP and POP    are used to receive emails, whereas SMTP is used to send emails.</p>    <p style=\"orphans:0;widows:0\">SNMP (Simple Network Management    Protocol) is used for network monitoring and management.</p>", "question_heading": ""}, {"sr_no": 24, "question": " <p style=\"orphans:0;widows:0\">    <b>Group of 4 bits forms a ____.</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Byte.</p>", "option2": " <p style=\"orphans:0;widows:0\">    Nibble.</p>", "option3": " <p style=\"orphans:0;widows:0\">    Gigabyte.</p>", "option4": " <p style=\"orphans:0;widows:0\">    Terabyte.</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    A group of 4 bits is called a <b>Nibble</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">1 Byte = 8    bits = 2 Nibbles.</p>    <p style=\"orphans:0;widows:0\">The smallest unit of digital    information is a <b>Bit (Binary Digit)</b>.</p>", "question_heading": ""}, {"sr_no": 25, "question": " <p style=\"orphans:0;widows:0\">    <b>Identify the odd term amongst the following term?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Optical fibre.</p>", "option2": " <p style=\"orphans:0;widows:0\">    Twisted pair wire.</p>", "option3": " <p style=\"orphans:0;widows:0\">    Micro waves.</p>", "option4": " <p style=\"orphans:0;widows:0\">    Hertz.</p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Optical fibre, twisted pair wire and microwaves are transmission    media used for data communication.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Optical fibre    uses light, twisted pair uses electrical signals and microwaves    use electromagnetic waves.</p>    <p style=\"orphans:0;widows:0\">Hertz (Hz) is the SI unit of    frequency, not a transmission medium.</p>", "question_heading": ""}, {"sr_no": 26, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Consider the following statements regarding the Bharatiya Nyaya    Sanhita (BNS), 2023:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>1. The Bharatiya Nyaya Sanhita, 2023 replaced the Indian Penal    Code (IPC), 1860.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>2. The BNS came into force on 1 July 2024.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>3. The BNS contains a total of 358 sections.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>4. The BNS introduced community service as a form of    punishment.</b></p>    <p style=\"orphans:0;widows:0\"><b>Which of the    statements given above is/are correct?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    1 and 2 only</p>", "option2": " <p style=\"orphans:0;widows:0\">    1, 2 and 3 only</p>", "option3": " <p style=\"orphans:0;widows:0\">    1, 2 and 4 only</p>", "option4": " <p style=\"orphans:0;widows:0\">    1, 2, 3 and 4</p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Statement 1 – Correct:</b> BNS replaced the Indian Penal Code    (IPC), 1860.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    2 – Correct:</b> It came into force on 1 July 2024.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    3 – Correct:</b> BNS contains 358 sections divided into 20    chapters.</p>    <p style=\"orphans:0;widows:0\"><b>Statement 4 – Correct:</b>    Community service was introduced as one of the punishments under    BNS.</p>", "question_heading": ""}, {"sr_no": 27, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Consider the following statements regarding the State    Legislature in India:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>1. The Legislative Council is a permanent house and is not    subject to dissolution.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>2. The minimum age to become a member of the State Legislative    Assembly is 25 years.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>3. The maximum strength of a State Legislative Council cannot    exceed one-third of the total strength of the State Legislative    Assembly.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>4. The Governor is a part of the State Legislature.</b></p>    <p style=\"orphans:0;widows:0\"><b>Which of the    statements given above is/are correct?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    1 and 2 only</p>", "option2": " <p style=\"orphans:0;widows:0\">    1, 2 and 3 only</p>", "option3": " <p style=\"orphans:0;widows:0\">    1, 2 and 4 only</p>", "option4": " <p style=\"orphans:0;widows:0\">    1, 2, 3 and 4</p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Statement 1 – Correct:</b> Under Article 172, the Legislative    Council is a permanent house; approximately one-third of its    members retire every two years.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    2 – Correct:</b> The minimum age for membership of the    Legislative Assembly is 25 years.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    3 – Correct:</b> Under Article 171, the Legislative Council's    strength cannot exceed one-third of the Assembly's strength and    cannot be less than 40 (except as otherwise provided by    Parliament).</p>    <p style=\"orphans:0;widows:0\"><b>Statement 4 – Correct:</b>    Under Article 168, the Governor is a constituent part of the State    Legislature.</p>", "question_heading": ""}, {"sr_no": 28, "question": " <p style=\"orphans:0;widows:0\">    <b>Who is the author of the book The Gopi Diaries?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Sudha Murty</p>", "option2": " <p style=\"orphans:0;widows:0\">    Ruskin Bond</p>", "option3": " <p style=\"orphans:0;widows:0\">    Amish Tripathi</p>", "option4": " <p style=\"orphans:0;widows:0\">    Arundhati Roy</p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <i>The Gopi Diaries</i> is a children's book series written by    <b>Sudha Murty</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">The series is    narrated from the perspective of a dog named Gopi.</p>    <p style=\"orphans:0;widows:0\">Sudha Murty is also the author of    <i>Grandma's Bag of Stories</i> and <i>Wise and Otherwise</i>.</p>", "question_heading": ""}, {"sr_no": 29, "question": " <p style=\"orphans:0;widows:0\">    <b>Which of the following soils is most suitable for the    cultivation of cotton in India?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Alluvial Soil</p>", "option2": " <p style=\"orphans:0;widows:0\">    Black Soil</p>", "option3": " <p style=\"orphans:0;widows:0\">    Laterite Soil</p>", "option4": " <p style=\"orphans:0;widows:0\">    Red Soil</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Black soil is also known as <b>Regur Soil</b> or Black Cotton    Soil.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">It is rich in    clay and has high moisture-retention capacity.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">It is    particularly suitable for cotton cultivation.</p>    <p style=\"orphans:0;widows:0\">It is predominantly found in    Maharashtra, Madhya Pradesh, Gujarat and parts of the Deccan    Plateau.</p>", "question_heading": ""}, {"sr_no": 30, "question": " <p style=\"orphans:0;widows:0\">    <b>In which session of the Indian National Congress was the Quit    India Resolution passed in August 1942?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Lahore Session</p>", "option2": " <p style=\"orphans:0;widows:0\">    Bombay Session</p>", "option3": " <p style=\"orphans:0;widows:0\">    Karachi Session</p>", "option4": " <p style=\"orphans:0;widows:0\">    Lucknow Session</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The Quit India Resolution was passed on <b>8 August 1942</b> at    the Bombay session of the All India Congress Committee.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">The movement    was launched under the leadership of <b>Mahatma Gandhi</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Gandhi gave    the famous slogan <b>“Do or Die” (</b><span style=\"font-family:'Nirmala UI'\"><span><b>करो    या मरो</b></span></span><b>)</b>.</p>    <p style=\"orphans:0;widows:0\">The movement was launched against    British rule in India.</p>", "question_heading": ""}, {"sr_no": 31, "question": " <p style=\"orphans:0;widows:0\">    <b>'Operation Urja Suraksha' was specifically launched in response    to rising tensions in which of the following regions?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    West Asia</p>", "option2": " <p style=\"orphans:0;widows:0\">    South China Sea</p>", "option3": " <p style=\"orphans:0;widows:0\">    Indo-Pacific</p>", "option4": " <p style=\"orphans:0;widows:0\">    Mediterranean Sea</p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The operation is a response to the geopolitical tensions in West    Asia (Middle East), which is a critical maritime corridor for    India’s energy imports.</p>", "question_heading": ""}, {"sr_no": 32, "question": " <p style=\"orphans:0;widows:0\">    <b>What is the primary objective of the newly launched 'Gruh    Sugam' Portal?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    To provide free building materials to rural households</p>", "option2": " <p style=\"orphans:0;widows:0\">    To act as a digital platform for easy access to housing finance    and information</p>", "option3": " <p style=\"orphans:0;widows:0\">    To monitor the pollution levels in urban construction sites</p>", "option4": " <p style=\"orphans:0;widows:0\">    To auction distressed commercial properties</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The Gruh Sugam Portal is designed to simplify the process of    accessing housing finance by providing a digital interface for    borrowers, lenders, and stakeholders to find information and    facilitate credit flow.</p>", "question_heading": ""}, {"sr_no": 33, "question": " <p style=\"orphans:0;widows:0\">    <b>Which constitutional/statutory body collaborated with    Truecaller to launch the \"TrueCyberSakhi\" digital safety    toolkit?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    National Human Rights Commission</p>", "option2": " <p style=\"orphans:0;widows:0\">    National Commission for Protection of Child Rights</p>", "option3": " <p style=\"orphans:0;widows:0\">    National Commission for Women (NCW)</p>", "option4": " <p style=\"orphans:0;widows:0\">    NITI Aayog</p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The National Commission for Women (NCW) partnered with Truecaller    to launch \"TrueCyberSakhi.\" This strategic collaboration    focuses on enhancing digital safety and literacy specifically for    women in India.</p>", "question_heading": ""}, {"sr_no": 34, "question": " <p style=\"orphans:0;widows:0\">    <b>Which athlete received the 'Player of the Year (Female)' trophy    at the Hockey India 8th Annual Awards?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Navneet Kaur</p>", "option2": " <p style=\"orphans:0;widows:0\">    Vandana Katariya</p>", "option3": " <p style=\"orphans:0;widows:0\">    Savita Punia</p>", "option4": " <p style=\"orphans:0;widows:0\">    Salima Tete</p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    ● Player of the Year (Men): Hardik Singh (his third consecutive    win).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">● Player of    the Year (Women): Navneet Kaur.</p>    <p style=\"orphans:0;widows:0\">● Lifetime Achievement: Zafar    Iqbal (1980 Moscow Olympics Gold medalist) was honored with the    Major Dhyan Chand Lifetime Achievement Award.</p>", "question_heading": ""}, {"sr_no": 35, "question": " <p style=\"orphans:0;widows:0\">    <b>Renowned Tamil poet and novelist R. Vairamuthu has been honored    with the 60th Jnanpith Award. This award is considered the highest    literary recognition in which country?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Sri Lanka</p>", "option2": " <p style=\"orphans:0;widows:0\">    Singapore</p>", "option3": " <p style=\"orphans:0;widows:0\">    Malaysia</p>", "option4": " <p style=\"orphans:0;widows:0\">    India</p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    ● The Jnanpith Award is India's highest literary honor,    presented annually by the Bharatiya Jnanpith to an author for    their \"outstanding contribution towards literature.\"</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">● The 58th    edition of the award was jointly conferred upon two legendary    figures:</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">○ Gulzar    (Sampooran Singh Kalra): Celebrated Urdu poet, lyricist, and    filmmaker. He is also a recipient of the Sahitya Akademi Award,    Oscar, and Grammy.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">○ Jagadguru    Rambhadracharya: Renowned Sanskrit scholar and spiritual leader.    He is a polyglot who speaks 22 languages and has authored over 100    books.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">● The 59th    Jnanpith Award was awarded to:</p>    <p style=\"orphans:0;widows:0\">○ Vinod Kumar Shukla: An    eminent Hindi writer and poet. He is the first writer from    Chhattisgarh to receive this honor. His notable works include the    novel Naukar Ki Kameez and Diwaar Mein Ek Khidki Rehti Thi.</p>", "question_heading": ""}, {"sr_no": 36, "question": " <p style=\"orphans:0;widows:0\">    <b>The 11th edition of the Joint Military Exercise \"Lamitiye    2026\" was conducted between the Indian Armed Forces and the    Defence Forces of which country?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Mauritius</p>", "option2": " <p style=\"orphans:0;widows:0\">    Madagascar</p>", "option3": " <p style=\"orphans:0;widows:0\">    Maldives</p>", "option4": " <p style=\"orphans:0;widows:0\">    Seychelles</p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    \"Lamitiye\" (which means Friendship in Creole) is a    biennial joint military exercise between India and Seychelles. The    2026 edition was hosted at the Seychelles Defence Academy.</p>", "question_heading": ""}, {"sr_no": 37, "question": " <p style=\"orphans:0;widows:0\">    <b>What is the official theme for International Women's Day 2026,    as announced by the United Nations?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Gender equality today for a sustainable tomorrow</p>", "option2": " <p style=\"orphans:0;widows:0\">    DigitALL: Innovation and technology for gender equality</p>", "option3": " <p style=\"orphans:0;widows:0\">    Invest in women: Accelerate progress</p>", "option4": " <p style=\"orphans:0;widows:0\">    Rights. Justice. Action. For ALL Women and Girls</p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    ● International Women's Day is celebrated on 8th March.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">● The 2026    theme \"Rights. Justice. Action. For ALL Women and Girls\"    emphasizes moving beyond awareness toward concrete legal    protections and social justice for all women, including    marginalized groups.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">● SHE-Mart    Initiative: Launched in the Union Budget 2026-27, this initiative    was a focus during the IWD celebrations to provide better market    access for products made by rural women and Self-Help Groups    (SHGs).</p>    <p style=\"orphans:0;widows:0\">● STEM Education Focus: The    President highlighted that the 2026-27 budget provides for the    establishment of a women's hostel in every district to support    students in Science, Technology, Engineering, and Mathematics.</p>", "question_heading": ""}, {"sr_no": 38, "question": " <p style=\"orphans:0;widows:0\">    <b>What is the official theme for the International Day of    Happiness 2026?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Caring and Sharing</p>", "option2": " <p style=\"orphans:0;widows:0\">    Happier Together</p>", "option3": " <p style=\"orphans:0;widows:0\">    Be Mindful, Be Grateful, Be Kind</p>", "option4": " <p style=\"orphans:0;widows:0\">    Build Back Happier</p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    ● The 2026 theme is \"Caring and Sharing,\" which    highlights how social connections and supporting one another are    fundamental to individual and collective well-being.</p>    <p style=\"orphans:0;widows:0\">● The International Day of    Happiness is observed annually on March 20.</p>", "question_heading": ""}, {"sr_no": 39, "question": " <p style=\"orphans:0;widows:0\">    <b>Union Minister Dr. Mansukh Mandaviya released the book titled    “Mahatma: A Great Communicator”. Who is the author of this    book?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Dr. Dhiraj Kakadia</p>", "option2": " <p style=\"orphans:0;widows:0\">    Dr. Bibek Debroy</p>", "option3": " <p style=\"orphans:0;widows:0\">    Shashi Tharoor</p>", "option4": " <p style=\"orphans:0;widows:0\">    Raghuram Rajan</p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The book “Mahatma: A Great Communicator” has been authored by    Dr. Dhiraj Kakadia. It explores the communication strategies and    the mass appeal of Mahatma Gandhi.</p>", "question_heading": ""}, {"sr_no": 40, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>With reference to the regional performance in the World    Happiness Report 2026, arrange the following South Asian nations    in descending order of their happiness (from most happy to least    happy):</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>India</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Pakistan</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Nepal</b></p>    <p style=\"orphans:0;widows:0\"><b>Bangladesh</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    3-2-1-4</p>", "option2": " <p style=\"orphans:0;widows:0\">    2-3-1-4</p>", "option3": " <p style=\"orphans:0;widows:0\">    3-2-4-1</p>", "option4": " <p style=\"orphans:0;widows:0\">    1-2-3-4</p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    ● Based on the 2026 ranks: Nepal (99th) &gt; Pakistan (104th) &gt;    India (116th) &gt; Bangladesh (127th). Therefore, the correct    descending order of happiness is 3-2-1-4.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">● 14th    Edition of World Happiness Report 2026</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">●    Publisher: University of Oxford’s Wellbeing Research Centre in    partnership with Gallup and the UN Sustainable Development    Solutions Network</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">● Rank 1:    Finland (followed by Iceland, Denmark and Costa Rica)</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">● India’s    rank: 116th out of 147 countries</p>    <p style=\"orphans:0;widows:0\">● Regional Comparison: India    still trails behind neighbors like Nepal (99th) and Pakistan    (104th), though it ranks higher than Bangladesh (127th) and Sri    Lanka (134th).</p>", "question_heading": ""}];
+
+let currentQuestion = 0;
+let answers = {};
+let bookmarks = new Set();
+let timerSeconds = 0;
+let timerInterval = null;
+let isPaletteOpen = false;
+
+const STORAGE_KEY = 'quizState_' + (document.title || 'default');
+
+function isImageURL(str) {
+  return str && (str.startsWith('http://') || str.startsWith('https://'));
+}
+
+function createOptionContent(optionText) {
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'option-content';
+    
+    if (isImageURL(optionText)) {
+        const img = document.createElement('img');
+        img.src = optionText;
+        img.className = 'option-image';
+        img.alt = 'Option image';
+        img.loading = 'lazy';
+        img.onerror = function() {
+            this.style.display = 'none';
+            const errorText = document.createTextNode('Image failed to load');
+            contentDiv.appendChild(errorText);
+        };
+        contentDiv.appendChild(img);
+    } else {
+        contentDiv.innerHTML = optionText;
+    }
+    
+    return contentDiv;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  initQuiz();
+  initEventListeners();
+  loadFromLocalStorage();
+  startTimer();
+  createPalette();
+  preventDoubleTapZoom();
+});
+
+function preventDoubleTapZoom() {
+  let lastTouchEnd = 0;
+  document.addEventListener('touchend', (event) => {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) {
+      event.preventDefault();
+    }
+    lastTouchEnd = now;
+  }, { passive: false });
+}
+
+function initTheme() {
+  const savedTheme = localStorage.getItem('quizTheme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  updateThemeIcon();
+}
+
+function updateThemeIcon() {
+  const theme = document.documentElement.getAttribute('data-theme');
+  const themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    themeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  }
+}
+
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('quizTheme', newTheme);
+  updateThemeIcon();
+}
+
+function initQuiz() {
+  loadQuestion(currentQuestion);
+  updateMarkingInfo();
+}
+
+function initEventListeners() {
+  const themeBtn = document.getElementById('themeToggle');
+  const fullscreenBtn = document.getElementById('fullscreenBtn');
+  
+  if (themeBtn) {
+    themeBtn.addEventListener('click', toggleTheme);
+    themeBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      toggleTheme();
+    });
+  }
+  
+  if (fullscreenBtn) {
+    fullscreenBtn.addEventListener('click', toggleFullscreen);
+    fullscreenBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      toggleFullscreen();
+    });
+  }
+  
+  addButtonListener('prevBtn', prevQuestion);
+  addButtonListener('nextBtn', nextQuestion);
+  addButtonListener('clearBtn', clearAnswer);
+  addButtonListener('submitBtn', confirmSubmit);
+  addButtonListener('bookmarkBtn', toggleBookmark);
+  
+  addButtonListener('paletteFab', togglePalette);
+  addButtonListener('paletteClose', closePalette);
+  
+  const overlay = document.getElementById('paletteOverlay');
+  if (overlay) {
+    overlay.addEventListener('click', closePalette);
+    overlay.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      closePalette();
+    });
+  }
+  
+  const searchInput = document.getElementById('paletteSearch');
+  if (searchInput) {
+    searchInput.addEventListener('input', handleSearch);
+    searchInput.addEventListener('change', jumpToQuestion);
+  }
+  
+  document.addEventListener('keydown', handleKeyPress);
+  
+  setInterval(saveToLocalStorage, 5000);
+  
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      updatePalette();
+    }
+  });
+}
+
+function addButtonListener(id, handler) {
+  const btn = document.getElementById(id);
+  if (btn) {
+    btn.addEventListener('click', handler);
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      handler();
+    });
+  }
+}
+
+function jumpToQuestion(e) {
+  const questionNum = parseInt(e.target.value);
+  if (questionNum >= 1 && questionNum <= questions.length) {
+    goToQuestion(questionNum - 1);
+    closePalette();
+    e.target.value = '';
+  }
+}
+
+function togglePalette() {
+  isPaletteOpen = !isPaletteOpen;
+  const palette = document.getElementById('questionPalette');
+  const overlay = document.getElementById('paletteOverlay');
+  const fab = document.getElementById('paletteFab');
+  
+  if (isPaletteOpen) {
+    palette.classList.add('active');
+    overlay.classList.add('active');
+    fab.classList.add('active');
+    fab.innerHTML = '✕<span class="badge" id="answeredBadge">' + Object.keys(answers).length + '</span>';
+    document.body.classList.add('palette-open');
+  } else {
+    closePalette();
+  }
+}
+
+function closePalette() {
+  isPaletteOpen = false;
+  const palette = document.getElementById('questionPalette');
+  const overlay = document.getElementById('paletteOverlay');
+  const fab = document.getElementById('paletteFab');
+  
+  if (palette) palette.classList.remove('active');
+  if (overlay) overlay.classList.remove('active');
+  if (fab) {
+    fab.classList.remove('active');
+    fab.innerHTML = '📋<span class="badge" id="answeredBadge">' + Object.keys(answers).length + '</span>';
+  }
+  document.body.classList.remove('palette-open');
+}
+
+function handleSearch(e) {
+  const searchTerm = e.target.value.toLowerCase();
+  if (!searchTerm) {
+    document.querySelectorAll('.palette-btn').forEach(btn => {
+      btn.style.display = '';
+    });
+    return;
+  }
+  
+  const buttons = document.querySelectorAll('.palette-btn');
+  buttons.forEach((btn, index) => {
+    const questionNum = (index + 1).toString();
+    if (questionNum.includes(searchTerm)) {
+      btn.style.display = '';
+    } else {
+      btn.style.display = 'none';
+    }
+  });
+}
+
+function handleKeyPress(e) {
+  if (document.getElementById('resultSection').classList.contains('hidden')) {
+    if (e.key === 'Escape' && isPaletteOpen) {
+      closePalette();
+    } else if (!isPaletteOpen && e.target.tagName !== 'INPUT') {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevQuestion();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        nextQuestion();
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        nextQuestion();
+      } else if (e.key === 'b' || e.key === 'B') {
+        e.preventDefault();
+        toggleBookmark();
+      } else if (e.key === 'c' || e.key === 'C') {
+        e.preventDefault();
+        clearAnswer();
+      } else if (e.key === 'p' || e.key === 'P') {
+        e.preventDefault();
+        togglePalette();
+      } else if (e.key >= '1' && e.key <= '4') {
+        e.preventDefault();
+        selectOption(parseInt(e.key));
+      }
+    }
+  }
+}
+
+function selectOption(optionNum) {
+  const q = questions[currentQuestion];
+  const radio = document.querySelector(`input[name="q${q.sr_no}"][value="${optionNum}"]`);
+  if (radio) {
+    radio.checked = true;
+    const label = radio.closest('.option-label');
+    if (label) {
+      document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      saveAnswer();
+    }
+  }
+}
+
+function toggleFullscreen() {
+  try {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(err => {
+        console.log('Fullscreen error:', err);
+      });
+    } else {
+      document.exitFullscreen();
+    }
+  } catch (err) {
+    console.log('Fullscreen not supported');
+  }
+}
+
+function startTimer() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+  timerInterval = setInterval(() => {
+    timerSeconds++;
+    updateTimer();
+    if (timerSeconds > 600) {
+      const timer = document.getElementById('timer');
+      if (timer) timer.classList.add('warning');
+    }
+  }, 1000);
+}
+
+function updateTimer() {
+  const minutes = Math.floor(timerSeconds / 60);
+  const seconds = timerSeconds % 60;
+  const timer = document.getElementById('timer');
+  if (timer) {
+    timer.textContent = 
+      `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  }
+}
+
+function createPalette() {
+  const grid = document.getElementById('paletteGrid');
+  if (!grid) return;
+  
+  grid.innerHTML = '';
+  questions.forEach((q, index) => {
+    const btn = document.createElement('button');
+    btn.textContent = index + 1;
+    btn.className = 'palette-btn';
+    btn.setAttribute('aria-label', `Go to question ${index + 1}`);
+    btn.setAttribute('type', 'button');
+    
+    btn.addEventListener('click', () => {
+      goToQuestion(index);
+      closePalette();
+    });
+    
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      goToQuestion(index);
+      closePalette();
+    });
+    
+    grid.appendChild(btn);
+  });
+  updatePalette();
+}
+
+function updatePalette() {
+  const buttons = document.querySelectorAll('.palette-btn');
+  buttons.forEach((btn, index) => {
+    btn.className = 'palette-btn';
+    if (index === currentQuestion) btn.classList.add('current');
+    if (answers[questions[index].sr_no]) btn.classList.add('answered');
+    if (bookmarks.has(questions[index].sr_no)) btn.classList.add('bookmarked');
+  });
+  
+  updatePaletteStats();
+}
+
+function updatePaletteStats() {
+  const answered = Object.keys(answers).length;
+  const unanswered = questions.length - answered;
+  const bookmarkedCount = bookmarks.size;
+  
+  const answeredEl = document.getElementById('paletteAnswered');
+  const unansweredEl = document.getElementById('paletteUnanswered');
+  const bookmarkedEl = document.getElementById('paletteBookmarked');
+  
+  if (answeredEl) answeredEl.textContent = answered;
+  if (unansweredEl) unansweredEl.textContent = unanswered;
+  if (bookmarkedEl) bookmarkedEl.textContent = bookmarkedCount;
+  
+  const badge = document.querySelector('.palette-fab .badge');
+  if (badge) badge.textContent = answered;
+}
+
+function goToQuestion(index) {
+  if (index < 0 || index >= questions.length) return;
+  saveAnswer();
+  currentQuestion = index;
+  loadQuestion(currentQuestion);
+  
+  const questionSection = document.getElementById('questionSection');
+  if (questionSection) {
+    setTimeout(() => {
+      questionSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+}
+
+function loadQuestion(index) {
+  const q = questions[index];
+  
+  const questionNumber = document.getElementById('questionNumber');
+  const questionText = document.getElementById('questionText');
+  
+  if (questionNumber) {
+    questionNumber.textContent = `Question ${index + 1} of ${questions.length}`;
+  }
+  
+  if (questionText) {
+    questionText.innerHTML = '';
+    
+    // 🌟 NEW: Create the Heading Box if it exists!
+    let headingHtml = '';
+    if (q.question_heading && q.question_heading.trim() !== '') {
+      headingHtml = `<div style="background: var(--bg-tertiary); padding: 15px; border-left: 4px solid var(--primary-color); margin-bottom: 20px; border-radius: 8px; overflow-x: auto;">${q.question_heading}</div>`;
+      questionText.innerHTML = headingHtml; // Inject heading first
+    }
+
+    if (isImageURL(q.question)) {
+      const img = document.createElement('img');
+      img.src = q.question;
+      img.className = 'question-image';
+      img.alt = 'Question image';
+      img.loading = 'lazy';
+      img.onerror = function() {
+        this.style.display = 'none';
+        questionText.innerHTML += q.question;
+      };
+      questionText.appendChild(img);
+    } else {
+      questionText.innerHTML += q.question; // Append question after heading
+    }
+  }
+  
+  const container = document.getElementById('optionsContainer');
+  if (!container) return;
+  
+  container.innerHTML = '';
+  
+  for (let i = 1; i <= 4; i++) {
+    const label = document.createElement('label');
+    label.className = 'option-label';
+    if (answers[q.sr_no] == i) label.classList.add('selected');
+    
+    const radio = document.createElement('input');
+    radio.type = 'radio';
+    radio.name = `q${q.sr_no}`;
+    radio.value = i;
+    radio.checked = answers[q.sr_no] == i;
+    
+    const changeHandler = () => {
+      document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      saveAnswer();
+    };
+    
+    radio.addEventListener('change', changeHandler);
+    label.addEventListener('click', (e) => {
+      if (e.target !== radio) {
+        radio.checked = true;
+        changeHandler();
+      }
+    });
+    
+    label.appendChild(radio);
+    
+    const optionContent = createOptionContent(q[`option${i}`]);
+    label.appendChild(optionContent);
+    
+    container.appendChild(label);
+  }
+  
+  const bookmarkBtn = document.getElementById('bookmarkBtn');
+  if (bookmarkBtn) {
+    if (bookmarks.has(q.sr_no)) {
+      bookmarkBtn.classList.add('active');
+    } else {
+      bookmarkBtn.classList.remove('active');
+    }
+  }
+  
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const submitBtn = document.getElementById('submitBtn');
+  
+  if (prevBtn) prevBtn.disabled = index === 0;
+  
+  if (index === questions.length - 1) {
+    if (nextBtn) nextBtn.classList.add('hidden');
+    if (submitBtn) submitBtn.classList.remove('hidden');
+  } else {
+    if (nextBtn) nextBtn.classList.remove('hidden');
+    if (submitBtn) submitBtn.classList.add('hidden');
+  }
+  
+  updateProgress();
+  updatePalette();
+}
+
+function updateMarkingInfo() {
+  if(questions.length > 0) {
+      const q = questions[0];
+      const markingInfo = document.getElementById('markingInfo');
+      if (markingInfo) {
+        markingInfo.textContent = `Marking: +${q.positive_marking}, -${q.negative_marking}`;
+      }
+  }
+}
+
+function updateProgress() {
+  const attempted = Object.keys(answers).length;
+  const currentProgress = ((currentQuestion + 1) / questions.length) * 100;
+  
+  const progressBar = document.getElementById('progressBar');
+  const progressText = document.getElementById('progressText');
+  const attemptedText = document.getElementById('attemptedText');
+  
+  if (progressBar) progressBar.style.width = `${currentProgress}%`;
+  if (progressText) progressText.textContent = `${currentQuestion + 1}/${questions.length}`;
+  if (attemptedText) attemptedText.textContent = attempted;
+}
+
+function saveAnswer() {
+  const q = questions[currentQuestion];
+  const selected = document.querySelector(`input[name="q${q.sr_no}"]:checked`);
+  
+  if (selected) {
+    answers[q.sr_no] = selected.value;
+  }
+  
+  updateProgress();
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function clearAnswer() {
+  const q = questions[currentQuestion];
+  delete answers[q.sr_no];
+  
+  const selected = document.querySelector(`input[name="q${q.sr_no}"]:checked`);
+  if (selected) selected.checked = false;
+  
+  document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+  
+  updateProgress();
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function toggleBookmark() {
+  const q = questions[currentQuestion];
+  const btn = document.getElementById('bookmarkBtn');
+  
+  if (bookmarks.has(q.sr_no)) {
+    bookmarks.delete(q.sr_no);
+    if (btn) btn.classList.remove('active');
+  } else {
+    bookmarks.add(q.sr_no);
+    if (btn) btn.classList.add('active');
+  }
+  
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function nextQuestion() {
+  saveAnswer();
+  if (currentQuestion < questions.length - 1) {
+    currentQuestion++;
+    loadQuestion(currentQuestion);
+  }
+}
+
+function prevQuestion() {
+  saveAnswer();
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    loadQuestion(currentQuestion);
+  }
+}
+
+function confirmSubmit() {
+  const unattempted = questions.length - Object.keys(answers).length;
+  let message = 'Are you sure you want to submit the quiz?';
+  
+  if (unattempted > 0) {
+    message += `\n\nYou have ${unattempted} unanswered question(s).`;
+  }
+  
+  if (confirm(message)) {
+    submitQuiz();
+  }
+}
+
+function submitQuiz() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+  }
+  saveAnswer();
+  closePalette();
+  
+  let correct = 0, wrong = 0, unattempted = 0, score = 0;
+  
+  questions.forEach(q => {
+    const userAns = answers[q.sr_no];
+    const posMark = parseFloat(q.positive_marking) || 0;
+    const negMark = parseFloat(q.negative_marking) || 0;
+    
+    if (!userAns) {
+      unattempted++;
+    } else if (userAns == q.answer) {
+      correct++;
+      score += posMark;
+    } else {
+      wrong++;
+      score -= negMark;
+    }
+  });
+  
+  displayResults(correct, wrong, unattempted, score);
+  
+  const fab = document.getElementById('paletteFab');
+  const nav = document.getElementById('navigation');
+  if (fab) fab.style.display = 'none';
+  if (nav) nav.style.display = 'none';
+  
+  document.body.style.paddingBottom = '20px';
+  
+  clearLocalStorage();
+}
+
+function displayResults(correct, wrong, unattempted, score) {
+  const totalQuestions = questions.length;
+  const percentage = ((correct / totalQuestions) * 100).toFixed(1);
+  const timerEl = document.getElementById('timer');
+  const timeText = timerEl ? timerEl.textContent : '00:00';
+  
+  let html = `
+    <div class="score-card">
+      <h2>${score}/${totalQuestions}</h2>
+      <p>Your Score: ${percentage}%</p>
+      <p>Time Taken: ${timeText}</p>
+    </div>
+    
+    <div class="stats-grid">
+      <div class="stat-card correct">
+        <h3>${correct}</h3>
+        <p>Correct</p>
+      </div>
+      <div class="stat-card wrong">
+        <h3>${wrong}</h3>
+        <p>Wrong</p>
+      </div>
+      <div class="stat-card unattempted">
+        <h3>${unattempted}</h3>
+        <p>Unattempted</p>
+      </div>
+      <div class="stat-card">
+        <h3>${totalQuestions}</h3>
+        <p>Total</p>
+      </div>
+    </div>
+  `;
+  
+  questions.forEach(q => {
+    const userAns = answers[q.sr_no];
+    
+    // 🌟 NEW: Add the Heading to the results review screen!
+    let headingHtml = (q.question_heading && q.question_heading.trim() !== '') 
+      ? `<div style="background: var(--bg-tertiary); padding: 10px; margin-bottom: 15px; border-left: 4px solid var(--primary-color); border-radius: 5px; overflow-x: auto;">${q.question_heading}</div>` 
+      : '';
+      
+    const questionHeader = isImageURL(q.question)
+      ? `<h4>Q${q.sr_no}:</h4>${headingHtml}<img src="${q.question}" class="question-image" alt="Question ${q.sr_no}">`
+      : `<h4>Q${q.sr_no}:</h4>${headingHtml}<div style="margin-bottom: 10px;">${q.question}</div>`;
+      
+    html += `<div class="question-review">${questionHeader}`;
+    
+    for (let i = 1; i <= 4; i++) {
+      const isCorrect = i.toString() === q.answer;
+      const isUserAnswer = userAns == i.toString();
+      
+      let className = 'review-option';
+      if (isCorrect) className += ' correct';
+      if (isUserAnswer && !isCorrect) className += ' wrong';
+      if (isUserAnswer) className += ' user-selected';
+      
+      const optionValue = q[`option${i}`];
+      
+      if (isImageURL(optionValue)) {
+        html += `<div class="${className}">
+          ${isCorrect ? '✓ ' : ''}${isUserAnswer ? '➤ ' : ''} 
+          <img src="${optionValue}" class="option-image" alt="Option ${i}">
+        </div>`;
+      } else {
+        html += `<div class="${className}">
+          ${isCorrect ? '✓ ' : ''}${isUserAnswer ? '➤ ' : ''}${optionValue}
+        </div>`;
+      }
+    }
+    
+    if (q.solution_text && q.solution_text.trim() !== '') {
+      const solutionContent = isImageURL(q.solution_text)
+        ? `<img src="${q.solution_text}" class="solution-image" alt="Solution">`
+        : q.solution_text;
+      html += `<div class="solution-section">
+        <div class="solution-label">📝 Solution:</div>
+        <div class="solution-content">${solutionContent}</div>
+      </div>`;
+    }
+    
+    html += `</div>`; 
+});
+  
+  html += `
+    <div class="action-buttons">
+      <button class="action-btn restart" onclick="restartQuiz()">Restart Quiz</button>
+      <button class="action-btn download" onclick="downloadResults()">Download Results</button>
+      <button class="action-btn print" onclick="window.print()">Print Results</button>
+    </div>
+  `;
+  
+  const resultSection = document.getElementById('resultSection');
+  const questionSection = document.getElementById('questionSection');
+  const progressSection = document.querySelector('.progress-section');
+  
+  if (resultSection) {
+    resultSection.innerHTML = html;
+    resultSection.classList.remove('hidden');
+  }
+  if (questionSection) questionSection.classList.add('hidden');
+  if (progressSection) progressSection.classList.add('hidden');
+  
+  const quizContainer = document.getElementById('quizContainer');
+  if (quizContainer) {
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
+  }
+}
+
+function restartQuiz() {
+  if (confirm('Are you sure you want to restart? All progress will be lost.')) {
+    currentQuestion = 0;
+    answers = {};
+    bookmarks.clear();
+    timerSeconds = 0;
+    
+    const resultSection = document.getElementById('resultSection');
+    const questionSection = document.getElementById('questionSection');
+    const progressSection = document.querySelector('.progress-section');
+    const fab = document.getElementById('paletteFab');
+    const nav = document.getElementById('navigation');
+    
+    if (resultSection) {
+      resultSection.classList.add('hidden');
+      resultSection.innerHTML = '';
+    }
+    if (questionSection) questionSection.classList.remove('hidden');
+    if (progressSection) progressSection.classList.remove('hidden');
+    if (fab) fab.style.display = 'flex';
+    if (nav) nav.style.display = 'grid';
+    
+    document.body.style.paddingBottom = 'var(--nav-height)';
+    
+    if (timerInterval) {
+      clearInterval(timerInterval);
+    }
+    startTimer();
+    
+    loadQuestion(currentQuestion);
+    createPalette();
+  }
+}
+
+function downloadResults() {
+  const resultSection = document.getElementById('resultSection');
+  if (!resultSection) return;
+  
+  const resultHTML = resultSection.innerHTML;
+  const fullHTML = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Results</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; max-width: 900px; margin: 0 auto; }
+    .score-card { background: linear-gradient(135deg, #007bff, #28a745); color: white; padding: 30px; border-radius: 15px; text-align: center; margin-bottom: 20px; }
+    .score-card h2 { font-size: 48px; margin-bottom: 10px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 30px; }
+    .stat-card { background: white; padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #ddd; }
+    .stat-card h3 { font-size: 32px; margin-bottom: 8px; }
+    .stat-card.correct h3 { color: #28a745; }
+    .stat-card.wrong h3 { color: #dc3545; }
+    .stat-card.unattempted h3 { color: #6c757d; }
+    .question-review { background: white; border: 2px solid #ddd; border-radius: 10px; padding: 20px; margin-bottom: 15px; }
+    .question-review h4 { margin-bottom: 15px; font-size: 16px; line-height: 1.6; }
+    .review-option { padding: 10px 15px; margin: 8px 0; border-radius: 8px; border: 2px solid #ddd; display: flex; align-items: center; gap: 10px; }
+    .option-image { max-width: 150px; max-height: 100px; border-radius: 8px; }
+    .review-option.correct { background: #d4edda; border-color: #28a745; color: #155724; }
+    .review-option.wrong { background: #f8d7da; border-color: #dc3545; color: #721c24; }
+    .review-option.user-selected { border-width: 3px; font-weight: bold; }
+    @media print { body { background: white; } }
+    @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center; color: #007bff;">Quiz Results</h1>
+  <p style="text-align: center; color: #666; margin-bottom: 30px;">Generated on: ${new Date().toLocaleString()}</p>
+  ${resultHTML.replace(/<div class="action-buttons">[\s\S]*?<\/div>/, '')}
+</body>
+</html>
+  `;
+  
+  try {
+    const blob = new Blob([fullHTML], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `Quiz_Results_${new Date().getTime()}.html`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  } catch (err) {
+    alert('Download failed. Please try using the Print option instead.');
+    console.error('Download error:', err);
+  }
+}
+
+function saveToLocalStorage() {
+  try {
+    const state = {
+      currentQuestion,
+      answers,
+      bookmarks: Array.from(bookmarks),
+      timerSeconds,
+      timestamp: Date.now()
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch (err) {
+    console.error('Save error:', err);
+  }
+}
+
+function loadFromLocalStorage() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const state = JSON.parse(saved);
+      const hasProgress = (state && (
+        (state.currentQuestion && state.currentQuestion > 0) ||
+        (state.answers && Object.keys(state.answers).length > 0) ||
+        (state.timerSeconds && state.timerSeconds > 0)
+      ));
+      if (hasProgress && (Date.now() - state.timestamp < 24 * 60 * 60 * 1000)) {
+        if (confirm('Resume previous quiz session?')) {
+          currentQuestion = state.currentQuestion || 0;
+          answers = state.answers || {};
+          bookmarks = new Set(state.bookmarks || []);
+          timerSeconds = state.timerSeconds || 0;
+          updateTimer();
+          loadQuestion(currentQuestion);
+        }
+      } else {
+        clearLocalStorage();
+      }
+    }
+  } catch (err) {
+    console.error('Load error:', err);
+    clearLocalStorage();
+  }
+}
+
+function clearLocalStorage() {
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (err) {
+    console.error('Clear storage error:', err);
+  }
+}
+
+window.addEventListener('beforeunload', (e) => {
+  const resultSection = document.getElementById('resultSection');
+  if (resultSection && !resultSection.classList.contains('hidden')) {
+    return;
+  }
+  e.preventDefault();
+  e.returnValue = '';
+});
+
+window.addEventListener('unload', () => {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+});
+</script>
+</body>
+</html>
