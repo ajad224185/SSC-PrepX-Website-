@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>3.) MOCK-2 - Hindi</title>
+<style>
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0069d9;
+  --success-color: #28a745;
+  --success-hover: #218838;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --secondary-color: #6c757d;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --border-color: #dee2e6;
+  --shadow: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
+  --overlay: rgba(0,0,0,0.5);
+  --nav-height: 80px;
+}
+
+[data-theme="dark"] {
+  --primary-color: #4dabf7;
+  --primary-hover: #339af0;
+  --success-color: #51cf66;
+  --success-hover: #40c057;
+  --danger-color: #ff6b6b;
+  --warning-color: #ffd43b;
+  --secondary-color: #868e96;
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #404040;
+  --text-primary: #f8f9fa;
+  --text-secondary: #adb5bd;
+  --border-color: #495057;
+  --shadow: 0 4px 6px rgba(0,0,0,0.3);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.4);
+  --overlay: rgba(0,0,0,0.7);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+  overflow-x: hidden;
+  position: relative;
+  padding-bottom: var(--nav-height);
+}
+
+body.palette-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-primary);
+  padding: 20px 30px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+
+.header h1 {
+  font-size: 28px;
+  color: var(--primary-color);
+  font-weight: 700;
+  user-select: none;
+}
+
+.header-controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.theme-toggle, .fullscreen-btn {
+  background: var(--bg-tertiary);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.3s;
+  min-width: 44px;
+  min-height: 44px;
+  user-select: none;
+}
+
+.theme-toggle:active, .fullscreen-btn:active {
+  transform: scale(0.95);
+}
+
+.theme-toggle:hover, .fullscreen-btn:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+.bot-link-btn {
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+}
+.bot-link-btn:active {
+  transform: scale(0.95);
+}
+.bot-link-btn:hover {
+  background: var(--primary-hover);
+}
+
+.timer {
+  background: var(--warning-color);
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 18px;
+  min-width: 100px;
+  text-align: center;
+  user-select: none;
+}
+
+.timer.warning {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.palette-fab {
+  position: fixed;
+  bottom: calc(var(--nav-height) + 20px);
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  box-shadow: 0 6px 20px rgba(0,123,255,0.4);
+  transition: all 0.3s ease;
+  z-index: 998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.palette-fab:active {
+  transform: scale(0.9);
+}
+
+.palette-fab:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0,123,255,0.6);
+}
+
+.palette-fab.active {
+  background: var(--danger-color);
+}
+
+.palette-fab .badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: var(--success-color);
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--bg-secondary);
+  pointer-events: none;
+}
+.solution-section {
+  margin-top: 20px;
+  padding: 15px;
+  background: #e7f3ff;
+  border-left: 4px solid var(--primary-color);
+  border-radius: 8px;
+}
+
+.solution-label {
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.solution-content {
+  line-height: 1.6;
+  color: #333;
+}
+
+.solution-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.palette-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 999;
+  touch-action: none;
+}
+
+.palette-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.question-palette {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 450px;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--bg-primary);
+  box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+  transition: right 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.question-palette.active {
+  right: 0;
+}
+
+.palette-header {
+  padding: 20px;
+  background: var(--primary-color);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.palette-header h3 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.palette-close {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: background 0.2s;
+  line-height: 1;
+  touch-action: manipulation;
+}
+
+.palette-close:active {
+  transform: scale(0.9);
+}
+
+.palette-close:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.palette-stats {
+  padding: 15px 20px;
+  background: var(--bg-tertiary);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  font-size: 13px;
+  text-align: center;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border-color);
+  user-select: none;
+}
+
+.palette-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.palette-stat .number {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.palette-stat.answered .number { color: var(--success-color); }
+.palette-stat.unanswered .number { color: var(--secondary-color); }
+.palette-stat.bookmarked .number { color: var(--warning-color); }
+
+.palette-search {
+  padding: 15px 20px;
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+}
+
+.palette-search input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 14px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.palette-search input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.palette-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 10px;
+}
+
+.palette-btn {
+  aspect-ratio: 1;
+  border: 2px solid var(--border-color);
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+  min-width: 40px;
+  min-height: 40px;
+  color: var(--text-primary);
+  position: relative;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.palette-btn:active {
+  transform: scale(0.9);
+}
+
+.palette-btn:hover {
+  transform: scale(1.1);
+  z-index: 10;
+  box-shadow: var(--shadow);
+}
+
+.palette-btn.current {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  animation: currentPulse 2s infinite;
+}
+
+@keyframes currentPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,123,255,0.7); }
+  50% { box-shadow: 0 0 0 8px rgba(0,123,255,0); }
+}
+
+.palette-btn.answered {
+  background: var(--success-color);
+  color: white;
+  border-color: var(--success-color);
+}
+
+.palette-btn.bookmarked::after {
+  content: '🔖';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.palette-btn.bookmarked.answered {
+  background: var(--success-color);
+}
+
+.palette-legend {
+  padding: 20px;
+  border-top: 1px solid var(--border-color);
+  font-size: 13px;
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.legend-color {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.quiz-container {
+  background: var(--bg-primary);
+  border-radius: 15px;
+  box-shadow: var(--shadow-lg);
+  padding: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  scroll-margin-top: 20px;
+}
+
+.quiz-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.marking-info {
+  display: inline-block;
+  background: var(--bg-tertiary);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.progress-section {
+  margin-bottom: 25px;
+}
+
+.progress-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.progress-bar-container {
+  background: var(--bg-tertiary);
+  border-radius: 12px;
+  overflow: hidden;
+  height: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+  transition: width 0.4s ease;
+  border-radius: 12px;
+}
+
+.question-section {
+  min-height: 300px;
+  scroll-margin-top: 80px;
+  margin-bottom: 20px;
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.question-number {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary-color);
+  user-select: none;
+}
+
+.bookmark-btn {
+  background: transparent;
+  border: 2px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 44px;
+  min-height: 44px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.bookmark-btn:active {
+  transform: scale(0.95);
+}
+
+.bookmark-btn.active {
+  background: var(--warning-color);
+  border-color: var(--warning-color);
+  color: #000;
+}
+
+.question {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 25px;
+  color: var(--text-primary);
+  user-select: text;
+}
+
+.question-image {
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: 10px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  padding: 10px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--border-color);
+  padding: 16px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--bg-secondary);
+  min-height: 60px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.option-label:active {
+  transform: scale(0.98);
+}
+
+.option-label:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--primary-color);
+}
+
+.option-label.selected {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.option-label input[type="radio"] {
+  margin-right: 15px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.option-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.option-image {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  padding: 10px;
+}
+
+.option-label.selected .option-image {
+  background: rgba(255,255,255,0.1);
+}
+
+/* FIXED NAVIGATION - KEY UPDATE */
+.navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-primary);
+  border-top: 2px solid var(--border-color);
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  z-index: 997;
+  padding: 15px 20px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 10px;
+  max-width: 100%;
+}
+
+.nav-btn {
+  padding: 14px 20px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+.nav-btn:active {
+  transform: scale(0.97);
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.nav-btn.prev {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.nav-btn.prev:hover:not(:disabled) {
+  background: #5a6268;
+}
+
+.nav-btn.next {
+  background: var(--primary-color);
+  color: white;
+}
+
+.nav-btn.next:hover:not(:disabled) {
+  background: var(--primary-hover);
+}
+
+.nav-btn.clear {
+  background: var(--danger-color);
+  color: white;
+}
+
+.nav-btn.clear:hover {
+  background: #c82333;
+}
+
+.nav-btn.submit {
+  background: var(--success-color);
+  color: white;
+  grid-column: 1 / -1;
+}
+
+.nav-btn.submit:hover {
+  background: var(--success-hover);
+}
+
+.result-section {
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.score-card {
+  background: linear-gradient(135deg, var(--primary-color), var(--success-color));
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  margin-bottom: 30px;
+  user-select: none;
+}
+
+.score-card h2 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.score-card p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: var(--bg-secondary);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  border: 2px solid var(--border-color);
+  user-select: none;
+}
+
+.stat-card h3 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.stat-card.correct h3 { color: var(--success-color); }
+.stat-card.wrong h3 { color: var(--danger-color); }
+.stat-card.unattempted h3 { color: var(--secondary-color); }
+
+.question-review {
+  border: 2px solid var(--border-color);
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 20px;
+  background: var(--bg-secondary);
+}
+
+.question-review h4 {
+  margin-bottom: 15px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.review-option {
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 2px solid var(--border-color);
+  background: var(--bg-primary);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.review-option .option-image {
+  max-width: 150px;
+  max-height: 100px;
+}
+
+.review-option.correct {
+  background: #d4edda;
+  border-color: var(--success-color);
+  color: #155724;
+}
+
+.review-option.wrong {
+  background: #f8d7da;
+  border-color: var(--danger-color);
+  color: #721c24;
+}
+
+.review-option.user-selected {
+  border-width: 3px;
+  font-weight: 600;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.action-btn {
+  padding: 14px 30px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  min-width: 150px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.action-btn:active {
+  transform: scale(0.95);
+}
+
+.action-btn.restart {
+  background: var(--danger-color);
+  color: white;
+}
+
+.action-btn.restart:hover {
+  background: #c82333;
+}
+
+.action-btn.download {
+  background: var(--primary-color);
+  color: white;
+}
+
+.action-btn.download:hover {
+  background: var(--primary-hover);
+}
+
+.action-btn.print {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.action-btn.print:hover {
+  background: #5a6268;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.palette-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.palette-content::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+}
+
+.palette-content::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+.palette-content::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 140px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .header h1 {
+    font-size: 22px;
+  }
+
+  .quiz-container {
+    padding: 20px 15px;
+  }
+
+  .question-palette {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .palette-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+  }
+
+  .palette-btn {
+    font-size: 13px;
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  .palette-fab {
+    bottom: calc(var(--nav-height) + 10px);
+    right: 15px;
+    width: 56px;
+    height: 56px;
+    font-size: 22px;
+  }
+
+  .navigation {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 12px 15px;
+  }
+
+  .nav-btn {
+    min-height: 44px;
+    font-size: 15px;
+  }
+
+  .nav-btn.clear {
+    order: 3;
+  }
+
+  .nav-btn.submit {
+    grid-column: auto;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .legend-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .question {
+    font-size: 16px;
+  }
+
+  .option-label {
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  .option-image {
+    max-height: 150px;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .palette-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+
+  .palette-btn {
+    font-size: 12px;
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .timer {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  .option-image {
+    max-height: 120px;
+  }
+}
+
+@media print {
+  .header-controls, .navigation, .palette-fab, .palette-overlay, .question-palette, .action-buttons, .bookmark-btn {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    padding-bottom: 0;
+  }
+
+  .container {
+    padding-bottom: 20px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>3.) MOCK-2 - Hindi</h1>
+    <div class="header-controls">
+      <a href="https://t.me/ssc_prepX" target="_blank" class="bot-link-btn" title="Open Bot in Telegram">🤖 Bot</a>
+      
+      <div class="timer" id="timer">00:00</div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle Theme">🌙</button>
+      <button class="fullscreen-btn" id="fullscreenBtn" aria-label="Toggle fullscreen" title="Fullscreen">⛶</button>
+    </div>
+  </div>
+
+  <div class="quiz-container" id="quizContainer">
+    <div class="quiz-header">
+      <div class="marking-info" id="markingInfo">Marking: +1, -0</div>
+    </div>
+
+    <div class="progress-section">
+      <div class="progress-stats">
+        <span>Progress: <strong id="progressText">1/2</strong></span>
+        <span>Attempted: <strong id="attemptedText">0</strong></span>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+
+    <div class="question-section" id="questionSection">
+      <div class="question-header">
+        <div class="question-number" id="questionNumber">Question 1 of 2</div>
+        <button class="bookmark-btn" id="bookmarkBtn" aria-label="Bookmark question">
+          <span>🔖</span> <span>Bookmark</span>
+        </button>
+      </div>
+      
+      <div class="question" id="questionText"></div>
+      
+      <div class="options" id="optionsContainer"></div>
+    </div>
+
+    <div class="result-section hidden" id="resultSection"></div>
+  </div>
+</div>
+
+<div class="navigation" id="navigation">
+  <button class="nav-btn prev" id="prevBtn" aria-label="Previous question">
+    <span>←</span> Previous
+  </button>
+  <button class="nav-btn clear" id="clearBtn" aria-label="Clear answer">
+    Clear
+  </button>
+  <button class="nav-btn next" id="nextBtn" aria-label="Next question">
+    Next <span>→</span>
+  </button>
+  <button class="nav-btn submit hidden" id="submitBtn" aria-label="Submit quiz">
+    Submit Quiz
+  </button>
+</div>
+
+<button class="palette-fab" id="paletteFab" aria-label="Toggle question palette" title="Question Palette (P)">
+  📋
+  <span class="badge" id="answeredBadge">0</span>
+</button>
+
+<div class="palette-overlay" id="paletteOverlay"></div>
+
+<div class="question-palette" id="questionPalette">
+  <div class="palette-header">
+    <h3>Question Palette</h3>
+    <button class="palette-close" id="paletteClose" aria-label="Close palette">×</button>
+  </div>
+
+  <div class="palette-stats">
+    <div class="palette-stat answered">
+      <div class="number" id="paletteAnswered">0</div>
+      <div>Answered</div>
+    </div>
+    <div class="palette-stat unanswered">
+      <div class="number" id="paletteUnanswered">2</div>
+      <div>Not Answered</div>
+    </div>
+    <div class="palette-stat bookmarked">
+      <div class="number" id="paletteBookmarked">0</div>
+      <div>Bookmarked</div>
+    </div>
+  </div>
+
+  <div class="palette-search">
+    <input type="number" id="paletteSearch" placeholder="Jump to question number..." aria-label="Search questions" inputmode="numeric" pattern="[0-9]*">
+  </div>
+
+  <div class="palette-content">
+    <div class="palette-grid" id="paletteGrid"></div>
+  </div>
+
+  <div class="palette-legend">
+    <div class="legend-grid">
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--success-color);"></div>
+        <span>Answered</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--bg-secondary); border: 2px solid var(--border-color);"></div>
+        <span>Not Answered</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--primary-color);"></div>
+        <span>Current Question</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--warning-color);"></div>
+        <span>🔖 Bookmarked</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// JSON INJECTION HAPPENS HERE
+const questions = [{"sr_no": 1, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">What will come in place of the question mark (?) in the following series?</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">5, 6, 14, 45, 184, ?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>915</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>925</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>935</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>905</span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>The pattern followed in the given series is:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>5 × 1 + 1 = 6</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>6 × 2 + 2 = 14</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>14 × 3 + 3 = 45</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>45 × 4 + 4 = 184</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>184 × 5 + 5 = 925</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Therefore, the missing number is 925.</span></p>", "question_heading": ""}, {"sr_no": 2, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">What will come in place of the question mark (?) in the following series?</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">AZ, CX, FU, JQ, ?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>OM</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>NL</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>OL</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>PK</span></p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>The pattern followed in the given series is:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>First letters: A (+2)→ C (+3) → F (+4) → J (+5) → O</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Second letters: Z (−2)→ X (−3) → U (−4) → Q (−5) → L</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Therefore, the missing term is OL.</span></p>", "question_heading": ""}, {"sr_no": 3, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Three of the following four number-pairs are alike in a certain way and thus form a group. Which is the one that does not belong to that group?</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">(NOTE: Operations should be performed on the whole numbers, without breaking down the numbers into their constituent digits.)</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>7 - 243</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>6 - 216</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>9 - 729</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>5 - 125</span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>The logic followed in the number-pairs is: second number = (first number)³</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>6³ = 216</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>9³ = 729</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>5³ = 125</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>But 7³ = 343, not 243.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Hence, 7 - 243 does not belong to the group.</span></p>", "question_heading": ""}, {"sr_no": 4, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Kilometre is related to Distance in the same way as Ampere is related to ______.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Voltage</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Power</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Resistance</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Current</span></p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Kilometre is a unit used to measure distance. Similarly, Ampere is the unit used to measure electric current.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Therefore, Ampere is related to Current.</span></p>", "question_heading": ""}, {"sr_no": 5, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">MOST is related to PMWS in a certain way based on the English alphabetical order. In the same way, DARK is related to GYVJ. To which of the following is HOME related, following the same logic?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>KMPD</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>KMQD</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>KNQD</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>JMQD</span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>The pattern followed here is:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>1st letter: +3</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>2nd letter: −2</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3rd letter: +4</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>4th letter: −1</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>MOST: M +3 = P, O −2 = M, S +4 = W, T −1 = S → PMWS</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>DARK: D +3 = G, A −2 = Y, R +4 = V, K −1 = J→ GYVJ</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Applying the same logic to HOME: H +3 = K, O −2 = M, M +4 = Q, E −1 = D</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Thus, HOME is related to KMQD.</span></p>", "question_heading": ""}, {"sr_no": 6, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">5 is related to 131 following a certain logic. Following the same logic, 6 is related to 222. To which of the following is 8 related, following the same logic?</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">(NOTE: Operations should be performed on the whole numbers, without breaking down the numbers into their constituent digits.)</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>508</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>528</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>518</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>512</span></p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>The logic followed here is: n→ n³ + 6</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>5³ + 6 = 125 + 6 = 131</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>6³ + 6 = 216 + 6 = 222</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Similarly, 8³ + 6 = 512 + 6 = 518</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Hence, 8 is related to 518.</span></p>", "question_heading": ""}, {"sr_no": 7, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Three of the following four words are alike in a certain way and thus form a group. Which is the one that does not belong to that group?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Sitar</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Veena</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Sarod</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Tabla</span></p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Sitar, Veena and Sarod are string instruments, whereas Tabla is a percussion instrument.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Hence, Tabla is the odd one out.</span></p>", "question_heading": ""}, {"sr_no": 8, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">In a certain code language, 'FRAME' is coded as 'GTDQJ'. How will 'BRAIN' be coded in that language?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>CTDMS</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>CTDNS</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>CSDMS</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>CTEMS</span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>The pattern followed here is: the 1st to 5th letters are moved forward by 1, 2, 3, 4 and 5 places respectively.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>FRAME: F +1 = G, R +2 = T, A +3 = D, M +4 = Q, E +5 = J→ GTDQJ</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Applying the same logic to BRAIN: B +1 = C, R +2 = T, A +3 = D, I +4 = M, N +5 = S</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Thus, BRAIN is coded as CTDMS.</span></p>", "question_heading": ""}, {"sr_no": 9, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">If '+' and '−' are interchanged and '×' and '÷' are interchanged, then what will be the value of the following expression? 36 ÷ 4 + 6 × 3 − 5</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>145</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>149</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>147</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>142</span></p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>After interchanging the signs, the expression becomes:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>36 × 4 − 6 ÷ 3 + 5</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Applying the BODMAS rule:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>= 144 − 2 + 5</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>= 147</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Hence, 147 is the correct answer.</span></p>", "question_heading": ""}, {"sr_no": 10, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Which of the following sets of signs, when placed in the blanks from left to right in the same order, will balance the given equation? 18 _ 6 _ 4 _ 5 = 17</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>×, ÷, +</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>÷, ×, +</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>÷, +, ×</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>−, ×, +</span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Checking each option:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>(×, ÷, +): 18 × 6 ÷ 4 + 5 = 27 + 5 = 32✗</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>(÷, ×, +): 18 ÷ 6 × 4 + 5 = 3 × 4 + 5 = 12 + 5 = 17✓</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>(÷, +, ×): 18 ÷ 6 + 4 × 5 = 3 + 20 = 23✗</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>(−, ×, +): 18 − 6 × 4 + 5 = 18 − 24 + 5 = −1✗</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Hence, the correct set of signs is ÷, ×, +.</span></p>", "question_heading": ""}, {"sr_no": 11, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">In the question, the relationship between different elements is shown in the statement. The statement is followed by two conclusions. Study the statement and decide which of the given conclusions definitely follow(s).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Statement: M &gt; N ≥ O = P &lt; Q ≤ R</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Conclusions: (I) M &gt; P (II) R &gt; O</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Only conclusion (I) follows</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Only conclusion (II) follows</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Both conclusions (I) and (II) follow</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Neither conclusion (I) nor (II) follows</span></p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Given statement: M &gt; N≥ O = P &lt; Q ≤ R</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>(I) M &gt; N ≥ O = P gives M &gt; P. Hence, conclusion (I) follows.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>(II) O = P &lt; Q ≤ R gives R &gt; O. Hence, conclusion (II) follows.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Therefore, both conclusions (I) and (II) follow.</span></p>", "question_heading": ""}, {"sr_no": 12, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Read the given statements and conclusions carefully. Assuming that the information given in the statements is true, even if it appears to be at variance with commonly known facts, decide which of the given conclusions logically follow(s) from the statements.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Statements: All pens are bottles. Some bottles are cups. All cups are plates.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Conclusions: (I) Some bottles are plates. (II) Some pens are cups. (III) Some plates are bottles.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Only (I) and (II) follow</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Only (II) and (III) follow</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>All (I), (II) and (III) follow</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Only (I) and (III) follow</span></p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>From 'Some bottles are cups' and 'All cups are plates', we get 'Some bottles are plates'. Hence, conclusion (I) follows.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>By conversion, 'Some bottles are plates' gives 'Some plates are bottles'. Hence, conclusion (III) follows.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>'All pens are bottles' and 'Some bottles are cups' do not give a definite relation between pens and cups; 'Some pens are cups' is only a possibility. Hence, conclusion (II) does not follow.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Therefore, only conclusions (I) and (III) follow.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794461804251_image001.jpeg\" width=\"532\" height=\"184\" alt ></p>", "question_heading": ""}, {"sr_no": 13, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">In the question below, a statement is followed by two assumptions numbered (I) and (II). An assumption is something supposed or taken for granted. Consider the statement and decide which of the assumptions is/are implicit in the statement.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Statement: A city transport department has put up a hoarding that reads, 'Travel by bus – save fuel and keep the city clean.'</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Assumptions: (I) Travelling by bus consumes less fuel per passenger than travelling by private vehicles. (II) All citizens of the city own private vehicles.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Only assumption (I) is implicit</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Only assumption (II) is implicit</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Both assumptions (I) and (II) are implicit</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Neither assumption (I) nor (II) is implicit</span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>The slogan advises people to use buses to save fuel. This is meaningful only if bus travel uses less fuel per passenger than private vehicles. Hence, assumption (I) is implicit.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>The slogan does not suggest that every citizen owns a private vehicle. Hence, assumption (II) is not implicit.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Therefore, only assumption (I) is implicit.</span></p>", "question_heading": ""}, {"sr_no": 14, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">In the question below, a statement is followed by two courses of action numbered (I) and (II). A course of action is an administrative decision to be taken for improvement, follow-up or further action. Decide which of the courses of action logically follow(s) for pursuing.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Statement: Many passengers have complained about poor cleanliness in the trains running on a particular route.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Courses of action: (I) The railway should immediately stop all trains running on that route. (II) The railway should increase the frequency of cleaning and appoint supervisors to monitor the work.</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Only course of action (I) follows</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Only course of action (II) follows</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Both courses of action (I) and (II) follow</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Neither course of action (I) nor (II) follows</span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Stopping all trains would cause great inconvenience to passengers and is an extreme step for a cleanliness issue. Hence, course of action (I) does not follow.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Increasing cleaning frequency and appointing supervisors directly addresses the complaints. Hence, course of action (II) follows.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Therefore, only course of action (II) follows.</span></p>", "question_heading": ""}, {"sr_no": 15, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Pointing to a man in a photograph, Nisha said, 'His mother is the only daughter of my mother's father.' How is the man related to Nisha?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Brother</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Cousin</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Maternal uncle</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Father</span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>'My mother's father' is Nisha's maternal grandfather.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>His only daughter is Nisha's mother.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>So, the man's mother is Nisha's mother, which means the man is the son of Nisha's mother.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Therefore, the man is Nisha's brother.</span></p>", "question_heading": ""}, {"sr_no": 16, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Ravi starts from point A and walks 10 m towards the north. He turns left and walks 15 m. He then turns left again and walks 25 m. Finally, he turns right and walks 5 m to reach point B. How far and in which direction is point B from point A? (All turns are 90-degree turns only, unless specified.)</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>25 m, North-West</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>35 m, South-West</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>20 m, South</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>25 m, South-West</span></p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Let point A be at the coordinates (0, 0).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>1. Walks 10 m North: reaching (0, 10).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>2. Turns left (West) and walks 15 m: reaching (−15, 10).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3. Turns left (South) and walks 25 m: reaching (−15, −15).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>4. Turns right (West) and walks 5 m: reaching (−20, −15), which is point B.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Distance = √(20² + 15²) =√625 = 25 m.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Point B is 20 m West and 15 m South of A, so it lies to the South-West of A.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Hence, B is 25 m South-West of A.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794461804251_image002.jpeg\" width=\"560\" height=\"264\" alt ></p>", "question_heading": ""}, {"sr_no": 17, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">At 7 a.m., Anil and Sunil are standing facing each other. Anil's shadow falls exactly to his right. Which direction is Sunil facing?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>North</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>South</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>East</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>West</span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>At 7 a.m. the sun is in the East, so shadows fall towards the West.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Anil's shadow falls to his right, so his right side is West. This means Anil is facing North.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Sunil is facing Anil, so Sunil is facing South.</span></p>", "question_heading": ""}, {"sr_no": 18, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">In a row of students, Ravi is 12th from the left end and Mohan is 18th from the right end. When they interchange their positions, Ravi becomes 22nd from the left end. How many students are there in the row?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>38</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>40</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>39</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>41</span></p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>After the interchange, Ravi occupies Mohan's original position. So, Mohan's original position is 22nd from the left end.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Total number of students = (position from left) + (position from right) − 1</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>= 22 + 18 − 1 = 39</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Hence, there are 39 students in the row.</span></p>", "question_heading": ""}, {"sr_no": 19, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">How many pairs of letters are there in the word 'DREAMING', each of which has as many letters between them in the word as there are between them in the English alphabetical series?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>One</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Two</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Three</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Four</span></p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Word: D R E A M I N G (positions 1 to 8)</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>D and A: two letters (R, E) lie between them in the word, and two letters (B, C) lie between them in the alphabet.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>D and I: four letters (R, E, A, M) lie between them in the word, and four letters (E, F, G, H) lie between them in the alphabet. </span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>I and G: one letter (N) lies between them in the word, and one letter (H) lies between them in the alphabet.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>No other pair satisfies the condition.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Hence, there are three such pairs.</span></p>", "question_heading": ""}, {"sr_no": 20, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Study the following alphanumeric-symbol series carefully and answer the question that follows. Counting is to be done from left to right only.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">(Left) 4 K A 7 # E @ 2 M I 9 $ T O 5 U &amp; 3 R % (Right)</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">How many vowels are there, each of which is immediately preceded by a consonant and immediately followed by a number?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Three</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>One</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Two</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Four</span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>We need to find the pattern: Consonan→ Vowel → Number.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Checking each vowel:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>A: preceded by K (consonant) and followed by 7 (number) — Valid</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>E: preceded by # (symbol) — Not valid</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>I: preceded by M (consonant) and followed by 9 (number) — Valid</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>O: preceded by T (consonant) and followed by 5 (number) — Valid</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>U: preceded by 5 (number) — Not valid</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Hence, there are three such vowels (K A 7, M I 9 and T O 5).</span></p>", "question_heading": ""}, {"sr_no": 21, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Refer to the following letter, number and symbol series and answer the question that follows. Counting is to be done from left to right only.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">(Left) 8 # J 3 @ R 6 % B 1 $ F 9 * L 4 &amp; (Right)</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">If the series is written in the reverse order, which element will be fifth to the right of the tenth element from the left end?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>@</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>R</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>J</span></p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Given series: 8 # J 3 @ R 6 % B 1 $ F 9 * L 4 &amp;</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Reversed series: &amp; 4 L * 9 F $ 1 B % 6 R @ 3 J # 8</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>The tenth element from the left end is %.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Counting five places to the right of %: 6 (1st), R (2nd), @ (3rd), 3 (4th), J (5th).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Hence, the required element is J.</span></p>", "question_heading": ""}, {"sr_no": 22, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">If 15 August 2026 is a Saturday, what will be the day of the week on 26 January 2027?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Monday</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Tuesday</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Wednesday</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Sunday</span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Number of days from 15 August 2026 to 26 January 2027:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>August: 16 days (16 to 31), September: 30, October: 31, November: 30, December: 31, January: 26</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Total = 16 + 30 + 31 + 30 + 31 + 26 = 164 days</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>164 = 7 × 23 + 3, so the odd days = 3.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Saturday + 3 days = Tuesday.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Hence, 26 January 2027 will be a Tuesday.</span></p>", "question_heading": ""}, {"sr_no": 23, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">What is the angle between the hour hand and the minute hand of a clock at 8:20?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>130°</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>120°</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>125°</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>140°</span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Angle of the hour hand from 12 at 8:20 = 8 × 30° + 20 × 0.5° = 240° + 10° = 250°</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Angle of the minute hand from 12 at 20 minutes = 20 × 6° = 120°</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Angle between the hands = 250° − 120° = 130°</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Hence, the angle between the hands is 130°.</span></p>", "question_heading": ""}, {"sr_no": 24, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">In a group of 60 people, 35 like tea, 28 like coffee and 12 like neither tea nor coffee. How many people like both tea and coffee?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>13</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>15</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>17</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>19</span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>People who like at least one of the two drinks = 60 − 12 = 48</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Using n(T ∪ C) = n(T) + n(C) − n(T∩ C):</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>48 = 35 + 28 − n(T∩ C)</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>n(T∩ C) = 63 − 48 = 15</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Hence, 15 people like both tea and coffee.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794461804251_image003.jpeg\" width=\"494\" height=\"186\" alt ></p>", "question_heading": ""}, {"sr_no": 25, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Select the number that will replace the question mark (?) in the following arrangement. The sets are formed using the same logic.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">(3, 4, 25), (5, 12, 169), (8, 15, ?)</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">(NOTE: Operations should be performed on the whole numbers, without breaking down the numbers into their constituent digits.)</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>279</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>259</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>299</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>289</span></p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>The logic followed here is: third number = (first number)² + (second number)²</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3² + 4² = 9 + 16 = 25</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>5² + 12² = 25 + 144 = 169</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Similarly, 8² + 15² = 64 + 225 = 289</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Hence, the missing number is 289.</span></p>", "question_heading": ""}, {"sr_no": 26, "question": "\r\n<p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">What should come in place of the question mark (?) in the given series?</span></p>\r\n\r\n<p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><strong><span style=\"font-size:12pt\"><span style=\"font-family: &quot;Nirmala UI&quot;;\">13, 20, 34, ?, 118, 230</span></span></strong></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>58</span></p>", "option2": "\r\n<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>66</span></p>", "option3": "\r\n<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>62</span></p>", "option4": "\r\n<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>64</span></p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": "\r\n<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>13, 20, 34, ?, 118, 230</span></p>\r\n\r\n<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>The differences between consecutive terms are 7, 14, 28, 56, 112, each double the previous one.</span></p>\r\n\r\n<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>13 + 7 = 20</span></p>\r\n\r\n<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>20 + 14 = 34</span></p>\r\n\r\n<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>34 + 28 = 62</span></p>\r\n\r\n<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>62 + 56 = 118</span></p>\r\n\r\n<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>118 + 112 = 230</span></p>\r\n\r\n<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Hence, the missing number is 62.</span></p>", "question_heading": ""}, {"sr_no": 27, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Arrange the following words in a meaningful order and select the option that gives the correct order.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">1. Bud</span><span style=\"font-weight:bold\">   </span><span style=\"font-weight:bold\">2. Seed</span><span style=\"font-weight:bold\">   </span><span style=\"font-weight:bold\">3. Flower</span><span style=\"font-weight:bold\">   </span><span style=\"font-weight:bold\">4. Fruit</span><span style=\"font-weight:bold\">   </span><span style=\"font-weight:bold\">5. Germination</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>2, 5, 1, 3, 4</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>2, 1, 5, 3, 4</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>5, 2, 1, 3, 4</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>2, 5, 3, 1, 4</span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>The meaningful order follows the life cycle of a flowering plant:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Seed→ Germination → Bud → Flower → Fruit</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>That is, 2, 5, 1, 3, 4.</span></p>", "question_heading": ""}, {"sr_no": 28, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Seven friends — A, B, C, D, E, F and G — are sitting in a row facing north. D sits third from the left end of the row. Only two people sit between D and B. G sits second to the right of D. F sits to the immediate right of B. C sits to the immediate left of D. A does not sit at either end of the row. How many people sit between E and G?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>One</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Two</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Three</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Four</span></p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Let the positions in the row be numbered 1 to 7 from left to right (facing north, so right means towards the higher numbers).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>1. D sits at position 3.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>2. Only two people sit between D and B, so B sits at position 6 (position 0 does not exist).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3. G sits second to the right of D, so G sits at position 5.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>4. F sits to the immediate right of B, so F sits at position 7.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>5. C sits to the immediate left of D, so C sits at position 2.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>6. The remaining positions are 1 and 4 for A and E. A does not sit at an end, so A sits at position 4 and E sits at position 1.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Final arrangement (left to right): E, C, D, A, G, B, F</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>The people sitting between E and G are C, D and A.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Hence, three people sit between E and G.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794461804251_image004.jpeg\" width=\"464\" height=\"165\" alt ></p>", "question_heading": ""}, {"sr_no": 29, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Eight persons — A, B, C, D, P, Q, R and S — are sitting in two parallel rows containing four persons each. In row 1, A, B, C and D are sitting and all of them face south. In row 2, P, Q, R and S are sitting and all of them face north. Each person in row 1 faces exactly one person of row 2. B sits at the extreme left end of the row. A sits second to the right of B. D does not sit at either end of the row. P sits opposite D. Q sits to the immediate left of P. S sits opposite B. Who sits to the immediate right of the person sitting opposite A?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>R</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>P</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>S</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>D</span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Number the positions 1 to 4 from west to east. Persons in row 1 face south (their left is East and right is West). Persons in row 2 face north (their left is West and right is East).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>1. B sits at the extreme left end of row 1, so B sits at position 4 (East end).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>2. A sits second to the right of B, so A sits at position 2.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3. D does not sit at an end, so D sits at position 3 and C sits at position 1.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>4. P sits opposite D, so P sits at position 3.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>5. Q sits to the immediate left of P, so Q sits at position 2.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>6. S sits opposite B, so S sits at position 4, and R sits at position 1.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Row 1 (facing south): C, A, D, B</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Row 2 (facing north): R, Q, P, S</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>The person sitting opposite A is Q. The person sitting to the immediate right of Q is P.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Hence, the answer is P.</span></p>", "question_heading": ""}, {"sr_no": 30, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Six friends — A, B, C, D, E and F — are of different heights. E is taller than only F. B is taller than D but shorter than A. C is taller than A. D is taller than E. Who is the third shortest?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>B</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>C</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>E</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>D</span></p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>E is taller than only F, so E is the second shortest and F is the shortest.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>D is taller than E, so D comes next.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>B is taller than D but shorter than A, and C is taller than A.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>So, the order from tallest to shortest is: C &gt; A &gt; B &gt; D &gt; E &gt; F</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>The third shortest person is D.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Hence, D is the answer.</span></p>", "question_heading": ""}, {"sr_no": 31, "question": " <p style=\"orphans:0;widows:0\">    <b>Who among the following built the famous 'Hawa Mahal' in Jaipur    in the year 1799?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Maharaja Sawai Jai Singh</p>", "option2": " <p style=\"orphans:0;widows:0\">    Maharaja Sawai Pratap Singh</p>", "option3": " <p style=\"orphans:0;widows:0\">    Maharaja Man Singh I</p>", "option4": " <p style=\"orphans:0;widows:0\">    Maharaja Jaswant Singh</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The Hawa Mahal (Palace of Winds) in Jaipur, Rajasthan, was built    in 1799 by Maharaja Sawai Pratap Singh. It was designed by Lal    Chand Ustad using red and pink sandstone and features 953    intricately designed small windows (jharokhas).</p>", "question_heading": ""}, {"sr_no": 32, "question": " <p style=\"orphans:0;widows:0\">    <b>Which committee was constituted by the Government of India in    August 1991 to recommend comprehensive reforms in the country's    direct and indirect tax structure?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    C. Rangarajan Committee</p>", "option2": " <p style=\"orphans:0;widows:0\">    Raja Chelliah Committee</p>", "option3": " <p style=\"orphans:0;widows:0\">    Tarapore Committee</p>", "option4": " <p style=\"orphans:0;widows:0\">    Malhotra Committee</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The Tax Reforms Committee was constituted in August 1991 under the    chairmanship of Dr. Raja J. Chelliah to suggest measures for    overhauling the Indian tax system. The committee recommended    rationalizing and reducing personal and corporate income tax    rates, reducing peak customs tariffs, introducing value-added    taxation (VAT), and simplifying procedures to widen the tax base.</p>", "question_heading": ""}, {"sr_no": 33, "question": " <p style=\"orphans:0;widows:0\">    <b>An object is placed at a distance of 20 cm in front of a convex    lens. If a real and inverted image is formed at a distance of 60    cm on the other side of the lens, what is the magnification    produced by the lens?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    +3</p>", "option2": " <p style=\"orphans:0;widows:0\">    -3</p>", "option3": " <p style=\"orphans:0;widows:0\">    +0.33</p>", "option4": " <p style=\"orphans:0;widows:0\">    -0.33</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0;margin-bottom:0in\">    According to the Cartesian sign convention for spherical lenses:</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Object    distance (<img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794477714430_html_ca251a9e165ee99b.gif\" > )    =     <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794477714430_html_d76fb73c875efc44.gif\" > </p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Image    distance (<img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794477714430_html_acc4ed3bbe33fd32.gif\" > )    =     <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794477714430_html_f9126e1f72930a6.gif\" >     (since a real image is formed on the other side of the lens)</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Magnification    (<img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794477714430_html_4d187224ad27976d.gif\" > )    of a lens is given by the formula:</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">​<img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794477714430_html_6a525466d94d683c.gif\" > </p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">​<img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794477714430_html_d026c329bbd374a8.gif\" > </p>    <p style=\"orphans:0;widows:0\">The negative sign indicates that    the image formed is real and inverted.</p>", "question_heading": ""}, {"sr_no": 34, "question": " <p style=\"orphans:0;widows:0\">    <b>Which of the following geographical regions typically has the    lowest population density due to an extremely arid climate and    scarcity of water?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    River plains</p>", "option2": " <p style=\"orphans:0;widows:0\">    Hot deserts</p>", "option3": " <p style=\"orphans:0;widows:0\">    Coastal areas</p>", "option4": " <p style=\"orphans:0;widows:0\">    Delta regions</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    Hot deserts (such as the Sahara or Thar Desert) have very low    population density mainly due to harsh climatic conditions,    extreme aridity, high temperatures, and severe scarcity of water,    which make human settlement and agriculture extremely difficult.</p>", "question_heading": ""}, {"sr_no": 35, "question": " <p style=\"orphans:0;widows:0\">    <b>A book lies stationary on a table. If the downward    gravitational force acting on it is completely balanced by the    upward normal reaction force, what happens to the book?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    It remains at rest.</p>", "option2": " <p style=\"orphans:0;widows:0\">    It begins to accelerate upwards.</p>", "option3": " <p style=\"orphans:0;widows:0\">    It begins to slide horizontally.</p>", "option4": " <p style=\"orphans:0;widows:0\">    It moves downward with constant speed.</p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    According to Newton's First Law of Motion, an object at rest will    remain at rest unless acted upon by a net unbalanced external    force. Here, the downward gravitational force and the upward    normal reaction force are equal in magnitude and opposite in    direction, so the net force acting on the book is zero (<img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794477714430_html_99bac7c17bb6cb7e.gif\" > ).    Consequently, the book remains at rest.</p>", "question_heading": ""}, {"sr_no": 36, "question": " <p style=\"orphans:0;widows:0\">    <b>Which of the following National Parks in India is the only    natural habitat of the Asiatic Lion?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Kanha National Park</p>", "option2": " <p style=\"orphans:0;widows:0\">    Gir National Park</p>", "option3": " <p style=\"orphans:0;widows:0\">    Ranthambore National Park</p>", "option4": " <p style=\"orphans:0;widows:0\">    Sundarbans National Park</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    Gir National Park, located in Gujarat, is globally renowned as the    only remaining natural habitat of the Asiatic Lion (Panthera leo    leo).</p>", "question_heading": ""}, {"sr_no": 37, "question": " <p style=\"orphans:0;widows:0\">    <b>In MS Word, which of the following options is used to    automatically repeat the header row of a table at the top of each    page when the table spans across multiple pages?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Table Tools &gt; Layout tab &gt; Data group &gt; Repeat Header    Rows</p>", "option2": " <p style=\"orphans:0;widows:0\">    Insert tab &gt; Header &amp; Footer group &gt; Header</p>", "option3": " <p style=\"orphans:0;widows:0\">    Table Tools &gt; Table Design tab &gt; Table Style Options &gt;    Header Row</p>", "option4": " <p style=\"orphans:0;widows:0\">    Page Layout tab &gt; Page Setup group &gt; Print Titles</p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    In MS Word, to repeat header rows across pages for a multi-page    table, select the header row(s) and go to <b>Table Tools &gt;    Layout tab &gt; Data group &gt; Repeat Header Rows</b> (or    right-click the row &gt; Table Properties &gt; Row tab &gt; check    'Repeat as header row at the top of each page'). The 'Header Row'    check box in the Table Design tab only applies special visual    formatting to the first row and does not repeat it across pages.    'Print Titles' is an MS Excel feature.</p>", "question_heading": ""}, {"sr_no": 38, "question": " <p style=\"orphans:0;widows:0\">    <b>Which of the following methods of political struggle was    predominantly adopted by the Moderate leaders of the Indian    National Congress during the early phase (1885–1905)?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Revolutionary armed struggle</p>", "option2": " <p style=\"orphans:0;widows:0\">    Constitutional agitation through petitions, prayers, and protests</p>", "option3": " <p style=\"orphans:0;widows:0\">    Direct mass action and civil disobedience</p>", "option4": " <p style=\"orphans:0;widows:0\">    Complete boycott of all government institutions</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    During the early Moderate phase (1885–1905), Congress leaders    such as Dadabhai Naoroji, Gopal Krishna Gokhale, and Pherozeshah    Mehta believed in working within the legal framework through    constitutional agitation. Their strategy is often summarized as    the '3Ps'—Prayer, Petition, and Protest. They relied on appeals,    speeches, and memorandums to convince the British government to    enact political and administrative reforms.</p>", "question_heading": ""}, {"sr_no": 39, "question": " <p style=\"orphans:0;widows:0\">    <b>Under the New Industrial Policy announced in July 1991, the    number of industries reserved exclusively for the public sector    was reduced from 17 to ______.</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    12</p>", "option2": " <p style=\"orphans:0;widows:0\">    8</p>", "option3": " <p style=\"orphans:0;widows:0\">    6</p>", "option4": " <p style=\"orphans:0;widows:0\">    4</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    Under the New Industrial Policy (NIP) announced on 24 July 1991,    one of the major steps toward deregulation and liberalization was    reducing the number of industries exclusively reserved for the    public sector from 17 (as categorized under Schedule A of IPR    1956) to 8. Over time, this list was pruned further, and    currently, only two sectors—Atomic Energy and Railway    Operations—remain reserved for the public sector.</p>", "question_heading": ""}, {"sr_no": 40, "question": " <p style=\"orphans:0;widows:0\">    <b>Information regarding the construction, administration, and    repair of the ancient public irrigation reservoir 'Sudarshana    Lake' is primarily obtained from the:</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Hathigumpha Inscription</p>", "option2": " <p style=\"orphans:0;widows:0\">    Junagadh Rock Inscription</p>", "option3": " <p style=\"orphans:0;widows:0\">    Nanaghat Inscription</p>", "option4": " <p style=\"orphans:0;widows:0\">    Rummindei Pillar Inscription</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The Junagadh Rock Inscription of Saka ruler Rudradaman I (c. 150    CE) provides comprehensive historical details regarding the    Sudarshana Lake in Saurashtra (Gujarat). It records that the lake    was originally constructed by Pushyagupta, a governor under    Chandragupta Maurya, and canals were added under Ashoka by    Tusaspha. Later, when a severe storm breached the dam, Rudradaman    I had it reconstructed out of his own treasury without burdening    his subjects with additional taxes (vishti or pranaya).</p>", "question_heading": ""}, {"sr_no": 41, "question": " <p style=\"orphans:0;widows:0\">    <b>Which Article of the Constitution of India provides for the    reservation of seats for Scheduled Castes, Scheduled Tribes, and    women in Panchayati Raj institutions?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Article 243C</p>", "option2": " <p style=\"orphans:0;widows:0\">    Article 243D</p>", "option3": " <p style=\"orphans:0;widows:0\">    Article 243E</p>", "option4": " <p style=\"orphans:0;widows:0\">    Article 243G</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    Article 243D of the Constitution of India provides for the    reservation of seats for Scheduled Castes (SCs) and Scheduled    Tribes (STs) in every Panchayat in proportion to their population.    It also mandates that not less than one-third of the total number    of seats shall be reserved for women (including the number of    seats reserved for women belonging to SCs and STs).</p>", "question_heading": ""}, {"sr_no": 42, "question": " <p style=\"orphans:0;widows:0\">    <b>Which Article of the Indian Constitution directs the State to    take steps to separate the judiciary from the executive in the    public services of the State?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Article 48</p>", "option2": " <p style=\"orphans:0;widows:0\">    Article 49</p>", "option3": " <p style=\"orphans:0;widows:0\">    Article 50</p>", "option4": " <p style=\"orphans:0;widows:0\">    Article 51</p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    Article 50 of the Indian Constitution provides for the separation    of the judiciary from the executive in the public services of the    State. It is an important provision under Part IV (Directive    Principles of State Policy) aimed at ensuring the independence of    the judiciary.</p>", "question_heading": ""}, {"sr_no": 43, "question": "In ौूनधोकौुधधप ौयीपथोनध िiाध MS Eसcिध, थुicु ीधोपहनध ोहपयंोपicोििद हूकोपधौ पुध cोिcिहोपधक नधौिहपौ in कधूधnकधnप cिधिस ोौ ौययn ोौ पुध ौयहनcध कोपो in नधीधनधncधक cिधिस iौ ंयकiीiधक?", "option1": "<p style=\"orphans:0;widows:0\">    AutoComplete</p>", "option2": " <p style=\"orphans:0;widows:0\">    AutoFilter</p>", "option3": " <p style=\"orphans:0;widows:0\">    Automatic Recalculation</p>", "option4": " <p style=\"orphans:0;widows:0\">    AutoRecover</p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    In spreadsheet applications such as Microsoft Excel, <b>Automatic    Recalculation</b> is the default feature that recalculates all    dependent formulas immediately whenever a referenced cell's value    is altered. By default, Excel keeps calculation set to    \"Automatic\", ensuring real-time updates of values across    the worksheet.</p>", "question_heading": ""}, {"sr_no": 44, "question": " <p style=\"orphans:0;widows:0\">    <b>The famous 'Hornbill Festival' is celebrated annually in which    of the following states of India?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Nagaland</p>", "option2": " <p style=\"orphans:0;widows:0\">    Manipur</p>", "option3": " <p style=\"orphans:0;widows:0\">    Mizoram</p>", "option4": " <p style=\"orphans:0;widows:0\">    Meghalaya</p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The Hornbill Festival is celebrated every year from 1 to 10    December in the northeastern state of <b>Nagaland</b>. Organized    by the State Tourism and Art &amp; Culture Departments, it is    popularly known as the 'Festival of Festivals' to encourage    inter-tribal interaction and promote cultural heritage.</p>", "question_heading": ""}, {"sr_no": 45, "question": " <p style=\"orphans:0;widows:0\">    <b>Who among the following was conferred the Sahitya Akademi Award    2025 in the English language category for the novel 'Crimson    Spring'?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Navtej Sarna</p>", "option2": " <p style=\"orphans:0;widows:0\">    Devabrat Das</p>", "option3": " <p style=\"orphans:0;widows:0\">    Prasun Bandyopadhyay</p>", "option4": " <p style=\"orphans:0;widows:0\">    Girijakumar Baliyar Singh</p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    Former diplomat and author Navtej Sarna won the Sahitya Akademi    Award 2025 in the English language category for his historical    novel <i>Crimson Spring</i>, which revolves around the events of    the 1919 Jallianwala Bagh massacre. The awards were officially    announced by the Sahitya Akademi in March 2026 across 24    recognized Indian languages.</p>", "question_heading": ""}, {"sr_no": 46, "question": " <p style=\"orphans:0;widows:0\">    <b>Which Article of the Constitution of India imposes a    restriction on discussing the conduct of any Judge of the Supreme    Court or of a High Court in the discharge of their duties in the    Legislature of a State?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Article 202</p>", "option2": " <p style=\"orphans:0;widows:0\">    Article 211</p>", "option3": " <p style=\"orphans:0;widows:0\">    Article 214</p>", "option4": " <p style=\"orphans:0;widows:0\">    Article 226</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Article 211</b> of the Constitution of India provides for    'Restriction on discussion in the Legislature'. It states that no    discussion shall take place in the Legislature of a State with    respect to the conduct of any Judge of the Supreme Court or of a    High Court in the discharge of their duties. Unlike Article 121    (which allows Parliament to discuss a judge's conduct during a    removal/impeachment motion), Article 211 imposes an absolute    prohibition because State Legislatures have no constitutional    authority regarding the removal of higher judiciary judges.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Other    relevant Articles:</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Article    202:</b> Annual financial statement of a State.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Article    214:</b> High Courts for States.</p>    <p style=\"orphans:0;widows:0\"><b>Article 226:</b> Power of High    Courts to issue certain writs.</p>", "question_heading": ""}, {"sr_no": 47, "question": " <p style=\"orphans:0;widows:0\">    <b>According to the Badminton World Federation (BWF) rules, what    is the standard overall length of a badminton court?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    11.50 m</p>", "option2": " <p style=\"orphans:0;widows:0\">    13.40 m</p>", "option3": " <p style=\"orphans:0;widows:0\">    15.20 m</p>", "option4": " <p style=\"orphans:0;widows:0\">    16.00 m</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    According to Law 1 of the Badminton World Federation (BWF) Laws of    Badminton (updated and codified in April 2026), the standard    badminton court is a rectangle measuring <b>13.40 m</b> (44 ft) in    total length for both singles and doubles play. The overall width    of the court is 6.10 m (20 ft) for doubles and 5.18 m (17 ft) for    singles.</p>", "question_heading": ""}, {"sr_no": 48, "question": " <p style=\"orphans:0;widows:0\">    <b>Which of the following characteristics distinctively marks the    sculptures of the Buddha produced under the Gandhara School of    Art?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Realistic human anatomy, wavy hair, and heavy drapery with    classical folds</p>", "option2": " <p style=\"orphans:0;widows:0\">    Shaved head, smiling round face, and thin, clinging transparent    drapery</p>", "option3": " <p style=\"orphans:0;widows:0\">    Exclusive use of spotted red sandstone with a stiff frontal    posture</p>", "option4": " <p style=\"orphans:0;widows:0\">    Representation solely through aniconic symbols like footprints and    umbrellas</p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The <b>Gandhara School of Art</b> flourished primarily in the    north-western region of ancient India (modern Pakistan and    Afghanistan) during the reign of the Kushana dynasty (1st century    BCE to 4th century CE).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Key    characteristics of Gandhara sculptures include:</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Greco-Roman    (Hellenistic) Influence:</b> The Buddha is rendered with realistic    human anatomical precision, sharp facial features resembling the    Greek god Apollo, wavy hair gathered into an <i>ushnisha</i>    (topknot), and thick, heavy drapery with realistic folds    reminiscent of a Roman toga.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Medium:</b>    In the early phase, blue-grey schist stone was predominantly used,    followed later by stucco, mud, and lime.</p>    <p style=\"orphans:0;widows:0\">In contrast, thin clinging    transparent robes, shaved heads/spiral curls, and the use of    spotted red sandstone are typical hallmarks of the indigenous    <b>Mathura School of Art</b>.</p>", "question_heading": ""}, {"sr_no": 49, "question": " <p style=\"orphans:0;widows:0\">    <b>In the parliamentary form of government in India, the Council    of Ministers is collectively responsible to which of the    following?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Rajya Sabha</p>", "option2": " <p style=\"orphans:0;widows:0\">    Lok Sabha</p>", "option3": " <p style=\"orphans:0;widows:0\">    President of India</p>", "option4": " <p style=\"orphans:0;widows:0\">    Supreme Court of India</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    According to Article 75(3) of the Constitution of India, the    Council of Ministers is collectively responsible to the Lok Sabha    (House of the People). This collective responsibility is the    foundational principle of a parliamentary system of democracy.</p>", "question_heading": ""}, {"sr_no": 50, "question": " <p style=\"orphans:0;widows:0\">    <b>Which Union Ministry is the nodal agency responsible for the    implementation of the PM-KUSUM (Pradhan Mantri Kisan Urja Suraksha    evam Utthan Mahabhiyan) scheme?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Ministry of New and Renewable Energy</p>", "option2": " <p style=\"orphans:0;widows:0\">    Ministry of Agriculture and Farmers Welfare</p>", "option3": " <p style=\"orphans:0;widows:0\">    Ministry of Power</p>", "option4": " <p style=\"orphans:0;widows:0\">    Ministry of Rural Development</p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The PM-KUSUM (Pradhan Mantri Kisan Urja Suraksha evam Utthan    Mahabhiyan) scheme was launched in 2019 by the Ministry of New and    Renewable Energy (MNRE). The scheme aims to promote solar power    generation, de-dieselise the farm sector, and provide energy and    water security to farmers across India.</p>", "question_heading": ""}, {"sr_no": 51, "question": " <p style=\"orphans:0;widows:0\">    <b>Which mode of nutrition is observed in fungi like mushrooms    that obtain nutrients from dead and decaying organic matter?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Autotrophic nutrition</p>", "option2": " <p style=\"orphans:0;widows:0\">    Saprophytic nutrition</p>", "option3": " <p style=\"orphans:0;widows:0\">    Parasitic nutrition</p>", "option4": " <p style=\"orphans:0;widows:0\">    Holozoic nutrition</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    Organisms like mushrooms and molds lack chlorophyll and cannot    perform photosynthesis. They obtain their food by secreting    digestive enzymes onto dead and decaying organic matter and    absorbing the nutrients. This mode of nutrition is known as    saprophytic (or saprotrophic) nutrition.</p>", "question_heading": ""}, {"sr_no": 52, "question": "  <p style=\"orphans:0;widows:0\">    <b>The concentration of hydroxide ions (</b><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794477714430_html_f050bd3a25ee6425.gif\" > <b>)    in an aqueous solution primarily determines its:</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Basicity</p>", "option2": " <p style=\"orphans:0;widows:0\">    Acidity</p>", "option3": " <p style=\"orphans:0;widows:0\">    Salinity</p>", "option4": " <p style=\"orphans:0;widows:0\">    Radioactivity</p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    In an aqueous solution, the concentration of hydrogen ions (<img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794477714430_html_1f4402055c246fee.gif\" > )    determines acidity, whereas the concentration of hydroxide ions    (<img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794477714430_html_f050bd3a25ee6425.gif\" > )    determines its basicity (alkalinity). A higher concentration of     <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794477714430_html_f050bd3a25ee6425.gif\" >     relative to     <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794477714430_html_1f4402055c246fee.gif\" >     makes the solution basic (pH &gt; 7).</p>", "question_heading": ""}, {"sr_no": 53, "question": " <p style=\"orphans:0;widows:0\">    <b>Which of the following electrical instruments is primarily used    to detect the presence and direction of a small electric current    in a circuit?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Voltmeter</p>", "option2": " <p style=\"orphans:0;widows:0\">    Galvanometer</p>", "option3": " <p style=\"orphans:0;widows:0\">    Rheostat</p>", "option4": " <p style=\"orphans:0;widows:0\">    Ammeter</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    A <b>galvanometer</b> is an electromechanical instrument used to    detect the presence and indicate the direction of small electric    currents flowing through a circuit. It has a pointer that deflects    from its central zero position to the left or right depending on    the direction of the current. In contrast, an ammeter measures the    magnitude of electric current, a voltmeter measures the electric    potential difference, and a rheostat is a variable resistor used    to control the magnitude of current.</p>", "question_heading": ""}, {"sr_no": 54, "question": " <p style=\"orphans:0;widows:0\">    <b>What is the work done by the gravitational force when an object    moves horizontally along a level surface?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Positive</p>", "option2": " <p style=\"orphans:0;widows:0\">    Negative</p>", "option3": " <p style=\"orphans:0;widows:0\">    Zero</p>", "option4": " <p style=\"orphans:0;widows:0\">    Infinite</p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    Work done is given by the formula     <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794477714430_html_5f9836ff6a56423a.gif\" > ,    where     <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794477714430_html_4a97c13c8f18833a.gif\" >     is the angle between the applied force and the direction of    displacement. The gravitational force acts vertically downward,    while the displacement is horizontal, making     <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794477714430_html_300fa684b0f584f.gif\" > .    Since     <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1794477714430_html_eb1aa35cc6be4a7d.gif\" > ,    the work done by gravity is zero.</p>", "question_heading": ""}, {"sr_no": 55, "question": " <p style=\"orphans:0;widows:0\">    <b>Which legendary playback singer of India was popularly known as    the 'Queen of Melody' and 'Swar Kokila'?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Asha Bhosle</p>", "option2": " <p style=\"orphans:0;widows:0\">    Lata Mangeshkar</p>", "option3": " <p style=\"orphans:0;widows:0\">    Alka Yagnik</p>", "option4": " <p style=\"orphans:0;widows:0\">    Shreya Ghoshal</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    Lata Mangeshkar was widely acclaimed and affectionately referred    to as the 'Queen of Melody' and 'Swar Kokila' of India. In    recognition of her extraordinary contribution to music, she was    conferred with the Bharat Ratna, India's highest civilian honour,    in 2001.</p>", "question_heading": ""}, {"sr_no": 56, "question": " <p style=\"orphans:0;widows:0\">    <b>Who among the following commanders led the vanguard of Maharana    Pratap's army against the Mughal forces in the Battle of    Haldighati (1576)?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Hakim Khan Sur</p>", "option2": " <p style=\"orphans:0;widows:0\">    Hasan Khan Mewati</p>", "option3": " <p style=\"orphans:0;widows:0\">    Mahmud Lodi</p>", "option4": " <p style=\"orphans:0;widows:0\">    Raja Man Singh</p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    In the Battle of Haldighati (1576), fought between Maharana Pratap    and the Mughal army led by Raja Man Singh I of Amber, the vanguard    (harawal) of Maharana Pratap's forces was commanded by Hakim Khan    Sur, a warrior of the Sur dynasty. In contrast, Hasan Khan Mewati    fought alongside Rana Sanga against Babur in the Battle of Khanwa    (1527).</p>", "question_heading": ""}, {"sr_no": 57, "question": " <p style=\"orphans:0;widows:0\">    <b>The famous 'Moti Masjid' (Pearl Mosque) situated inside the    Agra Fort was built by ________, whereas the 'Moti Masjid' located    within the Red Fort complex of Delhi was commissioned by ________.</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Akbar; Jahangir</p>", "option2": " <p style=\"orphans:0;widows:0\">    Shah Jahan; Aurangzeb</p>", "option3": " <p style=\"orphans:0;widows:0\">    Aurangzeb; Shah Jahan</p>", "option4": " <p style=\"orphans:0;widows:0\">    Jahangir; Shah Jahan</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The Moti Masjid (Pearl Mosque) inside the Agra Fort was built by    Mughal Emperor Shah Jahan between 1648 and 1654 for members of the    royal court. In contrast, the Moti Masjid inside the Red Fort of    Delhi was commissioned by his successor, Emperor Aurangzeb,    between 1659 and 1660 for his personal use.</p>", "question_heading": ""}, {"sr_no": 58, "question": " <p style=\"orphans:0;widows:0\">    <b>Indian-born author Rohinton Mistry's acclaimed novel </b><i><b>A    Fine Balance</b></i><b> was shortlisted for the prestigious Booker    Prize in which of the following years?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    1991</p>", "option2": " <p style=\"orphans:0;widows:0\">    1996</p>", "option3": " <p style=\"orphans:0;widows:0\">    1998</p>", "option4": " <p style=\"orphans:0;widows:0\">    2002</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    Rohinton Mistry's second novel, <i>A Fine Balance</i>, published    in 1995, was shortlisted for the Booker Prize in 1996 (the prize    was won that year by Graham Swift for <i>Last Orders</i>). It also    won the 1996 Giller Prize and the Commonwealth Writers' Prize for    Best Book. Rohinton Mistry was shortlisted for the Booker Prize    three times: for <i>Such a Long Journey</i> (1991), <i>A Fine    Balance</i> (1996), and <i>Family Matters</i> (2002).</p>", "question_heading": ""}, {"sr_no": 59, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Which of the following statements is/are correct regarding    primary and cache memory in a computer system?</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Cache memory is volatile and placed between the CPU and RAM to    speed up data retrieval.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>RAM (Random Access Memory) retains its data permanently even    when the main power supply is switched off.</b></p>    <p style=\"orphans:0;widows:0\"><b>EEPROM allows    stored data to be erased using electrical pulses rather than    ultraviolet light.</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Only 1 and 2</p>", "option2": " <p style=\"orphans:0;widows:0\">    Only 1 and 3</p>", "option3": " <p style=\"orphans:0;widows:0\">    Only 2 and 3</p>", "option4": " <p style=\"orphans:0;widows:0\">    All 1, 2, and 3</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Statement 1 is correct:</b> Cache memory is an extremely fast    volatile memory placed close to or inside the CPU to reduce the    average time required to access data from the main memory (RAM).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    2 is incorrect:</b> RAM is <b>volatile memory</b>, meaning it    loses all its stored contents the moment power is turned off.</p>    <p style=\"orphans:0;widows:0\"><b>Statement 3 is correct:</b>    EEPROM (Electrically Erasable Programmable Read-Only Memory) can    be erased and reprogrammed using electrical impulses, whereas its    predecessor EPROM required ultraviolet (UV) light.</p>", "question_heading": ""}, {"sr_no": 60, "question": "Cयnौiकधन पुध ीियियथing ूोiनौ यी Inपधनnधप Pनयपयcियस ोnक पुधiन ूनiंोनद ीहncपiयnौ: SMTP (Siंूिध Mोiि Tनोnौीधन Pनयपयcिय): Uौधक ीयन नधपनiधॅing धंोiिस ीनयं ो ंोiि ौधनॅधन पय ो ियcोि cिiधnप. FTP (Fiिध Tनोnौीधन Pनयपयcिय): Uौधक ीयन पनोnौीधननing cयंूहपधन ीiिधौ ृधपथधधn ो cिiधnप ोnक ो ौधनॅधन यॅधन ो nधपथयना. HTTP (Hदूधनपधसप Tनोnौीधन Pनयपयcिय): Uौधक ीयन पनोnौीधननing ुदूधनपधसप नधतहधौपौ ोnक थधृ ूोgधौ यn पुध Wयिनक Wiकध Wधृ.", "option1": "<p style=\"orphans:0;widows:0\">    1 and 2 only</p>", "option2": " <p style=\"orphans:0;widows:0\">    2 and 3 only</p>", "option3": " <p style=\"orphans:0;widows:0\">    1 and 3 only</p>", "option4": " <p style=\"orphans:0;widows:0\">    1, 2, and 3</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Pair 1 is incorrectly matched:</b> <b>SMTP</b> is strictly used    for <b>sending</b> emails from an email client to a server or    between servers. Protocols used for <i>receiving/retrieving</i>    emails are POP3 (Post Office Protocol 3) or IMAP (Internet Message    Access Protocol).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Pair 2 is    correctly matched:</b> FTP is a standard network protocol used for    transmitting files between computers over a TCP/IP connection.</p>    <p style=\"orphans:0;widows:0\"><b>Pair 3 is correctly matched:</b>    HTTP serves as the foundational protocol for data communication on    the World Wide Web, enabling browsers to load web pages.</p>", "question_heading": ""}, {"sr_no": 61, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Which of the following statements regarding Exercise KHANJAR    are correct?</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>1. It is a joint Special Forces exercise between India and    Kyrgyzstan.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>2. Its 13th edition was conducted at Missamari, Assam, in    February 2026.</b></p>    <p style=\"orphans:0;widows:0\"><b>3. Its primary    focus is Counter-Terrorism and Special Forces Operations.</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    1 and 2 only</p>", "option2": " <p style=\"orphans:0;widows:0\">    2 and 3 only</p>", "option3": " <p style=\"orphans:0;widows:0\">    1 and 3 only</p>", "option4": " <p style=\"orphans:0;widows:0\">    1, 2 and 3</p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Correct</b> — Exercise <b>KHANJAR</b> is a joint <b>Special    Forces exercise between India and Kyrgyzstan</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Correct</b>    — The <b>13th edition</b> was conducted from <b>4–17 February    2026</b> at <b>Missamari, Assam</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Correct</b>    — Its main focus is on <b>Counter-Terrorism and Special Forces    Operations</b> in <b>urban and mountainous terrain</b>.</p>    <p style=\"orphans:0;widows:0\"><b>Therefore, all three    statements are correct.</b></p>", "question_heading": ""}, {"sr_no": 62, "question": " <p style=\"orphans:0;widows:0\">    <b>What was the theme of National Science Day 2026?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Viksit Bharat through Science and Innovation</p>", "option2": " <p style=\"orphans:0;widows:0\">    Women in Science: Catalyzing Viksit Bharat</p>", "option3": " <p style=\"orphans:0;widows:0\">    Science, Society and Sustainable Development</p>", "option4": " <p style=\"orphans:0;widows:0\">    Future of Science in India</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>National Science Day is observed on 28 February</b> to    commemorate C.V. Raman’s discovery of the Raman Effect.</p>    <p style=\"orphans:0;widows:0\">The 2026 theme was <b>“Women in    Science: Catalyzing Viksit Bharat.”</b></p>", "question_heading": ""}, {"sr_no": 63, "question": " <p style=\"orphans:0;widows:0\">    <b>In February 2026, Narendra Modi became the first recipient of    the ‘Medal of the Knesset’ awarded by the parliament of which    country?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    France</p>", "option2": " <p style=\"orphans:0;widows:0\">    Israel</p>", "option3": " <p style=\"orphans:0;widows:0\">    Germany</p>", "option4": " <p style=\"orphans:0;widows:0\">    Japan</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    On <b>25 February 2026</b>, Israel’s Knesset awarded Narendra    Modi the <b>Medal of the Knesset</b>.</p>    <p style=\"orphans:0;widows:0\">He became the <b>first recipient</b>    of this newly established honour.</p>", "question_heading": ""}, {"sr_no": 64, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Consider the following statements regarding Exercise Dharma    Guardian:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>It is conducted between the Indian Army and Japan Ground    Self-Defense Force.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Its 7th edition was conducted in Uttarakhand during    February–March 2026.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Its primary objective was to practice maritime warfare    operations.</b></p>    <p style=\"orphans:0;widows:0\"><b>Which of the    statements given above is/are correct?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    1 only</p>", "option2": " <p style=\"orphans:0;widows:0\">    1 and 2 only</p>", "option3": " <p style=\"orphans:0;widows:0\">    2 and 3 only</p>", "option4": " <p style=\"orphans:0;widows:0\">    1, 2 and 3</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Statement 1 is correct:</b> It is an annual military exercise    between India and Japan.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Statement    2 is correct:</b> The 7th edition was held from <b>24 February–9    March 2026</b> at Chaubattia, Uttarakhand.</p>    <p style=\"orphans:0;widows:0\"><b>Statement 3 is incorrect:</b>    Its focus was on <b>joint operations in urban warfare and    counter-terrorism scenarios under a UN mandate</b>, not maritime    warfare</p>", "question_heading": ""}, {"sr_no": 65, "question": " <p style=\"orphans:0;widows:0\">    <b>What is the primary objective of Bharat-VISTAAR launched in    March 2026?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Promote defence production</p>", "option2": " <p style=\"orphans:0;widows:0\">    Digitize urban transportation</p>", "option3": " <p style=\"orphans:0;widows:0\">    Provide AI-based agricultural advisories to farmers</p>", "option4": " <p style=\"orphans:0;widows:0\">    Create an AI education platform for students</p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Bharat-VISTAAR stands for <b>Virtually Integrated System to Access    Agricultural Resources</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">It is an    <b>AI-powered, voice-first and multilingual Digital Public    Infrastructure</b>.</p>    <p style=\"orphans:0;widows:0\">It provides farmers with    advisories on <b>weather, market prices, crop management, pests    and diseases, and soil-related information.</b></p>", "question_heading": ""}, {"sr_no": 66, "question": " <p style=\"orphans:0;widows:0\">    <b>Which team did India defeat in the ICC Men’s T20 World Cup    2026 final to win the title?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    England</p>", "option2": " <p style=\"orphans:0;widows:0\">    South Africa</p>", "option3": " <p style=\"orphans:0;widows:0\">    New Zealand</p>", "option4": " <p style=\"orphans:0;widows:0\">    Australia</p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    India defeated New Zealand by <b>96 runs</b> in Ahmedabad on <b>8    March 2026</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">India scored    <b>255/5</b>, the highest total in a T20 World Cup final.</p>    <p style=\"orphans:0;widows:0\">India became the first team to    win the T20 World Cup title in consecutive editions.</p>", "question_heading": ""}, {"sr_no": 67, "question": " <p style=\"orphans:0;widows:0\">    <b>Who is the author of the book </b><i><b>The Midnight Train</b></i><b>,    released in February 2026?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Matt Haig</p>", "option2": " <p style=\"orphans:0;widows:0\">    Amitav Ghosh</p>", "option3": " <p style=\"orphans:0;widows:0\">    Arundhati Roy</p>", "option4": " <p style=\"orphans:0;widows:0\">    Shashi Tharoor</p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <i>The Midnight Train</i> was written by <b>Matt Haig</b>.</p>    <p style=\"orphans:0;widows:0\">Matt Haig is a renowned <b>British    author</b> known for fiction and contemporary literature.</p>", "question_heading": ""}, {"sr_no": 68, "question": " <p style=\"orphans:0;widows:0\">    <b>At which location was the Indian Air Force exercise ‘Vayu    Shakti–2026’ conducted in February 2026?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Pokhran, Rajasthan</p>", "option2": " <p style=\"orphans:0;widows:0\">    Jaisalmer, Rajasthan</p>", "option3": " <p style=\"orphans:0;widows:0\">    Dehradun, Uttarakhand</p>", "option4": " <p style=\"orphans:0;widows:0\">    Babina, Uttar Pradesh</p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    President Droupadi Murmu witnessed the exercise at Pokhran Field    Firing Range on 27 February 2026.</p>    <p style=\"orphans:0;widows:0\">It was a major Indian Air Force    exercise involving fighter aircraft, helicopters and transport    aircraft.</p>", "question_heading": ""}, {"sr_no": 69, "question": " <p style=\"orphans:0;widows:0\">    <b>Which team won the 2025–26 Ranji Trophy title for the first    time?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Karnataka</p>", "option2": " <p style=\"orphans:0;widows:0\">    Jammu and Kashmir</p>", "option3": " <p style=\"orphans:0;widows:0\">    Vidarbha</p>", "option4": " <p style=\"orphans:0;widows:0\">    Mumbai</p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Jammu and Kashmir won the 2025–26 Ranji Trophy title for the    first time.</p>    <p style=\"orphans:0;widows:0\">Jammu and Kashmir defeated    Karnataka in the final.</p>", "question_heading": ""}, {"sr_no": 70, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Consider the following statements regarding the Very    Short-Range Air Defence System (VSHORADS), successfully tested by    DRDO in February 2026:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>DRDO conducted three consecutive successful flight trials of    this system.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>It was tested at the Integrated Test Range (ITR), Chandipur,    Odisha.</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>It is developed to neutralise high-speed aerial threats.</b></p>    <p style=\"orphans:0;widows:0\"><b>Which of the    statements given above is/are correct?</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    1 and 2 only</p>", "option2": " <p style=\"orphans:0;widows:0\">    2 and 3 only</p>", "option3": " <p style=\"orphans:0;widows:0\">    1 and 3 only</p>", "option4": " <p style=\"orphans:0;widows:0\">    1, 2 and 3</p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Statement 1 is correct: DRDO conducted three consecutive    successful flight trials of VSHORADS on 27–28 February 2026.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Statement 2    is correct: The trials were conducted at the Integrated Test Range    (ITR), Chandipur, Odisha.</p>    <p style=\"orphans:0;widows:0\">Statement 3 is correct: VSHORADS    is an indigenous Very Short-Range Air Defence System developed to    neutralise aerial threats at varying altitudes and ranges.</p>", "question_heading": ""}, {"sr_no": 71, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Two trains are moving in opposite directions at speeds of 80 km/h and 120 km/h. The length of one train is 300 m, and they take 12 seconds to cross each other. What is the length (in m) of the other train, correct to 2 decimal places? </span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>388.88</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>333.33</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>366.67</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>377.77</span></p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span>Relative speed = 80 + 120 = 200 km/h = 200 × 5/18 = 500/9 m/s. Distance covered in 12 s = (500/9) × 12 = 666.67 m = sum of the two lengths. Other train = 666.67 − 300 = 366.67 m.</span></p>", "question_heading": ""}, {"sr_no": 72, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">The difference between the compound interest (compounded annually) and the simple interest on a certain sum for 2 years at 9% per annum is ₹97.20. Find the sum. </span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹12,000</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹10,000</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹15,000</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹12,500</span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span>For 2 years, CI − SI = P × (R/100)². So 97.20 = P × (9/100)² = P × 0.0081. P = 97.20 ÷ 0.0081 = ₹12,000.</span></p>", "question_heading": ""}, {"sr_no": 73, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Find the greatest number that divides 72 and 119, leaving remainders 3 and 4 respectively. </span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>17</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>23</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>21</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>19</span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span>Subtract the remainders: 72 − 3 = 69 and 119 − 4 = 115. The required number = HCF(69, 115). 69 = 3 × 23 and 115 = 5 × 23, so HCF = 23.</span></p>", "question_heading": ""}, {"sr_no": 74, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">The perimeter of a right-angled triangle is 60 cm and its hypotenuse is 26 cm. Find the area of the triangle. </span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>240 cm²</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>180 cm²</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>160 cm²</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>120 cm²</span></p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span>Let the legs be a and b. a + b = 60 − 26 = 34 and a² + b² = 26² = 676. (a + b)² = a² + b² + 2ab ⇒ 1156 = 676 + 2ab ⇒ ab = 240. Area = ab/2 = 120 cm².</span></p>", "question_heading": ""}, {"sr_no": 75, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Driving at 30 km/h, Vinod reaches his office 5 minutes late. Driving at 40 km/h, he reaches 3 minutes early. What is the distance between his residence and his office? </span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>16 km</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>20 km</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>15 km</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>18 km</span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span>Time difference = 5 + 3 = 8 min = 2/15 h. d/30 − d/40 = 2/15 ⇒ d(4 − 3)/120 = 2/15 ⇒ d = 240/15 = 16 km.</span></p>", "question_heading": ""}, {"sr_no": 76, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">A solid right circular cone of height 11.2 cm and base radius 2.8 cm is melted and recast into a solid sphere. What is the diameter of the sphere? </span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>8.4 cm</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>4.2 cm</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>2.8 cm</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>5.6 cm</span></p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span>Volume stays the same: (4/3)πR³ = (1/3)π(2.8)²(11.2). So 4R³ = 2.8² × 11.2 = 2.8² × (4 × 2.8) ⇒ R³ = 2.8³ ⇒ R = 2.8 cm. Diameter = 5.6 cm.</span></p>", "question_heading": ""}, {"sr_no": 77, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">One diagonal of a rhombus is 65% of the other. A square is drawn with the longer diagonal as its side. What is the ratio of the area of the rhombus to that of the square? </span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>18 : 15</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>13 : 40</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>15 : 18</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>40 : 13</span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span>Let the longer diagonal = d, so the shorter = 0.65d. Area of rhombus = ½ × d × 0.65d = 0.325d². Area of square = d². Ratio = 0.325 : 1 = 13 : 40.</span></p>", "question_heading": ""}, {"sr_no": 78, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">The difference between the selling prices of an item when sold at an 8% profit and when sold at a 13% loss is ₹115.50. Find the cost price of the item. </span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹550</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹540</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹560</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹580</span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span>SP at 8% profit = 1.08 CP and SP at 13% loss = 0.87 CP. Difference = (1.08 − 0.87) CP = 0.21 CP = 115.50 ⇒ CP = 115.50 ÷ 0.21 = ₹550.</span></p>", "question_heading": ""}, {"sr_no": 79, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">20 men and 15 boys can do a piece of work in 10 days, while 25 men and 10 boys can do it in 9 days. Find the ratio of the daily work done by a man to that done by a boy. </span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>14 : 5</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>12 : 5</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>5 : 12</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>5 : 14</span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span>Total work is the same: 10(20m + 15b) = 9(25m + 10b) ⇒ 200m + 150b = 225m + 90b ⇒ 60b = 25m ⇒ m : b = 60 : 25 = 12 : 5.</span></p>", "question_heading": ""}, {"sr_no": 80, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">24 mango trees, 56 apple trees and 72 orange trees have to be planted in rows such that each row contains the same number of trees and all trees in a row are of one variety only. Find the minimum number of rows required. </span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>17</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>19</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>18</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>15</span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span>Trees per row must divide 24, 56 and 72, and for minimum rows it must be the largest such number: HCF(24, 56, 72) = 8. Rows = 24/8 + 56/8 + 72/8 = 3 + 7 + 9 = 19.</span></p>", "question_heading": ""}, {"sr_no": 81, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Lead spheres of diameter 6 cm are dropped into a cylindrical beaker of diameter 9 cm containing water, and all of them are fully submerged. If the water level rises by 32 cm, how many spheres were dropped? </span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>15</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>16</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>14</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>18</span></p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span>Volume of water raised = π(4.5)²(32) = 648π cm³. Volume of one sphere = (4/3)π(3)³ = 36π cm³. Number of spheres = 648π ÷ 36π = 18.</span></p>", "question_heading": ""}, {"sr_no": 82, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">If the roots of the quadratic equation (2 − p)x² + 2px − (p + 1) = 0 are equal, then the value of p is:</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>2</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>1</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>−2</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>−1</span></p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span>For equal roots, D = b² − 4ac = 0. (2p)² − 4(2 − p)(−(p + 1)) = 4p² + 4(2 − p)(p + 1) = 4p² + 4(p + 2 − p²) = 4p + 8 = 0 ⇒ p = −2.</span></p>", "question_heading": ""}, {"sr_no": 83, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">If x⁴ + x⁻⁴ = 1154, then the value of x + x⁻¹ is: (x &gt; 0) </span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>5</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>12</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>8</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>6</span></p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span>x⁴ + x⁻⁴ = (x² + x⁻²)² − 2 ⇒ (x² + x⁻²)² = 1156 ⇒ x² + x⁻² = 34. Then (x + x⁻¹)² = x² + x⁻² + 2 = 36 ⇒ x + x⁻¹ = 6.</span></p>", "question_heading": ""}, {"sr_no": 84, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Find the value of tan 15° + cot 15°. </span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>6</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>4</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>8</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>2</span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span>tan θ + cot θ = (sin²θ + cos²θ)/(sin θ cos θ) = 2/sin 2θ. For θ = 15°: 2/sin 30° = 2/(1/2) = 4.</span></p>", "question_heading": ""}, {"sr_no": 85, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">The greatest number that will divide 155, 260 and 315, leaving remainders 5, 10 and 15 respectively, is: </span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>10</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>75</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>25</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>50</span></p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span>Subtract the remainders: 155 − 5 = 150, 260 − 10 = 250, 315 − 15 = 300. HCF(150, 250, 300) = 50. (Check: 50 &gt; 15, the largest remainder.)</span></p>", "question_heading": ""}, {"sr_no": 86, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">The radius of a sphere and the base radius of a cone are both 3√2 cm. If the surface area of the sphere equals the total surface area of the cone, find the height of the cone. </span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>8 cm</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>9√2 cm</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>8√2 cm</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>12 cm</span></p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span>4πr² = πr(r + l) ⇒ 4r = r + l ⇒ l = 3r = 9√2 cm. h² = l² − r² = 162 − 18 = 144 ⇒ h = 12 cm.</span></p>", "question_heading": ""}, {"sr_no": 87, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">A right circular cone is surmounted on a hemisphere, and the base radius of the cone equals the radius of the hemisphere. The diameter of the hemisphere is 12 cm and the height of the cone is 8 cm. Find the cost of painting the outer surface of the solid at ₹25 per π cm². </span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹10,371</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹6,930</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹3,300</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹4,500</span></p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span>r = 6 cm, slant height l = √(6² + 8²) = 10 cm. Outer surface = cone CSA + hemisphere CSA = πrl + 2πr² = 60π + 72π = 132π cm². Cost = 132 × 25 = ₹3,300.</span></p>", "question_heading": ""}, {"sr_no": 88, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">If tan 15° = 2 − √3, what is the value of tan 15° cot 75° + tan 75° cot 15°? </span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>14</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>8</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>12</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>10</span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span>cot 75° = tan 15° and tan 75° = cot 15° = 1/(2 − √3) = 2 + √3. Expression = tan²15° + cot²15° = (2 − √3)² + (2 + √3)² = (7 − 4√3) + (7 + 4√3) = 14.</span></p>", "question_heading": ""}, {"sr_no": 89, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">The ratio of the marked price to the cost price of an article is 5 : 3. After two successive discounts of 16% and 20%, the article is sold for ₹3,024. Find the profit or loss. </span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Loss, ₹112</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Loss, ₹216</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Profit, ₹324</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Profit, ₹225</span></p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span>SP = MP × 0.84 × 0.80 = 0.672 MP = 3,024 ⇒ MP = ₹4,500. CP = (3/5) × 4,500 = ₹2,700. Profit = 3,024 − 2,700 = ₹324.</span></p>", "question_heading": ""}, {"sr_no": 90, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">Four years ago, a mother's age was 13 times her daughter's age. Two years from now, the mother's age will be 4 times the daughter's age. After how many years from now will the mother's age be 3 times the daughter's age? </span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>4</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>7</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>5</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>6</span></p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span>Let present ages be M and D. M − 4 = 13(D − 4) ⇒ M = 13D − 48. M + 2 = 4(D + 2) ⇒ 13D − 46 = 4D + 8 ⇒ D = 6, M = 30. 30 + t = 3(6 + t) ⇒ t = 6 years.</span></p>", "question_heading": ""}, {"sr_no": 91, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">The difference between the compound interest (compounded annually) and the simple interest on a sum invested for 3 years at 20% per annum is ₹448. Find the sum invested. </span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹3,750</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹4,000</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹3,500</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹3,000</span></p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span>CI = P[(1.2)³ − 1] = 0.728P and SI = P × 0.20 × 3 = 0.6P. CI − SI = 0.128P = 448 ⇒ P = 448 ÷ 0.128 = ₹3,500.</span></p>", "question_heading": ""}, {"sr_no": 92, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">A sum was invested for 2 years at 40% per annum compound interest, compounded annually. Had it been compounded half-yearly, the amount would have been ₹4,544 more. Find the sum invested. </span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹37,500</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹40,000</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹42,000</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>₹42,500</span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span>Annually: A = P(1.4)² = 1.96P. Half-yearly: rate 20% for 4 periods, A = P(1.2)⁴ = 2.0736P. Difference = 0.1136P = 4,544 ⇒ P = ₹40,000.</span></p>", "question_heading": ""}, {"sr_no": 93, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">A can complete a work alone in 15 days, and B can complete one-third of the same work in 10 days. A and B work together for 6 days, after which A leaves. B and C together complete the remaining work in 8 days. In how many days will A and C together complete the whole work? </span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>12 days</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>9 days</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>15 days</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>18 days</span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span>B alone takes 30 days. Total work = LCM(15, 30) = 30 units: A = 2, B = 1 unit/day. In 6 days A + B do 18 units; 12 units remain. B + C do 12 units in 8 days ⇒ 1.5/day ⇒ C = 0.5/day. A + C = 2.5/day ⇒ time = 30 ÷ 2.5 = 12 days.</span></p>", "question_heading": ""}, {"sr_no": 94, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">The radius of a cylinder is 16⅔% more than the radius of a hemisphere. The height of the cylinder is 21 cm, and its volume equals the volume of a sphere of radius 7 cm. Find the volume of the hemisphere (correct to 2 decimal places, π = 22/7). </span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>136.09 cm³</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>133.04 cm³</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>134.10 cm³</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>132.08 cm³</span></p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span>πR²(21) = (4/3)π(7)³ ⇒ R² = 4 × 343/63 = 196/9 ⇒ R = 14/3 cm. R = (7/6)r ⇒ r = 4 cm. Hemisphere volume = (2/3)(22/7)(4)³ = 2816/21 ≈ 134.10 cm³.</span></p>", "question_heading": ""}, {"sr_no": 95, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">A pipe can fill an empty tank in 12.5 hours. A leak at the bottom can empty the full tank in 17.5 hours. The leak is closed 14 hours after the pipe is opened. What is the total time (in hours) taken to fill the tank? </span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>22.5</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>20.5</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>27</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>25</span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span>Take capacity = 87.5 units: pipe = 7 units/h, leak = 5 units/h. In 14 h, net filled = 14 × 2 = 28 units. Remaining 59.5 units at 7 units/h = 8.5 h. Total = 14 + 8.5 = 22.5 hours.</span></p>", "question_heading": ""}, {"sr_no": 96, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">The value of (sin 70° − 2 sin³ 70°)/(2 cos³ 70° − cos 70°) is: </span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>tan 70°</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>cot 70°</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>cosec 70°</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>sec 70°</span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span>Numerator = sin 70°(1 − 2 sin²70°) = sin 70° cos 140°. Denominator = cos 70°(2 cos²70° − 1) = cos 70° cos 140°. Ratio = sin 70°/cos 70° = tan 70°.</span></p>", "question_heading": ""}, {"sr_no": 97, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">The sum of two numbers is 288 and their HCF is 16. How many such pairs of numbers can be formed? </span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>5</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>4</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>2</span></p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span>Let the numbers be 16a and 16b with HCF(a, b) = 1. 16(a + b) = 288 ⇒ a + b = 18. Co-prime pairs with sum 18: (1, 17), (5, 13), (7, 11). [(3, 15) and (9, 9) are not co-prime.] So 3 pairs.</span></p>", "question_heading": ""}, {"sr_no": 98, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">k is the greatest number which, when it divides 2996, 4752 and 7825, leaves the same remainder in each case. What is the product of the digits of k? </span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>120</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>108</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>84</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>72</span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span>k = HCF of the differences: 4752 − 2996 = 1756, 7825 − 4752 = 3073, 7825 − 2996 = 4829. 1756 = 4 × 439, 3073 = 7 × 439, 4829 = 11 × 439, so k = 439. Product of digits = 4 × 3 × 9 = 108.</span></p>", "question_heading": ""}, {"sr_no": 99, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">The value of (1 + tan 20° + sec 20°)(1 + cot 20° − cosec 20°) is: </span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>2</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>1</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>−1</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>0</span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span>Write in sin/cos: [(cos 20° + sin 20° + 1)/cos 20°] × [(sin 20° + cos 20° − 1)/sin 20°] = [(sin 20° + cos 20°)² − 1]/(sin 20° cos 20°) = (2 sin 20° cos 20°)/(sin 20° cos 20°) = 2.</span></p>", "question_heading": ""}, {"sr_no": 100, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">If sin θ &gt; cos θ (θ acute), then the value of [√(1 − 2 sin θ cos θ) + √(1 + 2 sin θ cos θ)]/(2 tan θ) is: </span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>cot θ</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>cos θ</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>sin θ</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>tan θ</span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span>1 − 2 sin θ cos θ = (sin θ − cos θ)² and 1 + 2 sin θ cos θ = (sin θ + cos θ)². Since sin θ &gt; cos θ &gt; 0, the roots are (sin θ − cos θ) and (sin θ + cos θ); their sum = 2 sin θ. Value = 2 sin θ ÷ (2 sin θ/cos θ) = cos θ.</span></p>", "question_heading": ""}];
+
+let currentQuestion = 0;
+let answers = {};
+let bookmarks = new Set();
+let timerSeconds = 0;
+let timerInterval = null;
+let isPaletteOpen = false;
+
+const STORAGE_KEY = 'quizState_' + (document.title || 'default');
+
+function isImageURL(str) {
+  return str && (str.startsWith('http://') || str.startsWith('https://'));
+}
+
+function createOptionContent(optionText) {
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'option-content';
+    
+    if (isImageURL(optionText)) {
+        const img = document.createElement('img');
+        img.src = optionText;
+        img.className = 'option-image';
+        img.alt = 'Option image';
+        img.loading = 'lazy';
+        img.onerror = function() {
+            this.style.display = 'none';
+            const errorText = document.createTextNode('Image failed to load');
+            contentDiv.appendChild(errorText);
+        };
+        contentDiv.appendChild(img);
+    } else {
+        contentDiv.innerHTML = optionText;
+    }
+    
+    return contentDiv;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  initQuiz();
+  initEventListeners();
+  loadFromLocalStorage();
+  startTimer();
+  createPalette();
+  preventDoubleTapZoom();
+});
+
+function preventDoubleTapZoom() {
+  let lastTouchEnd = 0;
+  document.addEventListener('touchend', (event) => {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) {
+      event.preventDefault();
+    }
+    lastTouchEnd = now;
+  }, { passive: false });
+}
+
+function initTheme() {
+  const savedTheme = localStorage.getItem('quizTheme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  updateThemeIcon();
+}
+
+function updateThemeIcon() {
+  const theme = document.documentElement.getAttribute('data-theme');
+  const themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    themeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  }
+}
+
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('quizTheme', newTheme);
+  updateThemeIcon();
+}
+
+function initQuiz() {
+  loadQuestion(currentQuestion);
+  updateMarkingInfo();
+}
+
+function initEventListeners() {
+  const themeBtn = document.getElementById('themeToggle');
+  const fullscreenBtn = document.getElementById('fullscreenBtn');
+  
+  if (themeBtn) {
+    themeBtn.addEventListener('click', toggleTheme);
+    themeBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      toggleTheme();
+    });
+  }
+  
+  if (fullscreenBtn) {
+    fullscreenBtn.addEventListener('click', toggleFullscreen);
+    fullscreenBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      toggleFullscreen();
+    });
+  }
+  
+  addButtonListener('prevBtn', prevQuestion);
+  addButtonListener('nextBtn', nextQuestion);
+  addButtonListener('clearBtn', clearAnswer);
+  addButtonListener('submitBtn', confirmSubmit);
+  addButtonListener('bookmarkBtn', toggleBookmark);
+  
+  addButtonListener('paletteFab', togglePalette);
+  addButtonListener('paletteClose', closePalette);
+  
+  const overlay = document.getElementById('paletteOverlay');
+  if (overlay) {
+    overlay.addEventListener('click', closePalette);
+    overlay.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      closePalette();
+    });
+  }
+  
+  const searchInput = document.getElementById('paletteSearch');
+  if (searchInput) {
+    searchInput.addEventListener('input', handleSearch);
+    searchInput.addEventListener('change', jumpToQuestion);
+  }
+  
+  document.addEventListener('keydown', handleKeyPress);
+  
+  setInterval(saveToLocalStorage, 5000);
+  
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      updatePalette();
+    }
+  });
+}
+
+function addButtonListener(id, handler) {
+  const btn = document.getElementById(id);
+  if (btn) {
+    btn.addEventListener('click', handler);
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      handler();
+    });
+  }
+}
+
+function jumpToQuestion(e) {
+  const questionNum = parseInt(e.target.value);
+  if (questionNum >= 1 && questionNum <= questions.length) {
+    goToQuestion(questionNum - 1);
+    closePalette();
+    e.target.value = '';
+  }
+}
+
+function togglePalette() {
+  isPaletteOpen = !isPaletteOpen;
+  const palette = document.getElementById('questionPalette');
+  const overlay = document.getElementById('paletteOverlay');
+  const fab = document.getElementById('paletteFab');
+  
+  if (isPaletteOpen) {
+    palette.classList.add('active');
+    overlay.classList.add('active');
+    fab.classList.add('active');
+    fab.innerHTML = '✕<span class="badge" id="answeredBadge">' + Object.keys(answers).length + '</span>';
+    document.body.classList.add('palette-open');
+  } else {
+    closePalette();
+  }
+}
+
+function closePalette() {
+  isPaletteOpen = false;
+  const palette = document.getElementById('questionPalette');
+  const overlay = document.getElementById('paletteOverlay');
+  const fab = document.getElementById('paletteFab');
+  
+  if (palette) palette.classList.remove('active');
+  if (overlay) overlay.classList.remove('active');
+  if (fab) {
+    fab.classList.remove('active');
+    fab.innerHTML = '📋<span class="badge" id="answeredBadge">' + Object.keys(answers).length + '</span>';
+  }
+  document.body.classList.remove('palette-open');
+}
+
+function handleSearch(e) {
+  const searchTerm = e.target.value.toLowerCase();
+  if (!searchTerm) {
+    document.querySelectorAll('.palette-btn').forEach(btn => {
+      btn.style.display = '';
+    });
+    return;
+  }
+  
+  const buttons = document.querySelectorAll('.palette-btn');
+  buttons.forEach((btn, index) => {
+    const questionNum = (index + 1).toString();
+    if (questionNum.includes(searchTerm)) {
+      btn.style.display = '';
+    } else {
+      btn.style.display = 'none';
+    }
+  });
+}
+
+function handleKeyPress(e) {
+  if (document.getElementById('resultSection').classList.contains('hidden')) {
+    if (e.key === 'Escape' && isPaletteOpen) {
+      closePalette();
+    } else if (!isPaletteOpen && e.target.tagName !== 'INPUT') {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevQuestion();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        nextQuestion();
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        nextQuestion();
+      } else if (e.key === 'b' || e.key === 'B') {
+        e.preventDefault();
+        toggleBookmark();
+      } else if (e.key === 'c' || e.key === 'C') {
+        e.preventDefault();
+        clearAnswer();
+      } else if (e.key === 'p' || e.key === 'P') {
+        e.preventDefault();
+        togglePalette();
+      } else if (e.key >= '1' && e.key <= '4') {
+        e.preventDefault();
+        selectOption(parseInt(e.key));
+      }
+    }
+  }
+}
+
+function selectOption(optionNum) {
+  const q = questions[currentQuestion];
+  const radio = document.querySelector(`input[name="q${q.sr_no}"][value="${optionNum}"]`);
+  if (radio) {
+    radio.checked = true;
+    const label = radio.closest('.option-label');
+    if (label) {
+      document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      saveAnswer();
+    }
+  }
+}
+
+function toggleFullscreen() {
+  try {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(err => {
+        console.log('Fullscreen error:', err);
+      });
+    } else {
+      document.exitFullscreen();
+    }
+  } catch (err) {
+    console.log('Fullscreen not supported');
+  }
+}
+
+function startTimer() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+  timerInterval = setInterval(() => {
+    timerSeconds++;
+    updateTimer();
+    if (timerSeconds > 600) {
+      const timer = document.getElementById('timer');
+      if (timer) timer.classList.add('warning');
+    }
+  }, 1000);
+}
+
+function updateTimer() {
+  const minutes = Math.floor(timerSeconds / 60);
+  const seconds = timerSeconds % 60;
+  const timer = document.getElementById('timer');
+  if (timer) {
+    timer.textContent = 
+      `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  }
+}
+
+function createPalette() {
+  const grid = document.getElementById('paletteGrid');
+  if (!grid) return;
+  
+  grid.innerHTML = '';
+  questions.forEach((q, index) => {
+    const btn = document.createElement('button');
+    btn.textContent = index + 1;
+    btn.className = 'palette-btn';
+    btn.setAttribute('aria-label', `Go to question ${index + 1}`);
+    btn.setAttribute('type', 'button');
+    
+    btn.addEventListener('click', () => {
+      goToQuestion(index);
+      closePalette();
+    });
+    
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      goToQuestion(index);
+      closePalette();
+    });
+    
+    grid.appendChild(btn);
+  });
+  updatePalette();
+}
+
+function updatePalette() {
+  const buttons = document.querySelectorAll('.palette-btn');
+  buttons.forEach((btn, index) => {
+    btn.className = 'palette-btn';
+    if (index === currentQuestion) btn.classList.add('current');
+    if (answers[questions[index].sr_no]) btn.classList.add('answered');
+    if (bookmarks.has(questions[index].sr_no)) btn.classList.add('bookmarked');
+  });
+  
+  updatePaletteStats();
+}
+
+function updatePaletteStats() {
+  const answered = Object.keys(answers).length;
+  const unanswered = questions.length - answered;
+  const bookmarkedCount = bookmarks.size;
+  
+  const answeredEl = document.getElementById('paletteAnswered');
+  const unansweredEl = document.getElementById('paletteUnanswered');
+  const bookmarkedEl = document.getElementById('paletteBookmarked');
+  
+  if (answeredEl) answeredEl.textContent = answered;
+  if (unansweredEl) unansweredEl.textContent = unanswered;
+  if (bookmarkedEl) bookmarkedEl.textContent = bookmarkedCount;
+  
+  const badge = document.querySelector('.palette-fab .badge');
+  if (badge) badge.textContent = answered;
+}
+
+function goToQuestion(index) {
+  if (index < 0 || index >= questions.length) return;
+  saveAnswer();
+  currentQuestion = index;
+  loadQuestion(currentQuestion);
+  
+  const questionSection = document.getElementById('questionSection');
+  if (questionSection) {
+    setTimeout(() => {
+      questionSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+}
+
+function loadQuestion(index) {
+  const q = questions[index];
+  
+  const questionNumber = document.getElementById('questionNumber');
+  const questionText = document.getElementById('questionText');
+  
+  if (questionNumber) {
+    questionNumber.textContent = `Question ${index + 1} of ${questions.length}`;
+  }
+  
+  if (questionText) {
+    questionText.innerHTML = '';
+    
+    // 🌟 NEW: Create the Heading Box if it exists!
+    let headingHtml = '';
+    if (q.question_heading && q.question_heading.trim() !== '') {
+      headingHtml = `<div style="background: var(--bg-tertiary); padding: 15px; border-left: 4px solid var(--primary-color); margin-bottom: 20px; border-radius: 8px; overflow-x: auto;">${q.question_heading}</div>`;
+      questionText.innerHTML = headingHtml; // Inject heading first
+    }
+
+    if (isImageURL(q.question)) {
+      const img = document.createElement('img');
+      img.src = q.question;
+      img.className = 'question-image';
+      img.alt = 'Question image';
+      img.loading = 'lazy';
+      img.onerror = function() {
+        this.style.display = 'none';
+        questionText.innerHTML += q.question;
+      };
+      questionText.appendChild(img);
+    } else {
+      questionText.innerHTML += q.question; // Append question after heading
+    }
+  }
+  
+  const container = document.getElementById('optionsContainer');
+  if (!container) return;
+  
+  container.innerHTML = '';
+  
+  for (let i = 1; i <= 4; i++) {
+    const label = document.createElement('label');
+    label.className = 'option-label';
+    if (answers[q.sr_no] == i) label.classList.add('selected');
+    
+    const radio = document.createElement('input');
+    radio.type = 'radio';
+    radio.name = `q${q.sr_no}`;
+    radio.value = i;
+    radio.checked = answers[q.sr_no] == i;
+    
+    const changeHandler = () => {
+      document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      saveAnswer();
+    };
+    
+    radio.addEventListener('change', changeHandler);
+    label.addEventListener('click', (e) => {
+      if (e.target !== radio) {
+        radio.checked = true;
+        changeHandler();
+      }
+    });
+    
+    label.appendChild(radio);
+    
+    const optionContent = createOptionContent(q[`option${i}`]);
+    label.appendChild(optionContent);
+    
+    container.appendChild(label);
+  }
+  
+  const bookmarkBtn = document.getElementById('bookmarkBtn');
+  if (bookmarkBtn) {
+    if (bookmarks.has(q.sr_no)) {
+      bookmarkBtn.classList.add('active');
+    } else {
+      bookmarkBtn.classList.remove('active');
+    }
+  }
+  
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const submitBtn = document.getElementById('submitBtn');
+  
+  if (prevBtn) prevBtn.disabled = index === 0;
+  
+  if (index === questions.length - 1) {
+    if (nextBtn) nextBtn.classList.add('hidden');
+    if (submitBtn) submitBtn.classList.remove('hidden');
+  } else {
+    if (nextBtn) nextBtn.classList.remove('hidden');
+    if (submitBtn) submitBtn.classList.add('hidden');
+  }
+  
+  updateProgress();
+  updatePalette();
+}
+
+function updateMarkingInfo() {
+  if(questions.length > 0) {
+      const q = questions[0];
+      const markingInfo = document.getElementById('markingInfo');
+      if (markingInfo) {
+        markingInfo.textContent = `Marking: +${q.positive_marking}, -${q.negative_marking}`;
+      }
+  }
+}
+
+function updateProgress() {
+  const attempted = Object.keys(answers).length;
+  const currentProgress = ((currentQuestion + 1) / questions.length) * 100;
+  
+  const progressBar = document.getElementById('progressBar');
+  const progressText = document.getElementById('progressText');
+  const attemptedText = document.getElementById('attemptedText');
+  
+  if (progressBar) progressBar.style.width = `${currentProgress}%`;
+  if (progressText) progressText.textContent = `${currentQuestion + 1}/${questions.length}`;
+  if (attemptedText) attemptedText.textContent = attempted;
+}
+
+function saveAnswer() {
+  const q = questions[currentQuestion];
+  const selected = document.querySelector(`input[name="q${q.sr_no}"]:checked`);
+  
+  if (selected) {
+    answers[q.sr_no] = selected.value;
+  }
+  
+  updateProgress();
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function clearAnswer() {
+  const q = questions[currentQuestion];
+  delete answers[q.sr_no];
+  
+  const selected = document.querySelector(`input[name="q${q.sr_no}"]:checked`);
+  if (selected) selected.checked = false;
+  
+  document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+  
+  updateProgress();
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function toggleBookmark() {
+  const q = questions[currentQuestion];
+  const btn = document.getElementById('bookmarkBtn');
+  
+  if (bookmarks.has(q.sr_no)) {
+    bookmarks.delete(q.sr_no);
+    if (btn) btn.classList.remove('active');
+  } else {
+    bookmarks.add(q.sr_no);
+    if (btn) btn.classList.add('active');
+  }
+  
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function nextQuestion() {
+  saveAnswer();
+  if (currentQuestion < questions.length - 1) {
+    currentQuestion++;
+    loadQuestion(currentQuestion);
+  }
+}
+
+function prevQuestion() {
+  saveAnswer();
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    loadQuestion(currentQuestion);
+  }
+}
+
+function confirmSubmit() {
+  const unattempted = questions.length - Object.keys(answers).length;
+  let message = 'Are you sure you want to submit the quiz?';
+  
+  if (unattempted > 0) {
+    message += `\n\nYou have ${unattempted} unanswered question(s).`;
+  }
+  
+  if (confirm(message)) {
+    submitQuiz();
+  }
+}
+
+function submitQuiz() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+  }
+  saveAnswer();
+  closePalette();
+  
+  let correct = 0, wrong = 0, unattempted = 0, score = 0;
+  
+  questions.forEach(q => {
+    const userAns = answers[q.sr_no];
+    const posMark = parseFloat(q.positive_marking) || 0;
+    const negMark = parseFloat(q.negative_marking) || 0;
+    
+    if (!userAns) {
+      unattempted++;
+    } else if (userAns == q.answer) {
+      correct++;
+      score += posMark;
+    } else {
+      wrong++;
+      score -= negMark;
+    }
+  });
+  
+  displayResults(correct, wrong, unattempted, score);
+  
+  const fab = document.getElementById('paletteFab');
+  const nav = document.getElementById('navigation');
+  if (fab) fab.style.display = 'none';
+  if (nav) nav.style.display = 'none';
+  
+  document.body.style.paddingBottom = '20px';
+  
+  clearLocalStorage();
+}
+
+function displayResults(correct, wrong, unattempted, score) {
+  const totalQuestions = questions.length;
+  const percentage = ((correct / totalQuestions) * 100).toFixed(1);
+  const timerEl = document.getElementById('timer');
+  const timeText = timerEl ? timerEl.textContent : '00:00';
+  
+  let html = `
+    <div class="score-card">
+      <h2>${score}/${totalQuestions}</h2>
+      <p>Your Score: ${percentage}%</p>
+      <p>Time Taken: ${timeText}</p>
+    </div>
+    
+    <div class="stats-grid">
+      <div class="stat-card correct">
+        <h3>${correct}</h3>
+        <p>Correct</p>
+      </div>
+      <div class="stat-card wrong">
+        <h3>${wrong}</h3>
+        <p>Wrong</p>
+      </div>
+      <div class="stat-card unattempted">
+        <h3>${unattempted}</h3>
+        <p>Unattempted</p>
+      </div>
+      <div class="stat-card">
+        <h3>${totalQuestions}</h3>
+        <p>Total</p>
+      </div>
+    </div>
+  `;
+  
+  questions.forEach(q => {
+    const userAns = answers[q.sr_no];
+    
+    // 🌟 NEW: Add the Heading to the results review screen!
+    let headingHtml = (q.question_heading && q.question_heading.trim() !== '') 
+      ? `<div style="background: var(--bg-tertiary); padding: 10px; margin-bottom: 15px; border-left: 4px solid var(--primary-color); border-radius: 5px; overflow-x: auto;">${q.question_heading}</div>` 
+      : '';
+      
+    const questionHeader = isImageURL(q.question)
+      ? `<h4>Q${q.sr_no}:</h4>${headingHtml}<img src="${q.question}" class="question-image" alt="Question ${q.sr_no}">`
+      : `<h4>Q${q.sr_no}:</h4>${headingHtml}<div style="margin-bottom: 10px;">${q.question}</div>`;
+      
+    html += `<div class="question-review">${questionHeader}`;
+    
+    for (let i = 1; i <= 4; i++) {
+      const isCorrect = i.toString() === q.answer;
+      const isUserAnswer = userAns == i.toString();
+      
+      let className = 'review-option';
+      if (isCorrect) className += ' correct';
+      if (isUserAnswer && !isCorrect) className += ' wrong';
+      if (isUserAnswer) className += ' user-selected';
+      
+      const optionValue = q[`option${i}`];
+      
+      if (isImageURL(optionValue)) {
+        html += `<div class="${className}">
+          ${isCorrect ? '✓ ' : ''}${isUserAnswer ? '➤ ' : ''} 
+          <img src="${optionValue}" class="option-image" alt="Option ${i}">
+        </div>`;
+      } else {
+        html += `<div class="${className}">
+          ${isCorrect ? '✓ ' : ''}${isUserAnswer ? '➤ ' : ''}${optionValue}
+        </div>`;
+      }
+    }
+    
+    if (q.solution_text && q.solution_text.trim() !== '') {
+      const solutionContent = isImageURL(q.solution_text)
+        ? `<img src="${q.solution_text}" class="solution-image" alt="Solution">`
+        : q.solution_text;
+      html += `<div class="solution-section">
+        <div class="solution-label">📝 Solution:</div>
+        <div class="solution-content">${solutionContent}</div>
+      </div>`;
+    }
+    
+    html += `</div>`; 
+});
+  
+  html += `
+    <div class="action-buttons">
+      <button class="action-btn restart" onclick="restartQuiz()">Restart Quiz</button>
+      <button class="action-btn download" onclick="downloadResults()">Download Results</button>
+      <button class="action-btn print" onclick="window.print()">Print Results</button>
+    </div>
+  `;
+  
+  const resultSection = document.getElementById('resultSection');
+  const questionSection = document.getElementById('questionSection');
+  const progressSection = document.querySelector('.progress-section');
+  
+  if (resultSection) {
+    resultSection.innerHTML = html;
+    resultSection.classList.remove('hidden');
+  }
+  if (questionSection) questionSection.classList.add('hidden');
+  if (progressSection) progressSection.classList.add('hidden');
+  
+  const quizContainer = document.getElementById('quizContainer');
+  if (quizContainer) {
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
+  }
+}
+
+function restartQuiz() {
+  if (confirm('Are you sure you want to restart? All progress will be lost.')) {
+    currentQuestion = 0;
+    answers = {};
+    bookmarks.clear();
+    timerSeconds = 0;
+    
+    const resultSection = document.getElementById('resultSection');
+    const questionSection = document.getElementById('questionSection');
+    const progressSection = document.querySelector('.progress-section');
+    const fab = document.getElementById('paletteFab');
+    const nav = document.getElementById('navigation');
+    
+    if (resultSection) {
+      resultSection.classList.add('hidden');
+      resultSection.innerHTML = '';
+    }
+    if (questionSection) questionSection.classList.remove('hidden');
+    if (progressSection) progressSection.classList.remove('hidden');
+    if (fab) fab.style.display = 'flex';
+    if (nav) nav.style.display = 'grid';
+    
+    document.body.style.paddingBottom = 'var(--nav-height)';
+    
+    if (timerInterval) {
+      clearInterval(timerInterval);
+    }
+    startTimer();
+    
+    loadQuestion(currentQuestion);
+    createPalette();
+  }
+}
+
+function downloadResults() {
+  const resultSection = document.getElementById('resultSection');
+  if (!resultSection) return;
+  
+  const resultHTML = resultSection.innerHTML;
+  const fullHTML = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Results</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; max-width: 900px; margin: 0 auto; }
+    .score-card { background: linear-gradient(135deg, #007bff, #28a745); color: white; padding: 30px; border-radius: 15px; text-align: center; margin-bottom: 20px; }
+    .score-card h2 { font-size: 48px; margin-bottom: 10px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 30px; }
+    .stat-card { background: white; padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #ddd; }
+    .stat-card h3 { font-size: 32px; margin-bottom: 8px; }
+    .stat-card.correct h3 { color: #28a745; }
+    .stat-card.wrong h3 { color: #dc3545; }
+    .stat-card.unattempted h3 { color: #6c757d; }
+    .question-review { background: white; border: 2px solid #ddd; border-radius: 10px; padding: 20px; margin-bottom: 15px; }
+    .question-review h4 { margin-bottom: 15px; font-size: 16px; line-height: 1.6; }
+    .review-option { padding: 10px 15px; margin: 8px 0; border-radius: 8px; border: 2px solid #ddd; display: flex; align-items: center; gap: 10px; }
+    .option-image { max-width: 150px; max-height: 100px; border-radius: 8px; }
+    .review-option.correct { background: #d4edda; border-color: #28a745; color: #155724; }
+    .review-option.wrong { background: #f8d7da; border-color: #dc3545; color: #721c24; }
+    .review-option.user-selected { border-width: 3px; font-weight: bold; }
+    @media print { body { background: white; } }
+    @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center; color: #007bff;">Quiz Results</h1>
+  <p style="text-align: center; color: #666; margin-bottom: 30px;">Generated on: ${new Date().toLocaleString()}</p>
+  ${resultHTML.replace(/<div class="action-buttons">[\s\S]*?<\/div>/, '')}
+</body>
+</html>
+  `;
+  
+  try {
+    const blob = new Blob([fullHTML], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `Quiz_Results_${new Date().getTime()}.html`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  } catch (err) {
+    alert('Download failed. Please try using the Print option instead.');
+    console.error('Download error:', err);
+  }
+}
+
+function saveToLocalStorage() {
+  try {
+    const state = {
+      currentQuestion,
+      answers,
+      bookmarks: Array.from(bookmarks),
+      timerSeconds,
+      timestamp: Date.now()
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch (err) {
+    console.error('Save error:', err);
+  }
+}
+
+function loadFromLocalStorage() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const state = JSON.parse(saved);
+      const hasProgress = (state && (
+        (state.currentQuestion && state.currentQuestion > 0) ||
+        (state.answers && Object.keys(state.answers).length > 0) ||
+        (state.timerSeconds && state.timerSeconds > 0)
+      ));
+      if (hasProgress && (Date.now() - state.timestamp < 24 * 60 * 60 * 1000)) {
+        if (confirm('Resume previous quiz session?')) {
+          currentQuestion = state.currentQuestion || 0;
+          answers = state.answers || {};
+          bookmarks = new Set(state.bookmarks || []);
+          timerSeconds = state.timerSeconds || 0;
+          updateTimer();
+          loadQuestion(currentQuestion);
+        }
+      } else {
+        clearLocalStorage();
+      }
+    }
+  } catch (err) {
+    console.error('Load error:', err);
+    clearLocalStorage();
+  }
+}
+
+function clearLocalStorage() {
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (err) {
+    console.error('Clear storage error:', err);
+  }
+}
+
+window.addEventListener('beforeunload', (e) => {
+  const resultSection = document.getElementById('resultSection');
+  if (resultSection && !resultSection.classList.contains('hidden')) {
+    return;
+  }
+  e.preventDefault();
+  e.returnValue = '';
+});
+
+window.addEventListener('unload', () => {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+});
+</script>
+</body>
+</html>
