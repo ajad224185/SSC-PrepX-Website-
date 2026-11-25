@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>32.) ENGLISH SECTIONAL TEST-4 - Hindi</title>
+<style>
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0069d9;
+  --success-color: #28a745;
+  --success-hover: #218838;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --secondary-color: #6c757d;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --border-color: #dee2e6;
+  --shadow: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
+  --overlay: rgba(0,0,0,0.5);
+  --nav-height: 80px;
+}
+
+[data-theme="dark"] {
+  --primary-color: #4dabf7;
+  --primary-hover: #339af0;
+  --success-color: #51cf66;
+  --success-hover: #40c057;
+  --danger-color: #ff6b6b;
+  --warning-color: #ffd43b;
+  --secondary-color: #868e96;
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #404040;
+  --text-primary: #f8f9fa;
+  --text-secondary: #adb5bd;
+  --border-color: #495057;
+  --shadow: 0 4px 6px rgba(0,0,0,0.3);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.4);
+  --overlay: rgba(0,0,0,0.7);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+  overflow-x: hidden;
+  position: relative;
+  padding-bottom: var(--nav-height);
+}
+
+body.palette-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-primary);
+  padding: 20px 30px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+
+.header h1 {
+  font-size: 28px;
+  color: var(--primary-color);
+  font-weight: 700;
+  user-select: none;
+}
+
+.header-controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.theme-toggle, .fullscreen-btn {
+  background: var(--bg-tertiary);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.3s;
+  min-width: 44px;
+  min-height: 44px;
+  user-select: none;
+}
+
+.theme-toggle:active, .fullscreen-btn:active {
+  transform: scale(0.95);
+}
+
+.theme-toggle:hover, .fullscreen-btn:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+.bot-link-btn {
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+}
+.bot-link-btn:active {
+  transform: scale(0.95);
+}
+.bot-link-btn:hover {
+  background: var(--primary-hover);
+}
+
+.timer {
+  background: var(--warning-color);
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 18px;
+  min-width: 100px;
+  text-align: center;
+  user-select: none;
+}
+
+.timer.warning {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.palette-fab {
+  position: fixed;
+  bottom: calc(var(--nav-height) + 20px);
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  box-shadow: 0 6px 20px rgba(0,123,255,0.4);
+  transition: all 0.3s ease;
+  z-index: 998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.palette-fab:active {
+  transform: scale(0.9);
+}
+
+.palette-fab:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0,123,255,0.6);
+}
+
+.palette-fab.active {
+  background: var(--danger-color);
+}
+
+.palette-fab .badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: var(--success-color);
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--bg-secondary);
+  pointer-events: none;
+}
+.solution-section {
+  margin-top: 20px;
+  padding: 15px;
+  background: #e7f3ff;
+  border-left: 4px solid var(--primary-color);
+  border-radius: 8px;
+}
+
+.solution-label {
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.solution-content {
+  line-height: 1.6;
+  color: #333;
+}
+
+.solution-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.palette-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 999;
+  touch-action: none;
+}
+
+.palette-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.question-palette {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 450px;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--bg-primary);
+  box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+  transition: right 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.question-palette.active {
+  right: 0;
+}
+
+.palette-header {
+  padding: 20px;
+  background: var(--primary-color);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.palette-header h3 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.palette-close {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: background 0.2s;
+  line-height: 1;
+  touch-action: manipulation;
+}
+
+.palette-close:active {
+  transform: scale(0.9);
+}
+
+.palette-close:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.palette-stats {
+  padding: 15px 20px;
+  background: var(--bg-tertiary);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  font-size: 13px;
+  text-align: center;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border-color);
+  user-select: none;
+}
+
+.palette-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.palette-stat .number {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.palette-stat.answered .number { color: var(--success-color); }
+.palette-stat.unanswered .number { color: var(--secondary-color); }
+.palette-stat.bookmarked .number { color: var(--warning-color); }
+
+.palette-search {
+  padding: 15px 20px;
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+}
+
+.palette-search input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 14px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.palette-search input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.palette-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 10px;
+}
+
+.palette-btn {
+  aspect-ratio: 1;
+  border: 2px solid var(--border-color);
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+  min-width: 40px;
+  min-height: 40px;
+  color: var(--text-primary);
+  position: relative;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.palette-btn:active {
+  transform: scale(0.9);
+}
+
+.palette-btn:hover {
+  transform: scale(1.1);
+  z-index: 10;
+  box-shadow: var(--shadow);
+}
+
+.palette-btn.current {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  animation: currentPulse 2s infinite;
+}
+
+@keyframes currentPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,123,255,0.7); }
+  50% { box-shadow: 0 0 0 8px rgba(0,123,255,0); }
+}
+
+.palette-btn.answered {
+  background: var(--success-color);
+  color: white;
+  border-color: var(--success-color);
+}
+
+.palette-btn.bookmarked::after {
+  content: '🔖';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.palette-btn.bookmarked.answered {
+  background: var(--success-color);
+}
+
+.palette-legend {
+  padding: 20px;
+  border-top: 1px solid var(--border-color);
+  font-size: 13px;
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.legend-color {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.quiz-container {
+  background: var(--bg-primary);
+  border-radius: 15px;
+  box-shadow: var(--shadow-lg);
+  padding: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  scroll-margin-top: 20px;
+}
+
+.quiz-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.marking-info {
+  display: inline-block;
+  background: var(--bg-tertiary);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.progress-section {
+  margin-bottom: 25px;
+}
+
+.progress-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.progress-bar-container {
+  background: var(--bg-tertiary);
+  border-radius: 12px;
+  overflow: hidden;
+  height: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+  transition: width 0.4s ease;
+  border-radius: 12px;
+}
+
+.question-section {
+  min-height: 300px;
+  scroll-margin-top: 80px;
+  margin-bottom: 20px;
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.question-number {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary-color);
+  user-select: none;
+}
+
+.bookmark-btn {
+  background: transparent;
+  border: 2px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 44px;
+  min-height: 44px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.bookmark-btn:active {
+  transform: scale(0.95);
+}
+
+.bookmark-btn.active {
+  background: var(--warning-color);
+  border-color: var(--warning-color);
+  color: #000;
+}
+
+.question {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 25px;
+  color: var(--text-primary);
+  user-select: text;
+}
+
+.question-image {
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: 10px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  padding: 10px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--border-color);
+  padding: 16px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--bg-secondary);
+  min-height: 60px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.option-label:active {
+  transform: scale(0.98);
+}
+
+.option-label:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--primary-color);
+}
+
+.option-label.selected {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.option-label input[type="radio"] {
+  margin-right: 15px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.option-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.option-image {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  padding: 10px;
+}
+
+.option-label.selected .option-image {
+  background: rgba(255,255,255,0.1);
+}
+
+/* FIXED NAVIGATION - KEY UPDATE */
+.navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-primary);
+  border-top: 2px solid var(--border-color);
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  z-index: 997;
+  padding: 15px 20px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 10px;
+  max-width: 100%;
+}
+
+.nav-btn {
+  padding: 14px 20px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+.nav-btn:active {
+  transform: scale(0.97);
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.nav-btn.prev {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.nav-btn.prev:hover:not(:disabled) {
+  background: #5a6268;
+}
+
+.nav-btn.next {
+  background: var(--primary-color);
+  color: white;
+}
+
+.nav-btn.next:hover:not(:disabled) {
+  background: var(--primary-hover);
+}
+
+.nav-btn.clear {
+  background: var(--danger-color);
+  color: white;
+}
+
+.nav-btn.clear:hover {
+  background: #c82333;
+}
+
+.nav-btn.submit {
+  background: var(--success-color);
+  color: white;
+  grid-column: 1 / -1;
+}
+
+.nav-btn.submit:hover {
+  background: var(--success-hover);
+}
+
+.result-section {
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.score-card {
+  background: linear-gradient(135deg, var(--primary-color), var(--success-color));
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  margin-bottom: 30px;
+  user-select: none;
+}
+
+.score-card h2 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.score-card p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: var(--bg-secondary);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  border: 2px solid var(--border-color);
+  user-select: none;
+}
+
+.stat-card h3 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.stat-card.correct h3 { color: var(--success-color); }
+.stat-card.wrong h3 { color: var(--danger-color); }
+.stat-card.unattempted h3 { color: var(--secondary-color); }
+
+.question-review {
+  border: 2px solid var(--border-color);
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 20px;
+  background: var(--bg-secondary);
+}
+
+.question-review h4 {
+  margin-bottom: 15px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.review-option {
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 2px solid var(--border-color);
+  background: var(--bg-primary);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.review-option .option-image {
+  max-width: 150px;
+  max-height: 100px;
+}
+
+.review-option.correct {
+  background: #d4edda;
+  border-color: var(--success-color);
+  color: #155724;
+}
+
+.review-option.wrong {
+  background: #f8d7da;
+  border-color: var(--danger-color);
+  color: #721c24;
+}
+
+.review-option.user-selected {
+  border-width: 3px;
+  font-weight: 600;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.action-btn {
+  padding: 14px 30px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  min-width: 150px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.action-btn:active {
+  transform: scale(0.95);
+}
+
+.action-btn.restart {
+  background: var(--danger-color);
+  color: white;
+}
+
+.action-btn.restart:hover {
+  background: #c82333;
+}
+
+.action-btn.download {
+  background: var(--primary-color);
+  color: white;
+}
+
+.action-btn.download:hover {
+  background: var(--primary-hover);
+}
+
+.action-btn.print {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.action-btn.print:hover {
+  background: #5a6268;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.palette-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.palette-content::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+}
+
+.palette-content::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+.palette-content::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 140px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .header h1 {
+    font-size: 22px;
+  }
+
+  .quiz-container {
+    padding: 20px 15px;
+  }
+
+  .question-palette {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .palette-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+  }
+
+  .palette-btn {
+    font-size: 13px;
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  .palette-fab {
+    bottom: calc(var(--nav-height) + 10px);
+    right: 15px;
+    width: 56px;
+    height: 56px;
+    font-size: 22px;
+  }
+
+  .navigation {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 12px 15px;
+  }
+
+  .nav-btn {
+    min-height: 44px;
+    font-size: 15px;
+  }
+
+  .nav-btn.clear {
+    order: 3;
+  }
+
+  .nav-btn.submit {
+    grid-column: auto;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .legend-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .question {
+    font-size: 16px;
+  }
+
+  .option-label {
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  .option-image {
+    max-height: 150px;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .palette-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+
+  .palette-btn {
+    font-size: 12px;
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .timer {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  .option-image {
+    max-height: 120px;
+  }
+}
+
+@media print {
+  .header-controls, .navigation, .palette-fab, .palette-overlay, .question-palette, .action-buttons, .bookmark-btn {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    padding-bottom: 0;
+  }
+
+  .container {
+    padding-bottom: 20px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>32.) ENGLISH SECTIONAL TEST-4 - Hindi</h1>
+    <div class="header-controls">
+      <a href="https://t.me/ssc_prepX" target="_blank" class="bot-link-btn" title="Open Bot in Telegram">🤖 Bot</a>
+      
+      <div class="timer" id="timer">00:00</div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle Theme">🌙</button>
+      <button class="fullscreen-btn" id="fullscreenBtn" aria-label="Toggle fullscreen" title="Fullscreen">⛶</button>
+    </div>
+  </div>
+
+  <div class="quiz-container" id="quizContainer">
+    <div class="quiz-header">
+      <div class="marking-info" id="markingInfo">Marking: +1, -0</div>
+    </div>
+
+    <div class="progress-section">
+      <div class="progress-stats">
+        <span>Progress: <strong id="progressText">1/2</strong></span>
+        <span>Attempted: <strong id="attemptedText">0</strong></span>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+
+    <div class="question-section" id="questionSection">
+      <div class="question-header">
+        <div class="question-number" id="questionNumber">Question 1 of 2</div>
+        <button class="bookmark-btn" id="bookmarkBtn" aria-label="Bookmark question">
+          <span>🔖</span> <span>Bookmark</span>
+        </button>
+      </div>
+      
+      <div class="question" id="questionText"></div>
+      
+      <div class="options" id="optionsContainer"></div>
+    </div>
+
+    <div class="result-section hidden" id="resultSection"></div>
+  </div>
+</div>
+
+<div class="navigation" id="navigation">
+  <button class="nav-btn prev" id="prevBtn" aria-label="Previous question">
+    <span>←</span> Previous
+  </button>
+  <button class="nav-btn clear" id="clearBtn" aria-label="Clear answer">
+    Clear
+  </button>
+  <button class="nav-btn next" id="nextBtn" aria-label="Next question">
+    Next <span>→</span>
+  </button>
+  <button class="nav-btn submit hidden" id="submitBtn" aria-label="Submit quiz">
+    Submit Quiz
+  </button>
+</div>
+
+<button class="palette-fab" id="paletteFab" aria-label="Toggle question palette" title="Question Palette (P)">
+  📋
+  <span class="badge" id="answeredBadge">0</span>
+</button>
+
+<div class="palette-overlay" id="paletteOverlay"></div>
+
+<div class="question-palette" id="questionPalette">
+  <div class="palette-header">
+    <h3>Question Palette</h3>
+    <button class="palette-close" id="paletteClose" aria-label="Close palette">×</button>
+  </div>
+
+  <div class="palette-stats">
+    <div class="palette-stat answered">
+      <div class="number" id="paletteAnswered">0</div>
+      <div>Answered</div>
+    </div>
+    <div class="palette-stat unanswered">
+      <div class="number" id="paletteUnanswered">2</div>
+      <div>Not Answered</div>
+    </div>
+    <div class="palette-stat bookmarked">
+      <div class="number" id="paletteBookmarked">0</div>
+      <div>Bookmarked</div>
+    </div>
+  </div>
+
+  <div class="palette-search">
+    <input type="number" id="paletteSearch" placeholder="Jump to question number..." aria-label="Search questions" inputmode="numeric" pattern="[0-9]*">
+  </div>
+
+  <div class="palette-content">
+    <div class="palette-grid" id="paletteGrid"></div>
+  </div>
+
+  <div class="palette-legend">
+    <div class="legend-grid">
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--success-color);"></div>
+        <span>Answered</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--bg-secondary); border: 2px solid var(--border-color);"></div>
+        <span>Not Answered</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--primary-color);"></div>
+        <span>Current Question</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--warning-color);"></div>
+        <span>🔖 Bookmarked</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// JSON INJECTION HAPPENS HERE
+const questions = [{"sr_no": 1, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Select the idiom that contextually fits the blank to complete the    following sentence most suitably.</p>    <p style=\"orphans:0;widows:0\">During the financial audit, the    chief compliance officer instructed the junior analysts to    ________ and verify that every ledger entry adhered strictly to    the statutory guidelines.</p>", "option1": "<p style=\"orphans:0;widows:0\">    throw in the towel</p>", "option2": " <p style=\"orphans:0;widows:0\">    go by the book</p>", "option3": " <p style=\"orphans:0;widows:0\">    spill the beans</p>", "option4": " <p style=\"orphans:0;widows:0\">    cut corners</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The idiom <b>'go by the book'</b> means to strictly follow    official rules, regulations, or established procedures. In the    given sentence, the junior analysts are required to follow    statutory guidelines meticulously, making 'go by the book' the    most appropriate choice.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Meanings of    the other idioms:</p>    <ul>     <li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Throw     in the towel:</b> To give up or admit defeat.</p>     </li><li><p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Spill     the beans:</b> To reveal a secret, often inadvertently.</p>     </li><li><p style=\"orphans:0;widows:0\"><b>Cut corners:</b> To do     something in an easy or careless way, often ignoring rules or     standards to save time or money.</p>    </li></ul>", "question_heading": ""}, {"sr_no": 2, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The sentence given below is divided into four segments labelled P,    Q, R, and S. Read the sentence carefully to determine which    segment contains a grammatical, syntactic, or idiomatic error.    Select the letter corresponding to that specific segment as your    answer. (Note: Every sentence contains exactly one error. Ignore    errors of punctuation, if any.)</p>    <p style=\"orphans:0;widows:0\">(P) Although the firm received    several lucrative acquisition offers from foreign conglomerates, /    (Q) the board of directors unanimously resolved to turn down them    / (R) in order to protect the company's proprietary technology /    (S) and preserve its autonomy in the domestic market.</p>", "option1": "<p style=\"orphans:0;widows:0\">    P</p>", "option2": " <p style=\"orphans:0;widows:0\">    Q</p>", "option3": " <p style=\"orphans:0;widows:0\">    R</p>", "option4": " <p style=\"orphans:0;widows:0\">    S</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The correct option is (B) <b>Q</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">The phrasal    verb <i>turn down</i> (meaning to reject or refuse) is a separable    transitive phrasal verb. When the object of a separable phrasal    verb is a personal pronoun (such as <i>it, them, him, her</i>),    the pronoun must be placed between the verb and the particle, not    after the particle.</p>    <p style=\"orphans:0;widows:0\">Therefore, <b>turn down them</b>    is incorrect and must be replaced with <b>turn them down</b>.</p>", "question_heading": ""}, {"sr_no": 3, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The sentence given below is divided into four segments labelled P,    Q, R, and S. Read the sentence carefully to determine which    segment contains a grammatical, syntactic, or idiomatic error.    Select the letter corresponding to that specific segment as your    answer. (Note: Every sentence contains exactly one error. Ignore    errors of punctuation, if any.)</p>    <p style=\"orphans:0;widows:0\">(P) Confronted with undeniable    documentary evidence by the audit committee, / (Q) the senior    executive was eventually compelled to own up his involvement / (R)    in the massive financial irregularities / (S) before formal    charges were framed by the regulatory authorities.</p>", "option1": "<p style=\"orphans:0;widows:0\">    P</p>", "option2": " <p style=\"orphans:0;widows:0\">    Q</p>", "option3": " <p style=\"orphans:0;widows:0\">    R</p>", "option4": " <p style=\"orphans:0;widows:0\">    S</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The correct option is (B) <b>Q</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">The phrasal    verb <b>'own up to'</b> means to admit or confess to having done    something wrong or embarrassing. It requires the preposition <b>'to'</b>    before its object (e.g., <i>own up to one's mistake/involvement</i>).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">In segment    (Q), the preposition 'to' is missing after 'own up'. The    grammatically correct phrase should be <i>\"compelled to own    up to his involvement\"</i>.</p>    <p style=\"orphans:0;widows:0\">Therefore, segment <b>Q</b>    contains the error.</p>", "question_heading": ""}, {"sr_no": 4, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Select the correct passive form of the given sentence.</p>    <p style=\"orphans:0;widows:0\">The gardener trimmed the    overgrown hedges before sunset.</p>", "option1": "<p style=\"orphans:0;widows:0\">    The overgrown hedges have been trimmed by the gardener before    sunset.</p>", "option2": " <p style=\"orphans:0;widows:0\">    The overgrown hedges were trimmed by the gardener before sunset.</p>", "option3": " <p style=\"orphans:0;widows:0\">    The overgrown hedges were being trimmed by the gardener before    sunset.</p>", "option4": " <p style=\"orphans:0;widows:0\">    The overgrown hedges had been trimmed by the gardener before    sunset.</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The given sentence is in the simple past tense (Active Voice:    Subject + V2 + Object).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">The rule for    converting simple past tense into passive voice is:</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Object +    was/were + V3 + by + Subject + other words</b></p>    <p style=\"orphans:0;widows:0\">Here, 'the overgrown hedges' is    plural, so 'were trimmed' is the correct verb form. Hence, option    B is the correct passive form.</p>", "question_heading": ""}, {"sr_no": 5, "question": "In पुध ीियियथing तहधौपiयn, ो ौधnपधncध ुोौ ृधधn कiॅiकधक inपय ूोनपौ. Tुध ीiनौप ूोनप (S1) ोnक पुध िोौप ूोनप (S6) ोनध ीiसधक in पुधiन ूयौiपiयnौ. Rधोननोngध पुध नधंोining ूोनपौ (P, Q, R, ोnक S) पय ीयनं ो gनोंंोपicोििद cयननधcप ोnक ंधोningीिह ौधnपधncध, ोnक cुययौध पुध cयननधcप ौधतहधncध. S1: In पुध ुधोनप यी पुध ोnciधnप ciपद ौपययक पुध gनोnक िiृनोनद, थुicु थोौ नधnयथnधक पुनयहgुयहप पुध धंूiनध P: ंोnहौcनiूपौ ोnक पनधोपiौधौ ूनधौधनॅधक यn ूोूदनहौ ौcनियिस, थुiिध iपौ ॅोिहपधक नधोकing ुोििस थधनध iििहंinोपधक Q: ीयन ुयहौing पुध ंयौप cयंूनधुधnौiॅध ोnक कiॅधनौध cियिधcपiयn यी cिोौौicोि R: ृद ौिधnकधन ोिोृोौपधन िोंूौ ौहौूधnकधक ीनयं ोनcुधक cधiिingौ पुोप धcुयधक S: थiपु पुध तहiधप ंहनंहनौ यी ॅiौiपing ौcुियोनौ ोnक ौcनiृधौ िोृयनing कiिigधnिपद यॅधन नोनध पधसपौ, S6: cनधोपing ोn ोपंयौूुधनध यी नधॅधनधncध ोnक ृयहnिकधौौ inपिधिधcपहोि ूहनौहiप.", "option1": "<p style=\"orphans:0;widows:0\">    QPRS</p>", "option2": " <p style=\"orphans:0;widows:0\">    PQRS</p>", "option3": " <p style=\"orphans:0;widows:0\">    RQPS</p>", "option4": " <p style=\"orphans:0;widows:0\">    QSRP</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The correct sequence is <b>QPRS</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">1. <b>S1</b>    ends with \"renowned throughout the empire\", which    naturally connects with the prepositional phrase in <b>Q</b>: \"for    housing the most comprehensive and diverse collection of    classical...\".</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">2. Part <b>Q</b>    ends with the adjective \"classical\", which directly    modifies the nouns in <b>P</b>: \"manuscripts and treatises    preserved on papyrus scrolls...\".</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">3. Part <b>P</b>    concludes with the passive verb construction \"were    illuminated\", which links to the agent introduced by \"by\"    in <b>R</b>: \"by slender alabaster lamps suspended from    arched ceilings that echoed...\".</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">4. Part <b>R</b>    ends with the verb \"echoed\", requiring the preposition    \"with\" found in <b>S</b>: \"with the quiet murmurs    of visiting scholars...\".</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">5. Finally, <b>S</b>    smoothly flows into the fixed concluding part <b>S6</b>: \"creating    an atmosphere of reverence and boundless intellectual pursuit.\"</p>    <p style=\"orphans:0;widows:0\">Thus, the coherent sentence is    formed by the order <b>QPRS</b>.</p>", "question_heading": ""}, {"sr_no": 6, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The following sentence has been divided into four parts (P, Q, R,    and S). The first part (S1) and the last part (S6) are fixed.    Rearrange the remaining parts to form a grammatically correct and    meaningful sentence, and choose the correct sequence.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>S1:</b>    The monumental architecture of ancient Greece reflects a profound    dedication to proportion and symmetry, where temples were designed</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>P:</b> the    visual distortion caused by perspective, ensuring that the    structures appeared perfectly straight and balanced</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Q:</b> not    merely as functional places of worship but as harmonious    embodiments of civic pride and religious devotion, constructed</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>R:</b> to    the human eye, an extraordinary feat that showcased the builders'    mastery over geometry and stonework,</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>S:</b>    with meticulously calculated column spacings and subtle optical    refinements known as entasis, which counteracted</p>    <p style=\"orphans:0;widows:0\"><b>S6:</b> ultimately    establishing enduring standards of aesthetic harmony that    influenced Western architecture for centuries.</p>", "option1": "<p style=\"orphans:0;widows:0\">    SQPR</p>", "option2": " <p style=\"orphans:0;widows:0\">    QSPR</p>", "option3": " <p style=\"orphans:0;widows:0\">    PQSR</p>", "option4": " <p style=\"orphans:0;widows:0\">    QPSR</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The correct sequence is <b>QSPR</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">1. <b>S1</b>    ends with 'where temples were designed', which is grammatically    continued by <b>Q</b> ('not merely as functional places of worship    but as harmonious embodiments... constructed').</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">2. <b>Q</b>    ends with the participle 'constructed', which naturally pairs with    prepositional phrase in <b>S</b> ('with meticulously calculated    column spacings and subtle optical refinements... which    counteracted').</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">3. <b>S</b>    concludes with the transitive verb 'counteracted', which requires    an object, provided by <b>P</b> ('the visual distortion caused by    perspective, ensuring that the structures appeared perfectly    straight and balanced').</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">4. <b>P</b>    ends with 'balanced', which connects to <b>R</b> ('to the human    eye, an extraordinary feat...').</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">5. <b>R</b>    flows seamlessly into the fixed closing segment <b>S6</b>    ('ultimately establishing enduring standards...').</p>    <p style=\"orphans:0;widows:0\">Hence, the coherent sentence    order is <b>QSPR</b>.</p>", "question_heading": ""}, {"sr_no": 7, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    A sentence in the Passive Voice is given below. From the four    alternatives, choose the one that best expresses the same sentence    in the Active Voice.</p>    <p style=\"orphans:0;widows:0\">It was suggested by the chairman    that the pending audit be completed by the external accountant    prior to the annual general meeting.</p>", "option1": "<p style=\"orphans:0;widows:0\">    The chairman suggested that the external accountant completed the    pending audit prior to the annual general meeting.</p>", "option2": " <p style=\"orphans:0;widows:0\">    The chairman suggested that the external accountant completes the    pending audit prior to the annual general meeting.</p>", "option3": " <p style=\"orphans:0;widows:0\">    The chairman suggested that the external accountant complete the    pending audit prior to the annual general meeting.</p>", "option4": " <p style=\"orphans:0;widows:0\">    The chairman suggested that the external accountant would complete    the pending audit prior to the annual general meeting.</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The correct active voice form is <b>\"The chairman suggested    that the external accountant complete the pending audit prior to    the annual general meeting.\"</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Key Rules:</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">1. In the    main clause, the passive structure \"It was suggested by the    chairman\" converts to the active \"The chairman    suggested\".</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">2. In the    dependent clause following the mandative verb 'suggest', the    subjunctive mood is used. The passive subjunctive \"be    completed by the external accountant\" changes to active    subjunctive with the base form of the verb: \"the external    accountant complete\" (without '-s' or past inflection).</p>    <p style=\"orphans:0;widows:0\">Therefore, Option C is the    correct answer.</p>", "question_heading": ""}, {"sr_no": 8, "question": "Cयंूिधपध पुध ीियियथing ूोौौोgध ृद ीiििing in पुध ृिोnो थiपु पुध ंयौप ोूूनयूनiोपध थयनकौ ीनयं पुध यूपiयnौ giॅधn ृिधयथ. Rोूiक हनृोniौोपiयn ुोौ ूनयंूपधक ciपद ूिोnnधनौ पय inपधgनोपध gनधधn ौूोcधौ inपय ंधपनयूियiपोn िोnकौcोूधौ पय cयंृोप नiौing ूियिहपiयn िधॅिधस. Aिपुयहgु पुधौध ूोनो ोnक ॅधनपicोि gोनकधnौ iंूनयॅध ोiन तहोिiपद cयnौiकधनोृिद, पुधiन धीीधcपiॅधnधौौ iौ (A)________ ुinकधनधक थुधn ंोinपधnोncध ौcुधकिहधौ ोनध nधgिधcपधक यन हनृोn कधॅिधयूंधnप धncनयोcुधौ यn ूनयपधcपधक शयnधौ. Tुधनधीयनध, ंहniciूोि ोहपुयनiपiधौ ंहौप ंयniपयन पुधौध धcिययgicोि नधौधनॅधौ cयnपinहोििद नोपुधन पुोn ोौौहंध पुधद थiिि पुनiॅध यn पुधiन यथn. Tुध ौहccधौौ यी हनृोn gनधधning ूनयुधcपौ पदूicोििद कधूधnकौ यn ौहौपोinधक ूहृिic धngोgधंधnप, थुधनध cयंंहniपद ौपधथोनकौुiू ोnक ियcोि gयॅधनnंधnप iniपiोपiॅधौ ृधcयंध (B)________ िinाधक. Acपiॅध ciपप्रधn ूोनपiciूोपiयn cोn ूनयपधcप ीनोgiिध ूिोnपौ ीनयं ॅोnकोिiौं, थुiिध ciॅic ोहपुयनiपiधौ cोn ूनयॅiकध nधcधौौोनद नधौयहनcधौ ोnक पधcुnicोि gहiकोncध. Tुiौ कदnोंic ुigुिigुपौ पुोप धcिययgicोि ौहौपोinोृiिiपद cोnnयप ौहccधधक थiपुयहप cयnौiौपधnप cयंंहniपद inॅियॅधंधnप. Tुध ियng-पधनं ॅiपोिiपद यी हनृोn ीियनो iौ िोनgिधद कधूधnकधnप (C)________ ोकधतहोपध थोपधन ौहूूिद ौदौपधंौ ोnक inकigधnयहौ ौूधciधौ ौिधधcपiयn. Cुययौing कनयहgुप-नधौiौपोnप nोपiॅध ूिोnपौ ंiniंप्रधौ थोपधन ौपनधौौ, नधकहcधौ ूधौप inीधौपोपiयnौ, ोnक धnुोncधौ हनृोn ृiयकiॅधनौiपद. Mहniciूोि cयहnciिस ंहौप ोिसय धnौहनध पुोप iननigोपiयn ूनोcपicधौ नधंोin ौहौपोinोृिध. (D)________, हनृोn नधौiकधnपौ ौुयिहक ृध धकहcोपधक ोृयहप पुध धnॅiनयnंधnपोि ौigniीicोncध यी ूनयपधcपing ियcोि ुोृiपोपौ. Wiपुयहप ौहीीiciधnप ोथोनधnधौौ, inकiॅiकहोिस ंोद कiौूयौध यी nयn-ृiयकधgनोकोृिध थोौपध in gनधधn ृिधपौ यन कोंोgध ीनोgiिध हnकधनgनयथपु. Uिपiंोपिधद, ंयकधनn ciपiधौ थiिि पुनiॅध यnिद iी हनृोn ूिोnnधनौ cोn (E)________ ोंृiपiयहौ inीनोौपनहcपहनध gनयथपु थiपु नigयनयहौ धnॅiनयnंधnपोि ूनयपधcपiयn. Sहcु ुोनंयnद धnौहनधौ पुोप ूनयgनधौौ कयधौ nयप यccहन ोप पुध धसूधnौध यी यहन nोपहनोि ुधनiपोgध. Wुicु ोकॅधनृ ंयौप ोूूनयूनiोपिधद ीiििस ृिोnा (A)?", "option1": "<p style=\"orphans:0;widows:0\">    severely</p>", "option2": " <p style=\"orphans:0;widows:0\">    casually</p>", "option3": " <p style=\"orphans:0;widows:0\">    deceptively</p>", "option4": " <p style=\"orphans:0;widows:0\">    gracefully</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The passage discusses how poor maintenance and encroachment harm    the functionality of green spaces. The adverb 'severely' means    gravely or to a serious extent, appropriately modifying    'hindered'. 'Casually', 'deceptively', and 'gracefully' do not fit    the context of negative impairment.</p>", "question_heading": ""}, {"sr_no": 9, "question": "Cयंूिधपध पुध ीियियथing ूोौौोgध ृद ीiििing in पुध ृिोnो थiपु पुध ंयौप ोूूनयूनiोपध थयनकौ ीनयं पुध यूपiयnौ giॅधn ृिधयथ. Rोूiक हनृोniौोपiयn ुोौ ूनयंूपधक ciपद ूिोnnधनौ पय inपधgनोपध gनधधn ौूोcधौ inपय ंधपनयूियiपोn िोnकौcोूधौ पय cयंृोप नiौing ूियिहपiयn िधॅिधस. Aिपुयहgु पुधौध ूोनो ोnक ॅधनपicोि gोनकधnौ iंूनयॅध ोiन तहोिiपद cयnौiकधनोृिद, पुधiन धीीधcपiॅधnधौौ iौ (A)________ ुinकधनधक थुधn ंोinपधnोncध ौcुधकिहधौ ोनध nधgिधcपधक यन हनृोn कधॅिधयूंधnप धncनयोcुधौ यn ूनयपधcपधक शयnधौ. Tुधनधीयनध, ंहniciूोि ोहपुयनiपiधौ ंहौप ंयniपयन पुधौध धcिययgicोि नधौधनॅधौ cयnपinहोििद नोपुधन पुोn ोौौहंध पुधद थiिि पुनiॅध यn पुधiन यथn. Tुध ौहccधौौ यी हनृोn gनधधning ूनयुधcपौ पदूicोििद कधूधnकौ यn ौहौपोinधक ूहृिic धngोgधंधnप, थुधनध cयंंहniपद ौपधथोनकौुiू ोnक ियcोि gयॅधनnंधnप iniपiोपiॅधौ ृधcयंध (B)________ िinाधक. Acपiॅध ciपप्रधn ूोनपiciूोपiयn cोn ूनयपधcप ीनोgiिध ूिोnपौ ीनयं ॅोnकोिiौं, थुiिध ciॅic ोहपुयनiपiधौ cोn ूनयॅiकध nधcधौौोनद नधौयहनcधौ ोnक पधcुnicोि gहiकोncध. Tुiौ कदnोंic ुigुिigुपौ पुोप धcिययgicोि ौहौपोinोृiिiपद cोnnयप ौहccधधक थiपुयहप cयnौiौपधnप cयंंहniपद inॅियॅधंधnप. Tुध ियng-पधनं ॅiपोिiपद यी हनृोn ीियनो iौ िोनgिधद कधूधnकधnप (C)________ ोकधतहोपध थोपधन ौहूूिद ौदौपधंौ ोnक inकigधnयहौ ौूधciधौ ौिधधcपiयn. Cुययौing कनयहgुप-नधौiौपोnप nोपiॅध ूिोnपौ ंiniंप्रधौ थोपधन ौपनधौौ, नधकहcधौ ूधौप inीधौपोपiयnौ, ोnक धnुोncधौ हनृोn ृiयकiॅधनौiपद. Mहniciूोि cयहnciिस ंहौप ोिसय धnौहनध पुोप iननigोपiयn ूनोcपicधौ नधंोin ौहौपोinोृिध. (D)________, हनृोn नधौiकधnपौ ौुयिहक ृध धकहcोपधक ोृयहप पुध धnॅiनयnंधnपोि ौigniीicोncध यी ूनयपधcपing ियcोि ुोृiपोपौ. Wiपुयहप ौहीीiciधnप ोथोनधnधौौ, inकiॅiकहोिस ंोद कiौूयौध यी nयn-ृiयकधgनोकोृिध थोौपध in gनधधn ृिधपौ यन कोंोgध ीनोgiिध हnकधनgनयथपु. Uिपiंोपिधद, ंयकधनn ciपiधौ थiिि पुनiॅध यnिद iी हनृोn ूिोnnधनौ cोn (E)________ ोंृiपiयहौ inीनोौपनहcपहनध gनयथपु थiपु नigयनयहौ धnॅiनयnंधnपोि ूनयपधcपiयn. Sहcु ुोनंयnद धnौहनधौ पुोप ूनयgनधौौ कयधौ nयप यccहन ोप पुध धसूधnौध यी यहन nोपहनोि ुधनiपोgध. Wुicु ोकॅधनृ ृधौप ीiििस ृिोnा (B)?", "option1": "<p style=\"orphans:0;widows:0\">    superficially</p>", "option2": " <p style=\"orphans:0;widows:0\">    conditionally</p>", "option3": " <p style=\"orphans:0;widows:0\">    marginally</p>", "option4": " <p style=\"orphans:0;widows:0\">    inextricably</p>", "answer": "4", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The sentence explains that community stewardship and government    initiatives must work closely together in a way that cannot be    untangled. 'Inextricably' means in a manner that is impossible to    disentangle or separate, making it the most suitable word.    'Superficially' (shallowly) and 'marginally' (slightly) convey the    opposite tone.</p>", "question_heading": ""}, {"sr_no": 10, "question": "Cयंूिधपध पुध ीियियथing ूोौौोgध ृद ीiििing in पुध ृिोnो थiपु पुध ंयौप ोूूनयूनiोपध थयनकौ ीनयं पुध यूपiयnौ giॅधn ृिधयथ. Rोूiक हनृोniौोपiयn ुोौ ूनयंूपधक ciपद ूिोnnधनौ पय inपधgनोपध gनधधn ौूोcधौ inपय ंधपनयूियiपोn िोnकौcोूधौ पय cयंृोप नiौing ूियिहपiयn िधॅिधस. Aिपुयहgु पुधौध ूोनो ोnक ॅधनपicोि gोनकधnौ iंूनयॅध ोiन तहोिiपद cयnौiकधनोृिद, पुधiन धीीधcपiॅधnधौौ iौ (A)________ ुinकधनधक थुधn ंोinपधnोncध ौcुधकिहधौ ोनध nधgिधcपधक यन हनृोn कधॅिधयूंधnप धncनयोcुधौ यn ूनयपधcपधक शयnधौ. Tुधनधीयनध, ंहniciूोि ोहपुयनiपiधौ ंहौप ंयniपयन पुधौध धcिययgicोि नधौधनॅधौ cयnपinहोििद नोपुधन पुोn ोौौहंध पुधद थiिि पुनiॅध यn पुधiन यथn. Tुध ौहccधौौ यी हनृोn gनधधning ूनयुधcपौ पदूicोििद कधूधnकौ यn ौहौपोinधक ूहृिic धngोgधंधnप, थुधनध cयंंहniपद ौपधथोनकौुiू ोnक ियcोि gयॅधनnंधnप iniपiोपiॅधौ ृधcयंध (B)________ िinाधक. Acपiॅध ciपप्रधn ूोनपiciूोपiयn cोn ूनयपधcप ीनोgiिध ूिोnपौ ीनयं ॅोnकोिiौं, थुiिध ciॅic ोहपुयनiपiधौ cोn ूनयॅiकध nधcधौौोनद नधौयहनcधौ ोnक पधcुnicोि gहiकोncध. Tुiौ कदnोंic ुigुिigुपौ पुोप धcिययgicोि ौहौपोinोृiिiपद cोnnयप ौहccधधक थiपुयहप cयnौiौपधnप cयंंहniपद inॅियॅधंधnप. Tुध ियng-पधनं ॅiपोिiपद यी हनृोn ीियनो iौ िोनgिधद कधूधnकधnप (C)________ ोकधतहोपध थोपधन ौहूूिद ौदौपधंौ ोnक inकigधnयहौ ौूधciधौ ौिधधcपiयn. Cुययौing कनयहgुप-नधौiौपोnप nोपiॅध ूिोnपौ ंiniंप्रधौ थोपधन ौपनधौौ, नधकहcधौ ूधौप inीधौपोपiयnौ, ोnक धnुोncधौ हनृोn ृiयकiॅधनौiपद. Mहniciूोि cयहnciिस ंहौप ोिसय धnौहनध पुोप iननigोपiयn ूनोcपicधौ नधंोin ौहौपोinोृिध. (D)________, हनृोn नधौiकधnपौ ौुयिहक ृध धकहcोपधक ोृयहप पुध धnॅiनयnंधnपोि ौigniीicोncध यी ूनयपधcपing ियcोि ुोृiपोपौ. Wiपुयहप ौहीीiciधnप ोथोनधnधौौ, inकiॅiकहोिस ंोद कiौूयौध यी nयn-ृiयकधgनोकोृिध थोौपध in gनधधn ृिधपौ यन कोंोgध ीनोgiिध हnकधनgनयथपु. Uिपiंोपिधद, ंयकधनn ciपiधौ थiिि पुनiॅध यnिद iी हनृोn ूिोnnधनौ cोn (E)________ ोंृiपiयहौ inीनोौपनहcपहनध gनयथपु थiपु नigयनयहौ धnॅiनयnंधnपोि ूनयपधcपiयn. Sहcु ुोनंयnद धnौहनधौ पुोप ूनयgनधौौ कयधौ nयप यccहन ोप पुध धसूधnौध यी यहन nोपहनोि ुधनiपोgध. Wुicु ूनधूयौiपiयn cयननधcिपद ीiििस ृिोnा (C)?", "option1": "<p style=\"orphans:0;widows:0\">    through</p>", "option2": " <p style=\"orphans:0;widows:0\">    across</p>", "option3": " <p style=\"orphans:0;widows:0\">    towards</p>", "option4": " <p style=\"orphans:0;widows:0\">    upon</p>", "answer": "4", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The adjective 'dependent' is conventionally followed by the    preposition 'on' or 'upon'. Among the given choices, 'upon'    correctly completes the fixed prepositional phrase 'dependent    upon'.</p>", "question_heading": ""}, {"sr_no": 11, "question": "Cयंूिधपध पुध ीियियथing ूोौौोgध ृद ीiििing in पुध ृिोnो थiपु पुध ंयौप ोूूनयूनiोपध थयनकौ ीनयं पुध यूपiयnौ giॅधn ृिधयथ. Rोूiक हनृोniौोपiयn ुोौ ूनयंूपधक ciपद ूिोnnधनौ पय inपधgनोपध gनधधn ौूोcधौ inपय ंधपनयूियiपोn िोnकौcोूधौ पय cयंृोप नiौing ूियिहपiयn िधॅिधस. Aिपुयहgु पुधौध ूोनो ोnक ॅधनपicोि gोनकधnौ iंूनयॅध ोiन तहोिiपद cयnौiकधनोृिद, पुधiन धीीधcपiॅधnधौौ iौ (A)________ ुinकधनधक थुधn ंोinपधnोncध ौcुधकिहधौ ोनध nधgिधcपधक यन हनृोn कधॅिधयूंधnप धncनयोcुधौ यn ूनयपधcपधक शयnधौ. Tुधनधीयनध, ंहniciूोि ोहपुयनiपiधौ ंहौप ंयniपयन पुधौध धcिययgicोि नधौधनॅधौ cयnपinहोििद नोपुधन पुोn ोौौहंध पुधद थiिि पुनiॅध यn पुधiन यथn. Tुध ौहccधौौ यी हनृोn gनधधning ूनयुधcपौ पदूicोििद कधूधnकौ यn ौहौपोinधक ूहृिic धngोgधंधnप, थुधनध cयंंहniपद ौपधथोनकौुiू ोnक ियcोि gयॅधनnंधnप iniपiोपiॅधौ ृधcयंध (B)________ िinाधक. Acपiॅध ciपप्रधn ूोनपiciूोपiयn cोn ूनयपधcप ीनोgiिध ूिोnपौ ीनयं ॅोnकोिiौं, थुiिध ciॅic ोहपुयनiपiधौ cोn ूनयॅiकध nधcधौौोनद नधौयहनcधौ ोnक पधcुnicोि gहiकोncध. Tुiौ कदnोंic ुigुिigुपौ पुोप धcिययgicोि ौहौपोinोृiिiपद cोnnयप ौहccधधक थiपुयहप cयnौiौपधnप cयंंहniपद inॅियॅधंधnप. Tुध ियng-पधनं ॅiपोिiपद यी हनृोn ीियनो iौ िोनgिधद कधूधnकधnप (C)________ ोकधतहोपध थोपधन ौहूूिद ौदौपधंौ ोnक inकigधnयहौ ौूधciधौ ौिधधcपiयn. Cुययौing कनयहgुप-नधौiौपोnप nोपiॅध ूिोnपौ ंiniंप्रधौ थोपधन ौपनधौौ, नधकहcधौ ूधौप inीधौपोपiयnौ, ोnक धnुोncधौ हनृोn ृiयकiॅधनौiपद. Mहniciूोि cयहnciिस ंहौप ोिसय धnौहनध पुोप iननigोपiयn ूनोcपicधौ नधंोin ौहौपोinोृिध. (D)________, हनृोn नधौiकधnपौ ौुयिहक ृध धकहcोपधक ोृयहप पुध धnॅiनयnंधnपोि ौigniीicोncध यी ूनयपधcपing ियcोि ुोृiपोपौ. Wiपुयहप ौहीीiciधnप ोथोनधnधौौ, inकiॅiकहोिस ंोद कiौूयौध यी nयn-ृiयकधgनोकोृिध थोौपध in gनधधn ृिधपौ यन कोंोgध ीनोgiिध हnकधनgनयथपु. Uिपiंोपिधद, ंयकधनn ciपiधौ थiिि पुनiॅध यnिद iी हनृोn ूिोnnधनौ cोn (E)________ ोंृiपiयहौ inीनोौपनहcपहनध gनयथपु थiपु नigयनयहौ धnॅiनयnंधnपोि ूनयपधcपiयn. Sहcु ुोनंयnद धnौहनधौ पुोप ूनयgनधौौ कयधौ nयप यccहन ोप पुध धसूधnौध यी यहन nोपहनोि ुधनiपोgध. Wुicु cयnnधcपयन ंयौप ोूूनयूनiोपिधद ीiििस ृिोnा (D)?", "option1": "<p style=\"orphans:0;widows:0\">    Alternatively</p>", "option2": " <p style=\"orphans:0;widows:0\">    Conversely</p>", "option3": " <p style=\"orphans:0;widows:0\">    Furthermore</p>", "option4": " <p style=\"orphans:0;widows:0\">    Otherwise</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The sentence adds an additional, important requirement (educating    residents) to the previous point about irrigation. 'Furthermore'    is an additive connector used to introduce additional supporting    information. 'Conversely' denotes contrast, 'Alternatively'    indicates a mutually exclusive choice, and 'Otherwise' implies an    alternative outcome or condition.</p>", "question_heading": ""}, {"sr_no": 12, "question": "Cयंूिधपध पुध ीियियथing ूोौौोgध ृद ीiििing in पुध ृिोnो थiपु पुध ंयौप ोूूनयूनiोपध थयनकौ ीनयं पुध यूपiयnौ giॅधn ृिधयथ. Rोूiक हनृोniौोपiयn ुोौ ूनयंूपधक ciपद ूिोnnधनौ पय inपधgनोपध gनधधn ौूोcधौ inपय ंधपनयूियiपोn िोnकौcोूधौ पय cयंृोप नiौing ूियिहपiयn िधॅिधस. Aिपुयहgु पुधौध ूोनो ोnक ॅधनपicोि gोनकधnौ iंूनयॅध ोiन तहोिiपद cयnौiकधनोृिद, पुधiन धीीधcपiॅधnधौौ iौ (A)________ ुinकधनधक थुधn ंोinपधnोncध ौcुधकिहधौ ोनध nधgिधcपधक यन हनृोn कधॅिधयूंधnप धncनयोcुधौ यn ूनयपधcपधक शयnधौ. Tुधनधीयनध, ंहniciूोि ोहपुयनiपiधौ ंहौप ंयniपयन पुधौध धcिययgicोि नधौधनॅधौ cयnपinहोििद नोपुधन पुोn ोौौहंध पुधद थiिि पुनiॅध यn पुधiन यथn. Tुध ौहccधौौ यी हनृोn gनधधning ूनयुधcपौ पदूicोििद कधूधnकौ यn ौहौपोinधक ूहृिic धngोgधंधnप, थुधनध cयंंहniपद ौपधथोनकौुiू ोnक ियcोि gयॅधनnंधnप iniपiोपiॅधौ ृधcयंध (B)________ िinाधक. Acपiॅध ciपप्रधn ूोनपiciूोपiयn cोn ूनयपधcप ीनोgiिध ूिोnपौ ीनयं ॅोnकोिiौं, थुiिध ciॅic ोहपुयनiपiधौ cोn ूनयॅiकध nधcधौौोनद नधौयहनcधौ ोnक पधcुnicोि gहiकोncध. Tुiौ कदnोंic ुigुिigुपौ पुोप धcिययgicोि ौहौपोinोृiिiपद cोnnयप ौहccधधक थiपुयहप cयnौiौपधnप cयंंहniपद inॅियॅधंधnप. Tुध ियng-पधनं ॅiपोिiपद यी हनृोn ीियनो iौ िोनgिधद कधूधnकधnप (C)________ ोकधतहोपध थोपधन ौहूूिद ौदौपधंौ ोnक inकigधnयहौ ौूधciधौ ौिधधcपiयn. Cुययौing कनयहgुप-नधौiौपोnप nोपiॅध ूिोnपौ ंiniंप्रधौ थोपधन ौपनधौौ, नधकहcधौ ूधौप inीधौपोपiयnौ, ोnक धnुोncधौ हनृोn ृiयकiॅधनौiपद. Mहniciूोि cयहnciिस ंहौप ोिसय धnौहनध पुोप iननigोपiयn ूनोcपicधौ नधंोin ौहौपोinोृिध. (D)________, हनृोn नधौiकधnपौ ौुयिहक ृध धकहcोपधक ोृयहप पुध धnॅiनयnंधnपोि ौigniीicोncध यी ूनयपधcपing ियcोि ुोृiपोपौ. Wiपुयहप ौहीीiciधnप ोथोनधnधौौ, inकiॅiकहोिस ंोद कiौूयौध यी nयn-ृiयकधgनोकोृिध थोौपध in gनधधn ृिधपौ यन कोंोgध ीनोgiिध हnकधनgनयथपु. Uिपiंोपिधद, ंयकधनn ciपiधौ थiिि पुनiॅध यnिद iी हनृोn ूिोnnधनौ cोn (E)________ ोंृiपiयहौ inीनोौपनहcपहनध gनयथपु थiपु नigयनयहौ धnॅiनयnंधnपोि ूनयपधcपiयn. Sहcु ुोनंयnद धnौहनधौ पुोप ूनयgनधौौ कयधौ nयप यccहन ोप पुध धसूधnौध यी यहन nोपहनोि ुधनiपोgध. Wुicु ॅधनृ ंयौप ोूूनयूनiोपिधद ीiििस ृिोnा (E)?", "option1": "<p style=\"orphans:0;widows:0\">    dismiss</p>", "option2": " <p style=\"orphans:0;widows:0\">    undermine</p>", "option3": " <p style=\"orphans:0;widows:0\">    postpone</p>", "option4": " <p style=\"orphans:0;widows:0\">    harmonize</p>", "answer": "4", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The concluding sentence refers to achieving balance between growth    and protection, as reinforced by the subsequent phrase 'Such    harmony ensures...'. Therefore, 'harmonize' (bring into agreement    or balance) is the only verb that fits the context logically.</p>", "question_heading": ""}, {"sr_no": 13, "question": "Tुधनध ोनध ीयहन ुहंृिधक ौधnपधncधौ giॅधn ृिधयथ. Yयहन पोौा iौ पय नधोननोngध पुधं inपय ो ियgicोििद cयुधनधnप ोnक ंधोningीिह ूोनोgनोूु ोnक cुययौध पुध cयननधcप ौधतहधncध ीनयं पुध giॅधn यूपiयnौ. 1. Iप ोिियथौ inकiॅiकहोिस पय ंयniपयन पुधiन कोiिद ोcपiॅiपद, ौिधधू ूोपपधनnौ, ोnक ुधोनप नोपधौ. 2. Wधोनोृिध ीiपnधौौ पधcुnिययgद ुोौ gोinधक iंंधnौध ूयूिहोनiपद in नधcधnप दधोनौ. 3. Tुiौ cयnपinहयहौ ौपनधों यी ुधोिपु कोपो धncयहनोgधौ ूधयूिध पय ोकयूप ुधोिपुiधन िiीधौपिदधौ. 4. Aौ ो नधौिहप, ंयनध हौधनौ ोनध ोcपiॅिधद थयनाing पयथोनकौ ोcुiधॅing पुधiन ूधनौयnोि थिधिnधौौ gयोिस.", "option1": "<p style=\"orphans:0;widows:0\">    2-3-1-4</p>", "option2": " <p style=\"orphans:0;widows:0\">    2-1-3-4</p>", "option3": " <p style=\"orphans:0;widows:0\">    1-2-4-3</p>", "option4": " <p style=\"orphans:0;widows:0\">    3-1-2-4</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The correct logical sequence is <b>2-1-3-4</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Sentence <b>2</b>    serves as the introductory statement, introducing the central    subject: 'Wearable fitness technology'.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Sentence <b>1</b>    follows logically by using the pronoun 'It' to elaborate on what    this wearable technology does (monitoring activity, sleep, and    heart rates).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Sentence <b>3</b>    refers directly to the information mentioned in sentence 1 as    'This continuous stream of health data' and explains its positive    effect.</p>    <p style=\"orphans:0;widows:0\">Sentence <b>4</b> begins with the    concluding transitional phrase 'As a result', summarizing the    overall outcome of using this data.</p>", "question_heading": ""}, {"sr_no": 14, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Fill in the blank with the most appropriate option:</b></p>    <p style=\"orphans:0;widows:0\">In his keynote address, the    scholar chose to ________ on the philosophical underpinnings of    modern governance rather than confining himself to routine    procedural matters.</p>", "option1": "<p style=\"orphans:0;widows:0\">    expiate</p>", "option2": " <p style=\"orphans:0;widows:0\">    expatiate</p>", "option3": " <p style=\"orphans:0;widows:0\">    expropriate</p>", "option4": " <p style=\"orphans:0;widows:0\">    expatriate</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The correct option is <b>expatiate</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Meaning of    the words:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Expatiate:</b>    to speak or write at length or in detail about a subject    (consistently used with the preposition 'on' or 'upon'). In the    sentence, the scholar chose to speak in detail on the    philosophical underpinnings.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Expiate:</b>    to make amends or atone for (guilt, a sin, or wrongdoing).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Expropriate:</b>    to dispossess or confiscate property, especially by an authority    for public use.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Expatriate:</b>    to banish someone or reside outside one's native country.</p>    <p style=\"orphans:0;widows:0\">Therefore, <b>expatiate</b> is    the only contextually and grammatically correct fit.</p>", "question_heading": ""}, {"sr_no": 15, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Select the most appropriate antonym of the given word.</p>    <p style=\"orphans:0;widows:0\"><b>Deleterious</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Baneful</p>", "option2": " <p style=\"orphans:0;widows:0\">    Salubrious</p>", "option3": " <p style=\"orphans:0;widows:0\">    Pernicious</p>", "option4": " <p style=\"orphans:0;widows:0\">    Inimical</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The word <b>'Deleterious'</b> means causing harm or damage    (harmful, detrimental, destructive).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">•    <b>'Salubrious'</b> means health-giving, beneficial, or wholesome,    which is the exact opposite (antonym) of deleterious.</p>    <p style=\"orphans:0;widows:0\">• <i>Baneful</i>, <i>Pernicious</i>,    and <i>Inimical</i> are synonyms meaning harmful, destructive, or    hostile.</p>", "question_heading": ""}, {"sr_no": 16, "question": " <p style=\"orphans:0;widows:0\">    Select the most appropriate meaning of the given idiom: <b>\"To    take up the cudgels for\"</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    To defend or champion a cause or person vigorously</p>", "option2": " <p style=\"orphans:0;widows:0\">    To instigate violence against an opponent</p>", "option3": " <p style=\"orphans:0;widows:0\">    To admit defeat after a fierce debate</p>", "option4": " <p style=\"orphans:0;widows:0\">    To remain strictly neutral in a critical dispute</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The idiom <b>\"to take up the cudgels for\"</b> means to    vigorously defend, advocate for, or support someone or a specific    cause. A 'cudgel' is a short, thick stick used as a weapon, so the    metaphor implies picking up a weapon to fight on someone's behalf.</p>", "question_heading": ""}, {"sr_no": 17, "question": " <p style=\"orphans:0;widows:0\">    Select the most appropriate synonym of the given word: <b>OBDURATE</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Intractable</p>", "option2": " <p style=\"orphans:0;widows:0\">    Malleable</p>", "option3": " <p style=\"orphans:0;widows:0\">    Pliant</p>", "option4": " <p style=\"orphans:0;widows:0\">    Ephemeral</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The correct synonym is <b>Intractable</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Obdurate</b>    refers to someone stubbornly refusing to change one's opinion,    course of action, or unyielding.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Intractable</b>    means not easily governed, managed, or directed; stubborn, making    it the most suitable synonym.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Meanings of    the other options:</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Malleable:</b>    easily influenced, trained, or bent (antonym).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Pliant:</b>    readily yielding to persuasion or influence; flexible (antonym).</p>    <p style=\"orphans:0;widows:0\"><b>Ephemeral:</b> lasting for a    very short time; transient.</p>", "question_heading": ""}, {"sr_no": 18, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Select the most appropriate antonym of the underlined word in the    given sentence.</p>    <p style=\"orphans:0;widows:0\">The young scientist's    revolutionary research earned an extravagant <u><b>encomium</b></u>    from the international academic community.</p>", "option1": "<p style=\"orphans:0;widows:0\">    Accolade</p>", "option2": " <p style=\"orphans:0;widows:0\">    Homage</p>", "option3": " <p style=\"orphans:0;widows:0\">    Opprobrium</p>", "option4": " <p style=\"orphans:0;widows:0\">    Panegyric</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The underlined word <b>'encomium'</b> refers to a formal    expression of high praise or warm approval.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Let us look    at the meanings of the given options:<b>Accolade:</b> an    expression of praise, admiration, or an award (synonym).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Homage:</b>    special honour or respect shown publicly (synonym).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Opprobrium:</b>    harsh criticism, severe censure, or public disgrace (antonym).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Panegyric:</b>    a formal speech or text in high praise of someone (synonym).</p>    <p style=\"orphans:0;widows:0\">Therefore, <b>'Opprobrium'</b> is    the most appropriate antonym of 'encomium'.</p>", "question_heading": ""}, {"sr_no": 19, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Pick out the homonym from the given options that can suitably    complete both Sentence (P) and Sentence (Q) given below.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">(P) The swift    and covert ________ of the fugitive financier by Interpol agents    in Zurich effectively dismantled the transnational    money-laundering syndicate.</p>    <p style=\"orphans:0;widows:0\">(Q) A palpable climate of nervous    ________ enveloped the trading floor as institutional investors    anxiously awaited the regulatory agency's antitrust ruling.</p>", "option1": "<p style=\"orphans:0;widows:0\">    extradition</p>", "option2": " <p style=\"orphans:0;widows:0\">    trepidation</p>", "option3": " <p style=\"orphans:0;widows:0\">    apprehension</p>", "option4": " <p style=\"orphans:0;widows:0\">    interception</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The word <b>apprehension</b> is polysemous (having multiple    distinct meanings):</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">1. In    Sentence (P), <b>apprehension</b> refers to the act of arresting,    seizing, or capturing a criminal suspect or fugitive.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">2. In    Sentence (Q), <b>apprehension</b> denotes anxiety, dread, or a    fearful anticipation of a future event.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">None of the    other options can appropriately satisfy both contexts:</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Extradition</b>    refers exclusively to the legal deportation or handover of an    accused individual; it cannot describe anxiety.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Trepidation</b>    means dread or alarm, but it cannot mean legal capture or arrest.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Interception</b>    refers to seizing or catching something en route and cannot mean    nervous dread.</p>    <p style=\"orphans:0;widows:0\">Therefore, <b>apprehension</b> is    the correct answer.</p>", "question_heading": ""}, {"sr_no": 20, "question": " <p style=\"orphans:0;widows:0\">    Select the option that most appropriately expresses the meaning of    the given idiom: <b>'To steal a march on'</b>.</p>", "option1": "<p style=\"orphans:0;widows:0\">    To discreetly gain a tactical advantage over an opponent by    preemptively initiating action before they become aware</p>", "option2": " <p style=\"orphans:0;widows:0\">    To intentionally breach corporate compliance by plagiarizing an    ongoing competitor's project</p>", "option3": "Tय यनcुधौपनोपध ोn हnोहपुयनप्रधक कधंयnौपनोपiयn in कधीiोncध यी धौपोृिiौुधक ोकंiniौपनोपiॅध ूनयपयcियस", "option4": " <p style=\"orphans:0;widows:0\">    To execute a rapid tactical withdrawal from an active engagement    to conserve vital logistical assets</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The idiom <b>'to steal a march on (someone)'</b> originated as a    military expression referring to an army marching secretly, often    by night, to attain an advantageous position over an adversary    before being discovered. In contemporary usage, it means to gain    an advantage over a rival by acting earlier, subtly, or    preemptively. Therefore, option A is the correct interpretation.</p>", "question_heading": ""}, {"sr_no": 21, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Select the option that can suitably substitute the underlined    segment to improve the given sentence. If the sentence is correct    as written, select 'No improvement required'.</p>    <p style=\"orphans:0;widows:0\">The Minister of Foreign Affairs,    in consultation with senior military strategists, <u>have decided    that every one of the border checkpoints need to upgrade their</u>    surveillance protocols immediately.</p>", "option1": "<p style=\"orphans:0;widows:0\">    has decided that every one of the border checkpoints needs to    upgrade its</p>", "option2": " <p style=\"orphans:0;widows:0\">    has decided that every one of the border checkpoints need to    upgrade its</p>", "option3": " <p style=\"orphans:0;widows:0\">    have decided that every one of the border checkpoints needs to    upgrade their</p>", "option4": " <p style=\"orphans:0;widows:0\">    No improvement required</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The correct option is <b>has decided that every one of the border    checkpoints needs to upgrade its</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">This sentence    contains three grammatical points:</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Parenthetical    phrase:</b> When a singular subject (<i>The Minister of Foreign    Affairs</i>) is followed by parenthetical phrases such as <i>in    consultation with</i>, <i>along with</i>, or <i>as well as</i>,    the verb agrees with the primary subject. Therefore, the singular    verb <b>has decided</b> must be used rather than the plural <i>have    decided</i>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Distributive    pronoun agreement:</b> The construction <i>every one of + plural    noun</i> is grammatically singular and requires a singular verb.    Thus, <b>needs</b> is correct, not <i>need</i>.</p>    <p style=\"orphans:0;widows:0\"><b>Pronoun-antecedent agreement:</b>    The pronoun referring back to <i>every one of the border    checkpoints</i> must be singular and neuter (<b>its</b>), not    plural (<i>their</i>).</p>", "question_heading": ""}, {"sr_no": 22, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Select the option that can be used as a one-word substitute for    the given group of words:</p>    <p style=\"orphans:0;widows:0\"><b>\"A clever and plausible,    but fallacious argument used deliberately to deceive or mislead.\"</b></p>", "option1": "<p style=\"orphans:0;widows:0\">    Sophism</p>", "option2": " <p style=\"orphans:0;widows:0\">    Aphorism</p>", "option3": " <p style=\"orphans:0;widows:0\">    Truism</p>", "option4": " <p style=\"orphans:0;widows:0\">    Solecism</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The correct one-word substitute is <b>Sophism</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Sophism:</b>    A clever, plausible, but misleading or fallacious argument    intended to deceive.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Aphorism:</b>    A concise, pithy observation that contains a general truth (e.g.,    \"actions speak louder than words\").</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Truism:</b>    A claim that is so obvious or self-evident that it is hardly worth    mentioning.</p>    <p style=\"orphans:0;widows:0\"><b>Solecism:</b> A grammatical    error in speech or writing, or a breach of good manners.</p>", "question_heading": ""}, {"sr_no": 23, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Select the most appropriate phrasal verb to fill in the blank:</b></p>    <p style=\"orphans:0;widows:0\">The proposed amendments to the    labor code have ________ sharp criticism from industry experts and    trade unions alike.</p>", "option1": "<p style=\"orphans:0;widows:0\">    come in for</p>", "option2": " <p style=\"orphans:0;widows:0\">    come down to</p>", "option3": " <p style=\"orphans:0;widows:0\">    gone in for</p>", "option4": " <p style=\"orphans:0;widows:0\">    brought round to</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The correct phrasal verb is <b>come in for</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Meaning    and usage:</b></p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">• <b>Come    in for:</b> to receive or be subjected to something unpleasant,    especially criticism, blame, or scrutiny (e.g., <i>\"The    policy has come in for heavy criticism.\"</i>).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">• <b>Come    down to:</b> to depend on or be reducible to a particular point or    factor.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">• <b>Go in    for:</b> to participate in, enjoy, or choose something as a hobby    or career.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">• <b>Bring    round to:</b> to persuade someone to accept a particular opinion    or point of view.</p>    <p style=\"orphans:0;widows:0\">Since the sentence discusses    receiving sharp criticism, <b>come in for</b> is the most    appropriate choice.</p>", "question_heading": ""}, {"sr_no": 24, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Select the option that expresses the given sentence in passive    voice.</b></p>    <p style=\"orphans:0;widows:0\">Nobody was looking after the    injured passengers when the rescue team arrived.</p>", "option1": "<p style=\"orphans:0;widows:0\">    The injured passengers were not looked after by anybody when the    rescue team arrived.</p>", "option2": " <p style=\"orphans:0;widows:0\">    The injured passengers were not being looked after by anybody when    the rescue team arrived.</p>", "option3": " <p style=\"orphans:0;widows:0\">    The injured passengers were not being looked by anybody when the    rescue team arrived.</p>", "option4": " <p style=\"orphans:0;widows:0\">    The injured passengers had not been looked after by anybody when    the rescue team arrived.</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The given sentence is in the <b>Past Continuous Tense</b> with a    negative subject ('Nobody') and a phrasal verb ('look after').</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Rules for    conversion:</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Active    structure:</b> Subject + was/were + V-ing + preposition + Object</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Passive    structure:</b> Object + was/were + not + being + V3 + preposition    + by + agent</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">1. The    negative subject 'Nobody' changes to 'not ... by anybody' in the    passive voice.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">2. The object    'the injured passengers' is plural, so it takes the auxiliary verb    'were'.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">3. In passive    voice for continuous tense, 'being' + V3 ('looked') is required.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">4. The    preposition 'after' associated with the phrasal verb must be    retained.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">5. The    dependent time clause 'when the rescue team arrived' remains    unchanged.</p>    <p style=\"orphans:0;widows:0\">Thus, the correct passive voice    sentence is: <i>\"The injured passengers were not being looked    after by anybody when the rescue team arrived.\"</i></p>", "question_heading": ""}, {"sr_no": 25, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Select the most appropriate option that can substitute the    underlined segment in the given sentence. If there is no need to    substitute it, select 'No substitution required'.</b></p>    <p style=\"orphans:0;widows:0\">Scarcely had the investigator    entered the crime scene when he <u>has noticed that someone    tampered</u> with the locker.</p>", "option1": "<p style=\"orphans:0;widows:0\">    had noticed that someone tampered</p>", "option2": " <p style=\"orphans:0;widows:0\">    noticed that someone had tampered</p>", "option3": " <p style=\"orphans:0;widows:0\">    notices that someone has tampered</p>", "option4": " <p style=\"orphans:0;widows:0\">    No substitution required</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The correct option is (B) <b>noticed that someone had tampered</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">1. In the    correlative structure <i>'Scarcely had + Subject + V3 ... when +    Subject + V2'</i>, the clause following 'when' takes the Simple    Past Tense. Hence, 'has noticed' must be replaced by the past form    <b>'noticed'</b>.</p>    <p style=\"orphans:0;widows:0\">2. Furthermore, the tampering    with the locker occurred prior to the investigator's arrival and    observation (an action completed before another past action).    Therefore, the past perfect tense (<b>'had tampered'</b>) must be    used to express this earlier past action.</p>", "question_heading": ""}, {"sr_no": 26, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>Select the option that expresses the given sentence in indirect    speech.</b></p>    <p style=\"orphans:0;widows:0\">The manager said to the intern,    \"Do not share these confidential files with anyone unless you    are explicitly authorised to do so.\"</p>", "option1": "<p style=\"orphans:0;widows:0\">    The manager instructed the intern not to share those confidential    files with anyone unless he was explicitly authorised to do so.</p>", "option2": " <p style=\"orphans:0;widows:0\">    The manager forbade the intern not to share those confidential    files with anyone unless he was explicitly authorised to do so.</p>", "option3": " <p style=\"orphans:0;widows:0\">    The manager instructed the intern not to share these confidential    files with anyone unless he is explicitly authorised to do so.</p>", "option4": " <p style=\"orphans:0;widows:0\">    The manager instructed the intern that not to share those    confidential files with anyone unless he was explicitly authorised    to do so.</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The given sentence is a negative imperative sentence containing a    subordinate conditional clause.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Rules for    converting to indirect speech:</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">The reporting    verb 'said to' is changed to an appropriate verb such as    'instructed', 'ordered', or 'told'.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">In negative    imperatives, \"Do not + V1\" becomes \"not to + V1\".</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">The    demonstrative adjective 'these' changes to 'those'.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">The    second-person pronoun 'you' changes to the third-person 'he'    (referring to 'the intern').</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">The simple    present tense verb 'are' in the subordinate clause changes to the    simple past 'was'.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">Note that    'forbade' already carries a negative meaning, so using 'not' with    it (as in option B) creates an incorrect double negative. Also,    'that' is not used before 'not to' in imperative sentences (as in    option D).</p>    <p style=\"orphans:0;widows:0\">Therefore, Option A is the    correct indirect form.</p>", "question_heading": ""}, {"sr_no": 27, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    Select the option that can be used as a <b>one-word substitute</b>    for the given group of words.</p>    <p style=\"orphans:0;widows:0\">'A bitter and vehement speech or    piece of writing attacking or denouncing someone'</p>", "option1": "<p style=\"orphans:0;widows:0\">    Encomium</p>", "option2": " <p style=\"orphans:0;widows:0\">    Philippic</p>", "option3": " <p style=\"orphans:0;widows:0\">    Accolade</p>", "option4": " <p style=\"orphans:0;widows:0\">    Paean</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    The correct one-word substitute is <b>Philippic</b>.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Philippic:</b>    A bitter, vehement speech or written attack denouncing someone or    something (historically derived from speeches by Demosthenes    against Philip II of Macedon).</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Encomium:</b>    A formal speech or piece of writing that praises someone or    something highly.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\"><b>Accolade:</b>    An award, honor, or expression of praise.</p>    <p style=\"orphans:0;widows:0\"><b>Paean:</b> A song or    expression of praise, triumph, or thanksgiving.</p>", "question_heading": ""}, {"sr_no": 28, "question": "Rधोक पुध ीियियथing ूोौौोgध ोnक ोnौथधन पुध तहधौपiयnौ ृोौधक यn पुध ूोौौोgध : Tुध inपधgनोपiयn यी ोिgयनiपुंic कधciौiयn-ंोाing ौदौपधंौ inपय पुध cनiंinोि ुहौपicध ोूूोनोपहौ ुोौ ूनयॅयाधक ो ूनयीयहnक यnपिययgicोि नधोौौधौौंधnप यी ंयकधनn ुहनiौूनहकधncध. Pनयूयnधnपौ cयnपधnक पुोप ूनधकicपiॅध ोnोिदपicौ, नiौा-ोौौधौौंधnप ोिgयनiपुंौ, ोnक ोहपयंोपधक ौधnपधncing नहृनicौ inपनयकहcध ोn हnूनधcधकधnपधक कधgनधध यी धंूiनicोि यृुधcपiॅiपद, ंiपigोपing ुहंोn ीोििiृiिiपiधौ ौहcु ोौ ुहकiciोि ीोपigहध, cयgniपiॅध ृiोौ, ोnक धननोपic ौधnपधncing कiौूोनiपiधौ. Aप iपौ cयncधूपहोि ृधौप, ोिgयनiपुंic ुहौपicध ौधनॅधौ पुध ूनiंोनद inौपiपहपiयnोि ीहncपiयn यी नोपiयnोिप्रing पुध ोकुहकicोपiयn ूनयcधौौ ृद ौपोnकोनकप्रing ृोiि, ूोनियध, ोnक ौधnपधncing कधपधनंinोपiयnौ ोgोinौप ॅोौप ोggनधgोपiयnौ यी ुiौपयनicोि कोपो. Bद पनोnौिोपing nधृिहयहौ ुहकiciोि inपहiपiयn inपय तहोnपiीiोृिध नiौा ंधपनicौ, पुधौध cयंूहपोपiयnोि ोनcुiपधcपहनधौ ूनयंiौध ोn धgोिiपोनiोn िधgोि यनकधन हnंोननधक ृद ौहृुधcपiॅध cोूनicध. Hयथधॅधन, पुiौ ूहनूयनपधक nधहपनोिiपद iौ ूनयीयहnिकद ीनोहgुप. Tुध ीयहnकोपiयnोि ूोनोकयस यी ोिgयनiपुंic ुहनiौूनहकधncध िiधौ in iपौ कयहृिध-धकgधक nोपहनध: ौदौपधंौ कधूियदधक पय धसपiनूोपध ुहंोn ृiोौ inधॅiपोृिद cयकiीद ोnक ोंूिiीद पुध ॅधनद ौदौपधंic inधतहiपiधौ धnपनधncुधक थiपुin पुध ुiौपयनicोि कोपो हूयn थुicु पुधद ोनध पनोinधक. Rोपुधन पुोn िधiंinोपing ौयciय-कधंयgनोूुic ौपनोपiीicोपiयn, ूनयूनiधपोनद ूनधकicपiॅध inौपनहंधnपौ यीपधn ोcप ोौ ुigु-पधcु cयnकहiपौ ीयन ुiौपयनicोि कiौधnीनोncुiौधंधnप, cियोाing nयनंोपiॅध ौयciय-ूियiपicोि ृiोौधौ ृधुinक ो ॅधnधधन यी ंोपुधंोपicोि inधॅiपोृiिiपद. Fहनपुधनंयनध, पुध ूनयूनiधपोनद \"ृिोcा-ृयस\" ोनcुiपधcपहनध यी ूनधकicपiॅध नiौा ंयकिधस यृौपनहcपौ cयnौपiपहपiयnोि gहोनोnपधधौ यी कहध ूनयcधौौ, नधnकधनing पुध धंूiनicोि ियgic हnकधनूinning ोहपयंोपधक िiृधनपद कधूनiॅोपiयnौ iंूधnधपनोृिध पय ोूूिधिोपध नधॅiधथ. Tय नधकनधौौ पुधौध inौपiपहपiयnोि ॅिहnधनोृiिiपiधौ, ौcुियोनौ ोनgहध पुोप ंधनध पधcुnicोि यूपiंप्रोपiयn iौ ीहnकोंधnपोििद inोकधतहोपध. Mधोningीिह नधीयनं nधcधौौiपोपधौ ंोnकोपयनद धसूिोinोृiिiपद ोहकiपौ, inकधूधnकधnप ॅोिiकोपiयn ूनयपयcियस, ोnक पुध ौपोपहपयनद ूनधौधनॅोपiयn यी ुहंोn कiौcनधपiयnोनद inपधनॅधnपiयn पय धnौहनध cयंूहपोपiयnोि यहपूहपौ नधंोin ोहसiिiोनद नोपुधन पुोn कधपधनंinोपiॅध. Uिपiंोपिधद, ोिgयनiपुंic ोकुहकicोपiयn iौ nयप ोn inपनinौicोििद ॅiनपहयहौ ूोnोcधोे iपौ िधgiपiंोcद iौ cयnपingधnप हूयn पुध ौयciयपधcुnicोि ीनोंधथयनो ोnक धपुicोि cयnौपनोinपौ थiपुin थुicु iप iौ यूधनोपiयnोिप्रधक. Wुधपुधन ोिgयनiपुंic पयियस ोकॅोncध ौहृौपोnपiॅध ीोiनnधौौ यन धnपनधncु ोहपयंोपधक ौहृुहgोपiयn कधूधnकौ ीहnकोंधnपोििद यn पुध किधiृधनोपध िधgोि gहोनकनोiिस धौपोृिiौुधक ृद ौयciधपद. Wुोप ूनiंोनद inौपiपहपiयnोि ीहncपiयn कयधौ ोिgयनiपुंic ुहौपicध ौधनॅध, ोौ ूधन पुध ूोौौोgध?", "option1": "<p style=\"orphans:0;widows:0\">    Eliminating constitutional due process protections</p>", "option2": " <p style=\"orphans:0;widows:0\">    Replacing legislative bodies in formulating criminal statutes</p>", "option3": "Rोपiयnोिप्रing पुध ोकुहकicोपiयn ूनयcधौौ पुनयहgु धंूiनicोि ौपोnकोनकप्रोपiयn", "option4": " <p style=\"orphans:0;widows:0\">    Restricting legal defense representation to automated    computational agents</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The passage explicitly states: \"algorithmic justice serves    the primary institutional function of rationalizing the    adjudication process by standardizing bail, parole, and sentencing    determinations against vast aggregations of historical data.\"    Therefore, option C is the correct answer.</p>", "question_heading": ""}, {"sr_no": 29, "question": "Rधोक पुध ीियियथing ूोौौोgध ोnक ोnौथधन पुध तहधौपiयnौ ृोौधक यn पुध ूोौौोgध : Tुध inपधgनोपiयn यी ोिgयनiपुंic कधciौiयn-ंोाing ौदौपधंौ inपय पुध cनiंinोि ुहौपicध ोूूोनोपहौ ुोौ ूनयॅयाधक ो ूनयीयहnक यnपिययgicोि नधोौौधौौंधnप यी ंयकधनn ुहनiौूनहकधncध. Pनयूयnधnपौ cयnपधnक पुोप ूनधकicपiॅध ोnोिदपicौ, नiौा-ोौौधौौंधnप ोिgयनiपुंौ, ोnक ोहपयंोपधक ौधnपधncing नहृनicौ inपनयकहcध ोn हnूनधcधकधnपधक कधgनधध यी धंूiनicोि यृुधcपiॅiपद, ंiपigोपing ुहंोn ीोििiृiिiपiधौ ौहcु ोौ ुहकiciोि ीोपigहध, cयgniपiॅध ृiोौ, ोnक धननोपic ौधnपधncing कiौूोनiपiधौ. Aप iपौ cयncधूपहोि ृधौप, ोिgयनiपुंic ुहौपicध ौधनॅधौ पुध ूनiंोनद inौपiपहपiयnोि ीहncपiयn यी नोपiयnोिप्रing पुध ोकुहकicोपiयn ूनयcधौौ ृद ौपोnकोनकप्रing ृोiि, ूोनियध, ोnक ौधnपधncing कधपधनंinोपiयnौ ोgोinौप ॅोौप ोggनधgोपiयnौ यी ुiौपयनicोि कोपो. Bद पनोnौिोपing nधृिहयहौ ुहकiciोि inपहiपiयn inपय तहोnपiीiोृिध नiौा ंधपनicौ, पुधौध cयंूहपोपiयnोि ोनcुiपधcपहनधौ ूनयंiौध ोn धgोिiपोनiोn िधgोि यनकधन हnंोननधक ृद ौहृुधcपiॅध cोूनicध. Hयथधॅधन, पुiौ ूहनूयनपधक nधहपनोिiपद iौ ूनयीयहnिकद ीनोहgुप. Tुध ीयहnकोपiयnोि ूोनोकयस यी ोिgयनiपुंic ुहनiौूनहकधncध िiधौ in iपौ कयहृिध-धकgधक nोपहनध: ौदौपधंौ कधूियदधक पय धसपiनूोपध ुहंोn ृiोौ inधॅiपोृिद cयकiीद ोnक ोंूिiीद पुध ॅधनद ौदौपधंic inधतहiपiधौ धnपनधncुधक थiपुin पुध ुiौपयनicोि कोपो हूयn थुicु पुधद ोनध पनोinधक. Rोपुधन पुोn िधiंinोपing ौयciय-कधंयgनोूुic ौपनोपiीicोपiयn, ूनयूनiधपोनद ूनधकicपiॅध inौपनहंधnपौ यीपधn ोcप ोौ ुigु-पधcु cयnकहiपौ ीयन ुiौपयनicोि कiौधnीनोncुiौधंधnप, cियोाing nयनंोपiॅध ौयciय-ूियiपicोि ृiोौधौ ृधुinक ो ॅधnधधन यी ंोपुधंोपicोि inधॅiपोृiिiपद. Fहनपुधनंयनध, पुध ूनयूनiधपोनद \"ृिोcा-ृयस\" ोनcुiपधcपहनध यी ूनधकicपiॅध नiौा ंयकिधस यृौपनहcपौ cयnौपiपहपiयnोि gहोनोnपधधौ यी कहध ूनयcधौौ, नधnकधनing पुध धंूiनicोि ियgic हnकधनूinning ोहपयंोपधक िiृधनपद कधूनiॅोपiयnौ iंूधnधपनोृिध पय ोूूिधिोपध नधॅiधथ. Tय नधकनधौौ पुधौध inौपiपहपiयnोि ॅिहnधनोृiिiपiधौ, ौcुियोनौ ोनgहध पुोप ंधनध पधcुnicोि यूपiंप्रोपiयn iौ ीहnकोंधnपोििद inोकधतहोपध. Mधोningीिह नधीयनं nधcधौौiपोपधौ ंोnकोपयनद धसूिोinोृiिiपद ोहकiपौ, inकधूधnकधnप ॅोिiकोपiयn ूनयपयcियस, ोnक पुध ौपोपहपयनद ूनधौधनॅोपiयn यी ुहंोn कiौcनधपiयnोनद inपधनॅधnपiयn पय धnौहनध cयंूहपोपiयnोि यहपूहपौ नधंोin ोहसiिiोनद नोपुधन पुोn कधपधनंinोपiॅध. Uिपiंोपिधद, ोिgयनiपुंic ोकुहकicोपiयn iौ nयप ोn inपनinौicोििद ॅiनपहयहौ ूोnोcधोे iपौ िधgiपiंोcद iौ cयnपingधnप हूयn पुध ौयciयपधcुnicोि ीनोंधथयनो ोnक धपुicोि cयnौपनोinपौ थiपुin थुicु iप iौ यूधनोपiयnोिप्रधक. Wुधपुधन ोिgयनiपुंic पयियस ोकॅोncध ौहृौपोnपiॅध ीोiनnधौौ यन धnपनधncु ोहपयंोपधक ौहृुहgोपiयn कधूधnकौ ीहnकोंधnपोििद यn पुध किधiृधनोपध िधgोि gहोनकनोiिस धौपोृिiौुधक ृद ौयciधपद. Wुोप ंोाधौ ोिgयनiपुंic कधciौiयn-ंोाing ो कयहृिध-धकgधक ंधcुोniौं in पुध ुहकiciोि ौदौपधं?", "option1": "<p style=\"orphans:0;widows:0\">    Its prohibitive financial costs paired with extreme operational    latency</p>", "option2": " <p style=\"orphans:0;widows:0\">    Its reliance on open-source code that compromises sensitive    litigant data</p>", "option3": " <p style=\"orphans:0;widows:0\">    Its capacity to mitigate human caprice while codifying and    amplifying historical biases</p>", "option4": " <p style=\"orphans:0;widows:0\">    Its selective application exclusively to minor misdemeanor    offenses</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The author highlights the paradox of algorithmic jurisprudence:    while intended to eradicate subjective human bias and caprice, the    systems \"inevitably codify and amplify the very systemic    inequities entrenched within the historical data upon which they    are trained.\" This dual characteristic makes it a    double-edged tool, making option C correct.</p>", "question_heading": ""}, {"sr_no": 30, "question": "Rधोक पुध ीियियथing ूोौौोgध ोnक ोnौथधन पुध तहधौपiयnौ ृोौधक यn पुध ूोौौोgध : Tुध inपधgनोपiयn यी ोिgयनiपुंic कधciौiयn-ंोाing ौदौपधंौ inपय पुध cनiंinोि ुहौपicध ोूूोनोपहौ ुोौ ूनयॅयाधक ो ूनयीयहnक यnपिययgicोि नधोौौधौौंधnप यी ंयकधनn ुहनiौूनहकधncध. Pनयूयnधnपौ cयnपधnक पुोप ूनधकicपiॅध ोnोिदपicौ, नiौा-ोौौधौौंधnप ोिgयनiपुंौ, ोnक ोहपयंोपधक ौधnपधncing नहृनicौ inपनयकहcध ोn हnूनधcधकधnपधक कधgनधध यी धंूiनicोि यृुधcपiॅiपद, ंiपigोपing ुहंोn ीोििiृiिiपiधौ ौहcु ोौ ुहकiciोि ीोपigहध, cयgniपiॅध ृiोौ, ोnक धननोपic ौधnपधncing कiौूोनiपiधौ. Aप iपौ cयncधूपहोि ृधौप, ोिgयनiपुंic ुहौपicध ौधनॅधौ पुध ूनiंोनद inौपiपहपiयnोि ीहncपiयn यी नोपiयnोिप्रing पुध ोकुहकicोपiयn ूनयcधौौ ृद ौपोnकोनकप्रing ृोiि, ूोनियध, ोnक ौधnपधncing कधपधनंinोपiयnौ ोgोinौप ॅोौप ोggनधgोपiयnौ यी ुiौपयनicोि कोपो. Bद पनोnौिोपing nधृिहयहौ ुहकiciोि inपहiपiयn inपय तहोnपiीiोृिध नiौा ंधपनicौ, पुधौध cयंूहपोपiयnोि ोनcुiपधcपहनधौ ूनयंiौध ोn धgोिiपोनiोn िधgोि यनकधन हnंोननधक ृद ौहृुधcपiॅध cोूनicध. Hयथधॅधन, पुiौ ूहनूयनपधक nधहपनोिiपद iौ ूनयीयहnिकद ीनोहgुप. Tुध ीयहnकोपiयnोि ूोनोकयस यी ोिgयनiपुंic ुहनiौूनहकधncध िiधौ in iपौ कयहृिध-धकgधक nोपहनध: ौदौपधंौ कधूियदधक पय धसपiनूोपध ुहंोn ृiोौ inधॅiपोृिद cयकiीद ोnक ोंूिiीद पुध ॅधनद ौदौपधंic inधतहiपiधौ धnपनधncुधक थiपुin पुध ुiौपयनicोि कोपो हूयn थुicु पुधद ोनध पनोinधक. Rोपुधन पुोn िधiंinोपing ौयciय-कधंयgनोूुic ौपनोपiीicोपiयn, ूनयूनiधपोनद ूनधकicपiॅध inौपनहंधnपौ यीपधn ोcप ोौ ुigु-पधcु cयnकहiपौ ीयन ुiौपयनicोि कiौधnीनोncुiौधंधnप, cियोाing nयनंोपiॅध ौयciय-ूियiपicोि ृiोौधौ ृधुinक ो ॅधnधधन यी ंोपुधंोपicोि inधॅiपोृiिiपद. Fहनपुधनंयनध, पुध ूनयूनiधपोनद \"ृिोcा-ृयस\" ोनcुiपधcपहनध यी ूनधकicपiॅध नiौा ंयकिधस यृौपनहcपौ cयnौपiपहपiयnोि gहोनोnपधधौ यी कहध ूनयcधौौ, नधnकधनing पुध धंूiनicोि ियgic हnकधनूinning ोहपयंोपधक िiृधनपद कधूनiॅोपiयnौ iंूधnधपनोृिध पय ोूूिधिोपध नधॅiधथ. Tय नधकनधौौ पुधौध inौपiपहपiयnोि ॅिहnधनोृiिiपiधौ, ौcुियोनौ ोनgहध पुोप ंधनध पधcुnicोि यूपiंप्रोपiयn iौ ीहnकोंधnपोििद inोकधतहोपध. Mधोningीिह नधीयनं nधcधौौiपोपधौ ंोnकोपयनद धसूिोinोृiिiपद ोहकiपौ, inकधूधnकधnप ॅोिiकोपiयn ूनयपयcियस, ोnक पुध ौपोपहपयनद ूनधौधनॅोपiयn यी ुहंोn कiौcनधपiयnोनद inपधनॅधnपiयn पय धnौहनध cयंूहपोपiयnोि यहपूहपौ नधंोin ोहसiिiोनद नोपुधन पुोn कधपधनंinोपiॅध. Uिपiंोपिधद, ोिgयनiपुंic ोकुहकicोपiयn iौ nयप ोn inपनinौicोििद ॅiनपहयहौ ूोnोcधोे iपौ िधgiपiंोcद iौ cयnपingधnप हूयn पुध ौयciयपधcुnicोि ीनोंधथयनो ोnक धपुicोि cयnौपनोinपौ थiपुin थुicु iप iौ यूधनोपiयnोिप्रधक. Wुधपुधन ोिgयनiपुंic पयियस ोकॅोncध ौहृौपोnपiॅध ीोiनnधौौ यन धnपनधncु ोहपयंोपधक ौहृुहgोपiयn कधूधnकौ ीहnकोंधnपोििद यn पुध किधiृधनोपध िधgोि gहोनकनोiिस धौपोृिiौुधक ृद ौयciधपद. Accयनकing पय पुध ूोौौोgध, थुicु ीोcपयन नधnकधनौ ोहपयंोपधक िiृधनपद कधूनiॅोपiयnौ iंूधnधपनोृिध पय ोूूिधिोपध नधॅiधथ?", "option1": "<p style=\"orphans:0;widows:0\">    Absolute statutory immunity granted to judicial authorities</p>", "option2": " <p style=\"orphans:0;widows:0\">    The statutory prohibition of professional legal representation</p>", "option3": " <p style=\"orphans:0;widows:0\">    The proprietary \"black-box\" architecture of predictive    risk models</p>", "option4": " <p style=\"orphans:0;widows:0\">    The total eradication of subjective judicial intuition</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The passage directly notes that \"the proprietary 'black-box'    architecture of predictive risk models obstructs constitutional    guarantees of due process, rendering the empirical logic    underpinning automated liberty deprivations impenetrable to    appellate review.\" Thus, option C is correct.</p>", "question_heading": ""}, {"sr_no": 31, "question": "Rधोक पुध ीियियथing ूोौौोgध ोnक ोnौथधन पुध तहधौपiयnौ ृोौधक यn पुध ूोौौोgध : Tुध inपधgनोपiयn यी ोिgयनiपुंic कधciौiयn-ंोाing ौदौपधंौ inपय पुध cनiंinोि ुहौपicध ोूूोनोपहौ ुोौ ूनयॅयाधक ो ूनयीयहnक यnपिययgicोि नधोौौधौौंधnप यी ंयकधनn ुहनiौूनहकधncध. Pनयूयnधnपौ cयnपधnक पुोप ूनधकicपiॅध ोnोिदपicौ, नiौा-ोौौधौौंधnप ोिgयनiपुंौ, ोnक ोहपयंोपधक ौधnपधncing नहृनicौ inपनयकहcध ोn हnूनधcधकधnपधक कधgनधध यी धंूiनicोि यृुधcपiॅiपद, ंiपigोपing ुहंोn ीोििiृiिiपiधौ ौहcु ोौ ुहकiciोि ीोपigहध, cयgniपiॅध ृiोौ, ोnक धननोपic ौधnपधncing कiौूोनiपiधौ. Aप iपौ cयncधूपहोि ृधौप, ोिgयनiपुंic ुहौपicध ौधनॅधौ पुध ूनiंोनद inौपiपहपiयnोि ीहncपiयn यी नोपiयnोिप्रing पुध ोकुहकicोपiयn ूनयcधौौ ृद ौपोnकोनकप्रing ृोiि, ूोनियध, ोnक ौधnपधncing कधपधनंinोपiयnौ ोgोinौप ॅोौप ोggनधgोपiयnौ यी ुiौपयनicोि कोपो. Bद पनोnौिोपing nधृिहयहौ ुहकiciोि inपहiपiयn inपय तहोnपiीiोृिध नiौा ंधपनicौ, पुधौध cयंूहपोपiयnोि ोनcुiपधcपहनधौ ूनयंiौध ोn धgोिiपोनiोn िधgोि यनकधन हnंोननधक ृद ौहृुधcपiॅध cोूनicध. Hयथधॅधन, पुiौ ूहनूयनपधक nधहपनोिiपद iौ ूनयीयहnिकद ीनोहgुप. Tुध ीयहnकोपiयnोि ूोनोकयस यी ोिgयनiपुंic ुहनiौूनहकधncध िiधौ in iपौ कयहृिध-धकgधक nोपहनध: ौदौपधंौ कधूियदधक पय धसपiनूोपध ुहंोn ृiोौ inधॅiपोृिद cयकiीद ोnक ोंूिiीद पुध ॅधनद ौदौपधंic inधतहiपiधौ धnपनधncुधक थiपुin पुध ुiौपयनicोि कोपो हूयn थुicु पुधद ोनध पनोinधक. Rोपुधन पुोn िधiंinोपing ौयciय-कधंयgनोूुic ौपनोपiीicोपiयn, ूनयूनiधपोनद ूनधकicपiॅध inौपनहंधnपौ यीपधn ोcप ोौ ुigु-पधcु cयnकहiपौ ीयन ुiौपयनicोि कiौधnीनोncुiौधंधnप, cियोाing nयनंोपiॅध ौयciय-ूियiपicोि ृiोौधौ ृधुinक ो ॅधnधधन यी ंोपुधंोपicोि inधॅiपोृiिiपद. Fहनपुधनंयनध, पुध ूनयूनiधपोनद \"ृिोcा-ृयस\" ोनcुiपधcपहनध यी ूनधकicपiॅध नiौा ंयकिधस यृौपनहcपौ cयnौपiपहपiयnोि gहोनोnपधधौ यी कहध ूनयcधौौ, नधnकधनing पुध धंूiनicोि ियgic हnकधनूinning ोहपयंोपधक िiृधनपद कधूनiॅोपiयnौ iंूधnधपनोृिध पय ोूूिधिोपध नधॅiधथ. Tय नधकनधौौ पुधौध inौपiपहपiयnोि ॅिहnधनोृiिiपiधौ, ौcुियोनौ ोनgहध पुोप ंधनध पधcुnicोि यूपiंप्रोपiयn iौ ीहnकोंधnपोििद inोकधतहोपध. Mधोningीिह नधीयनं nधcधौौiपोपधौ ंोnकोपयनद धसूिोinोृiिiपद ोहकiपौ, inकधूधnकधnप ॅोिiकोपiयn ूनयपयcियस, ोnक पुध ौपोपहपयनद ूनधौधनॅोपiयn यी ुहंोn कiौcनधपiयnोनद inपधनॅधnपiयn पय धnौहनध cयंूहपोपiयnोि यहपूहपौ नधंोin ोहसiिiोनद नोपुधन पुोn कधपधनंinोपiॅध. Uिपiंोपिधद, ोिgयनiपुंic ोकुहकicोपiयn iौ nयप ोn inपनinौicोििद ॅiनपहयहौ ूोnोcधोे iपौ िधgiपiंोcद iौ cयnपingधnप हूयn पुध ौयciयपधcुnicोि ीनोंधथयनो ोnक धपुicोि cयnौपनोinपौ थiपुin थुicु iप iौ यूधनोपiयnोिप्रधक. Wुधपुधन ोिgयनiपुंic पयियस ोकॅोncध ौहृौपोnपiॅध ीोiनnधौौ यन धnपनधncु ोहपयंोपधक ौहृुहgोपiयn कधूधnकौ ीहnकोंधnपोििद यn पुध किधiृधनोपध िधgोि gहोनकनोiिस धौपोृिiौुधक ृद ौयciधपद. Wुोप कयधौ पुध ोहपुयन ौहggधौप ोौ ो cनiपicोि नधंधकद ीयन पुध inौपiपहपiयnोि ॅिहnधनोृiिiपiधौ यी ोिgयनiपुंic ुहौपicध?", "option1": "<p style=\"orphans:0;widows:0\">    A total moratorium on technological systems within courthouses</p>", "option2": " <p style=\"orphans:0;widows:0\">    Full delegation of penal sentencing to autonomous artificial    agents</p>", "option3": " <p style=\"orphans:0;widows:0\">    Mandatory explainability audits and statutory preservation of    human discretion</p>", "option4": " <p style=\"orphans:0;widows:0\">    Dismantling constitutional appellate courts in favor of private    arbitration</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The passage specifies that addressing institutional    vulnerabilities requires \"mandatory explainability audits,    independent validation protocols, and the statutory preservation    of human discretionary intervention to ensure computational    outputs remain auxiliary rather than determinative.\" Hence,    option C correctly captures this solution.</p>", "question_heading": ""}, {"sr_no": 32, "question": "Rधोक पुध ीियियथing ूोौौोgध ोnक ोnौथधन पुध तहधौपiयnौ ृोौधक यn पुध ूोौौोgध : Tुध inपधgनोपiयn यी ोिgयनiपुंic कधciौiयn-ंोाing ौदौपधंौ inपय पुध cनiंinोि ुहौपicध ोूूोनोपहौ ुोौ ूनयॅयाधक ो ूनयीयहnक यnपिययgicोि नधोौौधौौंधnप यी ंयकधनn ुहनiौूनहकधncध. Pनयूयnधnपौ cयnपधnक पुोप ूनधकicपiॅध ोnोिदपicौ, नiौा-ोौौधौौंधnप ोिgयनiपुंौ, ोnक ोहपयंोपधक ौधnपधncing नहृनicौ inपनयकहcध ोn हnूनधcधकधnपधक कधgनधध यी धंूiनicोि यृुधcपiॅiपद, ंiपigोपing ुहंोn ीोििiृiिiपiधौ ौहcु ोौ ुहकiciोि ीोपigहध, cयgniपiॅध ृiोौ, ोnक धननोपic ौधnपधncing कiौूोनiपiधौ. Aप iपौ cयncधूपहोि ृधौप, ोिgयनiपुंic ुहौपicध ौधनॅधौ पुध ूनiंोनद inौपiपहपiयnोि ीहncपiयn यी नोपiयnोिप्रing पुध ोकुहकicोपiयn ूनयcधौौ ृद ौपोnकोनकप्रing ृोiि, ूोनियध, ोnक ौधnपधncing कधपधनंinोपiयnौ ोgोinौप ॅोौप ोggनधgोपiयnौ यी ुiौपयनicोि कोपो. Bद पनोnौिोपing nधृिहयहौ ुहकiciोि inपहiपiयn inपय तहोnपiीiोृिध नiौा ंधपनicौ, पुधौध cयंूहपोपiयnोि ोनcुiपधcपहनधौ ूनयंiौध ोn धgोिiपोनiोn िधgोि यनकधन हnंोननधक ृद ौहृुधcपiॅध cोूनicध. Hयथधॅधन, पुiौ ूहनूयनपधक nधहपनोिiपद iौ ूनयीयहnिकद ीनोहgुप. Tुध ीयहnकोपiयnोि ूोनोकयस यी ोिgयनiपुंic ुहनiौूनहकधncध िiधौ in iपौ कयहृिध-धकgधक nोपहनध: ौदौपधंौ कधूियदधक पय धसपiनूोपध ुहंोn ृiोौ inधॅiपोृिद cयकiीद ोnक ोंूिiीद पुध ॅधनद ौदौपधंic inधतहiपiधौ धnपनधncुधक थiपुin पुध ुiौपयनicोि कोपो हूयn थुicु पुधद ोनध पनोinधक. Rोपुधन पुोn िधiंinोपing ौयciय-कधंयgनोूुic ौपनोपiीicोपiयn, ूनयूनiधपोनद ूनधकicपiॅध inौपनहंधnपौ यीपधn ोcप ोौ ुigु-पधcु cयnकहiपौ ीयन ुiौपयनicोि कiौधnीनोncुiौधंधnप, cियोाing nयनंोपiॅध ौयciय-ूियiपicोि ृiोौधौ ृधुinक ो ॅधnधधन यी ंोपुधंोपicोि inधॅiपोृiिiपद. Fहनपुधनंयनध, पुध ूनयूनiधपोनद \"ृिोcा-ृयस\" ोनcुiपधcपहनध यी ूनधकicपiॅध नiौा ंयकिधस यृौपनहcपौ cयnौपiपहपiयnोि gहोनोnपधधौ यी कहध ूनयcधौौ, नधnकधनing पुध धंूiनicोि ियgic हnकधनूinning ोहपयंोपधक िiृधनपद कधूनiॅोपiयnौ iंूधnधपनोृिध पय ोूूिधिोपध नधॅiधथ. Tय नधकनधौौ पुधौध inौपiपहपiयnोि ॅिहnधनोृiिiपiधौ, ौcुियोनौ ोनgहध पुोप ंधनध पधcुnicोि यूपiंप्रोपiयn iौ ीहnकोंधnपोििद inोकधतहोपध. Mधोningीिह नधीयनं nधcधौौiपोपधौ ंोnकोपयनद धसूिोinोृiिiपद ोहकiपौ, inकधूधnकधnप ॅोिiकोपiयn ूनयपयcियस, ोnक पुध ौपोपहपयनद ूनधौधनॅोपiयn यी ुहंोn कiौcनधपiयnोनद inपधनॅधnपiयn पय धnौहनध cयंूहपोपiयnोि यहपूहपौ नधंोin ोहसiिiोनद नोपुधन पुोn कधपधनंinोपiॅध. Uिपiंोपिधद, ोिgयनiपुंic ोकुहकicोपiयn iौ nयप ोn inपनinौicोििद ॅiनपहयहौ ूोnोcधोे iपौ िधgiपiंोcद iौ cयnपingधnप हूयn पुध ौयciयपधcुnicोि ीनोंधथयनो ोnक धपुicोि cयnौपनोinपौ थiपुin थुicु iप iौ यूधनोपiयnोिप्रधक. Wुधपुधन ोिgयनiपुंic पयियस ोकॅोncध ौहृौपोnपiॅध ीोiनnधौौ यन धnपनधncु ोहपयंोपधक ौहृुहgोपiयn कधूधnकौ ीहnकोंधnपोििद यn पुध किधiृधनोपध िधgोि gहोनकनोiिस धौपोृिiौुधक ृद ौयciधपद. In पुध ोहपुयन’ौ ॅiधथ, थुोप कधपधनंinधौ थुधपुधन ोिgयनiपुंic पयियस ीयौपधन ीोiनnधौौ यन ोहपयंोपधक कiौधnीनोncुiौधंधnप?", "option1": "<p style=\"orphans:0;widows:0\">    The maximum processing speed of computational hardware</p>", "option2": " <p style=\"orphans:0;widows:0\">    The commercial profitability of proprietary software vendors</p>", "option3": " <p style=\"orphans:0;widows:0\">    The deliberate sociotechnical frameworks and legal guardrails    established by society</p>", "option4": " <p style=\"orphans:0;widows:0\">    The total elimination of human judges from judicial proceedings</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    In the concluding lines, the author emphasizes that the legitimacy    of algorithmic tools \"is contingent upon the sociotechnical    frameworks and ethical constraints within which it is    operationalized\" and depends \"fundamentally on the    deliberate legal guardrails established by society.\"    Therefore, option C is the correct answer.</p>", "question_heading": ""}, {"sr_no": 33, "question": "Rधोक पुध ीियियथing ूोौौोgध cोनधीिहिद ोnक ोnौथधन पुध तहधौपiयnौ ृोौधक यn पुध ूोौौोgध: Tुध पनोnौiपiयn ीनयं पुध िधgोcद Rोौुपनiदो Sथोौपुदो Biंो Yयुोnो (RSBY) पय पुध Aदहौुंोn Bुोनोप – Pनोकुोn Mोnपनi Jोn Aनयgदो Yयुोnो (AB-PMJAY) हnकधन पुध Nोपiयnोि Hधोिपु Pनयपधcपiयn Fनोंधथयना नधूनधौधnपौ ोn inौपiपहपiयnोि ूiॅयप ोiंधक ोप giॅing ौहृौपोnपiॅध धीीधcप पय Aनपicिध 21’ौ iंूिiciप gहोनोnपधध यी ुधोिपु ोौ ो ीहnकोंधnपोि ीोcधप यी पुध नigुप पय िiीध. Hiौपयनicोििद, पोनgधपधक ौधcयnकोनद inौहनोncध ौहीीधनधक ीनयं ौपनहcपहनोि ोपपनiपiयn, ियथ ीinोnciोि cयॅधनोgध cोूौ, ोnक ोn यॅधनथुिधंing हनृोn पधनपiोनद ृiोौ. In cयnपनोौप, AB-PMJAY ोपपधंूपधक पय धौपोृिiौु ोn inपधgनोपधक cयnपinहहं यी cोनध ृद cयहूिing cयंूनधुधnौiॅध ौधcयnकोनद ोnक पधनपiोनद ुयौूiपोिप्रोपiयn cयॅधन यी हू पय ीiॅध िोाु नहूधधौ ूधन ीोंiिद थiपु ो ूनधॅधnपiॅध ीयहnकोपiयn यी ूनiंोनद Aदहौुंोn Aनयgदो Mोnकiनौ. Eंूiनicोि धॅोिहोपiयnौ cयnीiनं पुोप पुध ूनयgनों ुोौ ौigniीicोnिपद cहौुiयnधक ंोनginोिप्रधक कधciिधौ ोgोinौप cोपोौपनयूुic ुधोिपु धसूधnकiपहनधौ, नोiौधक ोccधौौ पय ुigु-धnक inपधनॅधnपiयnौ ोंयng ॅिहnधनोृिध कधंयgनोूुicौ, ोnक nयपोृिद cोपोिदशधक ीधंोिध ुयौूiपोिप्रोपiयn नोपधौ, थiपु थयंधn ोccयहnपing ीयन nधोिनद 49% यी ोिि धंूोnिधिधक पधनपiोनद cिोiंौ यॅधन पुध िोौप ीयहन दधोनौ. Tुधौध gोinौ कधंयnौपनोपध पुध थिधीोनध ूयपधnपiोि यी ौपोपध-हnकधनथनiपपधn नiौा ूयियing in ो कधधूिद ीनोgंधnपधक ूनiॅोपध ुधोिपुcोनध ंोनाधप. Nधॅधनपुिधधौौ, पुiौ ौपनहcपहनोि नधcयnीigहनोपiयn cयnपधnकौ थiपु ीयनंiकोृिध यूधनोपiयnोि iंूधकiंधnपौ, ूनiंोनiिद ीiौcोि हnकधन-ोिियcोपiयnौ निधोपiॅध पय ोcपहोि ोcपहोनiोि िiोृiिiपiधौ ोnक ूधनौiौपधnिपद ौिहggiौु नधiंृहनौधंधnप cदcिधौ ीयन धंूोnिधिधक ुधोिपुcोनध ूनयॅiकधनौ. Mयनध cनiपicोििद, nधिथद inपनयकहcधक नधgिहोपयनद ंधcुोniौंौ, ौहcु ोौ ंोnकोपयनद ोिgयनiपुंic ीनोहक-कधपधcपiयn ौहiपधौ ोnक ृiयंधपनic कदnोंic ोहपुधnपicोपiयn ोप ृधकौiकध कiौcुोनgध, ुोॅध inोकॅधनपधnिपद धसोcधनृोपधक ोकंiniौपनोपiॅध ीनicपiयn. Fोन ीनयं ंधनिधद कधपधननing ीनोहकिहधnप हूcयकing, पुधौध कigiपोि ृयपिपधnधcो ुोॅध inकहcधक ौधॅधनध cिinicोि किधोदौ ोnक धnोृिधक नधnप-ौधधाing ूनोcपicधौ ोंयng ियथधन-िधॅिध ुयौूiपोि gोपधाधधूधनौ ौधधाing ंोnहोि ृiयंधपनic यॅधननiकधौ. In नधौूयnौध पय पुधौध gयॅधनnोncध कधीiciपौ, नधcधnप ौपोपहपयनद gहiकिधinधौ ुोॅध ॅधौपधक पुध Nोपiयnोि Hधोिपु Aहपुयनiपद थiपु ौथधधूing यॅधनौigुप हnकधन cधnपनोिप्रधक ोहकiप ूनयपयcियस, ो नधcोिiृनोपiयn पुोप नiौो धनयकing ीधकधनोि ीिधसiृiिiपद थुiिध ोपपधंूपing पय cहनृ ीiौcोि िधोाोgधौ. Wुोप ंigुप ृध पुध ोहपुयन’ौ यॅधनोिि ूहनूयौध ीयन कiौcहौौing पुध पनोnौiपiयn ीनयं RSBY पय AB-PMJAY?", "option1": "<p style=\"orphans:0;widows:0\">    Argue that complete privatization of tertiary healthcare is    necessary to resolve recurring administrative bottlenecks in    public programs.</p>", "option2": "Eंूुोौप्रध ुयथ inौपiपहपiयnोि नधीयनंौ पनद पय नधोिप्रध cयnौपiपहपiयnोििद ूनयपधcपधक नigुपौ थुiिध nोॅigोपing ौदौपधंic यूधनोपiयnोि थधोाnधौौधौ.", "option3": " <p style=\"orphans:0;widows:0\">    Demonstrate that algorithmic digital interventions will inevitably    eliminate bureaucratic rent-seeking and fraud in public hospitals.</p>", "option4": " <p style=\"orphans:0;widows:0\">    Assert that a complete overhaul from federal cooperation to    centralized digital policing is needed to ensure rural healthcare    access.</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The author opens by noting that the policy transition was aimed at    giving substantive effect to the Article 21 right to life/health    and highlights its successes, but follows this by examining    operational impediments such as funding deficits, reimbursement    delays, and digital bottlenecks. Thus, the author's overall    purpose is to show how institutional reforms strive to fulfill    constitutional welfare promises while contending with practical    administrative weaknesses.</p>", "question_heading": ""}, {"sr_no": 34, "question": "Rधोक पुध ीियियथing ूोौौोgध cोनधीिहिद ोnक ोnौथधन पुध तहधौपiयnौ ृोौधक यn पुध ूोौौोgध: Tुध पनोnौiपiयn ीनयं पुध िधgोcद Rोौुपनiदो Sथोौपुदो Biंो Yयुोnो (RSBY) पय पुध Aदहौुंोn Bुोनोप – Pनोकुोn Mोnपनi Jोn Aनयgदो Yयुोnो (AB-PMJAY) हnकधन पुध Nोपiयnोि Hधोिपु Pनयपधcपiयn Fनोंधथयना नधूनधौधnपौ ोn inौपiपहपiयnोि ूiॅयप ोiंधक ोप giॅing ौहृौपोnपiॅध धीीधcप पय Aनपicिध 21’ौ iंूिiciप gहोनोnपधध यी ुधोिपु ोौ ो ीहnकोंधnपोि ीोcधप यी पुध नigुप पय िiीध. Hiौपयनicोििद, पोनgधपधक ौधcयnकोनद inौहनोncध ौहीीधनधक ीनयं ौपनहcपहनोि ोपपनiपiयn, ियथ ीinोnciोि cयॅधनोgध cोूौ, ोnक ोn यॅधनथुिधंing हनृोn पधनपiोनद ृiोौ. In cयnपनोौप, AB-PMJAY ोपपधंूपधक पय धौपोृिiौु ोn inपधgनोपधक cयnपinहहं यी cोनध ृद cयहूिing cयंूनधुधnौiॅध ौधcयnकोनद ोnक पधनपiोनद ुयौूiपोिप्रोपiयn cयॅधन यी हू पय ीiॅध िोाु नहूधधौ ूधन ीोंiिद थiपु ो ूनधॅधnपiॅध ीयहnकोपiयn यी ूनiंोनद Aदहौुंोn Aनयgदो Mोnकiनौ. Eंूiनicोि धॅोिहोपiयnौ cयnीiनं पुोप पुध ूनयgनों ुोौ ौigniीicोnिपद cहौुiयnधक ंोनginोिप्रधक कधciिधौ ोgोinौप cोपोौपनयूुic ुधोिपु धसूधnकiपहनधौ, नोiौधक ोccधौौ पय ुigु-धnक inपधनॅधnपiयnौ ोंयng ॅिहnधनोृिध कधंयgनोूुicौ, ोnक nयपोृिद cोपोिदशधक ीधंोिध ुयौूiपोिप्रोपiयn नोपधौ, थiपु थयंधn ोccयहnपing ीयन nधोिनद 49% यी ोिि धंूोnिधिधक पधनपiोनद cिोiंौ यॅधन पुध िोौप ीयहन दधोनौ. Tुधौध gोinौ कधंयnौपनोपध पुध थिधीोनध ूयपधnपiोि यी ौपोपध-हnकधनथनiपपधn नiौा ूयियing in ो कधधूिद ीनोgंधnपधक ूनiॅोपध ुधोिपुcोनध ंोनाधप. Nधॅधनपुिधधौौ, पुiौ ौपनहcपहनोि नधcयnीigहनोपiयn cयnपधnकौ थiपु ीयनंiकोृिध यूधनोपiयnोि iंूधकiंधnपौ, ूनiंोनiिद ीiौcोि हnकधन-ोिियcोपiयnौ निधोपiॅध पय ोcपहोि ोcपहोनiोि िiोृiिiपiधौ ोnक ूधनौiौपधnिपद ौिहggiौु नधiंृहनौधंधnप cदcिधौ ीयन धंूोnिधिधक ुधोिपुcोनध ूनयॅiकधनौ. Mयनध cनiपicोििद, nधिथद inपनयकहcधक नधgिहोपयनद ंधcुोniौंौ, ौहcु ोौ ंोnकोपयनद ोिgयनiपुंic ीनोहक-कधपधcपiयn ौहiपधौ ोnक ृiयंधपनic कदnोंic ोहपुधnपicोपiयn ोप ृधकौiकध कiौcुोनgध, ुोॅध inोकॅधनपधnिपद धसोcधनृोपधक ोकंiniौपनोपiॅध ीनicपiयn. Fोन ीनयं ंधनिधद कधपधननing ीनोहकिहधnप हूcयकing, पुधौध कigiपोि ृयपिपधnधcो ुोॅध inकहcधक ौधॅधनध cिinicोि किधोदौ ोnक धnोृिधक नधnप-ौधधाing ूनोcपicधौ ोंयng ियथधन-िधॅिध ुयौूiपोि gोपधाधधूधनौ ौधधाing ंोnहोि ृiयंधपनic यॅधननiकधौ. In नधौूयnौध पय पुधौध gयॅधनnोncध कधीiciपौ, नधcधnप ौपोपहपयनद gहiकिधinधौ ुोॅध ॅधौपधक पुध Nोपiयnोि Hधोिपु Aहपुयनiपद थiपु ौथधधूing यॅधनौigुप हnकधन cधnपनोिप्रधक ोहकiप ूनयपयcियस, ो नधcोिiृनोपiयn पुोप नiौो धनयकing ीधकधनोि ीिधसiृiिiपद थुiिध ोपपधंूपing पय cहनृ ीiौcोि िधोाोgधौ. Tुध ोहपुयनैौ पयnध नधgोनकing nधिथद inपनयकहcधक नधgिहोपयनद ंधcुोniौंौ (ध.g., ृiयंधपनic कदnोंic ोहपुधnपicोपiयn) iौ ृधौप कधौcनiृधक ोौ?", "option1": "<p style=\"orphans:0;widows:0\">    Detachedly descriptive, outlining technical discharge procedures    without making critical evaluations.</p>", "option2": " <p style=\"orphans:0;widows:0\">    Cautiously critical, acknowledging the regulatory objective while    highlighting administrative bottlenecks and new forms of    corruption.</p>", "option3": " <p style=\"orphans:0;widows:0\">    Uncompromisingly dismissive, stating that automated digital    systems are fundamentally unworkable in public healthcare    settings.</p>", "option4": " <p style=\"orphans:0;widows:0\">    Optimistically supportive, arguing that biometric protocols have    successfully eliminated fraudulent practices.</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The passage recognizes that these mechanisms were intended to    deter fraudulent upcoding, but critically highlights that they    \"have inadvertently exacerbated administrative friction,\"    caused \"severe clinical delays,\" and enabled    \"rent-seeking practices.\" This balanced, evaluative    stance is best characterized as cautiously critical.</p>", "question_heading": ""}, {"sr_no": 35, "question": "Rधोक पुध ीियियथing ूोौौोgध cोनधीिहिद ोnक ोnौथधन पुध तहधौपiयnौ ृोौधक यn पुध ूोौौोgध: Tुध पनोnौiपiयn ीनयं पुध िधgोcद Rोौुपनiदो Sथोौपुदो Biंो Yयुोnो (RSBY) पय पुध Aदहौुंोn Bुोनोप – Pनोकुोn Mोnपनi Jोn Aनयgदो Yयुोnो (AB-PMJAY) हnकधन पुध Nोपiयnोि Hधोिपु Pनयपधcपiयn Fनोंधथयना नधूनधौधnपौ ोn inौपiपहपiयnोि ूiॅयप ोiंधक ोप giॅing ौहृौपोnपiॅध धीीधcप पय Aनपicिध 21’ौ iंूिiciप gहोनोnपधध यी ुधोिपु ोौ ो ीहnकोंधnपोि ीोcधप यी पुध नigुप पय िiीध. Hiौपयनicोििद, पोनgधपधक ौधcयnकोनद inौहनोncध ौहीीधनधक ीनयं ौपनहcपहनोि ोपपनiपiयn, ियथ ीinोnciोि cयॅधनोgध cोूौ, ोnक ोn यॅधनथुिधंing हनृोn पधनपiोनद ृiोौ. In cयnपनोौप, AB-PMJAY ोपपधंूपधक पय धौपोृिiौु ोn inपधgनोपधक cयnपinहहं यी cोनध ृद cयहूिing cयंूनधुधnौiॅध ौधcयnकोनद ोnक पधनपiोनद ुयौूiपोिप्रोपiयn cयॅधन यी हू पय ीiॅध िोाु नहूधधौ ूधन ीोंiिद थiपु ो ूनधॅधnपiॅध ीयहnकोपiयn यी ूनiंोनद Aदहौुंोn Aनयgदो Mोnकiनौ. Eंूiनicोि धॅोिहोपiयnौ cयnीiनं पुोप पुध ूनयgनों ुोौ ौigniीicोnिपद cहौुiयnधक ंोनginोिप्रधक कधciिधौ ोgोinौप cोपोौपनयूुic ुधोिपु धसूधnकiपहनधौ, नोiौधक ोccधौौ पय ुigु-धnक inपधनॅधnपiयnौ ोंयng ॅिहnधनोृिध कधंयgनोूुicौ, ोnक nयपोृिद cोपोिदशधक ीधंोिध ुयौूiपोिप्रोपiयn नोपधौ, थiपु थयंधn ोccयहnपing ीयन nधोिनद 49% यी ोिि धंूोnिधिधक पधनपiोनद cिोiंौ यॅधन पुध िोौप ीयहन दधोनौ. Tुधौध gोinौ कधंयnौपनोपध पुध थिधीोनध ूयपधnपiोि यी ौपोपध-हnकधनथनiपपधn नiौा ूयियing in ो कधधूिद ीनोgंधnपधक ूनiॅोपध ुधोिपुcोनध ंोनाधप. Nधॅधनपुिधधौौ, पुiौ ौपनहcपहनोि नधcयnीigहनोपiयn cयnपधnकौ थiपु ीयनंiकोृिध यूधनोपiयnोि iंूधकiंधnपौ, ूनiंोनiिद ीiौcोि हnकधन-ोिियcोपiयnौ निधोपiॅध पय ोcपहोि ोcपहोनiोि िiोृiिiपiधौ ोnक ूधनौiौपधnिपद ौिहggiौु नधiंृहनौधंधnप cदcिधौ ीयन धंूोnिधिधक ुधोिपुcोनध ूनयॅiकधनौ. Mयनध cनiपicोििद, nधिथद inपनयकहcधक नधgिहोपयनद ंधcुोniौंौ, ौहcु ोौ ंोnकोपयनद ोिgयनiपुंic ीनोहक-कधपधcपiयn ौहiपधौ ोnक ृiयंधपनic कदnोंic ोहपुधnपicोपiयn ोप ृधकौiकध कiौcुोनgध, ुोॅध inोकॅधनपधnिपद धसोcधनृोपधक ोकंiniौपनोपiॅध ीनicपiयn. Fोन ीनयं ंधनिधद कधपधननing ीनोहकिहधnप हूcयकing, पुधौध कigiपोि ृयपिपधnधcो ुोॅध inकहcधक ौधॅधनध cिinicोि किधोदौ ोnक धnोृिधक नधnप-ौधधाing ूनोcपicधौ ोंयng ियथधन-िधॅिध ुयौूiपोि gोपधाधधूधनौ ौधधाing ंोnहोि ृiयंधपनic यॅधननiकधौ. In नधौूयnौध पय पुधौध gयॅधनnोncध कधीiciपौ, नधcधnप ौपोपहपयनद gहiकिधinधौ ुोॅध ॅधौपधक पुध Nोपiयnोि Hधोिपु Aहपुयनiपद थiपु ौथधधूing यॅधनौigुप हnकधन cधnपनोिप्रधक ोहकiप ूनयपयcियस, ो नधcोिiृनोपiयn पुोप नiौो धनयकing ीधकधनोि ीिधसiृiिiपद थुiिध ोपपधंूपing पय cहनृ ीiौcोि िधोाोgधौ. Wुोप cोn ृध नधोौयnोृिद inीधननधक ोृयहप पुध निधोपiयnौुiू ृधपथधधn थयंधn’ौ हपiिप्रोपiयn यी AB-PMJAY ोnक ुयहौधुियक धcयnयंic ॅिहnधनोृiिiपद?", "option1": "<p style=\"orphans:0;widows:0\">    Elevated female claims likely burdened public budgets,    accelerating the exhaustion of state insurance reserves.</p>", "option2": " <p style=\"orphans:0;widows:0\">    Their expanded access worsened existing clinical bottlenecks by    overcrowding tertiary empanelled facilities.</p>", "option3": " <p style=\"orphans:0;widows:0\">    Their substantial uptake contributed to household resilience by    shielding families from impoverishing out-of-pocket medical    expenses.</p>", "option4": " <p style=\"orphans:0;widows:0\">    The high proportion of female claims indicates widespread    provider-induced demand rather than genuine therapeutic necessity.</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The passage states that the program \"significantly cushioned    marginalized deciles against catastrophic health expenditures\"    and \"notably catalyzed female hospitalization rates, with    women accounting for nearly 49% of all empanelled tertiary    claims.\" It can therefore be inferred that substantial uptake    among women protected households from catastrophic healthcare    spending.</p>", "question_heading": ""}, {"sr_no": 36, "question": "Rधोक पुध ीियियथing ूोौौोgध cोनधीिहिद ोnक ोnौथधन पुध तहधौपiयnौ ृोौधक यn पुध ूोौौोgध: Tुध पनोnौiपiयn ीनयं पुध िधgोcद Rोौुपनiदो Sथोौपुदो Biंो Yयुोnो (RSBY) पय पुध Aदहौुंोn Bुोनोप – Pनोकुोn Mोnपनi Jोn Aनयgदो Yयुोnो (AB-PMJAY) हnकधन पुध Nोपiयnोि Hधोिपु Pनयपधcपiयn Fनोंधथयना नधूनधौधnपौ ोn inौपiपहपiयnोि ूiॅयप ोiंधक ोप giॅing ौहृौपोnपiॅध धीीधcप पय Aनपicिध 21’ौ iंूिiciप gहोनोnपधध यी ुधोिपु ोौ ो ीहnकोंधnपोि ीोcधप यी पुध नigुप पय िiीध. Hiौपयनicोििद, पोनgधपधक ौधcयnकोनद inौहनोncध ौहीीधनधक ीनयं ौपनहcपहनोि ोपपनiपiयn, ियथ ीinोnciोि cयॅधनोgध cोूौ, ोnक ोn यॅधनथुिधंing हनृोn पधनपiोनद ृiोौ. In cयnपनोौप, AB-PMJAY ोपपधंूपधक पय धौपोृिiौु ोn inपधgनोपधक cयnपinहहं यी cोनध ृद cयहूिing cयंूनधुधnौiॅध ौधcयnकोनद ोnक पधनपiोनद ुयौूiपोिप्रोपiयn cयॅधन यी हू पय ीiॅध िोाु नहूधधौ ूधन ीोंiिद थiपु ो ूनधॅधnपiॅध ीयहnकोपiयn यी ूनiंोनद Aदहौुंोn Aनयgदो Mोnकiनौ. Eंूiनicोि धॅोिहोपiयnौ cयnीiनं पुोप पुध ूनयgनों ुोौ ौigniीicोnिपद cहौुiयnधक ंोनginोिप्रधक कधciिधौ ोgोinौप cोपोौपनयूुic ुधोिपु धसूधnकiपहनधौ, नोiौधक ोccधौौ पय ुigु-धnक inपधनॅधnपiयnौ ोंयng ॅिहnधनोृिध कधंयgनोूुicौ, ोnक nयपोृिद cोपोिदशधक ीधंोिध ुयौूiपोिप्रोपiयn नोपधौ, थiपु थयंधn ोccयहnपing ीयन nधोिनद 49% यी ोिि धंूोnिधिधक पधनपiोनद cिोiंौ यॅधन पुध िोौप ीयहन दधोनौ. Tुधौध gोinौ कधंयnौपनोपध पुध थिधीोनध ूयपधnपiोि यी ौपोपध-हnकधनथनiपपधn नiौा ूयियing in ो कधधूिद ीनोgंधnपधक ूनiॅोपध ुधोिपुcोनध ंोनाधप. Nधॅधनपुिधधौौ, पुiौ ौपनहcपहनोि नधcयnीigहनोपiयn cयnपधnकौ थiपु ीयनंiकोृिध यूधनोपiयnोि iंूधकiंधnपौ, ूनiंोनiिद ीiौcोि हnकधन-ोिियcोपiयnौ निधोपiॅध पय ोcपहोि ोcपहोनiोि िiोृiिiपiधौ ोnक ूधनौiौपधnिपद ौिहggiौु नधiंृहनौधंधnप cदcिधौ ीयन धंूोnिधिधक ुधोिपुcोनध ूनयॅiकधनौ. Mयनध cनiपicोििद, nधिथद inपनयकहcधक नधgिहोपयनद ंधcुोniौंौ, ौहcु ोौ ंोnकोपयनद ोिgयनiपुंic ीनोहक-कधपधcपiयn ौहiपधौ ोnक ृiयंधपनic कदnोंic ोहपुधnपicोपiयn ोप ृधकौiकध कiौcुोनgध, ुोॅध inोकॅधनपधnिपद धसोcधनृोपधक ोकंiniौपनोपiॅध ीनicपiयn. Fोन ीनयं ंधनिधद कधपधननing ीनोहकिहधnप हूcयकing, पुधौध कigiपोि ृयपिपधnधcो ुोॅध inकहcधक ौधॅधनध cिinicोि किधोदौ ोnक धnोृिधक नधnप-ौधधाing ूनोcपicधौ ोंयng ियथधन-िधॅिध ुयौूiपोि gोपधाधधूधनौ ौधधाing ंोnहोि ृiयंधपनic यॅधननiकधौ. In नधौूयnौध पय पुधौध gयॅधनnोncध कधीiciपौ, नधcधnप ौपोपहपयनद gहiकिधinधौ ुोॅध ॅधौपधक पुध Nोपiयnोि Hधोिपु Aहपुयनiपद थiपु ौथधधूing यॅधनौigुप हnकधन cधnपनोिप्रधक ोहकiप ूनयपयcियस, ो नधcोिiृनोपiयn पुोप नiौो धनयकing ीधकधनोि ीिधसiृiिiपद थुiिध ोपपधंूपing पय cहनृ ीiौcोि िधोाोgधौ. Wुोप कयधौ पुध ोहपुयनैौ कiौcहौौiयn यी ीiौcोि हnकधन-ोिियcोपiयnौ ोnक नधiंृहनौधंधnप किधोदौ ूनiंोनiिद inकicोपध?", "option1": "<p style=\"orphans:0;widows:0\">    Resource allocation frameworks are fully adequate but suffer only    from minor reporting discrepancies.</p>", "option2": " <p style=\"orphans:0;widows:0\">    Systemic budgetary constraints and procedural inefficiencies that    hinder effective scheme implementation.</p>", "option3": " <p style=\"orphans:0;widows:0\">    Intentional delays engineered by state authorities to reclaim    fiscal sovereignty from the central body.</p>", "option4": " <p style=\"orphans:0;widows:0\">    Hospital providers deliberately create artificial backlogs to    negotiate higher actuarial premium rates.</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The author discusses \"fiscal under-allocations relative to    actual actuarial liabilities and persistently sluggish    reimbursement cycles\" directly under the heading of    \"formidable operational impediments,\" showing that these    represent serious budgetary and procedural shortcomings that    hamper program execution.</p>", "question_heading": ""}, {"sr_no": 37, "question": "Rधोक पुध ीियियथing ूोौौोgध cोनधीिहिद ोnक ोnौथधन पुध तहधौपiयnौ ृोौधक यn पुध ूोौौोgध: Tुध पनोnौiपiयn ीनयं पुध िधgोcद Rोौुपनiदो Sथोौपुदो Biंो Yयुोnो (RSBY) पय पुध Aदहौुंोn Bुोनोप – Pनोकुोn Mोnपनi Jोn Aनयgदो Yयुोnो (AB-PMJAY) हnकधन पुध Nोपiयnोि Hधोिपु Pनयपधcपiयn Fनोंधथयना नधूनधौधnपौ ोn inौपiपहपiयnोि ूiॅयप ोiंधक ोप giॅing ौहृौपोnपiॅध धीीधcप पय Aनपicिध 21’ौ iंूिiciप gहोनोnपधध यी ुधोिपु ोौ ो ीहnकोंधnपोि ीोcधप यी पुध नigुप पय िiीध. Hiौपयनicोििद, पोनgधपधक ौधcयnकोनद inौहनोncध ौहीीधनधक ीनयं ौपनहcपहनोि ोपपनiपiयn, ियथ ीinोnciोि cयॅधनोgध cोूौ, ोnक ोn यॅधनथुिधंing हनृोn पधनपiोनद ृiोौ. In cयnपनोौप, AB-PMJAY ोपपधंूपधक पय धौपोृिiौु ोn inपधgनोपधक cयnपinहहं यी cोनध ृद cयहूिing cयंूनधुधnौiॅध ौधcयnकोनद ोnक पधनपiोनद ुयौूiपोिप्रोपiयn cयॅधन यी हू पय ीiॅध िोाु नहूधधौ ूधन ीोंiिद थiपु ो ूनधॅधnपiॅध ीयहnकोपiयn यी ूनiंोनद Aदहौुंोn Aनयgदो Mोnकiनौ. Eंूiनicोि धॅोिहोपiयnौ cयnीiनं पुोप पुध ूनयgनों ुोौ ौigniीicोnिपद cहौुiयnधक ंोनginोिप्रधक कधciिधौ ोgोinौप cोपोौपनयूुic ुधोिपु धसूधnकiपहनधौ, नोiौधक ोccधौौ पय ुigु-धnक inपधनॅधnपiयnौ ोंयng ॅिहnधनोृिध कधंयgनोूुicौ, ोnक nयपोृिद cोपोिदशधक ीधंोिध ुयौूiपोिप्रोपiयn नोपधौ, थiपु थयंधn ोccयहnपing ीयन nधोिनद 49% यी ोिि धंूोnिधिधक पधनपiोनद cिोiंौ यॅधन पुध िोौप ीयहन दधोनौ. Tुधौध gोinौ कधंयnौपनोपध पुध थिधीोनध ूयपधnपiोि यी ौपोपध-हnकधनथनiपपधn नiौा ूयियing in ो कधधूिद ीनोgंधnपधक ूनiॅोपध ुधोिपुcोनध ंोनाधप. Nधॅधनपुिधधौौ, पुiौ ौपनहcपहनोि नधcयnीigहनोपiयn cयnपधnकौ थiपु ीयनंiकोृिध यूधनोपiयnोि iंूधकiंधnपौ, ूनiंोनiिद ीiौcोि हnकधन-ोिियcोपiयnौ निधोपiॅध पय ोcपहोि ोcपहोनiोि िiोृiिiपiधौ ोnक ूधनौiौपधnिपद ौिहggiौु नधiंृहनौधंधnप cदcिधौ ीयन धंूोnिधिधक ुधोिपुcोनध ूनयॅiकधनौ. Mयनध cनiपicोििद, nधिथद inपनयकहcधक नधgिहोपयनद ंधcुोniौंौ, ौहcु ोौ ंोnकोपयनद ोिgयनiपुंic ीनोहक-कधपधcपiयn ौहiपधौ ोnक ृiयंधपनic कदnोंic ोहपुधnपicोपiयn ोप ृधकौiकध कiौcुोनgध, ुोॅध inोकॅधनपधnिपद धसोcधनृोपधक ोकंiniौपनोपiॅध ीनicपiयn. Fोन ीनयं ंधनिधद कधपधननing ीनोहकिहधnप हूcयकing, पुधौध कigiपोि ृयपिपधnधcो ुोॅध inकहcधक ौधॅधनध cिinicोि किधोदौ ोnक धnोृिधक नधnप-ौधधाing ूनोcपicधौ ोंयng ियथधन-िधॅिध ुयौूiपोि gोपधाधधूधनौ ौधधाing ंोnहोि ृiयंधपनic यॅधननiकधौ. In नधौूयnौध पय पुधौध gयॅधनnोncध कधीiciपौ, नधcधnप ौपोपहपयनद gहiकिधinधौ ुोॅध ॅधौपधक पुध Nोपiयnोि Hधोिपु Aहपुयनiपद थiपु ौथधधूing यॅधनौigुप हnकधन cधnपनोिप्रधक ोहकiप ूनयपयcियस, ो नधcोिiृनोपiयn पुोप नiौो धनयकing ीधकधनोि ीिधसiृiिiपद थुiिध ोपपधंूपing पय cहनृ ीiौcोि िधोाोgधौ. Wुोप कयधौ “cयnपinहहं यी cोनध” ंधोn ंयौप nधोिनद in पुध cयnपधसप यी पुध ूोौौोgध?", "option1": "<p style=\"orphans:0;widows:0\">    A comprehensive healthcare model integrating primary preventive    care with advanced secondary and tertiary hospitalization.</p>", "option2": " <p style=\"orphans:0;widows:0\">    A purely administrative database designed to monitor the migration    of rural patients to urban centers.</p>", "option3": " <p style=\"orphans:0;widows:0\">    A short-term emergency funding mechanism created to clear delayed    payments for private providers.</p>", "option4": " <p style=\"orphans:0;widows:0\">    An aggressive gatekeeping policy aimed at restricting specialized    clinical procedures to reduce public expenditure.</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    In the passage, the phrase \"continuum of care\" is    explicitly defined as \"coupling comprehensive secondary and    tertiary hospitalization cover of up to five lakh rupees per    family with a preventive foundation of primary Ayushman Arogya    Mandirs.\" Hence, it means an integrated healthcare delivery    system covering primary prevention through advanced    hospitalization.</p>", "question_heading": ""}, {"sr_no": 38, "question": "Rधोक पुध ीियियथing ूोौौोgध cोनधीिहिद ोnक ोnौथधन पुध तहधौपiयnौ ृोौधक यn पुध ूोौौोgध: \"Sदौपधंic यॅधनौigुपौ in ौोीधपद gयॅधनnोncध नोiौध gनोॅध कयहृपौ ोृयहप किधधgोपधक नधgिहोपयनद ोहकiपing.\" Rधcधnप inॅधौपigोपiयnौ inपय cयंंधनciोि ोॅiोपiयn ोnक ोहपयंोपधक ीिigुप-cयnपनिय ौदौपधंौ धसूयौध ूनयीयहnक ॅिहnधनोृiिiपiधौ in कधcधnपनोिप्रधक cयंूिiोncध ंयकिधस. In nहंधनयहौ inौपोncधौ, ौपोपध inौूधcपयनौ धसुiृiप ो निधहcपोncध पय cुोििधngध ोiनcनोीप ंोnहीोcपहनधनौ थुधn ोnयंोिiधौ ौहनीोcध कहनing cधनपiीicोपiयn, cुययौing ृहनधोहcनोपic ोcतहiधौcधncध यॅधन ोौौधनपiॅध नधंधकiोपiयn ोप ौपोgधौ थुधn ंinयन कधौign ॅोनiोncधौ ोनध cयnौियiकोपing inपय ौपनहcपहनोि ुोशोनकौ. Enीयनcधंधnप ोहपुयनiपiधौ ंहौप हnकधनgय ो ूोनोकigं ौुiीप, ूनiयनiपप्रing ौहृौपोnपiॅध यूधनोपiयnोि नधौiिiधncध नोपुधन पुोn धसुोहौपiॅध ूनयcधकहनोि cुधcािiौपौ. A ीiसोपiयn यn ूधनीहncपयनद ूोूधनथयना ीनधतहधnिपद ृिinकौ धॅोिहोपयनौ पय ंोcनयौcयूic ॅिहnधनोृiिiपiधौ, ौहcु ोौ थुधपुधन नधकहnकोnप ंधcुोnicोि ौदौपधंौ cोn थiपुौपोnक cोौcोकing ंिहपi-ौधnौयन ीोiिहनधौ. Rधgिहोपयनद cनiपधनiो ंहौप ृध नधcोिiृनोपधक पयथोनक ौiंूिiciपद. Oॅधिनद cयnॅियहपधक cयंूिiोncध ूनयपयcियस यीपधn यृौcहनध ौदौपधंic ीनोgiिiपद, ूोनपicिहोिनद थुधn ूनधकicपiॅध ौiंिहोपiयn ंोnकोपधौ ंधनिधद inकहcध धnginधधनौ पय ंोniूिहोपध कधौign ूोनोंधपधनौ पय ौोपiौीद nोननयथ nहंधनicोि पुनधौुियकौ नोपुधन पुोn ोककनधौौ cयनध ोधनयकदnोंic inौपोृiिiपद. Inौपiपहपiयnोिप्रing cोnकiक ृi-कiनधcपiयnोि पिधधंधपनद ोnक धnginधधनing पनोnौूोनधncद थयिहक नधinीयनcध पधcुnicोि ौहूधनॅiौiयn ोौ ोn ोहपुधnपic inौपनहंधnप यी नiौा ंiपigोपiयn. Kधद iंूधनोपiॅधौ incिहकध धोिनद ोनपicिहोपiयn यी ूधनीयनंोncध ृोौिधinधौ, यनgोnप्रोपiयnोि पियधनोncध ीयन कiौौधnप थiपुin कधौign cयnौयनपiो, ोnक यूधn कiौcियौहनध यी थोiॅधन ोgनधधंधnपौ पय ोccिधधनोपध पुध cयnपोinंधnप यी धंधनging कधीधcपौ. Sहcु नधीयनंौ ौधनॅध ृयपु ूोौौधngधन थिधीोनध ोnक ियng-पधनं inकहौपनद ॅiोृiिiपद. Uिपiंोपिधद, inौपधोक यी ंोinपोining ोn iििहौiयn यी cयnपनिय पुनयहgु ीयनधnौic ंicनय-ोहकiपing, पनोnौiपiयning पयथोनक ो ौपनधोंिinधक nयनंोपiॅध ीनोंधथयना ोncुयनधक in पनोnौूोनधnप ोccयहnपोृiिiपद incधnपiॅधौ iौ inकiौूधnौोृिध पय धnौहनध ोॅiोपiयn ौोीधपद नधgiंधौ ूनधौधनॅध ूहृिic पनहौप. Wुicु यी पुध ीियियथing iौ ंयौप पनहध in नधgोनक पय ौपोपing पुध ौपनहcपहनध यी ियgic ीयहnक in पुध ोहपुयनैौ cयncिहौiयn?", "option1": "<p style=\"orphans:0;widows:0\">    It suggests that primary safety assurance should be outsourced    entirely to automated systems without human oversight.</p>", "option2": " <p style=\"orphans:0;widows:0\">    It argues that commercial aircraft manufacturers should be granted    absolute autonomy from statutory constraints.</p>", "option3": " <p style=\"orphans:0;widows:0\">    It urges a shift away from forensic procedural micromanagement    toward an incentive-driven framework of transparent    accountability.</p>", "option4": " <p style=\"orphans:0;widows:0\">    It advocates for the comprehensive deregulation of flight systems    to accelerate commercial competition.</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The concluding sentence of the passage states: \"Ultimately,    instead of maintaining an illusion of control through forensic    micro-auditing, transitioning toward a streamlined normative    framework anchored in transparent accountability incentives is    indispensable to ensure aviation safety regimes preserve public    trust.\" This directly supports option C, which captures this    logical transition away from procedural pedantry/micromanagement    toward an outcome-oriented, incentive-driven framework.</p>", "question_heading": ""}, {"sr_no": 39, "question": "Rधोक पुध ीियियथing ूोौौोgध cोनधीिहिद ोnक ोnौथधन पुध तहधौपiयnौ ृोौधक यn पुध ूोौौोgध: \"Sदौपधंic यॅधनौigुपौ in ौोीधपद gयॅधनnोncध नोiौध gनोॅध कयहृपौ ोृयहप किधधgोपधक नधgिहोपयनद ोहकiपing.\" Rधcधnप inॅधौपigोपiयnौ inपय cयंंधनciोि ोॅiोपiयn ोnक ोहपयंोपधक ीिigुप-cयnपनिय ौदौपधंौ धसूयौध ूनयीयहnक ॅिहnधनोृiिiपiधौ in कधcधnपनोिप्रधक cयंूिiोncध ंयकिधस. In nहंधनयहौ inौपोncधौ, ौपोपध inौूधcपयनौ धसुiृiप ो निधहcपोncध पय cुोििधngध ोiनcनोीप ंोnहीोcपहनधनौ थुधn ोnयंोिiधौ ौहनीोcध कहनing cधनपiीicोपiयn, cुययौing ृहनधोहcनोपic ोcतहiधौcधncध यॅधन ोौौधनपiॅध नधंधकiोपiयn ोप ौपोgधौ थुधn ंinयन कधौign ॅोनiोncधौ ोनध cयnौियiकोपing inपय ौपनहcपहनोि ुोशोनकौ. Enीयनcधंधnप ोहपुयनiपiधौ ंहौप हnकधनgय ो ूोनोकigं ौुiीप, ूनiयनiपप्रing ौहृौपोnपiॅध यूधनोपiयnोि नधौiिiधncध नोपुधन पुोn धसुोहौपiॅध ूनयcधकहनोि cुधcािiौपौ. A ीiसोपiयn यn ूधनीहncपयनद ूोूधनथयना ीनधतहधnिपद ृिinकौ धॅोिहोपयनौ पय ंोcनयौcयूic ॅिहnधनोृiिiपiधौ, ौहcु ोौ थुधपुधन नधकहnकोnप ंधcुोnicोि ौदौपधंौ cोn थiपुौपोnक cोौcोकing ंिहपi-ौधnौयन ीोiिहनधौ. Rधgिहोपयनद cनiपधनiो ंहौप ृध नधcोिiृनोपधक पयथोनक ौiंूिiciपद. Oॅधिनद cयnॅियहपधक cयंूिiोncध ूनयपयcियस यीपधn यृौcहनध ौदौपधंic ीनोgiिiपद, ूोनपicिहोिनद थुधn ूनधकicपiॅध ौiंिहोपiयn ंोnकोपधौ ंधनिधद inकहcध धnginधधनौ पय ंोniूिहोपध कधौign ूोनोंधपधनौ पय ौोपiौीद nोननयथ nहंधनicोि पुनधौुियकौ नोपुधन पुोn ोककनधौौ cयनध ोधनयकदnोंic inौपोृiिiपद. Inौपiपहपiयnोिप्रing cोnकiक ृi-कiनधcपiयnोि पिधधंधपनद ोnक धnginधधनing पनोnौूोनधncद थयिहक नधinीयनcध पधcुnicोि ौहूधनॅiौiयn ोौ ोn ोहपुधnपic inौपनहंधnप यी नiौा ंiपigोपiयn. Kधद iंूधनोपiॅधौ incिहकध धोिनद ोनपicिहोपiयn यी ूधनीयनंोncध ृोौिधinधौ, यनgोnप्रोपiयnोि पियधनोncध ीयन कiौौधnप थiपुin कधौign cयnौयनपiो, ोnक यूधn कiौcियौहनध यी थोiॅधन ोgनधधंधnपौ पय ोccिधधनोपध पुध cयnपोinंधnप यी धंधनging कधीधcपौ. Sहcु नधीयनंौ ौधनॅध ृयपु ूोौौधngधन थिधीोनध ोnक ियng-पधनं inकहौपनद ॅiोृiिiपद. Uिपiंोपिधद, inौपधोक यी ंोinपोining ोn iििहौiयn यी cयnपनिय पुनयहgु ीयनधnौic ंicनय-ोहकiपing, पनोnौiपiयning पयथोनक ो ौपनधोंिinधक nयनंोपiॅध ीनोंधथयना ोncुयनधक in पनोnौूोनधnप ोccयहnपोृiिiपद incधnपiॅधौ iौ inकiौूधnौोृिध पय धnौहनध ोॅiोपiयn ौोीधपद नधgiंधौ ूनधौधनॅध ूहृिic पनहौप. Tुध हौध यी \"ूनधकicपiॅध ौiंिहोपiयn ंोnकोपधौ\" ृद पुध ोहपुयन iौ ोn धसोंूिध यी iििहौपनोपing थुicु यी पुध ीियियथing cयnौधतहधncधौ?", "option1": "<p style=\"orphans:0;widows:0\">    The manipulation of technical parameters to satisfy narrow metrics    rather than rectifying root vulnerabilities.</p>", "option2": " <p style=\"orphans:0;widows:0\">    The failure of state bodies to adequately fund computer-assisted    aerodynamic modeling.</p>", "option3": " <p style=\"orphans:0;widows:0\">    The emergence of a seamless correlation between procedural volume    and systemic resilience.</p>", "option4": " <p style=\"orphans:0;widows:0\">    The immediate breakdown of formal contractual agreements between    airlines and manufacturers.</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    In paragraph 2, the author notes that convoluted protocols obscure    systemic fragility \"particularly when predictive simulation    mandates merely induce engineers to manipulate design parameters    to satisfy narrow numerical thresholds rather than address core    aerodynamic instability.\" This directly matches option A.</p>", "question_heading": ""}, {"sr_no": 40, "question": "Rधोक पुध ीियियथing ूोौौोgध cोनधीिहिद ोnक ोnौथधन पुध तहधौपiयnौ ृोौधक यn पुध ूोौौोgध: \"Sदौपधंic यॅधनौigुपौ in ौोीधपद gयॅधनnोncध नोiौध gनोॅध कयहृपौ ोृयहप किधधgोपधक नधgिहोपयनद ोहकiपing.\" Rधcधnप inॅधौपigोपiयnौ inपय cयंंधनciोि ोॅiोपiयn ोnक ोहपयंोपधक ीिigुप-cयnपनिय ौदौपधंौ धसूयौध ूनयीयहnक ॅिहnधनोृiिiपiधौ in कधcधnपनोिप्रधक cयंूिiोncध ंयकिधस. In nहंधनयहौ inौपोncधौ, ौपोपध inौूधcपयनौ धसुiृiप ो निधहcपोncध पय cुोििधngध ोiनcनोीप ंोnहीोcपहनधनौ थुधn ोnयंोिiधौ ौहनीोcध कहनing cधनपiीicोपiयn, cुययौing ृहनधोहcनोपic ोcतहiधौcधncध यॅधन ोौौधनपiॅध नधंधकiोपiयn ोप ौपोgधौ थुधn ंinयन कधौign ॅोनiोncधौ ोनध cयnौियiकोपing inपय ौपनहcपहनोि ुोशोनकौ. Enीयनcधंधnप ोहपुयनiपiधौ ंहौप हnकधनgय ो ूोनोकigं ौुiीप, ूनiयनiपप्रing ौहृौपोnपiॅध यूधनोपiयnोि नधौiिiधncध नोपुधन पुोn धसुोहौपiॅध ूनयcधकहनोि cुधcािiौपौ. A ीiसोपiयn यn ूधनीहncपयनद ूोूधनथयना ीनधतहधnिपद ृिinकौ धॅोिहोपयनौ पय ंोcनयौcयूic ॅिहnधनोृiिiपiधौ, ौहcु ोौ थुधपुधन नधकहnकोnप ंधcुोnicोि ौदौपधंौ cोn थiपुौपोnक cोौcोकing ंिहपi-ौधnौयन ीोiिहनधौ. Rधgिहोपयनद cनiपधनiो ंहौप ृध नधcोिiृनोपधक पयथोनक ौiंूिiciपद. Oॅधिनद cयnॅियहपधक cयंूिiोncध ूनयपयcियस यीपधn यृौcहनध ौदौपधंic ीनोgiिiपद, ूोनपicिहोिनद थुधn ूनधकicपiॅध ौiंिहोपiयn ंोnकोपधौ ंधनिधद inकहcध धnginधधनौ पय ंोniूिहोपध कधौign ूोनोंधपधनौ पय ौोपiौीद nोननयथ nहंधनicोि पुनधौुियकौ नोपुधन पुोn ोककनधौौ cयनध ोधनयकदnोंic inौपोृiिiपद. Inौपiपहपiयnोिप्रing cोnकiक ृi-कiनधcपiयnोि पिधधंधपनद ोnक धnginधधनing पनोnौूोनधncद थयिहक नधinीयनcध पधcुnicोि ौहूधनॅiौiयn ोौ ोn ोहपुधnपic inौपनहंधnप यी नiौा ंiपigोपiयn. Kधद iंूधनोपiॅधौ incिहकध धोिनद ोनपicिहोपiयn यी ूधनीयनंोncध ृोौिधinधौ, यनgोnप्रोपiयnोि पियधनोncध ीयन कiौौधnप थiपुin कधौign cयnौयनपiो, ोnक यूधn कiौcियौहनध यी थोiॅधन ोgनधधंधnपौ पय ोccिधधनोपध पुध cयnपोinंधnप यी धंधनging कधीधcपौ. Sहcु नधीयनंौ ौधनॅध ृयपु ूोौौधngधन थिधीोनध ोnक ियng-पधनं inकहौपनद ॅiोृiिiपद. Uिपiंोपिधद, inौपधोक यी ंोinपोining ोn iििहौiयn यी cयnपनिय पुनयहgु ीयनधnौic ंicनय-ोहकiपing, पनोnौiपiयning पयथोनक ो ौपनधोंिinधक nयनंोपiॅध ीनोंधथयना ोncुयनधक in पनोnौूोनधnप ोccयहnपोृiिiपद incधnपiॅधौ iौ inकiौूधnौोृिध पय धnौहनध ोॅiोपiयn ौोीधपद नधgiंधौ ूनधौधनॅध ूहृिic पनहौप. Wुद ोनध ौपोपध inौूधcपयनौ यीपधn ुधौiपोnप पय inपधनॅधnध थुधn ोnयंोिiधौ ोनध iकधnपiीiधक कहनing cधनपiीicोपiयn?", "option1": "<p style=\"orphans:0;widows:0\">    They lack statutory authority to issue corrective demands prior to    commercial deployment.</p>", "option2": " <p style=\"orphans:0;widows:0\">    They choose bureaucratic non-confrontation instead of remedying    accumulating risks early.</p>", "option3": " <p style=\"orphans:0;widows:0\">    They are perplexed because contemporary certification criteria    have become excessively rudimentary.</p>", "option4": " <p style=\"orphans:0;widows:0\">    They rely on confidential protocols designed to withhold critical    design blueprints.</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    Paragraph 1 states that inspectors exhibit \"a reluctance to    challenge aircraft manufacturers when anomalies surface during    certification, choosing bureaucratic acquiescence over assertive    remediation at stages when minor design variances are    consolidating into structural hazards.\" This confirms option    B.</p>", "question_heading": ""}, {"sr_no": 41, "question": "Rधोक पुध ीियियथing ूोौौोgध cोनधीिहिद ोnक ोnौथधन पुध तहधौपiयnौ ृोौधक यn पुध ूोौौोgध: \"Sदौपधंic यॅधनौigुपौ in ौोीधपद gयॅधनnोncध नोiौध gनोॅध कयहृपौ ोृयहप किधधgोपधक नधgिहोपयनद ोहकiपing.\" Rधcधnप inॅधौपigोपiयnौ inपय cयंंधनciोि ोॅiोपiयn ोnक ोहपयंोपधक ीिigुप-cयnपनिय ौदौपधंौ धसूयौध ूनयीयहnक ॅिहnधनोृiिiपiधौ in कधcधnपनोिप्रधक cयंूिiोncध ंयकिधस. In nहंधनयहौ inौपोncधौ, ौपोपध inौूधcपयनौ धसुiृiप ो निधहcपोncध पय cुोििधngध ोiनcनोीप ंोnहीोcपहनधनौ थुधn ोnयंोिiधौ ौहनीोcध कहनing cधनपiीicोपiयn, cुययौing ृहनधोहcनोपic ोcतहiधौcधncध यॅधन ोौौधनपiॅध नधंधकiोपiयn ोप ौपोgधौ थुधn ंinयन कधौign ॅोनiोncधौ ोनध cयnौियiकोपing inपय ौपनहcपहनोि ुोशोनकौ. Enीयनcधंधnप ोहपुयनiपiधौ ंहौप हnकधनgय ो ूोनोकigं ौुiीप, ूनiयनiपप्रing ौहृौपोnपiॅध यूधनोपiयnोि नधौiिiधncध नोपुधन पुोn धसुोहौपiॅध ूनयcधकहनोि cुधcािiौपौ. A ीiसोपiयn यn ूधनीहncपयनद ूोूधनथयना ीनधतहधnिपद ृिinकौ धॅोिहोपयनौ पय ंोcनयौcयूic ॅिहnधनोृiिiपiधौ, ौहcु ोौ थुधपुधन नधकहnकोnप ंधcुोnicोि ौदौपधंौ cोn थiपुौपोnक cोौcोकing ंिहपi-ौधnौयन ीोiिहनधौ. Rधgिहोपयनद cनiपधनiो ंहौप ृध नधcोिiृनोपधक पयथोनक ौiंूिiciपद. Oॅधिनद cयnॅियहपधक cयंूिiोncध ूनयपयcियस यीपधn यृौcहनध ौदौपधंic ीनोgiिiपद, ूोनपicिहोिनद थुधn ूनधकicपiॅध ौiंिहोपiयn ंोnकोपधौ ंधनिधद inकहcध धnginधधनौ पय ंोniूिहोपध कधौign ूोनोंधपधनौ पय ौोपiौीद nोननयथ nहंधनicोि पुनधौुियकौ नोपुधन पुोn ोककनधौौ cयनध ोधनयकदnोंic inौपोृiिiपद. Inौपiपहपiयnोिप्रing cोnकiक ृi-कiनधcपiयnोि पिधधंधपनद ोnक धnginधधनing पनोnौूोनधncद थयिहक नधinीयनcध पधcुnicोि ौहूधनॅiौiयn ोौ ोn ोहपुधnपic inौपनहंधnप यी नiौा ंiपigोपiयn. Kधद iंूधनोपiॅधौ incिहकध धोिनद ोनपicिहोपiयn यी ूधनीयनंोncध ृोौिधinधौ, यनgोnप्रोपiयnोि पियधनोncध ीयन कiौौधnप थiपुin कधौign cयnौयनपiो, ोnक यूधn कiौcियौहनध यी थोiॅधन ोgनधधंधnपौ पय ोccिधधनोपध पुध cयnपोinंधnप यी धंधनging कधीधcपौ. Sहcु नधीयनंौ ौधनॅध ृयपु ूोौौधngधन थिधीोनध ोnक ियng-पधनं inकहौपनद ॅiोृiिiपद. Uिपiंोपिधद, inौपधोक यी ंोinपोining ोn iििहौiयn यी cयnपनिय पुनयहgु ीयनधnौic ंicनय-ोहकiपing, पनोnौiपiयning पयथोनक ो ौपनधोंिinधक nयनंोपiॅध ीनोंधथयना ोncुयनधक in पनोnौूोनधnप ोccयहnपोृiिiपद incधnपiॅधौ iौ inकiौूधnौोृिध पय धnौहनध ोॅiोपiयn ौोीधपद नधgiंधौ ूनधौधनॅध ूहृिic पनहौप. Wुोप थयिहक पुध inपनयकहcपiयn यी \"पनोnौूोनधnप ोccयहnपोृiिiपद incधnपiॅधौ\" ोcुiधॅध ीयन पुध ौोीधपद नधgiंध?", "option1": "<p style=\"orphans:0;widows:0\">    Terminate all communication channels between manufacturing teams    and regulatory auditors.</p>", "option2": " <p style=\"orphans:0;widows:0\">    Exacerbate technical complexity by piling on redundant forensic    paperwork.</p>", "option3": " <p style=\"orphans:0;widows:0\">    Foster an operational culture that upholds structural safety and    preserves public trust.</p>", "option4": " <p style=\"orphans:0;widows:0\">    Reinstate detailed micro-auditing as the sole measure of    operational reliability.</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The author argues in the conclusion that transitioning toward a    framework \"anchored in transparent accountability incentives    is indispensable to ensure aviation safety regimes preserve public    trust\" while fostering genuine risk mitigation. Option C    correctly identifies this objective.</p>", "question_heading": ""}, {"sr_no": 42, "question": "Rधोक पुध ीियियथing ूोौौोgध cोनधीिहिद ोnक ोnौथधन पुध तहधौपiयnौ ृोौधक यn पुध ूोौौोgध: \"Sदौपधंic यॅधनौigुपौ in ौोीधपद gयॅधनnोncध नोiौध gनोॅध कयहृपौ ोृयहप किधधgोपधक नधgिहोपयनद ोहकiपing.\" Rधcधnप inॅधौपigोपiयnौ inपय cयंंधनciोि ोॅiोपiयn ोnक ोहपयंोपधक ीिigुप-cयnपनिय ौदौपधंौ धसूयौध ूनयीयहnक ॅिहnधनोृiिiपiधौ in कधcधnपनोिप्रधक cयंूिiोncध ंयकिधस. In nहंधनयहौ inौपोncधौ, ौपोपध inौूधcपयनौ धसुiृiप ो निधहcपोncध पय cुोििधngध ोiनcनोीप ंोnहीोcपहनधनौ थुधn ोnयंोिiधौ ौहनीोcध कहनing cधनपiीicोपiयn, cुययौing ृहनधोहcनोपic ोcतहiधौcधncध यॅधन ोौौधनपiॅध नधंधकiोपiयn ोप ौपोgधौ थुधn ंinयन कधौign ॅोनiोncधौ ोनध cयnौियiकोपing inपय ौपनहcपहनोि ुोशोनकौ. Enीयनcधंधnप ोहपुयनiपiधौ ंहौप हnकधनgय ो ूोनोकigं ौुiीप, ूनiयनiपप्रing ौहृौपोnपiॅध यूधनोपiयnोि नधौiिiधncध नोपुधन पुोn धसुोहौपiॅध ूनयcधकहनोि cुधcािiौपौ. A ीiसोपiयn यn ूधनीहncपयनद ूोूधनथयना ीनधतहधnिपद ृिinकौ धॅोिहोपयनौ पय ंोcनयौcयूic ॅिहnधनोृiिiपiधौ, ौहcु ोौ थुधपुधन नधकहnकोnप ंधcुोnicोि ौदौपधंौ cोn थiपुौपोnक cोौcोकing ंिहपi-ौधnौयन ीोiिहनधौ. Rधgिहोपयनद cनiपधनiो ंहौप ृध नधcोिiृनोपधक पयथोनक ौiंूिiciपद. Oॅधिनद cयnॅियहपधक cयंूिiोncध ूनयपयcियस यीपधn यृौcहनध ौदौपधंic ीनोgiिiपद, ूोनपicिहोिनद थुधn ूनधकicपiॅध ौiंिहोपiयn ंोnकोपधौ ंधनिधद inकहcध धnginधधनौ पय ंोniूिहोपध कधौign ूोनोंधपधनौ पय ौोपiौीद nोननयथ nहंधनicोि पुनधौुियकौ नोपुधन पुोn ोककनधौौ cयनध ोधनयकदnोंic inौपोृiिiपद. Inौपiपहपiयnोिप्रing cोnकiक ृi-कiनधcपiयnोि पिधधंधपनद ोnक धnginधधनing पनोnौूोनधncद थयिहक नधinीयनcध पधcुnicोि ौहूधनॅiौiयn ोौ ोn ोहपुधnपic inौपनहंधnप यी नiौा ंiपigोपiयn. Kधद iंूधनोपiॅधौ incिहकध धोिनद ोनपicिहोपiयn यी ूधनीयनंोncध ृोौिधinधौ, यनgोnप्रोपiयnोि पियधनोncध ीयन कiौौधnप थiपुin कधौign cयnौयनपiो, ोnक यूधn कiौcियौहनध यी थोiॅधन ोgनधधंधnपौ पय ोccिधधनोपध पुध cयnपोinंधnप यी धंधनging कधीधcपौ. Sहcु नधीयनंौ ौधनॅध ृयपु ूोौौधngधन थिधीोनध ोnक ियng-पधनं inकहौपनद ॅiोृiिiपद. Uिपiंोपिधद, inौपधोक यी ंोinपोining ोn iििहौiयn यी cयnपनिय पुनयहgु ीयनधnौic ंicनय-ोहकiपing, पनोnौiपiयning पयथोनक ो ौपनधोंिinधक nयनंोपiॅध ीनोंधथयना ोncुयनधक in पनोnौूोनधnप ोccयहnपोृiिiपद incधnपiॅधौ iौ inकiौूधnौोृिध पय धnौहनध ोॅiोपiयn ौोीधपद नधgiंधौ ूनधौधनॅध ूहृिic पनहौप. Tुध पयnध थiपु थुicु पुध ोहपुयन ोूूनयोcुधौ पुध cहननधnप ौiपहोपiयn यी \"यॅधिनद cयnॅियहपधक cयंूिiोncध ूनयपयcियस\" iौ ृधौप कधौcनiृधक ोौ:", "option1": "<p style=\"orphans:0;widows:0\">    Dispassionate, showing indifference toward how regulatory rules    impact aerodynamic design.</p>", "option2": " <p style=\"orphans:0;widows:0\">    Laudatory, praising the exhaustive diligence inspectors display    when reviewing administrative filings.</p>", "option3": " <p style=\"orphans:0;widows:0\">    Critical, emphasizing that complex bureaucratic rules can conceal    underlying structural dangers.</p>", "option4": " <p style=\"orphans:0;widows:0\">    Optimistic, believing that intricate documentation will inherently    resolve multi-sensor failures.</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The author is explicitly critical of complex protocols, pointing    out that \"Overly convoluted compliance protocols often    obscure systemic fragility\" and that focusing on perfunctory    paperwork blinds inspectors to macroscopic vulnerabilities.    Therefore, option C accurately captures the author's tone.</p>", "question_heading": ""}, {"sr_no": 43, "question": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <b>A sentence is provided in indirect speech. From the four given    options, choose the one that most accurately conveys the sentence    in its corresponding direct speech.</b></p>    <p style=\"orphans:0;widows:0\">He said that hardly had he    reached the airport when the flight took off.</p>", "option1": "<p style=\"orphans:0;widows:0\">Hardly had I reached the airport when the flight took off,”    he said.</p>", "option2": " <p style=\"orphans:0;widows:0\">Hardly did I reach the airport than the flight took off,” he    said.</p>", "option3": " <p style=\"orphans:0;widows:0\">I had hardly reached the airport then the flight took off,”    he said.</p>", "option4": " <p style=\"orphans:0;widows:0\">As soon as I had reached the airport, the flight took off,”    he said.</p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    To convert the sentence from indirect speech to direct speech:</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">1. The    conjunction 'that' is removed, and inverted commas are used for    direct speech.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">2. The    third-person pronoun 'he' referring to the speaker changes back to    the first-person pronoun 'I'.</p>    <p style=\"orphans:0;widows:0;margin-bottom:0in\">3. The    negative adverbial structure with inversion 'Hardly had...    when...' remains intact, as past perfect tense in such time    clauses does not change further.</p>    <p style=\"orphans:0;widows:0\">Therefore, option A accurately    represents the direct speech: <b>“Hardly had I reached the    airport when the flight took off,” he said.</b></p>", "question_heading": ""}, {"sr_no": 44, "question": " <p style=\"orphans:0;widows:0\">    Select the wrongly spelt word out of the four alternatives.</p>", "option1": "<p style=\"orphans:0;widows:0\">    Millennium</p>", "option2": " <p style=\"orphans:0;widows:0\">    Accommodate</p>", "option3": " <p style=\"orphans:0;widows:0\">    Embarasment</p>", "option4": " <p style=\"orphans:0;widows:0\">    Occurrence</p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The incorrectly spelt word is 'Embarasment'. The correct spelling    is <b>'Embarrassment'</b> (having double 'r' and double 's'),    which means a feeling of self-consciousness, shame, or    awkwardness. All other options are correctly spelt.</p>", "question_heading": ""}, {"sr_no": 45, "question": " <p style=\"orphans:0;widows:0\">    Choose the <b>correct spelling</b> for a word meaning 'capable of    catching fire and burning'.</p>", "option1": "<p style=\"orphans:0;widows:0\">    Combustable</p>", "option2": " <p style=\"orphans:0;widows:0\">    Combustible</p>", "option3": " <p style=\"orphans:0;widows:0\">    Combustibel</p>", "option4": " <p style=\"orphans:0;widows:0\">    Combusstible</p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"orphans:0;widows:0\">    The correctly spelt word is <b>Combustible</b>, which means 'able    to catch fire and burn easily'. It takes the suffix '-ible' rather    than '-able'.</p>", "question_heading": ""}];
+
+let currentQuestion = 0;
+let answers = {};
+let bookmarks = new Set();
+let timerSeconds = 0;
+let timerInterval = null;
+let isPaletteOpen = false;
+
+const STORAGE_KEY = 'quizState_' + (document.title || 'default');
+
+function isImageURL(str) {
+  return str && (str.startsWith('http://') || str.startsWith('https://'));
+}
+
+function createOptionContent(optionText) {
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'option-content';
+    
+    if (isImageURL(optionText)) {
+        const img = document.createElement('img');
+        img.src = optionText;
+        img.className = 'option-image';
+        img.alt = 'Option image';
+        img.loading = 'lazy';
+        img.onerror = function() {
+            this.style.display = 'none';
+            const errorText = document.createTextNode('Image failed to load');
+            contentDiv.appendChild(errorText);
+        };
+        contentDiv.appendChild(img);
+    } else {
+        contentDiv.innerHTML = optionText;
+    }
+    
+    return contentDiv;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  initQuiz();
+  initEventListeners();
+  loadFromLocalStorage();
+  startTimer();
+  createPalette();
+  preventDoubleTapZoom();
+});
+
+function preventDoubleTapZoom() {
+  let lastTouchEnd = 0;
+  document.addEventListener('touchend', (event) => {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) {
+      event.preventDefault();
+    }
+    lastTouchEnd = now;
+  }, { passive: false });
+}
+
+function initTheme() {
+  const savedTheme = localStorage.getItem('quizTheme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  updateThemeIcon();
+}
+
+function updateThemeIcon() {
+  const theme = document.documentElement.getAttribute('data-theme');
+  const themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    themeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  }
+}
+
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('quizTheme', newTheme);
+  updateThemeIcon();
+}
+
+function initQuiz() {
+  loadQuestion(currentQuestion);
+  updateMarkingInfo();
+}
+
+function initEventListeners() {
+  const themeBtn = document.getElementById('themeToggle');
+  const fullscreenBtn = document.getElementById('fullscreenBtn');
+  
+  if (themeBtn) {
+    themeBtn.addEventListener('click', toggleTheme);
+    themeBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      toggleTheme();
+    });
+  }
+  
+  if (fullscreenBtn) {
+    fullscreenBtn.addEventListener('click', toggleFullscreen);
+    fullscreenBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      toggleFullscreen();
+    });
+  }
+  
+  addButtonListener('prevBtn', prevQuestion);
+  addButtonListener('nextBtn', nextQuestion);
+  addButtonListener('clearBtn', clearAnswer);
+  addButtonListener('submitBtn', confirmSubmit);
+  addButtonListener('bookmarkBtn', toggleBookmark);
+  
+  addButtonListener('paletteFab', togglePalette);
+  addButtonListener('paletteClose', closePalette);
+  
+  const overlay = document.getElementById('paletteOverlay');
+  if (overlay) {
+    overlay.addEventListener('click', closePalette);
+    overlay.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      closePalette();
+    });
+  }
+  
+  const searchInput = document.getElementById('paletteSearch');
+  if (searchInput) {
+    searchInput.addEventListener('input', handleSearch);
+    searchInput.addEventListener('change', jumpToQuestion);
+  }
+  
+  document.addEventListener('keydown', handleKeyPress);
+  
+  setInterval(saveToLocalStorage, 5000);
+  
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      updatePalette();
+    }
+  });
+}
+
+function addButtonListener(id, handler) {
+  const btn = document.getElementById(id);
+  if (btn) {
+    btn.addEventListener('click', handler);
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      handler();
+    });
+  }
+}
+
+function jumpToQuestion(e) {
+  const questionNum = parseInt(e.target.value);
+  if (questionNum >= 1 && questionNum <= questions.length) {
+    goToQuestion(questionNum - 1);
+    closePalette();
+    e.target.value = '';
+  }
+}
+
+function togglePalette() {
+  isPaletteOpen = !isPaletteOpen;
+  const palette = document.getElementById('questionPalette');
+  const overlay = document.getElementById('paletteOverlay');
+  const fab = document.getElementById('paletteFab');
+  
+  if (isPaletteOpen) {
+    palette.classList.add('active');
+    overlay.classList.add('active');
+    fab.classList.add('active');
+    fab.innerHTML = '✕<span class="badge" id="answeredBadge">' + Object.keys(answers).length + '</span>';
+    document.body.classList.add('palette-open');
+  } else {
+    closePalette();
+  }
+}
+
+function closePalette() {
+  isPaletteOpen = false;
+  const palette = document.getElementById('questionPalette');
+  const overlay = document.getElementById('paletteOverlay');
+  const fab = document.getElementById('paletteFab');
+  
+  if (palette) palette.classList.remove('active');
+  if (overlay) overlay.classList.remove('active');
+  if (fab) {
+    fab.classList.remove('active');
+    fab.innerHTML = '📋<span class="badge" id="answeredBadge">' + Object.keys(answers).length + '</span>';
+  }
+  document.body.classList.remove('palette-open');
+}
+
+function handleSearch(e) {
+  const searchTerm = e.target.value.toLowerCase();
+  if (!searchTerm) {
+    document.querySelectorAll('.palette-btn').forEach(btn => {
+      btn.style.display = '';
+    });
+    return;
+  }
+  
+  const buttons = document.querySelectorAll('.palette-btn');
+  buttons.forEach((btn, index) => {
+    const questionNum = (index + 1).toString();
+    if (questionNum.includes(searchTerm)) {
+      btn.style.display = '';
+    } else {
+      btn.style.display = 'none';
+    }
+  });
+}
+
+function handleKeyPress(e) {
+  if (document.getElementById('resultSection').classList.contains('hidden')) {
+    if (e.key === 'Escape' && isPaletteOpen) {
+      closePalette();
+    } else if (!isPaletteOpen && e.target.tagName !== 'INPUT') {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevQuestion();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        nextQuestion();
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        nextQuestion();
+      } else if (e.key === 'b' || e.key === 'B') {
+        e.preventDefault();
+        toggleBookmark();
+      } else if (e.key === 'c' || e.key === 'C') {
+        e.preventDefault();
+        clearAnswer();
+      } else if (e.key === 'p' || e.key === 'P') {
+        e.preventDefault();
+        togglePalette();
+      } else if (e.key >= '1' && e.key <= '4') {
+        e.preventDefault();
+        selectOption(parseInt(e.key));
+      }
+    }
+  }
+}
+
+function selectOption(optionNum) {
+  const q = questions[currentQuestion];
+  const radio = document.querySelector(`input[name="q${q.sr_no}"][value="${optionNum}"]`);
+  if (radio) {
+    radio.checked = true;
+    const label = radio.closest('.option-label');
+    if (label) {
+      document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      saveAnswer();
+    }
+  }
+}
+
+function toggleFullscreen() {
+  try {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(err => {
+        console.log('Fullscreen error:', err);
+      });
+    } else {
+      document.exitFullscreen();
+    }
+  } catch (err) {
+    console.log('Fullscreen not supported');
+  }
+}
+
+function startTimer() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+  timerInterval = setInterval(() => {
+    timerSeconds++;
+    updateTimer();
+    if (timerSeconds > 600) {
+      const timer = document.getElementById('timer');
+      if (timer) timer.classList.add('warning');
+    }
+  }, 1000);
+}
+
+function updateTimer() {
+  const minutes = Math.floor(timerSeconds / 60);
+  const seconds = timerSeconds % 60;
+  const timer = document.getElementById('timer');
+  if (timer) {
+    timer.textContent = 
+      `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  }
+}
+
+function createPalette() {
+  const grid = document.getElementById('paletteGrid');
+  if (!grid) return;
+  
+  grid.innerHTML = '';
+  questions.forEach((q, index) => {
+    const btn = document.createElement('button');
+    btn.textContent = index + 1;
+    btn.className = 'palette-btn';
+    btn.setAttribute('aria-label', `Go to question ${index + 1}`);
+    btn.setAttribute('type', 'button');
+    
+    btn.addEventListener('click', () => {
+      goToQuestion(index);
+      closePalette();
+    });
+    
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      goToQuestion(index);
+      closePalette();
+    });
+    
+    grid.appendChild(btn);
+  });
+  updatePalette();
+}
+
+function updatePalette() {
+  const buttons = document.querySelectorAll('.palette-btn');
+  buttons.forEach((btn, index) => {
+    btn.className = 'palette-btn';
+    if (index === currentQuestion) btn.classList.add('current');
+    if (answers[questions[index].sr_no]) btn.classList.add('answered');
+    if (bookmarks.has(questions[index].sr_no)) btn.classList.add('bookmarked');
+  });
+  
+  updatePaletteStats();
+}
+
+function updatePaletteStats() {
+  const answered = Object.keys(answers).length;
+  const unanswered = questions.length - answered;
+  const bookmarkedCount = bookmarks.size;
+  
+  const answeredEl = document.getElementById('paletteAnswered');
+  const unansweredEl = document.getElementById('paletteUnanswered');
+  const bookmarkedEl = document.getElementById('paletteBookmarked');
+  
+  if (answeredEl) answeredEl.textContent = answered;
+  if (unansweredEl) unansweredEl.textContent = unanswered;
+  if (bookmarkedEl) bookmarkedEl.textContent = bookmarkedCount;
+  
+  const badge = document.querySelector('.palette-fab .badge');
+  if (badge) badge.textContent = answered;
+}
+
+function goToQuestion(index) {
+  if (index < 0 || index >= questions.length) return;
+  saveAnswer();
+  currentQuestion = index;
+  loadQuestion(currentQuestion);
+  
+  const questionSection = document.getElementById('questionSection');
+  if (questionSection) {
+    setTimeout(() => {
+      questionSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+}
+
+function loadQuestion(index) {
+  const q = questions[index];
+  
+  const questionNumber = document.getElementById('questionNumber');
+  const questionText = document.getElementById('questionText');
+  
+  if (questionNumber) {
+    questionNumber.textContent = `Question ${index + 1} of ${questions.length}`;
+  }
+  
+  if (questionText) {
+    questionText.innerHTML = '';
+    
+    // 🌟 NEW: Create the Heading Box if it exists!
+    let headingHtml = '';
+    if (q.question_heading && q.question_heading.trim() !== '') {
+      headingHtml = `<div style="background: var(--bg-tertiary); padding: 15px; border-left: 4px solid var(--primary-color); margin-bottom: 20px; border-radius: 8px; overflow-x: auto;">${q.question_heading}</div>`;
+      questionText.innerHTML = headingHtml; // Inject heading first
+    }
+
+    if (isImageURL(q.question)) {
+      const img = document.createElement('img');
+      img.src = q.question;
+      img.className = 'question-image';
+      img.alt = 'Question image';
+      img.loading = 'lazy';
+      img.onerror = function() {
+        this.style.display = 'none';
+        questionText.innerHTML += q.question;
+      };
+      questionText.appendChild(img);
+    } else {
+      questionText.innerHTML += q.question; // Append question after heading
+    }
+  }
+  
+  const container = document.getElementById('optionsContainer');
+  if (!container) return;
+  
+  container.innerHTML = '';
+  
+  for (let i = 1; i <= 4; i++) {
+    const label = document.createElement('label');
+    label.className = 'option-label';
+    if (answers[q.sr_no] == i) label.classList.add('selected');
+    
+    const radio = document.createElement('input');
+    radio.type = 'radio';
+    radio.name = `q${q.sr_no}`;
+    radio.value = i;
+    radio.checked = answers[q.sr_no] == i;
+    
+    const changeHandler = () => {
+      document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      saveAnswer();
+    };
+    
+    radio.addEventListener('change', changeHandler);
+    label.addEventListener('click', (e) => {
+      if (e.target !== radio) {
+        radio.checked = true;
+        changeHandler();
+      }
+    });
+    
+    label.appendChild(radio);
+    
+    const optionContent = createOptionContent(q[`option${i}`]);
+    label.appendChild(optionContent);
+    
+    container.appendChild(label);
+  }
+  
+  const bookmarkBtn = document.getElementById('bookmarkBtn');
+  if (bookmarkBtn) {
+    if (bookmarks.has(q.sr_no)) {
+      bookmarkBtn.classList.add('active');
+    } else {
+      bookmarkBtn.classList.remove('active');
+    }
+  }
+  
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const submitBtn = document.getElementById('submitBtn');
+  
+  if (prevBtn) prevBtn.disabled = index === 0;
+  
+  if (index === questions.length - 1) {
+    if (nextBtn) nextBtn.classList.add('hidden');
+    if (submitBtn) submitBtn.classList.remove('hidden');
+  } else {
+    if (nextBtn) nextBtn.classList.remove('hidden');
+    if (submitBtn) submitBtn.classList.add('hidden');
+  }
+  
+  updateProgress();
+  updatePalette();
+}
+
+function updateMarkingInfo() {
+  if(questions.length > 0) {
+      const q = questions[0];
+      const markingInfo = document.getElementById('markingInfo');
+      if (markingInfo) {
+        markingInfo.textContent = `Marking: +${q.positive_marking}, -${q.negative_marking}`;
+      }
+  }
+}
+
+function updateProgress() {
+  const attempted = Object.keys(answers).length;
+  const currentProgress = ((currentQuestion + 1) / questions.length) * 100;
+  
+  const progressBar = document.getElementById('progressBar');
+  const progressText = document.getElementById('progressText');
+  const attemptedText = document.getElementById('attemptedText');
+  
+  if (progressBar) progressBar.style.width = `${currentProgress}%`;
+  if (progressText) progressText.textContent = `${currentQuestion + 1}/${questions.length}`;
+  if (attemptedText) attemptedText.textContent = attempted;
+}
+
+function saveAnswer() {
+  const q = questions[currentQuestion];
+  const selected = document.querySelector(`input[name="q${q.sr_no}"]:checked`);
+  
+  if (selected) {
+    answers[q.sr_no] = selected.value;
+  }
+  
+  updateProgress();
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function clearAnswer() {
+  const q = questions[currentQuestion];
+  delete answers[q.sr_no];
+  
+  const selected = document.querySelector(`input[name="q${q.sr_no}"]:checked`);
+  if (selected) selected.checked = false;
+  
+  document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+  
+  updateProgress();
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function toggleBookmark() {
+  const q = questions[currentQuestion];
+  const btn = document.getElementById('bookmarkBtn');
+  
+  if (bookmarks.has(q.sr_no)) {
+    bookmarks.delete(q.sr_no);
+    if (btn) btn.classList.remove('active');
+  } else {
+    bookmarks.add(q.sr_no);
+    if (btn) btn.classList.add('active');
+  }
+  
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function nextQuestion() {
+  saveAnswer();
+  if (currentQuestion < questions.length - 1) {
+    currentQuestion++;
+    loadQuestion(currentQuestion);
+  }
+}
+
+function prevQuestion() {
+  saveAnswer();
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    loadQuestion(currentQuestion);
+  }
+}
+
+function confirmSubmit() {
+  const unattempted = questions.length - Object.keys(answers).length;
+  let message = 'Are you sure you want to submit the quiz?';
+  
+  if (unattempted > 0) {
+    message += `\n\nYou have ${unattempted} unanswered question(s).`;
+  }
+  
+  if (confirm(message)) {
+    submitQuiz();
+  }
+}
+
+function submitQuiz() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+  }
+  saveAnswer();
+  closePalette();
+  
+  let correct = 0, wrong = 0, unattempted = 0, score = 0;
+  
+  questions.forEach(q => {
+    const userAns = answers[q.sr_no];
+    const posMark = parseFloat(q.positive_marking) || 0;
+    const negMark = parseFloat(q.negative_marking) || 0;
+    
+    if (!userAns) {
+      unattempted++;
+    } else if (userAns == q.answer) {
+      correct++;
+      score += posMark;
+    } else {
+      wrong++;
+      score -= negMark;
+    }
+  });
+  
+  displayResults(correct, wrong, unattempted, score);
+  
+  const fab = document.getElementById('paletteFab');
+  const nav = document.getElementById('navigation');
+  if (fab) fab.style.display = 'none';
+  if (nav) nav.style.display = 'none';
+  
+  document.body.style.paddingBottom = '20px';
+  
+  clearLocalStorage();
+}
+
+function displayResults(correct, wrong, unattempted, score) {
+  const totalQuestions = questions.length;
+  const percentage = ((correct / totalQuestions) * 100).toFixed(1);
+  const timerEl = document.getElementById('timer');
+  const timeText = timerEl ? timerEl.textContent : '00:00';
+  
+  let html = `
+    <div class="score-card">
+      <h2>${score}/${totalQuestions}</h2>
+      <p>Your Score: ${percentage}%</p>
+      <p>Time Taken: ${timeText}</p>
+    </div>
+    
+    <div class="stats-grid">
+      <div class="stat-card correct">
+        <h3>${correct}</h3>
+        <p>Correct</p>
+      </div>
+      <div class="stat-card wrong">
+        <h3>${wrong}</h3>
+        <p>Wrong</p>
+      </div>
+      <div class="stat-card unattempted">
+        <h3>${unattempted}</h3>
+        <p>Unattempted</p>
+      </div>
+      <div class="stat-card">
+        <h3>${totalQuestions}</h3>
+        <p>Total</p>
+      </div>
+    </div>
+  `;
+  
+  questions.forEach(q => {
+    const userAns = answers[q.sr_no];
+    
+    // 🌟 NEW: Add the Heading to the results review screen!
+    let headingHtml = (q.question_heading && q.question_heading.trim() !== '') 
+      ? `<div style="background: var(--bg-tertiary); padding: 10px; margin-bottom: 15px; border-left: 4px solid var(--primary-color); border-radius: 5px; overflow-x: auto;">${q.question_heading}</div>` 
+      : '';
+      
+    const questionHeader = isImageURL(q.question)
+      ? `<h4>Q${q.sr_no}:</h4>${headingHtml}<img src="${q.question}" class="question-image" alt="Question ${q.sr_no}">`
+      : `<h4>Q${q.sr_no}:</h4>${headingHtml}<div style="margin-bottom: 10px;">${q.question}</div>`;
+      
+    html += `<div class="question-review">${questionHeader}`;
+    
+    for (let i = 1; i <= 4; i++) {
+      const isCorrect = i.toString() === q.answer;
+      const isUserAnswer = userAns == i.toString();
+      
+      let className = 'review-option';
+      if (isCorrect) className += ' correct';
+      if (isUserAnswer && !isCorrect) className += ' wrong';
+      if (isUserAnswer) className += ' user-selected';
+      
+      const optionValue = q[`option${i}`];
+      
+      if (isImageURL(optionValue)) {
+        html += `<div class="${className}">
+          ${isCorrect ? '✓ ' : ''}${isUserAnswer ? '➤ ' : ''} 
+          <img src="${optionValue}" class="option-image" alt="Option ${i}">
+        </div>`;
+      } else {
+        html += `<div class="${className}">
+          ${isCorrect ? '✓ ' : ''}${isUserAnswer ? '➤ ' : ''}${optionValue}
+        </div>`;
+      }
+    }
+    
+    if (q.solution_text && q.solution_text.trim() !== '') {
+      const solutionContent = isImageURL(q.solution_text)
+        ? `<img src="${q.solution_text}" class="solution-image" alt="Solution">`
+        : q.solution_text;
+      html += `<div class="solution-section">
+        <div class="solution-label">📝 Solution:</div>
+        <div class="solution-content">${solutionContent}</div>
+      </div>`;
+    }
+    
+    html += `</div>`; 
+});
+  
+  html += `
+    <div class="action-buttons">
+      <button class="action-btn restart" onclick="restartQuiz()">Restart Quiz</button>
+      <button class="action-btn download" onclick="downloadResults()">Download Results</button>
+      <button class="action-btn print" onclick="window.print()">Print Results</button>
+    </div>
+  `;
+  
+  const resultSection = document.getElementById('resultSection');
+  const questionSection = document.getElementById('questionSection');
+  const progressSection = document.querySelector('.progress-section');
+  
+  if (resultSection) {
+    resultSection.innerHTML = html;
+    resultSection.classList.remove('hidden');
+  }
+  if (questionSection) questionSection.classList.add('hidden');
+  if (progressSection) progressSection.classList.add('hidden');
+  
+  const quizContainer = document.getElementById('quizContainer');
+  if (quizContainer) {
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
+  }
+}
+
+function restartQuiz() {
+  if (confirm('Are you sure you want to restart? All progress will be lost.')) {
+    currentQuestion = 0;
+    answers = {};
+    bookmarks.clear();
+    timerSeconds = 0;
+    
+    const resultSection = document.getElementById('resultSection');
+    const questionSection = document.getElementById('questionSection');
+    const progressSection = document.querySelector('.progress-section');
+    const fab = document.getElementById('paletteFab');
+    const nav = document.getElementById('navigation');
+    
+    if (resultSection) {
+      resultSection.classList.add('hidden');
+      resultSection.innerHTML = '';
+    }
+    if (questionSection) questionSection.classList.remove('hidden');
+    if (progressSection) progressSection.classList.remove('hidden');
+    if (fab) fab.style.display = 'flex';
+    if (nav) nav.style.display = 'grid';
+    
+    document.body.style.paddingBottom = 'var(--nav-height)';
+    
+    if (timerInterval) {
+      clearInterval(timerInterval);
+    }
+    startTimer();
+    
+    loadQuestion(currentQuestion);
+    createPalette();
+  }
+}
+
+function downloadResults() {
+  const resultSection = document.getElementById('resultSection');
+  if (!resultSection) return;
+  
+  const resultHTML = resultSection.innerHTML;
+  const fullHTML = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Results</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; max-width: 900px; margin: 0 auto; }
+    .score-card { background: linear-gradient(135deg, #007bff, #28a745); color: white; padding: 30px; border-radius: 15px; text-align: center; margin-bottom: 20px; }
+    .score-card h2 { font-size: 48px; margin-bottom: 10px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 30px; }
+    .stat-card { background: white; padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #ddd; }
+    .stat-card h3 { font-size: 32px; margin-bottom: 8px; }
+    .stat-card.correct h3 { color: #28a745; }
+    .stat-card.wrong h3 { color: #dc3545; }
+    .stat-card.unattempted h3 { color: #6c757d; }
+    .question-review { background: white; border: 2px solid #ddd; border-radius: 10px; padding: 20px; margin-bottom: 15px; }
+    .question-review h4 { margin-bottom: 15px; font-size: 16px; line-height: 1.6; }
+    .review-option { padding: 10px 15px; margin: 8px 0; border-radius: 8px; border: 2px solid #ddd; display: flex; align-items: center; gap: 10px; }
+    .option-image { max-width: 150px; max-height: 100px; border-radius: 8px; }
+    .review-option.correct { background: #d4edda; border-color: #28a745; color: #155724; }
+    .review-option.wrong { background: #f8d7da; border-color: #dc3545; color: #721c24; }
+    .review-option.user-selected { border-width: 3px; font-weight: bold; }
+    @media print { body { background: white; } }
+    @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center; color: #007bff;">Quiz Results</h1>
+  <p style="text-align: center; color: #666; margin-bottom: 30px;">Generated on: ${new Date().toLocaleString()}</p>
+  ${resultHTML.replace(/<div class="action-buttons">[\s\S]*?<\/div>/, '')}
+</body>
+</html>
+  `;
+  
+  try {
+    const blob = new Blob([fullHTML], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `Quiz_Results_${new Date().getTime()}.html`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  } catch (err) {
+    alert('Download failed. Please try using the Print option instead.');
+    console.error('Download error:', err);
+  }
+}
+
+function saveToLocalStorage() {
+  try {
+    const state = {
+      currentQuestion,
+      answers,
+      bookmarks: Array.from(bookmarks),
+      timerSeconds,
+      timestamp: Date.now()
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch (err) {
+    console.error('Save error:', err);
+  }
+}
+
+function loadFromLocalStorage() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const state = JSON.parse(saved);
+      const hasProgress = (state && (
+        (state.currentQuestion && state.currentQuestion > 0) ||
+        (state.answers && Object.keys(state.answers).length > 0) ||
+        (state.timerSeconds && state.timerSeconds > 0)
+      ));
+      if (hasProgress && (Date.now() - state.timestamp < 24 * 60 * 60 * 1000)) {
+        if (confirm('Resume previous quiz session?')) {
+          currentQuestion = state.currentQuestion || 0;
+          answers = state.answers || {};
+          bookmarks = new Set(state.bookmarks || []);
+          timerSeconds = state.timerSeconds || 0;
+          updateTimer();
+          loadQuestion(currentQuestion);
+        }
+      } else {
+        clearLocalStorage();
+      }
+    }
+  } catch (err) {
+    console.error('Load error:', err);
+    clearLocalStorage();
+  }
+}
+
+function clearLocalStorage() {
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (err) {
+    console.error('Clear storage error:', err);
+  }
+}
+
+window.addEventListener('beforeunload', (e) => {
+  const resultSection = document.getElementById('resultSection');
+  if (resultSection && !resultSection.classList.contains('hidden')) {
+    return;
+  }
+  e.preventDefault();
+  e.returnValue = '';
+});
+
+window.addEventListener('unload', () => {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+});
+</script>
+</body>
+</html>
