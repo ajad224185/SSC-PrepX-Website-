@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>24.) SSC CGL Tier-II (Paper-I) Mock 7 - Hindi</title>
+<style>
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0069d9;
+  --success-color: #28a745;
+  --success-hover: #218838;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --secondary-color: #6c757d;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --border-color: #dee2e6;
+  --shadow: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
+  --overlay: rgba(0,0,0,0.5);
+  --nav-height: 80px;
+}
+
+[data-theme="dark"] {
+  --primary-color: #4dabf7;
+  --primary-hover: #339af0;
+  --success-color: #51cf66;
+  --success-hover: #40c057;
+  --danger-color: #ff6b6b;
+  --warning-color: #ffd43b;
+  --secondary-color: #868e96;
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #404040;
+  --text-primary: #f8f9fa;
+  --text-secondary: #adb5bd;
+  --border-color: #495057;
+  --shadow: 0 4px 6px rgba(0,0,0,0.3);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.4);
+  --overlay: rgba(0,0,0,0.7);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+  overflow-x: hidden;
+  position: relative;
+  padding-bottom: var(--nav-height);
+}
+
+body.palette-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-primary);
+  padding: 20px 30px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+
+.header h1 {
+  font-size: 28px;
+  color: var(--primary-color);
+  font-weight: 700;
+  user-select: none;
+}
+
+.header-controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.theme-toggle, .fullscreen-btn {
+  background: var(--bg-tertiary);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.3s;
+  min-width: 44px;
+  min-height: 44px;
+  user-select: none;
+}
+
+.theme-toggle:active, .fullscreen-btn:active {
+  transform: scale(0.95);
+}
+
+.theme-toggle:hover, .fullscreen-btn:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+.bot-link-btn {
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+}
+.bot-link-btn:active {
+  transform: scale(0.95);
+}
+.bot-link-btn:hover {
+  background: var(--primary-hover);
+}
+
+.timer {
+  background: var(--warning-color);
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 18px;
+  min-width: 100px;
+  text-align: center;
+  user-select: none;
+}
+
+.timer.warning {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.palette-fab {
+  position: fixed;
+  bottom: calc(var(--nav-height) + 20px);
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  box-shadow: 0 6px 20px rgba(0,123,255,0.4);
+  transition: all 0.3s ease;
+  z-index: 998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.palette-fab:active {
+  transform: scale(0.9);
+}
+
+.palette-fab:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0,123,255,0.6);
+}
+
+.palette-fab.active {
+  background: var(--danger-color);
+}
+
+.palette-fab .badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: var(--success-color);
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--bg-secondary);
+  pointer-events: none;
+}
+.solution-section {
+  margin-top: 20px;
+  padding: 15px;
+  background: #e7f3ff;
+  border-left: 4px solid var(--primary-color);
+  border-radius: 8px;
+}
+
+.solution-label {
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.solution-content {
+  line-height: 1.6;
+  color: #333;
+}
+
+.solution-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.palette-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 999;
+  touch-action: none;
+}
+
+.palette-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.question-palette {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 450px;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--bg-primary);
+  box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+  transition: right 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.question-palette.active {
+  right: 0;
+}
+
+.palette-header {
+  padding: 20px;
+  background: var(--primary-color);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.palette-header h3 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.palette-close {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: background 0.2s;
+  line-height: 1;
+  touch-action: manipulation;
+}
+
+.palette-close:active {
+  transform: scale(0.9);
+}
+
+.palette-close:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.palette-stats {
+  padding: 15px 20px;
+  background: var(--bg-tertiary);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  font-size: 13px;
+  text-align: center;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border-color);
+  user-select: none;
+}
+
+.palette-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.palette-stat .number {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.palette-stat.answered .number { color: var(--success-color); }
+.palette-stat.unanswered .number { color: var(--secondary-color); }
+.palette-stat.bookmarked .number { color: var(--warning-color); }
+
+.palette-search {
+  padding: 15px 20px;
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+}
+
+.palette-search input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 14px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.palette-search input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.palette-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 10px;
+}
+
+.palette-btn {
+  aspect-ratio: 1;
+  border: 2px solid var(--border-color);
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+  min-width: 40px;
+  min-height: 40px;
+  color: var(--text-primary);
+  position: relative;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.palette-btn:active {
+  transform: scale(0.9);
+}
+
+.palette-btn:hover {
+  transform: scale(1.1);
+  z-index: 10;
+  box-shadow: var(--shadow);
+}
+
+.palette-btn.current {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  animation: currentPulse 2s infinite;
+}
+
+@keyframes currentPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,123,255,0.7); }
+  50% { box-shadow: 0 0 0 8px rgba(0,123,255,0); }
+}
+
+.palette-btn.answered {
+  background: var(--success-color);
+  color: white;
+  border-color: var(--success-color);
+}
+
+.palette-btn.bookmarked::after {
+  content: '🔖';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.palette-btn.bookmarked.answered {
+  background: var(--success-color);
+}
+
+.palette-legend {
+  padding: 20px;
+  border-top: 1px solid var(--border-color);
+  font-size: 13px;
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.legend-color {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.quiz-container {
+  background: var(--bg-primary);
+  border-radius: 15px;
+  box-shadow: var(--shadow-lg);
+  padding: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  scroll-margin-top: 20px;
+}
+
+.quiz-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.marking-info {
+  display: inline-block;
+  background: var(--bg-tertiary);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.progress-section {
+  margin-bottom: 25px;
+}
+
+.progress-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.progress-bar-container {
+  background: var(--bg-tertiary);
+  border-radius: 12px;
+  overflow: hidden;
+  height: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+  transition: width 0.4s ease;
+  border-radius: 12px;
+}
+
+.question-section {
+  min-height: 300px;
+  scroll-margin-top: 80px;
+  margin-bottom: 20px;
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.question-number {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary-color);
+  user-select: none;
+}
+
+.bookmark-btn {
+  background: transparent;
+  border: 2px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 44px;
+  min-height: 44px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.bookmark-btn:active {
+  transform: scale(0.95);
+}
+
+.bookmark-btn.active {
+  background: var(--warning-color);
+  border-color: var(--warning-color);
+  color: #000;
+}
+
+.question {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 25px;
+  color: var(--text-primary);
+  user-select: text;
+}
+
+.question-image {
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: 10px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  padding: 10px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--border-color);
+  padding: 16px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--bg-secondary);
+  min-height: 60px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.option-label:active {
+  transform: scale(0.98);
+}
+
+.option-label:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--primary-color);
+}
+
+.option-label.selected {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.option-label input[type="radio"] {
+  margin-right: 15px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.option-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.option-image {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  padding: 10px;
+}
+
+.option-label.selected .option-image {
+  background: rgba(255,255,255,0.1);
+}
+
+/* FIXED NAVIGATION - KEY UPDATE */
+.navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-primary);
+  border-top: 2px solid var(--border-color);
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  z-index: 997;
+  padding: 15px 20px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 10px;
+  max-width: 100%;
+}
+
+.nav-btn {
+  padding: 14px 20px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+.nav-btn:active {
+  transform: scale(0.97);
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.nav-btn.prev {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.nav-btn.prev:hover:not(:disabled) {
+  background: #5a6268;
+}
+
+.nav-btn.next {
+  background: var(--primary-color);
+  color: white;
+}
+
+.nav-btn.next:hover:not(:disabled) {
+  background: var(--primary-hover);
+}
+
+.nav-btn.clear {
+  background: var(--danger-color);
+  color: white;
+}
+
+.nav-btn.clear:hover {
+  background: #c82333;
+}
+
+.nav-btn.submit {
+  background: var(--success-color);
+  color: white;
+  grid-column: 1 / -1;
+}
+
+.nav-btn.submit:hover {
+  background: var(--success-hover);
+}
+
+.result-section {
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.score-card {
+  background: linear-gradient(135deg, var(--primary-color), var(--success-color));
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  margin-bottom: 30px;
+  user-select: none;
+}
+
+.score-card h2 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.score-card p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: var(--bg-secondary);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  border: 2px solid var(--border-color);
+  user-select: none;
+}
+
+.stat-card h3 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.stat-card.correct h3 { color: var(--success-color); }
+.stat-card.wrong h3 { color: var(--danger-color); }
+.stat-card.unattempted h3 { color: var(--secondary-color); }
+
+.question-review {
+  border: 2px solid var(--border-color);
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 20px;
+  background: var(--bg-secondary);
+}
+
+.question-review h4 {
+  margin-bottom: 15px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.review-option {
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 2px solid var(--border-color);
+  background: var(--bg-primary);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.review-option .option-image {
+  max-width: 150px;
+  max-height: 100px;
+}
+
+.review-option.correct {
+  background: #d4edda;
+  border-color: var(--success-color);
+  color: #155724;
+}
+
+.review-option.wrong {
+  background: #f8d7da;
+  border-color: var(--danger-color);
+  color: #721c24;
+}
+
+.review-option.user-selected {
+  border-width: 3px;
+  font-weight: 600;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.action-btn {
+  padding: 14px 30px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  min-width: 150px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.action-btn:active {
+  transform: scale(0.95);
+}
+
+.action-btn.restart {
+  background: var(--danger-color);
+  color: white;
+}
+
+.action-btn.restart:hover {
+  background: #c82333;
+}
+
+.action-btn.download {
+  background: var(--primary-color);
+  color: white;
+}
+
+.action-btn.download:hover {
+  background: var(--primary-hover);
+}
+
+.action-btn.print {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.action-btn.print:hover {
+  background: #5a6268;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.palette-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.palette-content::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+}
+
+.palette-content::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+.palette-content::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 140px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .header h1 {
+    font-size: 22px;
+  }
+
+  .quiz-container {
+    padding: 20px 15px;
+  }
+
+  .question-palette {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .palette-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+  }
+
+  .palette-btn {
+    font-size: 13px;
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  .palette-fab {
+    bottom: calc(var(--nav-height) + 10px);
+    right: 15px;
+    width: 56px;
+    height: 56px;
+    font-size: 22px;
+  }
+
+  .navigation {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 12px 15px;
+  }
+
+  .nav-btn {
+    min-height: 44px;
+    font-size: 15px;
+  }
+
+  .nav-btn.clear {
+    order: 3;
+  }
+
+  .nav-btn.submit {
+    grid-column: auto;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .legend-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .question {
+    font-size: 16px;
+  }
+
+  .option-label {
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  .option-image {
+    max-height: 150px;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .palette-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+
+  .palette-btn {
+    font-size: 12px;
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .timer {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  .option-image {
+    max-height: 120px;
+  }
+}
+
+@media print {
+  .header-controls, .navigation, .palette-fab, .palette-overlay, .question-palette, .action-buttons, .bookmark-btn {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    padding-bottom: 0;
+  }
+
+  .container {
+    padding-bottom: 20px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>24.) SSC CGL Tier-II (Paper-I) Mock 7 - Hindi</h1>
+    <div class="header-controls">
+      <a href="https://t.me/ssc_prepX" target="_blank" class="bot-link-btn" title="Open Bot in Telegram">🤖 Bot</a>
+      
+      <div class="timer" id="timer">00:00</div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle Theme">🌙</button>
+      <button class="fullscreen-btn" id="fullscreenBtn" aria-label="Toggle fullscreen" title="Fullscreen">⛶</button>
+    </div>
+  </div>
+
+  <div class="quiz-container" id="quizContainer">
+    <div class="quiz-header">
+      <div class="marking-info" id="markingInfo">Marking: +1, -0</div>
+    </div>
+
+    <div class="progress-section">
+      <div class="progress-stats">
+        <span>Progress: <strong id="progressText">1/2</strong></span>
+        <span>Attempted: <strong id="attemptedText">0</strong></span>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+
+    <div class="question-section" id="questionSection">
+      <div class="question-header">
+        <div class="question-number" id="questionNumber">Question 1 of 2</div>
+        <button class="bookmark-btn" id="bookmarkBtn" aria-label="Bookmark question">
+          <span>🔖</span> <span>Bookmark</span>
+        </button>
+      </div>
+      
+      <div class="question" id="questionText"></div>
+      
+      <div class="options" id="optionsContainer"></div>
+    </div>
+
+    <div class="result-section hidden" id="resultSection"></div>
+  </div>
+</div>
+
+<div class="navigation" id="navigation">
+  <button class="nav-btn prev" id="prevBtn" aria-label="Previous question">
+    <span>←</span> Previous
+  </button>
+  <button class="nav-btn clear" id="clearBtn" aria-label="Clear answer">
+    Clear
+  </button>
+  <button class="nav-btn next" id="nextBtn" aria-label="Next question">
+    Next <span>→</span>
+  </button>
+  <button class="nav-btn submit hidden" id="submitBtn" aria-label="Submit quiz">
+    Submit Quiz
+  </button>
+</div>
+
+<button class="palette-fab" id="paletteFab" aria-label="Toggle question palette" title="Question Palette (P)">
+  📋
+  <span class="badge" id="answeredBadge">0</span>
+</button>
+
+<div class="palette-overlay" id="paletteOverlay"></div>
+
+<div class="question-palette" id="questionPalette">
+  <div class="palette-header">
+    <h3>Question Palette</h3>
+    <button class="palette-close" id="paletteClose" aria-label="Close palette">×</button>
+  </div>
+
+  <div class="palette-stats">
+    <div class="palette-stat answered">
+      <div class="number" id="paletteAnswered">0</div>
+      <div>Answered</div>
+    </div>
+    <div class="palette-stat unanswered">
+      <div class="number" id="paletteUnanswered">2</div>
+      <div>Not Answered</div>
+    </div>
+    <div class="palette-stat bookmarked">
+      <div class="number" id="paletteBookmarked">0</div>
+      <div>Bookmarked</div>
+    </div>
+  </div>
+
+  <div class="palette-search">
+    <input type="number" id="paletteSearch" placeholder="Jump to question number..." aria-label="Search questions" inputmode="numeric" pattern="[0-9]*">
+  </div>
+
+  <div class="palette-content">
+    <div class="palette-grid" id="paletteGrid"></div>
+  </div>
+
+  <div class="palette-legend">
+    <div class="legend-grid">
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--success-color);"></div>
+        <span>Answered</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--bg-secondary); border: 2px solid var(--border-color);"></div>
+        <span>Not Answered</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--primary-color);"></div>
+        <span>Current Question</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--warning-color);"></div>
+        <span>🔖 Bookmarked</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// JSON INJECTION HAPPENS HERE
+const questions = [{"sr_no": 1, "question": "What is the compound interest on a sum of ₹5,400 for \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646792image1.png\"> years at 15% per annum, if the interest is compounded 10-monthly(approximate)?\n  <br>", "option1": "Rs. 2286\n  <br>", "option2": "Rs. 2290\n  <br>", "option3": "Rs. 2280\n  <br>", "option4": "Rs. 2285\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647096image63.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 2, "question": "The compound interest on a certain sum for 3 years at 15% per annum, interest compounded yearly, is ₹ 12,501. What is the simple interest on the same sum in 5 years at the same rate?\n  <br>", "option1": "Rs. 18000\n  <br>", "option2": "Rs. 16000\n  <br>", "option3": "Rs. 16500\n  <br>", "option4": "Rs. 18500\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647104image64.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 3, "question": "A sum of ₹25,600 is invested for 16 months at 8% per annum compounded half-yearly. What is the percentage gain at the end of 16 months, to the nearest whole numbers?\n  <br>", "option1": "11\n  <br>", "option2": "10\n  <br>", "option3": "9\n  <br>", "option4": "12\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647104image65.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 4, "question": "The average weight of a certain number of students in a group is 72 kg. If 10 students having an average weight of 74 kg leave and 4 students having an average weight of 76 kg join the group. the average weight of the students in the group decreases by 0.2 kg. The number of students initially in the group is :\n  <br>", "option1": "26\n  <br>", "option2": "23\n  <br>", "option3": "25\n  <br>", "option4": "24\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647116image66.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 5, "question": "The average daily income of Pikachu during the month of February 2016 was 610. The average income for the first 16 days was 630 and for the last 16 days it was 590. What was his average income for 14th, 15th and 16th February?\n  <br>", "option1": "Rs. 600\n  <br>", "option2": "Rs. 620\n  <br>", "option3": "Rs. 605\n  <br>", "option4": "Rs. 610\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647123image67.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 6, "question": "The speed of a car increases by 2 km/h after every one hour. If the distance travelled in the first one hour was 45 km, what was the total distance travelled in 10 hours?\n  <br>", "option1": "545 km\n  <br>", "option2": "540 Km\n  <br>", "option3": "530 km\n  <br>", "option4": "535 km\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647123image68.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 7, "question": "A train travelling at the speed of x km/h crossed a 300 m long platform in 40 seconds and overtook a man walking in the same direction at the speed of 8 km/h in 10 seconds. What is the value of x?\n  <br>", "option1": "36.66 km/h\n  <br>", "option2": "32.50 km/h\n  <br>", "option3": "33.33 km/h\n  <br>", "option4": "34.53 km/h\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647124image69.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 8, "question": "What will be the sum of all 3 digit numbers framed by the digits (1, 2 and 3) in the case of no repetition allowed?\n  <br>", "option1": "1332\n  <br>", "option2": "1330\n  <br>", "option3": "1333\n  <br>", "option4": "1331\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br>123, 132, 213, 231, 312, 321\n  <br>Sum = 1332\n  <br>", "question_heading": ""}, {"sr_no": 9, "question": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647072image2.png\"> \n  <br>", "option1": "7\n  <br>", "option2": "5\n  <br>", "option3": "8\n  <br>", "option4": "6\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647125image70.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 10, "question": "A building can be made by 35 men in 70 days. Due to some unavoidable circumstances, 10 men left the work after x days. Now the work was completed in 90 days. Find the value of x.\n  <br>", "option1": "15 days\n  <br>", "option2": "20 days\n  <br>", "option3": "22 days\n  <br>", "option4": "18 days\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647128image71.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 11, "question": "A invested Rs. 60000 in a scheme for a year. After 4 months, B invested Rs. 50,000 in the same scheme with A. If the total profit after a year was Rs. 4,22,800. Find the share of A and B in the profit.\n  <br>", "option1": "Rs. 271800, Rs. 151000\n  <br>", "option2": "Rs. 261800, Rs. 152000\n  <br>", "option3": "Rs. 272800, Rs. 150000\n  <br>", "option4": "Rs. 271600, Rs. 151200\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647153image72.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 12, "question": "In a scenario, probability of A speaking truth is 3/5 and probability of B speaking truth is 2/7. Find the probability of the case in which both will contradict each other.\n  <br>", "option1": "5/35\n  <br>", "option2": "12/35\n  <br>", "option3": "18/35\n  <br>", "option4": "19/35\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647161image73.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 13, "question": "In a regular polygon, value of each external angle is \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647109image3.png\">How many diagonals will be there in this polygon?\n  <br>", "option1": "80\n  <br>", "option2": "85\n  <br>", "option3": "90\n  <br>", "option4": "100\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647162image74.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 14, "question": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647288image4.png\"> \n  <br>", "option1": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647388image5.png\"> \n  <br>", "option2": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646407image6.png\"> \n  <br>", "option3": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646410image7.png\"> \n  <br>", "option4": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646420image8.png\"> \n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647234image75.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 15, "question": "Ram takes 20 mins to make a pen and Sukesh takes 25 mins to make the same. How many days will they take to make 27 such pens if they work together?\n  <br>", "option1": "5 hours\n  <br>", "option2": "6 hours\n  <br>", "option3": "3 hours\n  <br>", "option4": "4.5 hours\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647339image76.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 16, "question": "To do a certain work, A is 25% more efficient than B. Working together, they can do the same work in 12 days. A started the work and left after 8 days. B and C together completed the remaining work in next 6 days. C alone can do 11 times the original work in:\n  <br>", "option1": "160 days\n  <br>", "option2": "165 days\n  <br>", "option3": "162 days \n  <br>", "option4": "164 days\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647357image77.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 17, "question": "Solve:\n  <br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646421image9.png\"> \n  <br>", "option1": "2\n  <br>", "option2": "1\n  <br>", "option3": "-1\n  <br>", "option4": "0\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647362image78.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 18, "question": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646421image10.png\"> \n  <br>", "option1": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646422image11.png\"> \n  <br>", "option2": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646422image12.png\"> \n  <br>", "option3": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646422image13.png\"> \n  <br>", "option4": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646422image14.png\"> \n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647365image79.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 19, "question": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646422image15.png\"> \n  <br>", "option1": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646422image16.png\"> \n  <br>", "option2": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646423image17.png\"> \n  <br>", "option3": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646423image18.png\"> \n  <br>", "option4": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646714image19.png\"> \n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647366image80.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 20, "question": "A number is first increased by 15%, then again increased by 20%, then decreased by 30%. Find the net increase or decrease percentage in the number.\n  <br>", "option1": "2.3 %\n  <br>", "option2": "3.4 %\n  <br>", "option3": "4.2 %\n  <br>", "option4": "3.6%\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647367image81.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 21, "question": "Two chords 4 cm apart, at the same side of the centre of a circle are of length 12 cm and 6 cm respectively. Find the diameter of the circle.\n  <br>", "option1": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646718image20.png\"> \n  <br>", "option2": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646722image21.png\"> \n  <br>", "option3": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646722image22.png\"> \n  <br>", "option4": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646723image23.png\"> \n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647380image82.png\"> \n  <br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647380image83.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 22, "question": "O is the centre of the circle. A, C and D are three points on the circle. AD is the longest chord in the circle. B is a point on AC such that \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646723image24.png\">If OB=7 cm, find the value of BC.\n  <br>", "option1": "7 cm\n  <br>", "option2": "6 cm\n  <br>", "option3": "8 cm\n  <br>", "option4": "9 cm\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647385image84.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 23, "question": "Find the mean of the following distribution.\n  <br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646724image25.png\"> \n  <br>", "option1": "8.1484\n  <br>", "option2": "8.3545\n  <br>", "option3": "8.2592\n  <br>", "option4": "8.1875\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647385image85.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 24, "question": "A sector is formed by opening out a cone of base radius 21 cm and height 20 cm. Then the radius of the sector (in cm) is:\n  <br>", "option1": "30 cm\n  <br>", "option2": "31 cm\n  <br>", "option3": "29 cm\n  <br>", "option4": "28 cm\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647395image86.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 25, "question": "The LCM and HCM of two 2-digit numbers are 840 and 8 respectively. Find the numbers from the options which can satisfy the condition.\n  <br>", "option1": "56 and 120\n  <br>", "option2": "60 and 110\n  <br>", "option3": "85 and 120\n  <br>", "option4": "50 and 105\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br>LCM × HCF = Product of 2 numbers \n  <br>840 × 8 = 56 × 120\n  <br>6720 = 6720\n  <br>Hence (a) is the right answer. \n  <br>", "question_heading": ""}, {"sr_no": 26, "question": "The following bar chart shows the number of students enrolled in two Summer Camps A and B from 2017 to 2022. Study the chart carefully and answer the question that follows.\n  <br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646725image26.png\"> \n  <br> \n  <b>How many students have enrolled in Summer camp A from 2018 to 2021?</b> \n  <br>", "option1": "580\n  <br>", "option2": "560\n  <br>", "option3": "570\n  <br>", "option4": "590\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br>80 + 140 + 220 + 150 = 590\n  <br>", "question_heading": ""}, {"sr_no": 27, "question": "The following bar chart shows the number of students enrolled in two Summer Camps A and B from 2017 to 2022. Study the chart carefully and answer the question that follows.\n  <br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646726image27.png\"> \n  <br> Find the difference between the number of students enrolled in both the camps from 2017 to 2022?\n  <br>", "option1": "500\n  <br>", "option2": "480\n  <br>", "option3": "490\n  <br>", "option4": "460\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br>Students in Summer camp A → 930\n  <br>Students in Summer camp B → 1410\n  <br>Difference → 480\n  <br>", "question_heading": ""}, {"sr_no": 28, "question": "The following bar chart shows the number of students enrolled in two Summer Camps A and B from 2017 to 2022. Study the chart carefully and answer the question that follows.\n  <br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646729image28.png\"> \n  <br>Number of students enrolled in summer camp A in 2019 is what percentage of the students enrolled in summer camp B in 2021?\n  <br>", "option1": "75\n  <br>", "option2": "70\n  <br>", "option3": "80\n  <br>", "option4": "69\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647395image87.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 29, "question": "The following bar chart shows the number of students enrolled in two Summer Camps A and B from 2017 to 2022. Study the chart carefully and answer the question that follows.\n  <br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646731image29.png\"> \n  <br> Find the ratio between the number of students enrolled in summer camp A and\n  <b> </b>B in 2018 and 2019 with the number of students enrolled in summer camp A in 2021 and 2022.\n  <br>", "option1": "64:33\n  <br>", "option2": "62:56\n  <br>", "option3": "63:71\n  <br>", "option4": "78:43\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647402image88.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 30, "question": "The following bar chart shows the number of students enrolled in two Summer Camps A and B from 2017 to 2022. Study the chart carefully and answer the question that follows.\n  <br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646732image30.png\"> \n  <br>In summer camp A, in which year the enrollment count decreased the maximum and by how much?\n  <br>", "option1": "2019, 120\n  <br>", "option2": "2018, 80\n  <br>", "option3": "2018, 85\n  <br>", "option4": "2019, 160\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br>In year 2018, \n  <br>decrease = 160 – 80 = 80 students (maximum)\n  <br>", "question_heading": ""}, {"sr_no": 31, "question": "In the following question, the statement is followed by two conclusions. Which of the two conclusions is/are true? \n  <br> \n  <b>Statement: </b> \n  <br>P > Q < R = S > T ≤ U\n  <br> \n  <b>Conclusions: </b> \n  <br>I. P= S \n  <br>II. U > T \n  <br> \n  <b>", "option1": "Neither conclusion I nor II is true</b> \n  <br>", "option2": "Only conclusion II is true\n  <br>", "option3": "Both conclusions I and II are true\n  <br>", "option4": "Only conclusion I is true\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> I. ×\n  <br>II. Can’t be determined.\n  <br>", "question_heading": ""}, {"sr_no": 32, "question": "'A $ B' means 'A is the sister of B'. \n  <br>'A ^ B' means 'A is the son of B'. \n  <br>'A * B means ‘ A is the father of B'. \n  <br>'A ! B' means 'A is the mother of B'.\n  <br>If P * Q $ R ^ S, then how is Q related to S?\n  <br>", "option1": "Sister\n  <br>", "option2": "Daughter\n  <br>", "option3": "Daughter-in-law\n  <br>", "option4": "Mother\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647405image89.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 33, "question": "'A $ B' means 'A is the sister of B'. \n  <br>'A ^ B' means 'A is the son of B'. \n  <br>'A * B' means 'A is the father of B'. \n  <br>'A ! B' means 'A is the mother of B'. \n  <br>'A @ B' means 'B is the son of A'.\n  <br>If P * Q @ R ^ S $ T, then how is P related to R?\n  <br>", "option1": "P is the sister of R.\n  <br>", "option2": "P is the brother of R.\n  <br>", "option3": "P is the grandfather of R.\n  <br>", "option4": "P is the son of R.\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647420image90.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 34, "question": "A number has been denoted to each of the given letters. Select the option from the following four possible arrangements of these numbers that forms a meaningful word.\n  <br> S = 1, C = 2, I = 3, E = 4, N = 5\n  <br>", "option1": "4, 5, 2, 1, 3\n  <br>", "option2": "1, 3, 5, 4, 2\n  <br>", "option3": "2, 3, 5, 1, 4\n  <br>", "option4": "1, 3, 5, 2, 4\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647429image91.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 35, "question": "In a row of 40 students, Rahul is 15th from the left end while Priya is 22nd from the right end. How many students are standing between Rahul and Priya?\n  <br>", "option1": "5\n  <br>", "option2": "2\n  <br>", "option3": "4\n  <br>", "option4": "3\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647436image92.png\"> \n  <br>  \n  <br>", "question_heading": ""}, {"sr_no": 36, "question": "In a certain language, the word CUBES is written as 5 – 23 – 4 – 7 – 21. How will you write STABS in the same language? \n  <br>", "option1": "20 – 22 – 3 – 4 –20 \n  <br>", "option2": "21 – 20 – 3 – 4 –21 \n  <br> \n  <b>", "option3": "</b>21 – 22 – 3 – 4 –21\n  <br>", "option4": "21 – 22 – 5 – 4 –21\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647438image93.png\"> \n  <br>  \n  <br>", "question_heading": ""}, {"sr_no": 37, "question": "Select the correct combination of mathematical signs to sequentially replace the * signs and balance the given equation.\n  <br>10 * 5 * 3 * 2 * 4 = 4\n  <br>", "option1": "+ − × ÷\n  <br>", "option2": "× ÷ − + \n  <br>", "option3": "÷ + × −\n  <br>", "option4": "− × ÷ +\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647443image94.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 38, "question": "Complete the given series:\n  <br> 5, 7, 13, 25, 45, ____\n  <br>", "option1": "59\n  <br>", "option2": "78\n  <br>", "option3": "73\n  <br>", "option4": "75\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647445image95.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 39, "question": "Complete the following series:\n  <br> 6, 14, 31, _____. 137\n  <br>", "option1": "65\n  <br>", "option2": "66\n  <br>", "option3": "69\n  <br>", "option4": "67\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646407image96.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 40, "question": "Select the set in which the numbers are related in the same way as are the numbers of the following set.\n  <br>(NOTE: Operations should be performed on the whole numbers, without breaking down the numbers into its constituent digits. E.g., 13 – Operations on 13 such as adding /subtracting /multiplying etc. to 13 can be performed. Breaking down 13 into 1 and 3 and then performing mathematical operations on 1 and 3 is NOT allowed).\n  <br>(60, 11, 72)\n  <br>(84, 19, 144)\n  <br>", "option1": "(78, 54, 244)\n  <br>", "option2": "(48, 15, 132)\n  <br>", "option3": "(58, 16, 218)\n  <br>", "option4": "(145, 12, 332)\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646407image97.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 41, "question": "Select the set in which the numbers are related in the same way as are the numbers of the following set.\n  <br>(NOTE: Operations should be performed on the whole numbers, without breaking down the numbers into its constituent digits. E.g., 13 – Operations on 13 such as adding /subtracting /multiplying etc. to 13 can be performed. Breaking down 13 into 1 and 3 and then performing mathematical operations on 1 and 3 is NOT allowed).\n  <br>(15, 223, 17)\n  <br>(22, 356, 18)\n  <br>", "option1": "(16, 164, 12)\n  <br>", "option2": "(48, 154, 13)\n  <br>", "option3": "(22, 242, 21)\n  <br>", "option4": "(45, 412, 32)\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646408image98.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 42, "question": "Select the option that is related to the third word in the same way as the second word is related to the first word. (The words must be considered as meaningful English words and must not be related to each other based on the number of letters/number of consonants/vowels in the word)\n  <br>Photographer : Camera :: Pianist : ? \n  <br>", "option1": "Sheet music \n  <br>", "option2": "Concert hall \n  <br>", "option3": "Piano \n  <br>", "option4": "Conductor\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br>Photographer uses camera and pianist plays piano.\n  <br>", "question_heading": ""}, {"sr_no": 43, "question": "Select the option that is related to the third word in the same way as the second word is related to the first word. (The words must be considered as meaningful English words and must not be related to each other based on the number of letters/number of consonants/vowels in the word)\n  <br>Botanist : Plants :: mineralogist: ? \n  <br>", "option1": "Animals\n  <br>", "option2": "Minerals \n  <br>", "option3": "Volcanoes \n  <br>", "option4": "Earthquakes\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br>One who studies plants is known as Botanist.\n  <br>One who studies minerals is known as geologist. \n  <br>", "question_heading": ""}, {"sr_no": 44, "question": "Select the odd group of words: \n  <br>", "option1": "Pen - Pencil - Eraser \n  <br>", "option2": "Car - Motorcycle - Bicycle \n  <br>", "option3": "Chair - Table - Sofa \n  <br>", "option4": "Dog - Cat - Lion\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "In (d), a\n  <br>ll are living animals, other options are non – living. \n  <br>", "question_heading": ""}, {"sr_no": 45, "question": "Aौौहंing पुध ौपोपधंधnपौ पय ृध पनहध, धॅधn iी पुधद ौधधं पय ृध ोप ॅोनiोncध थiपु cयंंयnिद ाnयथn ीोcपौ, कधciकध थुicु यी पुध cयncिहौiयnौ ियgicोििद ीियियथ(ौ) ीनयं पुध ौपोपधंधnपौ. Sपोपधंधnपौ: Aिि िiयnौ ोनध ीiधनcध ोniंोिस. Sयंध ीiधनcध ोniंोिस ोनध cोनniॅयनधौ. Nय cोनniॅयनधौ ोनध ुधनृiॅयनधौ. Cयncिहौiयnौ: I. Sयंध िiयnौ ोनध ुधनृiॅयनधौ. II. Sयंध िiयnौ ृधing cोनniॅयनधौ iौ ो ूयौौiृiिiपद. III. Aिि ीiधनcध ोniंोिस ोनध ुधनृiॅयनधौ.", "option1": "All conclusions follow. \n  <br>", "option2": "Both conclusions I and II follow. \n  <br>", "option3": "Both conclusions II and III follow. \n  <br>", "option4": "Only conclusion II follows.\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646408image99.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 46, "question": "Some Statements are given followed by some conclusions.\n  <br>Assuming the statements to be true, even if they seem to be at variance with commonly known facts, decide which of the conclusions logically follow(s) from the statements.\n  <br> \n  <b>Statements: </b> \n  <br>All birds have feathers. \n  <br>Some birds can fly. \n  <br>No penguins can fly. \n  <br>All penguins are birds.\n  <br> \n  <b>Conclusions: </b> \n  <br>I. Some birds have feathers. \n  <br>II. All birds can fly. \n  <br>III. No birds can fly. \n  <br>IV. Some penguins have feathers.\n  <br>", "option1": "All conclusions follow. \n  <br>", "option2": "Both conclusions I and II follow. \n  <br>", "option3": "Both conclusions III and IV follow. \n  <br>", "option4": "Both conclusions I and IV follow.\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646408image100.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 47, "question": "Rahul starts walking from his house and walks 2 km north, then turns right and walks 3 km east, then turns right and walks 4 km south, and finally turns left again and walks 1 km west. How far and in which direction is Rahul from his starting point?\n  <br>", "option1": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646734image31.png\"> \n  <br>", "option2": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646736image32.png\"> \n  <br>", "option3": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646739image33.png\"> \n  <br>", "option4": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646744image34.png\"> \n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646408image101.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 48, "question": "In a certain code language, 'APPLE' is written as '100' and 'ORANGE' is written as '180'. How will 'MANGO' be written in that language?\n  <br>", "option1": "120\n  <br>", "option2": "100\n  <br>", "option3": "110\n  <br>", "option4": "105\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646408image102.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 49, "question": "In a certain code language, 'PURPLE' is written as 'VRQTFN' and 'YELLOW' is written as 'FAMNXQ'. How will 'ORANGE' be written in that language?\n  <br>", "option1": "SQDVFJ \n  <br>", "option2": "SQOCFI \n  <br>", "option3": "SQJGHU \n  <br>", "option4": "SQGHNU\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646409image103.png\"> \n  <br>  \n  <br>", "question_heading": ""}, {"sr_no": 50, "question": "By interchanging the given two signs and numbers, which of the following equations will be correct? \n  <br> + and ×, 7 and 2\n  <br>I. 5 × 4 + 7 - 3 ÷ 2 = 17 \n  <br>II. 7 × 2 - 6 + 4 ÷ 3 = 1\n  <br>III. 9 - 7 × 2 + 8 ÷ 4 = 21\n  <br>", "option1": "Only I \n  <br>", "option2": "Only II \n  <br>", "option3": "Only III \n  <br>", "option4": "More than one equation is correct\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646409image104.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 51, "question": "Select the option that represents the correct order of the given words as they would appear in an English dictionary.\n  <br>1. Diligent\n  <br>2. Dilemma\n  <br>3. Dilapidated\n  <br>4. Dignity\n  <br>5. Dinosaur\n  <br>", "option1": "4, 1, 2, 3, 5\n  <br>", "option2": "4, 3, 2, 5, 1\n  <br>", "option3": "4, 2, 3, 1, 5\n  <br>", "option4": "4, 3, 2, 1, 5\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646410image105.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 52, "question": "A series is given with one term missing. Select the correct alternative from the given ones that will complete the series.\n  <br> PAD, QCG, REJ, ____\n  <br>", "option1": "DBJ\n  <br>", "option2": "JHN\n  <br>", "option3": "SGM\n  <br>", "option4": "FGH\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646419image106.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 53, "question": "In this question, which one set of letters when sequentially placed at the gaps in the given letter series shall complete it?\n  <br>c _ e_ _ f e f _ _ h i _ i j\n  <br>", "option1": "ddeggh\n  <br>", "option2": "ddhggh\n  <br>", "option3": "dfeggi\n  <br>", "option4": "dfeggh\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646419image107.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 54, "question": "Read the given statements and conclusions carefully. Assuming that the information given in the statements is true, even if it appears to be at variance with commonly known facts, decide which of the given conclusions logically follow(s) from the statements.\n  <br>Statement I: John is older than Lisa who is older than Mike. \n  <br>Statement II: Mike is younger than Sarah who is younger than Lisa.\n  <br>Conclusion I: John is older than Mike. \n  <br>Conclusion II: Sarah is older than Lisa.\n  <br>", "option1": "Only Conclusion I follows. \n  <br>", "option2": "Only Conclusion II follows. \n  <br>", "option3": "Both Conclusion I and II follow. \n  <br>", "option4": "Neither Conclusion I nor II follows.\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646419image108.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 55, "question": "In this question, a statement is followed by two courses of action, numbered I and II. You must assume everything in the statement to be true and on the basis of the information given in the statement, decide which course of action/s logically follows for pursuing.\n  <br>Statement: The number of road accidents in a city has significantly increased over the past year.\n  <br>Course of Action: I. The traffic police should increase patrolling and enforcement of traffic rules. \n  <br>II. The city administration should initiate public awareness campaigns on road safety.\n  <br>", "option1": "Both I and II follow. \n  <br>", "option2": "Only I follows. \n  <br>", "option3": "Only II follows.\n  <br>", "option4": "Neither I nor II follows.\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646420image109.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 56, "question": "Four different positions of the same dice are shown, the six faces of which are numbered to 6. Select the number that will be on the face opposite to the one showing ‘3’. \n  <br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646746image35.png\"> \n  <br>", "option1": "5\n  <br>", "option2": "6\n  <br>", "option3": "1\n  <br>", "option4": "2\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646420image110.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 57, "question": "Select the correct mirror image of the given figure when the mirror is placed at MN as shown below. \n  <br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646750image36.png\"> \n  <br>", "option1": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646756image37.png\"> \n  <br>", "option2": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646778image38.png\"> \n  <br> \n  <br>", "option3": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646778image39.png\"> \n  <br> \n  <b> </b> \n  <br>", "option4": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646779image40.png\"> \n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "", "question_heading": ""}, {"sr_no": 58, "question": "Select the option figure in which the given figure (X) is embedded as its part (rotation is NOT allowed). \n  <br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646779image41.png\"> \n  <br>", "option1": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646783image42.png\"> \n  <br>", "option2": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646783image43.png\"> \n  <br>", "option3": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646791image44.png\"> \n  <br>", "option4": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646791image45.png\"> \n  <br>  \n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "", "question_heading": ""}, {"sr_no": 59, "question": "Select the figure that will come next in the following figure series.\n  <br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646804image46.png\"> \n  <br>", "option1": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646805image47.png\"> \n  <br>", "option2": "<b> </b> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647001image48.png\"> \n  <br>", "option3": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647004image49.png\"> \n  <br>", "option4": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647028image50.png\"> \n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "", "question_heading": ""}, {"sr_no": 60, "question": "Select the figure that will come next in the following series. \n  <br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647032image51.png\"> \n  <br>", "option1": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647038image52.png\"> \n  <br>", "option2": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647050image53.png\"> \n  <br>", "option3": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647057image54.png\"> \n  <br>", "option4": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647063image55.png\"> \n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "", "question_heading": ""}, {"sr_no": 61, "question": "Select the most appropriate synonym of the highlighted word.\n  <br>Even if you discover polyamory at this time and try to make an honest job of it, it’s exceedingly difficult to focus on honesty and consent when the trust has already been eroded by infidelity and \n  <b>deception</b>. \n  <br>", "option1": "Cruelty\n  <br>", "option2": "Fraud\n  <br>", "option3": "Reliability\n  <br>", "option4": "Exception\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<b>Deception</b>- the action of deceiving someone.\n  <br>Synonyms-deceit, duplicity, \n  <b>fraud,</b> cunning.\n  <br>Antonyms-honesty, loyalty, truth, sincerity.\n  <br>Meanings of all words are as follows:\n  <br> \n  <b>Cruelty</b>- cruel behavior or attitude.\n  <br> \n  <b>Fraud- </b>deceit, trickery, sharp practice, or breach of confidence, perpetrated to gain some unfair or dishonest advantage.\n  <br> \n  <b>Reliability</b>-\n  <b> </b>the quality of being trustworthy or of performing consistently well.\n  <br> \n  <b>Exception</b>-a person or thing that is excluded from a general statement or does not follow a rule.\n  <br>", "question_heading": ""}, {"sr_no": 62, "question": "<b>Select the most appropriate ANTONYM of the highlighted word.</b> \n  <br>At bottom the man was \n  <b>frivolous</b>, profoundly selfish, unstable, and utterly incapable of consistency or application. \n  <br>", "option1": "Popular\n  <br>", "option2": "Reputed\n  <br>", "option3": "Nervous\n  <br>", "option4": "Serious\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<b>Frivolous-</b> not having any serious purpose or value.\n  <br>Synonyms-waggish, joking, glib, flippant.\n  <br>Antonyms-\n  <b>serious</b>, practical, important.\n  <br>Meanings of all options are as follows:\n  <br> \n  <b>Popular</b>- liked or admired by many people or by a particular person or group.\n  <br> \n  <b>Reputed</b>- generally believed to exist or be something specified, but not definitely the case.\n  <br> \n  <b>Nervous</b>- easily agitated or alarmed.\n  <br> \n  <b>Serious</b>- demanding or characterized by careful consideration or application.\n  <br>", "question_heading": ""}, {"sr_no": 63, "question": "<b>Select the most appropriate ANTONYM of the highlighted word.</b> \n  <br>His action doesn’t \n  <b>warrant</b> such a punishment.\n  <br>", "option1": "triumph\n  <br>", "option2": "support\n  <br>", "option3": "captivate\n  <br>", "option4": "breach\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<b>Warrant</b>- justify or necessitate (a course of action).\n  <br>Synonyms-justify, vindicate, call-for, sanction.\n  <br>Antonyms-\n  <b>breach</b>, break, refusal, veto.\n  <br>Meanings of all options are as follows:\n  <br> \n  <b>Triumph-</b> a great victory or achievement.\n  <br> \n  <b>Support-</b> bear all or part of the weight of; hold up.\n  <br> \n  <b>Captivate-</b> attract and hold the interest and attention of; charm.\n  <br> \n  <b>Breach-</b> an act of breaking or failing to observe a law, agreement, or code of conduct.\n  <br>", "question_heading": ""}, {"sr_no": 64, "question": "Select the sentence which has no spelling error.\n  <br>", "option1": "When Reema saw her mother, she was in ecstasy.\n  <br>", "option2": "Students got in acstasy during inter college baseball match.\n  <br>", "option3": "Sandeep was in ektasy when his son won a scholarship.\n  <br>", "option4": "My cousin closed his eyes in extasy at the thought of coffee.\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The word correctly spelt in option a and incorrectly spelt in option b, c, d is ‘Ecstasy’ which means ‘an overwhelming feeling of great happiness or joyful excitement’.\n  <br>", "question_heading": ""}, {"sr_no": 65, "question": "<b>Select the option that can be used as a one-word substitute for the highlighted group of words.</b> \n  <br>CEO of that company was \n  <b>someone who made an active effort for the welfare of others</b>. \n  <br>", "option1": "Philanthropist\n  <br>", "option2": "Philosopher\n  <br>", "option3": "Philanderer\n  <br>", "option4": "Physicist\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<b>Philanthropist</b>- One who makes an active effort to promote human welfare.\n  <br>Meanings of other options are as follows:\n  <br> \n  <b>Philosopher-</b> a person engaged or learned in philosophy, especially as an academic discipline.\n  <br> \n  <b>Philanderer-</b> a man who readily or frequently enters into casual sexual relationships with women; a womanizer.\n  <br> \n  <b>Physicist-</b> an expert in or student of physics.\n  <br>", "question_heading": ""}, {"sr_no": 66, "question": "<b>Select the most appropriate synonym of the highlighted word.</b> \n  <br>Last year's Lisbon summit took place in the context of a relatively \n  <b>benign</b> economic climate. \n  <br>", "option1": "Beneficiary\n  <br>", "option2": "Boisterous\n  <br>", "option3": "Benevolent\n  <br>", "option4": "Boring\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<b>Benign-</b> gentle and kindly.\n  <br>Synonyms- kindly, friendly, \n  <b>benevolent</b>, warm.\n  <br>Antonyms-harsh, rough, unfriendly, unkind.\n  <br>Meanings of all options are as follows:\n  <br> \n  <b>Beneficiary-</b> a person who derives advantage from something, especially a trust, will, or life insurance policy.\n  <br> \n  <b>Boisterous-</b> noisy, energetic, and cheerful.\n  <br> \n  <b>Benevolent-</b> well-meaning and kindly.\n  <br> \n  <b>Boring-</b> not interesting; tedious.\n  <br>", "question_heading": ""}, {"sr_no": 67, "question": "<b>Select the most appropriate meaning of the highlighted idiom.</b> \n  <br> They were sunbathing \n  <b>in their birthday suits</b>.\n  <br>", "option1": "Not wearing any clothes\n  <br>", "option2": "A suit which covers one’s entire body\n  <br>", "option3": "Birthday celebrations\n  <br>", "option4": "A suit which is designed for only birthday functions\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<b>In your birthday suit- </b>not wearing any clothes.\n  <br>Used in a sentence- The child was in birthday suit and ran about the yard.\n  <br>", "question_heading": ""}, {"sr_no": 68, "question": "<b>Select the option that can be used as a one-word substitute for the given group of words.</b> \n  <br>A person who loves and collects books\n  <br>", "option1": "Booker\n  <br>", "option2": "Bibliophile\n  <br>", "option3": "Bookworm\n  <br>", "option4": "Biographer\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<b>Bibliophile-</b> a person who collects or has a great love of books.\n  <br>Meanings of other options are as follows:\n  <br> \n  <b>Booker-</b> a person employed to engage performers for a theatre or similar.\n  <br> \n  <b>Bookworm-</b> a person who enjoys reading.\n  <br> \n  <b>Biographer-</b> a person who writes an account of someone's life.\n  <br>", "question_heading": ""}, {"sr_no": 69, "question": "<b>Select the most appropriate meaning of the highlighted idiom. </b> \n  <br>The coach was trying to \n  <b>twist the player’s arm</b> by asking him to practice throughout the day.\n  <br>", "option1": "To try to force someone to do something\n  <br>", "option2": "To refrain from resting\n  <br>", "option3": "To train someone in warfare\n  <br>", "option4": "To console the weak\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<b>Twist someone’s arm</b>-force someone to do something.\n  <br>Used in a sentence- I've twisted his arm and he'll get you some tickets.\n  <br>", "question_heading": ""}, {"sr_no": 70, "question": "Select the most appropriate ANTONYM of the given word.\n  <br>Fanatic\n  <br>", "option1": "Extremist\n  <br>", "option2": "Tolerant\n  <br>", "option3": "Lunatic\n  <br>", "option4": "Fantastic\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<b>Fanatic-</b> a person filled with excessive and single-minded zeal, especially for an extreme religious or political cause.\n  <br>Synonyms-zealot, extremist, militant, devotee.\n  <br>Antonyms-conservative, \n  <b>tolerant</b>, moderate.\n  <br>Meanings of all options are as follows:\n  <br> \n  <b>Extremist-</b> a person who holds extreme political or religious views, especially one who advocates illegal, violent, or other extreme action.\n  <br> \n  <b>Tolerant-</b> showing willingness to allow the existence of opinions or behaviour that one does not necessarily agree with.\n  <br> \n  <b>Lunatic-</b> a person who is mentally ill (not in technical use).\n  <br> \n  <b>Fantastic-</b> extraordinarily good or attractive.\n  <br>", "question_heading": ""}, {"sr_no": 71, "question": "Select the INCORRECTLY spelt word.\n  <br>", "option1": "Occesion\n  <br>", "option2": "Humorous\n  <br>", "option3": "Mysterious\n  <br>", "option4": "Scissors\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct spelling of the word is ‘Occasion’ which means ‘a particular event, or the time at which it takes place.’\n  <br>All other options are correctly spelled and their meanings are as follows:\n  <br> \n  <b>Humorous-</b> causing laughter and amusement; comic.\n  <br> \n  <b>Mysterious-</b> difficult or impossible to understand, explain, or identify.\n  <br> \n  <b>Scissors-</b> an instrument used for cutting cloth, paper, and other material, consisting of two blades laid one on top of the other and fastened in the middle so as to allow them to be opened and closed by a thumb and finger inserted through rings on the end of their handles.\n  <br>", "question_heading": ""}, {"sr_no": 72, "question": "Select the most appropriate meaning of the given idiom.\n  <br>Cast aside\n  <br>", "option1": "To blow up\n  <br>", "option2": "To bear with\n  <br>", "option3": "To display\n  <br>", "option4": "To reject\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<b>Cast aside-</b> discard or reject someone or something.\n  <br>Used in a sentence- They cast aside the principles of their youth.\n  <br>", "question_heading": ""}, {"sr_no": 73, "question": "Select the option that can be used as a one-word substitute for the given group of words. \n  <br>A group of policemen\n  <br>", "option1": "rosary\n  <br>", "option2": "shoal\n  <br>", "option3": "posse\n  <br>", "option4": "team\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "A group of policemen is called posse. Hence, option(c) is the correct answer.\n  <br> Rosary: a string of beads for keeping count in a rosary.\n  <br> Shoal: a large number of fish swimming together.\n  <br> Team: a group of players forming one side in a competitive game.\n  <br>", "question_heading": ""}, {"sr_no": 74, "question": "<b>Fill in the blank with the most appropriate option.</b> \n  <br>When Romeo first laid eyes on Juliet, he was struck with such ____________ that his need for her became like a drug that could only be satisfied by returned feelings.\n  <br>", "option1": "Cacophony\n  <br>", "option2": "Riposte\n  <br>", "option3": "Limerence\n  <br>", "option4": "Sanctimony\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "Use ‘limerence’ to fill in the blank.\n  <br> \n  <b>Limerence</b>- the state of being obsessively infatuated with someone.\n  <br> \n  <b>Cacophony</b>- a harsh discordant mixture of sounds.\n  <br> \n  <b>Riposte</b>- a quick, clever reply to an insult or criticism.\n  <br> \n  <b>Sanctimony</b>- the action or practice of acting as if one were morally superior to other people.\n  <br> As per the meanings of all the options given ‘limerence’ is the most appropriate option to fill in the blank.\n  <br>", "question_heading": ""}, {"sr_no": 75, "question": "<b>Fill in the blank with the most appropriate option.</b> \n  <br>It can be used to treat __________ cerebrovascular disease, centrically retinitis, arteriosclerosis, coronary heart disease, pre-block syndrome, thrombophlebitis, etc.\n  <br>", "option1": "Obdurate\n  <br>", "option2": "Heresy\n  <br>", "option3": "Otiose\n  <br>", "option4": "Postulate\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "\"Obdurate\" means stubborn or unyielding, and it fits the context of the sentence.\n  <br>Meanings of the options:\n  <br> (a) Obdurate - stubborn or unyielding.\n  <br> (b) Heresy - a belief or opinion that contradicts established religious or social doctrines.\n  <br> (c) Otiose - useless or futile.\n  <br> (d) Postulate - to propose or assume the existence of something as a basis for reasoning or argument.\n  <br>", "question_heading": ""}, {"sr_no": 76, "question": "<b>Fill in the blank with the most appropriate option.</b> \n  <br>I shall try to moderate my reply, despite the ________ terms of the question. \n  <br>", "option1": "Sentiment\n  <br>", "option2": "Accidental\n  <br>", "option3": "Sententious\n  <br>", "option4": "Plagiarized\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The sentence implies that the question was phrased in a pompous or moralizing manner, and the speaker is trying to respond in a measured or reasonable way.\n  <br> \"Sententious\" means using moralizing or pompous language, which fits the context of the sentence.\n  <br>Meanings of the options:\n  <br> (a) Sentiment - an emotion or feeling.\n  <br> (b) Accidental - happening by chance or unintentionally.\n  <br> (c) Sententious - using moralizing or pompous language.\n  <br> (d) Plagiarised - copied or stolen from someone else's work.\n  <br>", "question_heading": ""}, {"sr_no": 77, "question": "<b>Parts of the given sentence have been given as options. One of them contains a grammatical error. Select the option that has the error. </b> \n  <br>You have to come in with an idea before the deadline.\n  <br>", "option1": "You have to \n  <br>", "option2": "before the deadline.\n  <br>", "option3": "come in with an idea\n  <br>", "option4": "No Error\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "Use phrasal verb ‘come up’ instead of ‘come in’ to correct the sentence.\n  <br> \n  <b>Come up</b>- (of an issue, situation, or problem) occur or present itself, especially unexpectedly.\n  <br>", "question_heading": ""}, {"sr_no": 78, "question": "<b>Select the most appropriate option that can substitute the highlighted segment in the given sentence.</b> \n  <br>He seldom watches films, \n  <b>does he?</b> \n  <br>", "option1": "Doesn’t he?\n  <br>", "option2": "Shall he?\n  <br>", "option3": "Isn’t he?\n  <br>", "option4": "No improvement\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is option d.\n  <br>The given sentence is grammatically and contextually correct.\n  <br> Question tags are the small questions that often come at the ends of sentences in speech.\n  <br> If the main clause is positive, the question tag is usually negative, and if the main clause is negative, the question tag is positive. Some words are negative in meaning. \n  <br> For example - hardly, seldom, scarcely, rarely, barely, etc. Hence, they will take positive question tags after them.\n  <br>", "question_heading": ""}, {"sr_no": 79, "question": "<b>Select the most appropriate option that can substitute the highlighted segment in the given sentence.</b> \n  <br>The council endeavoured \n  <b>to set up on</b> a system of appeals in the case of bishops, in which the see of Rome was made to play a great part.\n  <br>", "option1": "to set off\n  <br>", "option2": "to set forward\n  <br>", "option3": "to set over\n  <br>", "option4": "to set up\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "Substitute ‘to set up on’ with ‘to set up’ to correct the sentence.\n  <br> \n  <b>Set up</b>- establish a business, institution, or other organization.\n  <br> Use of ‘on’ is redundant in the sentence.\n  <br>", "question_heading": ""}, {"sr_no": 80, "question": "<b>Select the correct active or passive form of the given sentence.</b> \n  <br>Surya drove the truck to the depot.\n  <br>", "option1": "The truck was drove by Surya to the depot.\n  <br>", "option2": "The truck was driving by Surya to the depot.\n  <br>", "option3": "The truck is being driven by Surya to the depot.\n  <br>", "option4": "The truck was driven by Surya to the depot.\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<b>Active Voice: </b> In Active voice the subject is the one doing the action.\n  <br> \n  <b>Passive Voice:</b> In Passive voice the subject is the recipient of the action.\n  <br> To convert active voice into passive voice the object becomes the subject and the subject becomes the object. Subject + verb + object Object+3rd form of verb + by +Subject.\n  <br>  In Simple Past Tense as presented in the question the structure for changing tense into active to passive is\n  <br> Subject + V2+ object Object+ was/were V3+ by + subject.\n  <br> For Example- Active- I did yoga.\n  <br> Passive- Yoga was done by me.\n  <br>", "question_heading": ""}, {"sr_no": 81, "question": "Tुध ीियियथing ौधnपधncध ुोौ ृधधn ौूिiप inपय ीयहन ौधgंधnपौ ोnक giॅधn ोौ यूपiयnौ. Iकधnपiीद पुध ौधgंधnप पुोप cयnपोinौ ो gनोंंोपicोि धननयन. Tुधn cोंध पुध थयना in cियिधgध, यनiginोि पुधंध थनiपध थiपु nधथ iकधोिस यी cयंूयौiपiयn यन ोप िधोौप nधथ ंधपुयकौ यी ौहggधौपing पुयौध iकधोिस.", "option1": "Then came the work in college,\n  <br>", "option2": "ideals of composition or at least\n  <br>", "option3": "new methods of suggesting those ideals.\n  <br>", "option4": "original theme write with new\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The error lies in part (d) of the sentence. \n  <br> The verb \"write\" should be changed to its past participle form, \"written,\" to maintain grammatical agreement with the subject \"original theme.\"\n  <br>", "question_heading": ""}, {"sr_no": 82, "question": "<b>Select the option that will improve the highlighted part of the given sentence.</b> \n  <br>Sandeep and Gaurav are both great singers, \n  <b>but Sandeep is the best.</b> \n  <br>", "option1": "but Sandeep is one of the best\n  <br>", "option2": "but Sandeep is better \n  <br>", "option3": "and yet both of are equally good at it\n  <br>", "option4": "but Sandeep is good \n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "Use ‘but Sandeep is better’ instead of ‘but Sandeep is the best’ to improve the sentence.\n  <br> When there is a comparison between any two things or people comparative degree of comparison has to be used.\n  <br> Comparative degree of ‘good’ is ‘better’, superlative degree of ‘good’ is ‘best’.\n  <br>", "question_heading": ""}, {"sr_no": 83, "question": "<b>Select the option that expresses the given sentence in active voice. </b> \n  <br>By whom was the decision to cancel the meeting made?\n  <br>", "option1": "Who made the decision to cancel the meeting?\n  <br>", "option2": "The decision to cancel the meeting was made by whom?\n  <br>", "option3": "The decision was made to cancel the meeting by whom?\n  <br>", "option4": "Whose decision was it to cancel the meeting?\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "In the sentence \"By whom was the decision to cancel the meeting made?\", the subject is \"the decision,\" and it is being acted upon by the object, \"by whom.\" \n  <br> This sentence is in passive voice.\n  <br> To convert this sentence into active voice, we need to change the sentence so that the subject performs the action. \n  <br>The active voice version of the sentence is \"Who made the decision to cancel the meeting?\". In this sentence, the subject is \"who,\" and it performs the action of canceling the meeting.\n  <br>", "question_heading": ""}, {"sr_no": 84, "question": "<b>Select the option that expresses the given sentence in passive voice. </b> \n  <br>\"The artist is painting the mural.\"\n  <br>", "option1": "The murals are being painted by the artist.\n  <br>", "option2": "The mural was being painted by the artist.\n  <br>", "option3": "The mural is painted by the artist.\n  <br>", "option4": "The mural is being painted by the artist.\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "To convert this active voice sentence into passive voice, we need to follow the appropriate rules. \n  <br> Since the active voice sentence is in the present continuous tense (\"is painting\"), we need to change it to the passive voice while maintaining the tense.\n  <br> The correct conversion to the present continuous tense in passive voice is \"is being painted,\" which is found in option (d). The other options don't follow the correct tense conversion or include the subject.\n  <br>", "question_heading": ""}, {"sr_no": 85, "question": "<b>The following sentence has been split into four segments and given as options. Identify the segment that contains a grammatical error.</b> \n  <br>The man besides her was wearing a brown suit and hat.\n  <br>", "option1": "her was wearing\n  <br>", "option2": "a brown suit\n  <br>", "option3": "The man besides\n  <br>", "option4": "and hat.\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "Use of ‘besides’ is wrong in the sentence.\n  <br> \n  <b>Beside- </b>at the side of; next to.\n  <br> \n  <b>Besides- </b>in addition to; apart from.\n  <br> Though both of them sound similar they have different meanings and used in different context.\n  <br>", "question_heading": ""}, {"sr_no": 86, "question": "<b> Choose the correct indirect speech conversion of the following direct speech:</b> \n  <br>Michael said, \"I am going to the store this evening.\"\n  <br>", "option1": "Michael said that he was going to the store that evening.\n  <br>", "option2": "Michael said that he is going to the store this evening.\n  <br>", "option3": "Michael said that he would go to the store that evening.\n  <br>", "option4": "Michael said that he went to the store this evening.\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "To convert this direct speech into indirect speech, we need to follow the appropriate rules. Since the direct speech is in the present continuous tense (\"I am going\"), we need to change it to the past continuous tense in the indirect speech.\n  <br> The correct conversion to the past continuous tense is \"he was going,\" which is found in option (a). The other options don't follow the correct tense conversion.\n  <br>", "question_heading": ""}, {"sr_no": 87, "question": "<b>For the four-sentence (S1 to S4) paragraph below, sentences S1 and S4 are given.</b> \n  <br>From the options P, Q, R, and S select the appropriate sentences for S2 and S3, respectively.\n  <br>(S1) The sun was setting, and the colors painted the sky in a breathtaking display.\n  <br>(S2)\n  <br>(S3)\n  <br>(S4) The view had an almost magical quality to it.\n  <br> (P) The sunrise painted the sky in hues of pleasant colors casting a warm glow over the awakening world.\n  <br>(Q) The clouds parted, revealing a brilliant tapestry of pink, orange, and purple hues.\n  <br>(R) It was a cold evening, and the air carried a crispness that hinted at the coming winter.\n  <br>(S) The vibrant night life of the city beckoned with lively crowds offer endless opportunities for excitement and adventure.\n  <br>", "option1": "P, Q\n  <br>", "option2": "Q, R\n  <br>", "option3": "P, S\n  <br>", "option4": "R, P\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "Since (S2) should describe the scene in the sky to connect with the breathtaking display mentioned in (S1). \n  <br> Option (Q) fits best, as it talks about the colors of the sky. \n  <br> (S3) should provide more context about the atmosphere or the overall experience of the scene. \n  <br> Option (R) is the most suitable, describing the cold evening and crisp air. \n  <br> So, the correct order of paragraph becomes (S1) Q R (S4).\n  <br>", "question_heading": ""}, {"sr_no": 88, "question": "Fयन पुध ीयहन-ौधnपधncध (S1 पय S4) ूोनोgनोूु ृिधयथ, ौधnपधncधौ S1 ोnक S4 ोनध giॅधn. Fनयं पुध यूपiयnौ P, Q, R, ोnक S ौिधधcप पुध ोूूनयूनiोपध ौधnपधncधौ ीयन S2 ोnक S3, नधौूधcपiॅिधद. (S1) Tुध यनcुधौपनो ृधgोn ूिोदing, ोnक पुध ोहकiधncध थोौ inौपोnिपद cोूपiॅोपधक. (S2) (S3) (S4) Tुध ीinोि nयपध थोौ ंधप थiपु पुहnकधनयहौ ोूूिोहौध. (P) Tुध cयnकहcपयन िधक पुध ंहौiciोnौ पुनयहgु ो cयंूिधस ोnक धंयपiयnोि ूiधcध. (Q) Tुध ॅiियiniौपौ ूिोदधक थiपु ूनधciौiयn, थुiिध पुध cिधिiौपौ cनधोपधक ो कधधू, नधौयnोnप ीयहnकोपiयn. (R) Tुध कोncधनौै धnधनgद ोnक ूनधciौiयn थधनध ौुयथcोौधक ृनiििiोnिपद in पुधiन कदnोंic ोnक कोncध ूधनीयनंोncध. (S) Inौपनहंधnप ंोाधनौ ृधgin ृद कधौigning पुध inौपनहंधnप, पोाing inपय ोccयहnप ीोcपयनौ ौहcु ोौ ौप्रध, ौुोूध, ंोपधनiोिस, ोnक ौयहnक ूनयकहcपiयn.", "option1": "P, Q\n  <br>", "option2": "Q, S\n  <br>", "option3": "R, S\n  <br>", "option4": "S, Q\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "Since (S2) should describe the orchestra's performance to connect with the captivated audience mentioned in (S1). \n  <br> Option (P) fits best, as it talks about the conductor leading the musicians. \n  <br> (S3) should provide more information about the performance or the different instruments involved. \n  <br> Option (Q) is the most suitable, describing the roles of the violinists and cellists. \n  <br> So, the correct order is (S1) P Q (S4).\n  <br>", "question_heading": ""}, {"sr_no": 89, "question": "<b>For the four-sentence (S1 to S4) paragraph below, sentences S1 and S4 are given</b>.\n  <br>From the options P, Q, R, and S select the appropriate sentences for S2 and S3, respectively.\n  <br>(S1) The scientist carefully observed the behavior of the ants in the terrarium.\n  <br>(S2)\n  <br>(S3)\n  <br>(S4) These findings would contribute significantly to the study of insect social behavior.\n  <br> (P) There are over 12,000 known species of ants, with different sizes, colors, and behaviors.\n  <br>(Q) Each ant appeared to have a specific role, whether it was foraging for food or caring for the young.\n  <br>(R) He documented the ants' daily activities, taking meticulous notes on their interactions.\n  <br>(S) Ants play vital roles in ecosystems. They aerate soil, disperse seeds, and help control populations of other insects.\n  <br>", "option1": "P, Q\n  <br>", "option2": "Q, R\n  <br>", "option3": "R, S\n  <br>", "option4": "S, P\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "Since (S2) should describe the ants' behavior to connect with the scientist's observation mentioned in (S1). \n  <br> Option (Q) fits best, as it talks about the roles of individual ants. \n  <br> (S3) should provide more information about the research process or the scientist's actions. \n  <br> Option (R) is the most suitable, describing the scientist's documentation of the ants’ activities. \n  <br> While (P) and (R) only state facts about ants not their behavioral study as per the paragraph.\n  <br> So, the correct order becomes (S1) Q R (S4).\n  <br>", "question_heading": ""}, {"sr_no": 90, "question": "<b>Choose the correct indirect speech conversion of the following direct speech.</b> \n  <br>Cathy said, \"I have been living in London for five years.\"\n  <br>", "option1": "Cathy said that she had been living in London for five years.\n  <br>", "option2": "Cathy said that she might have been living in London for five years.\n  <br>", "option3": "Cathy said that she was living in London for five years.\n  <br>", "option4": "Cathy said that she would be living in London for five years.\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "To convert this direct speech into indirect speech, we need to follow the appropriate rules. \n  <br> Since the direct speech is in the present perfect continuous tense (\"I have been living\"), we need to change it to the past perfect continuous tense in the indirect speech.\n  <br> The correct conversion to the past perfect continuous tense is \"she had been living,\" which is found in option (a).\n  <br> The other options don't follow the correct tense conversion.\n  <br>", "question_heading": ""}, {"sr_no": 91, "question": "<b>What was the primary reason Sarah wished for her garden to grow twice as fast?</b> \n  <br>", "option1": "To become wealthy from selling vegetables\n  <br>", "option2": "To make her garden more beautiful\n  <br>", "option3": "To provide more food for her neighbors\n  <br>", "option4": "To impress the other villagers\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is (c) To provide more food for her neighbors, as the passage states, \"For her first wish, she asked the fairy to make her garden grow twice as fast so she could share even more food with her neighbors.\"\n  <br>", "question_heading": ""}, {"sr_no": 92, "question": "<b>Which of the following best describes Sarah's motivation for her second wish?</b> \n  <br>", "option1": "Her desire to become famous\n  <br>", "option2": "Her experience witnessing illness in her village\n  <br>", "option3": "Her eagerness to show off her healing powers\n  <br>", "option4": "Her wish to gain control over the village\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is (b) Her experience witnessing illness in her village, as the passage states, \"For her second wish, she asked for the ability to heal the sick, as she had seen many people in the village suffer from illness.\"\n  <br>", "question_heading": ""}, {"sr_no": 93, "question": "<b>How did Sarah's final wish differ from her first two wishes?</b> \n  <br>", "option1": "It was less selfless and more focused on her own desires\n  <br>", "option2": "It was focused on helping others instead of herself\n  <br>", "option3": "It was more focused on material wealth\n  <br>", "option4": "It was unrelated to the village\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is (a) It was less selfless and more focused on her own desires, as the passage states, \"Finally, Sarah wished for something purely for herself. She wished for the ability to fly, so she could explore the world and see all its beauty.\"\n  <br>", "question_heading": ""}, {"sr_no": 94, "question": "<b>Considering the entire passage, which of the following best describes Sarah's character?</b> \n  <br>", "option1": "Ambitious and cunning\n  <br>", "option2": "Kind-hearted and generous\n  <br>", "option3": "Adventurous and reckless\n  <br>", "option4": "Prideful and envious\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is (b) Kind-hearted and generous, as the passage consistently describes Sarah as a person who is eager to help others, shares her harvest with her neighbors, and uses her wishes to benefit both her community and herself in a balanced way. The passage states, \"Sarah was beloved by everyone in the village, for she always had a smile on her face and was eager to help anyone in need,\" which further supports the idea that she is kind-hearted and generous.\n  <br>", "question_heading": ""}, {"sr_no": 95, "question": "<b>Select the most appropriate option for blank no. 1.</b> \n  <br>", "option1": "hoarded\n  <br>", "option2": "tucked\n  <br>", "option3": "expended\n  <br>", "option4": "submerged\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is (b) tucked, as it means hidden or placed out of the way. \n  <br>The other options are:\n  <br> (a) hoarded: accumulated and hidden away, often secretly.\n  <br> (c) expended: used up or consumed.\n  <br> (d) submerged: covered or hidden under water.\n  <br>", "question_heading": ""}, {"sr_no": 96, "question": "<b>Select the most appropriate option for blank no. 2.</b> \n  <br>", "option1": "winding\n  <br>", "option2": "arid\n  <br>", "option3": "parallel\n  <br>", "option4": "cluttered\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is (a) winding, as it means following a twisting or curving course. \n  <br>The other options are:\n  <br> (b) arid: lacking in interest or excitement; dry.\n  <br> (c) parallel: extending in the same direction and always the same distance apart.\n  <br> (d) cluttered: filled with a messy or disorganized collection of things.\n  <br>", "question_heading": ""}, {"sr_no": 97, "question": "<b>Select the most appropriate option for blank no. 3.</b> \n  <br>", "option1": "suffused\n  <br>", "option2": "bereft\n  <br>", "option3": "repelled\n  <br>", "option4": "fumigated\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is (a) suffused, as it means gradually spread through or over. The other options are:\n  <br> (b) bereft: deprived of or lacking something.\n  <br> (c) repelled: driven or forced back or away.\n  <br> (d) fumigated: exposed to fumes, typically in order to disinfect or eradicate pests.\n  <br>", "question_heading": ""}, {"sr_no": 98, "question": "<b>Select the most appropriate option for blank no. 4.</b> \n  <br>", "option1": "whimsical\n  <br>", "option2": "negligible\n  <br>", "option3": "austere\n  <br>", "option4": "cumbersome\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is (a) whimsical, as it means playfully quaint or fanciful. The other options are:\n  <br> (b) negligible: so small or unimportant as to be not worth considering.\n  <br> (c) austere: severe or strict in manner, attitude, or appearance.\n  <br> (d) cumbersome: large or heavy and therefore difficult to carry or use.\n  <br>", "question_heading": ""}, {"sr_no": 99, "question": "<b>Why is M0 considered significant in a country's financial system?</b> \n  <br>", "option1": "It includes near-money assets such as savings accounts.\n  <br>", "option2": "It encompasses demand deposits held by the public at commercial banks.\n  <br>", "option3": "It represents the foundation of a country's money supply and is directly controlled by the central bank.\n  <br>", "option4": "It provides a more comprehensive understanding of the economy's liquidity.\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is (c) It represents the foundation of a country's money supply and is directly controlled by the central bank. M0 is significant because it forms the basis of the money supply and can be directly influenced by the central bank's actions.\n  <br>", "question_heading": ""}, {"sr_no": 100, "question": "<b>Which of the following components is NOT included in the M2 monetary aggregate?</b> \n  <br>", "option1": "Physical currency, such as coins and banknotes\n  <br>", "option2": "Commercial banks' deposits held with the central bank\n  <br>", "option3": "Demand deposits held by the public at commercial banks\n  <br>", "option4": "Long-term, interest-bearing instruments\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is (d) Long-term, interest-bearing instruments. M2 includes near-money assets such as savings accounts, money market accounts, and other short-term, interest-bearing instruments, but not long-term ones.\n  <br>", "question_heading": ""}, {"sr_no": 101, "question": "<b>How do central banks use the relationship between M0, M1, and M2 in managing the economy?</b> \n  <br>", "option1": "By focusing solely on M0 as it is the most comprehensive measure of money supply\n  <br>", "option2": "By monitoring the fluctuations in these aggregates to better manage the money supply and maintain a stable economy\n  <br>", "option3": "By ignoring the relationship between these aggregates and relying only on fiscal policy\n  <br>", "option4": "By prioritizing M2 as it is the least liquid and therefore least relevant for economic stability\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is (b) By monitoring the fluctuations in these aggregates to better manage the money supply and maintain a stable economy. Central banks use the relationship between M0, M1, and M2 to make informed decisions about interest rates, inflation, and economic growth. Understanding these monetary aggregates and their fluctuations enables central banks to maintain a stable and healthy economy by adjusting monetary policy as needed.\n  <br>", "question_heading": ""}, {"sr_no": 102, "question": "<b>According to the passage, what are the three economic challenges that the Indian government is grappling with?</b> \n  <br>", "option1": "Inflation, bilateral trade agreements, and secure employment\n  <br>", "option2": "Interest rates, multilateral trade agreements, and income inequality\n  <br>", "option3": "Inflation, interest rates, exchange rates, trade agreements, and secure employment\n  <br>", "option4": "Exchange rates, industrial growth, and human development\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is (c) Inflation, interest rates, exchange rates, trade agreements, and secure employment. These are the three economic challenges mentioned in the passage that the Indian government is facing.\n  <br>", "question_heading": ""}, {"sr_no": 103, "question": "<b>Which of the following statements best describes the economists' views on solving the \"poly-crisis\" in India?</b> \n  <br>", "option1": "Economists have a systemic solution and agree on the prioritization of economic challenges.\n  <br>", "option2": "There is a consensus among economists on how to address the separate parts of the crisis.\n  <br>", "option3": "Economists are divided on various aspects of solving the crisis, including central bank independence and inflation.\n  <br>", "option4": "Economists unanimously support prioritizing employment over inflation.\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is (c) Economists are divided on various aspects of solving the crisis, including central bank independence and inflation. The passage states that there is no consensus among economists on how to address the separate parts of the crisis.\n  <br>", "question_heading": ""}, {"sr_no": 104, "question": "<b>What is one key factor that has contributed to China's remarkable economic growth and Vietnam's recent spurt, as suggested in the passage?</b> \n  <br>", "option1": "Adoption of free trade policies\n  <br>", "option2": "High levels of human development, including universal education and good public health systems\n  <br>", "option3": "A focus on industrial technology development\n  <br>", "option4": "Rapid growth in per capita income\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is (b) High levels of human development, including universal education and good public health systems. The passage suggests that these factors contributed to China's and Vietnam's economic growth when they opened up to foreign investors.\n  <br>", "question_heading": ""}, {"sr_no": 105, "question": "<b>According to the passage, what was the disagreement between trade-and-growth economists like Jagdish Bhagwati and economists like Amartya Sen who advocated the human development theory of growth?</b> \n  <br>", "option1": "Jोgकiौु Bुोgथोपi ृिधiधॅधक in ूनiयनiपप्रing नधकiौपनiृहपiयn यी थधोिपु, थुiिध Aंोनपदो Sधn ीयcहौधक यn incनधोौing पुध ौप्रध यी पुध धcयnयंic ूiध.", "option2": "Jagdish Bhagwati argued that basic human development must precede growth, while Amartya Sen believed that increasing the size of the economic pie must come first.\n  <br>", "option3": "Jagdish Bhagwati believed that the size of the economic pie must be increased before it can be redistributed, while Amartya Sen argued that basic human development must precede growth.\n  <br>", "option4": "Amartya Sen focused on the importance of trade agreements, while Jagdish Bhagwati emphasized the role of human development in economic growth.\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is (c) Jagdish Bhagwati believed that the size of the economic pie must be increased before it can be redistributed, while Amartya Sen argued that basic human development must precede growth. The passage highlights this disagreement between the two economists.\n  <br>", "question_heading": ""}, {"sr_no": 106, "question": "Where does the river Brahmaputra originate?\n  <br>", "option1": "Chemayungdung glacier of the Kailash range\n  <br>", "option2": "Glaciers of Mapchachungo\n  <br>", "option3": "Garhwal Hills near Gairsain\n  <br>", "option4": "Milam glacier in the Nepal Himalayas\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "Brahmaputra River originates from the Chemayungdung glacier of the Kailash range. It flows through China, India, and Bangladesh before emptying into the Bay of Bengal.\n  <br> The Brahmaputra also known as the Yarlung Tsangpo in Tibet, the Siang/Dihang River in Arunachal Pradesh, and Jamuna in Bangladesh.\n  <br> The Brahmaputra River is volume-wise largest river in India.\n  <br> Major tributaries of the Brahmaputra River are the Lohit, the Dibang, the Subansiri, the Jiabharali, the Dhansiri, the Manas, the Torsa, the Sankosh, and the Teesta.\n  <br>", "question_heading": ""}, {"sr_no": 107, "question": "Who among the following wrote ‘The Light of Asia: The Poem that Defined the Buddha’ that will narrate the phenomenal poem ‘The Light of Asia’?\n  <br>", "option1": "Jairam Ramesh\n  <br>", "option2": "Salman Rushdie\n  <br>", "option3": "Chetan Bhagat\n  <br>", "option4": "Shashi Tharoor\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "Jairam Ramesh is a former Indian minister who wrote the book ‘The Light of Asia: The Poem that Defined the Buddha’ in 2021. \n  <br>The book is a commentary on the poem ‘The Light of Asia’ by Sir Edwin Arnold, which was first published in 1879. Ramesh’s book provides a modern interpretation of Arnold’s poem and explores the relevance of the Buddha’s teachings to the contemporary world.\n  <br>Jairam Ramesh is an Indian politician belonging to Indian National Congress. He is a Member of Parliament representing Karnataka state in the Rajya Sabha.\n  <br> \n  <b>Note -</b> Ramesh was declared winner of the 2020 Kamaladevi Chattopadhyay NIF Book Prize for his book \"A Chequered Brilliance: The Many Lives of VK Krishna Menon\".\n  <br>", "question_heading": ""}, {"sr_no": 108, "question": "Which of the following popular kitchen ingredients is called the 'sugar-eating fungus'?\n  <br>", "option1": "Baking powder\n  <br>", "option2": "Yeast\n  <br>", "option3": "Vinegar\n  <br>", "option4": "Ketchup\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The answer is (b) yeast. Yeast is a single-celled fungus that is used in baking to leaven bread and other baked goods. It is also used in brewing beer and wine. \n  <br>Yeast is a sugar-eating fungus, and it converts sugar into carbon dioxide and alcohol. The carbon dioxide bubbles cause baked goods to rise, and the alcohol evaporates during baking.\n  <br> The scientific name of yeast is Saccharomyces cerevisiae.\n  <br>Baking powder is a leavening agent that contains baking soda and an acid, such as a cream of tartar. \n  <br>", "question_heading": ""}, {"sr_no": 109, "question": "Who among the following was the first General Secretary of All India Kisan Congress?\n  <br>", "option1": "NG Ranga\n  <br>", "option2": "Acharya Narendra Dev\n  <br>", "option3": "Sardar Vallabhbhai Patel\n  <br>", "option4": "Swami Sahajanand Saraswati\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "NG Ranga was the first General Secretary of All India Kisan Congress.\n  <br> N. G. Ranga, was an Indian freedom fighter, classical liberal, parliamentarian, and farmer leader.\n  <br> He was the founding president of the Swatantra Party.\n  <br> \n  <b>Acharya Narendra Dev</b> was a socialist leader and a member of the Indian National Congress. He was also a founder of the Praja Socialist Party, a socialist political party.\n  <br> \n  <b>Sardar Vallabhbhai Patel</b> was a nationalist leader and a member of the Indian National Congress. He was also the Home Minister of India and the first Deputy Prime Minister of India.\n  <br> \n  <b>Swami Sahajanand Saraswati</b> was a Hindu monk and a social reformer. He was also the founder of the Bihar Provincial Kisan Sabha, a peasant organization that fought for the rights of farmers.\n  <br>", "question_heading": ""}, {"sr_no": 110, "question": "<b>Which of the following statements is/are correct regarding the Indian National Congress?</b> \n  <br>A. The Indian National Congress was founded in 1885.\n  <br>B. The first session of the Indian National Congress was held in Bombay.\n  <br>C. A.O. Hume played a pivotal role in the formation of the Indian National Congress.\n  <br>", "option1": "A and B only\n  <br>", "option2": "B and C only\n  <br>", "option3": "A, B, and C\n  <br>", "option4": "A and C only\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The Indian National Congress was founded in 1885. This is true. The Indian National Congress was founded on December 28, 1885, in Bombay (now Mumbai).\n  <br>The first session of the Indian National Congress was held in Bombay. This is also true. The first session of the Indian National Congress was held from December 28 to 31, 1885, in Bombay.\n  <br>A.O. Hume played a pivotal role in the formation of the Indian National Congress. This is also true. \n  <br>A.O. Hume was a retired British civil servant who was concerned about the growing unrest in India. He also served as the first General Secretary of the Indian National Congress.\n  <br>Therefore, all three statements are correct.\n  <br>", "question_heading": ""}, {"sr_no": 111, "question": "<b> Which of the following statements is/are correct regarding the Himalayan Mountain Range?</b> \n  <br>A. The Himalayas are the highest mountain range in the world.\n  <br>B. The Himalayas stretch across five countries: India, Nepal, Bhutan, China, and Pakistan.\n  <br>C. Mount Everest, the highest peak in the world, is located in the Himalayas.\n  <br>", "option1": "A and B only\n  <br>", "option2": "B and C only\n  <br>", "option3": "A, B and C\n  <br>", "option4": "A and C only\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is (c). The Himalayas are the highest mountain range in the world, stretching across five countries: India, Nepal, Bhutan, China, and Pakistan. Mount Everest, the highest peak in the world, is located in the Himalayas. Therefore, all three statements are correct.\n  <br>Statement A is correct because the Himalayas are the highest mountain range in the world, with Mount Everest being the highest peak at 29,032 feet (8,848 meters) above sea level.\n  <br>Statement B is correct because the Himalayas stretch across five countries: India, Nepal, Bhutan, China, and Pakistan.\n  <br>Statement C is correct because Mount Everest is located in the Himalayas.\n  <br>", "question_heading": ""}, {"sr_no": 112, "question": "Which of the following Articles of the Indian Constitution guarantees equality of opportunity to all citizens of India in matters relating to public employment\n  <br>", "option1": "Article 15\n  <br>", "option2": "Article 16 (1) and 16 (2)\n  <br>", "option3": "Article 16(3) \n  <br>", "option4": "Article 16 (3), (4), and (5)\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The correct answer is (b). Article 16(1) and 16(2) of the Indian Constitution guarantees equality of opportunity to all citizens of India in matters relating to public employment.\n  <br>Article 16(1) states that there shall be equality of opportunity for all citizens in matters relating to employment or appointment to any office under the State. This means that no citizen can be discriminated against in public employment on the basis of religion, race, caste, sex, descent, place of birth, residence, or any of them.\n  <br>Article 16(2) states that no citizen shall, on grounds only of religion, race, caste, sex, descent, place of birth, residence or any of them, be ineligible for, or discriminated against in respect of, any employment or office under the State. This means that the State cannot discriminate against any citizen in public employment, even if they are not qualified for the job.\n  <br>", "question_heading": ""}, {"sr_no": 113, "question": "Who prepared the draft of the Indian Penal Code\n  <br>", "option1": "Lord Canning\n  <br>", "option2": "Lord Macaulay\n  <br>", "option3": "Lord Chelmsford\n  <br>", "option4": "None of the above\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The first draft of the Indian Penal Code was prepared by the First Law Commission, chaired by Thomas Babington Macaulay also known as Lord Macaulay.\n  <br>He was a British historian, jurist, and politician who served as the first Law Member of the Governor-General's Council in India from 1834 to 1838. He is best known for his work on the Indian Penal Code, which is still in use today.\n  <br>  \n  <b>Lord Channing -</b> was a British statesman and Governor-General of India during the Indian Rebellion of 1857 and the first Viceroy of India after the transfer of power from the East India Company to the Crown of Queen Victoria in 1858 after the rebellion was crushed.\n  <br>  \n  <b>Lord Chelmsford - </b>served as Viceroy of India from 1916 to 1921, where he was responsible for the creation of the Montagu–Chelmsford Reforms. \n  <br>", "question_heading": ""}, {"sr_no": 114, "question": "In which of the given cases the six rights guaranteed by Article 19 can be suspended \n  <br>1. External Aggression. \n  <br>2. Internal Emergency. \n  <br>3. When Martial Law is in force. \n  <br>", "option1": "2 & 3 only \n  <br>", "option2": "1 only \n  <br>", "option3": "1 & 3 only \n  <br>", "option4": "1, 2 & 3\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "Fundamental rights can be suspended during a national emergency (External Aggression) But, the rights guaranteed under Articles 20 and 21 cannot be suspended. \n  <br>Also, the six rights guaranteed by Article 19 can be suspended only when an emergency is declared on the grounds of war or external aggression (i.e., external emergency) and not on the ground of armed rebellion (i.e., internal emergency). \n  <br>The application of fundamental rights can also be restricted in an area that has been placed under martial law or military rule. Thus, Option (1) & (3) is correct. Hence, Option (c) is correct.\n  <br>", "question_heading": ""}, {"sr_no": 115, "question": "Who among the following translated Panchatantra into the Persian language?\n  <br>", "option1": "Faizi\n  <br>", "option2": "Abraham Sirhind\n  <br>", "option3": "Maulana Shah Mohammad Shahabadi\n  <br>", "option4": "Abul Fazal\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "Faizi was a Persian poet and scholar who served as a courtier under the Mughal emperor Akbar. He is credited with translating the Panchatantra into Persian, under the title Anwar-i-Suhaili. \n  <br>The translation was commissioned by Akbar, who wanted to make the Panchatantra more accessible to his Persian-speaking subjects. Faizi's translation was a major success, and it helped to popularize the Panchatantra throughout the Persian-speaking world.\n  <br>Abraham Sirhind and Maulana Shah Mohammad Shahabadi were also involved in the translation of the Panchatantra into Persian, but their contributions were not as significant as Faizi's. Abul Fazal was a historian and courtier who served under Akbar.\n  <br>", "question_heading": ""}, {"sr_no": 116, "question": "Which of the following foreign travelers came to India during the reign of Shah Jahan?\n  <br>1. Francis Vernier\n  <br>2. Peter mundi\n  <br>3. Nikolaon Manucci\n  <br>Code:\n  <br>", "option1": "1 only\n  <br>", "option2": "2 and 3 only\n  <br>", "option3": "1 and 2 only\n  <br>", "option4": "1, 2 and 3\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<b>Francis Vernier:</b> Francis Vernier was a French traveler who came to India during the reign of Shah Jahan. He served as a military adventurer and later became a general in the service of the Mughal emperor.\n  <br> \n  <b>Peter Mundi:</b> Peter Mundi, also known as Pietro Della Valle, was an Italian traveler who visited India during the reign of Shah Jahan. He traveled extensively in the Middle East and Asia, including India, and recorded his observations and experiences in his travel writings.\n  <br> \n  <b>Niccolao Manucci:</b> Niccolao Manucci, an Italian adventurer and traveler, arrived in India during the reign of Shah Jahan. He spent several decades in India, serving in various capacities and witnessing the events of the Mughal court. Manucci's memoirs provide valuable insights into the political and cultural life of the Mughal Empire.\n  <br>Therefore, all three foreign travelers—Francis Vernier, Peter Mundi, and Nikolaon Manucci—came to India during the reign of Shah Jahan. Hence, the correct answer is (d) 1, 2 and 3.\n  <br>", "question_heading": ""}, {"sr_no": 117, "question": "Match Column-A with Column-B\n  <br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647072image56.png\"> \n  <br>", "option1": "i-b, ii-a, iii-c, iv-d\n  <br>", "option2": "i-c, ii-a, iii-b, iv-d\n  <br>", "option3": "i-a, ii-b, iii-c, iv-d\n  <br>", "option4": "i-b, ii-a, iii-d, iv-c\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The cell cycle is a four-stage process that all cells go through as they grow and divide. The four stages are G1, S, G2, and M.\n  <br> The \n  <b>first gap stage (G1)</b> is the first step in the interphase, hence the number 1 in the name. This phase is all about growing bigger. The cell synthesizes new enzymes and molecules, physically increases in size, and stores nutrients for use during the later stages.\n  <br> The \n  <b>S phase</b> of a cell cycle occurs during interphase, before mitosis or meiosis, and is responsible for the synthesis or replication of DNA. \n  <br> The last part of interphase is called \n  <b>the G2 phase</b>. The cell has grown, DNA has been replicated, and now the cell is almost ready to divide. This last stage is all about prepping the cell for mitosis or meiosis. \n  <br> Cell division occurs during the \n  <b>M phase</b>, which consists of nuclear division (mitosis) followed by cytoplasmic division (cytokinesis). This is the final stage of the cell cycle.\n  <br>Thus, the Correct match is – \n  <br>G1 – First gap phase, the cell grows physically larger.\n  <br>S – Cell synthesizes a complete copy of DNA.\n  <br>G2 – The cell begins to reorganize its contents in preparation for mitosis.\n  <br>M – Cell divides its copied DNA and cytoplasm to make two new cells.\n  <br>", "question_heading": ""}, {"sr_no": 118, "question": "If Q = net charge, t = time, then which of the following equations is correct?\n  <br>", "option1": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647075image57.png\"> \n  <br>", "option2": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647077image58.png\"> \n  <br>", "option3": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647081image59.png\"> \n  <br>", "option4": "<img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647086image60.png\"> \n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "An electric current is a flow of charged particles. It is measured in amperes (A), and is defined as the charge per unit time. In other words, the current is the amount of charge that flows through a conductor in a given amount of time. The equation for current is I=Q/t, where I is the current, Q is the charge, and t is the time.\n  <br>In this case, we are given that Q is the net charge and t is the time. Therefore, the correct equation is I=Q/t.\n  <br>Here, Q = quantity of charge (electricity) in coulombs (C) I = current in amperes (amps, A) t = time (seconds).\n  <br>", "question_heading": ""}, {"sr_no": 119, "question": "In which Five-Year Plan, was the Mahalanobis Model started?\n  <br>", "option1": "Second\n  <br>", "option2": "Fourth\n  <br>", "option3": "Third\n  <br>", "option4": "First\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The Mahalanobis Model was an economic development model developed by the Indian statistician Prasanta Chandra Mahalanobis in 1953. It was based on the idea that India should focus on developing its heavy industries in order to achieve rapid economic growth. The model was adopted by the Indian government in the Second Five-Year Plan (1956-1961) and had a significant impact on the Indian economy.\n  <br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646420image111.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 120, "question": "The Basketball center line is part of the:\n  <br>", "option1": "front court\n  <br>", "option2": "back court\n  <br>", "option3": "restricted area\n  <br>", "option4": "middle court\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The basketball center line is part of the back court. The back court is the area of the basketball court that is located between the center line and the baseline.\n  <br> The front court is the area of the basketball court that is located between the center line and the free throw line. \n  <br> The restricted area is the area of the basketball court that is located between the free throw line and the baseline. \n  <br> The middle court is not a real term in basketball.\n  <br> \n  <b>Basketball -</b> a team sport in which two teams, most commonly of five players each, opposing one another on a rectangular court.\n  <br> \n  <b>Size of Basket Ball -</b> approximately 9.4 inches (24 cm) in diameter.\n  <br> \n  <b>Hoop -</b> a basket of 18 inches (46 cm) in diameter mounted 10 feet (3.048 m) high to a backboard at each end of the court.\n  <br>", "question_heading": ""}, {"sr_no": 121, "question": "From the point of view of commerce, the busiest ocean in the world is ______.\n  <br>", "option1": "Pacific Ocean\n  <br>", "option2": "Indian Ocean\n  <br>", "option3": "Arctic Ocean\n  <br>", "option4": "Atlantic Ocean\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "Atlantic Ocean is the busiest ocean in terms of commerce as it has many ports on its coastline actively involved in trade and business.\n  <br> The Atlantic Ocean lies between North and South America on the west and Europe and Africa on the east. Up north, the Atlantic connects to the Arctic Ocean and to the Southern Ocean to the south. Scientists often divide the Atlantic into two basins: the North Atlantic and the South Atlantic.\n  <br>", "question_heading": ""}, {"sr_no": 122, "question": "On which river, the first-night navigation mobile application in rivers in India was launched for ferries?\n  <br>", "option1": "Brahmaputra\n  <br>", "option2": "Ganga\n  <br>", "option3": "Kaveri\n  <br>", "option4": "Son\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The first night navigation mobile application in rivers in the country was launched for ferries plying on Brahmaputra River in Guwahati, Assam in Feb 2022. It was developed by the State Transport Department in association with K Raju, the principal scientist of IIT Madras. \n  <br> The Brahmaputra is a trans-boundary river that flows through Tibet, Northeastern India, and Bangladesh. It is also known as the Yarlung Tsangpo in Tibetan, the Siang/Dihang River in Arunachali, Luit and Brahmaputra in Assamese, Brahmaputro in Bengali in India and Jamuna River in Bangla in Bangladesh.\n  <br> The principal tributaries of the river joining from right are the Lohit, the Dibang, the Subansiri, the Jiabharali, the Dhansiri, the Manas, the Torsa, the Sankosh, and the Teesta whereas the Burhidihing, the Desang, the Dikhow, the Dhansiri, and the Kopili joins it from left.\n  <br>", "question_heading": ""}, {"sr_no": 123, "question": "Which of the following options is correct regarding sexually transmitted disease (STD)?\n  <br>Statement A: Sexually transmitted diseases (STDs) are infections transmitted from an infected person to an uninfected person through sexual contact.\n  <br>Statement B: HIV, HPV, and Hepatitis B virus is responsible for STDs.\n  <br>", "option1": "Both Statements A and B incorrect\n  <br>", "option2": "Only Statement B is correct\n  <br>", "option3": "Both Statements A and B correct\n  <br>", "option4": "Only Statement A is correct\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "Sexually transmitted diseases (STDs) are infections transmitted from an infected person to an uninfected person through sexual contact. Thus, statement A is correct.\n  <br>HIV (Human Immunodeficiency Virus), HPV (Human Papillomavirus), and Hepatitis B virus are indeed responsible for sexually transmitted diseases. HIV causes AIDS, HPV is associated with genital warts and cervical cancer, and the Hepatitis B virus can lead to liver disease and liver cancer. Thus, statement B is also correct.\n  <br>", "question_heading": ""}, {"sr_no": 124, "question": "Match List I with List II:\n  <br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647091image61.png\"> \n  <br>Select the correct answer from the code given below:\n  <br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615647092image62.png\"> \n  <br>", "option1": "a\n  <br>", "option2": "b\n  <br>", "option3": "c\n  <br>", "option4": "d\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> \n  <img src=\"https://appxcontent.kaxa.in/test-series-assets/1692615646420image112.png\"> \n  <br>", "question_heading": ""}, {"sr_no": 125, "question": "Who won the men's doubles title at the Badminton Asia Championship 2023 held in Dubai, UAE?\n  <br>", "option1": "Teo Ee Yi and Ong Yew Sin \n  <br>", "option2": "Chirag Shetty and Satwiksairaj Rankireddy \n  <br>", "option3": "Dinesh Khanna \n  <br>", "option4": "None of the above\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "Chirag Shetty and Satwiksairaj Rankireddy, the Indian pair, won the men's doubles title at the Badminton Asia Championship 2023 held in Dubai, UAE. \n  <br> They defeated eighth-seeded Malaysian pair Teo Ee Yi and Ong Yew Sin in the final.\n  <br> With this win, they became the first Indian men's doubles pair to win the Badminton Asia Championships title. \n  <br> Dinesh Khanna won India's first-ever Badminton Asia Championships title in 1965, but he won the men's singles title, not the men's doubles title.\n  <br>", "question_heading": ""}, {"sr_no": 126, "question": "What is India's ranking in the 2023 World Press Freedom Index, as per the latest report released by global media watchdog Reporters Without Borders?\n  <br>", "option1": "150 \n  <br>", "option2": "161 \n  <br>", "option3": "180 \n  <br>", "option4": "190\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "India's ranking in the 2023 World Press Freedom Index, as per the latest report released by Reporters Without Borders, is 161 out of 180 countries. \n  <br> This is a drop from India's 2022 ranking of 150. \n  <br> Norway topped the index for the seventh consecutive year, followed by Ireland, Denmark, Sweden, and Finland. \n  <br> The last three countries in the index are North Korea (180th), China, and Vietnam.\n  <br>", "question_heading": ""}, {"sr_no": 127, "question": "Who has been confirmed as the new president of the World Bank by the 25-member executive board of the World Bank?\n  <br>", "option1": "Ajay Banga \n  <br>", "option2": "Jim Yong Kim \n  <br>", "option3": "Paul Wolfowitz \n  <br>", "option4": "Robert Zoellick\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "Ajay Banga has been confirmed as the new president of the World Bank by the 25-member executive board of the World Bank. \n  <br> Presently, he is serving as the vice chairman at US investment firm General Atlantic LP.\n  <br> Before that, he worked as president and CEO of Mastercard. \n  <br> In 2016, he was awarded the fourth-highest civilian award, Padma Shri. \n  <br> Previous presidents of the World Bank include Jim Yong Kim, Paul Wolfowitz, and Robert Zoellick.\n  <br>", "question_heading": ""}, {"sr_no": 128, "question": "Which Indian weightlifter recently won the silver medal in the women's 55kg category at the Asian Weightlifting Championships 2023?\n  <br>", "option1": "Mirabai Chanu \n  <br>", "option2": "Saikhom Kriti \n  <br>", "option3": "Bindyarani Devi \n  <br>", "option4": "Rakhi Halder\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "Bindyarani Devi won the silver medal in the women's 55kg category at the Asian Weightlifting Championships 2023, held in South Korea. \n  <br> She lifted a total weight of 194kg (snatch 83kg and 111kg in clean & jerk) in the non-Olympic 55kg category. Chen Guan Ling (China) won the gold medal with a combined lift of 204kg (snatch 90kg + clean & jerk 114kg) and Vo Thi Quynh Nhu (Vietnam) won the bronze with a lift of 192kg.\n  <br>", "question_heading": ""}, {"sr_no": 129, "question": "Where is the Sittwe Port, whose inaugural shipment was recently done from Kolkata Port?\n  <br>", "option1": "Myanmar \n  <br>", "option2": "India \n  <br>", "option3": "Bangladesh \n  <br>", "option4": "Nepal\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The inaugural shipment from Kolkata, the MV-ITT LION (V-273), carrying 20,000 bags of cement is expected to reach the Sittwe Port in Myanmar on 9 May. \n  <br> India has operationalized the Sittwe Port in Myanmar under the Kaladan Multimodal Transit Transport project.\n  <br> The port was built under a grant of assistance from the Indian government and aims to boost trade and commerce between India and Myanmar. \n  <br>", "question_heading": ""}, {"sr_no": 130, "question": "In which state was the Centre for Innovation Incubation Research and Entrepreneurship inaugurated?\n  <br>", "option1": "Karnataka\n  <br>", "option2": "Andhra Pradesh \n  <br>", "option3": "Telangana\n  <br>", "option4": "Maharashtra\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "The Centre for Innovation Incubation Research and Entrepreneurship was inaugurated at the KITS Warangal campus in the state of Telangana in India. \n  <br> The Telangana IT Minister K Taraka Ramarao inaugurated the center. \n  <br> The aim of this center is to promote innovation and entrepreneurship in the student community and inculcate research and innovative skills among the students, faculty, and young researchers.\n  <br>", "question_heading": ""}, {"sr_no": 131, "question": "Which among the following is one of the fundamentals of OOP (object-oriented programming)?\n  <br>", "option1": "Encapsulation\n  <br>", "option2": "Multiplexing\n  <br>", "option3": "Switching\n  <br>", "option4": "Polymorphism\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> The technique of merging the elements to create a new entity for the purpose of hiding or protecting information is known as encapsulation in programming.\n  <br> Encapsulation is a characteristic of object design in object-oriented programming.\n  <br> It indicates that all of the object's data is contained and hidden within the object, and only members of that class have access to it.\n  <br>", "question_heading": ""}, {"sr_no": 132, "question": "Which of the following protocol is used for point-to-point serial connections using TCP/IP?\n  <br>", "option1": "ARP\n  <br>", "option2": "SLIP\n  <br>", "option3": "ICMP\n  <br>", "option4": "UDP\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> Serial Line Internet Protocol (SLIP) is a basic protocol for communication over serial ports and routers that works with TCP/IP.\n  <br> They allow machines that were previously configured for direct communication to communicate with one another.\n  <br> This protocol was developed by Rick Adams in the year 1984.\n  <br>", "question_heading": ""}, {"sr_no": 133, "question": "Which among the following is a tool that intercepts the data flowing in a network?\n  <br>", "option1": "Packet sniffer\n  <br>", "option2": "Multimeter\n  <br>", "option3": "Spudger\n  <br>", "option4": "Tweezers\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> A packet sniffer or packet analyser is a program that intercepts data as it travels through a network.\n  <br> If computers are connected to a non-filtered or switched local area network, traffic can be broadcast to all computers in the same segment.\n  <br> Packet sniffing is the act of capturing data packets via a computer network.\n  <br> It is mostly used by crackers and hackers to illegally obtain network information.\n  <br>", "question_heading": ""}, {"sr_no": 134, "question": "Which of the following shortcut key is used to create a pivot chart on the same sheet in MS-Excel?\n  <br>", "option1": "F11\n  <br>", "option2": "Alt + F1\n  <br>", "option3": "Ctrl + -\n  <br>", "option4": "Alt + Shift + Left arrow\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br>F11: It is used to create a pivot chart on a new worksheet.\n  <br>Alt + F1 : It is used to create a pivot chart on the same sheet.\n  <br>Ctrl + - : It is used to hide the items of the pivot table .\n  <br>Alt + Shift + Left arrow: Used to ungroup the items of the pivot table.\n  <br>Alt + Shift + Right arrow: Used to group the items of the pivot table.\n  <br>", "question_heading": ""}, {"sr_no": 135, "question": "Which topology features a root node that is connected to all other nodes, forming a hierarchy?\n  <br>", "option1": "Mesh Topology\n  <br>", "option2": "Star Topology\n  <br>", "option3": "Ring Topology\n  <br>", "option4": "Tree Topology\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> Tree topology is a topology with a tree structure in which all of the computers are linked together like branches of a tree.\n  <br> A tree topology is a combination of a Bus and a Start network topology in a computer network. \n  <br> The significant advantages of this architecture are that it is extremely flexible and scalable.\n  <br> The tree network topology is the simplest topology because it only has one path between any two nodes on the network.\n  <br>", "question_heading": ""}, {"sr_no": 136, "question": "Which one of the following is the top-most layer of TCP/IP model?\n  <br>", "option1": "Transport Layer\n  <br>", "option2": "Application Layer\n  <br>", "option3": "Internet Layer\n  <br>", "option4": "Network Access Layer\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> The application layer is the fourth and final layer in the four-layer TCP/IP model.\n  <br> The Transport layer is put on top of the Application layer.\n  <br> This layer defines the TCP/IP application protocols and how host programs interface with the services of Transport layer to use the network.\n  <br> It is in charge of node-to-node communication as well as user interface requirements.\n  <br> HTTP, HTTPS, FTP, Telnet, SSH, SMTP are some of the protocols of this layer.\n  <br>", "question_heading": ""}, {"sr_no": 137, "question": "Which of the following type of hub are also called as concentrators?\n  <br>", "option1": "Active Hub\n  <br>", "option2": "Passive Hub\n  <br>", "option3": "Data Hub\n  <br>", "option4": "Intelligent Hub\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> A hub is a unique device that improves a network by allowing more workstations to connect to it.\n  <br> Active hubs are hubs that have repeated ability to amplify the signals in a network.\n  <br> Because they enhance the signals before transmitting them across nodes to the node, they are a little brighter than passive hubs.\n  <br> They are also known as concentrators, and they can handle many sets of network connections.\n  <br>", "question_heading": ""}, {"sr_no": 138, "question": "Which of the following component in motherboard stores the BIOS settings such as time, date, and hardware settings?\n  <br>", "option1": "PCI Slot\n  <br>", "option2": "Northbridge\n  <br>", "option3": "Inductor\n  <br>", "option4": "CMOS battery\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> The term CMOS which stands for complementary metal-oxide-semiconductor refers to the small amount of memory on a computer motherboard that holds the BIOS settings.\n  <br> The system time and date, as well as hardware settings, are among the BIOS settings.\n  <br> CMOS is a computer chip on the motherboard, specifically a RAM chip, which means it generally loses the settings it stores when the machine is turned off.\n  <br>", "question_heading": ""}, {"sr_no": 139, "question": "In Microsoft Power-Point, which of the following component provides quick access to the most common features in PowerPoint?\n  <br>", "option1": "Formatting Toolbar\n  <br>", "option2": "Task Pane\n  <br>", "option3": "Standard Toolbar\n  <br>", "option4": "Menu Bar\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> The Task Pane is a rectangular pane on the right side of your PowerPoint window that appears docked.\n  <br> It operates as an open menu where you may choose from a variety of instructions and actions.\n  <br> It shows you a list of links and commands that you may use to complete various things depending on what you're doing.\n  <br> The task pane is designed to assist the user in completing tasks quickly, and it adapts according to the task in hand.\n  <br>", "question_heading": ""}, {"sr_no": 140, "question": "In Computer, ‘VIRUS’ is programmed to spread from one host to another and can replicate. What does ‘R’ stand for in VIRUS?\n  <br>", "option1": "Resources\n  <br>", "option2": "Replication\n  <br>", "option3": "Registry\n  <br>", "option4": "Remote\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> A computer virus is a piece of software or code that is installed on your computer without your knowledge and runs without your permission. \n  <br> It stands for ‘Vital Information Resources Under Siege’.\n  <br> Viruses have the ability to multiply themselves and spread from one computer to another.\n  <br> When it succeeds in replicating, it can have an impact on data files, the boot sector of a hard disc, and so on.\n  <br>", "question_heading": ""}, {"sr_no": 141, "question": "A pathway within a computer that carries data between hardware components is called_________.\n  <br>", "option1": "Digital signal\n  <br>", "option2": "Carrier signal\n  <br>", "option3": "Switching\n  <br>", "option4": "Data bus\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> A data bus is a system within a computer or device, consisting of a connector or set of wires, that provides transportation for data.\n  <br> A bus is a pathway for digital signals to rapidly move data. \n  <br> There are three internal buses associated with processors: the data bus, address bus, and control bus.\n  <br> Each data bus is designed to handle so many bits of data at a time. \n  <br> The amount of data a data bus can handle is called bandwidth.\n  <br>", "question_heading": ""}, {"sr_no": 142, "question": "In database terms, ________is a request for data or information from a database table or combination of tables.\n  <br>", "option1": "Query\n  <br>", "option2": "Rollback\n  <br>", "option3": "Form\n  <br>", "option4": "Report\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> A query is a request for data or information from a database table or combination of tables.\n  <br> This data may be generated as results returned by Structured Query Language (SQL) or as pictorials, graphs or complex results.\n  <br> One of several different query languages may be used to perform a range of simple to complex database queries.\n  <br> SQL, the most well-known and widely-used query language, is familiar to most database administrators (DBAs).\n  <br> Query languages generate different data types according to function.\n  <br> For example, SQL returns data in neat rows and columns and is very similar to Microsoft Excel in appearance.\n  <br>", "question_heading": ""}, {"sr_no": 143, "question": "Which is a pen-shaped handheld instrument used with touch screen input devices or graphics tablets?\n  <br>", "option1": "Case\n  <br>", "option2": "Stylus\n  <br>", "option3": "Printer\n  <br>", "option4": "Plotter\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> A stylus is an instrument shaped like a pen, designed to be used with graphics tablets or devices that use touch screen input. \n  <br> It is used to write or draw on a screen, similar to how you would on a sheet of paper.\n  <br> The stylus has the same function as a mouse or touchpad as a pointing device.\n  <br> The first use of a stylus in a computing device was the Styalator, demonstrated by Tom Dimond in 1957.\n  <br> A plotter is a computer hardware device much like a printer that is used for printing vector graphics.\n  <br> Printer is a peripheral machine which makes a persistent representation of graphics or text, usually on paper.\n  <br> A joystick is an input device that is commonly used to control gaming applications and used in graphics applications.\n  <br>", "question_heading": ""}, {"sr_no": 144, "question": "In MS Excel, if we want to select the entire column, which of the following shortcut key must be used?\n  <br>", "option1": "Ctrl + Alt\n  <br>", "option2": "Ctrl + Alt + Del\n  <br>", "option3": "Shift + Ctrl\n  <br>", "option4": "Ctrl + Space\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "In Microsoft Excel and other spreadsheet programs, pressing Ctrl+Space selects the entire column containing the active cell. Consider the following steps to select one or more rows and columns:\n  <br>Step: #1 Select the letter at the top to select the entire column or click on any cell in the column and then press Ctrl + Space.\n  <br>Step: #2 Select the row number to select the entire row or click on any cell in the row and then press Shift + Space.\n  <br>Step: #3 To select non-adjacent rows or columns, hold Ctrl and select the row or column numbers.\n  <br>", "question_heading": ""}, {"sr_no": 145, "question": "In Computer Terminology, what is the full form of SMPS?\n  <br>", "option1": "Switched Mode Power Supply\n  <br>", "option2": "Settled Mode Power Supply\n  <br>", "option3": "Switch Mode Packet Switch\n  <br>", "option4": "Supply Mode Packet Switch\n  <br>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> SMPS stands for Switched-Mode Power Supply. It is an electronic power supply that uses a switching regulator to convert electrical power efficiently.\n  <br> It is also known as Switching Mode Power Supply. \n  <br> It is power supply unit (PSU) generally used in computers to convert the voltage into the computer acceptable range.\n  <br> This device has the power handling electronic components that converts electrical power efficiently. \n  <br> Switched Mode Power Supply uses a great power conversion technique to reduce overall power loss.\n  <br> The device uses switching regulators that switches the load current on and off to regulate and stabilize the output voltage.\n  <br>", "question_heading": ""}, {"sr_no": 146, "question": "Which among the following is a free open-source operating system (OS) based on UNIX?\n  <br>", "option1": "Windows\n  <br>", "option2": "Linux\n  <br>", "option3": "DOS\n  <br>", "option4": "Android\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> Linux is a free open-source operating system (OS) based on UNIX that was created in 1991 by Linus Torvalds.\n  <br> Linux is typically packaged in a Linux distribution. \n  <br> It is the leading operating system on servers and other big iron systems such as mainframe computers, and the only OS used on TOP500 supercomputers.\n  <br> The most common use of Linux is as a server, but it is also used in desktop computers, smartphones, e-book readers and gaming consoles.\n  <br>", "question_heading": ""}, {"sr_no": 147, "question": "The topology which has highest reliability and are typically used for things like home automation, smart HVAC control, and smart buildings is__________.\n  <br>", "option1": "Ring topology\n  <br>", "option2": "Bus topology\n  <br>", "option3": "Mesh topology\n  <br>", "option4": "Star topology\n  <br>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> A mesh topology is a network setup where each computer and network device are interconnected with one another. \n  <br> This topology setup allows for most transmissions to be distributed even if one of the connections goes down. \n  <br> It is a topology commonly used for wireless networks and has the highest reliability.\n  <br> It is a local network topology in which the infrastructure nodes connect directly, dynamically and non-hierarchically to as many other nodes as possible.\n  <br> They are typically used for things like home automation, smart HVAC control, and smart buildings.\n  <br>", "question_heading": ""}, {"sr_no": 148, "question": "HDMI Interface is a connector and cable basically designed for which type of devices?\n  <br>", "option1": "Digital camera\n  <br>", "option2": "Television\n  <br>", "option3": "Tablet\n  <br>", "option4": "Mobile phone\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> High-Definition Multimedia Interface (HDMI) is a connector and cable capable of transmitting high-quality and high-bandwidth streams of audio and video between devices.\n  <br> The HDMI technology is used with devices such as an HDTV, Projector, DVD player, or Blu-ray player.\n  <br> A single HDMI cable makes it easier to connect two devices together for transmitting audio and video signals.\n  <br> HDMI is capable of transmitting standard, enhanced, and high-definition video signals, and up to 8-channels of digital audio signals.\n  <br> HDMI ports are found either on the video card or motherboard on the back of the computer.\n  <br>", "question_heading": ""}, {"sr_no": 149, "question": "_________refers to the measurement of data that is transferred between two points within a set amount of time.\n  <br>", "option1": "Latency\n  <br>", "option2": "Bandwidth\n  <br>", "option3": "Meta-data\n  <br>", "option4": "Stack\n  <br>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> Bandwidth is defined as the potential of the data that is to be transferred in a specific period of time. \n  <br> It is the data carrying capacity of the network or transmission medium.\n  <br> It is usually expressed in bits, megabits, or gigabits per second.\n  <br> In telecommunications, bandwidth refers to the range that carries a signal within a band of frequencies. \n  <br> This type of bandwidth is measured in Hertz (Hz) and is calculated by finding the difference between the upper and lower frequency limits of a signal.\n  <br>", "question_heading": ""}, {"sr_no": 150, "question": "Which among the following are the small toggle switches used to configure the hardware devices?\n  <br>", "option1": "Headers\n  <br>", "option2": "Beacons\n  <br>", "option3": "Packets\n  <br>", "option4": "Jumpers\n  <br>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<br> A jumper is a tiny metal connector that is used to close or open part of an electrical circuit. \n  <br> It may be used as an alternative to a dual in-line package (DIP) switch. \n  <br> A jumper has two or more connecting points, which regulate an electrical circuit board.\n  <br> It is a small metal connector that acts as an on/off switch.\n  <br> Multiple jumpers are often used together to configure settings for a hardware device.\n  <br> Jumpers are found in computer hardware as well as other types of electronic devices.\n  <br>", "question_heading": ""}];
+
+let currentQuestion = 0;
+let answers = {};
+let bookmarks = new Set();
+let timerSeconds = 0;
+let timerInterval = null;
+let isPaletteOpen = false;
+
+const STORAGE_KEY = 'quizState_' + (document.title || 'default');
+
+function isImageURL(str) {
+  return str && (str.startsWith('http://') || str.startsWith('https://'));
+}
+
+function createOptionContent(optionText) {
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'option-content';
+    
+    if (isImageURL(optionText)) {
+        const img = document.createElement('img');
+        img.src = optionText;
+        img.className = 'option-image';
+        img.alt = 'Option image';
+        img.loading = 'lazy';
+        img.onerror = function() {
+            this.style.display = 'none';
+            const errorText = document.createTextNode('Image failed to load');
+            contentDiv.appendChild(errorText);
+        };
+        contentDiv.appendChild(img);
+    } else {
+        contentDiv.innerHTML = optionText;
+    }
+    
+    return contentDiv;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  initQuiz();
+  initEventListeners();
+  loadFromLocalStorage();
+  startTimer();
+  createPalette();
+  preventDoubleTapZoom();
+});
+
+function preventDoubleTapZoom() {
+  let lastTouchEnd = 0;
+  document.addEventListener('touchend', (event) => {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) {
+      event.preventDefault();
+    }
+    lastTouchEnd = now;
+  }, { passive: false });
+}
+
+function initTheme() {
+  const savedTheme = localStorage.getItem('quizTheme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  updateThemeIcon();
+}
+
+function updateThemeIcon() {
+  const theme = document.documentElement.getAttribute('data-theme');
+  const themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    themeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  }
+}
+
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('quizTheme', newTheme);
+  updateThemeIcon();
+}
+
+function initQuiz() {
+  loadQuestion(currentQuestion);
+  updateMarkingInfo();
+}
+
+function initEventListeners() {
+  const themeBtn = document.getElementById('themeToggle');
+  const fullscreenBtn = document.getElementById('fullscreenBtn');
+  
+  if (themeBtn) {
+    themeBtn.addEventListener('click', toggleTheme);
+    themeBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      toggleTheme();
+    });
+  }
+  
+  if (fullscreenBtn) {
+    fullscreenBtn.addEventListener('click', toggleFullscreen);
+    fullscreenBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      toggleFullscreen();
+    });
+  }
+  
+  addButtonListener('prevBtn', prevQuestion);
+  addButtonListener('nextBtn', nextQuestion);
+  addButtonListener('clearBtn', clearAnswer);
+  addButtonListener('submitBtn', confirmSubmit);
+  addButtonListener('bookmarkBtn', toggleBookmark);
+  
+  addButtonListener('paletteFab', togglePalette);
+  addButtonListener('paletteClose', closePalette);
+  
+  const overlay = document.getElementById('paletteOverlay');
+  if (overlay) {
+    overlay.addEventListener('click', closePalette);
+    overlay.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      closePalette();
+    });
+  }
+  
+  const searchInput = document.getElementById('paletteSearch');
+  if (searchInput) {
+    searchInput.addEventListener('input', handleSearch);
+    searchInput.addEventListener('change', jumpToQuestion);
+  }
+  
+  document.addEventListener('keydown', handleKeyPress);
+  
+  setInterval(saveToLocalStorage, 5000);
+  
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      updatePalette();
+    }
+  });
+}
+
+function addButtonListener(id, handler) {
+  const btn = document.getElementById(id);
+  if (btn) {
+    btn.addEventListener('click', handler);
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      handler();
+    });
+  }
+}
+
+function jumpToQuestion(e) {
+  const questionNum = parseInt(e.target.value);
+  if (questionNum >= 1 && questionNum <= questions.length) {
+    goToQuestion(questionNum - 1);
+    closePalette();
+    e.target.value = '';
+  }
+}
+
+function togglePalette() {
+  isPaletteOpen = !isPaletteOpen;
+  const palette = document.getElementById('questionPalette');
+  const overlay = document.getElementById('paletteOverlay');
+  const fab = document.getElementById('paletteFab');
+  
+  if (isPaletteOpen) {
+    palette.classList.add('active');
+    overlay.classList.add('active');
+    fab.classList.add('active');
+    fab.innerHTML = '✕<span class="badge" id="answeredBadge">' + Object.keys(answers).length + '</span>';
+    document.body.classList.add('palette-open');
+  } else {
+    closePalette();
+  }
+}
+
+function closePalette() {
+  isPaletteOpen = false;
+  const palette = document.getElementById('questionPalette');
+  const overlay = document.getElementById('paletteOverlay');
+  const fab = document.getElementById('paletteFab');
+  
+  if (palette) palette.classList.remove('active');
+  if (overlay) overlay.classList.remove('active');
+  if (fab) {
+    fab.classList.remove('active');
+    fab.innerHTML = '📋<span class="badge" id="answeredBadge">' + Object.keys(answers).length + '</span>';
+  }
+  document.body.classList.remove('palette-open');
+}
+
+function handleSearch(e) {
+  const searchTerm = e.target.value.toLowerCase();
+  if (!searchTerm) {
+    document.querySelectorAll('.palette-btn').forEach(btn => {
+      btn.style.display = '';
+    });
+    return;
+  }
+  
+  const buttons = document.querySelectorAll('.palette-btn');
+  buttons.forEach((btn, index) => {
+    const questionNum = (index + 1).toString();
+    if (questionNum.includes(searchTerm)) {
+      btn.style.display = '';
+    } else {
+      btn.style.display = 'none';
+    }
+  });
+}
+
+function handleKeyPress(e) {
+  if (document.getElementById('resultSection').classList.contains('hidden')) {
+    if (e.key === 'Escape' && isPaletteOpen) {
+      closePalette();
+    } else if (!isPaletteOpen && e.target.tagName !== 'INPUT') {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevQuestion();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        nextQuestion();
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        nextQuestion();
+      } else if (e.key === 'b' || e.key === 'B') {
+        e.preventDefault();
+        toggleBookmark();
+      } else if (e.key === 'c' || e.key === 'C') {
+        e.preventDefault();
+        clearAnswer();
+      } else if (e.key === 'p' || e.key === 'P') {
+        e.preventDefault();
+        togglePalette();
+      } else if (e.key >= '1' && e.key <= '4') {
+        e.preventDefault();
+        selectOption(parseInt(e.key));
+      }
+    }
+  }
+}
+
+function selectOption(optionNum) {
+  const q = questions[currentQuestion];
+  const radio = document.querySelector(`input[name="q${q.sr_no}"][value="${optionNum}"]`);
+  if (radio) {
+    radio.checked = true;
+    const label = radio.closest('.option-label');
+    if (label) {
+      document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      saveAnswer();
+    }
+  }
+}
+
+function toggleFullscreen() {
+  try {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(err => {
+        console.log('Fullscreen error:', err);
+      });
+    } else {
+      document.exitFullscreen();
+    }
+  } catch (err) {
+    console.log('Fullscreen not supported');
+  }
+}
+
+function startTimer() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+  timerInterval = setInterval(() => {
+    timerSeconds++;
+    updateTimer();
+    if (timerSeconds > 600) {
+      const timer = document.getElementById('timer');
+      if (timer) timer.classList.add('warning');
+    }
+  }, 1000);
+}
+
+function updateTimer() {
+  const minutes = Math.floor(timerSeconds / 60);
+  const seconds = timerSeconds % 60;
+  const timer = document.getElementById('timer');
+  if (timer) {
+    timer.textContent = 
+      `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  }
+}
+
+function createPalette() {
+  const grid = document.getElementById('paletteGrid');
+  if (!grid) return;
+  
+  grid.innerHTML = '';
+  questions.forEach((q, index) => {
+    const btn = document.createElement('button');
+    btn.textContent = index + 1;
+    btn.className = 'palette-btn';
+    btn.setAttribute('aria-label', `Go to question ${index + 1}`);
+    btn.setAttribute('type', 'button');
+    
+    btn.addEventListener('click', () => {
+      goToQuestion(index);
+      closePalette();
+    });
+    
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      goToQuestion(index);
+      closePalette();
+    });
+    
+    grid.appendChild(btn);
+  });
+  updatePalette();
+}
+
+function updatePalette() {
+  const buttons = document.querySelectorAll('.palette-btn');
+  buttons.forEach((btn, index) => {
+    btn.className = 'palette-btn';
+    if (index === currentQuestion) btn.classList.add('current');
+    if (answers[questions[index].sr_no]) btn.classList.add('answered');
+    if (bookmarks.has(questions[index].sr_no)) btn.classList.add('bookmarked');
+  });
+  
+  updatePaletteStats();
+}
+
+function updatePaletteStats() {
+  const answered = Object.keys(answers).length;
+  const unanswered = questions.length - answered;
+  const bookmarkedCount = bookmarks.size;
+  
+  const answeredEl = document.getElementById('paletteAnswered');
+  const unansweredEl = document.getElementById('paletteUnanswered');
+  const bookmarkedEl = document.getElementById('paletteBookmarked');
+  
+  if (answeredEl) answeredEl.textContent = answered;
+  if (unansweredEl) unansweredEl.textContent = unanswered;
+  if (bookmarkedEl) bookmarkedEl.textContent = bookmarkedCount;
+  
+  const badge = document.querySelector('.palette-fab .badge');
+  if (badge) badge.textContent = answered;
+}
+
+function goToQuestion(index) {
+  if (index < 0 || index >= questions.length) return;
+  saveAnswer();
+  currentQuestion = index;
+  loadQuestion(currentQuestion);
+  
+  const questionSection = document.getElementById('questionSection');
+  if (questionSection) {
+    setTimeout(() => {
+      questionSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+}
+
+function loadQuestion(index) {
+  const q = questions[index];
+  
+  const questionNumber = document.getElementById('questionNumber');
+  const questionText = document.getElementById('questionText');
+  
+  if (questionNumber) {
+    questionNumber.textContent = `Question ${index + 1} of ${questions.length}`;
+  }
+  
+  if (questionText) {
+    questionText.innerHTML = '';
+    
+    // 🌟 NEW: Create the Heading Box if it exists!
+    let headingHtml = '';
+    if (q.question_heading && q.question_heading.trim() !== '') {
+      headingHtml = `<div style="background: var(--bg-tertiary); padding: 15px; border-left: 4px solid var(--primary-color); margin-bottom: 20px; border-radius: 8px; overflow-x: auto;">${q.question_heading}</div>`;
+      questionText.innerHTML = headingHtml; // Inject heading first
+    }
+
+    if (isImageURL(q.question)) {
+      const img = document.createElement('img');
+      img.src = q.question;
+      img.className = 'question-image';
+      img.alt = 'Question image';
+      img.loading = 'lazy';
+      img.onerror = function() {
+        this.style.display = 'none';
+        questionText.innerHTML += q.question;
+      };
+      questionText.appendChild(img);
+    } else {
+      questionText.innerHTML += q.question; // Append question after heading
+    }
+  }
+  
+  const container = document.getElementById('optionsContainer');
+  if (!container) return;
+  
+  container.innerHTML = '';
+  
+  for (let i = 1; i <= 4; i++) {
+    const label = document.createElement('label');
+    label.className = 'option-label';
+    if (answers[q.sr_no] == i) label.classList.add('selected');
+    
+    const radio = document.createElement('input');
+    radio.type = 'radio';
+    radio.name = `q${q.sr_no}`;
+    radio.value = i;
+    radio.checked = answers[q.sr_no] == i;
+    
+    const changeHandler = () => {
+      document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      saveAnswer();
+    };
+    
+    radio.addEventListener('change', changeHandler);
+    label.addEventListener('click', (e) => {
+      if (e.target !== radio) {
+        radio.checked = true;
+        changeHandler();
+      }
+    });
+    
+    label.appendChild(radio);
+    
+    const optionContent = createOptionContent(q[`option${i}`]);
+    label.appendChild(optionContent);
+    
+    container.appendChild(label);
+  }
+  
+  const bookmarkBtn = document.getElementById('bookmarkBtn');
+  if (bookmarkBtn) {
+    if (bookmarks.has(q.sr_no)) {
+      bookmarkBtn.classList.add('active');
+    } else {
+      bookmarkBtn.classList.remove('active');
+    }
+  }
+  
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const submitBtn = document.getElementById('submitBtn');
+  
+  if (prevBtn) prevBtn.disabled = index === 0;
+  
+  if (index === questions.length - 1) {
+    if (nextBtn) nextBtn.classList.add('hidden');
+    if (submitBtn) submitBtn.classList.remove('hidden');
+  } else {
+    if (nextBtn) nextBtn.classList.remove('hidden');
+    if (submitBtn) submitBtn.classList.add('hidden');
+  }
+  
+  updateProgress();
+  updatePalette();
+}
+
+function updateMarkingInfo() {
+  if(questions.length > 0) {
+      const q = questions[0];
+      const markingInfo = document.getElementById('markingInfo');
+      if (markingInfo) {
+        markingInfo.textContent = `Marking: +${q.positive_marking}, -${q.negative_marking}`;
+      }
+  }
+}
+
+function updateProgress() {
+  const attempted = Object.keys(answers).length;
+  const currentProgress = ((currentQuestion + 1) / questions.length) * 100;
+  
+  const progressBar = document.getElementById('progressBar');
+  const progressText = document.getElementById('progressText');
+  const attemptedText = document.getElementById('attemptedText');
+  
+  if (progressBar) progressBar.style.width = `${currentProgress}%`;
+  if (progressText) progressText.textContent = `${currentQuestion + 1}/${questions.length}`;
+  if (attemptedText) attemptedText.textContent = attempted;
+}
+
+function saveAnswer() {
+  const q = questions[currentQuestion];
+  const selected = document.querySelector(`input[name="q${q.sr_no}"]:checked`);
+  
+  if (selected) {
+    answers[q.sr_no] = selected.value;
+  }
+  
+  updateProgress();
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function clearAnswer() {
+  const q = questions[currentQuestion];
+  delete answers[q.sr_no];
+  
+  const selected = document.querySelector(`input[name="q${q.sr_no}"]:checked`);
+  if (selected) selected.checked = false;
+  
+  document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+  
+  updateProgress();
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function toggleBookmark() {
+  const q = questions[currentQuestion];
+  const btn = document.getElementById('bookmarkBtn');
+  
+  if (bookmarks.has(q.sr_no)) {
+    bookmarks.delete(q.sr_no);
+    if (btn) btn.classList.remove('active');
+  } else {
+    bookmarks.add(q.sr_no);
+    if (btn) btn.classList.add('active');
+  }
+  
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function nextQuestion() {
+  saveAnswer();
+  if (currentQuestion < questions.length - 1) {
+    currentQuestion++;
+    loadQuestion(currentQuestion);
+  }
+}
+
+function prevQuestion() {
+  saveAnswer();
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    loadQuestion(currentQuestion);
+  }
+}
+
+function confirmSubmit() {
+  const unattempted = questions.length - Object.keys(answers).length;
+  let message = 'Are you sure you want to submit the quiz?';
+  
+  if (unattempted > 0) {
+    message += `\n\nYou have ${unattempted} unanswered question(s).`;
+  }
+  
+  if (confirm(message)) {
+    submitQuiz();
+  }
+}
+
+function submitQuiz() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+  }
+  saveAnswer();
+  closePalette();
+  
+  let correct = 0, wrong = 0, unattempted = 0, score = 0;
+  
+  questions.forEach(q => {
+    const userAns = answers[q.sr_no];
+    const posMark = parseFloat(q.positive_marking) || 0;
+    const negMark = parseFloat(q.negative_marking) || 0;
+    
+    if (!userAns) {
+      unattempted++;
+    } else if (userAns == q.answer) {
+      correct++;
+      score += posMark;
+    } else {
+      wrong++;
+      score -= negMark;
+    }
+  });
+  
+  displayResults(correct, wrong, unattempted, score);
+  
+  const fab = document.getElementById('paletteFab');
+  const nav = document.getElementById('navigation');
+  if (fab) fab.style.display = 'none';
+  if (nav) nav.style.display = 'none';
+  
+  document.body.style.paddingBottom = '20px';
+  
+  clearLocalStorage();
+}
+
+function displayResults(correct, wrong, unattempted, score) {
+  const totalQuestions = questions.length;
+  const percentage = ((correct / totalQuestions) * 100).toFixed(1);
+  const timerEl = document.getElementById('timer');
+  const timeText = timerEl ? timerEl.textContent : '00:00';
+  
+  let html = `
+    <div class="score-card">
+      <h2>${score}/${totalQuestions}</h2>
+      <p>Your Score: ${percentage}%</p>
+      <p>Time Taken: ${timeText}</p>
+    </div>
+    
+    <div class="stats-grid">
+      <div class="stat-card correct">
+        <h3>${correct}</h3>
+        <p>Correct</p>
+      </div>
+      <div class="stat-card wrong">
+        <h3>${wrong}</h3>
+        <p>Wrong</p>
+      </div>
+      <div class="stat-card unattempted">
+        <h3>${unattempted}</h3>
+        <p>Unattempted</p>
+      </div>
+      <div class="stat-card">
+        <h3>${totalQuestions}</h3>
+        <p>Total</p>
+      </div>
+    </div>
+  `;
+  
+  questions.forEach(q => {
+    const userAns = answers[q.sr_no];
+    
+    // 🌟 NEW: Add the Heading to the results review screen!
+    let headingHtml = (q.question_heading && q.question_heading.trim() !== '') 
+      ? `<div style="background: var(--bg-tertiary); padding: 10px; margin-bottom: 15px; border-left: 4px solid var(--primary-color); border-radius: 5px; overflow-x: auto;">${q.question_heading}</div>` 
+      : '';
+      
+    const questionHeader = isImageURL(q.question)
+      ? `<h4>Q${q.sr_no}:</h4>${headingHtml}<img src="${q.question}" class="question-image" alt="Question ${q.sr_no}">`
+      : `<h4>Q${q.sr_no}:</h4>${headingHtml}<div style="margin-bottom: 10px;">${q.question}</div>`;
+      
+    html += `<div class="question-review">${questionHeader}`;
+    
+    for (let i = 1; i <= 4; i++) {
+      const isCorrect = i.toString() === q.answer;
+      const isUserAnswer = userAns == i.toString();
+      
+      let className = 'review-option';
+      if (isCorrect) className += ' correct';
+      if (isUserAnswer && !isCorrect) className += ' wrong';
+      if (isUserAnswer) className += ' user-selected';
+      
+      const optionValue = q[`option${i}`];
+      
+      if (isImageURL(optionValue)) {
+        html += `<div class="${className}">
+          ${isCorrect ? '✓ ' : ''}${isUserAnswer ? '➤ ' : ''} 
+          <img src="${optionValue}" class="option-image" alt="Option ${i}">
+        </div>`;
+      } else {
+        html += `<div class="${className}">
+          ${isCorrect ? '✓ ' : ''}${isUserAnswer ? '➤ ' : ''}${optionValue}
+        </div>`;
+      }
+    }
+    
+    if (q.solution_text && q.solution_text.trim() !== '') {
+      const solutionContent = isImageURL(q.solution_text)
+        ? `<img src="${q.solution_text}" class="solution-image" alt="Solution">`
+        : q.solution_text;
+      html += `<div class="solution-section">
+        <div class="solution-label">📝 Solution:</div>
+        <div class="solution-content">${solutionContent}</div>
+      </div>`;
+    }
+    
+    html += `</div>`; 
+});
+  
+  html += `
+    <div class="action-buttons">
+      <button class="action-btn restart" onclick="restartQuiz()">Restart Quiz</button>
+      <button class="action-btn download" onclick="downloadResults()">Download Results</button>
+      <button class="action-btn print" onclick="window.print()">Print Results</button>
+    </div>
+  `;
+  
+  const resultSection = document.getElementById('resultSection');
+  const questionSection = document.getElementById('questionSection');
+  const progressSection = document.querySelector('.progress-section');
+  
+  if (resultSection) {
+    resultSection.innerHTML = html;
+    resultSection.classList.remove('hidden');
+  }
+  if (questionSection) questionSection.classList.add('hidden');
+  if (progressSection) progressSection.classList.add('hidden');
+  
+  const quizContainer = document.getElementById('quizContainer');
+  if (quizContainer) {
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
+  }
+}
+
+function restartQuiz() {
+  if (confirm('Are you sure you want to restart? All progress will be lost.')) {
+    currentQuestion = 0;
+    answers = {};
+    bookmarks.clear();
+    timerSeconds = 0;
+    
+    const resultSection = document.getElementById('resultSection');
+    const questionSection = document.getElementById('questionSection');
+    const progressSection = document.querySelector('.progress-section');
+    const fab = document.getElementById('paletteFab');
+    const nav = document.getElementById('navigation');
+    
+    if (resultSection) {
+      resultSection.classList.add('hidden');
+      resultSection.innerHTML = '';
+    }
+    if (questionSection) questionSection.classList.remove('hidden');
+    if (progressSection) progressSection.classList.remove('hidden');
+    if (fab) fab.style.display = 'flex';
+    if (nav) nav.style.display = 'grid';
+    
+    document.body.style.paddingBottom = 'var(--nav-height)';
+    
+    if (timerInterval) {
+      clearInterval(timerInterval);
+    }
+    startTimer();
+    
+    loadQuestion(currentQuestion);
+    createPalette();
+  }
+}
+
+function downloadResults() {
+  const resultSection = document.getElementById('resultSection');
+  if (!resultSection) return;
+  
+  const resultHTML = resultSection.innerHTML;
+  const fullHTML = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Results</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; max-width: 900px; margin: 0 auto; }
+    .score-card { background: linear-gradient(135deg, #007bff, #28a745); color: white; padding: 30px; border-radius: 15px; text-align: center; margin-bottom: 20px; }
+    .score-card h2 { font-size: 48px; margin-bottom: 10px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 30px; }
+    .stat-card { background: white; padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #ddd; }
+    .stat-card h3 { font-size: 32px; margin-bottom: 8px; }
+    .stat-card.correct h3 { color: #28a745; }
+    .stat-card.wrong h3 { color: #dc3545; }
+    .stat-card.unattempted h3 { color: #6c757d; }
+    .question-review { background: white; border: 2px solid #ddd; border-radius: 10px; padding: 20px; margin-bottom: 15px; }
+    .question-review h4 { margin-bottom: 15px; font-size: 16px; line-height: 1.6; }
+    .review-option { padding: 10px 15px; margin: 8px 0; border-radius: 8px; border: 2px solid #ddd; display: flex; align-items: center; gap: 10px; }
+    .option-image { max-width: 150px; max-height: 100px; border-radius: 8px; }
+    .review-option.correct { background: #d4edda; border-color: #28a745; color: #155724; }
+    .review-option.wrong { background: #f8d7da; border-color: #dc3545; color: #721c24; }
+    .review-option.user-selected { border-width: 3px; font-weight: bold; }
+    @media print { body { background: white; } }
+    @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center; color: #007bff;">Quiz Results</h1>
+  <p style="text-align: center; color: #666; margin-bottom: 30px;">Generated on: ${new Date().toLocaleString()}</p>
+  ${resultHTML.replace(/<div class="action-buttons">[\s\S]*?<\/div>/, '')}
+</body>
+</html>
+  `;
+  
+  try {
+    const blob = new Blob([fullHTML], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `Quiz_Results_${new Date().getTime()}.html`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  } catch (err) {
+    alert('Download failed. Please try using the Print option instead.');
+    console.error('Download error:', err);
+  }
+}
+
+function saveToLocalStorage() {
+  try {
+    const state = {
+      currentQuestion,
+      answers,
+      bookmarks: Array.from(bookmarks),
+      timerSeconds,
+      timestamp: Date.now()
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch (err) {
+    console.error('Save error:', err);
+  }
+}
+
+function loadFromLocalStorage() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const state = JSON.parse(saved);
+      const hasProgress = (state && (
+        (state.currentQuestion && state.currentQuestion > 0) ||
+        (state.answers && Object.keys(state.answers).length > 0) ||
+        (state.timerSeconds && state.timerSeconds > 0)
+      ));
+      if (hasProgress && (Date.now() - state.timestamp < 24 * 60 * 60 * 1000)) {
+        if (confirm('Resume previous quiz session?')) {
+          currentQuestion = state.currentQuestion || 0;
+          answers = state.answers || {};
+          bookmarks = new Set(state.bookmarks || []);
+          timerSeconds = state.timerSeconds || 0;
+          updateTimer();
+          loadQuestion(currentQuestion);
+        }
+      } else {
+        clearLocalStorage();
+      }
+    }
+  } catch (err) {
+    console.error('Load error:', err);
+    clearLocalStorage();
+  }
+}
+
+function clearLocalStorage() {
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (err) {
+    console.error('Clear storage error:', err);
+  }
+}
+
+window.addEventListener('beforeunload', (e) => {
+  const resultSection = document.getElementById('resultSection');
+  if (resultSection && !resultSection.classList.contains('hidden')) {
+    return;
+  }
+  e.preventDefault();
+  e.returnValue = '';
+});
+
+window.addEventListener('unload', () => {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+});
+</script>
+</body>
+</html>
