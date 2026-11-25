@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>26.) PROFIT & LOSS TEST - 01 - English</title>
+<style>
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0069d9;
+  --success-color: #28a745;
+  --success-hover: #218838;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --secondary-color: #6c757d;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --border-color: #dee2e6;
+  --shadow: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
+  --overlay: rgba(0,0,0,0.5);
+  --nav-height: 80px;
+}
+
+[data-theme="dark"] {
+  --primary-color: #4dabf7;
+  --primary-hover: #339af0;
+  --success-color: #51cf66;
+  --success-hover: #40c057;
+  --danger-color: #ff6b6b;
+  --warning-color: #ffd43b;
+  --secondary-color: #868e96;
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #404040;
+  --text-primary: #f8f9fa;
+  --text-secondary: #adb5bd;
+  --border-color: #495057;
+  --shadow: 0 4px 6px rgba(0,0,0,0.3);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.4);
+  --overlay: rgba(0,0,0,0.7);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+  overflow-x: hidden;
+  position: relative;
+  padding-bottom: var(--nav-height);
+}
+
+body.palette-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-primary);
+  padding: 20px 30px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+
+.header h1 {
+  font-size: 28px;
+  color: var(--primary-color);
+  font-weight: 700;
+  user-select: none;
+}
+
+.header-controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.theme-toggle, .fullscreen-btn {
+  background: var(--bg-tertiary);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.3s;
+  min-width: 44px;
+  min-height: 44px;
+  user-select: none;
+}
+
+.theme-toggle:active, .fullscreen-btn:active {
+  transform: scale(0.95);
+}
+
+.theme-toggle:hover, .fullscreen-btn:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+.bot-link-btn {
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+}
+.bot-link-btn:active {
+  transform: scale(0.95);
+}
+.bot-link-btn:hover {
+  background: var(--primary-hover);
+}
+
+.timer {
+  background: var(--warning-color);
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 18px;
+  min-width: 100px;
+  text-align: center;
+  user-select: none;
+}
+
+.timer.warning {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.palette-fab {
+  position: fixed;
+  bottom: calc(var(--nav-height) + 20px);
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  box-shadow: 0 6px 20px rgba(0,123,255,0.4);
+  transition: all 0.3s ease;
+  z-index: 998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.palette-fab:active {
+  transform: scale(0.9);
+}
+
+.palette-fab:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0,123,255,0.6);
+}
+
+.palette-fab.active {
+  background: var(--danger-color);
+}
+
+.palette-fab .badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: var(--success-color);
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--bg-secondary);
+  pointer-events: none;
+}
+.solution-section {
+  margin-top: 20px;
+  padding: 15px;
+  background: #e7f3ff;
+  border-left: 4px solid var(--primary-color);
+  border-radius: 8px;
+}
+
+.solution-label {
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.solution-content {
+  line-height: 1.6;
+  color: #333;
+}
+
+.solution-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.palette-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 999;
+  touch-action: none;
+}
+
+.palette-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.question-palette {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 450px;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--bg-primary);
+  box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+  transition: right 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.question-palette.active {
+  right: 0;
+}
+
+.palette-header {
+  padding: 20px;
+  background: var(--primary-color);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.palette-header h3 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.palette-close {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: background 0.2s;
+  line-height: 1;
+  touch-action: manipulation;
+}
+
+.palette-close:active {
+  transform: scale(0.9);
+}
+
+.palette-close:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.palette-stats {
+  padding: 15px 20px;
+  background: var(--bg-tertiary);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  font-size: 13px;
+  text-align: center;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border-color);
+  user-select: none;
+}
+
+.palette-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.palette-stat .number {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.palette-stat.answered .number { color: var(--success-color); }
+.palette-stat.unanswered .number { color: var(--secondary-color); }
+.palette-stat.bookmarked .number { color: var(--warning-color); }
+
+.palette-search {
+  padding: 15px 20px;
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+}
+
+.palette-search input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 14px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.palette-search input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.palette-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 10px;
+}
+
+.palette-btn {
+  aspect-ratio: 1;
+  border: 2px solid var(--border-color);
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+  min-width: 40px;
+  min-height: 40px;
+  color: var(--text-primary);
+  position: relative;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.palette-btn:active {
+  transform: scale(0.9);
+}
+
+.palette-btn:hover {
+  transform: scale(1.1);
+  z-index: 10;
+  box-shadow: var(--shadow);
+}
+
+.palette-btn.current {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  animation: currentPulse 2s infinite;
+}
+
+@keyframes currentPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,123,255,0.7); }
+  50% { box-shadow: 0 0 0 8px rgba(0,123,255,0); }
+}
+
+.palette-btn.answered {
+  background: var(--success-color);
+  color: white;
+  border-color: var(--success-color);
+}
+
+.palette-btn.bookmarked::after {
+  content: '🔖';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.palette-btn.bookmarked.answered {
+  background: var(--success-color);
+}
+
+.palette-legend {
+  padding: 20px;
+  border-top: 1px solid var(--border-color);
+  font-size: 13px;
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.legend-color {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.quiz-container {
+  background: var(--bg-primary);
+  border-radius: 15px;
+  box-shadow: var(--shadow-lg);
+  padding: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  scroll-margin-top: 20px;
+}
+
+.quiz-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.marking-info {
+  display: inline-block;
+  background: var(--bg-tertiary);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.progress-section {
+  margin-bottom: 25px;
+}
+
+.progress-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.progress-bar-container {
+  background: var(--bg-tertiary);
+  border-radius: 12px;
+  overflow: hidden;
+  height: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+  transition: width 0.4s ease;
+  border-radius: 12px;
+}
+
+.question-section {
+  min-height: 300px;
+  scroll-margin-top: 80px;
+  margin-bottom: 20px;
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.question-number {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary-color);
+  user-select: none;
+}
+
+.bookmark-btn {
+  background: transparent;
+  border: 2px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 44px;
+  min-height: 44px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.bookmark-btn:active {
+  transform: scale(0.95);
+}
+
+.bookmark-btn.active {
+  background: var(--warning-color);
+  border-color: var(--warning-color);
+  color: #000;
+}
+
+.question {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 25px;
+  color: var(--text-primary);
+  user-select: text;
+}
+
+.question-image {
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: 10px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  padding: 10px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--border-color);
+  padding: 16px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--bg-secondary);
+  min-height: 60px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.option-label:active {
+  transform: scale(0.98);
+}
+
+.option-label:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--primary-color);
+}
+
+.option-label.selected {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.option-label input[type="radio"] {
+  margin-right: 15px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.option-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.option-image {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  padding: 10px;
+}
+
+.option-label.selected .option-image {
+  background: rgba(255,255,255,0.1);
+}
+
+/* FIXED NAVIGATION - KEY UPDATE */
+.navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-primary);
+  border-top: 2px solid var(--border-color);
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  z-index: 997;
+  padding: 15px 20px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 10px;
+  max-width: 100%;
+}
+
+.nav-btn {
+  padding: 14px 20px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+.nav-btn:active {
+  transform: scale(0.97);
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.nav-btn.prev {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.nav-btn.prev:hover:not(:disabled) {
+  background: #5a6268;
+}
+
+.nav-btn.next {
+  background: var(--primary-color);
+  color: white;
+}
+
+.nav-btn.next:hover:not(:disabled) {
+  background: var(--primary-hover);
+}
+
+.nav-btn.clear {
+  background: var(--danger-color);
+  color: white;
+}
+
+.nav-btn.clear:hover {
+  background: #c82333;
+}
+
+.nav-btn.submit {
+  background: var(--success-color);
+  color: white;
+  grid-column: 1 / -1;
+}
+
+.nav-btn.submit:hover {
+  background: var(--success-hover);
+}
+
+.result-section {
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.score-card {
+  background: linear-gradient(135deg, var(--primary-color), var(--success-color));
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  margin-bottom: 30px;
+  user-select: none;
+}
+
+.score-card h2 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.score-card p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: var(--bg-secondary);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  border: 2px solid var(--border-color);
+  user-select: none;
+}
+
+.stat-card h3 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.stat-card.correct h3 { color: var(--success-color); }
+.stat-card.wrong h3 { color: var(--danger-color); }
+.stat-card.unattempted h3 { color: var(--secondary-color); }
+
+.question-review {
+  border: 2px solid var(--border-color);
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 20px;
+  background: var(--bg-secondary);
+}
+
+.question-review h4 {
+  margin-bottom: 15px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.review-option {
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 2px solid var(--border-color);
+  background: var(--bg-primary);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.review-option .option-image {
+  max-width: 150px;
+  max-height: 100px;
+}
+
+.review-option.correct {
+  background: #d4edda;
+  border-color: var(--success-color);
+  color: #155724;
+}
+
+.review-option.wrong {
+  background: #f8d7da;
+  border-color: var(--danger-color);
+  color: #721c24;
+}
+
+.review-option.user-selected {
+  border-width: 3px;
+  font-weight: 600;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.action-btn {
+  padding: 14px 30px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  min-width: 150px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.action-btn:active {
+  transform: scale(0.95);
+}
+
+.action-btn.restart {
+  background: var(--danger-color);
+  color: white;
+}
+
+.action-btn.restart:hover {
+  background: #c82333;
+}
+
+.action-btn.download {
+  background: var(--primary-color);
+  color: white;
+}
+
+.action-btn.download:hover {
+  background: var(--primary-hover);
+}
+
+.action-btn.print {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.action-btn.print:hover {
+  background: #5a6268;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.palette-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.palette-content::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+}
+
+.palette-content::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+.palette-content::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 140px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .header h1 {
+    font-size: 22px;
+  }
+
+  .quiz-container {
+    padding: 20px 15px;
+  }
+
+  .question-palette {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .palette-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+  }
+
+  .palette-btn {
+    font-size: 13px;
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  .palette-fab {
+    bottom: calc(var(--nav-height) + 10px);
+    right: 15px;
+    width: 56px;
+    height: 56px;
+    font-size: 22px;
+  }
+
+  .navigation {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 12px 15px;
+  }
+
+  .nav-btn {
+    min-height: 44px;
+    font-size: 15px;
+  }
+
+  .nav-btn.clear {
+    order: 3;
+  }
+
+  .nav-btn.submit {
+    grid-column: auto;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .legend-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .question {
+    font-size: 16px;
+  }
+
+  .option-label {
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  .option-image {
+    max-height: 150px;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .palette-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+
+  .palette-btn {
+    font-size: 12px;
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .timer {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  .option-image {
+    max-height: 120px;
+  }
+}
+
+@media print {
+  .header-controls, .navigation, .palette-fab, .palette-overlay, .question-palette, .action-buttons, .bookmark-btn {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    padding-bottom: 0;
+  }
+
+  .container {
+    padding-bottom: 20px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>26.) PROFIT & LOSS TEST - 01 - English</h1>
+    <div class="header-controls">
+      <a href="https://t.me/ssc_prepX" target="_blank" class="bot-link-btn" title="Open Bot in Telegram">🤖 Bot</a>
+      
+      <div class="timer" id="timer">00:00</div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle Theme">🌙</button>
+      <button class="fullscreen-btn" id="fullscreenBtn" aria-label="Toggle fullscreen" title="Fullscreen">⛶</button>
+    </div>
+  </div>
+
+  <div class="quiz-container" id="quizContainer">
+    <div class="quiz-header">
+      <div class="marking-info" id="markingInfo">Marking: +1, -0</div>
+    </div>
+
+    <div class="progress-section">
+      <div class="progress-stats">
+        <span>Progress: <strong id="progressText">1/2</strong></span>
+        <span>Attempted: <strong id="attemptedText">0</strong></span>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+
+    <div class="question-section" id="questionSection">
+      <div class="question-header">
+        <div class="question-number" id="questionNumber">Question 1 of 2</div>
+        <button class="bookmark-btn" id="bookmarkBtn" aria-label="Bookmark question">
+          <span>🔖</span> <span>Bookmark</span>
+        </button>
+      </div>
+      
+      <div class="question" id="questionText"></div>
+      
+      <div class="options" id="optionsContainer"></div>
+    </div>
+
+    <div class="result-section hidden" id="resultSection"></div>
+  </div>
+</div>
+
+<div class="navigation" id="navigation">
+  <button class="nav-btn prev" id="prevBtn" aria-label="Previous question">
+    <span>←</span> Previous
+  </button>
+  <button class="nav-btn clear" id="clearBtn" aria-label="Clear answer">
+    Clear
+  </button>
+  <button class="nav-btn next" id="nextBtn" aria-label="Next question">
+    Next <span>→</span>
+  </button>
+  <button class="nav-btn submit hidden" id="submitBtn" aria-label="Submit quiz">
+    Submit Quiz
+  </button>
+</div>
+
+<button class="palette-fab" id="paletteFab" aria-label="Toggle question palette" title="Question Palette (P)">
+  📋
+  <span class="badge" id="answeredBadge">0</span>
+</button>
+
+<div class="palette-overlay" id="paletteOverlay"></div>
+
+<div class="question-palette" id="questionPalette">
+  <div class="palette-header">
+    <h3>Question Palette</h3>
+    <button class="palette-close" id="paletteClose" aria-label="Close palette">×</button>
+  </div>
+
+  <div class="palette-stats">
+    <div class="palette-stat answered">
+      <div class="number" id="paletteAnswered">0</div>
+      <div>Answered</div>
+    </div>
+    <div class="palette-stat unanswered">
+      <div class="number" id="paletteUnanswered">2</div>
+      <div>Not Answered</div>
+    </div>
+    <div class="palette-stat bookmarked">
+      <div class="number" id="paletteBookmarked">0</div>
+      <div>Bookmarked</div>
+    </div>
+  </div>
+
+  <div class="palette-search">
+    <input type="number" id="paletteSearch" placeholder="Jump to question number..." aria-label="Search questions" inputmode="numeric" pattern="[0-9]*">
+  </div>
+
+  <div class="palette-content">
+    <div class="palette-grid" id="paletteGrid"></div>
+  </div>
+
+  <div class="palette-legend">
+    <div class="legend-grid">
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--success-color);"></div>
+        <span>Answered</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--bg-secondary); border: 2px solid var(--border-color);"></div>
+        <span>Not Answered</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--primary-color);"></div>
+        <span>Current Question</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--warning-color);"></div>
+        <span>🔖 Bookmarked</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// JSON INJECTION HAPPENS HERE
+const questions = [{"sr_no": 1, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>रविंद्र    को मीता को एक किताब बेचने    पर </span></span><span style=\"font-family:'Nirmala UI'\">₹</span></span></span><span style=\"font-family:'Nirmala UI'\">68    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>का    लाभ हुआ। किताब पर </span></span></span></span><span style=\"font-family:'Nirmala UI'\">15%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    छूट देने के बावजूद</span></span></span></span><span style=\"font-family:'Nirmala UI'\">,    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>रविंद्र    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">10% </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>का    लाभ कमाने में कामयाब रहा।    किताब का अंकित मूल्य </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">List    Price) </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>क्या    होना चाहिए</span></span></span></span><span style=\"font-family:'Nirmala UI'\">?</span></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">880</span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">890</span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">800</span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">850</span></p>", "answer": "1", "negative_marking": "0.50", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1780374465892_html_6eb71f85b9964ae.jpg\" width=\"514\" height=\"411\" > </p>", "question_heading": ""}, {"sr_no": 2, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>एक    गैजेट को उसके अंकित मूल्य    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">Marked    Price) </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>पर    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">15% </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    छूट पर बेचा जाता है। इस बिक्री    से उसकी लागत मूल्य </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">Cost    Price) </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>पर    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">20% </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>का    लाभ होता है। यदि कमाया गया    लाभ </span></span><span style=\"font-family:'Nirmala UI'\">₹</span></span></span><span style=\"font-family:'Nirmala UI'\">450    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>है</span></span></span></span><span style=\"font-family:'Nirmala UI'\">,    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>तो    यदि गैजेट को उसके अंकित    मूल्य पर </span></span></span></span><span style=\"font-family:'Nirmala UI'\">25%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    छूट पर बेचा जाता</span></span></span></span><span style=\"font-family:'Nirmala UI'\">,    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>तो    उसका बिक्री मूल्य </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">Selling    Price) </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>क्या    होता</span></span></span></span><span style=\"font-family:'Nirmala UI'\">?</span></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>रु</span></span></span></span><span style=\"font-family:'Nirmala UI'\">.    </span><span style=\"font-family:'Nirmala UI'\">2585.36</span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>रु</span></span></span></span><span style=\"font-family:'Nirmala UI'\">.    </span><span style=\"font-family:'Nirmala UI'\">1528.24</span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>रु</span></span></span></span><span style=\"font-family:'Nirmala UI'\">.    </span><span style=\"font-family:'Nirmala UI'\">2879.45</span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>रु</span></span></span></span><span style=\"font-family:'Nirmala UI'\">.    </span><span style=\"font-family:'Nirmala UI'\">2382.35</span></p>", "answer": "4", "negative_marking": "0.50", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1780374465892_html_16383656a19d70d4.jpg\" width=\"514\" height=\"512\" > </p>", "question_heading": ""}, {"sr_no": 3, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>एक    खुदरा विक्रेता </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">retailer)    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>ने    एक उत्पाद का मूल्य उसके लागत    मूल्य </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">Cost    Price) </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>से    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">60%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>अधिक    अंकित किया। उसने </span></span></span></span><span style=\"font-family:'Nirmala UI'\">25%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>और    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">10% </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    दो क्रमिक छूट </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">successive    discounts) </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>दीं।    यदि उसने </span></span><span style=\"font-family:'Nirmala UI'\">₹</span></span></span><span style=\"font-family:'Nirmala UI'\">160    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>का    लाभ कमाया</span></span></span></span><span style=\"font-family:'Nirmala UI'\">,    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>तो    उत्पाद का लागत मूल्य क्या    था</span></span></span></span><span style=\"font-family:'Nirmala UI'\">?</span></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>रु</span></span></span></span><span style=\"font-family:'Nirmala UI'\">.    </span><span style=\"font-family:'Nirmala UI'\">2000</span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>रु</span></span></span></span><span style=\"font-family:'Nirmala UI'\">.    </span><span style=\"font-family:'Nirmala UI'\">2500</span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>रु</span></span></span></span><span style=\"font-family:'Nirmala UI'\">.    </span><span style=\"font-family:'Nirmala UI'\">1080</span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">1000</span></p>", "answer": "1", "negative_marking": "0.50", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1780374465892_html_5d715dd7d79bff2c.jpg\" width=\"514\" height=\"384\" > </p>", "question_heading": ""}, {"sr_no": 4, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>दुकानदार    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">A </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>किसी    वस्तु का मूल्य उसके लागत    मूल्य से </span></span></span></span><span style=\"font-family:'Nirmala UI'\">25%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>अधिक    अंकित करता है और </span></span></span></span><span style=\"font-family:'Nirmala UI'\">15%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    छूट देता है। उसी वस्तु पर    एक अन्य दुकानदार </span></span></span></span><span style=\"font-family:'Nirmala UI'\">B    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>द्वारा    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">20%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>अधिक    मूल्य अंकित किया जाता है    और उसे </span></span></span></span><span style=\"font-family:'Nirmala UI'\">12%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    छूट पर बेचा जाता है। प्रतिशत    लाभ </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(    % </span><span style=\"font-family:'Nirmala UI'\">profit) </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>के    मामले में किसे बेहतर सौदा    मिलता है और वह उस वस्तु को    कितने प्रतिशत लाभ पर बेचता    है</span></span></span></span><span style=\"font-family:'Nirmala UI'\">?</span></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>बी    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">5.6% </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>से</span></span></span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>बी    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">0.65%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>से</span></span></span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>ए    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">0.55%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>से</span></span></span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>ए    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">6.25%</span></p>", "answer": "4", "negative_marking": "0.50", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1780374465892_html_f004c46228a004e9.jpg\" width=\"514\" height=\"508\" > </p>", "question_heading": ""}, {"sr_no": 5, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>एक    मोबाइल फोन खुदरा विक्रेता    </span></span><span style=\"font-family:'Nirmala UI'\">₹</span></span></span><span style=\"font-family:'Nirmala UI'\">P    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>में    एक फोन बेचता है और </span></span></span></span><span style=\"font-family:'Nirmala UI'\">20%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>का    लाभ कमाता है। एक विशेष उत्सव    ऑफर के लिए</span></span></span></span><span style=\"font-family:'Nirmala UI'\">,    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>वह    उसी फोन पर </span></span><span style=\"font-family:'Nirmala UI'\">₹</span></span></span><span style=\"font-family:'Nirmala UI'\">1.5P    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>अंकित    करता है और फिर </span></span></span></span><span style=\"font-family:'Nirmala UI'\">10%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    छूट देता है। फेस्टिव ऑफर    के दौरान लाभ का प्रतिशत क्या    होगा</span></span></span></span><span style=\"font-family:'Nirmala UI'\">?</span></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">26%</span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">56%</span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">62%</span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">60%</span></p>", "answer": "3", "negative_marking": "0.50", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1780374465892_html_e44772748e862ec6.jpg\" width=\"529\" height=\"226\" > </p>", "question_heading": ""}, {"sr_no": 6, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>एक    व्यापारी ने एक वस्तु पर इस    प्रकार अंकित किया कि उसकी    कीमत उसके लागत मूल्य से </span></span></span></span><span style=\"font-family:'Nirmala UI'\">25%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>अधिक    थी। उसने एक खरीदार को </span></span></span></span><span style=\"font-family:'Nirmala UI'\">10%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>और    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">20% </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    लगातार दो छूट की पेशकश की।    यदि उसे </span></span><span style=\"font-family:'Nirmala UI'\">₹</span></span></span><span style=\"font-family:'Nirmala UI'\">400    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    हानि हुई</span></span></span></span><span style=\"font-family:'Nirmala UI'\">,    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>तो    वस्तु का अंकित मूल्य क्या    था</span></span></span></span><span style=\"font-family:'Nirmala UI'\">?</span></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>रु</span></span></span></span><span style=\"font-family:'Nirmala UI'\">.    </span><span style=\"font-family:'Nirmala UI'\">5000</span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>रु</span></span></span></span><span style=\"font-family:'Nirmala UI'\">.    </span><span style=\"font-family:'Nirmala UI'\">2000</span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>रु</span></span></span></span><span style=\"font-family:'Nirmala UI'\">.    </span><span style=\"font-family:'Nirmala UI'\">2500</span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>रु</span></span></span></span><span style=\"font-family:'Nirmala UI'\">.    </span><span style=\"font-family:'Nirmala UI'\">1080</span></p>", "answer": "1", "negative_marking": "0.50", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1780374465892_html_452968b43d1cde6a.jpg\" width=\"514\" height=\"259\" > </p>", "question_heading": ""}, {"sr_no": 7, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">10% </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    छूट देने के बाद </span></span></span></span><span style=\"font-family:'Nirmala UI'\">8%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>का    लाभ प्राप्त करने के लिए</span></span></span></span><span style=\"font-family:'Nirmala UI'\">,    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>अंकित    मूल्य </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">List    Price) </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>को    लागत मूल्य </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">Cost    Price) </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>से    कितने प्रतिशत अधिक बढ़ाया    जाना चाहिए</span></span></span></span><span style=\"font-family:'Nirmala UI'\">?</span></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">9%</span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">11%</span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">18%</span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">20%</span></p>", "answer": "4", "negative_marking": "0.50", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1780374465892_html_d1e0ed40449d24e0.jpg\" width=\"514\" height=\"345\" > </p>", "question_heading": ""}, {"sr_no": 8, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>एक    दुकानदार किसी वस्तु के अंकित    मूल्य पर </span></span></span></span><span style=\"font-family:'Nirmala UI'\">10%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    छूट देने के बाद </span></span></span></span><span style=\"font-family:'Nirmala UI'\">12.5%</span><span style=\"font-family:'Nirmala UI'\">    ​​</span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>का    लाभ कमाता है। यदि वस्तु    अंकित मूल्य पर बेची जाती    है</span></span></span></span><span style=\"font-family:'Nirmala UI'\">,    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>जिसमें    कोई छूट नहीं है</span></span></span></span><span style=\"font-family:'Nirmala UI'\">,    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>तो    उसका लाभ प्रतिशत ज्ञात    कीजिए।</span></span></span></span></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">27%</span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">22.5%</span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">25%</span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">30%</span></p>", "answer": "3", "negative_marking": "0.50", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1780374465892_html_75bfe64e1da4c4f5.jpg\" width=\"514\" height=\"341\" > </p>    <p style=\"orphans:0;widows:0\"><br>     </p>", "question_heading": ""}, {"sr_no": 9, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>एक    विक्रेता किसी वस्तु के अंकित    मूल्य </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">Marked    Price) </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>पर    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">19% </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    छूट देता है और </span></span></span></span><span style=\"font-family:'Nirmala UI'\">17%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>का    लाभ कमाता है। यदि वस्तु के    लागत मूल्य </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">Cost    Price) </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>में    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">11 1/9%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    वृद्धि होती है</span></span></span></span><span style=\"font-family:'Nirmala UI'\">,    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>तो    उसे अंकित मूल्य पर कितने    प्रतिशत की छूट देनी चाहिए    ताकि पहले जितना ही प्रतिशत    लाभ कमाया जा सके</span></span></span></span><span style=\"font-family:'Nirmala UI'\">?</span></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">10%</span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">12.5%</span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">10.5%</span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">9.09%</span></p>", "answer": "1", "negative_marking": "0.50", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1780374465892_html_bb1e5ce6e8a16b61.jpg\" width=\"514\" height=\"300\" > </p>", "question_heading": ""}, {"sr_no": 10, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>एक    व्यापारी किसी वस्तु को उसके    अंकित मूल्य </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">Marked    Price) </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>पर    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">20% </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    छूट के साथ बेचकर </span></span></span></span><span style=\"font-family:'Nirmala UI'\">25%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>का    लाभ प्राप्त करता है। यदि    वस्तु के लागत मूल्य </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">Cost    Price) </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>में    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">30% </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    वृद्धि होती है</span></span></span></span><span style=\"font-family:'Nirmala UI'\">,    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>तो    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">15% </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>का    लाभ प्राप्त करने के लिए उसे    उसी अंकित मूल्य पर कितने    प्रतिशत की छूट देनी चाहिए</span></span></span></span><span style=\"font-family:'Nirmala UI'\">?</span></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">5.12%</span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">5.08%</span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">4.87%</span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">4.32%</span></p>", "answer": "4", "negative_marking": "0.50", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1780374465892_html_4b1a6ab06045bdda.jpg\" width=\"514\" height=\"294\" > </p>", "question_heading": ""}, {"sr_no": 11, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>एक    उत्पाद को उसके अंकित मूल्य    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">Marked    Price) </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>पर    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">20% </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    छूट पर बेचा जाता है। इस लेनदेन    के परिणामस्वरूप उसके लागत    मूल्य </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">Cost    Price) </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>पर    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">10% </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>का    लाभ होता है। यदि कमाया गया    लाभ </span></span><span style=\"font-family:'Nirmala UI'\">₹</span></span></span><span style=\"font-family:'Nirmala UI'\">300    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>है</span></span></span></span><span style=\"font-family:'Nirmala UI'\">,    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>तो    यदि उत्पाद को उसके अंकित    मूल्य पर </span></span></span></span><span style=\"font-family:'Nirmala UI'\">30%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    छूट पर बेचा जाता</span></span></span></span><span style=\"font-family:'Nirmala UI'\">,    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>तो    बिक्री मूल्य </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">Selling    Price) </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>क्या    होता</span></span></span></span><span style=\"font-family:'Nirmala UI'\">?</span></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>रु</span></span></span></span><span style=\"font-family:'Nirmala UI'\">.    </span><span style=\"font-family:'Nirmala UI'\">3150</span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>रु</span></span></span></span><span style=\"font-family:'Nirmala UI'\">.    </span><span style=\"font-family:'Nirmala UI'\">3000.26</span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>रु</span></span></span></span><span style=\"font-family:'Nirmala UI'\">.    </span><span style=\"font-family:'Nirmala UI'\">3300</span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>रु</span></span></span></span><span style=\"font-family:'Nirmala UI'\">.    </span><span style=\"font-family:'Nirmala UI'\">2887.5</span></p>", "answer": "4", "negative_marking": "0.50", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1780374465892_html_6201d150639ab96c.jpg\" width=\"514\" height=\"524\" > </p>    <p style=\"orphans:0;widows:0\"><br>     </p>", "question_heading": ""}, {"sr_no": 12, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>एक    खुदरा विक्रेता एक थोक विक्रेता    से </span></span></span></span><span style=\"font-family:'Nirmala UI'\">198    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>चॉकलेट    के अंकित मूल्य पर </span></span></span></span><span style=\"font-family:'Nirmala UI'\">220    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>चॉकलेट    खरीदता है। फिर वह प्रत्येक    चॉकलेट को अंकित मूल्य पर    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">3.7% </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    छूट पर बेचता है। उसका लाभ    प्रतिशत क्या है</span></span></span></span><span style=\"font-family:'Nirmala UI'\">?</span></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">7%</span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">7.2%</span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">6%</span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">6.8%</span></p>", "answer": "1", "negative_marking": "0.50", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1780374465892_html_c3a5bfbee89001c2.jpg\" width=\"529\" height=\"218\" > </p>", "question_heading": ""}, {"sr_no": 13, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>एक    वस्तु का अंकित मूल्य रु</span></span></span></span><span style=\"font-family:'Nirmala UI'\">.    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>इसे    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">300    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>रुपये    में बेचा जाता है। </span></span></span></span><span style=\"font-family:'Nirmala UI'\">20%,    x% </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>और    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">5% </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    तीन क्रमिक छूट देने के बाद    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">177.84    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>रु</span></span></span></span><span style=\"font-family:'Nirmala UI'\">.    </span><span style=\"font-family:'Nirmala UI'\">x </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>का    मूल्य क्या है</span></span></span></span><span style=\"font-family:'Nirmala UI'\">?</span></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">15</span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">22</span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">18</span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">24</span></p>", "answer": "2", "negative_marking": "0.50", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1780374465892_html_c3718503248c0186.jpg\" width=\"529\" height=\"150\" > </p>", "question_heading": ""}, {"sr_no": 14, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>रोहन    ने </span></span></span></span><span style=\"font-family:'Nirmala UI'\">60    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>वस्तुएं    प्रत्येक </span></span></span></span><span style=\"font-family:'Nirmala UI'\">150    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>रुपये    में खरीदीं।</span></span></span></span><span style=\"font-family:'Nirmala UI'\">.    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>उसने    उनमें से एक तिहाई को </span></span></span></span><span style=\"font-family:'Nirmala UI'\">16%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    हानि पर बेच दिया। प्रत्येक    शेष वस्तुएँ किस कीमत पर    बेचनी चाहिए ताकि पूरे सौदे    पर </span></span></span></span><span style=\"font-family:'Nirmala UI'\">10%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>का    लाभ प्राप्त हो सके</span></span></span></span><span style=\"font-family:'Nirmala UI'\">?</span></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>रु</span></span></span></span><span style=\"font-family:'Nirmala UI'\">.    </span><span style=\"font-family:'Nirmala UI'\">175.55</span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>रु</span></span></span></span><span style=\"font-family:'Nirmala UI'\">.    </span><span style=\"font-family:'Nirmala UI'\">176.5</span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>रु</span></span></span></span><span style=\"font-family:'Nirmala UI'\">.    </span><span style=\"font-family:'Nirmala UI'\">184.5</span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>रु</span></span></span></span><span style=\"font-family:'Nirmala UI'\">.    </span><span style=\"font-family:'Nirmala UI'\">180.25</span></p>", "answer": "3", "negative_marking": "0.50", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1780374465892_html_73062d7e428ee20a.jpg\" width=\"514\" height=\"401\" > </p>", "question_heading": ""}, {"sr_no": 15, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>दाल    का क्रय मूल्य उसके विक्रय    मूल्य से </span></span></span></span><span style=\"font-family:'Nirmala UI'\">12%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>कम    है। एक दोषपूर्ण वजन तोलने    वाली मशीन का उपयोग करके</span></span></span></span><span style=\"font-family:'Nirmala UI'\">,    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>एक    दुकानदार </span></span></span></span><span style=\"font-family:'Nirmala UI'\">25%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>का    लाभ कमाने में सक्षम होता    है। दोषपूर्ण मशीन वास्तविक    वजन की तुलना में कितने प्रतिशत    अधिक वजन दिखाती है </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>निकटतम    पूर्णांक तक पूर्णांकित</span></span></span></span><span style=\"font-family:'Nirmala UI'\">)</span><span style=\"font-family:'Nirmala UI'\">?</span></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">13%</span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">14%</span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">10%</span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">15%</span></p>", "answer": "3", "negative_marking": "0.50", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1780374465892_html_2215a3209563e588.jpg\" width=\"529\" height=\"188\" > </p>", "question_heading": ""}, {"sr_no": 16, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>सचिन    एक डीलर से एक निश्चित मूल्य    पर एक घड़ी खरीदता है और उसे    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">20% </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>के    लाभ पर बेचता है। अगले दिन    वह उसी घड़ी को खरीदता है और    उसका मूल्य </span></span></span></span><span style=\"font-family:'Nirmala UI'\">75%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>अधिक    अंकित करता है और </span></span></span></span><span style=\"font-family:'Nirmala UI'\">30%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    छूट देता है। दूसरे दिन सचिन    को मिलने वाले लाभ के प्रतिशत    में क्या बदलाव आया है</span></span></span></span><span style=\"font-family:'Nirmala UI'\">?</span></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">20%</span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">22.5%</span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">17%</span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">12.5%</span></p>", "answer": "4", "negative_marking": "0.50", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1780374465892_html_b5c65ffb3ecda12f.jpg\" width=\"514\" height=\"278\" > </p>", "question_heading": ""}, {"sr_no": 17, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>एक    दुकानदार चावल खरीदते समय    वजन में </span></span></span></span><span style=\"font-family:'Nirmala UI'\">25%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    हेराफेरी करता है और बेचते    समय </span></span></span></span><span style=\"font-family:'Nirmala UI'\">25%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    हेराफेरी करता है। यदि वह    चावल </span></span></span></span><span style=\"font-family:'Nirmala UI'\">12    1/2 % </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>लाभपर    बेचता है</span></span><span style=\"font-family:'Nirmala UI'\"> </span></span></span><span style=\"font-family:'Nirmala UI'\">,    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>तो    उसका शुद्ध लाभ प्रतिशत ज्ञात    करें।</span></span></span></span></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">82.5%</span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">62.5%</span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">87.5%</span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">92.5%</span></p>", "answer": "3", "negative_marking": "0.50", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1780374465892_html_50942c50013a63b0.jpg\" width=\"529\" height=\"193\" > </p>", "question_heading": ""}, {"sr_no": 18, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>एक    दुकानदार किसी वस्तु पर </span></span></span></span><span style=\"font-family:'Nirmala UI'\">15%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>और    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">20% </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    दो क्रमिक छूट </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">successive    discounts) </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>देता    है और फिर भी </span></span></span></span><span style=\"font-family:'Nirmala UI'\">70%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>का    लाभ कमाने में सक्षम रहता    है। यदि वह </span></span></span></span><span style=\"font-family:'Nirmala UI'\">30%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    एकल छूट </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">single    discount) </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>देता    है</span></span></span></span><span style=\"font-family:'Nirmala UI'\">,    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>तो    उसका लाभ प्रतिशत क्या होगा</span></span></span></span><span style=\"font-family:'Nirmala UI'\">?</span></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">70%</span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">75%</span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">65%</span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">50%</span></p>", "answer": "2", "negative_marking": "0.50", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1780374465892_html_18d6e1c7d223dfaf.jpg\" width=\"529\" height=\"207\" > </p>", "question_heading": ""}, {"sr_no": 19, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>एक    दुकानदार किसी वस्तु के अंकित    मूल्य </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">Marked    Price) </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>पर    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">10% </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    छूट देने के बाद </span></span></span></span><span style=\"font-family:'Nirmala UI'\">12.5%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>का    लाभ कमाता है। यदि वस्तु को    बिना किसी छूट के अंकित मूल्य    पर ही बेचा जाए</span></span></span></span><span style=\"font-family:'Nirmala UI'\">,    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>तो    उसका लाभ प्रतिशत ज्ञात    कीजिए।</span></span></span></span></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">27%</span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">22.5%</span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">30%</span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">25%</span></p>", "answer": "4", "negative_marking": "0.50", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1780374465892_html_97d4ccf8284d9163.jpg\" width=\"529\" height=\"163\" > </p>", "question_heading": ""}, {"sr_no": 20, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>एक    शर्ट और पतलून का बाजार मूल्य    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">1:2 </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>के    अनुपात में है। दुकानदार    शर्ट पर </span></span></span></span><span style=\"font-family:'Nirmala UI'\">40%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    छूट देता है। यदि शर्ट और    पतलून पर कुल छूट </span></span></span></span><span style=\"font-family:'Nirmala UI'\">30%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>है</span></span></span></span><span style=\"font-family:'Nirmala UI'\">,    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>तो    पतलून पर दी जाने वाली छूट    है।</span></span></span></span></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">15%</span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">20%</span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">25%</span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">30%</span></p>", "answer": "3", "negative_marking": "0.50", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1780374465892_html_7491387b480fcc8d.jpg\" width=\"514\" height=\"461\" > </p>", "question_heading": ""}, {"sr_no": 21, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>एक    दुकानदार ने एक वस्तु का    अंकित मूल्य </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">Marked    Price) ₹500 </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>रखा।    उसने इसे </span></span></span></span><span style=\"font-family:'Nirmala UI'\">10%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>और    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">20% </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    योजना छूट </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">scheme    discount) </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>पर    बेचा और </span></span></span></span><span style=\"font-family:'Nirmala UI'\">25%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>का    लाभ प्राप्त किया। वस्तु का    लागत मूल्य </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">Cost    Price) </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>क्या    था</span></span></span></span><span style=\"font-family:'Nirmala UI'\">?</span></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>रु</span></span></span></span><span style=\"font-family:'Nirmala UI'\">.    </span><span style=\"font-family:'Nirmala UI'\">482</span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>रु</span></span></span></span><span style=\"font-family:'Nirmala UI'\">.    </span><span style=\"font-family:'Nirmala UI'\">384</span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>रु</span></span></span></span><span style=\"font-family:'Nirmala UI'\">.    </span><span style=\"font-family:'Nirmala UI'\">288</span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>रु</span></span></span></span><span style=\"font-family:'Nirmala UI'\">.    </span><span style=\"font-family:'Nirmala UI'\">188</span></p>", "answer": "3", "negative_marking": "0.50", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1780374465892_html_40d1b1a69c079bf3.jpg\" width=\"529\" height=\"171\" > </p>", "question_heading": ""}, {"sr_no": 22, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>एक    पुस्तक विक्रेता एक वितरक    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">distributor)    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>से    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">4    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>उपन्यासों    के अंकित मूल्य </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">Marked    Price) </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>पर    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">5    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>उपन्यास    खरीदता है। यदि वह इन उपन्यासों    को ग्राहकों को अंकित मूल्य    पर </span></span></span></span><span style=\"font-family:'Nirmala UI'\">5%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    छूट देकर बेचता है</span></span></span></span><span style=\"font-family:'Nirmala UI'\">,    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>तो    उसका लाभ प्रतिशत क्या है</span></span></span></span><span style=\"font-family:'Nirmala UI'\">?</span></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">15%</span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">18.75%</span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">20.26%</span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">25%</span></p>", "answer": "2", "negative_marking": "0.50", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1780374465892_html_8d84b1a706c5bc7d.jpg\" width=\"529\" height=\"207\" > </p>", "question_heading": ""}, {"sr_no": 23, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">55 </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>वस्तुओं    का अंकित मूल्य </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">Marked    Price), 99 </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>वस्तुओं    के लागत मूल्य </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">Cost    Price) </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>के    बराबर था। </span></span></span></span><span style=\"font-family:'Nirmala UI'\">56    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>वस्तुओं    का बिक्री मूल्य </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">Selling    Price), 35 </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>वस्तुओं    के अंकित मूल्य के बराबर था।    प्रत्येक वस्तु की बिक्री    से होने वाले लाभ या हानि    प्रतिशत की गणना कीजिए।</span></span></span></span></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">15% </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>लाभ</span></span></span></span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">12.5%</span><span style=\"font-family:'Nirmala UI'\">    ​​</span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>लाभ</span></span></span></span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">12.25% </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>मुनाफा</span></span></span></span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">12.5%</span><span style=\"font-family:'Nirmala UI'\">    ​​</span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>हानि</span></span></span></span></p>", "answer": "2", "negative_marking": "0.50", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1780374465892_html_6ec1c0a799c3a33e.jpg\" width=\"529\" height=\"152\" > </p>", "question_heading": ""}, {"sr_no": 24, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>एक    दुकानदार </span></span><span style=\"font-family:'Nirmala UI'\">₹</span></span></span><span style=\"font-family:'Nirmala UI'\">2,000    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>के    मूल्य के उत्पाद बेचना चाहता    था। लेकिन उसके पास दो विकल्प    थे</span></span></span></span><span style=\"font-family:'Nirmala UI'\">:    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>प्रत्येक    बार </span></span></span></span><span style=\"font-family:'Nirmala UI'\">10%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    तीन क्रमिक छूट </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">successive    discounts) </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>देना</span></span></span></span><span style=\"font-family:'Nirmala UI'\">,    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>या    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">28% </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    एक एकल छूट </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">single    discount) </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>देना।    छूट के दोनों विकल्पों के    बीच का अंतर </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>रुपये    में</span></span></span></span><span style=\"font-family:'Nirmala UI'\">)    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>क्या    था</span></span></span></span><span style=\"font-family:'Nirmala UI'\">?</span></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">28</span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">18</span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">16</span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">12</span></p>", "answer": "2", "negative_marking": "0.50", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1780374465892_html_eefabaa276418bdb.jpg\" width=\"514\" height=\"333\" > </p>", "question_heading": ""}, {"sr_no": 25, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">12%, 20%, 24% </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>और    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">32% </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    क्रमिक छूट के बराबर एकल छूट    ज्ञात कीजिए। </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>दशमलव    के दो स्थानों तक शुद्ध</span></span></span></span><span style=\"font-family:'Nirmala UI'\">)</span></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">43.41%</span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">73.71%</span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">63.62%</span></p>", "option4": "", "answer": "3", "negative_marking": "0.50", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1780374465892_html_a000130ee44ff442.jpg\" width=\"529\" height=\"203\" > </p>    <p style=\"orphans:0;widows:0\"><br>     </p>", "question_heading": ""}, {"sr_no": 26, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>एक    वस्तु का अंकित मूल्य </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">Marked    Price) ₹1,000 </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>है।    दो क्रमिक छूटों </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">successive    discounts) </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>के    बाद</span></span></span></span><span style=\"font-family:'Nirmala UI'\">,    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>इसे    </span></span><span style=\"font-family:'Nirmala UI'\">₹</span></span></span><span style=\"font-family:'Nirmala UI'\">600    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>में    बेचा जाता है। यदि पहली छूट    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">X% </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>है</span></span></span></span><span style=\"font-family:'Nirmala UI'\">,    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>और    दूसरी छूट </span></span></span></span><span style=\"font-family:'Nirmala UI'\">25%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>है</span></span></span></span><span style=\"font-family:'Nirmala UI'\">,    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>तो</span></span><span style=\"font-family:'Nirmala UI'\"> </span></span></span><span style=\"font-family:'Nirmala UI'\">x </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>का    मान क्या है</span></span></span></span><span style=\"font-family:'Nirmala UI'\">?</span></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">18%</span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">12%</span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">25%</span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">20%</span></p>", "answer": "4", "negative_marking": "0.50", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1780374465892_html_ed49daa0f3310ff4.jpg\" width=\"514\" height=\"376\" > </p>", "question_heading": ""}, {"sr_no": 27, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>एक    खिलौना निर्माता ने </span></span><span style=\"font-family:'Nirmala UI'\">₹</span></span></span><span style=\"font-family:'Nirmala UI'\">90,000    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    कुल लागत पर </span></span></span></span><span style=\"font-family:'Nirmala UI'\">1200    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>खिलौना    कारें बनाईं। उसने एक धर्मार्थ    कार्यक्रम </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">charity    event) </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>में    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">200    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>कारें    दान कर दीं। शेष कारों के    लिए</span></span></span></span><span style=\"font-family:'Nirmala UI'\">,    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>उसने    </span></span><span style=\"font-family:'Nirmala UI'\">₹</span></span></span><span style=\"font-family:'Nirmala UI'\">120    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>प्रति    कार के बाजार मूल्य </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">market    price) </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>पर    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">10% </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    छूट की घोषणा की। उसने प्रत्येक    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">8    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>खिलौना    कारें खरीदने पर </span></span></span></span><span style=\"font-family:'Nirmala UI'\">2    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>खिलौना    कारें मुफ्त देने का भी    प्रस्ताव रखा। यदि सभी </span></span></span></span><span style=\"font-family:'Nirmala UI'\">1200    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>खिलौना    कारें वितरित की गईं</span></span></span></span><span style=\"font-family:'Nirmala UI'\">,    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>तो    उसका कुल लाभ या हानि प्रतिशत    क्या है</span></span></span></span><span style=\"font-family:'Nirmala UI'\">?</span></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>हानि    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">4%</span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>लाभ    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">4%</span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>हानि    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">5%</span></p>", "option4": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <br>     </p>    <p style=\"orphans:0;widows:0\"><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>लाभ    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">5%</span></p>", "answer": "1", "negative_marking": "0.50", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1780374465892_html_6a84dbdd8dc8a3f6.jpg\" width=\"529\" height=\"150\" > </p>", "question_heading": ""}, {"sr_no": 28, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>एक    दूधवाला शुद्ध दूध में पानी    मिलाता है और मिश्रण को दूध    के मूल लागत मूल्य </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">Cost    Price) </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>पर    बिक्री के लिए पेश करता है।    यदि वह प्रत्येक </span></span></span></span><span style=\"font-family:'Nirmala UI'\">5.25    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>लीटर    दूध में </span></span></span></span><span style=\"font-family:'Nirmala UI'\">0.75    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>लीटर    पानी मिलाता है और पूरे मिश्रण    को शुद्ध दूध की कीमत पर बेचता    है</span></span></span></span><span style=\"font-family:'Nirmala UI'\">,    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>तो    उसका लाभ प्रतिशत क्या है</span></span></span></span><span style=\"font-family:'Nirmala UI'\">?</span></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">12.5%</span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">14.28%</span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">17.64%</span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">16.66%</span></p>", "answer": "2", "negative_marking": "0.50", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1780374465892_html_f299a8884ee6c8e4.jpg\" width=\"529\" height=\"195\" > </p>", "question_heading": ""}, {"sr_no": 29, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>सुबीर    ने अपनी वस्तुओं को उत्पादन    लागत से केवल </span></span></span></span><span style=\"font-family:'Nirmala UI'\">5%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>अधिक    पर बेचने का दावा किया</span></span></span></span><span style=\"font-family:'Nirmala UI'\">,    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>लेकिन    उसने एक ऐसे बाट </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">weight)    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>का    उपयोग किया जिस पर </span></span></span></span><span style=\"font-family:'Nirmala UI'\">1    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>किलोग्राम    लिखा था</span></span></span></span><span style=\"font-family:'Nirmala UI'\">,    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>हालांकि    वास्तव में उसका वजन </span></span></span></span><span style=\"font-family:'Nirmala UI'\">960    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>ग्राम    था। सुबीर द्वारा कमाया गया    वास्तविक लाभ प्रतिशत क्या    था</span></span></span></span><span style=\"font-family:'Nirmala UI'\">?</span></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">9.5%</span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">9.375%</span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">9.25%</span></p>", "option4": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">9.125%</span></p>", "answer": "2", "negative_marking": "0.50", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0\">    <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1780374465892_html_b923af51761e3511.jpg\" width=\"529\" height=\"201\" > </p>", "question_heading": ""}, {"sr_no": 30, "question": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>एक    दुकानदार अपनी वस्तुओं पर    </span></span></span></span><span style=\"font-family:'Nirmala UI'\">30%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>अधिक    मूल्य अंकित करता है और फिर    अंकित मूल्य पर </span></span></span></span><span style=\"font-family:'Nirmala UI'\">10%    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>की    छूट देता है। इसके अलावा</span></span></span></span><span style=\"font-family:'Nirmala UI'\">,    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>वह    एक दोषपूर्ण तराजू </span></span></span></span><span style=\"font-family:'Nirmala UI'\">(</span><span style=\"font-family:'Nirmala UI'\">faulty    balance) </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>का    उपयोग करता है जो </span></span></span></span><span style=\"font-family:'Nirmala UI'\">870    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>ग्राम    को </span></span></span></span><span style=\"font-family:'Nirmala UI'\">1    </span><span style=\"font-family:'Mangal'\"><span><span style=\"font-family:'Nirmala UI'\"><span>किलोग्राम    दिखाता है। उसका शुद्ध लाभ    प्रतिशत क्या है</span></span></span></span><span style=\"font-family:'Nirmala UI'\">?</span></p>", "option1": "<p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">34.48%</span></p>", "option2": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">34.84%</span></p>", "option3": " <p style=\"orphans:0;widows:0\">    <span style=\"font-family:'Nirmala UI'\">38.42%</span></p>", "option4": " <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <br>     </p>    <p style=\"orphans:0;widows:0\"><span style=\"font-family:'Nirmala UI'\">38.24%</span></p>", "answer": "1", "negative_marking": "0.50", "positive_marking": "1", "solution_text": "  <p style=\"orphans:0;widows:0;margin-bottom:0in\">    <img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1780374465892_html_e9105ad8abb326c0.jpg\" width=\"514\" height=\"236\" > </p>    <p style=\"orphans:0;widows:0\"><br>     </p>", "question_heading": ""}];
+
+let currentQuestion = 0;
+let answers = {};
+let bookmarks = new Set();
+let timerSeconds = 0;
+let timerInterval = null;
+let isPaletteOpen = false;
+
+const STORAGE_KEY = 'quizState_' + (document.title || 'default');
+
+function isImageURL(str) {
+  return str && (str.startsWith('http://') || str.startsWith('https://'));
+}
+
+function createOptionContent(optionText) {
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'option-content';
+    
+    if (isImageURL(optionText)) {
+        const img = document.createElement('img');
+        img.src = optionText;
+        img.className = 'option-image';
+        img.alt = 'Option image';
+        img.loading = 'lazy';
+        img.onerror = function() {
+            this.style.display = 'none';
+            const errorText = document.createTextNode('Image failed to load');
+            contentDiv.appendChild(errorText);
+        };
+        contentDiv.appendChild(img);
+    } else {
+        contentDiv.innerHTML = optionText;
+    }
+    
+    return contentDiv;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  initQuiz();
+  initEventListeners();
+  loadFromLocalStorage();
+  startTimer();
+  createPalette();
+  preventDoubleTapZoom();
+});
+
+function preventDoubleTapZoom() {
+  let lastTouchEnd = 0;
+  document.addEventListener('touchend', (event) => {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) {
+      event.preventDefault();
+    }
+    lastTouchEnd = now;
+  }, { passive: false });
+}
+
+function initTheme() {
+  const savedTheme = localStorage.getItem('quizTheme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  updateThemeIcon();
+}
+
+function updateThemeIcon() {
+  const theme = document.documentElement.getAttribute('data-theme');
+  const themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    themeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  }
+}
+
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('quizTheme', newTheme);
+  updateThemeIcon();
+}
+
+function initQuiz() {
+  loadQuestion(currentQuestion);
+  updateMarkingInfo();
+}
+
+function initEventListeners() {
+  const themeBtn = document.getElementById('themeToggle');
+  const fullscreenBtn = document.getElementById('fullscreenBtn');
+  
+  if (themeBtn) {
+    themeBtn.addEventListener('click', toggleTheme);
+    themeBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      toggleTheme();
+    });
+  }
+  
+  if (fullscreenBtn) {
+    fullscreenBtn.addEventListener('click', toggleFullscreen);
+    fullscreenBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      toggleFullscreen();
+    });
+  }
+  
+  addButtonListener('prevBtn', prevQuestion);
+  addButtonListener('nextBtn', nextQuestion);
+  addButtonListener('clearBtn', clearAnswer);
+  addButtonListener('submitBtn', confirmSubmit);
+  addButtonListener('bookmarkBtn', toggleBookmark);
+  
+  addButtonListener('paletteFab', togglePalette);
+  addButtonListener('paletteClose', closePalette);
+  
+  const overlay = document.getElementById('paletteOverlay');
+  if (overlay) {
+    overlay.addEventListener('click', closePalette);
+    overlay.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      closePalette();
+    });
+  }
+  
+  const searchInput = document.getElementById('paletteSearch');
+  if (searchInput) {
+    searchInput.addEventListener('input', handleSearch);
+    searchInput.addEventListener('change', jumpToQuestion);
+  }
+  
+  document.addEventListener('keydown', handleKeyPress);
+  
+  setInterval(saveToLocalStorage, 5000);
+  
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      updatePalette();
+    }
+  });
+}
+
+function addButtonListener(id, handler) {
+  const btn = document.getElementById(id);
+  if (btn) {
+    btn.addEventListener('click', handler);
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      handler();
+    });
+  }
+}
+
+function jumpToQuestion(e) {
+  const questionNum = parseInt(e.target.value);
+  if (questionNum >= 1 && questionNum <= questions.length) {
+    goToQuestion(questionNum - 1);
+    closePalette();
+    e.target.value = '';
+  }
+}
+
+function togglePalette() {
+  isPaletteOpen = !isPaletteOpen;
+  const palette = document.getElementById('questionPalette');
+  const overlay = document.getElementById('paletteOverlay');
+  const fab = document.getElementById('paletteFab');
+  
+  if (isPaletteOpen) {
+    palette.classList.add('active');
+    overlay.classList.add('active');
+    fab.classList.add('active');
+    fab.innerHTML = '✕<span class="badge" id="answeredBadge">' + Object.keys(answers).length + '</span>';
+    document.body.classList.add('palette-open');
+  } else {
+    closePalette();
+  }
+}
+
+function closePalette() {
+  isPaletteOpen = false;
+  const palette = document.getElementById('questionPalette');
+  const overlay = document.getElementById('paletteOverlay');
+  const fab = document.getElementById('paletteFab');
+  
+  if (palette) palette.classList.remove('active');
+  if (overlay) overlay.classList.remove('active');
+  if (fab) {
+    fab.classList.remove('active');
+    fab.innerHTML = '📋<span class="badge" id="answeredBadge">' + Object.keys(answers).length + '</span>';
+  }
+  document.body.classList.remove('palette-open');
+}
+
+function handleSearch(e) {
+  const searchTerm = e.target.value.toLowerCase();
+  if (!searchTerm) {
+    document.querySelectorAll('.palette-btn').forEach(btn => {
+      btn.style.display = '';
+    });
+    return;
+  }
+  
+  const buttons = document.querySelectorAll('.palette-btn');
+  buttons.forEach((btn, index) => {
+    const questionNum = (index + 1).toString();
+    if (questionNum.includes(searchTerm)) {
+      btn.style.display = '';
+    } else {
+      btn.style.display = 'none';
+    }
+  });
+}
+
+function handleKeyPress(e) {
+  if (document.getElementById('resultSection').classList.contains('hidden')) {
+    if (e.key === 'Escape' && isPaletteOpen) {
+      closePalette();
+    } else if (!isPaletteOpen && e.target.tagName !== 'INPUT') {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevQuestion();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        nextQuestion();
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        nextQuestion();
+      } else if (e.key === 'b' || e.key === 'B') {
+        e.preventDefault();
+        toggleBookmark();
+      } else if (e.key === 'c' || e.key === 'C') {
+        e.preventDefault();
+        clearAnswer();
+      } else if (e.key === 'p' || e.key === 'P') {
+        e.preventDefault();
+        togglePalette();
+      } else if (e.key >= '1' && e.key <= '4') {
+        e.preventDefault();
+        selectOption(parseInt(e.key));
+      }
+    }
+  }
+}
+
+function selectOption(optionNum) {
+  const q = questions[currentQuestion];
+  const radio = document.querySelector(`input[name="q${q.sr_no}"][value="${optionNum}"]`);
+  if (radio) {
+    radio.checked = true;
+    const label = radio.closest('.option-label');
+    if (label) {
+      document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      saveAnswer();
+    }
+  }
+}
+
+function toggleFullscreen() {
+  try {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(err => {
+        console.log('Fullscreen error:', err);
+      });
+    } else {
+      document.exitFullscreen();
+    }
+  } catch (err) {
+    console.log('Fullscreen not supported');
+  }
+}
+
+function startTimer() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+  timerInterval = setInterval(() => {
+    timerSeconds++;
+    updateTimer();
+    if (timerSeconds > 600) {
+      const timer = document.getElementById('timer');
+      if (timer) timer.classList.add('warning');
+    }
+  }, 1000);
+}
+
+function updateTimer() {
+  const minutes = Math.floor(timerSeconds / 60);
+  const seconds = timerSeconds % 60;
+  const timer = document.getElementById('timer');
+  if (timer) {
+    timer.textContent = 
+      `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  }
+}
+
+function createPalette() {
+  const grid = document.getElementById('paletteGrid');
+  if (!grid) return;
+  
+  grid.innerHTML = '';
+  questions.forEach((q, index) => {
+    const btn = document.createElement('button');
+    btn.textContent = index + 1;
+    btn.className = 'palette-btn';
+    btn.setAttribute('aria-label', `Go to question ${index + 1}`);
+    btn.setAttribute('type', 'button');
+    
+    btn.addEventListener('click', () => {
+      goToQuestion(index);
+      closePalette();
+    });
+    
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      goToQuestion(index);
+      closePalette();
+    });
+    
+    grid.appendChild(btn);
+  });
+  updatePalette();
+}
+
+function updatePalette() {
+  const buttons = document.querySelectorAll('.palette-btn');
+  buttons.forEach((btn, index) => {
+    btn.className = 'palette-btn';
+    if (index === currentQuestion) btn.classList.add('current');
+    if (answers[questions[index].sr_no]) btn.classList.add('answered');
+    if (bookmarks.has(questions[index].sr_no)) btn.classList.add('bookmarked');
+  });
+  
+  updatePaletteStats();
+}
+
+function updatePaletteStats() {
+  const answered = Object.keys(answers).length;
+  const unanswered = questions.length - answered;
+  const bookmarkedCount = bookmarks.size;
+  
+  const answeredEl = document.getElementById('paletteAnswered');
+  const unansweredEl = document.getElementById('paletteUnanswered');
+  const bookmarkedEl = document.getElementById('paletteBookmarked');
+  
+  if (answeredEl) answeredEl.textContent = answered;
+  if (unansweredEl) unansweredEl.textContent = unanswered;
+  if (bookmarkedEl) bookmarkedEl.textContent = bookmarkedCount;
+  
+  const badge = document.querySelector('.palette-fab .badge');
+  if (badge) badge.textContent = answered;
+}
+
+function goToQuestion(index) {
+  if (index < 0 || index >= questions.length) return;
+  saveAnswer();
+  currentQuestion = index;
+  loadQuestion(currentQuestion);
+  
+  const questionSection = document.getElementById('questionSection');
+  if (questionSection) {
+    setTimeout(() => {
+      questionSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+}
+
+function loadQuestion(index) {
+  const q = questions[index];
+  
+  const questionNumber = document.getElementById('questionNumber');
+  const questionText = document.getElementById('questionText');
+  
+  if (questionNumber) {
+    questionNumber.textContent = `Question ${index + 1} of ${questions.length}`;
+  }
+  
+  if (questionText) {
+    questionText.innerHTML = '';
+    
+    // 🌟 NEW: Create the Heading Box if it exists!
+    let headingHtml = '';
+    if (q.question_heading && q.question_heading.trim() !== '') {
+      headingHtml = `<div style="background: var(--bg-tertiary); padding: 15px; border-left: 4px solid var(--primary-color); margin-bottom: 20px; border-radius: 8px; overflow-x: auto;">${q.question_heading}</div>`;
+      questionText.innerHTML = headingHtml; // Inject heading first
+    }
+
+    if (isImageURL(q.question)) {
+      const img = document.createElement('img');
+      img.src = q.question;
+      img.className = 'question-image';
+      img.alt = 'Question image';
+      img.loading = 'lazy';
+      img.onerror = function() {
+        this.style.display = 'none';
+        questionText.innerHTML += q.question;
+      };
+      questionText.appendChild(img);
+    } else {
+      questionText.innerHTML += q.question; // Append question after heading
+    }
+  }
+  
+  const container = document.getElementById('optionsContainer');
+  if (!container) return;
+  
+  container.innerHTML = '';
+  
+  for (let i = 1; i <= 4; i++) {
+    const label = document.createElement('label');
+    label.className = 'option-label';
+    if (answers[q.sr_no] == i) label.classList.add('selected');
+    
+    const radio = document.createElement('input');
+    radio.type = 'radio';
+    radio.name = `q${q.sr_no}`;
+    radio.value = i;
+    radio.checked = answers[q.sr_no] == i;
+    
+    const changeHandler = () => {
+      document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      saveAnswer();
+    };
+    
+    radio.addEventListener('change', changeHandler);
+    label.addEventListener('click', (e) => {
+      if (e.target !== radio) {
+        radio.checked = true;
+        changeHandler();
+      }
+    });
+    
+    label.appendChild(radio);
+    
+    const optionContent = createOptionContent(q[`option${i}`]);
+    label.appendChild(optionContent);
+    
+    container.appendChild(label);
+  }
+  
+  const bookmarkBtn = document.getElementById('bookmarkBtn');
+  if (bookmarkBtn) {
+    if (bookmarks.has(q.sr_no)) {
+      bookmarkBtn.classList.add('active');
+    } else {
+      bookmarkBtn.classList.remove('active');
+    }
+  }
+  
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const submitBtn = document.getElementById('submitBtn');
+  
+  if (prevBtn) prevBtn.disabled = index === 0;
+  
+  if (index === questions.length - 1) {
+    if (nextBtn) nextBtn.classList.add('hidden');
+    if (submitBtn) submitBtn.classList.remove('hidden');
+  } else {
+    if (nextBtn) nextBtn.classList.remove('hidden');
+    if (submitBtn) submitBtn.classList.add('hidden');
+  }
+  
+  updateProgress();
+  updatePalette();
+}
+
+function updateMarkingInfo() {
+  if(questions.length > 0) {
+      const q = questions[0];
+      const markingInfo = document.getElementById('markingInfo');
+      if (markingInfo) {
+        markingInfo.textContent = `Marking: +${q.positive_marking}, -${q.negative_marking}`;
+      }
+  }
+}
+
+function updateProgress() {
+  const attempted = Object.keys(answers).length;
+  const currentProgress = ((currentQuestion + 1) / questions.length) * 100;
+  
+  const progressBar = document.getElementById('progressBar');
+  const progressText = document.getElementById('progressText');
+  const attemptedText = document.getElementById('attemptedText');
+  
+  if (progressBar) progressBar.style.width = `${currentProgress}%`;
+  if (progressText) progressText.textContent = `${currentQuestion + 1}/${questions.length}`;
+  if (attemptedText) attemptedText.textContent = attempted;
+}
+
+function saveAnswer() {
+  const q = questions[currentQuestion];
+  const selected = document.querySelector(`input[name="q${q.sr_no}"]:checked`);
+  
+  if (selected) {
+    answers[q.sr_no] = selected.value;
+  }
+  
+  updateProgress();
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function clearAnswer() {
+  const q = questions[currentQuestion];
+  delete answers[q.sr_no];
+  
+  const selected = document.querySelector(`input[name="q${q.sr_no}"]:checked`);
+  if (selected) selected.checked = false;
+  
+  document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+  
+  updateProgress();
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function toggleBookmark() {
+  const q = questions[currentQuestion];
+  const btn = document.getElementById('bookmarkBtn');
+  
+  if (bookmarks.has(q.sr_no)) {
+    bookmarks.delete(q.sr_no);
+    if (btn) btn.classList.remove('active');
+  } else {
+    bookmarks.add(q.sr_no);
+    if (btn) btn.classList.add('active');
+  }
+  
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function nextQuestion() {
+  saveAnswer();
+  if (currentQuestion < questions.length - 1) {
+    currentQuestion++;
+    loadQuestion(currentQuestion);
+  }
+}
+
+function prevQuestion() {
+  saveAnswer();
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    loadQuestion(currentQuestion);
+  }
+}
+
+function confirmSubmit() {
+  const unattempted = questions.length - Object.keys(answers).length;
+  let message = 'Are you sure you want to submit the quiz?';
+  
+  if (unattempted > 0) {
+    message += `\n\nYou have ${unattempted} unanswered question(s).`;
+  }
+  
+  if (confirm(message)) {
+    submitQuiz();
+  }
+}
+
+function submitQuiz() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+  }
+  saveAnswer();
+  closePalette();
+  
+  let correct = 0, wrong = 0, unattempted = 0, score = 0;
+  
+  questions.forEach(q => {
+    const userAns = answers[q.sr_no];
+    const posMark = parseFloat(q.positive_marking) || 0;
+    const negMark = parseFloat(q.negative_marking) || 0;
+    
+    if (!userAns) {
+      unattempted++;
+    } else if (userAns == q.answer) {
+      correct++;
+      score += posMark;
+    } else {
+      wrong++;
+      score -= negMark;
+    }
+  });
+  
+  displayResults(correct, wrong, unattempted, score);
+  
+  const fab = document.getElementById('paletteFab');
+  const nav = document.getElementById('navigation');
+  if (fab) fab.style.display = 'none';
+  if (nav) nav.style.display = 'none';
+  
+  document.body.style.paddingBottom = '20px';
+  
+  clearLocalStorage();
+}
+
+function displayResults(correct, wrong, unattempted, score) {
+  const totalQuestions = questions.length;
+  const percentage = ((correct / totalQuestions) * 100).toFixed(1);
+  const timerEl = document.getElementById('timer');
+  const timeText = timerEl ? timerEl.textContent : '00:00';
+  
+  let html = `
+    <div class="score-card">
+      <h2>${score}/${totalQuestions}</h2>
+      <p>Your Score: ${percentage}%</p>
+      <p>Time Taken: ${timeText}</p>
+    </div>
+    
+    <div class="stats-grid">
+      <div class="stat-card correct">
+        <h3>${correct}</h3>
+        <p>Correct</p>
+      </div>
+      <div class="stat-card wrong">
+        <h3>${wrong}</h3>
+        <p>Wrong</p>
+      </div>
+      <div class="stat-card unattempted">
+        <h3>${unattempted}</h3>
+        <p>Unattempted</p>
+      </div>
+      <div class="stat-card">
+        <h3>${totalQuestions}</h3>
+        <p>Total</p>
+      </div>
+    </div>
+  `;
+  
+  questions.forEach(q => {
+    const userAns = answers[q.sr_no];
+    
+    // 🌟 NEW: Add the Heading to the results review screen!
+    let headingHtml = (q.question_heading && q.question_heading.trim() !== '') 
+      ? `<div style="background: var(--bg-tertiary); padding: 10px; margin-bottom: 15px; border-left: 4px solid var(--primary-color); border-radius: 5px; overflow-x: auto;">${q.question_heading}</div>` 
+      : '';
+      
+    const questionHeader = isImageURL(q.question)
+      ? `<h4>Q${q.sr_no}:</h4>${headingHtml}<img src="${q.question}" class="question-image" alt="Question ${q.sr_no}">`
+      : `<h4>Q${q.sr_no}:</h4>${headingHtml}<div style="margin-bottom: 10px;">${q.question}</div>`;
+      
+    html += `<div class="question-review">${questionHeader}`;
+    
+    for (let i = 1; i <= 4; i++) {
+      const isCorrect = i.toString() === q.answer;
+      const isUserAnswer = userAns == i.toString();
+      
+      let className = 'review-option';
+      if (isCorrect) className += ' correct';
+      if (isUserAnswer && !isCorrect) className += ' wrong';
+      if (isUserAnswer) className += ' user-selected';
+      
+      const optionValue = q[`option${i}`];
+      
+      if (isImageURL(optionValue)) {
+        html += `<div class="${className}">
+          ${isCorrect ? '✓ ' : ''}${isUserAnswer ? '➤ ' : ''} 
+          <img src="${optionValue}" class="option-image" alt="Option ${i}">
+        </div>`;
+      } else {
+        html += `<div class="${className}">
+          ${isCorrect ? '✓ ' : ''}${isUserAnswer ? '➤ ' : ''}${optionValue}
+        </div>`;
+      }
+    }
+    
+    if (q.solution_text && q.solution_text.trim() !== '') {
+      const solutionContent = isImageURL(q.solution_text)
+        ? `<img src="${q.solution_text}" class="solution-image" alt="Solution">`
+        : q.solution_text;
+      html += `<div class="solution-section">
+        <div class="solution-label">📝 Solution:</div>
+        <div class="solution-content">${solutionContent}</div>
+      </div>`;
+    }
+    
+    html += `</div>`; 
+});
+  
+  html += `
+    <div class="action-buttons">
+      <button class="action-btn restart" onclick="restartQuiz()">Restart Quiz</button>
+      <button class="action-btn download" onclick="downloadResults()">Download Results</button>
+      <button class="action-btn print" onclick="window.print()">Print Results</button>
+    </div>
+  `;
+  
+  const resultSection = document.getElementById('resultSection');
+  const questionSection = document.getElementById('questionSection');
+  const progressSection = document.querySelector('.progress-section');
+  
+  if (resultSection) {
+    resultSection.innerHTML = html;
+    resultSection.classList.remove('hidden');
+  }
+  if (questionSection) questionSection.classList.add('hidden');
+  if (progressSection) progressSection.classList.add('hidden');
+  
+  const quizContainer = document.getElementById('quizContainer');
+  if (quizContainer) {
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
+  }
+}
+
+function restartQuiz() {
+  if (confirm('Are you sure you want to restart? All progress will be lost.')) {
+    currentQuestion = 0;
+    answers = {};
+    bookmarks.clear();
+    timerSeconds = 0;
+    
+    const resultSection = document.getElementById('resultSection');
+    const questionSection = document.getElementById('questionSection');
+    const progressSection = document.querySelector('.progress-section');
+    const fab = document.getElementById('paletteFab');
+    const nav = document.getElementById('navigation');
+    
+    if (resultSection) {
+      resultSection.classList.add('hidden');
+      resultSection.innerHTML = '';
+    }
+    if (questionSection) questionSection.classList.remove('hidden');
+    if (progressSection) progressSection.classList.remove('hidden');
+    if (fab) fab.style.display = 'flex';
+    if (nav) nav.style.display = 'grid';
+    
+    document.body.style.paddingBottom = 'var(--nav-height)';
+    
+    if (timerInterval) {
+      clearInterval(timerInterval);
+    }
+    startTimer();
+    
+    loadQuestion(currentQuestion);
+    createPalette();
+  }
+}
+
+function downloadResults() {
+  const resultSection = document.getElementById('resultSection');
+  if (!resultSection) return;
+  
+  const resultHTML = resultSection.innerHTML;
+  const fullHTML = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Results</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; max-width: 900px; margin: 0 auto; }
+    .score-card { background: linear-gradient(135deg, #007bff, #28a745); color: white; padding: 30px; border-radius: 15px; text-align: center; margin-bottom: 20px; }
+    .score-card h2 { font-size: 48px; margin-bottom: 10px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 30px; }
+    .stat-card { background: white; padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #ddd; }
+    .stat-card h3 { font-size: 32px; margin-bottom: 8px; }
+    .stat-card.correct h3 { color: #28a745; }
+    .stat-card.wrong h3 { color: #dc3545; }
+    .stat-card.unattempted h3 { color: #6c757d; }
+    .question-review { background: white; border: 2px solid #ddd; border-radius: 10px; padding: 20px; margin-bottom: 15px; }
+    .question-review h4 { margin-bottom: 15px; font-size: 16px; line-height: 1.6; }
+    .review-option { padding: 10px 15px; margin: 8px 0; border-radius: 8px; border: 2px solid #ddd; display: flex; align-items: center; gap: 10px; }
+    .option-image { max-width: 150px; max-height: 100px; border-radius: 8px; }
+    .review-option.correct { background: #d4edda; border-color: #28a745; color: #155724; }
+    .review-option.wrong { background: #f8d7da; border-color: #dc3545; color: #721c24; }
+    .review-option.user-selected { border-width: 3px; font-weight: bold; }
+    @media print { body { background: white; } }
+    @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center; color: #007bff;">Quiz Results</h1>
+  <p style="text-align: center; color: #666; margin-bottom: 30px;">Generated on: ${new Date().toLocaleString()}</p>
+  ${resultHTML.replace(/<div class="action-buttons">[\s\S]*?<\/div>/, '')}
+</body>
+</html>
+  `;
+  
+  try {
+    const blob = new Blob([fullHTML], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `Quiz_Results_${new Date().getTime()}.html`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  } catch (err) {
+    alert('Download failed. Please try using the Print option instead.');
+    console.error('Download error:', err);
+  }
+}
+
+function saveToLocalStorage() {
+  try {
+    const state = {
+      currentQuestion,
+      answers,
+      bookmarks: Array.from(bookmarks),
+      timerSeconds,
+      timestamp: Date.now()
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch (err) {
+    console.error('Save error:', err);
+  }
+}
+
+function loadFromLocalStorage() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const state = JSON.parse(saved);
+      const hasProgress = (state && (
+        (state.currentQuestion && state.currentQuestion > 0) ||
+        (state.answers && Object.keys(state.answers).length > 0) ||
+        (state.timerSeconds && state.timerSeconds > 0)
+      ));
+      if (hasProgress && (Date.now() - state.timestamp < 24 * 60 * 60 * 1000)) {
+        if (confirm('Resume previous quiz session?')) {
+          currentQuestion = state.currentQuestion || 0;
+          answers = state.answers || {};
+          bookmarks = new Set(state.bookmarks || []);
+          timerSeconds = state.timerSeconds || 0;
+          updateTimer();
+          loadQuestion(currentQuestion);
+        }
+      } else {
+        clearLocalStorage();
+      }
+    }
+  } catch (err) {
+    console.error('Load error:', err);
+    clearLocalStorage();
+  }
+}
+
+function clearLocalStorage() {
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (err) {
+    console.error('Clear storage error:', err);
+  }
+}
+
+window.addEventListener('beforeunload', (e) => {
+  const resultSection = document.getElementById('resultSection');
+  if (resultSection && !resultSection.classList.contains('hidden')) {
+    return;
+  }
+  e.preventDefault();
+  e.returnValue = '';
+});
+
+window.addEventListener('unload', () => {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+});
+</script>
+</body>
+</html>
