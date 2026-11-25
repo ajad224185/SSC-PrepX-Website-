@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>10.) MATH + REASONING COMBINED TEST-3 - English</title>
+<style>
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0069d9;
+  --success-color: #28a745;
+  --success-hover: #218838;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --secondary-color: #6c757d;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --border-color: #dee2e6;
+  --shadow: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
+  --overlay: rgba(0,0,0,0.5);
+  --nav-height: 80px;
+}
+
+[data-theme="dark"] {
+  --primary-color: #4dabf7;
+  --primary-hover: #339af0;
+  --success-color: #51cf66;
+  --success-hover: #40c057;
+  --danger-color: #ff6b6b;
+  --warning-color: #ffd43b;
+  --secondary-color: #868e96;
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #404040;
+  --text-primary: #f8f9fa;
+  --text-secondary: #adb5bd;
+  --border-color: #495057;
+  --shadow: 0 4px 6px rgba(0,0,0,0.3);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.4);
+  --overlay: rgba(0,0,0,0.7);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+  overflow-x: hidden;
+  position: relative;
+  padding-bottom: var(--nav-height);
+}
+
+body.palette-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-primary);
+  padding: 20px 30px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+
+.header h1 {
+  font-size: 28px;
+  color: var(--primary-color);
+  font-weight: 700;
+  user-select: none;
+}
+
+.header-controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.theme-toggle, .fullscreen-btn {
+  background: var(--bg-tertiary);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.3s;
+  min-width: 44px;
+  min-height: 44px;
+  user-select: none;
+}
+
+.theme-toggle:active, .fullscreen-btn:active {
+  transform: scale(0.95);
+}
+
+.theme-toggle:hover, .fullscreen-btn:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+.bot-link-btn {
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+}
+.bot-link-btn:active {
+  transform: scale(0.95);
+}
+.bot-link-btn:hover {
+  background: var(--primary-hover);
+}
+
+.timer {
+  background: var(--warning-color);
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 18px;
+  min-width: 100px;
+  text-align: center;
+  user-select: none;
+}
+
+.timer.warning {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.palette-fab {
+  position: fixed;
+  bottom: calc(var(--nav-height) + 20px);
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  box-shadow: 0 6px 20px rgba(0,123,255,0.4);
+  transition: all 0.3s ease;
+  z-index: 998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.palette-fab:active {
+  transform: scale(0.9);
+}
+
+.palette-fab:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0,123,255,0.6);
+}
+
+.palette-fab.active {
+  background: var(--danger-color);
+}
+
+.palette-fab .badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: var(--success-color);
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--bg-secondary);
+  pointer-events: none;
+}
+.solution-section {
+  margin-top: 20px;
+  padding: 15px;
+  background: #e7f3ff;
+  border-left: 4px solid var(--primary-color);
+  border-radius: 8px;
+}
+
+.solution-label {
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.solution-content {
+  line-height: 1.6;
+  color: #333;
+}
+
+.solution-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.palette-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 999;
+  touch-action: none;
+}
+
+.palette-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.question-palette {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 450px;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--bg-primary);
+  box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+  transition: right 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.question-palette.active {
+  right: 0;
+}
+
+.palette-header {
+  padding: 20px;
+  background: var(--primary-color);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.palette-header h3 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.palette-close {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: background 0.2s;
+  line-height: 1;
+  touch-action: manipulation;
+}
+
+.palette-close:active {
+  transform: scale(0.9);
+}
+
+.palette-close:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.palette-stats {
+  padding: 15px 20px;
+  background: var(--bg-tertiary);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  font-size: 13px;
+  text-align: center;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border-color);
+  user-select: none;
+}
+
+.palette-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.palette-stat .number {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.palette-stat.answered .number { color: var(--success-color); }
+.palette-stat.unanswered .number { color: var(--secondary-color); }
+.palette-stat.bookmarked .number { color: var(--warning-color); }
+
+.palette-search {
+  padding: 15px 20px;
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+}
+
+.palette-search input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 14px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.palette-search input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.palette-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 10px;
+}
+
+.palette-btn {
+  aspect-ratio: 1;
+  border: 2px solid var(--border-color);
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+  min-width: 40px;
+  min-height: 40px;
+  color: var(--text-primary);
+  position: relative;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.palette-btn:active {
+  transform: scale(0.9);
+}
+
+.palette-btn:hover {
+  transform: scale(1.1);
+  z-index: 10;
+  box-shadow: var(--shadow);
+}
+
+.palette-btn.current {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  animation: currentPulse 2s infinite;
+}
+
+@keyframes currentPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,123,255,0.7); }
+  50% { box-shadow: 0 0 0 8px rgba(0,123,255,0); }
+}
+
+.palette-btn.answered {
+  background: var(--success-color);
+  color: white;
+  border-color: var(--success-color);
+}
+
+.palette-btn.bookmarked::after {
+  content: '🔖';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.palette-btn.bookmarked.answered {
+  background: var(--success-color);
+}
+
+.palette-legend {
+  padding: 20px;
+  border-top: 1px solid var(--border-color);
+  font-size: 13px;
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.legend-color {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.quiz-container {
+  background: var(--bg-primary);
+  border-radius: 15px;
+  box-shadow: var(--shadow-lg);
+  padding: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  scroll-margin-top: 20px;
+}
+
+.quiz-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.marking-info {
+  display: inline-block;
+  background: var(--bg-tertiary);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.progress-section {
+  margin-bottom: 25px;
+}
+
+.progress-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.progress-bar-container {
+  background: var(--bg-tertiary);
+  border-radius: 12px;
+  overflow: hidden;
+  height: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+  transition: width 0.4s ease;
+  border-radius: 12px;
+}
+
+.question-section {
+  min-height: 300px;
+  scroll-margin-top: 80px;
+  margin-bottom: 20px;
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.question-number {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary-color);
+  user-select: none;
+}
+
+.bookmark-btn {
+  background: transparent;
+  border: 2px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 44px;
+  min-height: 44px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.bookmark-btn:active {
+  transform: scale(0.95);
+}
+
+.bookmark-btn.active {
+  background: var(--warning-color);
+  border-color: var(--warning-color);
+  color: #000;
+}
+
+.question {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 25px;
+  color: var(--text-primary);
+  user-select: text;
+}
+
+.question-image {
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: 10px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  padding: 10px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--border-color);
+  padding: 16px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--bg-secondary);
+  min-height: 60px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.option-label:active {
+  transform: scale(0.98);
+}
+
+.option-label:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--primary-color);
+}
+
+.option-label.selected {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.option-label input[type="radio"] {
+  margin-right: 15px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.option-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.option-image {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  padding: 10px;
+}
+
+.option-label.selected .option-image {
+  background: rgba(255,255,255,0.1);
+}
+
+/* FIXED NAVIGATION - KEY UPDATE */
+.navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-primary);
+  border-top: 2px solid var(--border-color);
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  z-index: 997;
+  padding: 15px 20px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 10px;
+  max-width: 100%;
+}
+
+.nav-btn {
+  padding: 14px 20px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+.nav-btn:active {
+  transform: scale(0.97);
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.nav-btn.prev {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.nav-btn.prev:hover:not(:disabled) {
+  background: #5a6268;
+}
+
+.nav-btn.next {
+  background: var(--primary-color);
+  color: white;
+}
+
+.nav-btn.next:hover:not(:disabled) {
+  background: var(--primary-hover);
+}
+
+.nav-btn.clear {
+  background: var(--danger-color);
+  color: white;
+}
+
+.nav-btn.clear:hover {
+  background: #c82333;
+}
+
+.nav-btn.submit {
+  background: var(--success-color);
+  color: white;
+  grid-column: 1 / -1;
+}
+
+.nav-btn.submit:hover {
+  background: var(--success-hover);
+}
+
+.result-section {
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.score-card {
+  background: linear-gradient(135deg, var(--primary-color), var(--success-color));
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  margin-bottom: 30px;
+  user-select: none;
+}
+
+.score-card h2 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.score-card p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: var(--bg-secondary);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  border: 2px solid var(--border-color);
+  user-select: none;
+}
+
+.stat-card h3 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.stat-card.correct h3 { color: var(--success-color); }
+.stat-card.wrong h3 { color: var(--danger-color); }
+.stat-card.unattempted h3 { color: var(--secondary-color); }
+
+.question-review {
+  border: 2px solid var(--border-color);
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 20px;
+  background: var(--bg-secondary);
+}
+
+.question-review h4 {
+  margin-bottom: 15px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.review-option {
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 2px solid var(--border-color);
+  background: var(--bg-primary);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.review-option .option-image {
+  max-width: 150px;
+  max-height: 100px;
+}
+
+.review-option.correct {
+  background: #d4edda;
+  border-color: var(--success-color);
+  color: #155724;
+}
+
+.review-option.wrong {
+  background: #f8d7da;
+  border-color: var(--danger-color);
+  color: #721c24;
+}
+
+.review-option.user-selected {
+  border-width: 3px;
+  font-weight: 600;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.action-btn {
+  padding: 14px 30px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  min-width: 150px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.action-btn:active {
+  transform: scale(0.95);
+}
+
+.action-btn.restart {
+  background: var(--danger-color);
+  color: white;
+}
+
+.action-btn.restart:hover {
+  background: #c82333;
+}
+
+.action-btn.download {
+  background: var(--primary-color);
+  color: white;
+}
+
+.action-btn.download:hover {
+  background: var(--primary-hover);
+}
+
+.action-btn.print {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.action-btn.print:hover {
+  background: #5a6268;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.palette-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.palette-content::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+}
+
+.palette-content::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+.palette-content::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 140px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .header h1 {
+    font-size: 22px;
+  }
+
+  .quiz-container {
+    padding: 20px 15px;
+  }
+
+  .question-palette {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .palette-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+  }
+
+  .palette-btn {
+    font-size: 13px;
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  .palette-fab {
+    bottom: calc(var(--nav-height) + 10px);
+    right: 15px;
+    width: 56px;
+    height: 56px;
+    font-size: 22px;
+  }
+
+  .navigation {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 12px 15px;
+  }
+
+  .nav-btn {
+    min-height: 44px;
+    font-size: 15px;
+  }
+
+  .nav-btn.clear {
+    order: 3;
+  }
+
+  .nav-btn.submit {
+    grid-column: auto;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .legend-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .question {
+    font-size: 16px;
+  }
+
+  .option-label {
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  .option-image {
+    max-height: 150px;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .palette-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+
+  .palette-btn {
+    font-size: 12px;
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .timer {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  .option-image {
+    max-height: 120px;
+  }
+}
+
+@media print {
+  .header-controls, .navigation, .palette-fab, .palette-overlay, .question-palette, .action-buttons, .bookmark-btn {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    padding-bottom: 0;
+  }
+
+  .container {
+    padding-bottom: 20px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>10.) MATH + REASONING COMBINED TEST-3 - English</h1>
+    <div class="header-controls">
+      <a href="https://t.me/ssc_prepX" target="_blank" class="bot-link-btn" title="Open Bot in Telegram">🤖 Bot</a>
+      
+      <div class="timer" id="timer">00:00</div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle Theme">🌙</button>
+      <button class="fullscreen-btn" id="fullscreenBtn" aria-label="Toggle fullscreen" title="Fullscreen">⛶</button>
+    </div>
+  </div>
+
+  <div class="quiz-container" id="quizContainer">
+    <div class="quiz-header">
+      <div class="marking-info" id="markingInfo">Marking: +1, -0</div>
+    </div>
+
+    <div class="progress-section">
+      <div class="progress-stats">
+        <span>Progress: <strong id="progressText">1/2</strong></span>
+        <span>Attempted: <strong id="attemptedText">0</strong></span>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+
+    <div class="question-section" id="questionSection">
+      <div class="question-header">
+        <div class="question-number" id="questionNumber">Question 1 of 2</div>
+        <button class="bookmark-btn" id="bookmarkBtn" aria-label="Bookmark question">
+          <span>🔖</span> <span>Bookmark</span>
+        </button>
+      </div>
+      
+      <div class="question" id="questionText"></div>
+      
+      <div class="options" id="optionsContainer"></div>
+    </div>
+
+    <div class="result-section hidden" id="resultSection"></div>
+  </div>
+</div>
+
+<div class="navigation" id="navigation">
+  <button class="nav-btn prev" id="prevBtn" aria-label="Previous question">
+    <span>←</span> Previous
+  </button>
+  <button class="nav-btn clear" id="clearBtn" aria-label="Clear answer">
+    Clear
+  </button>
+  <button class="nav-btn next" id="nextBtn" aria-label="Next question">
+    Next <span>→</span>
+  </button>
+  <button class="nav-btn submit hidden" id="submitBtn" aria-label="Submit quiz">
+    Submit Quiz
+  </button>
+</div>
+
+<button class="palette-fab" id="paletteFab" aria-label="Toggle question palette" title="Question Palette (P)">
+  📋
+  <span class="badge" id="answeredBadge">0</span>
+</button>
+
+<div class="palette-overlay" id="paletteOverlay"></div>
+
+<div class="question-palette" id="questionPalette">
+  <div class="palette-header">
+    <h3>Question Palette</h3>
+    <button class="palette-close" id="paletteClose" aria-label="Close palette">×</button>
+  </div>
+
+  <div class="palette-stats">
+    <div class="palette-stat answered">
+      <div class="number" id="paletteAnswered">0</div>
+      <div>Answered</div>
+    </div>
+    <div class="palette-stat unanswered">
+      <div class="number" id="paletteUnanswered">2</div>
+      <div>Not Answered</div>
+    </div>
+    <div class="palette-stat bookmarked">
+      <div class="number" id="paletteBookmarked">0</div>
+      <div>Bookmarked</div>
+    </div>
+  </div>
+
+  <div class="palette-search">
+    <input type="number" id="paletteSearch" placeholder="Jump to question number..." aria-label="Search questions" inputmode="numeric" pattern="[0-9]*">
+  </div>
+
+  <div class="palette-content">
+    <div class="palette-grid" id="paletteGrid"></div>
+  </div>
+
+  <div class="palette-legend">
+    <div class="legend-grid">
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--success-color);"></div>
+        <span>Answered</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--bg-secondary); border: 2px solid var(--border-color);"></div>
+        <span>Not Answered</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--primary-color);"></div>
+        <span>Current Question</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--warning-color);"></div>
+        <span>🔖 Bookmarked</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// JSON INJECTION HAPPENS HERE
+const questions = [{"sr_no": 1, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>8 प्रेक्षणों का माध्य 15 है तथा अन्य 12 प्रेक्षणों का माध्य 20 है। सभी 20 प्रेक्षणों का संयुक्त माध्य ज्ञात कीजिए।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>17</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>18</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>18.5</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>19</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Combined mean = (n₁x̄₁ + n₂x̄₂)/(n₁ + n₂).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Sum of the first group = 8 × 15 = 120.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. Sum of the second group = 12 × 20 = 240.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. Combined mean = (120 + 240)/20 = 360/20 = 18.</span></p>", "question_heading": ""}, {"sr_no": 2, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>वह सबसे छोटी धनात्मक पूर्णांक संख्या ज्ञात कीजिए जिसे क्रमशः 3, 5 और 7 से विभाजित करने पर शेषफल 2, 3 और 4 प्राप्त होते हैं।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>53</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>48</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>104</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>68</span></p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: N = divisor × quotient + remainder; solve the congruences step by step (the numbers in the periodic pattern repeat after LCM(3, 5, 7) = 105).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. N ≡ 4 (mod 7), so N = 7k + 4.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. N ≡ 3 (mod 5): 7k + 4 ≡ 3, i.e. 2k ≡ 4 (mod 5), so k ≡ 2 (mod 5). Hence N = 18 + 35m.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. N ≡ 2 (mod 3): 18 + 35m ≡ 2m ≡ 2 (mod 3), so m ≡ 1 (mod 3). Least m = 1.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4. N = 18 + 35 = 53.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Check: 53 = 3×17 + 2 = 5×10 + 3 = 7×7 + 4 ✓</span></p>", "question_heading": ""}, {"sr_no": 3, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>एक लंब वृत्तीय बेलन तथा एक लंब वृत्तीय शंकु की आधार त्रिज्या और ऊँचाई समान हैं। बेलन के आयतन और शंकु के आयतन का अनुपात ज्ञात कीजिए।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2 : 3</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3 : 1</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1 : 3</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1 : 2</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Volume of cylinder = πr²h; volume of cone = (1/3)πr²h.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Cylinder : Cone = πr²h : (1/3)πr²h.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. = 1 : 1/3.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. = 3 : 1.</span></p>", "question_heading": ""}, {"sr_no": 4, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>निम्नलिखित तालिका विभिन्न अंक-सीमाओं में विद्यार्थियों की संख्या दर्शाती है (प्रत्येक वर्ग में निम्न सीमा सम्मिलित तथा उच्च सीमा असम्मिलित है): 0–20: 12; 20–40: 18; 40–60: 24; 60–80: 30; 80–100: 16। 40 या उससे अधिक अंक प्राप्त करने वाले विद्यार्थियों का प्रतिशत ज्ञात कीजिए।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>65%</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>60%</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>70%</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>75%</span></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Percentage = (required number / total number) × 100.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Total students = 12 + 18 + 24 + 30 + 16 = 100.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. Students with 40 or more marks = 24 + 30 + 16 = 70.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. Percentage = 70/100 × 100 = 70%.</span></p>", "question_heading": ""}, {"sr_no": 5, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>यदि समीकरण 2x² − 7x + k = 0 के मूलों का अंतर 1 है, तो k का मान ज्ञात कीजिए।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>51/8</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>49/8</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>47/8</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>45/8</span></p>", "answer": "4", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: For roots α, β: α + β = −b/a, αβ = c/a, and (α − β)² = (α + β)² − 4αβ.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. α + β = 7/2 and αβ = k/2.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. (α − β)² = 1 gives 49/4 − 2k = 1.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. 2k = 45/4, so k = 45/8.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Check: roots are 9/4 and 5/4; sum = 7/2 ✓, difference = 1 ✓</span></p>", "question_heading": ""}, {"sr_no": 6, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>एक व्यक्ति 8 किमी पूर्व की ओर चलता है, फिर 6 किमी उत्तर की ओर, फिर 3 किमी पश्चिम की ओर तथा अंत में 1 किमी दक्षिण की ओर चलता है। प्रारंभिक बिंदु से उसकी न्यूनतम दूरी ज्ञात कीजिए।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>5√3 km</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>5√2 km</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>5√5 km</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>10 km</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Shortest distance = √[(net east–west)² + (net north–south)²] (Pythagoras).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Net east = 8 − 3 = 5 km.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. Net north = 6 − 1 = 5 km.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. Distance = √(5² + 5²) = √50 = 5√2 km.</span></p>", "question_heading": ""}, {"sr_no": 7, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2x² − 9x + 7 ≤ 0 को संतुष्ट करने वाले x के पूर्णांक मानों की संख्या ज्ञात कीजिए।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>5</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3</span></p>", "answer": "4", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: A quadratic with positive leading coefficient is ≤ 0 between its roots (inclusive).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Factorise: 2x² − 9x + 7 = (2x − 7)(x − 1).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. The roots are x = 1 and x = 7/2.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. So 1 ≤ x ≤ 3.5.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4. Integers: 1, 2, 3, i.e. 3 values.</span></p>", "question_heading": ""}, {"sr_no": 8, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>दो वस्तुएँ प्रत्येक ₹1,200 में बेची जाती हैं। एक वस्तु पर विक्रेता को 20% लाभ तथा दूसरी वस्तु पर 20% हानि होती है। कुल प्रतिशत हानि या लाभ ज्ञात कीजिए।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>No profit, no loss</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2% loss</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4% loss</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2% gain</span></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: CP = SP × 100 / (100 ± r%); overall % = (total SP − total CP) / total CP × 100.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. CP of the article sold at 20% gain = 1200 × 100/120 = ₹1,000.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. CP of the article sold at 20% loss = 1200 × 100/80 = ₹1,500.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. Total CP = ₹2,500; total SP = ₹2,400.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4. Loss = ₹100, so loss % = 100/2500 × 100 = 4%.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Check (shortcut): equal-SP, equal-% case gives loss = (20)²/100 = 4% ✓</span></p>", "question_heading": ""}, {"sr_no": 9, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>14 सेमी त्रिज्या वाले एक वृत्त की एक जीवा केंद्र पर समकोण बनाती है। लघु वृत्तखंड का क्षेत्रफल ज्ञात कीजिए। (π = 22/7 लीजिए)</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>56 cm²</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>154 cm²</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>98 cm²</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>42 cm²</span></p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Area of minor segment = area of sector − area of triangle = (θ/360°)πr² − ½r² sin θ.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Sector area = (90/360) × (22/7) × 14 × 14 = 154 cm².</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. Triangle area = ½ × 14 × 14 = 98 cm².</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. Segment area = 154 − 98 = 56 cm².</span></p>", "question_heading": ""}, {"sr_no": 10, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>यदि x + y = 8 तथा x³ + y³ = 224 है, तो xy का मान ज्ञात कीजिए।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>16</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>14</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>12</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>10</span></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: x³ + y³ = (x + y)³ − 3xy(x + y).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. 224 = 8³ − 3·xy·8 = 512 − 24xy.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. 24xy = 288.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. xy = 12.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Check: x and y are the roots of t² − 8t + 12 = 0, i.e. 2 and 6; 8 + 216 = 224 ✓</span></p>", "question_heading": ""}, {"sr_no": 11, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1 से 100 तक के पूर्णांकों में से एक संख्या यादृच्छिक रूप से चुनी जाती है। उसके 3 या 5 से विभाजित होने, लेकिन दोनों से एक साथ विभाजित न होने की प्रायिकता ज्ञात कीजिए।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>47/100</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>40/100</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>37/100</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>41/100</span></p>", "answer": "4", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Exactly one of A, B = n(A) + n(B) − 2n(A ∩ B).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Multiples of 3 up to 100: ⌊100/3⌋ = 33.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. Multiples of 5: ⌊100/5⌋ = 20.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. Multiples of both (i.e. of 15): ⌊100/15⌋ = 6.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4. Favourable = 33 + 20 − 2 × 6 = 41.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>5. P = 41/100.</span></p>", "question_heading": ""}, {"sr_no": 12, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>पाँच प्रेक्षणों का माध्य 18 है। यदि एक प्रेक्षण 24 के स्थान पर 14 रख दिया जाए, तो नया माध्य ज्ञात कीजिए।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>18</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>16</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>15</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>17</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Mean = (sum of observations)/(number of observations).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Original sum = 5 × 18 = 90.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. New sum = 90 − 24 + 14 = 80.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. New mean = 80/5 = 16.</span></p>", "question_heading": ""}, {"sr_no": 13, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>एक डिब्बे में 5 सफेद, 4 काली तथा 3 लाल गेंदें हैं। तीन गेंदें एक साथ निकाली जाती हैं। तीनों गेंदों के अलग-अलग रंग की होने की प्रायिकता ज्ञात कीजिए।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4/11</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3/11</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2/11</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>5/11</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: P = (favourable combinations)/(total combinations), using nCr.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Total ways = 12C3 = 220.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. Favourable = 5C1 × 4C1 × 3C1 = 60.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. P = 60/220 = 3/11.</span></p>", "question_heading": ""}, {"sr_no": 14, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>एक बहुभुज के अंतः कोणों का योग 1,980° है। बहुभुज के विकर्णों की संख्या ज्ञात कीजिए।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>75</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>90</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>105</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>65</span></p>", "answer": "4", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Sum of interior angles = (n − 2) × 180°; number of diagonals = n(n − 3)/2.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. (n − 2) × 180 = 1980, so n − 2 = 11 and n = 13.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. Diagonals = 13 × (13 − 3)/2.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. = 13 × 10/2 = 65.</span></p>", "question_heading": ""}, {"sr_no": 15, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>पाँच प्रेक्षणों 4, 6, 8, 10 तथा 12 का मानक विचलन ज्ञात कीजिए। (इन्हें पूर्ण समष्टि मानिए)</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4√2</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2√2</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4</span></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: σ = √[Σ(xᵢ − x̄)² / n].</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Mean x̄ = (4 + 6 + 8 + 10 + 12)/5 = 8.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. Squared deviations: 16, 4, 0, 4, 16, sum = 40.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. Variance = 40/5 = 8.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4. σ = √8 = 2√2.</span></p>", "question_heading": ""}, {"sr_no": 16, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>60 विद्यार्थियों की एक कक्षा में 35 विद्यार्थी गणित, 30 विद्यार्थी विज्ञान तथा 15 विद्यार्थी दोनों विषय पढ़ते हैं। कितने विद्यार्थी न तो गणित और न ही विज्ञान पढ़ते हैं?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>10</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>5</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>15</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>20</span></p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: n(M ∪ S) = n(M) + n(S) − n(M ∩ S); neither = total − n(M ∪ S).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. n(M ∪ S) = 35 + 30 − 15 = 50.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. Neither = 60 − 50 = 10.</span></p>", "question_heading": ""}, {"sr_no": 17, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>यदि tan θ + cot θ = 10/3 है, तो sec²θ + cosec²θ का मान ज्ञात कीजिए।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>109/9</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>118/9</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>100/9</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>127/9</span></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: tan θ + cot θ = 1/(sin θ cos θ); sec²θ + cosec²θ = 1/(sin²θ cos²θ).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. 1/(sin θ cos θ) = 10/3, so sin θ cos θ = 3/10.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. sec²θ + cosec²θ = 1/(sin²θ cos²θ) = [1/(sin θ cos θ)]².</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. = (10/3)² = 100/9.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Check: sec²θ + cosec²θ = 1/cos²θ + 1/sin²θ = (sin²θ + cos²θ)/(sin²θ cos²θ) ✓</span></p>", "question_heading": ""}, {"sr_no": 18, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>जब बहुपद x³ + ax² + bx + 6 को (x − 1) से विभाजित किया जाता है, तो शेषफल 9 प्राप्त होता है। यदि यह (x + 2) से पूर्णतः विभाजित होता है, तो a + b का मान ज्ञात कीजिए।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>−2</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>−4</span></p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Remainder Theorem: when p(x) is divided by (x − c), the remainder is p(c).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. p(1) = 1 + a + b + 6 = 9, so a + b = 2.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. p(−2) = −8 + 4a − 2b + 6 = 0, so 2a − b = 1.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. Adding the two equations: 3a = 3, so a = 1 and b = 1.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4. a + b = 2.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Check: p(x) = x³ + x² + x + 6; p(1) = 9 ✓ and p(−2) = −8 + 4 − 2 + 6 = 0 ✓</span></p>", "question_heading": ""}, {"sr_no": 19, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3 सेमी और 4 सेमी त्रिज्या वाले दो ठोस धातु के गोलों को पिघलाकर 6 सेमी बाहरी त्रिज्या वाला एक खोखला गोला बनाया जाता है। खोखले गोले की आंतरिक त्रिज्या ज्ञात कीजिए।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3 cm</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4.5 cm</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4 cm</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>5 cm</span></p>", "answer": "4", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Volume of a sphere = (4/3)πr³; volume of a hollow sphere = (4/3)π(R³ − r³); volume is conserved on melting.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Total volume melted ∝ 3³ + 4³ = 27 + 64 = 91.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. Hollow sphere volume ∝ 6³ − r³ = 216 − r³.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. 216 − r³ = 91, so r³ = 125.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4. r = 5 cm.</span></p>", "question_heading": ""}, {"sr_no": 20, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>तीन निष्पक्ष सिक्कों को एक साथ उछाला जाता है। कम-से-कम दो चित आने की प्रायिकता ज्ञात कीजिए।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3/8</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1/4</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>5/8</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1/2</span></p>", "answer": "4", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Probability = favourable outcomes / total outcomes.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Total outcomes = 2³ = 8.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. Exactly 2 heads: 3C2 = 3 ways; exactly 3 heads: 1 way.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. Favourable = 3 + 1 = 4.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4. Probability = 4/8 = 1/2.</span></p>", "question_heading": ""}, {"sr_no": 21, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>यदि sin θ + cos θ = √(3/2) है, तो sin 2θ का मान ज्ञात कीजिए।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3/4</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1/2</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1/4</span></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: (sin θ + cos θ)² = 1 + 2 sin θ cos θ = 1 + sin 2θ.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Square both sides: (sin θ + cos θ)² = 3/2.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. 1 + sin 2θ = 3/2.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. sin 2θ = 1/2.</span></p>", "question_heading": ""}, {"sr_no": 22, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>एक त्रिभुज का केंद्रक (3, 4) है। इसके दो शीर्ष (1, 2) तथा (5, 3) हैं। तीसरा शीर्ष ज्ञात कीजिए।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>(3, 7)</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>(4, 7)</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>(3, 8)</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>(4, 8)</span></p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Centroid G = ((x₁ + x₂ + x₃)/3, (y₁ + y₂ + y₃)/3).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. (1 + 5 + x)/3 = 3, so 6 + x = 9 and x = 3.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. (2 + 3 + y)/3 = 4, so 5 + y = 12 and y = 7.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. Third vertex = (3, 7).</span></p>", "question_heading": ""}, {"sr_no": 23, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>अंकों 1, 2, 3, 4 और 5 का बिना पुनरावृत्ति उपयोग करके चार अंकों की संख्याएँ बनाई जाती हैं। ऐसी कितनी संख्याएँ 5 से विभाजित होंगी?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>12</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>30</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>18</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>24</span></p>", "answer": "4", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: A number is divisible by 5 if its units digit is 0 or 5; arrangements of r items from n = nPr = n!/(n − r)!.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. The units digit must be 5 (0 is not available), so it is fixed in 1 way.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. The remaining 3 places are filled from the digits 1, 2, 3, 4 without repetition.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. Number of ways = 4P3 = 4 × 3 × 2 = 24.</span></p>", "question_heading": ""}, {"sr_no": 24, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>एक लंब वृत्तीय शंकु का वक्र पृष्ठीय क्षेत्रफल 550 सेमी² तथा आधार त्रिज्या 7 सेमी है। इसका आयतन ज्ञात कीजिए। (π = 22/7 लीजिए)</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1,386 cm³</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1,540 cm³</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1,694 cm³</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1,232 cm³</span></p>", "answer": "4", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: CSA = πrl; l² = r² + h²; volume = (1/3)πr²h.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. 550 = (22/7) × 7 × l = 22l, so l = 25 cm.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. h = √(25² − 7²) = √(625 − 49) = √576 = 24 cm.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. V = (1/3) × (22/7) × 49 × 24.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4. V = 1,232 cm³.</span></p>", "question_heading": ""}, {"sr_no": 25, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>दो अंकों की एक संख्या के अंकों का योग 11 है। यदि अंकों को आपस में बदल दिया जाए, तो प्राप्त संख्या मूल संख्या से 27 अधिक हो जाती है। मूल संख्या ज्ञात कीजिए।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>65</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>47</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>56</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>38</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Number = 10a + b; reversed number = 10b + a; difference = 9(b − a).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Let the digits be a (tens) and b (units): a + b = 11.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. (10b + a) − (10a + b) = 9(b − a) = 27, so b − a = 3.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. Adding: 2b = 14, so b = 7 and a = 4.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4. Original number = 47.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Check: 74 − 47 = 27 ✓</span></p>", "question_heading": ""}, {"sr_no": 26, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>किसी संख्या का 3/7 भाग उसी संख्या के 5/9 भाग से 24 कम है। वह संख्या ज्ञात कीजिए।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>196</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>189</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>168</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>180</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Form a linear equation from the statement: (5/9)x − (3/7)x = 24.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. LCM of 7 and 9 = 63, so (35x − 27x)/63 = 24.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. 8x/63 = 24.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. x = 24 × 63/8 = 189.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Check: 5/9 of 189 = 105 and 3/7 of 189 = 81; 105 − 81 = 24 ✓</span></p>", "question_heading": ""}, {"sr_no": 27, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>60 मीटर ऊँची एक इमारत के शीर्ष से एक मीनार के शीर्ष तथा आधार के अवनमन कोण क्रमशः 30° और 60° हैं। मीनार की ऊँचाई ज्ञात कीजिए।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>40 m</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>30 m</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>20 m</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>45 m</span></p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: In a right triangle, tan θ = perpendicular / base.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Horizontal distance d = 60/tan 60° = 60/√3 = 20√3 m.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. The top of the tower is below the building top by d × tan 30° = 20√3 × (1/√3) = 20 m.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. Tower height = 60 − 20 = 40 m.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Check: tan 60° = 60/(20√3) = √3 ✓</span></p>", "question_heading": ""}, {"sr_no": 28, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>21 सेमी त्रिज्या वाले एक वृत्त के केंद्र पर एक चाप 120° का कोण बनाता है। चाप की लंबाई ज्ञात कीजिए। (π = 22/7 लीजिए)</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>48 cm</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>42 cm</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>44 cm</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>46 cm</span></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Arc length = (θ/360°) × 2πr.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Arc = (120/360) × 2 × (22/7) × 21.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. = (1/3) × 132.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. = 44 cm.</span></p>", "question_heading": ""}, {"sr_no": 29, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>200! के अंत में आने वाले शून्यों की संख्या ज्ञात कीजिए।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>49</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>50</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>48</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>45</span></p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Number of trailing zeroes in n! = ⌊n/5⌋ + ⌊n/25⌋ + ⌊n/125⌋ + …</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. ⌊200/5⌋ = 40.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. ⌊200/25⌋ = 8.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. ⌊200/125⌋ = 1 (625 &gt; 200, so stop).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>4. Total = 40 + 8 + 1 = 49.</span></p>", "question_heading": ""}, {"sr_no": 30, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>एक त्रिभुज के शीर्ष A(1, 2), B(7, 4) तथा C(3, 6) हैं। शीर्ष A से खींची गई माध्यिका की लंबाई ज्ञात कीजिए।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>5</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2√5</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3√5</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>√10</span></p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Formula: Midpoint = ((x₁ + x₂)/2, (y₁ + y₂)/2); distance = √[(x₂ − x₁)² + (y₂ − y₁)²].</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>Steps:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>1. Midpoint M of BC = ((7 + 3)/2, (4 + 6)/2) = (5, 5).</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>2. AM = √[(5 − 1)² + (5 − 2)²].</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;page-break-after:avoid;font-size:12pt\"><span>3. AM = √(16 + 9) = √25 = 5.</span></p>", "question_heading": ""}, {"sr_no": 31, "question": "  <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">एक कथन के बाद I, II, III और IV से क्रमांकित चार निष्कर्ष दिए गए हैं। दिए गए कथन को सत्य मानते हुए, ज्ञात कीजिए कि कौन-सा/से निष्कर्ष निश्चित रूप से सत्य है/हैं।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">कथन:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image001.png\" width=\"177\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">निष्कर्ष:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">I. </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image002.png\" width=\"43\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">II. </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image003.png\" width=\"47\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">III. </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image004.png\" width=\"48\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">IV. </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image005.png\" width=\"43\" height=\"21\" alt style=\"vertical-align:middle\" ></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>केवल निष्कर्ष I सत्य है</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>निष्कर्ष I और III दोनों सत्य हैं</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>केवल निष्कर्ष III सत्य है</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>निष्कर्ष II और IV दोनों सत्य हैं</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">1. निष्कर्ष I (</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image002.png\" width=\"43\" height=\"21\" alt style=\"vertical-align:middle\" ><span style=\"font-weight:bold\">) के लिए:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>कथन से, </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image006.png\" width=\"105\" height=\"21\" alt style=\"vertical-align:middle\" ><span>। चूँकि H और L के बीच एक निश्चित बड़ा (</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image007.png\" width=\"21\" height=\"21\" alt style=\"vertical-align:middle\" ><span>) का चिह्न मौजूद है, इसलिए </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image008.png\" width=\"42\" height=\"21\" alt style=\"vertical-align:middle\" ><span> निश्चित रूप से सत्य है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">2. निष्कर्ष II (</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image003.png\" width=\"47\" height=\"21\" alt style=\"vertical-align:middle\" ><span style=\"font-weight:bold\">) के लिए:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image009.png\" width=\"107\" height=\"21\" alt style=\"vertical-align:middle\" ><span> से, हमें </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image010.png\" width=\"45\" height=\"21\" alt style=\"vertical-align:middle\" ><span> प्राप्त होता है। अतः </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image011.png\" width=\"45\" height=\"21\" alt style=\"vertical-align:middle\" ><span> असत्य है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">3. निष्कर्ष III (</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image004.png\" width=\"48\" height=\"21\" alt style=\"vertical-align:middle\" ><span style=\"font-weight:bold\">) के लिए:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image012.png\" width=\"76\" height=\"21\" alt style=\"vertical-align:middle\" ><span> से, हमें </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image013.png\" width=\"46\" height=\"21\" alt style=\"vertical-align:middle\" ><span> प्राप्त होता है। अतः निष्कर्ष III निश्चित रूप से सत्य है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">4. निष्कर्ष IV (</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image005.png\" width=\"43\" height=\"21\" alt style=\"vertical-align:middle\" ><span style=\"font-weight:bold\">) के लिए:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>L और N के बीच संबंध </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image014.png\" width=\"76\" height=\"21\" alt style=\"vertical-align:middle\" ><span> है। विपरीत चिह्नों के कारण L और N के बीच कोई निश्चित संबंध स्थापित नहीं किया जा सकता है। अतः निष्कर्ष IV निश्चित रूप से सत्य नहीं है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः, निष्कर्ष I और III दोनों सत्य हैं।</span></p>", "question_heading": ""}, {"sr_no": 32, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">नीचे एक कथन दिया गया है जिसके बाद दो संभावित कारण I और II दिए गए हैं। कथन को ध्यान से पढ़ें और तय करें कि दोनों में से कौन-सा/से कारण, कथन में दी गई घटना/अवलोकन की व्याख्या करता/करते है/हैं।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">कथन:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">हाल के वर्षों में, कई प्रमुख आईटी और तकनीकी कंपनियों ने टियर-1 महानगरों में आगे विस्तार करने के बजाय टियर-2 शहरों में अपनी परिचालन शाखाएँ स्थापित की हैं।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">कारण:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">I) टियर-2 शहर कम परिचालन और रियल एस्टेट लागत के साथ-साथ कुशल प्रतिभाओं के बढ़ते समूह तक पहुँच प्रदान करते हैं।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">II) टियर-1 शहरों के नगर निगमों ने नए वाणिज्यिक कार्यालयों की स्थापना पर पूरी तरह से प्रतिबंध लगा दिया है।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>केवल I ही संभावित कारण है।</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>केवल II ही संभावित कारण है।</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>I और II दोनों संभावित कारण हैं।</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>न तो I और न ही II संभावित कारण है।</span></p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>कारण I एक वैध और तार्किक व्याख्या है। कंपनियाँ मुख्य रूप से टियर-2 शहरों में विस्तार इसलिए करती हैं ताकि परिचालन खर्च (रियल एस्टेट, बुनियादी ढाँचा आदि) कम हो सके और प्रमुख महानगरों के बाहर उपलब्ध कुशल पेशेवरों का लाभ उठाया जा सके।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>कारण II एक अत्यंत अवास्तविक और निराधार कथन है; टियर-1 शहरों के नगर निगमों ने नए वाणिज्यिक कार्यालय स्थापित करने पर कोई प्रतिबंध नहीं लगाया है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः, केवल कारण I ही संभावित कारण है।</span></p>", "question_heading": ""}, {"sr_no": 33, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">निम्नलिखित श्रृंखला में प्रश्न चिह्न (?) के स्थान पर कौन-सी संख्या आनी चाहिए?</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">12, 38, 116, 350, 1052, ?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3154</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3158</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3160</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3164</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दी गई श्रृंखला में अनुसरण किया गया पैटर्न इस प्रकार है:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image015.png\" width=\"112\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image016.png\" width=\"121\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image017.png\" width=\"130\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image018.png\" width=\"139\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image019.png\" width=\"147\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः, लुप्त संख्या 3158 है।</span></p>", "question_heading": ""}, {"sr_no": 34, "question": "  <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">दिए गए विकल्पों में से उस आकृति का चयन कीजिए जो निम्नलिखित शृंखला में प्रश्न चिह्न (?) को प्रतिस्थापित कर सकती है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image020.png\" width=\"500\" height=\"100\" alt ></p>", "option1": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image021.png\" width=\"100\" height=\"100\" alt ></p>", "option2": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image022.png\" width=\"100\" height=\"100\" alt ></p>", "option3": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image023.png\" width=\"100\" height=\"100\" alt ></p>", "option4": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image024.png\" width=\"100\" height=\"100\" alt ></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दी गई शृंखला में दो तार्किक प्रतिरूप हैं:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">1. शीर्ष-बाएँ कोने में तीर का घूर्णन:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>• आकृति 1 से 2: </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image025.png\" width=\"25\" height=\"21\" alt style=\"vertical-align:middle\" ><span> वामावर्त (एंटी-क्लॉकवाइज) घूर्णन (↑ से ←)।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>• आकृति 2 से 3: </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image026.png\" width=\"34\" height=\"21\" alt style=\"vertical-align:middle\" ><span> घूर्णन / दिशा का उलटना (← से →)।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>• आकृति 3 से 4: </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image025.png\" width=\"25\" height=\"21\" alt style=\"vertical-align:middle\" ><span> वामावर्त घूर्णन (→ से ↑)।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>• आकृति 4 से 5: </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image026.png\" width=\"34\" height=\"21\" alt style=\"vertical-align:middle\" ><span> घूर्णन / दिशा का उलटना (↑ से ↓)।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः 5वीं आकृति में तीर नीचे की ओर (↓) इंगित करेगा।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">2. अन्य पाँच प्रतीकों का संचलन:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>• मध्य पंक्ति के चौथे (अंतिम दाएँ) स्थान का प्रतीक नीचे केंद्र में जाता है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>• नीचे केंद्र का प्रतीक मध्य पंक्ति के पहले स्थान पर आता है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>• मध्य पंक्ति के पहले, दूसरे और तीसरे स्थान के प्रतीक एक-एक स्थान दाईं ओर खिसकते हैं।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>आकृति 4 से आकृति 5 में जाने पर:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>• चौथे स्थान का प्रतीक ('D') नीचे केंद्र में आ जाएगा।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>• नीचे का प्रतीक ('S') मध्य पंक्ति के पहले स्थान पर आ जाएगा।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>• 'K', 'V' और '△' क्रमशः दूसरे, तीसरे और चौथे स्थान पर खिसक जाएँगे।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः मध्य पंक्ति में बाएँ से दाएँ </span><span style=\"font-weight:bold\">S, K, V, △</span><span> तथा नीचे </span><span style=\"font-weight:bold\">D</span><span> होगा। यह विकल्प (C) की आकृति से पूर्णतः मेल खाता है।</span></p>", "question_heading": ""}, {"sr_no": 35, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">उस समुच्चय का चयन करें जिसमें संख्याएँ उसी प्रकार संबंधित हैं जैसे कि निम्नलिखित समुच्चयों की संख्याएँ संबंधित हैं।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">(नोट: संख्याओं को उनके घटकीय अंकों में तोड़े बिना, पूर्ण संख्याओं पर संक्रियाएँ की जानी चाहिए। उदाहरण के लिए 13 – 13 पर संक्रियाएँ जैसे कि 13 को जोड़ना/घटाना/गुणा करना आदि किया जा सकता है। 13 को 1 और 3 में तोड़ना और फिर 1 और 3 पर गणितीय संक्रियाएँ करने की अनुमति नहीं है।)</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">(11, 7, 72)</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">(15, 9, 144)</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>(13, 8, 105)</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>(12, 6, 100)</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>(14, 5, 175)</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>(16, 10, 160)</span></p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>यहाँ अनुसरित तर्क इस प्रकार है: </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image027.png\" width=\"81\" height=\"21\" alt style=\"vertical-align:middle\" ><span> (जहाँ </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image028.png\" width=\"9\" height=\"21\" alt style=\"vertical-align:middle\" ><span>, </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image029.png\" width=\"9\" height=\"21\" alt style=\"vertical-align:middle\" ><span>, और </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image030.png\" width=\"8\" height=\"21\" alt style=\"vertical-align:middle\" ><span> क्रमशः पहली, दूसरी और तीसरी संख्याएँ हैं)।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>पहला समुच्चय: (11, 7, 72)</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image031.png\" width=\"185\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दूसरा समुच्चय: (15, 9, 144)</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image032.png\" width=\"193\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>विकल्पों की जाँच करने पर:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>विकल्प A: (13, 8, 105) → </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image033.png\" width=\"193\" height=\"21\" alt style=\"vertical-align:middle\" ><span> (समान तर्क का अनुसरण करता है)</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>विकल्प B: (12, 6, 100) → </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image034.png\" width=\"241\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>विकल्प C: (14, 5, 175) → </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image035.png\" width=\"241\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>विकल्प D: (16, 10, 160) → </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image036.png\" width=\"259\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः, सही समुच्चय (13, 8, 105) है।</span></p>", "question_heading": ""}, {"sr_no": 36, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">उस सही विकल्प का चयन कीजिए जो दिए गए शब्दों को तार्किक और सार्थक क्रम में व्यवस्थित करता है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">1. कागज़</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">2. पुस्तक</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">3. पेड़</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">4. छपाई</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">5. लुगदी</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3, 5, 1, 4, 2</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3, 1, 5, 4, 2</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>5, 3, 1, 2, 4</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3, 5, 4, 1, 2</span></p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दिए गए शब्द कच्चे माल से पुस्तक बनाने की क्रमिक प्रक्रिया को दर्शाते हैं:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>1. लकड़ी प्राप्त करने के लिए </span><span style=\"font-weight:bold\">पेड़</span><span> (3) काटा जाता है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>2. लकड़ी से </span><span style=\"font-weight:bold\">लुगदी</span><span> (5) तैयार की जाती है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3. लुगदी से </span><span style=\"font-weight:bold\">कागज़</span><span> (1) बनाया जाता है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>4. कागज़ पर </span><span style=\"font-weight:bold\">छपाई</span><span> (4) की जाती है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>5. अंत में, मुद्रित पृष्ठों को संकलित करके </span><span style=\"font-weight:bold\">पुस्तक</span><span> (2) बनाई जाती है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः तार्किक और सार्थक क्रम </span><span style=\"font-weight:bold\">3, 5, 1, 4, 2</span><span> है।</span></p>", "question_heading": ""}, {"sr_no": 37, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">अक्षरों के उस संयोजन का चयन कीजिए जो दी गई शृंखला के रिक्त स्थानों में क्रमिक रूप से रखने पर शृंखला को पूर्ण करेगा।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">C_GH JL_O _SUV XZ_C E_IJ</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>FNQAG</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>ENQBG</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>EMQBG</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>ENRBH</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दी गई शृंखला में 4-4 अक्षरों के समूह एक निश्चित पैटर्न का अनुसरण करते हैं:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>प्रत्येक समूह के अंदर:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>पहला अक्षर से दूसरा अक्षर = +2</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दूसरा अक्षर से तीसरा अक्षर = +2</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>तीसरा अक्षर से चौथा अक्षर = +1</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दो क्रमागत समूहों के बीच (एक समूह के अंतिम अक्षर से अगले समूह के पहले अक्षर तक):</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>+2</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>पैटर्न लागू करने पर:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>C (3) + 2 = </span><span style=\"font-weight:bold\">E</span><span> (5), E + 2 = G (7), G + 1 = H (8) → C</span><span style=\"font-weight:bold\">E</span><span>GH</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>H (8) + 2 = J (10), J + 2 = L (12), L + 2 = </span><span style=\"font-weight:bold\">N</span><span> (14), N + 1 = O (15) → JL</span><span style=\"font-weight:bold\">N</span><span>O</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>O (15) + 2 = </span><span style=\"font-weight:bold\">Q</span><span> (17), Q + 2 = S (19), S + 2 = U (21), U + 1 = V (22) → </span><span style=\"font-weight:bold\">Q</span><span>SUV</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>V (22) + 2 = X (24), X + 2 = Z (26), Z + 2 = </span><span style=\"font-weight:bold\">B</span><span> (2), B + 1 = C (3) → XZ</span><span style=\"font-weight:bold\">B</span><span>C</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>C (3) + 2 = E (5), E + 2 = </span><span style=\"font-weight:bold\">G</span><span> (7), G + 2 = I (9), I + 1 = J (10) → E</span><span style=\"font-weight:bold\">G</span><span>IJ</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः, रिक्त स्थानों को क्रमिक रूप से भरने वाले अक्षर </span><span style=\"font-weight:bold\">ENQBG</span><span> हैं।</span></p>", "question_heading": ""}, {"sr_no": 38, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">यदि संख्या 48316275 के प्रत्येक अंक को बाएं से दाएं आरोही क्रम में व्यवस्थित किया जाए, तो कितने अंकों का स्थान मूल संख्या के सापेक्ष अपरिवर्तित रहेगा?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>एक भी नहीं</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>एक</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दो</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>तीन</span></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>मूल संख्या: 4 8 3 1 6 2 7 5</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अंकों को बाएं से दाएं आरोही क्रम में व्यवस्थित करने पर:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>नई व्यवस्था: 1 2 3 4 5 6 7 8</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दोनों संख्याओं में अंकों के स्थानों की तुलना करने पर:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>- तीसरा स्थान: 3 अपरिवर्तित रहता है</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>- सातवां स्थान: 7 अपरिवर्तित रहता है</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः, ठीक दो अंकों (3 और 7) की स्थिति अपरिवर्तित रहती है।</span></p>", "question_heading": ""}, {"sr_no": 39, "question": "  <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">निम्नलिखित समीकरण में प्रश्नवाचक चिह्न (?) के स्थान पर क्या आएगा, यदि '</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image037.png\" width=\"20\" height=\"21\" alt style=\"vertical-align:middle\" ><span style=\"font-weight:bold\">' और '</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image038.png\" width=\"19\" height=\"21\" alt style=\"vertical-align:middle\" ><span style=\"font-weight:bold\">' को परस्पर बदल दिया जाए तथा '</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image039.png\" width=\"20\" height=\"21\" alt style=\"vertical-align:middle\" ><span style=\"font-weight:bold\">' और '</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image040.png\" width=\"20\" height=\"21\" alt style=\"vertical-align:middle\" ><span style=\"font-weight:bold\">' को परस्पर बदल दिया जाए?</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image041.png\" width=\"190\" height=\"21\" alt style=\"vertical-align:middle\" ></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>73</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>79</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>84</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>92</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दिया गया समीकरण: </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image042.png\" width=\"183\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>'</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image037.png\" width=\"20\" height=\"21\" alt style=\"vertical-align:middle\" ><span>' और '</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image038.png\" width=\"19\" height=\"21\" alt style=\"vertical-align:middle\" ><span>' तथा '</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image039.png\" width=\"20\" height=\"21\" alt style=\"vertical-align:middle\" ><span>' और '</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image040.png\" width=\"20\" height=\"21\" alt style=\"vertical-align:middle\" ><span>' को आपस में बदलने पर, नया समीकरण होगा:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image043.png\" width=\"156\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>BODMAS नियम लागू करने पर:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>= </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image044.png\" width=\"119\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>= </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image045.png\" width=\"92\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>= </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image046.png\" width=\"94\" height=\"21\" alt style=\"vertical-align:middle\" ><span>.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः, सही उत्तर 79 है।</span></p>", "question_heading": ""}, {"sr_no": 40, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">एक सीधी पंक्ति में कुछ व्यक्ति उत्तर की ओर मुख करके बैठे हैं। P पंक्ति के बाएँ छोर से पाँचवें स्थान पर बैठा है। P और Q के बीच केवल दो व्यक्ति बैठे हैं, जहाँ Q, P के दाएँ बैठा है। R, Q के दाएँ से तीसरे स्थान पर बैठा है। R और S के बीच केवल चार व्यक्ति बैठे हैं, जहाँ S, R के दाएँ पंक्ति के अंतिम छोर पर बैठा है। पंक्ति में कुल कितने व्यक्ति बैठे हैं?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>14</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>15</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>16</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>17</span></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>बाएँ से दाएँ स्थानों को 1 से क्रमांकित करने पर:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>1. P बाएँ छोर से पाँचवें स्थान पर है, इसलिए P का स्थान = 5 है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>2. Q, P के दाएँ बैठा है और उनके बीच दो व्यक्ति हैं, इसलिए Q का स्थान = 5 + 2 + 1 = 8 है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3. R, Q के दाएँ तीसरे स्थान पर है, इसलिए R का स्थान = 8 + 3 = 11 है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>4. S, R के दाएँ बैठा है और उनके बीच चार व्यक्ति हैं, इसलिए S का स्थान = 11 + 4 + 1 = 16 है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>चूँकि S पंक्ति के अंतिम दाएँ छोर पर है, अतः पंक्ति में कुल व्यक्तियों की संख्या 16 है।</span></p>", "question_heading": ""}, {"sr_no": 41, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">निम्नलिखित चार शब्द-युग्मों में से तीन एक निश्चित तरीके से समान हैं और एक भिन्न है। उस भिन्न शब्द-युग्म का चयन कीजिए।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">(शब्दों को सार्थक शब्द माना जाना चाहिए और अक्षरों की संख्या/व्यंजनों/स्वरों की संख्या के आधार पर समूहीकृत नहीं किया जाना चाहिए।)</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>सतर्क : सावधान</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दुर्बल : सबल</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>विशाल : विराट</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>वास्तविक : प्रामाणिक</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>'दुर्बल : सबल' को छोड़कर अन्य सभी युग्मों में दोनों शब्द एक-दूसरे के पर्यायवाची (समानार्थी) हैं:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>• सतर्क और सावधान एक-दूसरे के पर्यायवाची हैं।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>• विशाल और विराट एक-दूसरे के पर्यायवाची हैं।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>• वास्तविक और प्रामाणिक एक-दूसरे के पर्यायवाची हैं।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>जबकि, 'दुर्बल' और 'सबल' एक-दूसरे के विलोम शब्द हैं। अतः, 'दुर्बल : सबल' समूह से भिन्न है।</span></p>", "question_heading": ""}, {"sr_no": 42, "question": "  <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">निम्नलिखित समीकरण में प्रश्नवाचक चिह्न (?) के स्थान पर क्या आएगा, यदि '+' और '-' को परस्पर बदल दिया जाए तथा '</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image038.png\" width=\"19\" height=\"21\" alt style=\"vertical-align:middle\" ><span style=\"font-weight:bold\">' और '</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image040.png\" width=\"20\" height=\"21\" alt style=\"vertical-align:middle\" ><span style=\"font-weight:bold\">' को परस्पर बदल दिया जाए?</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image047.png\" width=\"199\" height=\"21\" alt style=\"vertical-align:middle\" ></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>247</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>237</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>225</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>253</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दिया गया समीकरण: </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image048.png\" width=\"192\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>'+' को '-' से तथा '</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image038.png\" width=\"19\" height=\"21\" alt style=\"vertical-align:middle\" ><span>' को '</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image040.png\" width=\"20\" height=\"21\" alt style=\"vertical-align:middle\" ><span>' से परस्पर बदलने पर:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image049.png\" width=\"165\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>BODMAS नियम लागू करने पर:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image050.png\" width=\"140\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image051.png\" width=\"121\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image052.png\" width=\"132\" height=\"21\" alt style=\"vertical-align:middle\" ><span>.</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः, सही उत्तर 237 है।</span></p>", "question_heading": ""}, {"sr_no": 43, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">एक प्रश्न दिया गया है, जिसके बाद (I) और (II) से अंकित दो कथन दिए गए हैं। पहचान कीजिए कि कौन-सा/से कथन प्रश्न का उत्तर देने के लिए पर्याप्त है/हैं।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">प्रश्न: छह व्यक्ति A, B, C, D, E और F एक वृत्ताकार मेज के चारों ओर केंद्र की ओर मुख करके बैठे हैं। D के ठीक बाईं ओर कौन बैठा है?</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">कथन:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">(I) D, B के दाईं ओर दूसरे स्थान पर बैठा है। B और E के बीच केवल एक व्यक्ति बैठा है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">(II) A, D के ठीक दाईं ओर बैठा है। F, E का निकटतम पड़ोसी नहीं है।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>कथन I अकेले पर्याप्त है जबकि कथन II अकेले पर्याप्त नहीं है।</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>कथन II अकेले पर्याप्त है जबकि कथन I अकेले पर्याप्त नहीं है।</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>कथन I और II दोनों मिलकर भी पर्याप्त नहीं हैं।</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>कथन I और II दोनों मिलकर पर्याप्त हैं।</span></p>", "answer": "4", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>माना केंद्र की ओर मुख करके बैठे व्यक्तियों के लिए वृत्ताकार मेज पर दक्षिणावर्त (क्लॉकवाइज़) दिशा में 1 से 6 तक स्थान हैं।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>केंद्र की ओर मुख होने पर दक्षिणावर्त चलना बाईं ओर तथा वामावर्त चलना दाईं ओर होता है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">कथन (I) से:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>माना D स्थान 1 पर है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>चूँकि D, B के दाईं ओर दूसरे स्थान पर है, इसलिए B स्थान 3 पर होगा।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>B और E के बीच केवल एक व्यक्ति बैठा है, जिसका अर्थ है कि E स्थान 1 या स्थान 5 पर हो सकता है। चूँकि स्थान 1 पर D है, इसलिए E स्थान 5 पर होगा।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>शेष स्थान (2, 4, 6) A, C और F द्वारा लिए जाएंगे। D के ठीक बाईं ओर (स्थान 2) कौन बैठा है, यह निश्चित रूप से ज्ञात नहीं किया जा सकता।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः, केवल कथन (I) पर्याप्त नहीं है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">कथन (II) से:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>A, D के ठीक दाईं ओर (स्थान 6) बैठा है। अन्य व्यक्तियों के स्थानों के बारे में कोई निश्चित जानकारी नहीं मिलती है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः, केवल कथन (II) पर्याप्त नहीं है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-weight:bold\">कथन (I) और (II) को मिलाने पर:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>D स्थान 1 पर है, B स्थान 3 पर है और E स्थान 5 पर है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>कथन (II) से, A स्थान 6 पर है (D के ठीक दाईं ओर)।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अब C और F के लिए केवल स्थान 2 और 4 शेष बचते हैं।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>चूँकि F, E (स्थान 5) का निकटतम पड़ोसी नहीं है, इसलिए F स्थान 4 पर नहीं बैठ सकता। अतः F को स्थान 2 पर बैठना होगा और C स्थान 4 पर बैठेगा।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>इस प्रकार, D के ठीक बाईं ओर (स्थान 2 पर) F बैठा है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः, प्रश्न का उत्तर देने के लिए कथन (I) और (II) दोनों मिलकर पर्याप्त हैं।</span></p>", "question_heading": ""}, {"sr_no": 44, "question": "  <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">निम्नलिखित पाँच आकृतियों में से चार एक निश्चित प्रकार से एक समान हैं और इस प्रकार एक समूह बनाती हैं। वह कौन-सी आकृति है जो उस समूह से संबंधित नहीं है?</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image053.png\" width=\"500\" height=\"120\" alt ></p>", "option1": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image054.png\" width=\"100\" height=\"100\" alt ></p>", "option2": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image055.png\" width=\"100\" height=\"100\" alt ></p>", "option3": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image056.png\" width=\"100\" height=\"100\" alt ></p>", "option4": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image057.png\" width=\"100\" height=\"100\" alt ></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>आकृति (D) को छोड़कर अन्य सभी आकृतियों में केंद्र में सबसे भीतरी आकृति एक वृत्त है। आकृति (D) में सबसे भीतरी आकृति एक समचतुर्भुज/वर्ग है। अतः आकृति (D) उस समूह से संबंधित नहीं है।</span></p>", "question_heading": ""}, {"sr_no": 45, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">एक कथन दिया गया है, जिसके बाद I और II के रूप में संख्यांकित दो निष्कर्ष दिए गए हैं। कथन को पढ़ें और तय करें कि दिए गए कथन के आधार पर कौन-सा/से निष्कर्ष सत्य है/हैं।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">कथन: इस वर्ष खाद्यान्न का रिकॉर्ड कृषि उत्पादन होने के बावजूद, घरेलू बाजार में आवश्यक अनाजों की खुदरा कीमतों में लगातार वृद्धि जारी है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">निष्कर्ष:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">I. उत्पादन में रिकॉर्ड वृद्धि आवश्यक रूप से खुदरा कीमतों में गिरावट की गारंटी नहीं देती है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">II. निजी व्यापारियों द्वारा की जाने वाली जमाखोरी खाद्यान्न की कीमतों में इस वृद्धि का मुख्य कारण है।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>केवल निष्कर्ष I सत्य है।</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>केवल निष्कर्ष II सत्य है।</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>निष्कर्ष I और II दोनों सत्य हैं।</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>न तो निष्कर्ष I और न ही निष्कर्ष II सत्य है।</span></p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>कथन से यह स्पष्ट है कि रिकॉर्ड पैदावार होने के बावजूद खुदरा कीमतों में वृद्धि जारी रही। इससे सीधे तौर पर यह तार्किक निष्कर्ष निकलता है कि केवल उच्च उत्पादन होना ही खुदरा कीमतों में कमी की गारंटी नहीं देता है, इसलिए निष्कर्ष I सत्य है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>निष्कर्ष II एक बाहरी कारक (निजी व्यापारियों द्वारा जमाखोरी) को मुख्य कारण बताता है, जिसका कथन में कोई उल्लेख नहीं है और न ही इसे केवल कथन के आधार पर निगमित किया जा सकता है। अतः निष्कर्ष II सत्य नहीं है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः, केवल निष्कर्ष I सत्य है।</span></p>", "question_heading": ""}, {"sr_no": 46, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">नीचे दिए गए प्रश्न में एक प्रश्न और उसके बाद दो कथन क्रमांकित (I) और (II) दिए गए हैं। आपको यह तय करना है कि कथनों में दी गई जानकारी प्रश्न का उत्तर देने के लिए पर्याप्त है या नहीं।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">प्रश्न: दिव्या का रोहन से क्या संबंध है?</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">(I) रोहन, सुरेश का पुत्र है और सुरेश, कविता का भाई है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">(II) दिव्या, कविता की पुत्री है।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>केवल कथन (I) पर्याप्त है जबकि केवल कथन (II) पर्याप्त नहीं है।</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>केवल कथन (II) पर्याप्त है जबकि केवल कथन (I) पर्याप्त नहीं है।</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>कथन (I) और (II) दोनों मिलकर आवश्यक हैं।</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>न तो कथन (I) और न ही कथन (II) पर्याप्त है।</span></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>कथन (I) से: रोहन, सुरेश का पुत्र है और सुरेश, कविता का भाई है। यहाँ दिव्या के बारे में कोई जानकारी नहीं है, अतः केवल कथन (I) पर्याप्त नहीं है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>कथन (II) से: दिव्या, कविता की पुत्री है। यहाँ रोहन के बारे में कोई जानकारी नहीं है, अतः केवल कथन (II) पर्याप्त नहीं है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>कथन (I) और (II) दोनों को मिलाने पर: सुरेश, रोहन के पिता हैं, कविता, सुरेश की बहन हैं और दिव्या, कविता की पुत्री है। अतः दिव्या, रोहन की बुआ की पुत्री (फुफेरी बहन) है। इसलिए, प्रश्न का उत्तर देने के लिए दोनों कथन (I) और (II) मिलकर आवश्यक हैं।</span></p>", "question_heading": ""}, {"sr_no": 47, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">उस विकल्प का चयन कीजिए जो तीसरे शब्द से उसी प्रकार संबंधित है जिस प्रकार दूसरा शब्द पहले शब्द से संबंधित है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">(शब्दों को सार्थक हिंदी शब्द माना जाना चाहिए और शब्द अक्षरों/व्यंजनों/स्वरों की संख्या के आधार पर एक दूसरे से संबंधित नहीं होना चाहिए।)</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">अल्पभाषी : वाणी :: मितव्ययी : ?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अपव्यय</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>धन</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>व्यय</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>आय</span></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>जिस प्रकार 'अल्पभाषी' व्यक्ति अपनी 'वाणी' (बोलने) में संयम बरतता है अर्थात् बहुत कम बोलता है, उसी प्रकार 'मितव्ययी' व्यक्ति अपने 'व्यय' (खर्च) में संयम बरतता है अर्थात् बहुत कम खर्च करता है। अतः 'व्यय' सही संबंधित शब्द है।</span></p>", "question_heading": ""}, {"sr_no": 48, "question": "  <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">निम्नलिखित समीकरण में प्रश्नवाचक चिह्न (?) के स्थान पर क्या आएगा, यदि '+' और '</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image038.png\" width=\"19\" height=\"21\" alt style=\"vertical-align:middle\" ><span style=\"font-weight:bold\">' को परस्पर बदल दिया जाए तथा '-' और '</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image040.png\" width=\"20\" height=\"21\" alt style=\"vertical-align:middle\" ><span style=\"font-weight:bold\">' को परस्पर बदल दिया जाए?</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image058.png\" width=\"180\" height=\"21\" alt style=\"vertical-align:middle\" ></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>68</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>76</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>82</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>94</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दिया गया समीकरण: </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image059.png\" width=\"175\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>'+' को '</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image038.png\" width=\"19\" height=\"21\" alt style=\"vertical-align:middle\" ><span>' से तथा '-' को '</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image040.png\" width=\"20\" height=\"21\" alt style=\"vertical-align:middle\" ><span>' से परस्पर बदलने पर समीकरण होगा:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image060.png\" width=\"175\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>BODMAS नियम लागू करने पर:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image061.png\" width=\"140\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image062.png\" width=\"113\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>​</span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image063.png\" width=\"114\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः, सही उत्तर 76 है।</span></p>", "question_heading": ""}, {"sr_no": 49, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">छह सदस्यों — K, L, M, N, O और P के एक परिवार में: M, P की अविवाहित बहन है। K, P की माता है और L की पत्नी है। L, N का ससुर है, जो O का पिता है। M का O से क्या संबंध है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>मौसी</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>बुआ</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>बहन</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>माता</span></p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दी गई जानकारी के अनुसार:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>1. K, L की पत्नी है और P की माता है। अतः, L और K पति-पत्नी हैं तथा P के माता-पिता हैं।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>2. M, P की अविवाहित बहन है, जिसका अर्थ है कि M भी L और K की पुत्री है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3. L, N का ससुर है (N पुरुष है, क्योंकि वह O का पिता है)। चूंकि M अविवाहित है, इसलिए N का विवाह P से हुआ होगा। अतः, P एक महिला है और N की पत्नी है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>4. चूंकि N, O का पिता है और P का पति है, इसलिए P, O की माता है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>5. M, P (O की माता) की बहन है। अतः, M, O की मौसी है।</span></p>", "question_heading": ""}, {"sr_no": 50, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">एक कक्षा परीक्षा में 16 विद्यार्थियों द्वारा प्राप्त अंक इस प्रकार हैं: 15, 18, 16, 14, 15, 20, 17, 18, 19, 15, 21, 18, 13, 22, 16 और 25। दिए गए आँकड़ों के समुच्चय के बहुलकों का गुणनफल ज्ञात कीजिए।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>240</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>270</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>285</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>255</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>बहुलक ज्ञात करने के लिए, हम दिए गए आँकड़ों में प्रत्येक मान की बारंबारता की गणना करते हैं:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>13 की बारंबारता = 1</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>14 की बारंबारता = 1</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>15 की बारंबारता = 3</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>16 की बारंबारता = 2</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>17 की बारंबारता = 1</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>18 की बारंबारता = 3</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>19 की बारंबारता = 1</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>20 की बारंबारता = 1</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>21 की बारंबारता = 1</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>22 की बारंबारता = 1</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>25 की बारंबारता = 1</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>यहाँ अधिकतम बारंबारता 3 है, जो 15 और 18 दोनों मानों की है। अतः, दिए गए आँकड़े द्वि-बहुलकीय (bimodal) हैं और इसके बहुलक 15 तथा 18 हैं।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>बहुलकों का गुणनफल = </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image064.png\" width=\"102\" height=\"21\" alt style=\"vertical-align:middle\" ><span>।</span></p>", "question_heading": ""}, {"sr_no": 51, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">सात व्यक्ति, P, Q, R, S, T, U और V एक सीधी पंक्ति में उत्तर के सम्मुख बैठे हैं। T के बाईं ओर केवल दो व्यक्ति बैठे हैं। T और U के बीच केवल दो व्यक्ति बैठे हैं। V, U के निकटतम दाएँ बैठा है। R, Q के बाईं ओर से दूसरे स्थान पर बैठा है। P, S के बाईं ओर कहीं बैठा है। पंक्ति के ठीक मध्य में कौन बैठा है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>T</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>Q</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>S</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>U</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दी गई जानकारी के आधार पर, हम बाएं से दाएं (स्थान 1 से 7) बैठने का क्रम निर्धारित कर सकते हैं:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>1. T के बाईं ओर केवल दो व्यक्ति बैठे हैं, जिसका अर्थ है कि T तीसरे स्थान पर है: _ _ T _ _ _ _</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>2. T और U के बीच केवल दो व्यक्ति बैठे हैं, जिससे U छठे स्थान पर आता है: _ _ T _ _ U _</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3. V, U के निकटतम दाएँ बैठा है, इसलिए V सातवें स्थान पर है: _ _ T _ _ U V</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>4. R, Q के बाईं ओर से दूसरे स्थान पर बैठा है। इस शर्त को पूरा करने वाले एकमात्र उपलब्ध स्थान R के लिए दूसरा स्थान और Q के लिए चौथा स्थान हैं: _ R T Q _ U V</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>5. P, S के बाईं ओर बैठा है, इसलिए P पहले स्थान पर और S पाँचवें स्थान पर बैठा है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>बाएं से दाएं पूर्ण व्यवस्था है: P, R, T, Q, S, U, V।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः, पंक्ति के ठीक मध्य (चौथे स्थान) में Q बैठा है।</span></p>", "question_heading": ""}, {"sr_no": 52, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">अक्षरों के उस संयोजन का चयन कीजिए जो दी गई शृंखला के रिक्त स्थानों में क्रमिक रूप से रखे जाने पर उसे तार्किक रूप से पूर्ण करेगा।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">_ K T P _ R M _ T _ N R M K _ P N _</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>M N K T P R</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>M N K P T R</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>N M K P T R</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>M K N P T R</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दी गई शृंखला में कुल 18 अक्षर हैं। शृंखला को 6-6 अक्षरों के 3 बराबर समूहों में विभाजित करने पर:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>_ K T P _ R / M _ T _ N R / M K _ P N _</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>प्रत्येक समूह में दोहराया जाने वाला पैटर्न </span><span style=\"font-weight:bold\">M K T P N R</span><span> है:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>पहला समूह: </span><span style=\"font-weight:bold\">M</span><span> K T P </span><span style=\"font-weight:bold\">N</span><span> R</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दूसरा समूह: M </span><span style=\"font-weight:bold\">K</span><span> T </span><span style=\"font-weight:bold\">P</span><span> N R</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>तीसरा समूह: M K </span><span style=\"font-weight:bold\">T</span><span> P N </span><span style=\"font-weight:bold\">R</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः शृंखला को पूरा करने के लिए क्रमिक रूप से आवश्यक अक्षर </span><span style=\"font-weight:bold\">M N K P T R</span><span> हैं।</span></p>", "question_heading": ""}, {"sr_no": 53, "question": "  <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">आकृति A एक निश्चित पैटर्न में B से संबंधित है। उसी पैटर्न का अनुसरण करते हुए, आकृति C, D से संबंधित है। पैटर्न का अध्ययन कीजिए और उस आकृति का चयन कीजिए जिसे D के स्थान पर रखा जाना चाहिए।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image065.png\" width=\"500\" height=\"139\" alt ></p>", "option1": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image066.png\" width=\"100\" height=\"100\" alt ></p>", "option2": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image067.png\" width=\"100\" height=\"100\" alt ></p>", "option3": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image068.png\" width=\"100\" height=\"100\" alt ></p>", "option4": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image069.png\" width=\"100\" height=\"100\" alt ></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>आकृति A से आकृति B का पैटर्न 180° का पूर्ण घूर्णन (केंद्र के सापेक्ष बिंदु परावर्तन) है:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>केंद्रीय आकृति 180° घूमती है: शीर्ष पर स्थित वृत्ताकार सिरा नीचे चला जाता है, तथा नीचे स्थित त्रिभुज ऊपर जाकर ऊपर की ओर इंगित करने लगता है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>ऊपरी-बाएँ कोने का तत्व विकर्णतः निचले-दाएँ कोने में चला जाता है और 180° घूम जाता है (दाएँ इंगित करने वाला त्रिभुज अब बाएँ इंगित करता है)।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>आकृति D प्राप्त करने के लिए आकृति C पर वही 180° का घूर्णन लागू करने पर:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>केंद्रीय तीर (जो ऊपर की ओर इंगित करता है और जिसके आधार पर एक रिंग है) 180° घूम जाता है, जिससे रिंग शीर्ष पर आ जाती है और तीर नीचे की ओर इंगित करता है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>ऊपरी-बाएँ कोने में स्थित अक्षर 'F' निचले-दाएँ कोने में चला जाता है और 180° घूम जाता है (उल्टा होकर इसकी भुजाएँ बाएँ ओर इंगित करती हैं)।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः, विकल्प (B) में दी गई आकृति D के स्थान पर सही आएगी।</span></p>", "question_heading": ""}, {"sr_no": 54, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">STREAM शब्द के दूसरे, तीसरे, चौथे और छठे अक्षरों (बायें से दायें गणना करने पर) से प्रत्येक शब्द में प्रत्येक अक्षर का केवल एक बार प्रयोग करते हुए कितने सार्थक अंग्रेजी शब्द बनाए जा सकते हैं?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>शून्य</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>एक</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दो</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>तीन</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दिया गया शब्द: STREAM</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>बायें से दायें गणना करने पर:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दूसरा अक्षर = T</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>तीसरा अक्षर = R</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>चौथा अक्षर = E</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>छठा अक्षर = M</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>प्राप्त अक्षर T, R, E और M हैं।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>प्रत्येक अक्षर का केवल एक बार प्रयोग करके बनने वाला एकमात्र सार्थक अंग्रेजी शब्द </span><span style=\"font-weight:bold\">TERM</span><span> है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः, केवल एक सार्थक शब्द बनाया जा सकता है।</span></p>", "question_heading": ""}, {"sr_no": 55, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">निम्नलिखित चार संख्या-युग्मों में से तीन एक निश्चित तरीके से समान हैं और इस प्रकार एक समूह बनाते हैं। वह कौन-सा युग्म है जो उस समूह से संबंधित नहीं है?</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">(नोट: संख्याओं को उनके घटकीय अंकों में तोड़े बिना, पूर्ण संख्याओं पर संक्रियाएँ की जानी चाहिए। उदाहरण के लिए 13 - 13 पर संक्रियाएँ जैसे कि 13 को जोड़ना/घटाना/गुणा करना आदि किया जा सकता है। 13 को 1 और 3 में तोड़ना और फिर 1 और 3 पर गणितीय संक्रियाएँ करने की अनुमति नहीं है।)</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>12 - 156</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>14 - 210</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>17 - 304</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>15 - 240</span></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>यहाँ अनुसरित तर्क इस प्रकार है: दूसरी संख्या = पहली संख्या </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image038.png\" width=\"19\" height=\"21\" alt style=\"vertical-align:middle\" ><span> (पहली संख्या + 1)</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>12 - 156 </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image070.png\" width=\"231\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>14 - 210 </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image071.png\" width=\"231\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>15 - 240 </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image072.png\" width=\"231\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>17 - 304 </span><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image073.png\" width=\"279\" height=\"21\" alt style=\"vertical-align:middle\" ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः, '17 - 304' उस समूह से संबंधित नहीं है।</span></p>", "question_heading": ""}, {"sr_no": 56, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">एक निश्चित कूट भाषा में, 'PRINCE' को 'RUMLZA' और 'KNIGHT' को 'MQMEEP' के रूप में कूटबद्ध किया जाता है। उसी भाषा में 'CASTLE' को किस प्रकार कूटबद्ध किया जाएगा?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>EDXQIA</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>EDWRIA</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>ECWSHA</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>EDWRIB</span></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>यहाँ अनुसरण किया गया तर्क 6-अक्षरों के शब्द को 3-3 अक्षरों के दो भागों में विभाजित करता है:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>पहले तीन अक्षरों के लिए: +2, +3, +4</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अंतिम तीन अक्षरों के लिए: -2, -3, -4</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>'PRINCE' पर लागू करने पर:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>P + 2 = R</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>R + 3 = U</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>I + 4 = M</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>N - 2 = L</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>C - 3 = Z</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>E - 4 = A</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>इसी प्रकार, 'CASTLE' के लिए:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>C + 2 = E</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>A + 3 = D</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>S + 4 = W</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>T - 2 = R</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>L - 3 = I</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>E - 4 = A</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः, 'CASTLE' को 'EDWRIA' के रूप में कूटबद्ध किया जाएगा।</span></p>", "question_heading": ""}, {"sr_no": 57, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">दिए गए कथनों और निष्कर्षों को ध्यानपूर्वक पढ़िए। आपको दिए गए कथनों को सत्य मानना है, भले ही वे सामान्यतः ज्ञात तथ्यों से भिन्न प्रतीत होते हों। आपको यह तय करना है कि कौन-सा/से निष्कर्ष दिए गए कथनों का तार्किक रूप से अनुसरण करता है/करते हैं।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">कथन:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">सभी मोबाइल, लैपटॉप हैं।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">कुछ लैपटॉप, टैबलेट हैं।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">सभी टैबलेट, कंप्यूटर हैं।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">निष्कर्ष:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">(I) कुछ कंप्यूटर, लैपटॉप हैं।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">(II) कुछ मोबाइल, टैबलेट हैं।</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>केवल निष्कर्ष (I) अनुसरण करता है</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>केवल निष्कर्ष (II) अनुसरण करता है</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दोनों निष्कर्ष (I) और (II) अनुसरण करते हैं</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>न तो निष्कर्ष (I) और न ही (II) अनुसरण करता है</span></p>", "answer": "1", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दिए गए कथनों के अनुसार:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>1. 'कुछ लैपटॉप, टैबलेट हैं' और 'सभी टैबलेट, कंप्यूटर हैं': इन्हें मिलाने पर, चूँकि लैपटॉप का कुछ हिस्सा टैबलेट है और सभी टैबलेट कंप्यूटर हैं, इसलिए लैपटॉप का वह हिस्सा निश्चित रूप से कंप्यूटर के अंतर्गत आता है। अत: 'कुछ कंप्यूटर, लैपटॉप हैं' तार्किक रूप से अनुसरण करता है। इसलिए, निष्कर्ष (I) अनुसरण करता है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>2. 'सभी मोबाइल, लैपटॉप हैं' और 'कुछ लैपटॉप, टैबलेट हैं': सभी मोबाइल लैपटॉप के अंदर हैं और टैबलेट लैपटॉप के साथ उभयनिष्ठ (overlap) हैं, लेकिन मोबाइल और टैबलेट के बीच कोई निश्चित संबंध नहीं दिया गया है। इसलिए, निष्कर्ष (II) अनुसरण नहीं करता है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः, केवल निष्कर्ष (I) अनुसरण करता है।</span></p>", "question_heading": ""}, {"sr_no": 58, "question": "  <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">उस विकल्प आकृति का चयन कीजिए जो नीचे दी गई आकृति में प्रश्न चिह्न (?) को प्रतिस्थापित करके पैटर्न को पूरा करेगी।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image074.png\" width=\"298\" height=\"297\" alt ></p>", "option1": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image075.png\" width=\"120\" height=\"120\" alt ></p>", "option2": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image076.png\" width=\"126\" height=\"127\" alt ></p>", "option3": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image077.png\" width=\"127\" height=\"126\" alt ></p>", "option4": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image078.png\" width=\"120\" height=\"120\" alt ></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>दी गई आकृति में सममित पैटर्न को पूरा करने के लिए, लुप्त ऊपरी-दाएँ चतुर्थांश में निम्नलिखित तत्व होने चाहिए:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>केंद्रीय चौराहे (इस चतुर्थांश के निचले-बाएँ कोने) से बाहरी कोने (ऊपरी-दाएँ कोने) तक जाती हुई एक विकर्ण रेखा।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image079.png\" width=\"296\" height=\"284\" alt ></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>केवल विकल्प </span><span style=\"font-weight:bold\">(C)</span><span> इन सभी तत्वों को उनके सही स्थान और अभिविन्यास में दर्शाता है।</span></p>", "question_heading": ""}, {"sr_no": 59, "question": " <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">एक निश्चित कूट भाषा में, ‘CARD’ को ‘9143’, ‘DATE’ को ‘4732’, ‘TEAM’ को ‘7264’ और ‘MORE’ को ‘8697’ के रूप में कूटबद्ध किया जाता है। दी गई कूट भाषा में ‘T’ के लिए कूट क्या है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>4</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>7</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>2</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>6</span></p>", "answer": "3", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>‘T’ का कूट ज्ञात करने के लिए, हम दिए गए शब्दों में उभयनिष्ठ अक्षरों और अंकों की तुलना करते हैं:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>1. अक्षर ‘T’, ‘DATE’ (4732) और ‘TEAM’ (7264) में उपस्थित है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>2. ‘DATE’ और ‘TEAM’ के बीच उभयनिष्ठ अक्षर ‘A’, ‘E’ और ‘T’ हैं। ‘4732’ और ‘7264’ के बीच उभयनिष्ठ अंक 2, 4 और 7 हैं।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>3. अब, ‘A’ और ‘E’ के मान ज्ञात करते हैं:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>- ‘A’, ‘CARD’ (9143) में भी उपस्थित है। ‘CARD’ (9143), ‘DATE’ (4732) और ‘TEAM’ (7264) में उभयनिष्ठ अंक 4 है। अतः, ‘A’ = 4 है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>- ‘E’, ‘MORE’ (8697) में भी उपस्थित है। ‘DATE’ (4732), ‘TEAM’ (7264) और ‘MORE’ (8697) में उभयनिष्ठ अंक 7 है। अतः, ‘E’ = 7 है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>4. चूंकि {A, E, T} के कूट {2, 4, 7} हैं, तथा A = 4 और E = 7 है, इसलिए ‘T’ के लिए कूट 2 होगा।</span></p>", "question_heading": ""}, {"sr_no": 60, "question": "  <p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><span style=\"font-weight:bold\">जब नीचे दी गई आकृति को एक घन बनाने के लिए मोड़ा जाता है, तो तारा (★) प्रतीक दर्शाने वाले फलक के विपरीत फलक पर कौन-सा प्रतीक होगा?</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;text-align:justify;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image080.png\" width=\"200\" height=\"260\" alt ></p>", "option1": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image081.png\" width=\"100\" height=\"100\" alt ></p>", "option2": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image082.png\" width=\"100\" height=\"100\" alt ></p>", "option3": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image083.png\" width=\"100\" height=\"100\" alt ></p>", "option4": "  <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><img src=\"https://static-appxdb-v2.akamai.net.in/website/bulk_uploader_images/1795021672673_image084.png\" width=\"100\" height=\"100\" alt ></p>", "answer": "2", "negative_marking": "1", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>खुले पासे के प्रसार चित्र में, एक ही सीधी रेखा (पंक्ति या स्तंभ) में एक फलक छोड़कर आने वाले फलक घन मोड़े जाने पर एक-दूसरे के विपरीत होते हैं:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>1. बीच के ऊर्ध्वाधर स्तंभ के चार फलकों में:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>• धन चिह्न (+) वाला पहला फलक, दोहरे वृत्त वाले तीसरे फलक के विपरीत है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>• त्रिभुज (△) वाला दूसरा फलक, तारे (★) वाले चौथे फलक के विपरीत है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>2. दोनों बाहरी फलक एक-दूसरे के विपरीत होते हैं:</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>• समचतुर्भुज (डायमंड) वाला फलक, पंचभुज वाले फलक के विपरीत है।</span></p><p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span>अतः, तारे (★) वाले फलक के विपरीत त्रिभुज (△) वाला फलक होगा, जो विकल्प (B) में दिया गया है।</span></p>", "question_heading": ""}];
+
+let currentQuestion = 0;
+let answers = {};
+let bookmarks = new Set();
+let timerSeconds = 0;
+let timerInterval = null;
+let isPaletteOpen = false;
+
+const STORAGE_KEY = 'quizState_' + (document.title || 'default');
+
+function isImageURL(str) {
+  return str && (str.startsWith('http://') || str.startsWith('https://'));
+}
+
+function createOptionContent(optionText) {
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'option-content';
+    
+    if (isImageURL(optionText)) {
+        const img = document.createElement('img');
+        img.src = optionText;
+        img.className = 'option-image';
+        img.alt = 'Option image';
+        img.loading = 'lazy';
+        img.onerror = function() {
+            this.style.display = 'none';
+            const errorText = document.createTextNode('Image failed to load');
+            contentDiv.appendChild(errorText);
+        };
+        contentDiv.appendChild(img);
+    } else {
+        contentDiv.innerHTML = optionText;
+    }
+    
+    return contentDiv;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  initQuiz();
+  initEventListeners();
+  loadFromLocalStorage();
+  startTimer();
+  createPalette();
+  preventDoubleTapZoom();
+});
+
+function preventDoubleTapZoom() {
+  let lastTouchEnd = 0;
+  document.addEventListener('touchend', (event) => {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) {
+      event.preventDefault();
+    }
+    lastTouchEnd = now;
+  }, { passive: false });
+}
+
+function initTheme() {
+  const savedTheme = localStorage.getItem('quizTheme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  updateThemeIcon();
+}
+
+function updateThemeIcon() {
+  const theme = document.documentElement.getAttribute('data-theme');
+  const themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    themeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  }
+}
+
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('quizTheme', newTheme);
+  updateThemeIcon();
+}
+
+function initQuiz() {
+  loadQuestion(currentQuestion);
+  updateMarkingInfo();
+}
+
+function initEventListeners() {
+  const themeBtn = document.getElementById('themeToggle');
+  const fullscreenBtn = document.getElementById('fullscreenBtn');
+  
+  if (themeBtn) {
+    themeBtn.addEventListener('click', toggleTheme);
+    themeBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      toggleTheme();
+    });
+  }
+  
+  if (fullscreenBtn) {
+    fullscreenBtn.addEventListener('click', toggleFullscreen);
+    fullscreenBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      toggleFullscreen();
+    });
+  }
+  
+  addButtonListener('prevBtn', prevQuestion);
+  addButtonListener('nextBtn', nextQuestion);
+  addButtonListener('clearBtn', clearAnswer);
+  addButtonListener('submitBtn', confirmSubmit);
+  addButtonListener('bookmarkBtn', toggleBookmark);
+  
+  addButtonListener('paletteFab', togglePalette);
+  addButtonListener('paletteClose', closePalette);
+  
+  const overlay = document.getElementById('paletteOverlay');
+  if (overlay) {
+    overlay.addEventListener('click', closePalette);
+    overlay.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      closePalette();
+    });
+  }
+  
+  const searchInput = document.getElementById('paletteSearch');
+  if (searchInput) {
+    searchInput.addEventListener('input', handleSearch);
+    searchInput.addEventListener('change', jumpToQuestion);
+  }
+  
+  document.addEventListener('keydown', handleKeyPress);
+  
+  setInterval(saveToLocalStorage, 5000);
+  
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      updatePalette();
+    }
+  });
+}
+
+function addButtonListener(id, handler) {
+  const btn = document.getElementById(id);
+  if (btn) {
+    btn.addEventListener('click', handler);
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      handler();
+    });
+  }
+}
+
+function jumpToQuestion(e) {
+  const questionNum = parseInt(e.target.value);
+  if (questionNum >= 1 && questionNum <= questions.length) {
+    goToQuestion(questionNum - 1);
+    closePalette();
+    e.target.value = '';
+  }
+}
+
+function togglePalette() {
+  isPaletteOpen = !isPaletteOpen;
+  const palette = document.getElementById('questionPalette');
+  const overlay = document.getElementById('paletteOverlay');
+  const fab = document.getElementById('paletteFab');
+  
+  if (isPaletteOpen) {
+    palette.classList.add('active');
+    overlay.classList.add('active');
+    fab.classList.add('active');
+    fab.innerHTML = '✕<span class="badge" id="answeredBadge">' + Object.keys(answers).length + '</span>';
+    document.body.classList.add('palette-open');
+  } else {
+    closePalette();
+  }
+}
+
+function closePalette() {
+  isPaletteOpen = false;
+  const palette = document.getElementById('questionPalette');
+  const overlay = document.getElementById('paletteOverlay');
+  const fab = document.getElementById('paletteFab');
+  
+  if (palette) palette.classList.remove('active');
+  if (overlay) overlay.classList.remove('active');
+  if (fab) {
+    fab.classList.remove('active');
+    fab.innerHTML = '📋<span class="badge" id="answeredBadge">' + Object.keys(answers).length + '</span>';
+  }
+  document.body.classList.remove('palette-open');
+}
+
+function handleSearch(e) {
+  const searchTerm = e.target.value.toLowerCase();
+  if (!searchTerm) {
+    document.querySelectorAll('.palette-btn').forEach(btn => {
+      btn.style.display = '';
+    });
+    return;
+  }
+  
+  const buttons = document.querySelectorAll('.palette-btn');
+  buttons.forEach((btn, index) => {
+    const questionNum = (index + 1).toString();
+    if (questionNum.includes(searchTerm)) {
+      btn.style.display = '';
+    } else {
+      btn.style.display = 'none';
+    }
+  });
+}
+
+function handleKeyPress(e) {
+  if (document.getElementById('resultSection').classList.contains('hidden')) {
+    if (e.key === 'Escape' && isPaletteOpen) {
+      closePalette();
+    } else if (!isPaletteOpen && e.target.tagName !== 'INPUT') {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevQuestion();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        nextQuestion();
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        nextQuestion();
+      } else if (e.key === 'b' || e.key === 'B') {
+        e.preventDefault();
+        toggleBookmark();
+      } else if (e.key === 'c' || e.key === 'C') {
+        e.preventDefault();
+        clearAnswer();
+      } else if (e.key === 'p' || e.key === 'P') {
+        e.preventDefault();
+        togglePalette();
+      } else if (e.key >= '1' && e.key <= '4') {
+        e.preventDefault();
+        selectOption(parseInt(e.key));
+      }
+    }
+  }
+}
+
+function selectOption(optionNum) {
+  const q = questions[currentQuestion];
+  const radio = document.querySelector(`input[name="q${q.sr_no}"][value="${optionNum}"]`);
+  if (radio) {
+    radio.checked = true;
+    const label = radio.closest('.option-label');
+    if (label) {
+      document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      saveAnswer();
+    }
+  }
+}
+
+function toggleFullscreen() {
+  try {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(err => {
+        console.log('Fullscreen error:', err);
+      });
+    } else {
+      document.exitFullscreen();
+    }
+  } catch (err) {
+    console.log('Fullscreen not supported');
+  }
+}
+
+function startTimer() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+  timerInterval = setInterval(() => {
+    timerSeconds++;
+    updateTimer();
+    if (timerSeconds > 600) {
+      const timer = document.getElementById('timer');
+      if (timer) timer.classList.add('warning');
+    }
+  }, 1000);
+}
+
+function updateTimer() {
+  const minutes = Math.floor(timerSeconds / 60);
+  const seconds = timerSeconds % 60;
+  const timer = document.getElementById('timer');
+  if (timer) {
+    timer.textContent = 
+      `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  }
+}
+
+function createPalette() {
+  const grid = document.getElementById('paletteGrid');
+  if (!grid) return;
+  
+  grid.innerHTML = '';
+  questions.forEach((q, index) => {
+    const btn = document.createElement('button');
+    btn.textContent = index + 1;
+    btn.className = 'palette-btn';
+    btn.setAttribute('aria-label', `Go to question ${index + 1}`);
+    btn.setAttribute('type', 'button');
+    
+    btn.addEventListener('click', () => {
+      goToQuestion(index);
+      closePalette();
+    });
+    
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      goToQuestion(index);
+      closePalette();
+    });
+    
+    grid.appendChild(btn);
+  });
+  updatePalette();
+}
+
+function updatePalette() {
+  const buttons = document.querySelectorAll('.palette-btn');
+  buttons.forEach((btn, index) => {
+    btn.className = 'palette-btn';
+    if (index === currentQuestion) btn.classList.add('current');
+    if (answers[questions[index].sr_no]) btn.classList.add('answered');
+    if (bookmarks.has(questions[index].sr_no)) btn.classList.add('bookmarked');
+  });
+  
+  updatePaletteStats();
+}
+
+function updatePaletteStats() {
+  const answered = Object.keys(answers).length;
+  const unanswered = questions.length - answered;
+  const bookmarkedCount = bookmarks.size;
+  
+  const answeredEl = document.getElementById('paletteAnswered');
+  const unansweredEl = document.getElementById('paletteUnanswered');
+  const bookmarkedEl = document.getElementById('paletteBookmarked');
+  
+  if (answeredEl) answeredEl.textContent = answered;
+  if (unansweredEl) unansweredEl.textContent = unanswered;
+  if (bookmarkedEl) bookmarkedEl.textContent = bookmarkedCount;
+  
+  const badge = document.querySelector('.palette-fab .badge');
+  if (badge) badge.textContent = answered;
+}
+
+function goToQuestion(index) {
+  if (index < 0 || index >= questions.length) return;
+  saveAnswer();
+  currentQuestion = index;
+  loadQuestion(currentQuestion);
+  
+  const questionSection = document.getElementById('questionSection');
+  if (questionSection) {
+    setTimeout(() => {
+      questionSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+}
+
+function loadQuestion(index) {
+  const q = questions[index];
+  
+  const questionNumber = document.getElementById('questionNumber');
+  const questionText = document.getElementById('questionText');
+  
+  if (questionNumber) {
+    questionNumber.textContent = `Question ${index + 1} of ${questions.length}`;
+  }
+  
+  if (questionText) {
+    questionText.innerHTML = '';
+    
+    // 🌟 NEW: Create the Heading Box if it exists!
+    let headingHtml = '';
+    if (q.question_heading && q.question_heading.trim() !== '') {
+      headingHtml = `<div style="background: var(--bg-tertiary); padding: 15px; border-left: 4px solid var(--primary-color); margin-bottom: 20px; border-radius: 8px; overflow-x: auto;">${q.question_heading}</div>`;
+      questionText.innerHTML = headingHtml; // Inject heading first
+    }
+
+    if (isImageURL(q.question)) {
+      const img = document.createElement('img');
+      img.src = q.question;
+      img.className = 'question-image';
+      img.alt = 'Question image';
+      img.loading = 'lazy';
+      img.onerror = function() {
+        this.style.display = 'none';
+        questionText.innerHTML += q.question;
+      };
+      questionText.appendChild(img);
+    } else {
+      questionText.innerHTML += q.question; // Append question after heading
+    }
+  }
+  
+  const container = document.getElementById('optionsContainer');
+  if (!container) return;
+  
+  container.innerHTML = '';
+  
+  for (let i = 1; i <= 4; i++) {
+    const label = document.createElement('label');
+    label.className = 'option-label';
+    if (answers[q.sr_no] == i) label.classList.add('selected');
+    
+    const radio = document.createElement('input');
+    radio.type = 'radio';
+    radio.name = `q${q.sr_no}`;
+    radio.value = i;
+    radio.checked = answers[q.sr_no] == i;
+    
+    const changeHandler = () => {
+      document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      saveAnswer();
+    };
+    
+    radio.addEventListener('change', changeHandler);
+    label.addEventListener('click', (e) => {
+      if (e.target !== radio) {
+        radio.checked = true;
+        changeHandler();
+      }
+    });
+    
+    label.appendChild(radio);
+    
+    const optionContent = createOptionContent(q[`option${i}`]);
+    label.appendChild(optionContent);
+    
+    container.appendChild(label);
+  }
+  
+  const bookmarkBtn = document.getElementById('bookmarkBtn');
+  if (bookmarkBtn) {
+    if (bookmarks.has(q.sr_no)) {
+      bookmarkBtn.classList.add('active');
+    } else {
+      bookmarkBtn.classList.remove('active');
+    }
+  }
+  
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const submitBtn = document.getElementById('submitBtn');
+  
+  if (prevBtn) prevBtn.disabled = index === 0;
+  
+  if (index === questions.length - 1) {
+    if (nextBtn) nextBtn.classList.add('hidden');
+    if (submitBtn) submitBtn.classList.remove('hidden');
+  } else {
+    if (nextBtn) nextBtn.classList.remove('hidden');
+    if (submitBtn) submitBtn.classList.add('hidden');
+  }
+  
+  updateProgress();
+  updatePalette();
+}
+
+function updateMarkingInfo() {
+  if(questions.length > 0) {
+      const q = questions[0];
+      const markingInfo = document.getElementById('markingInfo');
+      if (markingInfo) {
+        markingInfo.textContent = `Marking: +${q.positive_marking}, -${q.negative_marking}`;
+      }
+  }
+}
+
+function updateProgress() {
+  const attempted = Object.keys(answers).length;
+  const currentProgress = ((currentQuestion + 1) / questions.length) * 100;
+  
+  const progressBar = document.getElementById('progressBar');
+  const progressText = document.getElementById('progressText');
+  const attemptedText = document.getElementById('attemptedText');
+  
+  if (progressBar) progressBar.style.width = `${currentProgress}%`;
+  if (progressText) progressText.textContent = `${currentQuestion + 1}/${questions.length}`;
+  if (attemptedText) attemptedText.textContent = attempted;
+}
+
+function saveAnswer() {
+  const q = questions[currentQuestion];
+  const selected = document.querySelector(`input[name="q${q.sr_no}"]:checked`);
+  
+  if (selected) {
+    answers[q.sr_no] = selected.value;
+  }
+  
+  updateProgress();
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function clearAnswer() {
+  const q = questions[currentQuestion];
+  delete answers[q.sr_no];
+  
+  const selected = document.querySelector(`input[name="q${q.sr_no}"]:checked`);
+  if (selected) selected.checked = false;
+  
+  document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+  
+  updateProgress();
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function toggleBookmark() {
+  const q = questions[currentQuestion];
+  const btn = document.getElementById('bookmarkBtn');
+  
+  if (bookmarks.has(q.sr_no)) {
+    bookmarks.delete(q.sr_no);
+    if (btn) btn.classList.remove('active');
+  } else {
+    bookmarks.add(q.sr_no);
+    if (btn) btn.classList.add('active');
+  }
+  
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function nextQuestion() {
+  saveAnswer();
+  if (currentQuestion < questions.length - 1) {
+    currentQuestion++;
+    loadQuestion(currentQuestion);
+  }
+}
+
+function prevQuestion() {
+  saveAnswer();
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    loadQuestion(currentQuestion);
+  }
+}
+
+function confirmSubmit() {
+  const unattempted = questions.length - Object.keys(answers).length;
+  let message = 'Are you sure you want to submit the quiz?';
+  
+  if (unattempted > 0) {
+    message += `\n\nYou have ${unattempted} unanswered question(s).`;
+  }
+  
+  if (confirm(message)) {
+    submitQuiz();
+  }
+}
+
+function submitQuiz() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+  }
+  saveAnswer();
+  closePalette();
+  
+  let correct = 0, wrong = 0, unattempted = 0, score = 0;
+  
+  questions.forEach(q => {
+    const userAns = answers[q.sr_no];
+    const posMark = parseFloat(q.positive_marking) || 0;
+    const negMark = parseFloat(q.negative_marking) || 0;
+    
+    if (!userAns) {
+      unattempted++;
+    } else if (userAns == q.answer) {
+      correct++;
+      score += posMark;
+    } else {
+      wrong++;
+      score -= negMark;
+    }
+  });
+  
+  displayResults(correct, wrong, unattempted, score);
+  
+  const fab = document.getElementById('paletteFab');
+  const nav = document.getElementById('navigation');
+  if (fab) fab.style.display = 'none';
+  if (nav) nav.style.display = 'none';
+  
+  document.body.style.paddingBottom = '20px';
+  
+  clearLocalStorage();
+}
+
+function displayResults(correct, wrong, unattempted, score) {
+  const totalQuestions = questions.length;
+  const percentage = ((correct / totalQuestions) * 100).toFixed(1);
+  const timerEl = document.getElementById('timer');
+  const timeText = timerEl ? timerEl.textContent : '00:00';
+  
+  let html = `
+    <div class="score-card">
+      <h2>${score}/${totalQuestions}</h2>
+      <p>Your Score: ${percentage}%</p>
+      <p>Time Taken: ${timeText}</p>
+    </div>
+    
+    <div class="stats-grid">
+      <div class="stat-card correct">
+        <h3>${correct}</h3>
+        <p>Correct</p>
+      </div>
+      <div class="stat-card wrong">
+        <h3>${wrong}</h3>
+        <p>Wrong</p>
+      </div>
+      <div class="stat-card unattempted">
+        <h3>${unattempted}</h3>
+        <p>Unattempted</p>
+      </div>
+      <div class="stat-card">
+        <h3>${totalQuestions}</h3>
+        <p>Total</p>
+      </div>
+    </div>
+  `;
+  
+  questions.forEach(q => {
+    const userAns = answers[q.sr_no];
+    
+    // 🌟 NEW: Add the Heading to the results review screen!
+    let headingHtml = (q.question_heading && q.question_heading.trim() !== '') 
+      ? `<div style="background: var(--bg-tertiary); padding: 10px; margin-bottom: 15px; border-left: 4px solid var(--primary-color); border-radius: 5px; overflow-x: auto;">${q.question_heading}</div>` 
+      : '';
+      
+    const questionHeader = isImageURL(q.question)
+      ? `<h4>Q${q.sr_no}:</h4>${headingHtml}<img src="${q.question}" class="question-image" alt="Question ${q.sr_no}">`
+      : `<h4>Q${q.sr_no}:</h4>${headingHtml}<div style="margin-bottom: 10px;">${q.question}</div>`;
+      
+    html += `<div class="question-review">${questionHeader}`;
+    
+    for (let i = 1; i <= 4; i++) {
+      const isCorrect = i.toString() === q.answer;
+      const isUserAnswer = userAns == i.toString();
+      
+      let className = 'review-option';
+      if (isCorrect) className += ' correct';
+      if (isUserAnswer && !isCorrect) className += ' wrong';
+      if (isUserAnswer) className += ' user-selected';
+      
+      const optionValue = q[`option${i}`];
+      
+      if (isImageURL(optionValue)) {
+        html += `<div class="${className}">
+          ${isCorrect ? '✓ ' : ''}${isUserAnswer ? '➤ ' : ''} 
+          <img src="${optionValue}" class="option-image" alt="Option ${i}">
+        </div>`;
+      } else {
+        html += `<div class="${className}">
+          ${isCorrect ? '✓ ' : ''}${isUserAnswer ? '➤ ' : ''}${optionValue}
+        </div>`;
+      }
+    }
+    
+    if (q.solution_text && q.solution_text.trim() !== '') {
+      const solutionContent = isImageURL(q.solution_text)
+        ? `<img src="${q.solution_text}" class="solution-image" alt="Solution">`
+        : q.solution_text;
+      html += `<div class="solution-section">
+        <div class="solution-label">📝 Solution:</div>
+        <div class="solution-content">${solutionContent}</div>
+      </div>`;
+    }
+    
+    html += `</div>`; 
+});
+  
+  html += `
+    <div class="action-buttons">
+      <button class="action-btn restart" onclick="restartQuiz()">Restart Quiz</button>
+      <button class="action-btn download" onclick="downloadResults()">Download Results</button>
+      <button class="action-btn print" onclick="window.print()">Print Results</button>
+    </div>
+  `;
+  
+  const resultSection = document.getElementById('resultSection');
+  const questionSection = document.getElementById('questionSection');
+  const progressSection = document.querySelector('.progress-section');
+  
+  if (resultSection) {
+    resultSection.innerHTML = html;
+    resultSection.classList.remove('hidden');
+  }
+  if (questionSection) questionSection.classList.add('hidden');
+  if (progressSection) progressSection.classList.add('hidden');
+  
+  const quizContainer = document.getElementById('quizContainer');
+  if (quizContainer) {
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
+  }
+}
+
+function restartQuiz() {
+  if (confirm('Are you sure you want to restart? All progress will be lost.')) {
+    currentQuestion = 0;
+    answers = {};
+    bookmarks.clear();
+    timerSeconds = 0;
+    
+    const resultSection = document.getElementById('resultSection');
+    const questionSection = document.getElementById('questionSection');
+    const progressSection = document.querySelector('.progress-section');
+    const fab = document.getElementById('paletteFab');
+    const nav = document.getElementById('navigation');
+    
+    if (resultSection) {
+      resultSection.classList.add('hidden');
+      resultSection.innerHTML = '';
+    }
+    if (questionSection) questionSection.classList.remove('hidden');
+    if (progressSection) progressSection.classList.remove('hidden');
+    if (fab) fab.style.display = 'flex';
+    if (nav) nav.style.display = 'grid';
+    
+    document.body.style.paddingBottom = 'var(--nav-height)';
+    
+    if (timerInterval) {
+      clearInterval(timerInterval);
+    }
+    startTimer();
+    
+    loadQuestion(currentQuestion);
+    createPalette();
+  }
+}
+
+function downloadResults() {
+  const resultSection = document.getElementById('resultSection');
+  if (!resultSection) return;
+  
+  const resultHTML = resultSection.innerHTML;
+  const fullHTML = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Results</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; max-width: 900px; margin: 0 auto; }
+    .score-card { background: linear-gradient(135deg, #007bff, #28a745); color: white; padding: 30px; border-radius: 15px; text-align: center; margin-bottom: 20px; }
+    .score-card h2 { font-size: 48px; margin-bottom: 10px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 30px; }
+    .stat-card { background: white; padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #ddd; }
+    .stat-card h3 { font-size: 32px; margin-bottom: 8px; }
+    .stat-card.correct h3 { color: #28a745; }
+    .stat-card.wrong h3 { color: #dc3545; }
+    .stat-card.unattempted h3 { color: #6c757d; }
+    .question-review { background: white; border: 2px solid #ddd; border-radius: 10px; padding: 20px; margin-bottom: 15px; }
+    .question-review h4 { margin-bottom: 15px; font-size: 16px; line-height: 1.6; }
+    .review-option { padding: 10px 15px; margin: 8px 0; border-radius: 8px; border: 2px solid #ddd; display: flex; align-items: center; gap: 10px; }
+    .option-image { max-width: 150px; max-height: 100px; border-radius: 8px; }
+    .review-option.correct { background: #d4edda; border-color: #28a745; color: #155724; }
+    .review-option.wrong { background: #f8d7da; border-color: #dc3545; color: #721c24; }
+    .review-option.user-selected { border-width: 3px; font-weight: bold; }
+    @media print { body { background: white; } }
+    @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center; color: #007bff;">Quiz Results</h1>
+  <p style="text-align: center; color: #666; margin-bottom: 30px;">Generated on: ${new Date().toLocaleString()}</p>
+  ${resultHTML.replace(/<div class="action-buttons">[\s\S]*?<\/div>/, '')}
+</body>
+</html>
+  `;
+  
+  try {
+    const blob = new Blob([fullHTML], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `Quiz_Results_${new Date().getTime()}.html`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  } catch (err) {
+    alert('Download failed. Please try using the Print option instead.');
+    console.error('Download error:', err);
+  }
+}
+
+function saveToLocalStorage() {
+  try {
+    const state = {
+      currentQuestion,
+      answers,
+      bookmarks: Array.from(bookmarks),
+      timerSeconds,
+      timestamp: Date.now()
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch (err) {
+    console.error('Save error:', err);
+  }
+}
+
+function loadFromLocalStorage() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const state = JSON.parse(saved);
+      const hasProgress = (state && (
+        (state.currentQuestion && state.currentQuestion > 0) ||
+        (state.answers && Object.keys(state.answers).length > 0) ||
+        (state.timerSeconds && state.timerSeconds > 0)
+      ));
+      if (hasProgress && (Date.now() - state.timestamp < 24 * 60 * 60 * 1000)) {
+        if (confirm('Resume previous quiz session?')) {
+          currentQuestion = state.currentQuestion || 0;
+          answers = state.answers || {};
+          bookmarks = new Set(state.bookmarks || []);
+          timerSeconds = state.timerSeconds || 0;
+          updateTimer();
+          loadQuestion(currentQuestion);
+        }
+      } else {
+        clearLocalStorage();
+      }
+    }
+  } catch (err) {
+    console.error('Load error:', err);
+    clearLocalStorage();
+  }
+}
+
+function clearLocalStorage() {
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (err) {
+    console.error('Clear storage error:', err);
+  }
+}
+
+window.addEventListener('beforeunload', (e) => {
+  const resultSection = document.getElementById('resultSection');
+  if (resultSection && !resultSection.classList.contains('hidden')) {
+    return;
+  }
+  e.preventDefault();
+  e.returnValue = '';
+});
+
+window.addEventListener('unload', () => {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+});
+</script>
+</body>
+</html>
