@@ -1,22 +1,22 @@
-SSC PrepX Support Team integration
+SSC PrepX Support Team + Digital Timer setup
 
-Files:
-- index.html: Updated homepage. GOV CENTRE button is replaced with Support Team and opens a support popup.
-- api/support.js: Vercel serverless endpoint that forwards submissions to your Telegram bot.
+1. Upload the complete folder contents to the root of your GitHub/Vercel project.
+2. Keep the existing Firebase files and folders (especially js/firebase.js) in place.
+3. Create a separate Telegram bot for Support using @BotFather and add it to your support group.
+4. In Vercel > Project > Settings > Environment Variables, add:
+   SUPPORT_BOT_TOKEN = token of the NEW Support bot
+   SUPPORT_CHAT_ID  = -1005943726863
+5. Redeploy the Vercel project.
 
-Important setup:
-1. Deploy this folder structure to Vercel. Keep api/support.js at the project root inside the api folder (same level as index.html).
-2. In Telegram, create a bot with @BotFather.
-3. Start a private chat with your bot and send /start. To receive messages in a group, add the bot to that group and use the group's chat ID.
-4. Set these environment variables in Vercel > Project > Settings > Environment Variables:
-   TELEGRAM_BOT_TOKEN = your bot token
-   TELEGRAM_CHAT_ID = your personal chat ID or group chat ID
-5. Redeploy the project after adding/changing environment variables.
+The existing Admin Panel bot environment variables are not changed.
 
-Security:
-- Do NOT put the bot token in index.html or any public JavaScript.
-- Do NOT share your bot token in chat or commit it to GitHub.
-- Optional Telegram username and email are user-entered contact details, not independently verified identities.
-- Screenshot upload is optional and limited to images up to 3 MB.
+Support form:
+- Name and email are taken from the currently signed-in Firebase account/profile.
+- Telegram User ID is included only if it is already saved in the Firebase users/{uid} profile under telegramUserId, telegram_user_id, or telegramId.
+- A normal Firebase login does NOT reveal a person's Telegram User ID. To populate it automatically, you must separately add an official Telegram Login/linking flow and save its verified ID to that user's Firebase profile.
+- If no Firebase user is signed in, name/email may show as unavailable.
+- Problem description is required; screenshot is optional (image up to 3 MB).
 
-The API uses Vercel Node serverless functions (Node.js 18+ for fetch/FormData/Blob).
+Digital Timer is a stopwatch with Start/Pause/Resume/Reset.
+
+Security note: never put bot tokens in index.html or commit them to GitHub.
