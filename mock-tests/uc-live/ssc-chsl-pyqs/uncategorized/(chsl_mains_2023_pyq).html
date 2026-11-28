@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>10.) chsl mains 2023 pyq - Hindi</title>
+<style>
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0069d9;
+  --success-color: #28a745;
+  --success-hover: #218838;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --secondary-color: #6c757d;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --border-color: #dee2e6;
+  --shadow: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
+  --overlay: rgba(0,0,0,0.5);
+  --nav-height: 80px;
+}
+
+[data-theme="dark"] {
+  --primary-color: #4dabf7;
+  --primary-hover: #339af0;
+  --success-color: #51cf66;
+  --success-hover: #40c057;
+  --danger-color: #ff6b6b;
+  --warning-color: #ffd43b;
+  --secondary-color: #868e96;
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #404040;
+  --text-primary: #f8f9fa;
+  --text-secondary: #adb5bd;
+  --border-color: #495057;
+  --shadow: 0 4px 6px rgba(0,0,0,0.3);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.4);
+  --overlay: rgba(0,0,0,0.7);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+  overflow-x: hidden;
+  position: relative;
+  padding-bottom: var(--nav-height);
+}
+
+body.palette-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-primary);
+  padding: 20px 30px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+
+.header h1 {
+  font-size: 28px;
+  color: var(--primary-color);
+  font-weight: 700;
+  user-select: none;
+}
+
+.header-controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.theme-toggle, .fullscreen-btn {
+  background: var(--bg-tertiary);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.3s;
+  min-width: 44px;
+  min-height: 44px;
+  user-select: none;
+}
+
+.theme-toggle:active, .fullscreen-btn:active {
+  transform: scale(0.95);
+}
+
+.theme-toggle:hover, .fullscreen-btn:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+.bot-link-btn {
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+}
+.bot-link-btn:active {
+  transform: scale(0.95);
+}
+.bot-link-btn:hover {
+  background: var(--primary-hover);
+}
+
+.timer {
+  background: var(--warning-color);
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 18px;
+  min-width: 100px;
+  text-align: center;
+  user-select: none;
+}
+
+.timer.warning {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.palette-fab {
+  position: fixed;
+  bottom: calc(var(--nav-height) + 20px);
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  box-shadow: 0 6px 20px rgba(0,123,255,0.4);
+  transition: all 0.3s ease;
+  z-index: 998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.palette-fab:active {
+  transform: scale(0.9);
+}
+
+.palette-fab:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0,123,255,0.6);
+}
+
+.palette-fab.active {
+  background: var(--danger-color);
+}
+
+.palette-fab .badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: var(--success-color);
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--bg-secondary);
+  pointer-events: none;
+}
+.solution-section {
+  margin-top: 20px;
+  padding: 15px;
+  background: #e7f3ff;
+  border-left: 4px solid var(--primary-color);
+  border-radius: 8px;
+}
+
+.solution-label {
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.solution-content {
+  line-height: 1.6;
+  color: #333;
+}
+
+.solution-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.palette-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 999;
+  touch-action: none;
+}
+
+.palette-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.question-palette {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 450px;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--bg-primary);
+  box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+  transition: right 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.question-palette.active {
+  right: 0;
+}
+
+.palette-header {
+  padding: 20px;
+  background: var(--primary-color);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.palette-header h3 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.palette-close {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: background 0.2s;
+  line-height: 1;
+  touch-action: manipulation;
+}
+
+.palette-close:active {
+  transform: scale(0.9);
+}
+
+.palette-close:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.palette-stats {
+  padding: 15px 20px;
+  background: var(--bg-tertiary);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  font-size: 13px;
+  text-align: center;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border-color);
+  user-select: none;
+}
+
+.palette-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.palette-stat .number {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.palette-stat.answered .number { color: var(--success-color); }
+.palette-stat.unanswered .number { color: var(--secondary-color); }
+.palette-stat.bookmarked .number { color: var(--warning-color); }
+
+.palette-search {
+  padding: 15px 20px;
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+}
+
+.palette-search input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 14px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.palette-search input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.palette-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 10px;
+}
+
+.palette-btn {
+  aspect-ratio: 1;
+  border: 2px solid var(--border-color);
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+  min-width: 40px;
+  min-height: 40px;
+  color: var(--text-primary);
+  position: relative;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.palette-btn:active {
+  transform: scale(0.9);
+}
+
+.palette-btn:hover {
+  transform: scale(1.1);
+  z-index: 10;
+  box-shadow: var(--shadow);
+}
+
+.palette-btn.current {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  animation: currentPulse 2s infinite;
+}
+
+@keyframes currentPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,123,255,0.7); }
+  50% { box-shadow: 0 0 0 8px rgba(0,123,255,0); }
+}
+
+.palette-btn.answered {
+  background: var(--success-color);
+  color: white;
+  border-color: var(--success-color);
+}
+
+.palette-btn.bookmarked::after {
+  content: '🔖';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.palette-btn.bookmarked.answered {
+  background: var(--success-color);
+}
+
+.palette-legend {
+  padding: 20px;
+  border-top: 1px solid var(--border-color);
+  font-size: 13px;
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.legend-color {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.quiz-container {
+  background: var(--bg-primary);
+  border-radius: 15px;
+  box-shadow: var(--shadow-lg);
+  padding: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  scroll-margin-top: 20px;
+}
+
+.quiz-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.marking-info {
+  display: inline-block;
+  background: var(--bg-tertiary);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.progress-section {
+  margin-bottom: 25px;
+}
+
+.progress-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.progress-bar-container {
+  background: var(--bg-tertiary);
+  border-radius: 12px;
+  overflow: hidden;
+  height: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+  transition: width 0.4s ease;
+  border-radius: 12px;
+}
+
+.question-section {
+  min-height: 300px;
+  scroll-margin-top: 80px;
+  margin-bottom: 20px;
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.question-number {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary-color);
+  user-select: none;
+}
+
+.bookmark-btn {
+  background: transparent;
+  border: 2px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 44px;
+  min-height: 44px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.bookmark-btn:active {
+  transform: scale(0.95);
+}
+
+.bookmark-btn.active {
+  background: var(--warning-color);
+  border-color: var(--warning-color);
+  color: #000;
+}
+
+.question {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 25px;
+  color: var(--text-primary);
+  user-select: text;
+}
+
+.question-image {
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: 10px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  padding: 10px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--border-color);
+  padding: 16px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--bg-secondary);
+  min-height: 60px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.option-label:active {
+  transform: scale(0.98);
+}
+
+.option-label:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--primary-color);
+}
+
+.option-label.selected {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.option-label input[type="radio"] {
+  margin-right: 15px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.option-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.option-image {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  padding: 10px;
+}
+
+.option-label.selected .option-image {
+  background: rgba(255,255,255,0.1);
+}
+
+/* FIXED NAVIGATION - KEY UPDATE */
+.navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-primary);
+  border-top: 2px solid var(--border-color);
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  z-index: 997;
+  padding: 15px 20px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 10px;
+  max-width: 100%;
+}
+
+.nav-btn {
+  padding: 14px 20px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+.nav-btn:active {
+  transform: scale(0.97);
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.nav-btn.prev {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.nav-btn.prev:hover:not(:disabled) {
+  background: #5a6268;
+}
+
+.nav-btn.next {
+  background: var(--primary-color);
+  color: white;
+}
+
+.nav-btn.next:hover:not(:disabled) {
+  background: var(--primary-hover);
+}
+
+.nav-btn.clear {
+  background: var(--danger-color);
+  color: white;
+}
+
+.nav-btn.clear:hover {
+  background: #c82333;
+}
+
+.nav-btn.submit {
+  background: var(--success-color);
+  color: white;
+  grid-column: 1 / -1;
+}
+
+.nav-btn.submit:hover {
+  background: var(--success-hover);
+}
+
+.result-section {
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.score-card {
+  background: linear-gradient(135deg, var(--primary-color), var(--success-color));
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  margin-bottom: 30px;
+  user-select: none;
+}
+
+.score-card h2 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.score-card p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: var(--bg-secondary);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  border: 2px solid var(--border-color);
+  user-select: none;
+}
+
+.stat-card h3 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.stat-card.correct h3 { color: var(--success-color); }
+.stat-card.wrong h3 { color: var(--danger-color); }
+.stat-card.unattempted h3 { color: var(--secondary-color); }
+
+.question-review {
+  border: 2px solid var(--border-color);
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 20px;
+  background: var(--bg-secondary);
+}
+
+.question-review h4 {
+  margin-bottom: 15px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.review-option {
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 2px solid var(--border-color);
+  background: var(--bg-primary);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.review-option .option-image {
+  max-width: 150px;
+  max-height: 100px;
+}
+
+.review-option.correct {
+  background: #d4edda;
+  border-color: var(--success-color);
+  color: #155724;
+}
+
+.review-option.wrong {
+  background: #f8d7da;
+  border-color: var(--danger-color);
+  color: #721c24;
+}
+
+.review-option.user-selected {
+  border-width: 3px;
+  font-weight: 600;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.action-btn {
+  padding: 14px 30px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  min-width: 150px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.action-btn:active {
+  transform: scale(0.95);
+}
+
+.action-btn.restart {
+  background: var(--danger-color);
+  color: white;
+}
+
+.action-btn.restart:hover {
+  background: #c82333;
+}
+
+.action-btn.download {
+  background: var(--primary-color);
+  color: white;
+}
+
+.action-btn.download:hover {
+  background: var(--primary-hover);
+}
+
+.action-btn.print {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.action-btn.print:hover {
+  background: #5a6268;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.palette-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.palette-content::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+}
+
+.palette-content::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+.palette-content::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 140px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .header h1 {
+    font-size: 22px;
+  }
+
+  .quiz-container {
+    padding: 20px 15px;
+  }
+
+  .question-palette {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .palette-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+  }
+
+  .palette-btn {
+    font-size: 13px;
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  .palette-fab {
+    bottom: calc(var(--nav-height) + 10px);
+    right: 15px;
+    width: 56px;
+    height: 56px;
+    font-size: 22px;
+  }
+
+  .navigation {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 12px 15px;
+  }
+
+  .nav-btn {
+    min-height: 44px;
+    font-size: 15px;
+  }
+
+  .nav-btn.clear {
+    order: 3;
+  }
+
+  .nav-btn.submit {
+    grid-column: auto;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .legend-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .question {
+    font-size: 16px;
+  }
+
+  .option-label {
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  .option-image {
+    max-height: 150px;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .palette-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+
+  .palette-btn {
+    font-size: 12px;
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .timer {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  .option-image {
+    max-height: 120px;
+  }
+}
+
+@media print {
+  .header-controls, .navigation, .palette-fab, .palette-overlay, .question-palette, .action-buttons, .bookmark-btn {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    padding-bottom: 0;
+  }
+
+  .container {
+    padding-bottom: 20px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>10.) chsl mains 2023 pyq - Hindi</h1>
+    <div class="header-controls">
+      <a href="https://t.me/ssc_prepX" target="_blank" class="bot-link-btn" title="Open Bot in Telegram">🤖 Bot</a>
+      
+      <div class="timer" id="timer">00:00</div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle Theme">🌙</button>
+      <button class="fullscreen-btn" id="fullscreenBtn" aria-label="Toggle fullscreen" title="Fullscreen">⛶</button>
+    </div>
+  </div>
+
+  <div class="quiz-container" id="quizContainer">
+    <div class="quiz-header">
+      <div class="marking-info" id="markingInfo">Marking: +1, -0</div>
+    </div>
+
+    <div class="progress-section">
+      <div class="progress-stats">
+        <span>Progress: <strong id="progressText">1/2</strong></span>
+        <span>Attempted: <strong id="attemptedText">0</strong></span>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+
+    <div class="question-section" id="questionSection">
+      <div class="question-header">
+        <div class="question-number" id="questionNumber">Question 1 of 2</div>
+        <button class="bookmark-btn" id="bookmarkBtn" aria-label="Bookmark question">
+          <span>🔖</span> <span>Bookmark</span>
+        </button>
+      </div>
+      
+      <div class="question" id="questionText"></div>
+      
+      <div class="options" id="optionsContainer"></div>
+    </div>
+
+    <div class="result-section hidden" id="resultSection"></div>
+  </div>
+</div>
+
+<div class="navigation" id="navigation">
+  <button class="nav-btn prev" id="prevBtn" aria-label="Previous question">
+    <span>←</span> Previous
+  </button>
+  <button class="nav-btn clear" id="clearBtn" aria-label="Clear answer">
+    Clear
+  </button>
+  <button class="nav-btn next" id="nextBtn" aria-label="Next question">
+    Next <span>→</span>
+  </button>
+  <button class="nav-btn submit hidden" id="submitBtn" aria-label="Submit quiz">
+    Submit Quiz
+  </button>
+</div>
+
+<button class="palette-fab" id="paletteFab" aria-label="Toggle question palette" title="Question Palette (P)">
+  📋
+  <span class="badge" id="answeredBadge">0</span>
+</button>
+
+<div class="palette-overlay" id="paletteOverlay"></div>
+
+<div class="question-palette" id="questionPalette">
+  <div class="palette-header">
+    <h3>Question Palette</h3>
+    <button class="palette-close" id="paletteClose" aria-label="Close palette">×</button>
+  </div>
+
+  <div class="palette-stats">
+    <div class="palette-stat answered">
+      <div class="number" id="paletteAnswered">0</div>
+      <div>Answered</div>
+    </div>
+    <div class="palette-stat unanswered">
+      <div class="number" id="paletteUnanswered">2</div>
+      <div>Not Answered</div>
+    </div>
+    <div class="palette-stat bookmarked">
+      <div class="number" id="paletteBookmarked">0</div>
+      <div>Bookmarked</div>
+    </div>
+  </div>
+
+  <div class="palette-search">
+    <input type="number" id="paletteSearch" placeholder="Jump to question number..." aria-label="Search questions" inputmode="numeric" pattern="[0-9]*">
+  </div>
+
+  <div class="palette-content">
+    <div class="palette-grid" id="paletteGrid"></div>
+  </div>
+
+  <div class="palette-legend">
+    <div class="legend-grid">
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--success-color);"></div>
+        <span>Answered</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--bg-secondary); border: 2px solid var(--border-color);"></div>
+        <span>Not Answered</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--primary-color);"></div>
+        <span>Current Question</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--warning-color);"></div>
+        <span>🔖 Bookmarked</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// JSON INJECTION HAPPENS HERE
+const questions = [{"sr_no": 1, "question": "<p>    <span><b>Select    the option that can be used as a one-word substitute for the given    group of words.</b></span></p>    <p>    <span><b>The    inability to obtain adequate sleep</b></span></p>", "option1": "<p>    <span><b>Mythomania</b></span></p>", "option2": "<p>    <span><b>Andromania</b></span></p>", "option3": "<p>    <span><b>Insomnia</b></span></p>", "option4": "<p>    <span><b>Pyromania</b></span></p>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 2, "question": "<p>    <span><b>Select    the option that can be used as a one-word substitute for the given    group of words/phrase.</b></span></p>    <p>    <span><b>A    phrase or words written in memory of a person who has died</b></span></p>", "option1": "<p>    <span><b>Epitaph</b></span></p>", "option2": "<p>    <span><b>Epigram</b></span></p>", "option3": "<p>    <span><b>Tombstone</b></span></p>", "option4": "<p>    <span><b>Calligraphy</b></span></p>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 3, "question": "<p>    <span><b>Select    the most appropriate idiom that best explains the given sentence.</b></span></p>    <p>    <span><b>I    was unable to solve the geometry question myself. So, I have asked    my teacher to help me out.</b></span></p>", "option1": "<p>    <span><b>You    can’t always get what you want.</b></span></p>", "option2": "<p>    <span><b>Two    heads are better than one.</b></span></p>", "option3": "<p>    <span><b>When    the going gets tough, the tough gets going.</b></span></p>", "option4": "<p>    <span><b>Two    wrongs don’t make a right.</b></span></p>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 4, "question": "<p>    <span><b>Select    the sentence that has the correct use of words and spellings.</b></span></p>", "option1": "<p>    <span><b>The    novel, with its intrcate plot and multifaceted characters,    captivated readers and left them pondering its deeper themes long    after they finished reading.</b></span></p>    <p>    <br>     </p>", "option2": "<p>    <span><b>The    novel, with its intricate plot and multifaceted characters,    captivated readers and left them pondering its deeper themes long    after they finished reading.</b></span></p>", "option3": "<p>    <span><b>The    novel, with its intricate plot and multifacted characters,    captivated readers and left them paundering its deeper themes long    after they finished reading.</b></span></p>    <p>    <br>     </p>", "option4": "<p>    <span><b>The    novel, with its intricete plot and multifacted characters,    captivated readers and left them pondering its deeper themes long    after they finished reading.</b></span></p>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 5, "question": "<p>    <span><b>Select    the option that expresses the given sentence in passive voice.</b></span></p>    <p>    <span><b>He    is eating an apple.</b></span></p>", "option1": "<p>    <span><b>An    apple was eaten by him.</b></span></p>", "option2": "<p>    <span><b>He    was eating an apple.</b></span></p>", "option3": "<p>    <span><b>An    apple is being eaten by him.</b></span></p>", "option4": "<p>    <span><b>He    has been eating an apple</b></span></p>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 6, "question": "<p>    <span><b>Select    the sentence that gives the most appropriate meaning of the idiom    ‘In hot water’.</b></span></p>", "option1": "<p>    <span><b>The    chef added spices to the dish to enhance its flavour and make it    more delicious.</b></span></p>", "option2": "<p>    <span><b>The    children enjoyed playing in the pool on a hot summer day.</b></span></p>", "option3": "<p>    <span><b>After    accidentally breaking the valuable vase, Sarah found herself in    trouble with her parents.</b></span></p>", "option4": "<p>    <span><b>The    company faced challenges due to the economic downturn but managed    to overcome them.</b></span></p>    <p>    <br>     </p>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 7, "question": "<p>    <span><b>Choose    the appropriate option to make the following sentence    grammatically correct.</b></span></p>    <p>    <span><b>Neither    of the biscuits you gave me _________ chocolate chips.</b></span></p>", "option1": "<p>    <span><b>contain</b></span></p>", "option2": "<p>    <span><b>are    contained</b></span></p>", "option3": "<p>    <span><b>is    contain</b></span></p>", "option4": "<p>    <span><b>Contains</b></span></p>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 8, "question": "<p>    <span><b>Select    the most appropriate option that can substitute the underlined    segment in the given sentence. If there is no need to substitute    it, select ‘No substitution required.’</b></span></p>    <p><a name=\"_GoBack\"></a>    <b>I decided to    </b><u><b>call out</b></u><b> to various bookstores in the area to    see if any of them had the book I needed.</b></p>", "option1": "<p>    <span><b>call    on </b></span></p>", "option2": "<p>    <span><b>No    substitution required</b></span></p>", "option3": "<p>    <span><b>call    around </b></span></p>", "option4": "<p>    <span><b>call    off</b></span></p>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 9, "question": "<p>    <span><b>The    following sentence has been split into four segments. Identify the    segment that contains an error.</b></span></p>    <p>    <span><b>The    committee requested / the Chief Investigator / to personally /    look after the matter.</b></span></p>", "option1": "<p>    <span><b>look    after the matter</b></span></p>", "option2": "<p>    <span><b>the    Chief Investigator</b></span></p>", "option3": "<p>    <span><b>The    committee requested</b></span></p>", "option4": "<p>    <span><b>to    personally</b></span></p>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 10, "question": "<p>    <span><b>Select    the most appropriate synonym of the given word.</b></span></p>    <p>    <span><b>Humble</b></span></p>", "option1": "<p>    <span><b>Modest</b></span></p>", "option2": "<p>    <span><b>Keen</b></span></p>", "option3": "<p>    <span><b>Beautiful</b></span></p>", "option4": "<p>    <span><b>Amusing</b></span></p>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 11, "question": "<p>    <span><b>Select    the option that expresses the given sentence in reported speech.</b></span></p>    <p>    <span><b>The    captain said to the soldiers, “Follow the enemy.”</b></span></p>", "option1": "<p>    <span><b>The    captain commanded his soldiers to follow the enemy.</b></span></p>", "option2": "<p>    <span><b>The    captain requested his soldiers to follow the enemy.</b></span></p>", "option3": "<p>    <span><b>The    captain charged his soldiers to followed the enemy.</b></span></p>", "option4": "<p>    <span><b>The    captain said his soldiers to follow the enemy</b></span></p>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 12, "question": "<p>    <span><b>The    following sentence has been divided into parts. One of them may    contain an error. Select the part that contains the error from the    given options. If you don’t find any error, mark ‘No error’    as your answer.</b></span></p>    <p>    <span><b>Sincere    students / like you and he should study / regularly to pass the    examination.</b></span></p>", "option1": "<p>    <span><b>Sincere    students</b></span></p>", "option2": "<p>    <span><b>regularly    to pass the examination.</b></span></p>", "option3": "<p>    <span><b>No    error</b></span></p>", "option4": "<p>    <span><b>like    you and he should study</b></span></p>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 13, "question": "<p>    <span><b>Select    the option that expresses the given sentence in passive voice.</b></span></p>    <p>    <span><b>The    team won the tournament after weeks of hard work and commitment.</b></span></p>", "option1": "<p>    <span><b>The    tournament was winning by the team after weeks of hard work and    commitment.</b></span></p>", "option2": "<p>    <span><b>The    tournament was won by the team after weeks of hard work and    commitment.</b></span></p>", "option3": "<p>    <span><b>The    tournament had been won by the team after weeks of hard work and    commitment.</b></span></p>", "option4": "<p>    <span><b>The    tournament was being won by the team after weeks of hard work and    commitment.</b></span></p>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 14, "question": "<p>    <span><b>Select    the correct spelling from the given options to fill in the blank.</b></span></p>    <p>    <b>He was    _________ going abroad for his further studies.</b></p>", "option1": "<p>    <span><b>contempltaing</b></span></p>", "option2": "<p>    <span><b>cuntemplating</b></span></p>", "option3": "<p>    <span><b>contemplating</b></span></p>", "option4": "<p>    <span><b>cuntempltaing</b></span></p>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 15, "question": "<p>    <span><b>There    is an error in the given sentence. From the options given,    identify the sentence that corrects the error to make it a    grammatically accurate sentence.</b></span></p>    <p>    <span><b>This    lesser known heritage building is so beautiful as the Red Fort.</b></span></p>", "option1": "<p>    <span><b>This    less known heritage building is much beautiful than the Red Fort.</b></span></p>", "option2": "<p>    <span><b>This    heritage building is as beautiful as the Red Fort.</b></span></p>", "option3": "<p>    <span><b>This    lesser known heritage building is very much beautiful as the Red    Fort.</b></span></p>", "option4": "<p>    <span><b>This    lesser known heritage building is as much beautiful as the Red    Fort</b></span></p>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 16, "question": "<p>    <span><b>Parts    of the given sentence have been underlined. One of the parts may    contain an error. Select the option that rectifies the error. If    you don’t find any error, mark ‘No error’ as your answer.</b></span></p>    <p>    <span><b>It    was </b></span><span><u><b>the home minister</b></u></span><span><b>    of the country who took the decision to change </b></span><span><u><b>a    laws pertaining</b></u></span><span><b> to migration    of people from one state to another.</b></span></p>", "option1": "<p>    <span><b>No    error </b></span></p>", "option2": "<p>    <span><b>an    home minister</b></span></p>", "option3": "<p>    <span><b>the    migration</b></span></p>", "option4": "<p>    <span><b>the    laws pertaining</b></span></p>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 17, "question": "<p>    <span><b>Parts    of the given sentence have been underlined. One of the parts may    contain an error. Select the option that rectifies the error. If    you don’t find any error, mark ‘No error’ as your answer.</b></span></p>    <p>    <span><b>Those    players who chose not to </b></span><span><u><b>play    in the league</b></u></span><span><b> were banned    from playing in </b></span><span><u><b>an World Cup</b></u></span><span><b>.</b></span></p>", "option1": "<p>    <span><b>play    in a league</b></span></p>", "option2": "<p>    <span><b>No    error</b></span></p>", "option3": "<p>    <span><b>play    in league</b></span></p>", "option4": "<p>    <span><b>the    World Cup</b></span></p>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 18, "question": "<p>    <span><b>Select    the most appropriate homonym to fill in the blanks of the given    sentences.</b></span></p>    <p>    <span><b>A.    I use a ______ to weigh my ingredients while cooking.</b></span></p>    <p>    <span><b>B.    The mountaineer is going to _______ the rocky hills.</b></span></p>", "option1": "<p>    <span><b>horn </b></span></p>", "option2": "<p>    <span><b>crawl</b></span></p>", "option3": "<p>    <span><b>scale</b></span></p>", "option4": "<p>    <span><b>climb</b></span></p>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 19, "question": "<p>    <span><b>Select    the INCORRECTLY spelt word.</b></span></p>", "option1": "<p>    <span><b>Superindednt</b></span></p>", "option2": "<p>    <span><b>Susceptibility</b></span></p>", "option3": "<p>    <span><b>Extemporise</b></span></p>", "option4": "<p>    <span><b>Inconspicuous</b></span></p>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 20, "question": "<p>    <span><b>Select    the most appropriate ANTONYM of the given word.</b></span></p>    <p>    <span><b>Sharp</b></span></p>", "option1": "<p>    <span><b>Handy</b></span></p>", "option2": "<p>    <span><b>Magnetic</b></span></p>", "option3": "<p>    <span><b>Kindled</b></span></p>", "option4": "<p>    <span><b>Blunt</b></span></p>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 21, "question": "<p>    <span><b>Select    the option that expresses the given sentence in indirect speech.</b></span></p>    <p>    <span><b>Rakesh    said, “Wow! What a beautiful house”.</b></span></p>", "option1": "<p>    <span><b>Rakesh    exclaimed with surprise that it was must be beautiful house.</b></span></p>", "option2": "<p>    <span><b>Rakesh    told that it had been a beautiful house.</b></span></p>", "option3": "<p>    <span><b>Rakesh    exclaimed that it was a beautiful house.</b></span></p>", "option4": "<p>    <span><b>Rakesh    exclaimed with sorrow that it was a beautiful house</b></span></p>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 22, "question": "<p>    <span><b>Select    the most appropriate option to fill in the blank.</b></span></p>    <p>    <span><b>Stanley    ________________________ to play the violin now, with an amateur    instructor.</b></span></p>", "option1": "<p>    <span><b>is    learning</b></span></p>", "option2": "<p>    <span><b>had    learnt</b></span></p>", "option3": "<p>    <span><b>was    learning</b></span></p>", "option4": "<p>    <span><b>will    learn</b></span></p>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 23, "question": "<p>    <span><b>Parts    of the given sentence have been underlined. One of them contains    an error. The underlined parts are given as options with some    changes. Select the option that correctly rectifies the error.</b></span></p>    <p>    <span><b>The    </b></span><span><u><b>film received</b></u></span><span><b>    critical </b></span><span><u><b>acclaim for</b></u></span><span><b>    being </b></span><span><u><b>a more innovative</b></u></span><span><b>    movie </b></span><span><u><b>of the year.</b></u></span></p>", "option1": "<p>    <span><b>Film    receives</b></span></p>", "option2": "<p>    <span><b>Acclaim    at</b></span></p>", "option3": "<p>    <span><b>In    the year. </b></span></p>", "option4": "<p>    <span><b>An    innovative</b></span></p>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 24, "question": "<p>    <span><b>Select    the option that can be used as a one-word substitute for the given    phrase.</b></span></p>    <p>    <span><b>One    who believes in fate</b></span></p>", "option1": "<p>    <span><b>Fatalist</b></span></p>", "option2": "<p>    <span><b>Superstitious</b></span></p>", "option3": "<p>    <span><b>Flirt</b></span></p>", "option4": "<p>    <span><b>Fatal</b></span></p>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 25, "question": "<p>    <span><b>Select    the most appropriate idiom that best explains the given sentence.</b></span></p>    <p>    <span><b>Rajat    irritated the street dog so much that it was about to bite him.</b></span></p>", "option1": "<p>    <span><b>If    you can’t beat ’em, join ’em.</b></span></p>", "option2": "<p>    <span><b>If    it ain’t broke, don’t fix it.</b></span></p>", "option3": "<p>    <span><b>If    you want something done right, you have to do it yourself.</b></span></p>", "option4": "<p>    <span><b>If    you play with fire, you’ll get burned</b></span></p>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 26, "question": "<p>    <span><b>Select    the most appropriate tense form to fill in the blank.</b></span></p>    <p>    <span><b>Mohnish    and Ravi ________ to Canada next month.</b></span></p>", "option1": "<p>    <span><b>are    moving</b></span></p>", "option2": "<p>    <span><b>is    moving</b></span></p>", "option3": "<p>    <span><b>has    moving</b></span></p>", "option4": "<p>    <span><b>has    move</b></span></p>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 27, "question": "<p>    <span><b>Select    the option that will improve the given sentence by using the most    appropriate pronoun.</b></span></p>    <p>    <span><b>Pradeep,    whom is a teacher, also works as a content writer.</b></span></p>", "option1": "<p>    <span><b>Pradeep,    that is a teacher, also works as a content writer.</b></span></p>", "option2": "<p>    <span><b>Pradeep,    who is a teacher, also works as a content writer.</b></span></p>", "option3": "<p>    <span><b>Pradeep,    whose is a teacher, also works as a content writer.</b></span></p>", "option4": "<p>    <span><b>Pradeep,    which is a teacher, also works as a content writer.</b></span></p>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 28, "question": "<p>    <span><b>Select    the option that expresses the given sentence in passive voice.</b></span></p>    <p>    <span><b>The    rescue team could have completed the task if there had been    uninterrupted power supply.</b></span></p>", "option1": "<p>    <span><b>The    task can have completed by the rescue team if there was    uninterrupted power supply.</b></span></p>", "option2": "<p>    <span><b>The    task could have been completed by the rescue team if there had    been uninterrupted power supply.</b></span></p>", "option3": "<p>    <span><b>The    task could be completed by the rescue team if there was    uninterrupted power supply.</b></span></p>    <p>    <br>     </p>", "option4": "<p>    <span><b>The    task could have to be completed by the rescue team if there was    uninterrupted power supply.</b></span></p>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 29, "question": "Giिनस ुोॅध ृधधn पुध (1) यी ंोnद cनiंधौ in Inकiो ीयन दधोनौ. Tुध ंयौप ीधोनीिह cनiंध थोौ ीधंोिध ीयधपiciकध, in थुicु giिनस थधनध ाiििधक in पुध (2) यी पुध ंयपुधन ोीपधन ौधस कधपधनंinोपiयn पुनयहgु िहपनोौयहnक. ‘Sोॅध पुध Giिन Cुiिक’ (3) ुोौ ृधधn िोहncुधक ृद पुध gयॅधनnंधnप पय धnक gधnकधन-ौिधधcपiॅध ोृयनपiयnौ यी ीधंोिध ीयधपहौधौ ोौ थिधि ोौ यपुधन cनiंधौ (4) पुध giिन cुiिक.", "option1": "<p>    <span><b>scapegoats</b></span></p>", "option2": "<p>    <span><b>victors</b></span></p>", "option3": "<p>    <span><b>victims</b></span></p>", "option4": "<p>    <span><b>sites</b></span></p>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 30, "question": "Giिनस ुोॅध ृधधn पुध (1) यी ंोnद cनiंधौ in Inकiो ीयन दधोनौ. Tुध ंयौप ीधोनीिह cनiंध थोौ ीधंोिध ीयधपiciकध, in थुicु giिनस थधनध ाiििधक in पुध (2) यी पुध ंयपुधन ोीपधन ौधस कधपधनंinोपiयn पुनयहgु िहपनोौयहnक. ‘Sोॅध पुध Giिन Cुiिक’ (3) ुोौ ृधधn िोहncुधक ृद पुध gयॅधनnंधnप पय धnक gधnकधन-ौिधधcपiॅध ोृयनपiयnौ यी ीधंोिध ीयधपहौधौ ोौ थिधि ोौ यपुधन cनiंधौ (4) पुध giिन cुiिक.", "option1": "<p>    <span><b>kidney</b></span></p>", "option2": "<p>    <span><b>womb</b></span></p>", "option3": "<p>    <span><b>intestine</b></span></p>", "option4": "<p>    <span><b>liver</b></span></p>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 31, "question": "Giिनस ुोॅध ृधधn पुध (1) यी ंोnद cनiंधौ in Inकiो ीयन दधोनौ. Tुध ंयौप ीधोनीिह cनiंध थोौ ीधंोिध ीयधपiciकध, in थुicु giिनस थधनध ाiििधक in पुध (2) यी पुध ंयपुधन ोीपधन ौधस कधपधनंinोपiयn पुनयहgु िहपनोौयहnक. ‘Sोॅध पुध Giिन Cुiिक’ (3) ुोौ ृधधn िोहncुधक ृद पुध gयॅधनnंधnप पय धnक gधnकधन-ौिधधcपiॅध ोृयनपiयnौ यी ीधंोिध ीयधपहौधौ ोौ थिधि ोौ यपुधन cनiंधौ (4) पुध giिन cुiिक.", "option1": "<p>    <span><b>campfire</b></span></p>", "option2": "<p>    <span><b>campaign</b></span></p>", "option3": "<p>    <span><b>undertaking</b></span></p>", "option4": "<p>    <span><b>enterprise</b></span></p>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 32, "question": "Giिनस ुोॅध ृधधn पुध (1) यी ंोnद cनiंधौ in Inकiो ीयन दधोनौ. Tुध ंयौप ीधोनीिह cनiंध थोौ ीधंोिध ीयधपiciकध, in थुicु giिनस थधनध ाiििधक in पुध (2) यी पुध ंयपुधन ोीपधन ौधस कधपधनंinोपiयn पुनयहgु िहपनोौयहnक. ‘Sोॅध पुध Giिन Cुiिक’ (3) ुोौ ृधधn िोहncुधक ृद पुध gयॅधनnंधnप पय धnक gधnकधन-ौिधधcपiॅध ोृयनपiयnौ यी ीधंोिध ीयधपहौधौ ोौ थिधि ोौ यपुधन cनiंधौ (4) पुध giिन cुiिक.", "option1": "<p>    <span><b>for</b></span></p>", "option2": "<p>    <span><b>through</b></span></p>", "option3": "<p>    <span><b>across</b></span></p>", "option4": "<p>    <span><b>against</b></span></p>", "answer": "4", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 33, "question": "Tोधाथयnकय iौ ो ीयनं यी धंूपद ुोnक ंोनपiोि ोनपौ cयंृोप पुोप नधतहiनधौ पुध ोपुिधपध पय हौध ोिि ूोनपौ यी पुध ृयकद in cयंूधपiपiयn. Tोधाथयnकय iौ ो ौिधी-कधीधncध कiौciूिinधे पुध nोंध iौ कधनiॅधक ीनयं पुध Kयनधोn थयनकौ ‘पोध’, ंधोning ाicा, ‘ाथयn’, ो ूहncु यन यपुधन ृियथ थiपु पुध ुोnक यन ीiौप, ोnक ‘कय’, थुicु iौ ो थोद यन ंधपुयक यी यूधनोपiयn. Aंयng पुध gधnधनोि ूहृिic, पोधाथयnकय iौ कiौपingहiौुधक ीनयं यपुधन ंोनपiोि ोनपौ ृद iपौ ुigु ौूधधक, ौथधधूing ाicो ोnक धंूुोपic ूहncुधौ. Aौ थiपु ुहकय, पोधाथयnकय थोौ कधॅिधयूधक ोौ ो ौूयनप पुोप iौ ोिसय नधूनधौधnपोपiॅध यी ो ंयनोि cयकध, थुधनध ूनinciूिधौ यी ियदोिपद, ीोiपुीिहnधौौ, नधौूधcप, ोnक पुध ूनधौधनॅोपiयn यी ोn inकयंiपोृिध ौूiनiप ीयनं ो ौigniीicोnप ूोनप यी पोधाथयnकय पनोining. Bधginning in 1945, ौुयनिपद ोीपधन पुध धnक यी Wयिनक Wोन II ोnक Jोूोnधौध Occहूोपiयn, nधथ ंोनपiोि ोनपौ ौcुयियस cोििधक ाथयूधnधक in Sधयिह. Tुधौध ौcुयियस थधनध धौपोृिiौुधक ृद Kयनधोn ंोनपiोि ोनपiौपौ थiपु ृोcाgनयहnकौ in Jोूोnधौध ोnक Cुinधौध ंोनपiोि ोनपौ. Aप पुध पiंध, inकigधnयहौ कiौciूिinधौ (ौहcु ोौ Tोधाादधयn) थधनध ृधing ीयनgयपपधn, कहध पय दधोनौ यी कधcिinध ोnक नधूनधौौiयn ृद पुध Jोूोnधौध cिययniोि gयॅधनnंधnप. Tुध हंृनिधिो पधनं पनोकiपiयnोि Tोधाथयnकय पदूicोििद नधीधनौ पय पुध ंोनपiोि ोनपौ ूनोcपicधक ृद पुध ाथकहनing पुध 1940ौ ोnक 1950ौ, पुयहgु in नधोिiपद पुध पधनं ‘Tोधाथयnकय’ ुोक nयप दधप ृधधn cयinधक ोप पुोप पiंध, ोnक inकधधक धोcु ाथोn (ौcुयिय) थोौ ूनोcपicing iपौ यथn हniतहध ौपिदध यी पुध Kयनधोn ोनप. Wुicु यी पुध ीियियथing iौ NOT ो ूनinciूिध यी Tोधाथयnकय?", "option1": "<p>    <span><b>Faithfulness</b></span></p>", "option2": "<p>    <span><b>Loyalty</b></span></p>", "option3": "<p>    <span><b>Disrespect</b></span></p>", "option4": "<p>    <span><b>Indomitable    spirit</b></span></p>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 34, "question": "Tोधाथयnकय iौ ो ीयनं यी धंूपद ुोnक ंोनपiोि ोनपौ cयंृोप पुोप नधतहiनधौ पुध ोपुिधपध पय हौध ोिि ूोनपौ यी पुध ृयकद in cयंूधपiपiयn. Tोधाथयnकय iौ ो ौिधी-कधीधncध कiौciूिinधे पुध nोंध iौ कधनiॅधक ीनयं पुध Kयनधोn थयनकौ ‘पोध’, ंधोning ाicा, ‘ाथयn’, ो ूहncु यन यपुधन ृियथ थiपु पुध ुोnक यन ीiौप, ोnक ‘कय’, थुicु iौ ो थोद यन ंधपुयक यी यूधनोपiयn. Aंयng पुध gधnधनोि ूहृिic, पोधाथयnकय iौ कiौपingहiौुधक ीनयं यपुधन ंोनपiोि ोनपौ ृद iपौ ुigु ौूधधक, ौथधधूing ाicो ोnक धंूुोपic ूहncुधौ. Aौ थiपु ुहकय, पोधाथयnकय थोौ कधॅिधयूधक ोौ ो ौूयनप पुोप iौ ोिसय नधूनधौधnपोपiॅध यी ो ंयनोि cयकध, थुधनध ूनinciूिधौ यी ियदोिपद, ीोiपुीिहnधौौ, नधौूधcप, ोnक पुध ूनधौधनॅोपiयn यी ोn inकयंiपोृिध ौूiनiप ीयनं ो ौigniीicोnप ूोनप यी पोधाथयnकय पनोining. Bधginning in 1945, ौुयनिपद ोीपधन पुध धnक यी Wयिनक Wोन II ोnक Jोूोnधौध Occहूोपiयn, nधथ ंोनपiोि ोनपौ ौcुयियस cोििधक ाथयूधnधक in Sधयिह. Tुधौध ौcुयियस थधनध धौपोृिiौुधक ृद Kयनधोn ंोनपiोि ोनपiौपौ थiपु ृोcाgनयहnकौ in Jोूोnधौध ोnक Cुinधौध ंोनपiोि ोनपौ. Aप पुध पiंध, inकigधnयहौ कiौciूिinधौ (ौहcु ोौ Tोधाादधयn) थधनध ृधing ीयनgयपपधn, कहध पय दधोनौ यी कधcिinध ोnक नधूनधौौiयn ृद पुध Jोूोnधौध cिययniोि gयॅधनnंधnप. Tुध हंृनिधिो पधनं पनोकiपiयnोि Tोधाथयnकय पदूicोििद नधीधनौ पय पुध ंोनपiोि ोनपौ ूनोcपicधक ृद पुध ाथकहनing पुध 1940ौ ोnक 1950ौ, पुयहgु in नधोिiपद पुध पधनं ‘Tोधाथयnकय’ ुोक nयप दधप ृधधn cयinधक ोप पुोप पiंध, ोnक inकधधक धोcु ाथोn (ौcुयिय) थोौ ूनोcपicing iपौ यथn हniतहध ौपिदध यी पुध Kयनधोn ोनप. Wुोप iौ Tोधाथयnकय ो ीयनं यी?", "option1": "<p>    <span><b>Martial    arts</b></span></p>", "option2": "<p>    <span><b>Visual    arts</b></span></p>", "option3": "<p>    <span><b>Conceptual    arts</b></span></p>", "option4": "<p>    <span><b>Performing    arts</b></span></p>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 35, "question": "Tोधाथयnकय iौ ो ीयनं यी धंूपद ुोnक ंोनपiोि ोनपौ cयंृोप पुोप नधतहiनधौ पुध ोपुिधपध पय हौध ोिि ूोनपौ यी पुध ृयकद in cयंूधपiपiयn. Tोधाथयnकय iौ ो ौिधी-कधीधncध कiौciूिinधे पुध nोंध iौ कधनiॅधक ीनयं पुध Kयनधोn थयनकौ ‘पोध’, ंधोning ाicा, ‘ाथयn’, ो ूहncु यन यपुधन ृियथ थiपु पुध ुोnक यन ीiौप, ोnक ‘कय’, थुicु iौ ो थोद यन ंधपुयक यी यूधनोपiयn. Aंयng पुध gधnधनोि ूहृिic, पोधाथयnकय iौ कiौपingहiौुधक ीनयं यपुधन ंोनपiोि ोनपौ ृद iपौ ुigु ौूधधक, ौथधधूing ाicो ोnक धंूुोपic ूहncुधौ. Aौ थiपु ुहकय, पोधाथयnकय थोौ कधॅिधयूधक ोौ ो ौूयनप पुोप iौ ोिसय नधूनधौधnपोपiॅध यी ो ंयनोि cयकध, थुधनध ूनinciूिधौ यी ियदोिपद, ीोiपुीिहnधौौ, नधौूधcप, ोnक पुध ूनधौधनॅोपiयn यी ोn inकयंiपोृिध ौूiनiप ीयनं ो ौigniीicोnप ूोनप यी पोधाथयnकय पनोining. Bधginning in 1945, ौुयनिपद ोीपधन पुध धnक यी Wयिनक Wोन II ोnक Jोूोnधौध Occहूोपiयn, nधथ ंोनपiोि ोनपौ ौcुयियस cोििधक ाथयूधnधक in Sधयिह. Tुधौध ौcुयियस थधनध धौपोृिiौुधक ृद Kयनधोn ंोनपiोि ोनपiौपौ थiपु ृोcाgनयहnकौ in Jोूोnधौध ोnक Cुinधौध ंोनपiोि ोनपौ. Aप पुध पiंध, inकigधnयहौ कiौciूिinधौ (ौहcु ोौ Tोधाादधयn) थधनध ृधing ीयनgयपपधn, कहध पय दधोनौ यी कधcिinध ोnक नधूनधौौiयn ृद पुध Jोूोnधौध cिययniोि gयॅधनnंधnप. Tुध हंृनिधिो पधनं पनोकiपiयnोि Tोधाथयnकय पदूicोििद नधीधनौ पय पुध ंोनपiोि ोनपौ ूनोcपicधक ृद पुध ाथकहनing पुध 1940ौ ोnक 1950ौ, पुयहgु in नधोिiपद पुध पधनं ‘Tोधाथयnकय’ ुोक nयप दधप ृधधn cयinधक ोप पुोप पiंध, ोnक inकधधक धोcु ाथोn (ौcुयिय) थोौ ूनोcपicing iपौ यथn हniतहध ौपिदध यी पुध Kयनधोn ोनप. Sिधधcप पुध ंयौप ोूूनयूनiोपध ANTONYM यी पुध giॅधn थयनक. Inकयंiपोृिध", "option1": "<p>    <span><b>Strong</b></span></p>", "option2": "<p>    <span><b>Invincible</b></span></p>", "option3": "<p>    <span><b>Submissive</b></span></p>", "option4": "<p>    <span><b>Unstoppable</b></span></p>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 36, "question": "Tोधाथयnकय iौ ो ीयनं यी धंूपद ुोnक ंोनपiोि ोनपौ cयंृोप पुोप नधतहiनधौ पुध ोपुिधपध पय हौध ोिि ूोनपौ यी पुध ृयकद in cयंूधपiपiयn. Tोधाथयnकय iौ ो ौिधी-कधीधncध कiौciूिinधे पुध nोंध iौ कधनiॅधक ीनयं पुध Kयनधोn थयनकौ ‘पोध’, ंधोning ाicा, ‘ाथयn’, ो ूहncु यन यपुधन ृियथ थiपु पुध ुोnक यन ीiौप, ोnक ‘कय’, थुicु iौ ो थोद यन ंधपुयक यी यूधनोपiयn. Aंयng पुध gधnधनोि ूहृिic, पोधाथयnकय iौ कiौपingहiौुधक ीनयं यपुधन ंोनपiोि ोनपौ ृद iपौ ुigु ौूधधक, ौथधधूing ाicो ोnक धंूुोपic ूहncुधौ. Aौ थiपु ुहकय, पोधाथयnकय थोौ कधॅिधयूधक ोौ ो ौूयनप पुोप iौ ोिसय नधूनधौधnपोपiॅध यी ो ंयनोि cयकध, थुधनध ूनinciूिधौ यी ियदोिपद, ीोiपुीिहnधौौ, नधौूधcप, ोnक पुध ूनधौधनॅोपiयn यी ोn inकयंiपोृिध ौूiनiप ीयनं ो ौigniीicोnप ूोनप यी पोधाथयnकय पनोining. Bधginning in 1945, ौुयनिपद ोीपधन पुध धnक यी Wयिनक Wोन II ोnक Jोूोnधौध Occहूोपiयn, nधथ ंोनपiोि ोनपौ ौcुयियस cोििधक ाथयूधnधक in Sधयिह. Tुधौध ौcुयियस थधनध धौपोृिiौुधक ृद Kयनधोn ंोनपiोि ोनपiौपौ थiपु ृोcाgनयहnकौ in Jोूोnधौध ोnक Cुinधौध ंोनपiोि ोनपौ. Aप पुध पiंध, inकigधnयहौ कiौciूिinधौ (ौहcु ोौ Tोधाादधयn) थधनध ृधing ीयनgयपपधn, कहध पय दधोनौ यी कधcिinध ोnक नधूनधौौiयn ृद पुध Jोूोnधौध cिययniोि gयॅधनnंधnप. Tुध हंृनिधिो पधनं पनोकiपiयnोि Tोधाथयnकय पदूicोििद नधीधनौ पय पुध ंोनपiोि ोनपौ ूनोcपicधक ृद पुध ाथकहनing पुध 1940ौ ोnक 1950ौ, पुयहgु in नधोिiपद पुध पधनं ‘Tोधाथयnकय’ ुोक nयप दधप ृधधn cयinधक ोप पुोप पiंध, ोnक inकधधक धोcु ाथोn (ौcुयिय) थोौ ूनोcपicing iपौ यथn हniतहध ौपिदध यी पुध Kयनधोn ोनप. Sिधधcप पुध ंयौप ोूूनयूनiोपध ौदnयnदं यी पुध giॅधn थयनक. Rधूनधौधnपोपiॅध", "option1": "<p>    <span><b>Unusual</b></span></p>", "option2": "<p>    <span><b>Theoretical</b></span></p>", "option3": "<p>    <span><b>Typical</b></span></p>", "option4": "<p>    <span><b>Aberrant</b></span></p>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 37, "question": "Rधोक पुध giॅधn ूोौौोgध ोnक ोnौथधन पुध तहधौपiयnौ पुोप ीियियथ. Enॅiनयnंधnपोि यन gधnधपic inीिहधncधौ ोnपiौयciोि cयnकहcप यी ो ुहंोn ृधing , थुicु ुोौ ोn iंूोcप यn ृधुोॅiयहन, ौहcु ोौ cयnकहcप कiौयनकधन. In ो नधcधnप ौपहकद cयnकहcपधक, दयहng ूधयूिध थiपु cयnकहcप कiौयनकधनौ ुोक पुधiन ृनोinौ धसोंinधक, ोियng थiपु cयnपनियस पुोप थधनध ुधोिपुद ोnक कiक nयप ुोॅध पुध कiौधोौध. Tुध पुicाnधौौ यी ॅोनiयहौ नधgiयnौ यी पुध cयनपधस ोnक पुध ृनोin’ौ यहपधन िोदधन थोौ ंधोौहनधक हौing पुध ौcोnnधक iंोgधौ. Iप थोौ कधंयnौपनोपधक in पुध ौपहकद पुोप cयnकहcप कiौयनकधन iौ ो ूौदcुiोपनic cयnकiपiयn नोपुधन पुोn ोकियधौcधnप कiौयृधकiधncध. Aथोनधnधौौ, ूधनcधूपiयn, ोपपधnपiयn, ंधंयनद ोnक िोngहोgध ोनध ोिि iंूोcपधक ृद पुध cयनपधस. Tुध ीinकingौ यी पुध ौपहकद थधनध हnधसूधcपधक. Tुधद कधंयnौपनोपधक कiौपincप कiौूोनiपiधौ ृधपथधधn ोकियधौcधnपौ थुयौध ृधुोॅiयहनोि iौौहधौ ृधgोn in ोकियधौcधncध ोnक पुयौध थुयौध iौौहधौ ृधgोn धोिनiधन in िiीध. Aिपुयहgु ृयपु gनयहूौ थधनध कiीीधनधnप ीनयं ुधोिपुद cयnपनियस, iप थोौ कiौcयॅधनधक पुोप कiौपincप नधgiयnौ यी पुध cयनपधस in पुध पधधnोgधनौ थुय ुोक धसूधनiधncधक धोिनद-यnौधप ृधुोॅiयहनोि iौौहधौ थधनध पुicाधन in cयंूोनiौयn पय पुध ुधोिपुद ूोनपiciूोnपौ. Sिधधcप पुध ंयौप ोूूनयूनiोपध ौहंंोनद यी पुध ौधnपधncध giॅधn ृिधयथ. Iप थोौ कधंयnौपनोपधक in पुध ौपहकद पुोप cयnकहcप कiौयनकधन iौ ो ूौदcुiोपनic cयnकiपiयn नोपुधन पुोn ोकियधौcधnप कiौयृधकiधncध.", "option1": "<p>    <span><b>Conduct    disorder is teen defiance and not a mental condition.</b></span></p>", "option2": "<p>    <span><b>Conduct    disorder is a mental condition rather than teen defiance.</b></span></p>", "option3": "<p>    <span><b>Conduct    disorder is neither a mental condition nor teen defiance.</b></span></p>", "option4": "<p>    <span><b>Conduct    disorder is less of a mental condition and more of teen defiance.</b></span></p>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 38, "question": "Enॅiनयnंधnपोि यन gधnधपic inीिहधncधौ ोnपiौयciोि cयnकहcप यी ो ुहंोn ृधing , थुicु ुोौ ोn iंूोcप यn ृधुोॅiयहन, ौहcु ोौ cयnकहcप कiौयनकधन. In ो नधcधnप ौपहकद cयnकहcपधक, दयहng ूधयूिध थiपु cयnकहcप कiौयनकधनौ ुोक पुधiन ृनोinौ धसोंinधक, ोियng थiपु cयnपनियस पुोप थधनध ुधोिपुद ोnक कiक nयप ुोॅध पुध कiौधोौध. Tुध पुicाnधौौ यी ॅोनiयहौ नधgiयnौ यी पुध cयनपधस ोnक पुध ृनोin’ौ यहपधन िोदधन थोौ ंधोौहनधक हौing पुध ौcोnnधक iंोgधौ. Iप थोौ कधंयnौपनोपधक in पुध ौपहकद पुोप cयnकहcप कiौयनकधन iौ ो ूौदcुiोपनic cयnकiपiयn नोपुधन पुोn ोकियधौcधnप कiौयृधकiधncध. Aथोनधnधौौ, ूधनcधूपiयn, ोपपधnपiयn, ंधंयनद ोnक िोngहोgध ोनध ोिि iंूोcपधक ृद पुध cयनपधस. Tुध ीinकingौ यी पुध ौपहकद थधनध हnधसूधcपधक. Tुधद कधंयnौपनोपधक कiौपincप कiौूोनiपiधौ ृधपथधधn ोकियधौcधnपौ थुयौध ृधुोॅiयहनोि iौौहधौ ृधgोn in ोकियधौcधncध ोnक पुयौध थुयौध iौौहधौ ृधgोn धोिनiधन in िiीध. Aिपुयहgु ृयपु gनयहूौ थधनध कiीीधनधnप ीनयं ुधोिपुद cयnपनियस, iप थोौ कiौcयॅधनधक पुोप कiौपincप नधgiयnौ यी पुध cयनपधस in पुध पधधnोgधनौ थुय ुोक धसूधनiधncधक धोिनद-यnौधप ृधुोॅiयहनोि iौौहधौ थधनध पुicाधन in cयंूोनiौयn पय पुध ुधोिपुद ूोनपiciूोnपौ. Wुicु यी पुध ीियियथing थोौ ंधोौहनधक in ौcोnnधक iंोgधौ?", "option1": "<p>    <span><b>Cortex    disparities</b></span></p>", "option2": "<p>    <span><b>Behavioural    issues</b></span></p>", "option3": "<p>    <span><b>Brain’s    outer layer</b></span></p>", "option4": "<p>    <span><b>Psychiatric    condition</b></span></p>", "answer": "3", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 39, "question": "Enॅiनयnंधnपोि यन gधnधपic inीिहधncधौ ोnपiौयciोि cयnकहcप यी ो ुहंोn ृधing , थुicु ुोौ ोn iंूोcप यn ृधुोॅiयहन, ौहcु ोौ cयnकहcप कiौयनकधन. In ो नधcधnप ौपहकद cयnकहcपधक, दयहng ूधयूिध थiपु cयnकहcप कiौयनकधनौ ुोक पुधiन ृनोinौ धसोंinधक, ोियng थiपु cयnपनियस पुोप थधनध ुधोिपुद ोnक कiक nयप ुोॅध पुध कiौधोौध. Tुध पुicाnधौौ यी ॅोनiयहौ नधgiयnौ यी पुध cयनपधस ोnक पुध ृनोin’ौ यहपधन िोदधन थोौ ंधोौहनधक हौing पुध ौcोnnधक iंोgधौ. Iप थोौ कधंयnौपनोपधक in पुध ौपहकद पुोप cयnकहcप कiौयनकधन iौ ो ूौदcुiोपनic cयnकiपiयn नोपुधन पुोn ोकियधौcधnप कiौयृधकiधncध. Aथोनधnधौौ, ूधनcधूपiयn, ोपपधnपiयn, ंधंयनद ोnक िोngहोgध ोनध ोिि iंूोcपधक ृद पुध cयनपधस. Tुध ीinकingौ यी पुध ौपहकद थधनध हnधसूधcपधक. Tुधद कधंयnौपनोपधक कiौपincप कiौूोनiपiधौ ृधपथधधn ोकियधौcधnपौ थुयौध ृधुोॅiयहनोि iौौहधौ ृधgोn in ोकियधौcधncध ोnक पुयौध थुयौध iौौहधौ ृधgोn धोिनiधन in िiीध. Aिपुयहgु ृयपु gनयहूौ थधनध कiीीधनधnप ीनयं ुधोिपुद cयnपनियस, iप थोौ कiौcयॅधनधक पुोप कiौपincप नधgiयnौ यी पुध cयनपधस in पुध पधधnोgधनौ थुय ुोक धसूधनiधncधक धोिनद-यnौधप ृधुोॅiयहनोि iौौहधौ थधनध पुicाधन in cयंूोनiौयn पय पुध ुधोिपुद ूोनपiciूोnपौ. Wुicु यी पुध ीियियथing iौ NOT iंूोcपधक ृद पुध cयनपधस?", "option1": "<p>    <span><b>Memory    and attention</b></span></p>", "option2": "<p>    <span><b>Attention    and disobedience</b></span></p>", "option3": "<p>    <span><b>Language    and awareness</b></span></p>", "option4": "<p>    <span><b>Memory    and perception</b></span></p>", "answer": "2", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}, {"sr_no": 40, "question": "Enॅiनयnंधnपोि यन gधnधपic inीिहधncधौ ोnपiौयciोि cयnकहcप यी ो ुहंोn ृधing , थुicु ुोौ ोn iंूोcप यn ृधुोॅiयहन, ौहcु ोौ cयnकहcप कiौयनकधन. In ो नधcधnप ौपहकद cयnकहcपधक, दयहng ूधयूिध थiपु cयnकहcप कiौयनकधनौ ुोक पुधiन ृनोinौ धसोंinधक, ोियng थiपु cयnपनियस पुोप थधनध ुधोिपुद ोnक कiक nयप ुोॅध पुध कiौधोौध. Tुध पुicाnधौौ यी ॅोनiयहौ नधgiयnौ यी पुध cयनपधस ोnक पुध ृनोin’ौ यहपधन िोदधन थोौ ंधोौहनधक हौing पुध ौcोnnधक iंोgधौ. Iप थोौ कधंयnौपनोपधक in पुध ौपहकद पुोप cयnकहcप कiौयनकधन iौ ो ूौदcुiोपनic cयnकiपiयn नोपुधन पुोn ोकियधौcधnप कiौयृधकiधncध. Aथोनधnधौौ, ूधनcधूपiयn, ोपपधnपiयn, ंधंयनद ोnक िोngहोgध ोनध ोिि iंूोcपधक ृद पुध cयनपधस. Tुध ीinकingौ यी पुध ौपहकद थधनध हnधसूधcपधक. Tुधद कधंयnौपनोपधक कiौपincप कiौूोनiपiधौ ृधपथधधn ोकियधौcधnपौ थुयौध ृधुोॅiयहनोि iौौहधौ ृधgोn in ोकियधौcधncध ोnक पुयौध थुयौध iौौहधौ ृधgोn धोिनiधन in िiीध. Aिपुयहgु ृयपु gनयहूौ थधनध कiीीधनधnप ीनयं ुधोिपुद cयnपनियस, iप थोौ कiौcयॅधनधक पुोप कiौपincप नधgiयnौ यी पुध cयनपधस in पुध पधधnोgधनौ थुय ुोक धसूधनiधncधक धोिनद-यnौधप ृधुोॅiयहनोि iौौहधौ थधनध पुicाधन in cयंूोनiौयn पय पुध ुधोिपुद ूोनपiciूोnपौ. Bोौधक यn दयहन नधोकing यी पुध ूोौौोgध, ौिधधcप पुध ंयौप ोूूनयूनiोपध यूपiयn पुोप कधौcनiृधौ पुध cयncिहौiयn यी पुध ौपहकद.", "option1": "<p>    <b>Distinct    regions of the cortex were thicker in the teenagers having    early-onset behavioural issues in comparison to the healthy    participants.</b></p>", "option2": "<p>    <b>There were    distinct regions in the cortex of healthy students in comparison    to participants having early behavioural issues.</b></p>", "option3": "<p>    <b>There were no    distinct regions in the cortex of participants having early    behavioural issues in comparison to healthy students.</b></p>", "option4": "<p>    <span><b>There    were participants having early behavioural issues in comparison to    healthy students who had distinct regions in their cortex</b></span></p>", "answer": "1", "negative_marking": "1.00", "positive_marking": "1", "solution_text": "<p>    <br>     </p>", "question_heading": ""}];
+
+let currentQuestion = 0;
+let answers = {};
+let bookmarks = new Set();
+let timerSeconds = 0;
+let timerInterval = null;
+let isPaletteOpen = false;
+
+const STORAGE_KEY = 'quizState_' + (document.title || 'default');
+
+function isImageURL(str) {
+  return str && (str.startsWith('http://') || str.startsWith('https://'));
+}
+
+function createOptionContent(optionText) {
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'option-content';
+    
+    if (isImageURL(optionText)) {
+        const img = document.createElement('img');
+        img.src = optionText;
+        img.className = 'option-image';
+        img.alt = 'Option image';
+        img.loading = 'lazy';
+        img.onerror = function() {
+            this.style.display = 'none';
+            const errorText = document.createTextNode('Image failed to load');
+            contentDiv.appendChild(errorText);
+        };
+        contentDiv.appendChild(img);
+    } else {
+        contentDiv.innerHTML = optionText;
+    }
+    
+    return contentDiv;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  initQuiz();
+  initEventListeners();
+  loadFromLocalStorage();
+  startTimer();
+  createPalette();
+  preventDoubleTapZoom();
+});
+
+function preventDoubleTapZoom() {
+  let lastTouchEnd = 0;
+  document.addEventListener('touchend', (event) => {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) {
+      event.preventDefault();
+    }
+    lastTouchEnd = now;
+  }, { passive: false });
+}
+
+function initTheme() {
+  const savedTheme = localStorage.getItem('quizTheme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  updateThemeIcon();
+}
+
+function updateThemeIcon() {
+  const theme = document.documentElement.getAttribute('data-theme');
+  const themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    themeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  }
+}
+
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('quizTheme', newTheme);
+  updateThemeIcon();
+}
+
+function initQuiz() {
+  loadQuestion(currentQuestion);
+  updateMarkingInfo();
+}
+
+function initEventListeners() {
+  const themeBtn = document.getElementById('themeToggle');
+  const fullscreenBtn = document.getElementById('fullscreenBtn');
+  
+  if (themeBtn) {
+    themeBtn.addEventListener('click', toggleTheme);
+    themeBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      toggleTheme();
+    });
+  }
+  
+  if (fullscreenBtn) {
+    fullscreenBtn.addEventListener('click', toggleFullscreen);
+    fullscreenBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      toggleFullscreen();
+    });
+  }
+  
+  addButtonListener('prevBtn', prevQuestion);
+  addButtonListener('nextBtn', nextQuestion);
+  addButtonListener('clearBtn', clearAnswer);
+  addButtonListener('submitBtn', confirmSubmit);
+  addButtonListener('bookmarkBtn', toggleBookmark);
+  
+  addButtonListener('paletteFab', togglePalette);
+  addButtonListener('paletteClose', closePalette);
+  
+  const overlay = document.getElementById('paletteOverlay');
+  if (overlay) {
+    overlay.addEventListener('click', closePalette);
+    overlay.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      closePalette();
+    });
+  }
+  
+  const searchInput = document.getElementById('paletteSearch');
+  if (searchInput) {
+    searchInput.addEventListener('input', handleSearch);
+    searchInput.addEventListener('change', jumpToQuestion);
+  }
+  
+  document.addEventListener('keydown', handleKeyPress);
+  
+  setInterval(saveToLocalStorage, 5000);
+  
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      updatePalette();
+    }
+  });
+}
+
+function addButtonListener(id, handler) {
+  const btn = document.getElementById(id);
+  if (btn) {
+    btn.addEventListener('click', handler);
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      handler();
+    });
+  }
+}
+
+function jumpToQuestion(e) {
+  const questionNum = parseInt(e.target.value);
+  if (questionNum >= 1 && questionNum <= questions.length) {
+    goToQuestion(questionNum - 1);
+    closePalette();
+    e.target.value = '';
+  }
+}
+
+function togglePalette() {
+  isPaletteOpen = !isPaletteOpen;
+  const palette = document.getElementById('questionPalette');
+  const overlay = document.getElementById('paletteOverlay');
+  const fab = document.getElementById('paletteFab');
+  
+  if (isPaletteOpen) {
+    palette.classList.add('active');
+    overlay.classList.add('active');
+    fab.classList.add('active');
+    fab.innerHTML = '✕<span class="badge" id="answeredBadge">' + Object.keys(answers).length + '</span>';
+    document.body.classList.add('palette-open');
+  } else {
+    closePalette();
+  }
+}
+
+function closePalette() {
+  isPaletteOpen = false;
+  const palette = document.getElementById('questionPalette');
+  const overlay = document.getElementById('paletteOverlay');
+  const fab = document.getElementById('paletteFab');
+  
+  if (palette) palette.classList.remove('active');
+  if (overlay) overlay.classList.remove('active');
+  if (fab) {
+    fab.classList.remove('active');
+    fab.innerHTML = '📋<span class="badge" id="answeredBadge">' + Object.keys(answers).length + '</span>';
+  }
+  document.body.classList.remove('palette-open');
+}
+
+function handleSearch(e) {
+  const searchTerm = e.target.value.toLowerCase();
+  if (!searchTerm) {
+    document.querySelectorAll('.palette-btn').forEach(btn => {
+      btn.style.display = '';
+    });
+    return;
+  }
+  
+  const buttons = document.querySelectorAll('.palette-btn');
+  buttons.forEach((btn, index) => {
+    const questionNum = (index + 1).toString();
+    if (questionNum.includes(searchTerm)) {
+      btn.style.display = '';
+    } else {
+      btn.style.display = 'none';
+    }
+  });
+}
+
+function handleKeyPress(e) {
+  if (document.getElementById('resultSection').classList.contains('hidden')) {
+    if (e.key === 'Escape' && isPaletteOpen) {
+      closePalette();
+    } else if (!isPaletteOpen && e.target.tagName !== 'INPUT') {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevQuestion();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        nextQuestion();
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        nextQuestion();
+      } else if (e.key === 'b' || e.key === 'B') {
+        e.preventDefault();
+        toggleBookmark();
+      } else if (e.key === 'c' || e.key === 'C') {
+        e.preventDefault();
+        clearAnswer();
+      } else if (e.key === 'p' || e.key === 'P') {
+        e.preventDefault();
+        togglePalette();
+      } else if (e.key >= '1' && e.key <= '4') {
+        e.preventDefault();
+        selectOption(parseInt(e.key));
+      }
+    }
+  }
+}
+
+function selectOption(optionNum) {
+  const q = questions[currentQuestion];
+  const radio = document.querySelector(`input[name="q${q.sr_no}"][value="${optionNum}"]`);
+  if (radio) {
+    radio.checked = true;
+    const label = radio.closest('.option-label');
+    if (label) {
+      document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      saveAnswer();
+    }
+  }
+}
+
+function toggleFullscreen() {
+  try {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(err => {
+        console.log('Fullscreen error:', err);
+      });
+    } else {
+      document.exitFullscreen();
+    }
+  } catch (err) {
+    console.log('Fullscreen not supported');
+  }
+}
+
+function startTimer() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+  timerInterval = setInterval(() => {
+    timerSeconds++;
+    updateTimer();
+    if (timerSeconds > 600) {
+      const timer = document.getElementById('timer');
+      if (timer) timer.classList.add('warning');
+    }
+  }, 1000);
+}
+
+function updateTimer() {
+  const minutes = Math.floor(timerSeconds / 60);
+  const seconds = timerSeconds % 60;
+  const timer = document.getElementById('timer');
+  if (timer) {
+    timer.textContent = 
+      `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  }
+}
+
+function createPalette() {
+  const grid = document.getElementById('paletteGrid');
+  if (!grid) return;
+  
+  grid.innerHTML = '';
+  questions.forEach((q, index) => {
+    const btn = document.createElement('button');
+    btn.textContent = index + 1;
+    btn.className = 'palette-btn';
+    btn.setAttribute('aria-label', `Go to question ${index + 1}`);
+    btn.setAttribute('type', 'button');
+    
+    btn.addEventListener('click', () => {
+      goToQuestion(index);
+      closePalette();
+    });
+    
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      goToQuestion(index);
+      closePalette();
+    });
+    
+    grid.appendChild(btn);
+  });
+  updatePalette();
+}
+
+function updatePalette() {
+  const buttons = document.querySelectorAll('.palette-btn');
+  buttons.forEach((btn, index) => {
+    btn.className = 'palette-btn';
+    if (index === currentQuestion) btn.classList.add('current');
+    if (answers[questions[index].sr_no]) btn.classList.add('answered');
+    if (bookmarks.has(questions[index].sr_no)) btn.classList.add('bookmarked');
+  });
+  
+  updatePaletteStats();
+}
+
+function updatePaletteStats() {
+  const answered = Object.keys(answers).length;
+  const unanswered = questions.length - answered;
+  const bookmarkedCount = bookmarks.size;
+  
+  const answeredEl = document.getElementById('paletteAnswered');
+  const unansweredEl = document.getElementById('paletteUnanswered');
+  const bookmarkedEl = document.getElementById('paletteBookmarked');
+  
+  if (answeredEl) answeredEl.textContent = answered;
+  if (unansweredEl) unansweredEl.textContent = unanswered;
+  if (bookmarkedEl) bookmarkedEl.textContent = bookmarkedCount;
+  
+  const badge = document.querySelector('.palette-fab .badge');
+  if (badge) badge.textContent = answered;
+}
+
+function goToQuestion(index) {
+  if (index < 0 || index >= questions.length) return;
+  saveAnswer();
+  currentQuestion = index;
+  loadQuestion(currentQuestion);
+  
+  const questionSection = document.getElementById('questionSection');
+  if (questionSection) {
+    setTimeout(() => {
+      questionSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+}
+
+function loadQuestion(index) {
+  const q = questions[index];
+  
+  const questionNumber = document.getElementById('questionNumber');
+  const questionText = document.getElementById('questionText');
+  
+  if (questionNumber) {
+    questionNumber.textContent = `Question ${index + 1} of ${questions.length}`;
+  }
+  
+  if (questionText) {
+    questionText.innerHTML = '';
+    
+    // 🌟 NEW: Create the Heading Box if it exists!
+    let headingHtml = '';
+    if (q.question_heading && q.question_heading.trim() !== '') {
+      headingHtml = `<div style="background: var(--bg-tertiary); padding: 15px; border-left: 4px solid var(--primary-color); margin-bottom: 20px; border-radius: 8px; overflow-x: auto;">${q.question_heading}</div>`;
+      questionText.innerHTML = headingHtml; // Inject heading first
+    }
+
+    if (isImageURL(q.question)) {
+      const img = document.createElement('img');
+      img.src = q.question;
+      img.className = 'question-image';
+      img.alt = 'Question image';
+      img.loading = 'lazy';
+      img.onerror = function() {
+        this.style.display = 'none';
+        questionText.innerHTML += q.question;
+      };
+      questionText.appendChild(img);
+    } else {
+      questionText.innerHTML += q.question; // Append question after heading
+    }
+  }
+  
+  const container = document.getElementById('optionsContainer');
+  if (!container) return;
+  
+  container.innerHTML = '';
+  
+  for (let i = 1; i <= 4; i++) {
+    const label = document.createElement('label');
+    label.className = 'option-label';
+    if (answers[q.sr_no] == i) label.classList.add('selected');
+    
+    const radio = document.createElement('input');
+    radio.type = 'radio';
+    radio.name = `q${q.sr_no}`;
+    radio.value = i;
+    radio.checked = answers[q.sr_no] == i;
+    
+    const changeHandler = () => {
+      document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      saveAnswer();
+    };
+    
+    radio.addEventListener('change', changeHandler);
+    label.addEventListener('click', (e) => {
+      if (e.target !== radio) {
+        radio.checked = true;
+        changeHandler();
+      }
+    });
+    
+    label.appendChild(radio);
+    
+    const optionContent = createOptionContent(q[`option${i}`]);
+    label.appendChild(optionContent);
+    
+    container.appendChild(label);
+  }
+  
+  const bookmarkBtn = document.getElementById('bookmarkBtn');
+  if (bookmarkBtn) {
+    if (bookmarks.has(q.sr_no)) {
+      bookmarkBtn.classList.add('active');
+    } else {
+      bookmarkBtn.classList.remove('active');
+    }
+  }
+  
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const submitBtn = document.getElementById('submitBtn');
+  
+  if (prevBtn) prevBtn.disabled = index === 0;
+  
+  if (index === questions.length - 1) {
+    if (nextBtn) nextBtn.classList.add('hidden');
+    if (submitBtn) submitBtn.classList.remove('hidden');
+  } else {
+    if (nextBtn) nextBtn.classList.remove('hidden');
+    if (submitBtn) submitBtn.classList.add('hidden');
+  }
+  
+  updateProgress();
+  updatePalette();
+}
+
+function updateMarkingInfo() {
+  if(questions.length > 0) {
+      const q = questions[0];
+      const markingInfo = document.getElementById('markingInfo');
+      if (markingInfo) {
+        markingInfo.textContent = `Marking: +${q.positive_marking}, -${q.negative_marking}`;
+      }
+  }
+}
+
+function updateProgress() {
+  const attempted = Object.keys(answers).length;
+  const currentProgress = ((currentQuestion + 1) / questions.length) * 100;
+  
+  const progressBar = document.getElementById('progressBar');
+  const progressText = document.getElementById('progressText');
+  const attemptedText = document.getElementById('attemptedText');
+  
+  if (progressBar) progressBar.style.width = `${currentProgress}%`;
+  if (progressText) progressText.textContent = `${currentQuestion + 1}/${questions.length}`;
+  if (attemptedText) attemptedText.textContent = attempted;
+}
+
+function saveAnswer() {
+  const q = questions[currentQuestion];
+  const selected = document.querySelector(`input[name="q${q.sr_no}"]:checked`);
+  
+  if (selected) {
+    answers[q.sr_no] = selected.value;
+  }
+  
+  updateProgress();
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function clearAnswer() {
+  const q = questions[currentQuestion];
+  delete answers[q.sr_no];
+  
+  const selected = document.querySelector(`input[name="q${q.sr_no}"]:checked`);
+  if (selected) selected.checked = false;
+  
+  document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+  
+  updateProgress();
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function toggleBookmark() {
+  const q = questions[currentQuestion];
+  const btn = document.getElementById('bookmarkBtn');
+  
+  if (bookmarks.has(q.sr_no)) {
+    bookmarks.delete(q.sr_no);
+    if (btn) btn.classList.remove('active');
+  } else {
+    bookmarks.add(q.sr_no);
+    if (btn) btn.classList.add('active');
+  }
+  
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function nextQuestion() {
+  saveAnswer();
+  if (currentQuestion < questions.length - 1) {
+    currentQuestion++;
+    loadQuestion(currentQuestion);
+  }
+}
+
+function prevQuestion() {
+  saveAnswer();
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    loadQuestion(currentQuestion);
+  }
+}
+
+function confirmSubmit() {
+  const unattempted = questions.length - Object.keys(answers).length;
+  let message = 'Are you sure you want to submit the quiz?';
+  
+  if (unattempted > 0) {
+    message += `\n\nYou have ${unattempted} unanswered question(s).`;
+  }
+  
+  if (confirm(message)) {
+    submitQuiz();
+  }
+}
+
+function submitQuiz() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+  }
+  saveAnswer();
+  closePalette();
+  
+  let correct = 0, wrong = 0, unattempted = 0, score = 0;
+  
+  questions.forEach(q => {
+    const userAns = answers[q.sr_no];
+    const posMark = parseFloat(q.positive_marking) || 0;
+    const negMark = parseFloat(q.negative_marking) || 0;
+    
+    if (!userAns) {
+      unattempted++;
+    } else if (userAns == q.answer) {
+      correct++;
+      score += posMark;
+    } else {
+      wrong++;
+      score -= negMark;
+    }
+  });
+  
+  displayResults(correct, wrong, unattempted, score);
+  
+  const fab = document.getElementById('paletteFab');
+  const nav = document.getElementById('navigation');
+  if (fab) fab.style.display = 'none';
+  if (nav) nav.style.display = 'none';
+  
+  document.body.style.paddingBottom = '20px';
+  
+  clearLocalStorage();
+}
+
+function displayResults(correct, wrong, unattempted, score) {
+  const totalQuestions = questions.length;
+  const percentage = ((correct / totalQuestions) * 100).toFixed(1);
+  const timerEl = document.getElementById('timer');
+  const timeText = timerEl ? timerEl.textContent : '00:00';
+  
+  let html = `
+    <div class="score-card">
+      <h2>${score}/${totalQuestions}</h2>
+      <p>Your Score: ${percentage}%</p>
+      <p>Time Taken: ${timeText}</p>
+    </div>
+    
+    <div class="stats-grid">
+      <div class="stat-card correct">
+        <h3>${correct}</h3>
+        <p>Correct</p>
+      </div>
+      <div class="stat-card wrong">
+        <h3>${wrong}</h3>
+        <p>Wrong</p>
+      </div>
+      <div class="stat-card unattempted">
+        <h3>${unattempted}</h3>
+        <p>Unattempted</p>
+      </div>
+      <div class="stat-card">
+        <h3>${totalQuestions}</h3>
+        <p>Total</p>
+      </div>
+    </div>
+  `;
+  
+  questions.forEach(q => {
+    const userAns = answers[q.sr_no];
+    
+    // 🌟 NEW: Add the Heading to the results review screen!
+    let headingHtml = (q.question_heading && q.question_heading.trim() !== '') 
+      ? `<div style="background: var(--bg-tertiary); padding: 10px; margin-bottom: 15px; border-left: 4px solid var(--primary-color); border-radius: 5px; overflow-x: auto;">${q.question_heading}</div>` 
+      : '';
+      
+    const questionHeader = isImageURL(q.question)
+      ? `<h4>Q${q.sr_no}:</h4>${headingHtml}<img src="${q.question}" class="question-image" alt="Question ${q.sr_no}">`
+      : `<h4>Q${q.sr_no}:</h4>${headingHtml}<div style="margin-bottom: 10px;">${q.question}</div>`;
+      
+    html += `<div class="question-review">${questionHeader}`;
+    
+    for (let i = 1; i <= 4; i++) {
+      const isCorrect = i.toString() === q.answer;
+      const isUserAnswer = userAns == i.toString();
+      
+      let className = 'review-option';
+      if (isCorrect) className += ' correct';
+      if (isUserAnswer && !isCorrect) className += ' wrong';
+      if (isUserAnswer) className += ' user-selected';
+      
+      const optionValue = q[`option${i}`];
+      
+      if (isImageURL(optionValue)) {
+        html += `<div class="${className}">
+          ${isCorrect ? '✓ ' : ''}${isUserAnswer ? '➤ ' : ''} 
+          <img src="${optionValue}" class="option-image" alt="Option ${i}">
+        </div>`;
+      } else {
+        html += `<div class="${className}">
+          ${isCorrect ? '✓ ' : ''}${isUserAnswer ? '➤ ' : ''}${optionValue}
+        </div>`;
+      }
+    }
+    
+    if (q.solution_text && q.solution_text.trim() !== '') {
+      const solutionContent = isImageURL(q.solution_text)
+        ? `<img src="${q.solution_text}" class="solution-image" alt="Solution">`
+        : q.solution_text;
+      html += `<div class="solution-section">
+        <div class="solution-label">📝 Solution:</div>
+        <div class="solution-content">${solutionContent}</div>
+      </div>`;
+    }
+    
+    html += `</div>`; 
+});
+  
+  html += `
+    <div class="action-buttons">
+      <button class="action-btn restart" onclick="restartQuiz()">Restart Quiz</button>
+      <button class="action-btn download" onclick="downloadResults()">Download Results</button>
+      <button class="action-btn print" onclick="window.print()">Print Results</button>
+    </div>
+  `;
+  
+  const resultSection = document.getElementById('resultSection');
+  const questionSection = document.getElementById('questionSection');
+  const progressSection = document.querySelector('.progress-section');
+  
+  if (resultSection) {
+    resultSection.innerHTML = html;
+    resultSection.classList.remove('hidden');
+  }
+  if (questionSection) questionSection.classList.add('hidden');
+  if (progressSection) progressSection.classList.add('hidden');
+  
+  const quizContainer = document.getElementById('quizContainer');
+  if (quizContainer) {
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
+  }
+}
+
+function restartQuiz() {
+  if (confirm('Are you sure you want to restart? All progress will be lost.')) {
+    currentQuestion = 0;
+    answers = {};
+    bookmarks.clear();
+    timerSeconds = 0;
+    
+    const resultSection = document.getElementById('resultSection');
+    const questionSection = document.getElementById('questionSection');
+    const progressSection = document.querySelector('.progress-section');
+    const fab = document.getElementById('paletteFab');
+    const nav = document.getElementById('navigation');
+    
+    if (resultSection) {
+      resultSection.classList.add('hidden');
+      resultSection.innerHTML = '';
+    }
+    if (questionSection) questionSection.classList.remove('hidden');
+    if (progressSection) progressSection.classList.remove('hidden');
+    if (fab) fab.style.display = 'flex';
+    if (nav) nav.style.display = 'grid';
+    
+    document.body.style.paddingBottom = 'var(--nav-height)';
+    
+    if (timerInterval) {
+      clearInterval(timerInterval);
+    }
+    startTimer();
+    
+    loadQuestion(currentQuestion);
+    createPalette();
+  }
+}
+
+function downloadResults() {
+  const resultSection = document.getElementById('resultSection');
+  if (!resultSection) return;
+  
+  const resultHTML = resultSection.innerHTML;
+  const fullHTML = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Results</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; max-width: 900px; margin: 0 auto; }
+    .score-card { background: linear-gradient(135deg, #007bff, #28a745); color: white; padding: 30px; border-radius: 15px; text-align: center; margin-bottom: 20px; }
+    .score-card h2 { font-size: 48px; margin-bottom: 10px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 30px; }
+    .stat-card { background: white; padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #ddd; }
+    .stat-card h3 { font-size: 32px; margin-bottom: 8px; }
+    .stat-card.correct h3 { color: #28a745; }
+    .stat-card.wrong h3 { color: #dc3545; }
+    .stat-card.unattempted h3 { color: #6c757d; }
+    .question-review { background: white; border: 2px solid #ddd; border-radius: 10px; padding: 20px; margin-bottom: 15px; }
+    .question-review h4 { margin-bottom: 15px; font-size: 16px; line-height: 1.6; }
+    .review-option { padding: 10px 15px; margin: 8px 0; border-radius: 8px; border: 2px solid #ddd; display: flex; align-items: center; gap: 10px; }
+    .option-image { max-width: 150px; max-height: 100px; border-radius: 8px; }
+    .review-option.correct { background: #d4edda; border-color: #28a745; color: #155724; }
+    .review-option.wrong { background: #f8d7da; border-color: #dc3545; color: #721c24; }
+    .review-option.user-selected { border-width: 3px; font-weight: bold; }
+    @media print { body { background: white; } }
+    @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center; color: #007bff;">Quiz Results</h1>
+  <p style="text-align: center; color: #666; margin-bottom: 30px;">Generated on: ${new Date().toLocaleString()}</p>
+  ${resultHTML.replace(/<div class="action-buttons">[\s\S]*?<\/div>/, '')}
+</body>
+</html>
+  `;
+  
+  try {
+    const blob = new Blob([fullHTML], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `Quiz_Results_${new Date().getTime()}.html`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  } catch (err) {
+    alert('Download failed. Please try using the Print option instead.');
+    console.error('Download error:', err);
+  }
+}
+
+function saveToLocalStorage() {
+  try {
+    const state = {
+      currentQuestion,
+      answers,
+      bookmarks: Array.from(bookmarks),
+      timerSeconds,
+      timestamp: Date.now()
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch (err) {
+    console.error('Save error:', err);
+  }
+}
+
+function loadFromLocalStorage() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const state = JSON.parse(saved);
+      const hasProgress = (state && (
+        (state.currentQuestion && state.currentQuestion > 0) ||
+        (state.answers && Object.keys(state.answers).length > 0) ||
+        (state.timerSeconds && state.timerSeconds > 0)
+      ));
+      if (hasProgress && (Date.now() - state.timestamp < 24 * 60 * 60 * 1000)) {
+        if (confirm('Resume previous quiz session?')) {
+          currentQuestion = state.currentQuestion || 0;
+          answers = state.answers || {};
+          bookmarks = new Set(state.bookmarks || []);
+          timerSeconds = state.timerSeconds || 0;
+          updateTimer();
+          loadQuestion(currentQuestion);
+        }
+      } else {
+        clearLocalStorage();
+      }
+    }
+  } catch (err) {
+    console.error('Load error:', err);
+    clearLocalStorage();
+  }
+}
+
+function clearLocalStorage() {
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (err) {
+    console.error('Clear storage error:', err);
+  }
+}
+
+window.addEventListener('beforeunload', (e) => {
+  const resultSection = document.getElementById('resultSection');
+  if (resultSection && !resultSection.classList.contains('hidden')) {
+    return;
+  }
+  e.preventDefault();
+  e.returnValue = '';
+});
+
+window.addEventListener('unload', () => {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+});
+</script>
+</body>
+</html>
