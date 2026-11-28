@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>65.) #Test-33 (classification of organisms  - Hindi</title>
+<style>
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0069d9;
+  --success-color: #28a745;
+  --success-hover: #218838;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --secondary-color: #6c757d;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --border-color: #dee2e6;
+  --shadow: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
+  --overlay: rgba(0,0,0,0.5);
+  --nav-height: 80px;
+}
+
+[data-theme="dark"] {
+  --primary-color: #4dabf7;
+  --primary-hover: #339af0;
+  --success-color: #51cf66;
+  --success-hover: #40c057;
+  --danger-color: #ff6b6b;
+  --warning-color: #ffd43b;
+  --secondary-color: #868e96;
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #404040;
+  --text-primary: #f8f9fa;
+  --text-secondary: #adb5bd;
+  --border-color: #495057;
+  --shadow: 0 4px 6px rgba(0,0,0,0.3);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.4);
+  --overlay: rgba(0,0,0,0.7);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+  overflow-x: hidden;
+  position: relative;
+  padding-bottom: var(--nav-height);
+}
+
+body.palette-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-primary);
+  padding: 20px 30px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+
+.header h1 {
+  font-size: 28px;
+  color: var(--primary-color);
+  font-weight: 700;
+  user-select: none;
+}
+
+.header-controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.theme-toggle, .fullscreen-btn {
+  background: var(--bg-tertiary);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.3s;
+  min-width: 44px;
+  min-height: 44px;
+  user-select: none;
+}
+
+.theme-toggle:active, .fullscreen-btn:active {
+  transform: scale(0.95);
+}
+
+.theme-toggle:hover, .fullscreen-btn:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+.bot-link-btn {
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+}
+.bot-link-btn:active {
+  transform: scale(0.95);
+}
+.bot-link-btn:hover {
+  background: var(--primary-hover);
+}
+
+.timer {
+  background: var(--warning-color);
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 18px;
+  min-width: 100px;
+  text-align: center;
+  user-select: none;
+}
+
+.timer.warning {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.palette-fab {
+  position: fixed;
+  bottom: calc(var(--nav-height) + 20px);
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  box-shadow: 0 6px 20px rgba(0,123,255,0.4);
+  transition: all 0.3s ease;
+  z-index: 998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.palette-fab:active {
+  transform: scale(0.9);
+}
+
+.palette-fab:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0,123,255,0.6);
+}
+
+.palette-fab.active {
+  background: var(--danger-color);
+}
+
+.palette-fab .badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: var(--success-color);
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--bg-secondary);
+  pointer-events: none;
+}
+.solution-section {
+  margin-top: 20px;
+  padding: 15px;
+  background: #e7f3ff;
+  border-left: 4px solid var(--primary-color);
+  border-radius: 8px;
+}
+
+.solution-label {
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.solution-content {
+  line-height: 1.6;
+  color: #333;
+}
+
+.solution-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.palette-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 999;
+  touch-action: none;
+}
+
+.palette-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.question-palette {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 450px;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--bg-primary);
+  box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+  transition: right 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.question-palette.active {
+  right: 0;
+}
+
+.palette-header {
+  padding: 20px;
+  background: var(--primary-color);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.palette-header h3 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.palette-close {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: background 0.2s;
+  line-height: 1;
+  touch-action: manipulation;
+}
+
+.palette-close:active {
+  transform: scale(0.9);
+}
+
+.palette-close:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.palette-stats {
+  padding: 15px 20px;
+  background: var(--bg-tertiary);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  font-size: 13px;
+  text-align: center;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border-color);
+  user-select: none;
+}
+
+.palette-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.palette-stat .number {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.palette-stat.answered .number { color: var(--success-color); }
+.palette-stat.unanswered .number { color: var(--secondary-color); }
+.palette-stat.bookmarked .number { color: var(--warning-color); }
+
+.palette-search {
+  padding: 15px 20px;
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+}
+
+.palette-search input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 14px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.palette-search input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.palette-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 10px;
+}
+
+.palette-btn {
+  aspect-ratio: 1;
+  border: 2px solid var(--border-color);
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+  min-width: 40px;
+  min-height: 40px;
+  color: var(--text-primary);
+  position: relative;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.palette-btn:active {
+  transform: scale(0.9);
+}
+
+.palette-btn:hover {
+  transform: scale(1.1);
+  z-index: 10;
+  box-shadow: var(--shadow);
+}
+
+.palette-btn.current {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  animation: currentPulse 2s infinite;
+}
+
+@keyframes currentPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,123,255,0.7); }
+  50% { box-shadow: 0 0 0 8px rgba(0,123,255,0); }
+}
+
+.palette-btn.answered {
+  background: var(--success-color);
+  color: white;
+  border-color: var(--success-color);
+}
+
+.palette-btn.bookmarked::after {
+  content: '🔖';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.palette-btn.bookmarked.answered {
+  background: var(--success-color);
+}
+
+.palette-legend {
+  padding: 20px;
+  border-top: 1px solid var(--border-color);
+  font-size: 13px;
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.legend-color {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.quiz-container {
+  background: var(--bg-primary);
+  border-radius: 15px;
+  box-shadow: var(--shadow-lg);
+  padding: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  scroll-margin-top: 20px;
+}
+
+.quiz-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.marking-info {
+  display: inline-block;
+  background: var(--bg-tertiary);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.progress-section {
+  margin-bottom: 25px;
+}
+
+.progress-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.progress-bar-container {
+  background: var(--bg-tertiary);
+  border-radius: 12px;
+  overflow: hidden;
+  height: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+  transition: width 0.4s ease;
+  border-radius: 12px;
+}
+
+.question-section {
+  min-height: 300px;
+  scroll-margin-top: 80px;
+  margin-bottom: 20px;
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.question-number {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary-color);
+  user-select: none;
+}
+
+.bookmark-btn {
+  background: transparent;
+  border: 2px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 44px;
+  min-height: 44px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.bookmark-btn:active {
+  transform: scale(0.95);
+}
+
+.bookmark-btn.active {
+  background: var(--warning-color);
+  border-color: var(--warning-color);
+  color: #000;
+}
+
+.question {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 25px;
+  color: var(--text-primary);
+  user-select: text;
+}
+
+.question-image {
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: 10px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  padding: 10px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--border-color);
+  padding: 16px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--bg-secondary);
+  min-height: 60px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.option-label:active {
+  transform: scale(0.98);
+}
+
+.option-label:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--primary-color);
+}
+
+.option-label.selected {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.option-label input[type="radio"] {
+  margin-right: 15px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.option-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.option-image {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  padding: 10px;
+}
+
+.option-label.selected .option-image {
+  background: rgba(255,255,255,0.1);
+}
+
+/* FIXED NAVIGATION - KEY UPDATE */
+.navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-primary);
+  border-top: 2px solid var(--border-color);
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  z-index: 997;
+  padding: 15px 20px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 10px;
+  max-width: 100%;
+}
+
+.nav-btn {
+  padding: 14px 20px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+.nav-btn:active {
+  transform: scale(0.97);
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.nav-btn.prev {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.nav-btn.prev:hover:not(:disabled) {
+  background: #5a6268;
+}
+
+.nav-btn.next {
+  background: var(--primary-color);
+  color: white;
+}
+
+.nav-btn.next:hover:not(:disabled) {
+  background: var(--primary-hover);
+}
+
+.nav-btn.clear {
+  background: var(--danger-color);
+  color: white;
+}
+
+.nav-btn.clear:hover {
+  background: #c82333;
+}
+
+.nav-btn.submit {
+  background: var(--success-color);
+  color: white;
+  grid-column: 1 / -1;
+}
+
+.nav-btn.submit:hover {
+  background: var(--success-hover);
+}
+
+.result-section {
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.score-card {
+  background: linear-gradient(135deg, var(--primary-color), var(--success-color));
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  margin-bottom: 30px;
+  user-select: none;
+}
+
+.score-card h2 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.score-card p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: var(--bg-secondary);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  border: 2px solid var(--border-color);
+  user-select: none;
+}
+
+.stat-card h3 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.stat-card.correct h3 { color: var(--success-color); }
+.stat-card.wrong h3 { color: var(--danger-color); }
+.stat-card.unattempted h3 { color: var(--secondary-color); }
+
+.question-review {
+  border: 2px solid var(--border-color);
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 20px;
+  background: var(--bg-secondary);
+}
+
+.question-review h4 {
+  margin-bottom: 15px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.review-option {
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 2px solid var(--border-color);
+  background: var(--bg-primary);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.review-option .option-image {
+  max-width: 150px;
+  max-height: 100px;
+}
+
+.review-option.correct {
+  background: #d4edda;
+  border-color: var(--success-color);
+  color: #155724;
+}
+
+.review-option.wrong {
+  background: #f8d7da;
+  border-color: var(--danger-color);
+  color: #721c24;
+}
+
+.review-option.user-selected {
+  border-width: 3px;
+  font-weight: 600;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.action-btn {
+  padding: 14px 30px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  min-width: 150px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.action-btn:active {
+  transform: scale(0.95);
+}
+
+.action-btn.restart {
+  background: var(--danger-color);
+  color: white;
+}
+
+.action-btn.restart:hover {
+  background: #c82333;
+}
+
+.action-btn.download {
+  background: var(--primary-color);
+  color: white;
+}
+
+.action-btn.download:hover {
+  background: var(--primary-hover);
+}
+
+.action-btn.print {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.action-btn.print:hover {
+  background: #5a6268;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.palette-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.palette-content::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+}
+
+.palette-content::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+.palette-content::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 140px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .header h1 {
+    font-size: 22px;
+  }
+
+  .quiz-container {
+    padding: 20px 15px;
+  }
+
+  .question-palette {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .palette-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+  }
+
+  .palette-btn {
+    font-size: 13px;
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  .palette-fab {
+    bottom: calc(var(--nav-height) + 10px);
+    right: 15px;
+    width: 56px;
+    height: 56px;
+    font-size: 22px;
+  }
+
+  .navigation {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 12px 15px;
+  }
+
+  .nav-btn {
+    min-height: 44px;
+    font-size: 15px;
+  }
+
+  .nav-btn.clear {
+    order: 3;
+  }
+
+  .nav-btn.submit {
+    grid-column: auto;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .legend-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .question {
+    font-size: 16px;
+  }
+
+  .option-label {
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  .option-image {
+    max-height: 150px;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .palette-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+
+  .palette-btn {
+    font-size: 12px;
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .timer {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  .option-image {
+    max-height: 120px;
+  }
+}
+
+@media print {
+  .header-controls, .navigation, .palette-fab, .palette-overlay, .question-palette, .action-buttons, .bookmark-btn {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    padding-bottom: 0;
+  }
+
+  .container {
+    padding-bottom: 20px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>65.) #Test-33 (classification of organisms  - Hindi</h1>
+    <div class="header-controls">
+      <a href="https://t.me/ssc_prepX" target="_blank" class="bot-link-btn" title="Open Bot in Telegram">🤖 Bot</a>
+      
+      <div class="timer" id="timer">00:00</div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle Theme">🌙</button>
+      <button class="fullscreen-btn" id="fullscreenBtn" aria-label="Toggle fullscreen" title="Fullscreen">⛶</button>
+    </div>
+  </div>
+
+  <div class="quiz-container" id="quizContainer">
+    <div class="quiz-header">
+      <div class="marking-info" id="markingInfo">Marking: +1, -0</div>
+    </div>
+
+    <div class="progress-section">
+      <div class="progress-stats">
+        <span>Progress: <strong id="progressText">1/2</strong></span>
+        <span>Attempted: <strong id="attemptedText">0</strong></span>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+
+    <div class="question-section" id="questionSection">
+      <div class="question-header">
+        <div class="question-number" id="questionNumber">Question 1 of 2</div>
+        <button class="bookmark-btn" id="bookmarkBtn" aria-label="Bookmark question">
+          <span>🔖</span> <span>Bookmark</span>
+        </button>
+      </div>
+      
+      <div class="question" id="questionText"></div>
+      
+      <div class="options" id="optionsContainer"></div>
+    </div>
+
+    <div class="result-section hidden" id="resultSection"></div>
+  </div>
+</div>
+
+<div class="navigation" id="navigation">
+  <button class="nav-btn prev" id="prevBtn" aria-label="Previous question">
+    <span>←</span> Previous
+  </button>
+  <button class="nav-btn clear" id="clearBtn" aria-label="Clear answer">
+    Clear
+  </button>
+  <button class="nav-btn next" id="nextBtn" aria-label="Next question">
+    Next <span>→</span>
+  </button>
+  <button class="nav-btn submit hidden" id="submitBtn" aria-label="Submit quiz">
+    Submit Quiz
+  </button>
+</div>
+
+<button class="palette-fab" id="paletteFab" aria-label="Toggle question palette" title="Question Palette (P)">
+  📋
+  <span class="badge" id="answeredBadge">0</span>
+</button>
+
+<div class="palette-overlay" id="paletteOverlay"></div>
+
+<div class="question-palette" id="questionPalette">
+  <div class="palette-header">
+    <h3>Question Palette</h3>
+    <button class="palette-close" id="paletteClose" aria-label="Close palette">×</button>
+  </div>
+
+  <div class="palette-stats">
+    <div class="palette-stat answered">
+      <div class="number" id="paletteAnswered">0</div>
+      <div>Answered</div>
+    </div>
+    <div class="palette-stat unanswered">
+      <div class="number" id="paletteUnanswered">2</div>
+      <div>Not Answered</div>
+    </div>
+    <div class="palette-stat bookmarked">
+      <div class="number" id="paletteBookmarked">0</div>
+      <div>Bookmarked</div>
+    </div>
+  </div>
+
+  <div class="palette-search">
+    <input type="number" id="paletteSearch" placeholder="Jump to question number..." aria-label="Search questions" inputmode="numeric" pattern="[0-9]*">
+  </div>
+
+  <div class="palette-content">
+    <div class="palette-grid" id="paletteGrid"></div>
+  </div>
+
+  <div class="palette-legend">
+    <div class="legend-grid">
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--success-color);"></div>
+        <span>Answered</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--bg-secondary); border: 2px solid var(--border-color);"></div>
+        <span>Not Answered</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--primary-color);"></div>
+        <span>Current Question</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: var(--warning-color);"></div>
+        <span>🔖 Bookmarked</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// JSON INJECTION HAPPENS HERE
+const questions = [{"sr_no": 1, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">निम्नलिखित में से कौन-सी भारत में पाई जाने वाली स्थानिक प्रजाति है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">नीलगिरि तहर</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">बाघ</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">हाथी</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">हिरण</span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">स्थानिक प्रजातियाँ वे प्रजातियाँ हैं जो प्राकृतिक रूप से किसी विशेष भौगोलिक क्षेत्र तक सीमित होती हैं। नीलगिरि तहर, लायन-टेल्ड मकाक, Nepenthes khasiana और नीलकुरिंजी भारत में पाई जाने वाली स्थानिक प्रजातियाँ हैं।</span></p>", "question_heading": ""}, {"sr_no": 2, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">कौन-सी स्थिति जैव विविधता हॉटस्पॉट की विशेषता है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">प्रजातियों की कम संख्या और आवास की कोई हानि नहीं</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">केवल बड़ी संख्या में प्रवासी प्रजातियाँ</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">केवल बड़ा भौगोलिक क्षेत्र</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">बड़ी संख्या में स्थानिक प्रजातियाँ और आवास की अत्यधिक हानि</span></p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">वे क्षेत्र जहाँ बड़ी संख्या में स्थानिक प्रजातियाँ पाई जाती हैं और जहाँ आवास की अत्यधिक हानि हुई है, जैव विविधता हॉटस्पॉट कहलाते हैं।</span></p>", "question_heading": ""}, {"sr_no": 3, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">निम्नलिखित में से कौन भारत से संबंधित वैश्विक जैव विविधता हॉटस्पॉट नहीं है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">पश्चिमी घाट</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">थार मरुस्थल</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">हिमालय</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">इंडो-बर्मा</span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">पश्चिमी घाट, इंडो-बर्मा, हिमालय और सुंडालैंड भारत से संबंधित वैश्विक जैव विविधता हॉटस्पॉट हैं। इंडो-बर्मा में उत्तर-पूर्व भारत तथा सुंडालैंड में निकोबार द्वीप समूह शामिल हैं।</span></p>", "question_heading": ""}, {"sr_no": 4, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">अरस्तू ने मुख्य रूप से जंतुओं का वर्गीकरण किस विशेषता के आधार पर किया था?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">कोशिका संरचना</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">पोषण की विधि</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">आवास</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">DNA समानता</span></p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">अरस्तू ने जंतुओं को उनके आवास</span><span style=\"font-family:Georgia\">—</span><span style=\"font-family:'Mangal'\">स्थल, जल और वायु</span><span style=\"font-family:Georgia\">—</span><span style=\"font-family:'Mangal'\">के आधार पर समूहों में बाँटा। उन्होंने बाहरी स्वरूप का भी उपयोग किया। इस प्रणाली की सीमा यह थी कि यह मुख्य रूप से आसानी से दिखाई देने वाली बाहरी विशेषताओं पर आधारित थी।</span></p>", "question_heading": ""}, {"sr_no": 5, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">द्वि-जगत वर्गीकरण प्रणाली में कौन-से दो जगत शामिल थे?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">मोनेरा और प्रोटिस्टा</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">प्रोटिस्टा और कवक</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">पादप और कवक</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">पादप और जंतु</span></p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">द्वि-जगत प्रणाली में सभी जीवों को पादप जगत और जंतु जगत में बाँटा गया था। पादप जगत में अपना भोजन बनाने वाले जीव में भोजन के लिए अन्य जीवों पर निर्भर जीव शामिल थे।</span></p>", "question_heading": ""}, {"sr_no": 6, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">त्रि-जगत वर्गीकरण प्रणाली में प्रोटिस्टा जगत को क्यों जोड़ा गया?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">सभी बहुकोशिकीय जंतुओं को शामिल करने के लिए</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">एककोशिकीय सूक्ष्मजीवों को शामिल करने के लिए</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">केवल कवकों को शामिल करने के लिए</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">सभी प्रकाश-संश्लेषी जीवों को शामिल करने के लिए</span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">अमीबा और पैरामीशियम जैसे जीव एककोशिकीय होते हैं और उन्हें पादप या एनिमेलिया में उचित रूप से नहीं रखा जा सकता था। इसलिए एककोशिकीय सूक्ष्मजीवों को शामिल करने के लिए तीसरा जगत, प्रॉटिस्टा, जोड़ा गया।</span></p>", "question_heading": ""}, {"sr_no": 7, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">किस विशेषता के कारण बैक्टीरिया को प्रोटिस्टा से अलग करके मोनेरा जगत में रखा गया?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">बैक्टीरिया में वास्तविक झिल्ली-बद्ध केंद्रक का अभाव होता है</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">बैक्टीरिया हमेशा बहुकोशिकीय होते हैं</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">बैक्टीरिया में काइटिन की कोशिका भित्ति होती है</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">बैक्टीरिया हमेशा विषमपोषी होते हैं</span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">अमीबा में वास्तविक झिल्ली-बद्ध केंद्रक होता है, जबकि बैक्टीरिया में इसका अभाव होता है। कोशिका संरचना के इस महत्वपूर्ण अंतर के कारण बैक्टीरिया को अलग मोनेरा जगत में रखा गया।</span></p>", "question_heading": ""}, {"sr_no": 8, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">1969 में पंच-जगत वर्गीकरण किस वैज्ञानिक ने प्रस्तावित किया?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">अरस्तू</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">कैरोलस लिनियस</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">अर्न्स्ट हेकेल</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">रॉबर्ट एच. व्हिटेकर</span></p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">रॉबर्ट एच. व्हिटेकर ने 1969 में पंच-जगत वर्गीकरण प्रस्तुत किया, जिसमें जीवों को मोनेरा, प्रोटिस्टा, फंगी, पादप और एनिमेलिया में बाँटा गया।</span></p>", "question_heading": ""}, {"sr_no": 9, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">निम्नलिखित में से कौन-सी मोनेरा जगत की विशेषता है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">बहुकोशिकीय यूकैरियोट्स</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">एककोशिकीय प्रोकैरियोट्स</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">वास्तविक केंद्रक वाले एककोशिकीय जीव</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">केवल बहुकोशिकीय स्वपोषी जीव</span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">बैक्टीरिया और सायनोबैक्टीरिया एककोशिकीय प्रोकैरियोट्स हैं जिन्हें मोनेरा जगत में रखा जाता है। प्रोकैरियोटिक कोशिकाओं में वास्तविक झिल्ली-बद्ध केंद्रक नहीं होता है।</span></p>", "question_heading": ""}, {"sr_no": 10, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">प्रकाश संश्लेषण द्वारा ऑक्सीजन उत्पन्न करने वाले शुरुआती जीवों में कौन शामिल थे?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">कवक</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">प्रोटोजोआ</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">सायनोबैक्टीरिया</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">ब्रायोफाइट्स</span></p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">सायनोबैक्टीरिया, जिन्हें नीले-हरे शैवाल (Blue-green algae) भी कहा जाता है, प्रकाश संश्लेषण द्वारा ऑक्सीजन उत्पन्न करने वाले शुरुआती जीवों में शामिल थे। लगभग 2.5 अरब वर्ष पहले वायुमंडल में ऑक्सीजन एकत्रित हुई, जिससे पृथ्वी जीवन के अन्य रूपों के लिए उपयुक्त बनी।</span></p>", "question_heading": ""}, {"sr_no": 11, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">निम्नलिखित में से कौन-सा प्रोटिस्टा जगत का सही वर्णन करता है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">बहुकोशिकीय प्रोकैरियोटिक जीव</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">केवल बहुकोशिकीय स्वपोषी जीव</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">वास्तविक केंद्रक रहित एककोशिकीय जीव</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">एककोशिकीय यूकैरियोटिक जीव</span></p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">प्रोटिस्ट एककोशिकीय यूकैरियोटिक जीव हैं जो सामान्यतः जल या नम स्थानों में रहते हैं। इनमें कुछ स्वपोषी तथा कुछ विषमपोषी होते हैं।</span></p>", "question_heading": ""}, {"sr_no": 12, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">कवकों की कोशिका भित्ति मुख्यतः किसकी बनी होती है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">काइटिन</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">सेल्यूलोज</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">स्टार्च</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">प्रोटीन</span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">कवक मुख्यतः बहुकोशिकीय यूकैरियोट्स होते हैं और उनकी कोशिका भित्ति काइटिन की बनी होती है। ये विषमपोषी होते हैं और अपना भोजन स्वयं नहीं बना सकते।</span></p>", "question_heading": ""}, {"sr_no": 13, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">यीस्ट एककोशिकीय होने के बावजूद कवक जगत में क्यों रखा जाता है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">यह प्रकाश संश्लेषण करता है</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">इसमें कोशिका भित्ति नहीं होती</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">यह प्रोकैरियोट है</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">इसकी कोशिका भित्ति काइटिन की बनी होती है</span></p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">यीस्ट एक अपवाद है क्योंकि यह एककोशिकीय कवक है। इसकी कोशिका भित्ति काइटिन की बनी होती है, इसलिए इसे कवक जगत में रखा जाता है।</span></p>", "question_heading": ""}, {"sr_no": 14, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">निम्नलिखित में से किन कवकों का उपयोग एंजाइम और एंटीबायोटिक्स बनाने में किया जाता है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">एस्परजिलस और पेनिसिलियम</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">यीस्ट और मशरूम</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">राइजोबियम और एस्परजिलस</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">लैक्टोबैसिलस और पेनिसिलियम</span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">एस्परजिलस और पेनिसिलियम का उपयोग एंजाइम और एंटीबायोटिक्स बनाने में किया जाता है। कवक महत्वपूर्ण अपघटक भी हैं और पोषक तत्वों के पुनर्चक्रण में सहायता करते हैं।</span></p>", "question_heading": ""}, {"sr_no": 15, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">निम्नलिखित में से कौन थैलोफाइटा का उदाहरण है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">मार्चेन्टिया</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">फर्न</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">स्पाइरोगाइरा</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">पाइन</span></p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">स्पाइरोगाइरा थैलोफाइटा का उदाहरण है। थैलोफाइट्स सबसे सरल पादप रूपों में से हैं और मुख्यतः जल या नम वातावरण में पाए जाते हैं।</span></p>", "question_heading": ""}, {"sr_no": 16, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">ब्रायोफाइट्स में जड़ जैसी संरचनाएँ कौन-सी होती हैं?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">मायसीलियम</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">थैलस</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">राइजॉइड्स</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">शंकु</span></p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">ब्रायोफाइट्स में जड़ जैसी संरचनाएँ होती हैं जिन्हें राइजॉइड्स कहते हैं। इनमें सरल तने जैसी और पत्ती जैसी संरचनाएँ भी हो सकती हैं। ये सामान्यतः नम और छायादार स्थानों पर उगते हैं।</span></p>", "question_heading": ""}, {"sr_no": 17, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">ब्रायोफाइट्स को ‘पादप जगत के उभयचर</span><span style=\"font-family:Georgia\">’ </span><span style=\"font-family:'Mangal'\">क्यों कहा जाता है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">वे हमेशा जल में रहते हैं</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">इनमें जड़ और फूल दोनों होते हैं</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">वे जल में बीज उत्पन्न करते हैं</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">वे स्थल पर रहते हैं लेकिन प्रजनन के लिए जल की आवश्यकता होती है</span></p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">ब्रायोफाइट्स नम भूमि पर रह सकते हैं, लेकिन उनके प्रजनन के लिए जल आवश्यक होता है। इसलिए उन्हें ‘पादप जगत के उभयचर</span><span style=\"font-family:Georgia;font-size:12pt\">’ </span><span style=\"font-size:12pt;font-family:'Mangal'\">कहा जाता है।</span></p>", "question_heading": ""}, {"sr_no": 18, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">निम्नलिखित में से कौन ब्रायोफाइटा का उदाहरण है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">स्पाइरोगाइरा</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">मार्चेन्टिया</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">फर्न</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">पाइन</span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">मार्चेन्टिया और मॉस ब्रायोफाइटा के उदाहरण हैं। ब्रायोफाइट्स सामान्यतः नम और छायादार स्थानों पर, विशेष रूप से मानसून के दौरान, हरी चटाई के रूप में उगते हैं।</span></p>", "question_heading": ""}, {"sr_no": 19, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">कौन-सी विशेषता टेरिडोफाइट्स (Pteridophytes) को ब्रायोफाइट्स से अलग करती है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">संवहन ऊतकों की उपस्थिति</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">प्रजनन के लिए जल पर निर्भरता</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">बीजों का अभाव</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">स्थल पर रहने की क्षमता</span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">टेरिडोफाइट्स में जाइलम और फ्लोएम नामक विशेष संवहन ऊतक पाए जाते हैं, जो पूरे पौधे में जल और भोजन का परिवहन करते हैं। ब्रायोफाइट्स में संवहन ऊतक नहीं पाए जाते।</span></p>", "question_heading": ""}, {"sr_no": 20, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">निम्नलिखित में से कौन-सी टेरिडोफाइट्स की विशेषता है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">वे फूल और फल उत्पन्न करते हैं</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">इनमें वास्तविक जड़, तना और पत्तियाँ होती हैं</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">इनके बीज शंकुओं पर खुले होते हैं</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">इनमें संवहन ऊतक नहीं होते</span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">फर्न जैसे टेरिडोफाइट्स में वास्तविक जड़, तना और पत्तियाँ होती हैं। इनमें परिवहन के लिए विकसित संवहन ऊतक भी पाए जाते हैं।</span></p>", "question_heading": ""}, {"sr_no": 21, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">जिम्नोस्पर्म की कौन-सी विशेषता जल की हानि को कम करने में सहायता करती है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">चौड़ी पत्तियाँ</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">जड़ों का अभाव</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">मुलायम तने</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">सुई जैसी या शल्क जैसी पत्तियाँ</span></p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">जिम्नोस्पर्म ठंडे और शुष्क क्षेत्रों के लिए अच्छी तरह अनुकूलित होते हैं। उनकी सुई जैसी या शल्क जैसी पत्तियाँ जल की हानि को कम करती हैं और कठोर परिस्थितियों को सहन करने में सहायता करती हैं।</span></p>", "question_heading": ""}, {"sr_no": 22, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">टेरिडोफाइट्स के बारे में कौन-सा कथन सही है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">वे बीज बनाते हैं लेकिन फूल नहीं</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">उन्हें प्रजनन के लिए जल की आवश्यकता नहीं होती</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">उन्हें प्रजनन के लिए जलीय परिस्थितियों की आवश्यकता होती है और वे बीज नहीं बनाते</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">इनमें वास्तविक जड़, तना और पत्तियाँ नहीं होतीं</span></p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">टेरिडोफाइट्स स्थल पर रहने के लिए अनुकूलित होते हैं और उनमें संवहन ऊतक पाए जाते हैं, लेकिन उन्हें प्रजनन के लिए जलीय परिस्थितियों की आवश्यकता होती है तथा वे बीज उत्पन्न नहीं करते।</span></p>", "question_heading": ""}, {"sr_no": 23, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">निम्नलिखित में से कौन जिम्नोस्पर्म का उदाहरण है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">पाइन</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">मॉस</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">स्पाइरोगाइरा</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">मार्चेन्टिया</span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">पाइन और साइकैड्स जिम्नोस्पर्म के उदाहरण हैं। ये ठंडे और शुष्क क्षेत्रों के लिए अच्छी तरह अनुकूलित होते हैं और निषेचन के लिए जलीय परिस्थितियों की आवश्यकता नहीं होती।</span></p>", "question_heading": ""}, {"sr_no": 24, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">जंतुओं को नॉन-कॉर्डेटा और कॉर्डेटा में बाँटने का प्रमुख आधार क्या है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">नोटोकॉर्ड की उपस्थिति या अनुपस्थिति</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">पैरों की उपस्थिति या अनुपस्थिति</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">पोषण की विधि</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">आवास का प्रकार</span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">जंतुओं के वर्गीकरण का एक प्रमुख आधार नोटोकॉर्ड की उपस्थिति या अनुपस्थिति है। नोटोकॉर्ड एक लचीली छड़ जैसी संरचना है। नॉन-कॉर्डेट्स में नोटोकॉर्ड नहीं होता, जबकि कॉर्डेट्स में जीवन की कम-से-कम किसी अवस्था में नोटोकॉर्ड पाया जाता है।</span></p>", "question_heading": ""}, {"sr_no": 25, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">निम्नलिखित में से कौन-सी पोरिफेरा की विशेषता है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">शरीर में अनेक छिद्र होते हैं</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">शरीर खंडों में विभाजित होता है</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">संधियुक्त पैर पाए जाते हैं</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">कैथोड</span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">पोरिफेरा के शरीर पर अनेक छिद्र होते हैं। इन छिद्रों से जल प्रवेश करके नाल तंत्र में प्रवाहित होता है, जो भोजन, श्वसन और अपशिष्ट पदार्थों को बाहर निकालने में सहायता करता है।</span></p>", "question_heading": ""}, {"sr_no": 26, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">नाइडेरिया में शिकार पकड़ने और रक्षा के लिए कौन-सी विशेष कोशिकाएँ पाई जाती हैं?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">कॉलर कोशिकाएँ</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">दंश कोशिकाएँ</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">ज्वाला कोशिकाएँ</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">रक्त कोशिकाएँ</span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">नाइडेरिया के स्पर्शकों पर विशेष दंश कोशिकाएँ पाई जाती हैं। ये कोशिकाएँ शिकार पकड़ने और शिकारियों से रक्षा करने में सहायता करती हैं।</span></p>", "question_heading": ""}, {"sr_no": 27, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">निम्नलिखित में से कौन-सी प्लेटीहेल्मिन्थीज की विशेषता है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">बेलनाकार और अखंडित शरीर</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">संधियुक्त उपांग</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">चपटा, फीते जैसा शरीर</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">काँटेदार त्वचा</span></p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">प्लेटीहेल्मिन्थीज को सामान्यतः चपटे कृमि कहा जाता है क्योंकि इनका शरीर चपटा और फीते जैसा होता है। इनमें कुछ स्वतंत्र रूप से रहते हैं, जबकि कई परजीवी होते हैं।</span></p>", "question_heading": ""}, {"sr_no": 28, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">कौन-सी विशेषता नेमाटोडा को प्लेटीहेल्मिन्थीज से अलग करती है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">संधियुक्त पैरों की उपस्थिति</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">खंडित शरीर</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">कवच की उपस्थिति</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">बेलनाकार, अखंडित शरीर</span></p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:0pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">नेमाटोडा को सामान्यतः गोलकृमि कहा जाता है। इनका शरीर लंबा, बेलनाकार और अखंडित होता है, जबकि प्लेटीहेल्मिन्थीज का शरीर चपटा होता है।</span></p>", "question_heading": ""}, {"sr_no": 29, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">निम्नलिखित में से कौन-सी आर्थ्रोपोडा की विशेषता है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">संधियुक्त उपांग और कठोर बाह्यकंकाल</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">कोमल शरीर और पेशीय पाद</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">कैल्शियम कार्बोनेट का कठोर अंतःकंकाल</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">शरीर में खंडीकरण का अभाव</span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">आर्थ्रोपोड्स में संधियुक्त उपांग, खंडित शरीर और कठोर बाह्यकंकाल पाया जाता है। कीट, केकड़े और मकड़ियाँ इस समूह में आते हैं।</span></p>", "question_heading": ""}, {"sr_no": 30, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">निम्नलिखित में से कौन-सी मोलस्का की विशेषता है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">संधियुक्त उपांग</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">अनेक छिद्र</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">स्पष्ट सिर, पेशीय पाद और उभार वाला कोमल शरीर</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">नोटोकॉर्ड सहित काँटेदार त्वचा</span></p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">मोलस्का के जीवों का शरीर कोमल होता है, जिसमें स्पष्ट सिर, पेशीय पाद और एक उभार होता है। कई मोलस्क में कोमल शरीर की सुरक्षा के लिए कवच विकसित होता है। घोंघा, स्क्विड और ऑक्टोपस इसके उदाहरण हैं।</span></p>", "question_heading": ""}, {"sr_no": 31, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">कशेरुकियों को कितने प्रमुख समूहों में वर्गीकृत किया जाता है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">तीन</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">चार</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">पाँच</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">आठ</span></p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">कशेरुकियों को पाँच समूहों</span><span style=\"font-family:Georgia;font-size:12pt\">—</span><span style=\"font-size:12pt;font-family:'Mangal'\">मछलियाँ, उभयचर, सरीसृप, पक्षी और स्तनधारी</span><span style=\"font-family:Georgia;font-size:12pt\">—</span><span style=\"font-size:12pt;font-family:'Mangal'\">में वर्गीकृत किया जाता है। इनके वर्गीकरण में आवास, शरीर का आवरण और प्रजनन जैसी विशेषताओं का उपयोग किया जाता है।</span></p>", "question_heading": ""}, {"sr_no": 32, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">मछलियों को जल में गति करने और श्वसन करने में कौन-सी संरचनाएँ सहायता करती हैं?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">पंख और गलफड़े</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">पंख और फेफड़े</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">पंख और खोखली हड्डियाँ</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">घना फर और फेफड़े</span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">पंख और गलफड़े मछलियों के संरचनात्मक अनुकूलन हैं। पंख जल में गति करने में सहायता करते हैं, जबकि गलफड़े जल में श्वसन करने में सहायता करते हैं।</span></p>", "question_heading": ""}, {"sr_no": 33, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">स्तनधारियों में कौन-सी संरचनात्मक विशेषता उनके बच्चों के जीवित रहने की संभावना को बढ़ाती है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">गलफड़े</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">शल्क</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">स्तन ग्रंथियाँ</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">बाह्यकंकाल</span></p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">स्तनधारियों में स्तन ग्रंथियाँ एक महत्वपूर्ण संरचनात्मक और क्रियात्मक परिवर्तन हैं। ये बच्चों को पोषण प्रदान करके उनके जीवित रहने की संभावना को बढ़ाती हैं।</span></p>", "question_heading": ""}, {"sr_no": 34, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">वर्गीकरण की श्रेणियों का सबसे व्यापक से सबसे विशिष्ट स्तर तक सही क्रम कौन-सा है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">जगत </span><span>→</span><span style=\"font-family:'Mangal'\"> वर्ग </span><span>→</span><span style=\"font-family:'Mangal'\"> संघ </span><span>→</span><span style=\"font-family:'Mangal'\"> गण </span><span>→</span><span style=\"font-family:'Mangal'\"> कुल </span><span>→</span><span style=\"font-family:'Mangal'\"> वंश </span><span>→</span><span style=\"font-family:'Mangal'\"> प्रजाति</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">जगत </span><span style=\"font-family:'Arial Unicode MS'\">→ </span><span style=\"font-family:'Mangal'\">संघ </span><span style=\"font-family:'Arial Unicode MS'\">→ </span><span style=\"font-family:'Mangal'\">वर्ग </span><span style=\"font-family:'Arial Unicode MS'\">→ </span><span style=\"font-family:'Mangal'\">गण </span><span style=\"font-family:'Arial Unicode MS'\">→ </span><span style=\"font-family:'Mangal'\">कुल </span><span style=\"font-family:'Arial Unicode MS'\">→ </span><span style=\"font-family:'Mangal'\">वंश </span><span style=\"font-family:'Arial Unicode MS'\">→ </span><span style=\"font-family:'Mangal'\">प्रजाति</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">प्रजाति </span><span style=\"font-family:'Arial Unicode MS'\">→ </span><span style=\"font-family:'Mangal'\">वंश </span><span style=\"font-family:'Arial Unicode MS'\">→ </span><span style=\"font-family:'Mangal'\">कुल </span><span style=\"font-family:'Arial Unicode MS'\">→ </span><span style=\"font-family:'Mangal'\">गण </span><span style=\"font-family:'Arial Unicode MS'\">→ </span><span style=\"font-family:'Mangal'\">वर्ग </span><span style=\"font-family:'Arial Unicode MS'\">→ </span><span style=\"font-family:'Mangal'\">संघ </span><span style=\"font-family:'Arial Unicode MS'\">→ </span><span style=\"font-family:'Mangal'\">जगत</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">जगत </span><span style=\"font-family:'Arial Unicode MS'\">→ </span><span style=\"font-family:'Mangal'\">संघ </span><span style=\"font-family:'Arial Unicode MS'\">→ </span><span style=\"font-family:'Mangal'\">गण </span><span style=\"font-family:'Arial Unicode MS'\">→ </span><span style=\"font-family:'Mangal'\">वर्ग </span><span style=\"font-family:'Arial Unicode MS'\">→ </span><span style=\"font-family:'Mangal'\">कुल </span><span style=\"font-family:'Arial Unicode MS'\">→ </span><span style=\"font-family:'Mangal'\">प्रजाति </span><span style=\"font-family:'Arial Unicode MS'\">→ </span><span style=\"font-family:'Mangal'\">वंश</span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">वर्गीकरण का सही क्रम जगत </span><span style=\"font-size:12pt\">→</span><span style=\"font-size:12pt;font-family:'Mangal'\"> संघ </span><span style=\"font-size:12pt\">→</span><span style=\"font-size:12pt;font-family:'Mangal'\"> वर्ग </span><span style=\"font-size:12pt\">→</span><span style=\"font-size:12pt;font-family:'Mangal'\"> गण </span><span style=\"font-size:12pt\">→</span><span style=\"font-size:12pt;font-family:'Mangal'\"> कुल </span><span style=\"font-size:12pt\">→</span><span style=\"font-size:12pt;font-family:'Mangal'\"> वंश </span><span style=\"font-size:12pt\">→</span><span style=\"font-size:12pt;font-family:'Mangal'\"> प्रजाति है। वर्गीकरण व्यापक समूहों से छोटे और अधिक विशिष्ट समूहों की ओर बढ़ता है।</span></p>", "question_heading": ""}, {"sr_no": 35, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">बाघ का वंश क्या है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">फेलिडी</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">कार्निवोरा</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">पैंथेरा</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">मैमेलिया</span></p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">बाघ का वर्गीकरण कुल Felidae </span><span style=\"font-size:12pt\">→</span><span style=\"font-size:12pt;font-family:'Mangal'\"> वंश Panthera </span><span style=\"font-size:12pt\">→</span><span style=\"font-size:12pt;font-family:'Mangal'\"> प्रजाति </span></p><p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">P. tigris के रूप में किया जाता है। इसका वैज्ञानिक नाम Panthera tigris है।</span></p>", "question_heading": ""}, {"sr_no": 36, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">बाघ के वर्गीकरण में ‘Felidae’ किस वर्गीकरण श्रेणी को दर्शाता है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">गण</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">वर्ग</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">वंश</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">कुल</span></p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">बाघ के वर्गीकरण में Carnivora गण, Felidae कुल, Panthera वंश और P. tigris प्रजाति है।</span></p>", "question_heading": ""}, {"sr_no": 37, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">मटर का वंश और प्रजाति स्तर पर सही वर्गीकरण कौन-सा है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">वंश Pisum; प्रजाति P. sativum</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">वंश Fabaceae; प्रजाति Pisum</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">वंश Fabales; प्रजाति Fabaceae</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">वंश Magnoliophyta; प्रजाति Magnoliopsida</span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">मटर का वंश Pisum और प्रजाति P. sativum है। इसका कुल Fabaceae तथा गण Fabales है।</span></p>", "question_heading": ""}, {"sr_no": 38, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">द्विनाम नामकरण पद्धति की शुरुआत किसने की?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">रॉबर्ट व्हिटेकर</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">कार्ल वूज़</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">कैरोलस लिनियस</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">अरस्तू</span></p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">कैरोलस लिनियस ने 18वीं शताब्दी में द्विनाम नामकरण पद्धति की शुरुआत की। यह जीवों के नामकरण के लिए एक सार्वभौमिक प्रणाली प्रदान करती है।</span></p>", "question_heading": ""}, {"sr_no": 39, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">वैज्ञानिक नाम को हाथ से लिखते समय कैसे लिखा जाना चाहिए?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">बड़े अक्षरों में</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">कोष्ठक में</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">मोटे अक्षरों में</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">रेखांकित</span></p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">वैज्ञानिक नाम मुद्रित रूप में इटैलिक में तथा हाथ से लिखते समय रेखांकित करके लिखे जाते हैं।</span></p>", "question_heading": ""}, {"sr_no": 40, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">आम का वैज्ञानिक नाम क्या है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">Mangifera indica</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">Panthera tigris</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">Pisum sativum</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">Panthera leo</span></p>", "answer": "1", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">आम का वैज्ञानिक नाम Mangifera indica है। इसमें Mangifera वंश का नाम तथा indica प्रजाति का नाम है।</span></p>", "question_heading": ""}, {"sr_no": 41, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">1977 में त्रि-डोमेन प्रणाली किसने प्रस्तावित की?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">कैरोलस लिनियस</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">रॉबर्ट व्हिटेकर</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">अरस्तू</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">कार्ल वूज़</span></p>", "answer": "4", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">कार्ल वूज़ ने 1977 में आनुवंशिक आँकड़ों के आधार पर त्रि-डोमेन प्रणाली प्रस्तावित की। आनुवंशिक अध्ययनों में प्रगति के कारण वैज्ञानिक जीवों की तुलना DNA स्तर पर कर सके।</span></p>", "question_heading": ""}, {"sr_no": 42, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">पर्पल फ्रॉग के वैज्ञानिक नाम में ‘sahyadrensis’ किससे संबंधित है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">इसे खोजने वाले वैज्ञानिक से</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">इसके बैंगनी रंग से</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">सह्याद्रि पहाड़ियों से</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">इसके भूमिगत आवास से</span></p>", "answer": "3", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">पर्पल फ्रॉग का प्रजाति नाम sahyadrensis सह्याद्रि पहाड़ियों के नाम पर रखा गया है। यह वर्ष के अधिकांश समय भूमिगत रहता है और प्रजनन के लिए मानसून के दौरान बाहर आता है।</span></p>", "question_heading": ""}, {"sr_no": 43, "question": " <p style=\"margin-top:0pt;margin-bottom:11pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">संकटग्रस्त संगाई, जिसे डांसिंग डियर भी कहा जाता है, किस विशिष्ट आवास से संबंधित है?</span></p>", "option1": "<p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">मैंग्रोव वन</span></p>", "option2": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">लोकटक झील के फुमदी</span></p>", "option3": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">पश्चिमी घाट के घास के मैदान</span></p>", "option4": " <p style=\"margin-top:0pt;margin-bottom:8pt;font-size:12pt\"><span style=\"font-family:'Mangal'\">थार मरुस्थल</span></p>", "answer": "2", "negative_marking": "0.33", "positive_marking": "1", "solution_text": " <p style=\"margin-top:0pt;margin-bottom:6pt\"><span style=\"font-size:12pt;font-family:'Mangal'\">फुमदी मणिपुर के केइबुल लामजाओ राष्ट्रीय उद्यान की लोकटक झील में पाए जाने वाले तैरते घास के मैदान हैं। ये विशिष्ट वनस्पतियों को सहारा देते हैं और मणिपुर की स्थानिक एवं संकटग्रस्त संगाई के लिए आवास प्रदान करते हैं।</span></p>", "question_heading": ""}];
+
+let currentQuestion = 0;
+let answers = {};
+let bookmarks = new Set();
+let timerSeconds = 0;
+let timerInterval = null;
+let isPaletteOpen = false;
+
+const STORAGE_KEY = 'quizState_' + (document.title || 'default');
+
+function isImageURL(str) {
+  return str && (str.startsWith('http://') || str.startsWith('https://'));
+}
+
+function createOptionContent(optionText) {
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'option-content';
+    
+    if (isImageURL(optionText)) {
+        const img = document.createElement('img');
+        img.src = optionText;
+        img.className = 'option-image';
+        img.alt = 'Option image';
+        img.loading = 'lazy';
+        img.onerror = function() {
+            this.style.display = 'none';
+            const errorText = document.createTextNode('Image failed to load');
+            contentDiv.appendChild(errorText);
+        };
+        contentDiv.appendChild(img);
+    } else {
+        contentDiv.innerHTML = optionText;
+    }
+    
+    return contentDiv;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  initQuiz();
+  initEventListeners();
+  loadFromLocalStorage();
+  startTimer();
+  createPalette();
+  preventDoubleTapZoom();
+});
+
+function preventDoubleTapZoom() {
+  let lastTouchEnd = 0;
+  document.addEventListener('touchend', (event) => {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) {
+      event.preventDefault();
+    }
+    lastTouchEnd = now;
+  }, { passive: false });
+}
+
+function initTheme() {
+  const savedTheme = localStorage.getItem('quizTheme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  updateThemeIcon();
+}
+
+function updateThemeIcon() {
+  const theme = document.documentElement.getAttribute('data-theme');
+  const themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    themeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  }
+}
+
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('quizTheme', newTheme);
+  updateThemeIcon();
+}
+
+function initQuiz() {
+  loadQuestion(currentQuestion);
+  updateMarkingInfo();
+}
+
+function initEventListeners() {
+  const themeBtn = document.getElementById('themeToggle');
+  const fullscreenBtn = document.getElementById('fullscreenBtn');
+  
+  if (themeBtn) {
+    themeBtn.addEventListener('click', toggleTheme);
+    themeBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      toggleTheme();
+    });
+  }
+  
+  if (fullscreenBtn) {
+    fullscreenBtn.addEventListener('click', toggleFullscreen);
+    fullscreenBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      toggleFullscreen();
+    });
+  }
+  
+  addButtonListener('prevBtn', prevQuestion);
+  addButtonListener('nextBtn', nextQuestion);
+  addButtonListener('clearBtn', clearAnswer);
+  addButtonListener('submitBtn', confirmSubmit);
+  addButtonListener('bookmarkBtn', toggleBookmark);
+  
+  addButtonListener('paletteFab', togglePalette);
+  addButtonListener('paletteClose', closePalette);
+  
+  const overlay = document.getElementById('paletteOverlay');
+  if (overlay) {
+    overlay.addEventListener('click', closePalette);
+    overlay.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      closePalette();
+    });
+  }
+  
+  const searchInput = document.getElementById('paletteSearch');
+  if (searchInput) {
+    searchInput.addEventListener('input', handleSearch);
+    searchInput.addEventListener('change', jumpToQuestion);
+  }
+  
+  document.addEventListener('keydown', handleKeyPress);
+  
+  setInterval(saveToLocalStorage, 5000);
+  
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      updatePalette();
+    }
+  });
+}
+
+function addButtonListener(id, handler) {
+  const btn = document.getElementById(id);
+  if (btn) {
+    btn.addEventListener('click', handler);
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      handler();
+    });
+  }
+}
+
+function jumpToQuestion(e) {
+  const questionNum = parseInt(e.target.value);
+  if (questionNum >= 1 && questionNum <= questions.length) {
+    goToQuestion(questionNum - 1);
+    closePalette();
+    e.target.value = '';
+  }
+}
+
+function togglePalette() {
+  isPaletteOpen = !isPaletteOpen;
+  const palette = document.getElementById('questionPalette');
+  const overlay = document.getElementById('paletteOverlay');
+  const fab = document.getElementById('paletteFab');
+  
+  if (isPaletteOpen) {
+    palette.classList.add('active');
+    overlay.classList.add('active');
+    fab.classList.add('active');
+    fab.innerHTML = '✕<span class="badge" id="answeredBadge">' + Object.keys(answers).length + '</span>';
+    document.body.classList.add('palette-open');
+  } else {
+    closePalette();
+  }
+}
+
+function closePalette() {
+  isPaletteOpen = false;
+  const palette = document.getElementById('questionPalette');
+  const overlay = document.getElementById('paletteOverlay');
+  const fab = document.getElementById('paletteFab');
+  
+  if (palette) palette.classList.remove('active');
+  if (overlay) overlay.classList.remove('active');
+  if (fab) {
+    fab.classList.remove('active');
+    fab.innerHTML = '📋<span class="badge" id="answeredBadge">' + Object.keys(answers).length + '</span>';
+  }
+  document.body.classList.remove('palette-open');
+}
+
+function handleSearch(e) {
+  const searchTerm = e.target.value.toLowerCase();
+  if (!searchTerm) {
+    document.querySelectorAll('.palette-btn').forEach(btn => {
+      btn.style.display = '';
+    });
+    return;
+  }
+  
+  const buttons = document.querySelectorAll('.palette-btn');
+  buttons.forEach((btn, index) => {
+    const questionNum = (index + 1).toString();
+    if (questionNum.includes(searchTerm)) {
+      btn.style.display = '';
+    } else {
+      btn.style.display = 'none';
+    }
+  });
+}
+
+function handleKeyPress(e) {
+  if (document.getElementById('resultSection').classList.contains('hidden')) {
+    if (e.key === 'Escape' && isPaletteOpen) {
+      closePalette();
+    } else if (!isPaletteOpen && e.target.tagName !== 'INPUT') {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevQuestion();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        nextQuestion();
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        nextQuestion();
+      } else if (e.key === 'b' || e.key === 'B') {
+        e.preventDefault();
+        toggleBookmark();
+      } else if (e.key === 'c' || e.key === 'C') {
+        e.preventDefault();
+        clearAnswer();
+      } else if (e.key === 'p' || e.key === 'P') {
+        e.preventDefault();
+        togglePalette();
+      } else if (e.key >= '1' && e.key <= '4') {
+        e.preventDefault();
+        selectOption(parseInt(e.key));
+      }
+    }
+  }
+}
+
+function selectOption(optionNum) {
+  const q = questions[currentQuestion];
+  const radio = document.querySelector(`input[name="q${q.sr_no}"][value="${optionNum}"]`);
+  if (radio) {
+    radio.checked = true;
+    const label = radio.closest('.option-label');
+    if (label) {
+      document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      saveAnswer();
+    }
+  }
+}
+
+function toggleFullscreen() {
+  try {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(err => {
+        console.log('Fullscreen error:', err);
+      });
+    } else {
+      document.exitFullscreen();
+    }
+  } catch (err) {
+    console.log('Fullscreen not supported');
+  }
+}
+
+function startTimer() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+  timerInterval = setInterval(() => {
+    timerSeconds++;
+    updateTimer();
+    if (timerSeconds > 600) {
+      const timer = document.getElementById('timer');
+      if (timer) timer.classList.add('warning');
+    }
+  }, 1000);
+}
+
+function updateTimer() {
+  const minutes = Math.floor(timerSeconds / 60);
+  const seconds = timerSeconds % 60;
+  const timer = document.getElementById('timer');
+  if (timer) {
+    timer.textContent = 
+      `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  }
+}
+
+function createPalette() {
+  const grid = document.getElementById('paletteGrid');
+  if (!grid) return;
+  
+  grid.innerHTML = '';
+  questions.forEach((q, index) => {
+    const btn = document.createElement('button');
+    btn.textContent = index + 1;
+    btn.className = 'palette-btn';
+    btn.setAttribute('aria-label', `Go to question ${index + 1}`);
+    btn.setAttribute('type', 'button');
+    
+    btn.addEventListener('click', () => {
+      goToQuestion(index);
+      closePalette();
+    });
+    
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      goToQuestion(index);
+      closePalette();
+    });
+    
+    grid.appendChild(btn);
+  });
+  updatePalette();
+}
+
+function updatePalette() {
+  const buttons = document.querySelectorAll('.palette-btn');
+  buttons.forEach((btn, index) => {
+    btn.className = 'palette-btn';
+    if (index === currentQuestion) btn.classList.add('current');
+    if (answers[questions[index].sr_no]) btn.classList.add('answered');
+    if (bookmarks.has(questions[index].sr_no)) btn.classList.add('bookmarked');
+  });
+  
+  updatePaletteStats();
+}
+
+function updatePaletteStats() {
+  const answered = Object.keys(answers).length;
+  const unanswered = questions.length - answered;
+  const bookmarkedCount = bookmarks.size;
+  
+  const answeredEl = document.getElementById('paletteAnswered');
+  const unansweredEl = document.getElementById('paletteUnanswered');
+  const bookmarkedEl = document.getElementById('paletteBookmarked');
+  
+  if (answeredEl) answeredEl.textContent = answered;
+  if (unansweredEl) unansweredEl.textContent = unanswered;
+  if (bookmarkedEl) bookmarkedEl.textContent = bookmarkedCount;
+  
+  const badge = document.querySelector('.palette-fab .badge');
+  if (badge) badge.textContent = answered;
+}
+
+function goToQuestion(index) {
+  if (index < 0 || index >= questions.length) return;
+  saveAnswer();
+  currentQuestion = index;
+  loadQuestion(currentQuestion);
+  
+  const questionSection = document.getElementById('questionSection');
+  if (questionSection) {
+    setTimeout(() => {
+      questionSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+}
+
+function loadQuestion(index) {
+  const q = questions[index];
+  
+  const questionNumber = document.getElementById('questionNumber');
+  const questionText = document.getElementById('questionText');
+  
+  if (questionNumber) {
+    questionNumber.textContent = `Question ${index + 1} of ${questions.length}`;
+  }
+  
+  if (questionText) {
+    questionText.innerHTML = '';
+    
+    // 🌟 NEW: Create the Heading Box if it exists!
+    let headingHtml = '';
+    if (q.question_heading && q.question_heading.trim() !== '') {
+      headingHtml = `<div style="background: var(--bg-tertiary); padding: 15px; border-left: 4px solid var(--primary-color); margin-bottom: 20px; border-radius: 8px; overflow-x: auto;">${q.question_heading}</div>`;
+      questionText.innerHTML = headingHtml; // Inject heading first
+    }
+
+    if (isImageURL(q.question)) {
+      const img = document.createElement('img');
+      img.src = q.question;
+      img.className = 'question-image';
+      img.alt = 'Question image';
+      img.loading = 'lazy';
+      img.onerror = function() {
+        this.style.display = 'none';
+        questionText.innerHTML += q.question;
+      };
+      questionText.appendChild(img);
+    } else {
+      questionText.innerHTML += q.question; // Append question after heading
+    }
+  }
+  
+  const container = document.getElementById('optionsContainer');
+  if (!container) return;
+  
+  container.innerHTML = '';
+  
+  for (let i = 1; i <= 4; i++) {
+    const label = document.createElement('label');
+    label.className = 'option-label';
+    if (answers[q.sr_no] == i) label.classList.add('selected');
+    
+    const radio = document.createElement('input');
+    radio.type = 'radio';
+    radio.name = `q${q.sr_no}`;
+    radio.value = i;
+    radio.checked = answers[q.sr_no] == i;
+    
+    const changeHandler = () => {
+      document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      saveAnswer();
+    };
+    
+    radio.addEventListener('change', changeHandler);
+    label.addEventListener('click', (e) => {
+      if (e.target !== radio) {
+        radio.checked = true;
+        changeHandler();
+      }
+    });
+    
+    label.appendChild(radio);
+    
+    const optionContent = createOptionContent(q[`option${i}`]);
+    label.appendChild(optionContent);
+    
+    container.appendChild(label);
+  }
+  
+  const bookmarkBtn = document.getElementById('bookmarkBtn');
+  if (bookmarkBtn) {
+    if (bookmarks.has(q.sr_no)) {
+      bookmarkBtn.classList.add('active');
+    } else {
+      bookmarkBtn.classList.remove('active');
+    }
+  }
+  
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const submitBtn = document.getElementById('submitBtn');
+  
+  if (prevBtn) prevBtn.disabled = index === 0;
+  
+  if (index === questions.length - 1) {
+    if (nextBtn) nextBtn.classList.add('hidden');
+    if (submitBtn) submitBtn.classList.remove('hidden');
+  } else {
+    if (nextBtn) nextBtn.classList.remove('hidden');
+    if (submitBtn) submitBtn.classList.add('hidden');
+  }
+  
+  updateProgress();
+  updatePalette();
+}
+
+function updateMarkingInfo() {
+  if(questions.length > 0) {
+      const q = questions[0];
+      const markingInfo = document.getElementById('markingInfo');
+      if (markingInfo) {
+        markingInfo.textContent = `Marking: +${q.positive_marking}, -${q.negative_marking}`;
+      }
+  }
+}
+
+function updateProgress() {
+  const attempted = Object.keys(answers).length;
+  const currentProgress = ((currentQuestion + 1) / questions.length) * 100;
+  
+  const progressBar = document.getElementById('progressBar');
+  const progressText = document.getElementById('progressText');
+  const attemptedText = document.getElementById('attemptedText');
+  
+  if (progressBar) progressBar.style.width = `${currentProgress}%`;
+  if (progressText) progressText.textContent = `${currentQuestion + 1}/${questions.length}`;
+  if (attemptedText) attemptedText.textContent = attempted;
+}
+
+function saveAnswer() {
+  const q = questions[currentQuestion];
+  const selected = document.querySelector(`input[name="q${q.sr_no}"]:checked`);
+  
+  if (selected) {
+    answers[q.sr_no] = selected.value;
+  }
+  
+  updateProgress();
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function clearAnswer() {
+  const q = questions[currentQuestion];
+  delete answers[q.sr_no];
+  
+  const selected = document.querySelector(`input[name="q${q.sr_no}"]:checked`);
+  if (selected) selected.checked = false;
+  
+  document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+  
+  updateProgress();
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function toggleBookmark() {
+  const q = questions[currentQuestion];
+  const btn = document.getElementById('bookmarkBtn');
+  
+  if (bookmarks.has(q.sr_no)) {
+    bookmarks.delete(q.sr_no);
+    if (btn) btn.classList.remove('active');
+  } else {
+    bookmarks.add(q.sr_no);
+    if (btn) btn.classList.add('active');
+  }
+  
+  updatePalette();
+  saveToLocalStorage();
+}
+
+function nextQuestion() {
+  saveAnswer();
+  if (currentQuestion < questions.length - 1) {
+    currentQuestion++;
+    loadQuestion(currentQuestion);
+  }
+}
+
+function prevQuestion() {
+  saveAnswer();
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    loadQuestion(currentQuestion);
+  }
+}
+
+function confirmSubmit() {
+  const unattempted = questions.length - Object.keys(answers).length;
+  let message = 'Are you sure you want to submit the quiz?';
+  
+  if (unattempted > 0) {
+    message += `\n\nYou have ${unattempted} unanswered question(s).`;
+  }
+  
+  if (confirm(message)) {
+    submitQuiz();
+  }
+}
+
+function submitQuiz() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+  }
+  saveAnswer();
+  closePalette();
+  
+  let correct = 0, wrong = 0, unattempted = 0, score = 0;
+  
+  questions.forEach(q => {
+    const userAns = answers[q.sr_no];
+    const posMark = parseFloat(q.positive_marking) || 0;
+    const negMark = parseFloat(q.negative_marking) || 0;
+    
+    if (!userAns) {
+      unattempted++;
+    } else if (userAns == q.answer) {
+      correct++;
+      score += posMark;
+    } else {
+      wrong++;
+      score -= negMark;
+    }
+  });
+  
+  displayResults(correct, wrong, unattempted, score);
+  
+  const fab = document.getElementById('paletteFab');
+  const nav = document.getElementById('navigation');
+  if (fab) fab.style.display = 'none';
+  if (nav) nav.style.display = 'none';
+  
+  document.body.style.paddingBottom = '20px';
+  
+  clearLocalStorage();
+}
+
+function displayResults(correct, wrong, unattempted, score) {
+  const totalQuestions = questions.length;
+  const percentage = ((correct / totalQuestions) * 100).toFixed(1);
+  const timerEl = document.getElementById('timer');
+  const timeText = timerEl ? timerEl.textContent : '00:00';
+  
+  let html = `
+    <div class="score-card">
+      <h2>${score}/${totalQuestions}</h2>
+      <p>Your Score: ${percentage}%</p>
+      <p>Time Taken: ${timeText}</p>
+    </div>
+    
+    <div class="stats-grid">
+      <div class="stat-card correct">
+        <h3>${correct}</h3>
+        <p>Correct</p>
+      </div>
+      <div class="stat-card wrong">
+        <h3>${wrong}</h3>
+        <p>Wrong</p>
+      </div>
+      <div class="stat-card unattempted">
+        <h3>${unattempted}</h3>
+        <p>Unattempted</p>
+      </div>
+      <div class="stat-card">
+        <h3>${totalQuestions}</h3>
+        <p>Total</p>
+      </div>
+    </div>
+  `;
+  
+  questions.forEach(q => {
+    const userAns = answers[q.sr_no];
+    
+    // 🌟 NEW: Add the Heading to the results review screen!
+    let headingHtml = (q.question_heading && q.question_heading.trim() !== '') 
+      ? `<div style="background: var(--bg-tertiary); padding: 10px; margin-bottom: 15px; border-left: 4px solid var(--primary-color); border-radius: 5px; overflow-x: auto;">${q.question_heading}</div>` 
+      : '';
+      
+    const questionHeader = isImageURL(q.question)
+      ? `<h4>Q${q.sr_no}:</h4>${headingHtml}<img src="${q.question}" class="question-image" alt="Question ${q.sr_no}">`
+      : `<h4>Q${q.sr_no}:</h4>${headingHtml}<div style="margin-bottom: 10px;">${q.question}</div>`;
+      
+    html += `<div class="question-review">${questionHeader}`;
+    
+    for (let i = 1; i <= 4; i++) {
+      const isCorrect = i.toString() === q.answer;
+      const isUserAnswer = userAns == i.toString();
+      
+      let className = 'review-option';
+      if (isCorrect) className += ' correct';
+      if (isUserAnswer && !isCorrect) className += ' wrong';
+      if (isUserAnswer) className += ' user-selected';
+      
+      const optionValue = q[`option${i}`];
+      
+      if (isImageURL(optionValue)) {
+        html += `<div class="${className}">
+          ${isCorrect ? '✓ ' : ''}${isUserAnswer ? '➤ ' : ''} 
+          <img src="${optionValue}" class="option-image" alt="Option ${i}">
+        </div>`;
+      } else {
+        html += `<div class="${className}">
+          ${isCorrect ? '✓ ' : ''}${isUserAnswer ? '➤ ' : ''}${optionValue}
+        </div>`;
+      }
+    }
+    
+    if (q.solution_text && q.solution_text.trim() !== '') {
+      const solutionContent = isImageURL(q.solution_text)
+        ? `<img src="${q.solution_text}" class="solution-image" alt="Solution">`
+        : q.solution_text;
+      html += `<div class="solution-section">
+        <div class="solution-label">📝 Solution:</div>
+        <div class="solution-content">${solutionContent}</div>
+      </div>`;
+    }
+    
+    html += `</div>`; 
+});
+  
+  html += `
+    <div class="action-buttons">
+      <button class="action-btn restart" onclick="restartQuiz()">Restart Quiz</button>
+      <button class="action-btn download" onclick="downloadResults()">Download Results</button>
+      <button class="action-btn print" onclick="window.print()">Print Results</button>
+    </div>
+  `;
+  
+  const resultSection = document.getElementById('resultSection');
+  const questionSection = document.getElementById('questionSection');
+  const progressSection = document.querySelector('.progress-section');
+  
+  if (resultSection) {
+    resultSection.innerHTML = html;
+    resultSection.classList.remove('hidden');
+  }
+  if (questionSection) questionSection.classList.add('hidden');
+  if (progressSection) progressSection.classList.add('hidden');
+  
+  const quizContainer = document.getElementById('quizContainer');
+  if (quizContainer) {
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
+  }
+}
+
+function restartQuiz() {
+  if (confirm('Are you sure you want to restart? All progress will be lost.')) {
+    currentQuestion = 0;
+    answers = {};
+    bookmarks.clear();
+    timerSeconds = 0;
+    
+    const resultSection = document.getElementById('resultSection');
+    const questionSection = document.getElementById('questionSection');
+    const progressSection = document.querySelector('.progress-section');
+    const fab = document.getElementById('paletteFab');
+    const nav = document.getElementById('navigation');
+    
+    if (resultSection) {
+      resultSection.classList.add('hidden');
+      resultSection.innerHTML = '';
+    }
+    if (questionSection) questionSection.classList.remove('hidden');
+    if (progressSection) progressSection.classList.remove('hidden');
+    if (fab) fab.style.display = 'flex';
+    if (nav) nav.style.display = 'grid';
+    
+    document.body.style.paddingBottom = 'var(--nav-height)';
+    
+    if (timerInterval) {
+      clearInterval(timerInterval);
+    }
+    startTimer();
+    
+    loadQuestion(currentQuestion);
+    createPalette();
+  }
+}
+
+function downloadResults() {
+  const resultSection = document.getElementById('resultSection');
+  if (!resultSection) return;
+  
+  const resultHTML = resultSection.innerHTML;
+  const fullHTML = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Results</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; max-width: 900px; margin: 0 auto; }
+    .score-card { background: linear-gradient(135deg, #007bff, #28a745); color: white; padding: 30px; border-radius: 15px; text-align: center; margin-bottom: 20px; }
+    .score-card h2 { font-size: 48px; margin-bottom: 10px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 30px; }
+    .stat-card { background: white; padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #ddd; }
+    .stat-card h3 { font-size: 32px; margin-bottom: 8px; }
+    .stat-card.correct h3 { color: #28a745; }
+    .stat-card.wrong h3 { color: #dc3545; }
+    .stat-card.unattempted h3 { color: #6c757d; }
+    .question-review { background: white; border: 2px solid #ddd; border-radius: 10px; padding: 20px; margin-bottom: 15px; }
+    .question-review h4 { margin-bottom: 15px; font-size: 16px; line-height: 1.6; }
+    .review-option { padding: 10px 15px; margin: 8px 0; border-radius: 8px; border: 2px solid #ddd; display: flex; align-items: center; gap: 10px; }
+    .option-image { max-width: 150px; max-height: 100px; border-radius: 8px; }
+    .review-option.correct { background: #d4edda; border-color: #28a745; color: #155724; }
+    .review-option.wrong { background: #f8d7da; border-color: #dc3545; color: #721c24; }
+    .review-option.user-selected { border-width: 3px; font-weight: bold; }
+    @media print { body { background: white; } }
+    @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center; color: #007bff;">Quiz Results</h1>
+  <p style="text-align: center; color: #666; margin-bottom: 30px;">Generated on: ${new Date().toLocaleString()}</p>
+  ${resultHTML.replace(/<div class="action-buttons">[\s\S]*?<\/div>/, '')}
+</body>
+</html>
+  `;
+  
+  try {
+    const blob = new Blob([fullHTML], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `Quiz_Results_${new Date().getTime()}.html`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  } catch (err) {
+    alert('Download failed. Please try using the Print option instead.');
+    console.error('Download error:', err);
+  }
+}
+
+function saveToLocalStorage() {
+  try {
+    const state = {
+      currentQuestion,
+      answers,
+      bookmarks: Array.from(bookmarks),
+      timerSeconds,
+      timestamp: Date.now()
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch (err) {
+    console.error('Save error:', err);
+  }
+}
+
+function loadFromLocalStorage() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const state = JSON.parse(saved);
+      const hasProgress = (state && (
+        (state.currentQuestion && state.currentQuestion > 0) ||
+        (state.answers && Object.keys(state.answers).length > 0) ||
+        (state.timerSeconds && state.timerSeconds > 0)
+      ));
+      if (hasProgress && (Date.now() - state.timestamp < 24 * 60 * 60 * 1000)) {
+        if (confirm('Resume previous quiz session?')) {
+          currentQuestion = state.currentQuestion || 0;
+          answers = state.answers || {};
+          bookmarks = new Set(state.bookmarks || []);
+          timerSeconds = state.timerSeconds || 0;
+          updateTimer();
+          loadQuestion(currentQuestion);
+        }
+      } else {
+        clearLocalStorage();
+      }
+    }
+  } catch (err) {
+    console.error('Load error:', err);
+    clearLocalStorage();
+  }
+}
+
+function clearLocalStorage() {
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (err) {
+    console.error('Clear storage error:', err);
+  }
+}
+
+window.addEventListener('beforeunload', (e) => {
+  const resultSection = document.getElementById('resultSection');
+  if (resultSection && !resultSection.classList.contains('hidden')) {
+    return;
+  }
+  e.preventDefault();
+  e.returnValue = '';
+});
+
+window.addEventListener('unload', () => {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+});
+</script>
+</body>
+</html>
